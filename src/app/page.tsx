@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { TagChip } from "@/components/tag-chip";
-import { getCompaniesWithTags } from "@/lib/queries";
+import { getCompaniesWithTags, getUserProfile } from "@/lib/queries";
 
 const TIER_LABEL: Record<number, string> = {
   1: "Top focus",
@@ -10,7 +10,11 @@ const TIER_LABEL: Record<number, string> = {
 };
 
 export default async function HomePage() {
-  const cos = await getCompaniesWithTags();
+  const [cos, profile] = await Promise.all([
+    getCompaniesWithTags(),
+    getUserProfile(),
+  ]);
+  const firstName = profile?.displayName?.split(" ")[0] || null;
   const byTier = new Map<number, typeof cos>();
   for (const c of cos) {
     const list = byTier.get(c.tier) || [];
@@ -22,13 +26,16 @@ export default async function HomePage() {
   return (
     <SiteShell>
       <section className="max-w-[64rem] mx-auto px-6 pt-16 pb-12">
-        <div className="eyebrow mb-6">Index</div>
+        <div className="eyebrow mb-6">
+          {firstName ? `Welcome back, ${firstName}` : "Index"}
+        </div>
         <h1 className="serif text-4xl sm:text-5xl font-medium leading-[1.05] tracking-tight text-ink">
           A quiet dashboard for loud decisions.
         </h1>
         <p className="serif mt-6 max-w-2xl text-lg text-muted leading-relaxed">
-          {cos.length} companies tracked. Open policy roles, public stances,
-          lobbying footprints &mdash; ranked by your own frames, not theirs.
+          {cos.length} companies tracked across the UK, EU, US and beyond. Open
+          policy roles, public stances, lobbying footprints &mdash; ranked by
+          your own frames, not theirs.
         </p>
       </section>
 

@@ -13,6 +13,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Link href="/" className="hover:text-ink transition">Index</Link>
             <Link href="/compare" className="hover:text-ink transition">Compare</Link>
             <Link href="/frames" className="hover:text-ink transition">Frames</Link>
+            <Link href="/about" className="hover:text-ink transition">About</Link>
           </nav>
         </div>
       </header>

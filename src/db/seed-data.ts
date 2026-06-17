@@ -273,16 +273,22 @@ export const seedCompanies: SeedCompany[] = [
     tags: ["open-weights", "US-HQ", "EU-HQ", "established-policy-team"],
   },
   {
-    slug: "cohere",
-    name: "Cohere",
-    tier: 3,
-    hq: "Toronto · London",
+    slug: "cohere-aleph-alpha",
+    name: "Cohere × Aleph Alpha",
+    tier: 2,
+    hq: "Toronto · London · Heidelberg",
     websiteUrl: "https://cohere.com",
     careersUrl: "https://cohere.com/careers",
-    focusAreas: ["enterprise AI policy", "data residency", "Canada AI"],
+    focusAreas: [
+      "enterprise AI policy",
+      "sovereign AI",
+      "EU AI Act compliance",
+      "explainability",
+      "data residency",
+    ],
     description:
-      "Enterprise-focused frontier lab. Smaller policy footprint than US labs; significant Canadian and UK presence. Less attention internationally, but could offer broader-scope roles.",
-    tags: ["frontier-lab"],
+      "Cohere and Aleph Alpha merged April 2026 (~$20B) to build a transatlantic, sovereign-AI-focused enterprise lab. EU compliance + on-prem deployment are the explicit pitch. Policy work here straddles Canada, UK, Germany and EU institutions — unusually broad jurisdictional remit for a single role.",
+    tags: ["frontier-lab", "EU-HQ", "open-weights"],
   },
   {
     slug: "wayve",
@@ -400,6 +406,223 @@ export const seedCompanies: SeedCompany[] = [
     description:
       "Robotics + foundation models. Embodied-AI policy is a near-empty space; high regulatory novelty, deep technical demand. Almost certainly no policy function yet.",
     tags: ["US-HQ", "first-policy-hire"],
+  },
+
+  /* ----------------- EUROPE ---------------------------------------- */
+  {
+    slug: "black-forest-labs",
+    name: "Black Forest Labs",
+    tier: 2,
+    hq: "Freiburg / Munich",
+    websiteUrl: "https://blackforestlabs.ai",
+    careersUrl: "https://blackforestlabs.ai/careers",
+    focusAreas: [
+      "generative image policy",
+      "EU AI Act GPAI",
+      "German tech sovereignty",
+      "content provenance",
+    ],
+    description:
+      "Stability-AI alumni building open generative image/video models from Germany. Heavy German government and EU policy attention given the sovereign-AI narrative. A policy hire would shape content provenance and GPAI obligations from inside the EU's flagship generative-media lab.",
+    tags: ["frontier-lab", "EU-HQ", "open-weights", "first-policy-hire"],
+  },
+  {
+    slug: "helsing",
+    name: "Helsing",
+    tier: 3,
+    hq: "Munich · London · Paris",
+    websiteUrl: "https://helsing.ai",
+    careersUrl: "https://helsing.ai/careers",
+    focusAreas: [
+      "defence AI policy",
+      "export controls",
+      "European sovereignty",
+      "dual-use regulation",
+    ],
+    description:
+      "European defence-AI scale-up. Policy here means defence procurement, export controls, dual-use frameworks, NATO interoperability — a very different policy world than commercial AI. Worth flagging because it's a clear off-ramp from frontier-lab work; possibly mismatched with civic-infrastructure interests.",
+    tags: ["EU-HQ"],
+  },
+  {
+    slug: "deepl",
+    name: "DeepL",
+    tier: 3,
+    hq: "Cologne",
+    websiteUrl: "https://www.deepl.com",
+    careersUrl: "https://jobs.deepl.com/en",
+    focusAreas: [
+      "language AI policy",
+      "EU data residency",
+      "enterprise compliance",
+    ],
+    description:
+      "German translation-AI scale-up serving large EU and global enterprise customers. Policy work would centre on data residency, EU enterprise AI compliance, and language-tech procurement standards. Smaller policy footprint than frontier labs but a stable established product.",
+    tags: ["EU-HQ"],
+  },
+  {
+    slug: "silo-ai",
+    name: "Silo AI / AMD",
+    tier: 3,
+    hq: "Helsinki",
+    websiteUrl: "https://silo.ai",
+    careersUrl: "https://silo.ai/careers",
+    focusAreas: [
+      "sovereign AI",
+      "EU multilingual models",
+      "public sector AI",
+    ],
+    description:
+      "Nordic applied-AI shop acquired by AMD (2024). Builds the Poro / Viking multilingual open-source models with the EuroLLM consortium — explicit EU sovereignty play. Has hired Policy Analyst / EU Partnership Lead roles. Civic-infrastructure overlap is unusually high.",
+    tags: ["EU-HQ", "open-weights"],
+  },
+  {
+    slug: "photoroom",
+    name: "Photoroom",
+    tier: 3,
+    hq: "Paris",
+    websiteUrl: "https://www.photoroom.com",
+    careersUrl: "https://www.photoroom.com/careers",
+    focusAreas: ["generative image policy", "creator IP", "SMB AI"],
+    description:
+      "Paris-based generative image scale-up serving creators and SMBs. Smaller and less policy-active than Black Forest, but interesting if you want a more product-shaped role inside a French AI champion.",
+    tags: ["EU-HQ"],
+  },
+  {
+    slug: "sakana-ai",
+    name: "Sakana AI",
+    tier: 3,
+    hq: "Tokyo",
+    websiteUrl: "https://sakana.ai",
+    careersUrl: "https://sakana.ai/careers",
+    focusAreas: [
+      "Japanese AI policy",
+      "public sector AI",
+      "international AI cooperation",
+    ],
+    description:
+      "Tokyo-based frontier lab founded by ex-Google researchers. Works closely with Japanese government and large enterprises. Policy here means being a bridge between Japanese public policy and the international frontier-AI conversation — unusual remit, narrow geography.",
+    tags: ["frontier-lab"],
+  },
+
+  /* ----------------- US (more) ------------------------------------- */
+  {
+    slug: "scale-ai",
+    name: "Scale AI",
+    tier: 2,
+    hq: "San Francisco",
+    websiteUrl: "https://scale.com",
+    careersUrl: "https://scale.com/careers",
+    rolesSource: "greenhouse",
+    rolesSourceId: "scaleai",
+    focusAreas: [
+      "US national security AI",
+      "data labelling labour policy",
+      "AI evaluation",
+      "Meta-Scale acquihire",
+    ],
+    description:
+      "Data labelling + AI evaluation platform; subject of Meta's 2025 acqui-hire (Alex Wang and senior team moved). Active policy footprint around US national-security AI and labour practices. Genuine FTC scrutiny means policy work here is high-stakes.",
+    tags: ["US-HQ", "established-policy-team"],
+  },
+  {
+    slug: "perplexity",
+    name: "Perplexity",
+    tier: 3,
+    hq: "San Francisco",
+    websiteUrl: "https://www.perplexity.ai",
+    careersUrl: "https://www.perplexity.ai/careers",
+    focusAreas: [
+      "AI search policy",
+      "publisher relations",
+      "content licensing",
+      "news/media policy",
+    ],
+    description:
+      "AI-native search. Hot policy zone: publisher disputes, content licensing, news/media relations. A policy hire here would deal with newsroom partnerships and IP frameworks more than frontier-AI questions.",
+    tags: ["US-HQ"],
+  },
+  {
+    slug: "runway",
+    name: "Runway",
+    tier: 3,
+    hq: "New York",
+    websiteUrl: "https://runwayml.com",
+    careersUrl: "https://runwayml.com/careers",
+    focusAreas: [
+      "generative video policy",
+      "Hollywood relations",
+      "copyright",
+      "creator IP",
+    ],
+    description:
+      "Generative video, deep ties to Hollywood/Lionsgate. Policy lives at the intersection of entertainment industry, copyright, and synthetic media. Cultural fluency matters as much as regulatory fluency.",
+    tags: ["voice-AI", "US-HQ"],
+  },
+  {
+    slug: "suno",
+    name: "Suno",
+    tier: 3,
+    hq: "Cambridge, MA",
+    websiteUrl: "https://suno.com",
+    careersUrl: "https://suno.com/careers",
+    focusAreas: [
+      "music AI policy",
+      "copyright litigation",
+      "label relations",
+      "songwriter rights",
+    ],
+    description:
+      "AI music generation, centre of the RIAA copyright lawsuits. Warner settled Nov 2025; Sony still litigating. Policy work here is litigation-shaped — settlements, licensing frameworks, songwriter/publisher relations. A hot, hostile, defining space.",
+    tags: ["voice-AI", "US-HQ", "hiring-policy", "first-policy-hire"],
+  },
+  {
+    slug: "character-ai",
+    name: "Character.AI",
+    tier: 3,
+    hq: "Menlo Park",
+    websiteUrl: "https://character.ai",
+    careersUrl: "https://character.ai/careers",
+    focusAreas: [
+      "AI safety for consumers",
+      "youth protection",
+      "DOJ scrutiny",
+      "product policy",
+    ],
+    description:
+      "Consumer AI companion product. Heavy product-policy lift around youth safety, content moderation, and ongoing DOJ analysis of the Google deal. A policy role here is product-shaped, high-pressure, real-stakes safety work.",
+    tags: ["US-HQ"],
+  },
+  {
+    slug: "groq",
+    name: "Groq",
+    tier: 3,
+    hq: "Mountain View",
+    websiteUrl: "https://groq.com",
+    careersUrl: "https://groq.com/careers",
+    focusAreas: [
+      "AI infrastructure policy",
+      "compute / energy",
+      "chip export controls",
+    ],
+    description:
+      "Specialised AI inference chips. Policy work here is hardware-shaped: export controls, energy regulation, US-China compute competition. Adjacent to but distinct from frontier-model policy.",
+    tags: ["US-HQ"],
+  },
+  {
+    slug: "cerebras",
+    name: "Cerebras",
+    tier: 3,
+    hq: "Sunnyvale",
+    websiteUrl: "https://www.cerebras.ai",
+    careersUrl: "https://www.cerebras.ai/careers",
+    focusAreas: [
+      "AI chip policy",
+      "export controls",
+      "sovereign infrastructure",
+    ],
+    description:
+      "Wafer-scale AI chip company with significant Gulf-state deployment partnerships. Policy work straddles US export controls and international sovereign-compute deals. Niche but structurally important.",
+    tags: ["US-HQ"],
   },
 ];
 
