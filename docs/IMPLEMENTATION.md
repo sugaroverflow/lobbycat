@@ -112,6 +112,16 @@ All "user layer" tables (tags, frames, scores, notes) are single-user for v0 —
 - [ ] Production checks: backups, error monitoring, rate limits
 - [ ] Invite end user as collaborator
 
+### v0.6 — Personalised fit notes (optional)
+
+A per-company "fit notes" panel: given a stored user profile (background, interests, past work), generate a specific, grounded note on why this company is or isn't a good match for the user. Cited against the user's actual background and the company's actual recent moves.
+
+- [ ] `user_profile` table (single row) + admin UI to edit
+- [ ] `fit_notes` table cached per (company, profile-version)
+- [ ] Claude prompt that crosses profile + company context with strict grounding instructions
+- [ ] UI panel on company detail page, behind a feature flag
+- [ ] Regeneration on profile change or company refresh
+
 ## Open questions
 
 - How deep on lobbying? Tier 1 (EU + US LDA) confirmed for v0.4. Tier 2 (NIST/OSTP/OFCOM filings) deferred unless time allows.
