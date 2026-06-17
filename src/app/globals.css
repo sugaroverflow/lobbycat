@@ -1,26 +1,74 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* surfaces */
+  --color-bg: #fbfbf7;
+  --color-surface: #fffffc;
+  --color-surface-sunk: #f4f2ec;
+
+  /* ink */
+  --color-ink: #0e1217;
+  --color-body: #1b2330;
+  --color-muted: #4a5260;
+  --color-whisper: #98a1ac;
+
+  /* hairline */
+  --color-rule: #e2e2e2;
+  --color-rule-strong: #b1b7cd;
+
+  /* accent */
+  --color-accent: #406896;
+  --color-accent-soft: #bdd6f2;
+  --color-accent-wash: #ebf3fb;
+
+  /* signal */
+  --color-warm: #b85048;
+  --color-warm-soft: #f2d9d6;
+  --color-positive: #1c6c34;
+  --color-positive-soft: #dceedf;
+
+  /* fonts */
+  --font-serif: var(--font-serif), "Iowan Old Style", "Charter", Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-mono), ui-monospace, "SF Mono", Menlo, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-feature-settings: "ss01" on, "cv11" on;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: var(--color-body);
+  background: var(--color-bg);
+  font-feature-settings: "cv11" on;
+}
+
+::selection {
+  background: var(--color-accent-wash);
+  color: var(--color-ink);
+}
+
+/* Editorial helpers */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-whisper);
+}
+
+.serif {
+  font-family: var(--font-serif);
+  font-feature-settings: "ss01" on, "cv11" on;
+  letter-spacing: -0.005em;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-feature-settings: "ss03" on, "cv11" on;
+}
+
+.hairline {
+  border-color: var(--color-rule);
 }
