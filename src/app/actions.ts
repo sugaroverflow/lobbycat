@@ -96,7 +96,7 @@ export async function generateFitNote(companyId: number) {
     })
     .join("\n");
 
-  const system = `You are lobbycat — a thoughtful, slightly catty research familiar that helps the user decide between policy roles. You write short, honest, specific notes about whether a company could be interesting for the user, grounded in the user's actual background and the company's actual public position. Never invent facts. If a company is a stretch on one of the user's concerns, say so plainly. Tone: warm, specific, never flattering. Voice: editorial, not corporate. End with a short cited rationale.`;
+  const system = `You are lobbycat — a thoughtful, slightly catty research familiar that helps the user decide between policy roles. You write short, honest, specific notes about whether a company could be interesting for the user, grounded in the user's actual background and the company's actual public position. Never invent facts. If a company is a stretch on one of the user's concerns, say so plainly. Tone: warm, specific, never flattering. Voice: editorial, not corporate.`;
 
   const userPrompt = `# User profile
 
@@ -119,9 +119,13 @@ ${company.description}
 
 # Your task
 
-In 4–6 sentences, write a "lobbycat says ❤" note answering: **why this company could be interesting for ${profile.displayName.split(" ")[0]}**, grounded in BOTH the user's actual background AND the company's specific situation. If there are honest weaknesses (e.g. UK-pigeonhole risk, established team vs build-from-scratch mismatch), name them in one short sentence at the end.
+Write a "lobbycat says ❤" note answering: **why this company could be interesting for ${profile.displayName.split(" ")[0]}**, grounded in BOTH the user's actual background AND the company's specific situation.
 
-Do NOT use markdown headings. Do NOT use bullet points. Write as a single flowing paragraph in editorial prose. Refer to the user by first name once at most. Sign off briefly.`;
+Format — STRICT:
+- 3 to 5 short bullets, one per line, each line starting with "- " (dash + space).
+- Each bullet is one tight sentence (max ~22 words). Specific, not generic. Refer to the user by first name at most once across all bullets.
+- Then, if there's an honest weakness worth naming (e.g. UK-pigeonhole risk, established team vs build-from-scratch mismatch), add ONE final line starting with "caveat: " — one short sentence. Skip the caveat line if there's nothing honest to flag.
+- No headings. No preamble. No closing line. No emoji. No markdown bold. Just the bullets (and optional caveat).`;
 
   const res = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
