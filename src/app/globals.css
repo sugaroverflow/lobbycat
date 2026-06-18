@@ -1,10 +1,11 @@
 @import "tailwindcss";
 
 @theme {
-  /* surfaces */
-  --color-bg: #fbfbf7;
-  --color-surface: #fffffc;
-  --color-surface-sunk: #f4f2ec;
+  /* surfaces — earthcore (v0.3) */
+  --color-bg: #f4f1e8;          /* warm cream */
+  --color-surface: #fffef8;     /* paper */
+  --color-surface-sunk: #ece6d3;
+  --color-cream-dark: #e8e1cc;  /* tracker stripes, hover wash */
 
   /* ink */
   --color-ink: #0e1217;
@@ -13,19 +14,31 @@
   --color-whisper: #98a1ac;
 
   /* hairline */
-  --color-rule: #e2e2e2;
-  --color-rule-strong: #b1b7cd;
+  --color-rule: #d8d2bf;
+  --color-rule-strong: #a89f86;
 
-  /* accent */
-  --color-accent: #406896;
-  --color-accent-soft: #bdd6f2;
-  --color-accent-wash: #ebf3fb;
+  /* earthcore palette */
+  --color-moss: #3e5c3a;        /* buttons, links, primary accent */
+  --color-sage: #a8c09a;        /* tag pills, chart slices */
+  --color-sage-soft: #d9e5c9;   /* pill backgrounds */
+  --color-sage-dark: #6b8a5c;
+  --color-ochre: #c49a4b;       /* secondary signal */
+  --color-ochre-soft: #ecdcb6;
+  --color-terracotta: #b85048;  /* warning / signal */
+  --color-terracotta-soft: #f2d9d6;
+  --color-mushroom: #857366;    /* muted accent */
+  --color-mushroom-soft: #d8cfc5;
 
-  /* signal */
+  /* accent aliases (backwards compatible — moss replaces the old steel blue) */
+  --color-accent: #3e5c3a;
+  --color-accent-soft: #a8c09a;
+  --color-accent-wash: #d9e5c9;
+
+  /* signal aliases */
   --color-warm: #b85048;
   --color-warm-soft: #f2d9d6;
-  --color-positive: #1c6c34;
-  --color-positive-soft: #dceedf;
+  --color-positive: #3e5c3a;
+  --color-positive-soft: #d9e5c9;
 
   /* fonts */
   --font-serif: var(--font-serif), "Iowan Old Style", "Charter", Georgia, serif;
