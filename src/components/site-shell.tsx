@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { Wordmark } from "@/components/wordmark";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -7,7 +8,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
       <header className="border-b border-rule">
         <div className="max-w-[64rem] mx-auto px-6 py-4 flex items-baseline justify-between">
           <Link href="/" className="serif text-xl text-ink tracking-tight">
-            <span className="mr-2">🐱</span>lobbycat
+            <Wordmark size={26} />
           </Link>
           <nav className="flex items-center gap-6 mono text-xs uppercase tracking-[0.14em] text-muted">
             <Link href="/" className="hover:text-ink transition">Index</Link>

@@ -2,6 +2,7 @@
 
 import { useRef, useState, useTransition } from "react";
 import { generateFitNote, sendFitNoteMessage } from "@/app/actions";
+import { CatMark } from "@/components/wordmark";
 
 type FitNote = {
   headline: string | null;
@@ -72,10 +73,10 @@ export function FitNotePanel({
 
   return (
     <aside className="border border-rule rounded-sm p-6 bg-surface">
-      <div className="flex items-baseline justify-between mb-3">
+      <div className="flex items-center justify-between mb-3">
         <div className="eyebrow flex items-center gap-2">
+          <CatMark size={18} className="shrink-0" />
           <span>lobbycat says</span>
-          <span style={{ color: "#B85048" }}>❤</span>
         </div>
         <button
           type="button"
@@ -104,9 +105,12 @@ export function FitNotePanel({
           )}
         </>
       ) : (
-        <p className="serif text-base text-muted leading-relaxed">
-          No fit note yet. Click <span className="mono text-xs">generate</span> and the cat will think it over.
-        </p>
+        <div className="flex items-start gap-3">
+          <CatMark size={32} className="shrink-0 mt-0.5 opacity-80" />
+          <p className="serif text-base text-muted leading-relaxed">
+            No fit note yet. Click <span className="mono text-xs">generate</span> and the cat will think it over.
+          </p>
+        </div>
       )}
 
       {/* Conversation thread — only shows once there's a fit-note to ask about */}

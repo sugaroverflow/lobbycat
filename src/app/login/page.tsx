@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
+import { Wordmark } from "@/components/wordmark";
 
 async function login(formData: FormData) {
   "use server";
@@ -30,7 +31,7 @@ export default async function LoginPage({
       <div className="max-w-sm w-full">
         <div className="eyebrow mb-6">Locked</div>
         <h1 className="serif text-3xl text-ink tracking-tight">
-          <span className="mr-2">🐱</span>lobbycat
+          <Wordmark size={36} />
         </h1>
         <p className="serif text-base text-muted mt-3">
           A quiet dashboard. Password, please.
