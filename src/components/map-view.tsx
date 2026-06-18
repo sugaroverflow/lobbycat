@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { TagChip } from "@/components/tag-chip";
 
 export type MapCompany = {
   id: number;
@@ -12,6 +13,7 @@ export type MapCompany = {
   description: string | null;
   tagList: Array<{ label: string; color: string | null }>;
   scores: Record<number, number>;
+  fitNotePreview: string | null;
 };
 
 export type MapFrame = {
@@ -46,6 +48,7 @@ export function MapView({
   const [xId, setXId] = useState<number | null>(defaultX);
   const [yId, setYId] = useState<number | null>(defaultY);
   const [hovered, setHovered] = useState<number | null>(null);
+  const [pinned, setPinned] = useState<number | null>(null);
 
   const xFrame = frames.find((f) => f.id === xId) || null;
   const yFrame = frames.find((f) => f.id === yId) || null;
@@ -120,7 +123,10 @@ export function MapView({
     });
   }, [plotted, xFrame, yFrame]);
 
-  const hoveredCo = hovered != null ? companies.find((c) => c.id === hovered) : null;
+  // Pinned wins over hover so a click-to-pin sticks even as the cursor moves.
+  const activeId = pinned ?? hovered;
+  const activeCo =
+    activeId != null ? companies.find((c) => c.id === activeId) : null;
 
   return (
     <div className="space-y-6">
@@ -242,35 +248,64 @@ export function MapView({
           {/* points */}
           {positioned.map((p) => {
             const isHover = hovered === p.c.id;
+            const isPinned = pinned === p.c.id;
+            const active = isHover || isPinned;
             return (
               <g
                 key={p.c.id}
                 onMouseEnter={() => setHovered(p.c.id)}
                 onMouseLeave={() => setHovered((h) => (h === p.c.id ? null : h))}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setPinned((cur) => (cur === p.c.id ? null : p.c.id));
+                }}
                 className="cursor-pointer"
               >
+                {isPinned && (
+                  <circle
+                    cx={p.cx}
+                    cy={p.cy}
+                    r={11}
+                    fill="none"
+                    stroke={TIER_FILL[p.c.tier] ?? "var(--color-mushroom)"}
+                    strokeOpacity={0.45}
+                    strokeWidth={1.25}
+                  />
+                )}
                 <circle
                   cx={p.cx}
                   cy={p.cy}
-                  r={isHover ? 8 : 6}
+                  r={active ? 8 : 6}
                   fill={TIER_FILL[p.c.tier] ?? "var(--color-mushroom)"}
-                  fillOpacity={isHover ? 0.95 : 0.78}
+                  fillOpacity={active ? 0.95 : 0.78}
                   stroke="var(--color-ink)"
-                  strokeOpacity={isHover ? 0.6 : 0}
+                  strokeOpacity={active ? 0.6 : 0}
                   strokeWidth={1}
                 />
               </g>
             );
           })}
+          {/* click-anywhere-on-blank-space to unpin */}
+          <rect
+            x={PAD_L}
+            y={PAD_T}
+            width={plotW}
+            height={plotH}
+            fill="transparent"
+            onClick={() => setPinned(null)}
+            style={{ pointerEvents: pinned ? "all" : "none" }}
+          />
         </svg>
 
-        {hoveredCo && (
+        {activeCo && (
           <HoverCard
-            company={hoveredCo}
+            company={activeCo}
             xFrameName={xFrame?.name ?? ""}
             yFrameName={yFrame?.name ?? ""}
-            xScore={xFrame ? hoveredCo.scores[xFrame.id] : undefined}
-            yScore={yFrame ? hoveredCo.scores[yFrame.id] : undefined}
+            xScore={xFrame ? activeCo.scores[xFrame.id] : undefined}
+            yScore={yFrame ? activeCo.scores[yFrame.id] : undefined}
+            pinned={pinned === activeCo.id}
+            onClose={() => setPinned(null)}
           />
         )}
       </div>
@@ -337,39 +372,94 @@ function HoverCard({
   yFrameName,
   xScore,
   yScore,
+  pinned,
+  onClose,
 }: {
   company: MapCompany;
   xFrameName: string;
   yFrameName: string;
   xScore: number | undefined;
   yScore: number | undefined;
+  pinned: boolean;
+  onClose: () => void;
 }) {
+  // When pinned, the card accepts pointer events (close button, link clicks);
+  // when hover-only, stay pointer-events-none so the cursor can keep moving
+  // between points without flicker.
+  const topTags = company.tagList.slice(0, 4);
   return (
-    <div className="absolute top-3 right-3 max-w-xs bg-surface border border-rule rounded-md shadow-sm p-4 pointer-events-none">
-      <div className="eyebrow text-[0.6rem] mb-1">
-        Tier {company.tier} · {TIER_LABEL[company.tier]}
+    <div
+      className={`absolute top-3 right-3 w-72 bg-surface border rounded-md shadow-sm p-4 ${
+        pinned
+          ? "border-moss/40 ring-1 ring-moss/20 pointer-events-auto"
+          : "border-rule pointer-events-none"
+      }`}
+    >
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <div className="eyebrow text-[0.6rem] mb-1">
+            Tier {company.tier} · {TIER_LABEL[company.tier]}
+          </div>
+          <Link
+            href={`/companies/${company.slug}`}
+            className="serif text-lg text-ink font-medium leading-tight pointer-events-auto hover:underline block"
+          >
+            {company.name}
+          </Link>
+          {company.hq && (
+            <div className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper mt-0.5">
+              {company.hq}
+            </div>
+          )}
+        </div>
+        {pinned && (
+          <button
+            type="button"
+            onClick={onClose}
+            className="mono text-[0.65rem] uppercase tracking-[0.12em] text-whisper hover:text-ink -mt-1 -mr-1 p-1 leading-none"
+            aria-label="Unpin"
+          >
+            ×
+          </button>
+        )}
       </div>
-      <Link
-        href={`/companies/${company.slug}`}
-        className="serif text-lg text-ink font-medium leading-tight pointer-events-auto hover:underline"
-      >
-        {company.name}
-      </Link>
-      {company.hq && (
-        <div className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper mt-0.5">
-          {company.hq}
+
+      {topTags.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-1.5">
+          {topTags.map((t) => (
+            <TagChip key={t.label} label={t.label} color={t.color} />
+          ))}
         </div>
       )}
+
       <dl className="mt-3 space-y-1 text-sm">
         <div className="flex justify-between gap-3">
-          <dt className="text-muted">{xFrameName}</dt>
-          <dd className="text-ink mono">{xScore ?? "—"}</dd>
+          <dt className="text-muted truncate">{xFrameName}</dt>
+          <dd className="text-ink mono shrink-0">{xScore ?? "—"}</dd>
         </div>
         <div className="flex justify-between gap-3">
-          <dt className="text-muted">{yFrameName}</dt>
-          <dd className="text-ink mono">{yScore ?? "—"}</dd>
+          <dt className="text-muted truncate">{yFrameName}</dt>
+          <dd className="text-ink mono shrink-0">{yScore ?? "—"}</dd>
         </div>
       </dl>
+
+      {company.fitNotePreview && (
+        <div className="mt-3 pt-3 border-t border-rule">
+          <div className="eyebrow text-[0.55rem] mb-1">From the fit-note</div>
+          <p className="serif text-sm text-muted leading-snug line-clamp-3">
+            {company.fitNotePreview}
+          </p>
+        </div>
+      )}
+
+      {pinned && (
+        <Link
+          href={`/companies/${company.slug}`}
+          className="mt-3 inline-block mono text-[0.65rem] uppercase tracking-[0.12em] text-accent hover:underline pointer-events-auto"
+        >
+          Open profile →
+        </Link>
+      )}
     </div>
   );
 }

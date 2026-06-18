@@ -145,29 +145,38 @@ export async function getAllFrames() {
 }
 
 export async function getMapData() {
-  const [allCompanies, scaleFrames, scores, allCompanyTags] = await Promise.all([
-    db.select().from(companies).orderBy(companies.tier, companies.name),
-    db
-      .select()
-      .from(frames)
-      .where(eq(frames.kind, "scale"))
-      .orderBy(frames.sortIndex),
-    db
-      .select({
-        companyId: frameScores.companyId,
-        frameId: frameScores.frameId,
-        score: frameScores.score,
-      })
-      .from(frameScores),
-    db
-      .select({
-        companyId: companyTags.companyId,
-        label: tagsTable.label,
-        color: tagsTable.color,
-      })
-      .from(companyTags)
-      .innerJoin(tagsTable, eq(companyTags.tagId, tagsTable.id)),
-  ]);
+  const [allCompanies, scaleFrames, scores, allCompanyTags, latestFitNotes] =
+    await Promise.all([
+      db.select().from(companies).orderBy(companies.tier, companies.name),
+      db
+        .select()
+        .from(frames)
+        .where(eq(frames.kind, "scale"))
+        .orderBy(frames.sortIndex),
+      db
+        .select({
+          companyId: frameScores.companyId,
+          frameId: frameScores.frameId,
+          score: frameScores.score,
+        })
+        .from(frameScores),
+      db
+        .select({
+          companyId: companyTags.companyId,
+          label: tagsTable.label,
+          color: tagsTable.color,
+        })
+        .from(companyTags)
+        .innerJoin(tagsTable, eq(companyTags.tagId, tagsTable.id)),
+      db
+        .select({
+          companyId: fitNotes.companyId,
+          body: fitNotes.body,
+          createdAt: fitNotes.createdAt,
+        })
+        .from(fitNotes)
+        .orderBy(desc(fitNotes.createdAt)),
+    ]);
 
   const scoresByCompany = new Map<number, Record<number, number>>();
   for (const s of scores) {
@@ -184,6 +193,13 @@ export async function getMapData() {
     list.push({ label: t.label, color: t.color });
     tagsByCompany.set(t.companyId, list);
   }
+  // latestFitNotes is desc(createdAt); take first hit per company.
+  const fitPreviewByCompany = new Map<number, string>();
+  for (const n of latestFitNotes) {
+    if (fitPreviewByCompany.has(n.companyId)) continue;
+    const preview = firstBullet(n.body);
+    if (preview) fitPreviewByCompany.set(n.companyId, preview);
+  }
 
   return {
     companies: allCompanies.map((c) => ({
@@ -195,6 +211,7 @@ export async function getMapData() {
       description: c.description,
       tagList: tagsByCompany.get(c.id) || [],
       scores: scoresByCompany.get(c.id) || {},
+      fitNotePreview: fitPreviewByCompany.get(c.id) ?? null,
     })),
     scaleFrames: scaleFrames.map((f) => ({
       id: f.id,
@@ -204,6 +221,21 @@ export async function getMapData() {
       highLabel: f.highLabel,
     })),
   };
+}
+
+// Pull the first bullet (or first non-caveat line) out of a fit-note body.
+// Mirrors the parser in `fit-note-panel.tsx`: bullets start with `- `,
+// a final `caveat:` line is honesty-only and should be skipped here.
+function firstBullet(body: string | null | undefined): string | null {
+  if (!body) return null;
+  for (const raw of body.split(/\r?\n/)) {
+    const line = raw.trim();
+    if (!line) continue;
+    if (/^caveat\s*:/i.test(line)) continue;
+    const bullet = line.replace(/^[-*•]\s+/, "").trim();
+    if (bullet) return bullet;
+  }
+  return null;
 }
 
 export async function getUserProfile() {
