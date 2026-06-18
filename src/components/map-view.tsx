@@ -49,13 +49,57 @@ export function MapView({
   const [yId, setYId] = useState<number | null>(defaultY);
   const [hovered, setHovered] = useState<number | null>(null);
   const [pinned, setPinned] = useState<number | null>(null);
+  const [tierFilter, setTierFilter] = useState<Set<number>>(new Set());
+  const [hqFilter, setHqFilter] = useState<Set<string>>(new Set());
+  const [tagFilter, setTagFilter] = useState<Set<string>>(new Set());
 
   const xFrame = frames.find((f) => f.id === xId) || null;
   const yFrame = frames.find((f) => f.id === yId) || null;
 
+  // Distinct filter options derived from the full company set so chips stay
+  // stable as filters narrow the visible dots (otherwise un-clicking the last
+  // chip in a category would also remove the chip itself).
+  const hqOptions = useMemo(() => {
+    const set = new Set<string>();
+    for (const c of companies) if (c.hq) set.add(c.hq);
+    return Array.from(set).sort();
+  }, [companies]);
+
+  const tagOptions = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const c of companies)
+      for (const t of c.tagList)
+        counts.set(t.label, (counts.get(t.label) ?? 0) + 1);
+    return Array.from(counts.entries())
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .slice(0, 10)
+      .map(([label]) => label);
+  }, [companies]);
+
+  const passesFilters = (c: MapCompany) => {
+    if (tierFilter.size > 0 && !tierFilter.has(c.tier)) return false;
+    if (hqFilter.size > 0 && (!c.hq || !hqFilter.has(c.hq))) return false;
+    if (tagFilter.size > 0) {
+      const labels = new Set(c.tagList.map((t) => t.label));
+      let any = false;
+      for (const t of tagFilter) if (labels.has(t)) { any = true; break; }
+      if (!any) return false;
+    }
+    return true;
+  };
+
+  const filteredCompanies = useMemo(
+    () => companies.filter(passesFilters),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [companies, tierFilter, hqFilter, tagFilter],
+  );
+
+  const filtersActive =
+    tierFilter.size > 0 || hqFilter.size > 0 || tagFilter.size > 0;
+
   const plotted = useMemo(() => {
     if (!xFrame || !yFrame) return [];
-    return companies
+    return filteredCompanies
       .map((c) => {
         const x = c.scores[xFrame.id];
         const y = c.scores[yFrame.id];
@@ -63,16 +107,34 @@ export function MapView({
         return { c, x, y };
       })
       .filter((p): p is { c: MapCompany; x: number; y: number } => p !== null);
-  }, [companies, xFrame, yFrame]);
+  }, [filteredCompanies, xFrame, yFrame]);
 
   const unscored = useMemo(() => {
     if (!xFrame || !yFrame) return [];
-    return companies.filter(
+    return filteredCompanies.filter(
       (c) =>
         typeof c.scores[xFrame.id] !== "number" ||
         typeof c.scores[yFrame.id] !== "number",
     );
-  }, [companies, xFrame, yFrame]);
+  }, [filteredCompanies, xFrame, yFrame]);
+
+  const swapAxes = () => {
+    setXId(yId);
+    setYId(xId);
+  };
+
+  const toggle = <T,>(set: Set<T>, val: T): Set<T> => {
+    const next = new Set(set);
+    if (next.has(val)) next.delete(val);
+    else next.add(val);
+    return next;
+  };
+
+  const clearFilters = () => {
+    setTierFilter(new Set());
+    setHqFilter(new Set());
+    setTagFilter(new Set());
+  };
 
   if (frames.length < 2) {
     return (
@@ -124,19 +186,38 @@ export function MapView({
   }, [plotted, xFrame, yFrame]);
 
   // Pinned wins over hover so a click-to-pin sticks even as the cursor moves.
-  const activeId = pinned ?? hovered;
+  // Filters can hide the pinned company; in that case treat as not-pinned so
+  // we don't render a card for a dot that isn't on screen.
+  const visibleIds = useMemo(
+    () => new Set(plotted.map((p) => p.c.id)),
+    [plotted],
+  );
+  const effectivePinned =
+    pinned != null && visibleIds.has(pinned) ? pinned : null;
+  const effectiveHovered =
+    hovered != null && visibleIds.has(hovered) ? hovered : null;
+  const activeId = effectivePinned ?? effectiveHovered;
   const activeCo =
     activeId != null ? companies.find((c) => c.id === activeId) : null;
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-8">
+      <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-4">
         <AxisPicker
           label="X axis"
           frames={frames}
           value={xId}
           onChange={setXId}
         />
+        <button
+          type="button"
+          onClick={swapAxes}
+          className="mono text-[0.7rem] uppercase tracking-[0.12em] text-muted hover:text-ink border border-rule rounded px-2.5 py-1.5 self-end sm:self-end shrink-0"
+          aria-label="Swap X and Y axes"
+          title="Swap axes"
+        >
+          ⇄ swap
+        </button>
         <AxisPicker
           label="Y axis"
           frames={frames}
@@ -147,6 +228,19 @@ export function MapView({
           {plotted.length} plotted · {unscored.length} unscored
         </div>
       </div>
+
+      <FilterRow
+        tierFilter={tierFilter}
+        hqFilter={hqFilter}
+        tagFilter={tagFilter}
+        hqOptions={hqOptions}
+        tagOptions={tagOptions}
+        onTier={(t) => setTierFilter((s) => toggle(s, t))}
+        onHq={(h) => setHqFilter((s) => toggle(s, h))}
+        onTag={(t) => setTagFilter((s) => toggle(s, t))}
+        active={filtersActive}
+        onClear={clearFilters}
+      />
 
       <div className="border border-rule rounded-md bg-surface relative overflow-hidden">
         <svg
@@ -461,6 +555,120 @@ function HoverCard({
         </Link>
       )}
     </div>
+  );
+}
+
+function FilterRow({
+  tierFilter,
+  hqFilter,
+  tagFilter,
+  hqOptions,
+  tagOptions,
+  onTier,
+  onHq,
+  onTag,
+  active,
+  onClear,
+}: {
+  tierFilter: Set<number>;
+  hqFilter: Set<string>;
+  tagFilter: Set<string>;
+  hqOptions: string[];
+  tagOptions: string[];
+  onTier: (t: number) => void;
+  onHq: (h: string) => void;
+  onTag: (t: string) => void;
+  active: boolean;
+  onClear: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="mono text-[0.6rem] uppercase tracking-[0.14em] text-whisper mr-1">
+          Tier
+        </span>
+        {[1, 2, 3].map((t) => (
+          <FilterChip
+            key={t}
+            label={`${t} · ${TIER_LABEL[t]}`}
+            active={tierFilter.has(t)}
+            onClick={() => onTier(t)}
+            dotColor={TIER_FILL[t]}
+          />
+        ))}
+        {hqOptions.length > 0 && (
+          <span className="mono text-[0.6rem] uppercase tracking-[0.14em] text-whisper ml-3 mr-1">
+            HQ
+          </span>
+        )}
+        {hqOptions.map((h) => (
+          <FilterChip
+            key={h}
+            label={h}
+            active={hqFilter.has(h)}
+            onClick={() => onHq(h)}
+          />
+        ))}
+        {active && (
+          <button
+            type="button"
+            onClick={onClear}
+            className="ml-auto mono text-[0.65rem] uppercase tracking-[0.12em] text-whisper hover:text-ink underline decoration-rule"
+          >
+            clear
+          </button>
+        )}
+      </div>
+      {tagOptions.length > 0 && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="mono text-[0.6rem] uppercase tracking-[0.14em] text-whisper mr-1">
+            Tag
+          </span>
+          {tagOptions.map((t) => (
+            <FilterChip
+              key={t}
+              label={t}
+              active={tagFilter.has(t)}
+              onClick={() => onTag(t)}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function FilterChip({
+  label,
+  active,
+  onClick,
+  dotColor,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+  dotColor?: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className={`inline-flex items-center gap-1.5 text-[0.7rem] rounded-full px-2.5 py-1 border transition-colors ${
+        active
+          ? "bg-moss text-surface border-moss"
+          : "bg-surface text-muted border-rule hover:text-ink hover:border-mushroom"
+      }`}
+    >
+      {dotColor && (
+        <span
+          aria-hidden
+          className="inline-block w-2 h-2 rounded-full"
+          style={{ background: dotColor }}
+        />
+      )}
+      {label}
+    </button>
   );
 }
 
