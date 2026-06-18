@@ -205,15 +205,41 @@ export const frames = pgTable(
     id: serial("id").primaryKey(),
     name: text("name").notNull(),
     description: text("description"),
-    scale: integer("scale").notNull().default(5), // 1..scale
-    highLabel: text("high_label"), // what a 5 means
-    lowLabel: text("low_label"), // what a 1 means
+    kind: text("kind").notNull().default("scale"), // 'scale' | 'tag' | 'question'
+    scale: integer("scale").notNull().default(5), // 1..scale (scale-kind only)
+    highLabel: text("high_label"), // what a 5 means (scale-kind)
+    lowLabel: text("low_label"), // what a 1 means (scale-kind)
+    prompt: text("prompt"), // question text (question-kind)
     sortIndex: integer("sort_index").notNull().default(0),
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
   },
-  (t) => [uniqueIndex("frames_name_idx").on(t.name)],
+  (t) => [
+    uniqueIndex("frames_name_idx").on(t.name),
+    index("frames_kind_idx").on(t.kind),
+  ],
+);
+
+/* ------------------------------------------------------------------ */
+/* Frame answers (question-kind frames: free-text answer per company) */
+/* ------------------------------------------------------------------ */
+
+export const frameAnswers = pgTable(
+  "frame_answers",
+  {
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    frameId: integer("frame_id")
+      .references(() => frames.id, { onDelete: "cascade" })
+      .notNull(),
+    answer: text("answer").notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [primaryKey({ columns: [t.companyId, t.frameId] })],
 );
 
 export const frameScores = pgTable(
@@ -334,6 +360,7 @@ export const companiesRelations = relations(companies, ({ many }) => ({
   lobbyingRecords: many(lobbyingRecords),
   tags: many(companyTags),
   frameScores: many(frameScores),
+  frameAnswers: many(frameAnswers),
   fitNotes: many(fitNotes),
   fitNoteMessages: many(fitNoteMessages),
 }));
@@ -383,6 +410,18 @@ export const companyTagsRelations = relations(companyTags, ({ one }) => ({
 
 export const framesRelations = relations(frames, ({ many }) => ({
   scores: many(frameScores),
+  answers: many(frameAnswers),
+}));
+
+export const frameAnswersRelations = relations(frameAnswers, ({ one }) => ({
+  company: one(companies, {
+    fields: [frameAnswers.companyId],
+    references: [companies.id],
+  }),
+  frame: one(frames, {
+    fields: [frameAnswers.frameId],
+    references: [frames.id],
+  }),
 }));
 
 export const frameScoresRelations = relations(frameScores, ({ one }) => ({
@@ -423,6 +462,8 @@ export type LobbyingRecord = typeof lobbyingRecords.$inferSelect;
 export type Tag = typeof tags.$inferSelect;
 export type Frame = typeof frames.$inferSelect;
 export type FrameScore = typeof frameScores.$inferSelect;
+export type FrameAnswer = typeof frameAnswers.$inferSelect;
+export type NewFrameAnswer = typeof frameAnswers.$inferInsert;
 export type FitNote = typeof fitNotes.$inferSelect;
 export type FitNoteMessage = typeof fitNoteMessages.$inferSelect;
 export type NewFitNoteMessage = typeof fitNoteMessages.$inferInsert;
