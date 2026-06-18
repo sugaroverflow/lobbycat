@@ -12,6 +12,109 @@ import {
 import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
+type FrameKind = "scale" | "tag" | "question";
+
+function normalizeFrameInput(input: {
+  name: string;
+  description?: string | null;
+  kind: FrameKind;
+  scale?: number | null;
+  highLabel?: string | null;
+  lowLabel?: string | null;
+  prompt?: string | null;
+}) {
+  const name = input.name.trim();
+  if (!name) throw new Error("Frame name is required.");
+  const kind = input.kind;
+  if (!(["scale", "tag", "question"] as const).includes(kind)) {
+    throw new Error("Invalid frame kind.");
+  }
+  const description = input.description?.trim() || null;
+  if (kind === "scale") {
+    const rawScale = Number(input.scale ?? 5);
+    const scale = Math.min(Math.max(Number.isFinite(rawScale) ? Math.trunc(rawScale) : 5, 2), 10);
+    return {
+      name,
+      description,
+      kind,
+      scale,
+      highLabel: input.highLabel?.trim() || null,
+      lowLabel: input.lowLabel?.trim() || null,
+      prompt: null,
+    };
+  }
+  if (kind === "question") {
+    const prompt = input.prompt?.trim() || null;
+    if (!prompt) throw new Error("Question frames need a prompt.");
+    return {
+      name,
+      description,
+      kind,
+      scale: 5,
+      highLabel: null,
+      lowLabel: null,
+      prompt,
+    };
+  }
+  // tag-kind: no extra fields, but ensure scale/highLabel/lowLabel/prompt are null-ish
+  return {
+    name,
+    description,
+    kind,
+    scale: 5,
+    highLabel: null,
+    lowLabel: null,
+    prompt: null,
+  };
+}
+
+export async function createFrame(input: {
+  name: string;
+  description?: string | null;
+  kind: FrameKind;
+  scale?: number | null;
+  highLabel?: string | null;
+  lowLabel?: string | null;
+  prompt?: string | null;
+}) {
+  const values = normalizeFrameInput(input);
+  const existing = await db.select().from(framesTable);
+  const maxSort = existing.reduce(
+    (m, f) => (f.sortIndex > m ? f.sortIndex : m),
+    -1,
+  );
+  await db
+    .insert(framesTable)
+    .values({ ...values, sortIndex: maxSort + 1 });
+  revalidatePath("/frames");
+  revalidatePath("/");
+}
+
+export async function updateFrame(input: {
+  id: number;
+  name: string;
+  description?: string | null;
+  kind: FrameKind;
+  scale?: number | null;
+  highLabel?: string | null;
+  lowLabel?: string | null;
+  prompt?: string | null;
+}) {
+  const values = normalizeFrameInput(input);
+  await db.update(framesTable).set(values).where(eq(framesTable.id, input.id));
+  revalidatePath("/frames");
+  revalidatePath("/");
+  revalidatePath(`/companies/[slug]`, "page");
+}
+
+export async function deleteFrame(id: number) {
+  await db.delete(framesTable).where(eq(framesTable.id, id));
+  revalidatePath("/frames");
+  revalidatePath("/");
+  revalidatePath(`/companies/[slug]`, "page");
+}
+
+
 export async function setFrameScore({
   companyId,
   frameId,
