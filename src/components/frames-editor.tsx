@@ -1,7 +1,14 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { createFrame, updateFrame, deleteFrame } from "@/app/actions";
+import {
+  createFrame,
+  updateFrame,
+  deleteFrame,
+  suggestFrames,
+  type SuggestedFrame,
+} from "@/app/actions";
+import { CatMark } from "@/components/wordmark";
 
 type FrameKind = "scale" | "tag" | "question";
 
@@ -44,6 +51,7 @@ export function FramesEditor({ frames }: { frames: EditableFrame[] }) {
 
   return (
     <div className="mt-10 space-y-12">
+      <CatSuggestions />
       {(["scale", "tag", "question"] as const).map((kind) => (
         <section key={kind}>
           <div className="flex items-baseline justify-between border-b border-rule pb-2">
@@ -363,5 +371,139 @@ function FrameForm({
         </button>
       </div>
     </form>
+  );
+}
+
+function CatSuggestions() {
+  const [suggestions, setSuggestions] = useState<SuggestedFrame[] | null>(null);
+  const [added, setAdded] = useState<Set<number>>(new Set());
+  const [error, setError] = useState<string | null>(null);
+  const [loading, startLoading] = useTransition();
+  const [adding, startAdding] = useTransition();
+
+  function ask() {
+    setError(null);
+    startLoading(async () => {
+      try {
+        const result = await suggestFrames();
+        setSuggestions(result);
+        setAdded(new Set());
+        if (result.length === 0) {
+          setError("the cat didn’t come back with anything useful. try again?");
+        }
+      } catch (e) {
+        setError(e instanceof Error ? e.message : "the cat napped through it. try again?");
+      }
+    });
+  }
+
+  return (
+    <section className="rounded-md border border-rule bg-sage-soft/30 p-5">
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex items-start gap-3 min-w-0">
+          <CatMark size={28} className="mt-1 shrink-0" />
+          <div className="min-w-0">
+            <h2 className="serif text-lg text-ink font-medium">
+              Ask the cat for frame ideas
+            </h2>
+            <p className="serif text-sm text-muted mt-1 max-w-2xl">
+              Lobbycat reads your profile, your existing frames, and the
+              company set, and proposes 2–3 questions you aren’t yet asking.
+              One-click to add.
+            </p>
+          </div>
+        </div>
+        <button
+          onClick={ask}
+          disabled={loading}
+          className="shrink-0 mono text-xs uppercase tracking-[0.1em] bg-moss text-white px-4 py-2 rounded hover:opacity-90 disabled:opacity-50"
+        >
+          {loading ? "thinking…" : suggestions ? "✨ ask again" : "✨ suggest frames"}
+        </button>
+      </div>
+
+      {error && (
+        <p className="serif text-sm text-terracotta mt-3">{error}</p>
+      )}
+
+      {suggestions && suggestions.length > 0 && (
+        <ul className="mt-5 space-y-3">
+          {suggestions.map((s, i) => {
+            const isAdded = added.has(i);
+            return (
+              <li
+                key={i}
+                className="rounded border border-rule bg-surface p-4"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline gap-2 flex-wrap">
+                      <h3 className="serif text-base text-ink font-medium">
+                        {s.name}
+                      </h3>
+                      <span className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper">
+                        {s.kind}
+                      </span>
+                    </div>
+                    {s.kind === "question" && s.prompt && (
+                      <p className="serif text-sm text-ink mt-2 italic">
+                        “{s.prompt}”
+                      </p>
+                    )}
+                    {s.kind === "scale" && (
+                      <div className="mono text-xs uppercase tracking-[0.1em] text-whisper mt-2">
+                        {s.lowLabel} → {s.highLabel} · 1–{s.scale}
+                      </div>
+                    )}
+                    {s.description && (
+                      <p className="serif text-sm text-muted mt-2">
+                        {s.description}
+                      </p>
+                    )}
+                    {s.rationale && (
+                      <p className="serif text-xs text-mushroom mt-2 italic">
+                        why: {s.rationale}
+                      </p>
+                    )}
+                  </div>
+                  <button
+                    disabled={isAdded || adding}
+                    onClick={() => {
+                      startAdding(async () => {
+                        try {
+                          await createFrame({
+                            name: s.name,
+                            description: s.description,
+                            kind: s.kind,
+                            scale: s.scale,
+                            highLabel: s.highLabel,
+                            lowLabel: s.lowLabel,
+                            prompt: s.prompt,
+                          });
+                          setAdded((prev) => {
+                            const next = new Set(prev);
+                            next.add(i);
+                            return next;
+                          });
+                        } catch (e) {
+                          setError(
+                            e instanceof Error
+                              ? e.message
+                              : "couldn’t add that frame.",
+                          );
+                        }
+                      });
+                    }}
+                    className="shrink-0 mono text-xs uppercase tracking-[0.1em] text-moss hover:underline disabled:opacity-50 disabled:no-underline"
+                  >
+                    {isAdded ? "✓ added" : adding ? "…" : "+ add"}
+                  </button>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </section>
   );
 }

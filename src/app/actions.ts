@@ -8,6 +8,7 @@ import {
   fitNoteMessages,
   userProfile,
   frames as framesTable,
+  tags as tagsTable,
 } from "@/db/schema";
 import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -105,6 +106,191 @@ export async function updateFrame(input: {
   revalidatePath("/frames");
   revalidatePath("/");
   revalidatePath(`/companies/[slug]`, "page");
+}
+
+export type SuggestedFrame = {
+  name: string;
+  description: string | null;
+  kind: FrameKind;
+  prompt: string | null;
+  lowLabel: string | null;
+  highLabel: string | null;
+  scale: number | null;
+  rationale: string;
+};
+
+/**
+ * Ask the cat (Claude) to propose 2–3 new frames that fill a gap in the
+ * user's current evaluation system, grounded in the user profile, the
+ * existing frame set, and the universe of company tags/focus areas the
+ * dashboard knows about. Returns a structured array the editor can offer
+ * as one-click adds — no DB writes happen here.
+ */
+export async function suggestFrames(): Promise<SuggestedFrame[]> {
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) throw new Error("ANTHROPIC_API_KEY not set");
+
+  const [profile] = await db.select().from(userProfile).limit(1);
+  if (!profile) throw new Error("user profile not seeded");
+
+  const allFrames = await db
+    .select()
+    .from(framesTable)
+    .orderBy(framesTable.sortIndex);
+
+  const allTags = await db.select().from(tagsTable);
+  const allCompanies = await db.select().from(companies);
+  const focusAreas = Array.from(
+    new Set(
+      allCompanies.flatMap((c) => (c.focusAreas as string[]) ?? []),
+    ),
+  ).sort();
+
+  const framesContext = allFrames
+    .map((f) => {
+      if (f.kind === "scale") {
+        return `- [scale] ${f.name} (1=${f.lowLabel || "?"} → ${f.scale}=${f.highLabel || "?"})${f.description ? `: ${f.description}` : ""}`;
+      }
+      if (f.kind === "question") {
+        return `- [question] ${f.name}: "${f.prompt}"`;
+      }
+      return `- [tag] ${f.name}${f.description ? `: ${f.description}` : ""}`;
+    })
+    .join("\n");
+
+  const system = `You are lobbycat — a thoughtful, slightly catty research familiar helping ${profile.displayName.split(" ")[0]} build out the evaluation system they use to decide between policy-AI roles. Your job is to spot GAPS in the user's current set of evaluation frames and propose new ones that would sharpen their thinking. You return STRICT JSON only — no preamble, no markdown fences, no closing remarks.`;
+
+  const userPrompt = `# User profile
+
+**${profile.displayName}** — ${profile.headline}
+
+${profile.bio}
+
+Stated concerns:
+${(profile.concerns as string[]).map((c) => `- ${c}`).join("\n")}
+
+# Existing frames (the user already thinks on these)
+
+${framesContext || "(none)"}
+
+# The company universe these frames are applied to
+
+Tags in use: ${allTags.map((t) => t.label).join(", ") || "(none)"}
+
+Focus areas across companies: ${focusAreas.join(", ") || "(none)"}
+
+# Your task
+
+Propose 2 to 3 NEW frames that fill a real gap in the existing set — questions the user isn't yet asking themselves but probably should, given their stated concerns and the kinds of companies they're evaluating. Bias toward question-kind frames (free-text prompts) because the user is in a thinking-out-loud phase, but include a scale-kind frame if a numeric axis genuinely sharpens the decision. Avoid duplicating any existing frame in spirit.
+
+Return STRICT JSON in this exact shape — an object with a "frames" array. No other keys, no markdown, no prose:
+
+{
+  "frames": [
+    {
+      "name": "short title, max 5 words",
+      "kind": "question" | "scale",
+      "description": "one-sentence reading guide for the frame",
+      "prompt": "the question to ask each company (REQUIRED if kind is question, else null)",
+      "lowLabel": "what a 1 means (REQUIRED if kind is scale, else null)",
+      "highLabel": "what a 5 means (REQUIRED if kind is scale, else null)",
+      "scale": 5 (REQUIRED integer 2-10 if kind is scale, else null),
+      "rationale": "one short sentence on why this frame fills a gap in the user's current set"
+    }
+  ]
+}`;
+
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-5",
+      max_tokens: 1200,
+      system,
+      messages: [{ role: "user", content: userPrompt }],
+    }),
+  });
+  if (!res.ok) throw new Error(`Anthropic error: ${res.status} ${await res.text()}`);
+  const data = (await res.json()) as {
+    content: Array<{ type: string; text: string }>;
+  };
+  const raw = data.content
+    .filter((c) => c.type === "text")
+    .map((c) => c.text)
+    .join("\n")
+    .trim();
+
+  // Be forgiving of stray ```json fences just in case.
+  const stripped = raw
+    .replace(/^```(?:json)?\s*/i, "")
+    .replace(/\s*```$/i, "")
+    .trim();
+
+  let parsed: { frames?: unknown };
+  try {
+    parsed = JSON.parse(stripped) as { frames?: unknown };
+  } catch {
+    throw new Error("the cat returned malformed JSON; try again");
+  }
+
+  const rawFrames = Array.isArray(parsed.frames) ? parsed.frames : [];
+  const out: SuggestedFrame[] = [];
+  for (const r of rawFrames) {
+    if (!r || typeof r !== "object") continue;
+    const obj = r as Record<string, unknown>;
+    const name = typeof obj.name === "string" ? obj.name.trim() : "";
+    const kind = obj.kind === "scale" ? "scale" : obj.kind === "question" ? "question" : null;
+    if (!name || !kind) continue;
+    const description =
+      typeof obj.description === "string" && obj.description.trim()
+        ? obj.description.trim()
+        : null;
+    const rationale =
+      typeof obj.rationale === "string" ? obj.rationale.trim() : "";
+    if (kind === "question") {
+      const prompt = typeof obj.prompt === "string" ? obj.prompt.trim() : "";
+      if (!prompt) continue;
+      out.push({
+        name,
+        description,
+        kind,
+        prompt,
+        lowLabel: null,
+        highLabel: null,
+        scale: null,
+        rationale,
+      });
+    } else {
+      const lowLabel =
+        typeof obj.lowLabel === "string" ? obj.lowLabel.trim() : "";
+      const highLabel =
+        typeof obj.highLabel === "string" ? obj.highLabel.trim() : "";
+      const scaleNum = Math.min(
+        Math.max(
+          Number.isFinite(Number(obj.scale)) ? Math.trunc(Number(obj.scale)) : 5,
+          2,
+        ),
+        10,
+      );
+      if (!lowLabel || !highLabel) continue;
+      out.push({
+        name,
+        description,
+        kind,
+        prompt: null,
+        lowLabel,
+        highLabel,
+        scale: scaleNum,
+        rationale,
+      });
+    }
+  }
+
+  return out.slice(0, 3);
 }
 
 export async function deleteFrame(id: number) {
