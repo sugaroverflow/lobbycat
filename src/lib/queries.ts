@@ -144,6 +144,68 @@ export async function getAllFrames() {
   return db.select().from(frames).orderBy(frames.sortIndex);
 }
 
+export async function getMapData() {
+  const [allCompanies, scaleFrames, scores, allCompanyTags] = await Promise.all([
+    db.select().from(companies).orderBy(companies.tier, companies.name),
+    db
+      .select()
+      .from(frames)
+      .where(eq(frames.kind, "scale"))
+      .orderBy(frames.sortIndex),
+    db
+      .select({
+        companyId: frameScores.companyId,
+        frameId: frameScores.frameId,
+        score: frameScores.score,
+      })
+      .from(frameScores),
+    db
+      .select({
+        companyId: companyTags.companyId,
+        label: tagsTable.label,
+        color: tagsTable.color,
+      })
+      .from(companyTags)
+      .innerJoin(tagsTable, eq(companyTags.tagId, tagsTable.id)),
+  ]);
+
+  const scoresByCompany = new Map<number, Record<number, number>>();
+  for (const s of scores) {
+    const m = scoresByCompany.get(s.companyId) || {};
+    m[s.frameId] = s.score;
+    scoresByCompany.set(s.companyId, m);
+  }
+  const tagsByCompany = new Map<
+    number,
+    Array<{ label: string; color: string | null }>
+  >();
+  for (const t of allCompanyTags) {
+    const list = tagsByCompany.get(t.companyId) || [];
+    list.push({ label: t.label, color: t.color });
+    tagsByCompany.set(t.companyId, list);
+  }
+
+  return {
+    companies: allCompanies.map((c) => ({
+      id: c.id,
+      slug: c.slug,
+      name: c.name,
+      tier: c.tier,
+      hq: c.hq,
+      description: c.description,
+      tagList: tagsByCompany.get(c.id) || [],
+      scores: scoresByCompany.get(c.id) || {},
+    })),
+    scaleFrames: scaleFrames.map((f) => ({
+      id: f.id,
+      name: f.name,
+      scale: f.scale,
+      lowLabel: f.lowLabel,
+      highLabel: f.highLabel,
+    })),
+  };
+}
+
 export async function getUserProfile() {
   const [profile] = await db.select().from(userProfile).limit(1);
   return profile ?? null;

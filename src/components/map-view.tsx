@@ -1,0 +1,399 @@
+"use client";
+
+import Link from "next/link";
+import { useMemo, useState } from "react";
+
+export type MapCompany = {
+  id: number;
+  slug: string;
+  name: string;
+  tier: number;
+  hq: string | null;
+  description: string | null;
+  tagList: Array<{ label: string; color: string | null }>;
+  scores: Record<number, number>;
+};
+
+export type MapFrame = {
+  id: number;
+  name: string;
+  scale: number;
+  lowLabel: string | null;
+  highLabel: string | null;
+};
+
+const TIER_FILL: Record<number, string> = {
+  1: "var(--color-terracotta)",
+  2: "var(--color-ochre)",
+  3: "var(--color-mushroom)",
+};
+
+const TIER_LABEL: Record<number, string> = {
+  1: "Top focus",
+  2: "Serious",
+  3: "On radar",
+};
+
+export function MapView({
+  companies,
+  frames,
+}: {
+  companies: MapCompany[];
+  frames: MapFrame[];
+}) {
+  const defaultX = frames[0]?.id ?? null;
+  const defaultY = frames[1]?.id ?? frames[0]?.id ?? null;
+  const [xId, setXId] = useState<number | null>(defaultX);
+  const [yId, setYId] = useState<number | null>(defaultY);
+  const [hovered, setHovered] = useState<number | null>(null);
+
+  const xFrame = frames.find((f) => f.id === xId) || null;
+  const yFrame = frames.find((f) => f.id === yId) || null;
+
+  const plotted = useMemo(() => {
+    if (!xFrame || !yFrame) return [];
+    return companies
+      .map((c) => {
+        const x = c.scores[xFrame.id];
+        const y = c.scores[yFrame.id];
+        if (typeof x !== "number" || typeof y !== "number") return null;
+        return { c, x, y };
+      })
+      .filter((p): p is { c: MapCompany; x: number; y: number } => p !== null);
+  }, [companies, xFrame, yFrame]);
+
+  const unscored = useMemo(() => {
+    if (!xFrame || !yFrame) return [];
+    return companies.filter(
+      (c) =>
+        typeof c.scores[xFrame.id] !== "number" ||
+        typeof c.scores[yFrame.id] !== "number",
+    );
+  }, [companies, xFrame, yFrame]);
+
+  if (frames.length < 2) {
+    return (
+      <div className="border border-rule rounded-md p-8 bg-surface">
+        <p className="serif text-muted">
+          The map needs at least two scale-kind frames to draw axes.{" "}
+          <Link href="/frames" className="text-accent underline">
+            Add one
+          </Link>{" "}
+          and come back.
+        </p>
+      </div>
+    );
+  }
+
+  // SVG viewport: 0..xMax on x, 0..yMax on y, with padding for axes.
+  const W = 720;
+  const H = 480;
+  const PAD_L = 64;
+  const PAD_R = 24;
+  const PAD_T = 24;
+  const PAD_B = 56;
+  const plotW = W - PAD_L - PAD_R;
+  const plotH = H - PAD_T - PAD_B;
+
+  const xMax = xFrame?.scale ?? 5;
+  const yMax = yFrame?.scale ?? 5;
+
+  const sx = (v: number) => PAD_L + ((v - 1) / Math.max(1, xMax - 1)) * plotW;
+  const sy = (v: number) =>
+    PAD_T + plotH - ((v - 1) / Math.max(1, yMax - 1)) * plotH;
+
+  // Cluster duplicate (x,y) by jittering deterministically.
+  const positioned = useMemo(() => {
+    const buckets = new Map<string, number>();
+    return plotted.map((p) => {
+      const key = `${p.x}:${p.y}`;
+      const i = buckets.get(key) ?? 0;
+      buckets.set(key, i + 1);
+      // golden-angle spiral jitter, small radius
+      const angle = i * 2.39996;
+      const r = i === 0 ? 0 : 6 + i * 1.5;
+      return {
+        ...p,
+        cx: sx(p.x) + r * Math.cos(angle),
+        cy: sy(p.y) + r * Math.sin(angle),
+      };
+    });
+  }, [plotted, xFrame, yFrame]);
+
+  const hoveredCo = hovered != null ? companies.find((c) => c.id === hovered) : null;
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-8">
+        <AxisPicker
+          label="X axis"
+          frames={frames}
+          value={xId}
+          onChange={setXId}
+        />
+        <AxisPicker
+          label="Y axis"
+          frames={frames}
+          value={yId}
+          onChange={setYId}
+        />
+        <div className="mono text-xs text-whisper uppercase tracking-[0.12em] sm:ml-auto">
+          {plotted.length} plotted · {unscored.length} unscored
+        </div>
+      </div>
+
+      <div className="border border-rule rounded-md bg-surface relative overflow-hidden">
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          className="w-full h-auto block"
+          role="img"
+          aria-label={`Scatter of ${plotted.length} companies on ${xFrame?.name} vs ${yFrame?.name}`}
+        >
+          {/* grid */}
+          {Array.from({ length: xMax }, (_, i) => i + 1).map((v) => (
+            <line
+              key={`gx-${v}`}
+              x1={sx(v)}
+              x2={sx(v)}
+              y1={PAD_T}
+              y2={PAD_T + plotH}
+              stroke="var(--color-rule)"
+              strokeDasharray={v === 1 || v === xMax ? "" : "2 4"}
+              strokeWidth={v === 1 || v === xMax ? 1 : 0.5}
+            />
+          ))}
+          {Array.from({ length: yMax }, (_, i) => i + 1).map((v) => (
+            <line
+              key={`gy-${v}`}
+              x1={PAD_L}
+              x2={PAD_L + plotW}
+              y1={sy(v)}
+              y2={sy(v)}
+              stroke="var(--color-rule)"
+              strokeDasharray={v === 1 || v === yMax ? "" : "2 4"}
+              strokeWidth={v === 1 || v === yMax ? 1 : 0.5}
+            />
+          ))}
+
+          {/* axis labels */}
+          <text
+            x={PAD_L}
+            y={PAD_T + plotH + 20}
+            className="mono"
+            fontSize="10"
+            fill="var(--color-whisper)"
+            textAnchor="start"
+          >
+            {xFrame?.lowLabel ?? "1"}
+          </text>
+          <text
+            x={PAD_L + plotW}
+            y={PAD_T + plotH + 20}
+            className="mono"
+            fontSize="10"
+            fill="var(--color-whisper)"
+            textAnchor="end"
+          >
+            {xFrame?.highLabel ?? String(xMax)}
+          </text>
+          <text
+            x={PAD_L + plotW / 2}
+            y={PAD_T + plotH + 42}
+            className="mono"
+            fontSize="11"
+            fill="var(--color-muted)"
+            textAnchor="middle"
+          >
+            {xFrame?.name}
+          </text>
+
+          <text
+            x={PAD_L - 14}
+            y={PAD_T + 8}
+            className="mono"
+            fontSize="10"
+            fill="var(--color-whisper)"
+            textAnchor="end"
+          >
+            {yFrame?.highLabel ?? String(yMax)}
+          </text>
+          <text
+            x={PAD_L - 14}
+            y={PAD_T + plotH}
+            className="mono"
+            fontSize="10"
+            fill="var(--color-whisper)"
+            textAnchor="end"
+          >
+            {yFrame?.lowLabel ?? "1"}
+          </text>
+          <text
+            x={20}
+            y={PAD_T + plotH / 2}
+            className="mono"
+            fontSize="11"
+            fill="var(--color-muted)"
+            textAnchor="middle"
+            transform={`rotate(-90 20 ${PAD_T + plotH / 2})`}
+          >
+            {yFrame?.name}
+          </text>
+
+          {/* points */}
+          {positioned.map((p) => {
+            const isHover = hovered === p.c.id;
+            return (
+              <g
+                key={p.c.id}
+                onMouseEnter={() => setHovered(p.c.id)}
+                onMouseLeave={() => setHovered((h) => (h === p.c.id ? null : h))}
+                className="cursor-pointer"
+              >
+                <circle
+                  cx={p.cx}
+                  cy={p.cy}
+                  r={isHover ? 8 : 6}
+                  fill={TIER_FILL[p.c.tier] ?? "var(--color-mushroom)"}
+                  fillOpacity={isHover ? 0.95 : 0.78}
+                  stroke="var(--color-ink)"
+                  strokeOpacity={isHover ? 0.6 : 0}
+                  strokeWidth={1}
+                />
+              </g>
+            );
+          })}
+        </svg>
+
+        {hoveredCo && (
+          <HoverCard
+            company={hoveredCo}
+            xFrameName={xFrame?.name ?? ""}
+            yFrameName={yFrame?.name ?? ""}
+            xScore={xFrame ? hoveredCo.scores[xFrame.id] : undefined}
+            yScore={yFrame ? hoveredCo.scores[yFrame.id] : undefined}
+          />
+        )}
+      </div>
+
+      <Legend tierCounts={countByTier(plotted.map((p) => p.c))} />
+
+      {unscored.length > 0 && (
+        <details className="text-sm">
+          <summary className="mono text-xs uppercase tracking-[0.12em] text-whisper cursor-pointer">
+            {unscored.length} companies unscored on this pair
+          </summary>
+          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 serif text-muted">
+            {unscored.map((c) => (
+              <li key={c.id}>
+                <Link
+                  href={`/companies/${c.slug}`}
+                  className="hover:text-ink underline decoration-rule"
+                >
+                  {c.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </div>
+  );
+}
+
+function AxisPicker({
+  label,
+  frames,
+  value,
+  onChange,
+}: {
+  label: string;
+  frames: MapFrame[];
+  value: number | null;
+  onChange: (id: number) => void;
+}) {
+  return (
+    <label className="flex flex-col gap-1">
+      <span className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper">
+        {label}
+      </span>
+      <select
+        value={value ?? ""}
+        onChange={(e) => onChange(Number(e.target.value))}
+        className="serif text-base text-ink bg-surface border border-rule rounded px-3 py-1.5 min-w-[14rem]"
+      >
+        {frames.map((f) => (
+          <option key={f.id} value={f.id}>
+            {f.name}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function HoverCard({
+  company,
+  xFrameName,
+  yFrameName,
+  xScore,
+  yScore,
+}: {
+  company: MapCompany;
+  xFrameName: string;
+  yFrameName: string;
+  xScore: number | undefined;
+  yScore: number | undefined;
+}) {
+  return (
+    <div className="absolute top-3 right-3 max-w-xs bg-surface border border-rule rounded-md shadow-sm p-4 pointer-events-none">
+      <div className="eyebrow text-[0.6rem] mb-1">
+        Tier {company.tier} · {TIER_LABEL[company.tier]}
+      </div>
+      <Link
+        href={`/companies/${company.slug}`}
+        className="serif text-lg text-ink font-medium leading-tight pointer-events-auto hover:underline"
+      >
+        {company.name}
+      </Link>
+      {company.hq && (
+        <div className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper mt-0.5">
+          {company.hq}
+        </div>
+      )}
+      <dl className="mt-3 space-y-1 text-sm">
+        <div className="flex justify-between gap-3">
+          <dt className="text-muted">{xFrameName}</dt>
+          <dd className="text-ink mono">{xScore ?? "—"}</dd>
+        </div>
+        <div className="flex justify-between gap-3">
+          <dt className="text-muted">{yFrameName}</dt>
+          <dd className="text-ink mono">{yScore ?? "—"}</dd>
+        </div>
+      </dl>
+    </div>
+  );
+}
+
+function countByTier(cos: MapCompany[]) {
+  const m: Record<number, number> = { 1: 0, 2: 0, 3: 0 };
+  for (const c of cos) m[c.tier] = (m[c.tier] ?? 0) + 1;
+  return m;
+}
+
+function Legend({ tierCounts }: { tierCounts: Record<number, number> }) {
+  return (
+    <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mono text-[0.7rem] uppercase tracking-[0.12em] text-muted">
+      {[1, 2, 3].map((tier) => (
+        <span key={tier} className="flex items-center gap-2">
+          <span
+            className="inline-block w-2.5 h-2.5 rounded-full"
+            style={{ background: TIER_FILL[tier] }}
+            aria-hidden
+          />
+          Tier {tier} · {TIER_LABEL[tier]}{" "}
+          <span className="text-whisper">({tierCounts[tier] ?? 0})</span>
+        </span>
+      ))}
+    </div>
+  );
+}
