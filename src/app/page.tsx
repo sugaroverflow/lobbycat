@@ -2,6 +2,7 @@ import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { MapView } from "@/components/map-view";
 import { TrackerTable } from "@/components/tracker-table";
+import { OnboardingOverlay } from "@/components/onboarding-overlay";
 import {
   getMapData,
   getTrackerData,
@@ -19,6 +20,7 @@ export default async function HomePage() {
 
   return (
     <SiteShell>
+      <OnboardingOverlay />
       <section className="max-w-[72rem] mx-auto px-6 pt-12 pb-6">
         <div className="eyebrow mb-6">
           {firstName ? `Welcome back, ${firstName}` : "The map"}
