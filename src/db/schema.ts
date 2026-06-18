@@ -284,6 +284,29 @@ export const fitNotes = pgTable(
 );
 
 /* ------------------------------------------------------------------ */
+/* Fit-note conversation messages (chat thread, per company)          */
+/* ------------------------------------------------------------------ */
+
+export const fitNoteMessages = pgTable(
+  "fit_note_messages",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    role: text("role").notNull(), // 'user' | 'cat'
+    content: text("content").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("fit_note_messages_company_idx").on(t.companyId),
+    index("fit_note_messages_created_idx").on(t.createdAt),
+  ],
+);
+
+/* ------------------------------------------------------------------ */
 /* Agent runs (audit log)                                             */
 /* ------------------------------------------------------------------ */
 
@@ -312,6 +335,7 @@ export const companiesRelations = relations(companies, ({ many }) => ({
   tags: many(companyTags),
   frameScores: many(frameScores),
   fitNotes: many(fitNotes),
+  fitNoteMessages: many(fitNoteMessages),
 }));
 
 export const rolesRelations = relations(roles, ({ one }) => ({
@@ -379,6 +403,16 @@ export const fitNotesRelations = relations(fitNotes, ({ one }) => ({
   }),
 }));
 
+export const fitNoteMessagesRelations = relations(
+  fitNoteMessages,
+  ({ one }) => ({
+    company: one(companies, {
+      fields: [fitNoteMessages.companyId],
+      references: [companies.id],
+    }),
+  }),
+);
+
 /* Inferred types */
 export type Company = typeof companies.$inferSelect;
 export type NewCompany = typeof companies.$inferInsert;
@@ -390,4 +424,6 @@ export type Tag = typeof tags.$inferSelect;
 export type Frame = typeof frames.$inferSelect;
 export type FrameScore = typeof frameScores.$inferSelect;
 export type FitNote = typeof fitNotes.$inferSelect;
+export type FitNoteMessage = typeof fitNoteMessages.$inferSelect;
+export type NewFitNoteMessage = typeof fitNoteMessages.$inferInsert;
 export type UserProfile = typeof userProfile.$inferSelect;
