@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { TagChip } from "@/components/tag-chip";
+import { FilterChip, FilterRowLabel } from "@/components/filter-chip";
 
 export type MapCompany = {
   id: number;
@@ -584,9 +585,7 @@ function FilterRow({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="mono text-[0.6rem] uppercase tracking-[0.14em] text-whisper mr-1">
-          Tier
-        </span>
+        <FilterRowLabel>Tier</FilterRowLabel>
         {[1, 2, 3].map((t) => (
           <FilterChip
             key={t}
@@ -621,9 +620,7 @@ function FilterRow({
       </div>
       {tagOptions.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="mono text-[0.6rem] uppercase tracking-[0.14em] text-whisper mr-1">
-            Tag
-          </span>
+          <FilterRowLabel>Tag</FilterRowLabel>
           {tagOptions.map((t) => (
             <FilterChip
               key={t}
@@ -635,40 +632,6 @@ function FilterRow({
         </div>
       )}
     </div>
-  );
-}
-
-function FilterChip({
-  label,
-  active,
-  onClick,
-  dotColor,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-  dotColor?: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={`inline-flex items-center gap-1.5 text-[0.7rem] rounded-full px-2.5 py-1 border transition-colors ${
-        active
-          ? "bg-moss text-surface border-moss"
-          : "bg-surface text-muted border-rule hover:text-ink hover:border-mushroom"
-      }`}
-    >
-      {dotColor && (
-        <span
-          aria-hidden
-          className="inline-block w-2 h-2 rounded-full"
-          style={{ background: dotColor }}
-        />
-      )}
-      {label}
-    </button>
   );
 }
 
