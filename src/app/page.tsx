@@ -1,13 +1,20 @@
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { MapView } from "@/components/map-view";
-import { getMapData, getUserProfile } from "@/lib/queries";
+import { TrackerTable } from "@/components/tracker-table";
+import {
+  getMapData,
+  getTrackerData,
+  getUserProfile,
+} from "@/lib/queries";
 
 export default async function HomePage() {
-  const [{ companies, scaleFrames }, profile] = await Promise.all([
-    getMapData(),
-    getUserProfile(),
-  ]);
+  const [{ companies, scaleFrames }, trackerCompanies, profile] =
+    await Promise.all([
+      getMapData(),
+      getTrackerData(),
+      getUserProfile(),
+    ]);
   const firstName = profile?.displayName?.split(" ")[0] || null;
 
   return (
@@ -28,8 +35,22 @@ export default async function HomePage() {
         </p>
       </section>
 
-      <section className="max-w-[72rem] mx-auto px-6 pb-24">
+      <section className="max-w-[72rem] mx-auto px-6 pb-16">
         <MapView companies={companies} frames={scaleFrames} />
+      </section>
+
+      <section className="max-w-[72rem] mx-auto px-6 pb-24">
+        <div className="flex items-baseline justify-between border-b border-rule pb-2 mb-4">
+          <h2 className="eyebrow">Live tracker</h2>
+          <span className="mono text-xs text-whisper">
+            {trackerCompanies.length} companies
+          </span>
+        </div>
+        <p className="serif text-base text-muted leading-relaxed mb-6 max-w-2xl">
+          Roles and publications across the field, sortable. The map up top
+          shows where they sit; this is what they&rsquo;re doing.
+        </p>
+        <TrackerTable companies={trackerCompanies} />
       </section>
     </SiteShell>
   );

@@ -238,6 +238,82 @@ function firstBullet(body: string | null | undefined): string | null {
   return null;
 }
 
+export async function getTrackerData() {
+  const [allCompanies, allCompanyTags, openRolesCounts, latestPubs] =
+    await Promise.all([
+      db.select().from(companies).orderBy(companies.tier, companies.name),
+      db
+        .select({
+          companyId: companyTags.companyId,
+          label: tagsTable.label,
+          color: tagsTable.color,
+        })
+        .from(companyTags)
+        .innerJoin(tagsTable, eq(companyTags.tagId, tagsTable.id)),
+      db
+        .select({
+          companyId: roles.companyId,
+          count: sql<number>`count(*)::int`,
+        })
+        .from(roles)
+        .where(eq(roles.isOpen, true))
+        .groupBy(roles.companyId),
+      db
+        .select({
+          companyId: publications.companyId,
+          title: publications.title,
+          url: publications.url,
+          type: publications.type,
+          publishedAt: publications.publishedAt,
+        })
+        .from(publications)
+        .orderBy(desc(publications.publishedAt)),
+    ]);
+
+  const tagsByCompany = new Map<
+    number,
+    Array<{ label: string; color: string | null }>
+  >();
+  for (const t of allCompanyTags) {
+    const list = tagsByCompany.get(t.companyId) || [];
+    list.push({ label: t.label, color: t.color });
+    tagsByCompany.set(t.companyId, list);
+  }
+
+  const openCountByCompany = new Map(
+    openRolesCounts.map((r) => [r.companyId, Number(r.count)]),
+  );
+
+  // latestPubs is desc(publishedAt); take first hit per company.
+  type PubLite = {
+    title: string;
+    url: string;
+    type: string;
+    publishedAt: Date | null;
+  };
+  const latestPubByCompany = new Map<number, PubLite>();
+  for (const p of latestPubs) {
+    if (latestPubByCompany.has(p.companyId)) continue;
+    latestPubByCompany.set(p.companyId, {
+      title: p.title,
+      url: p.url,
+      type: p.type,
+      publishedAt: p.publishedAt,
+    });
+  }
+
+  return allCompanies.map((c) => ({
+    id: c.id,
+    slug: c.slug,
+    name: c.name,
+    tier: c.tier,
+    hq: c.hq,
+    tagList: tagsByCompany.get(c.id) || [],
+    openRoles: openCountByCompany.get(c.id) || 0,
+    latestPub: latestPubByCompany.get(c.id) ?? null,
+  }));
+}
+
 export async function getUserProfile() {
   const [profile] = await db.select().from(userProfile).limit(1);
   return profile ?? null;
