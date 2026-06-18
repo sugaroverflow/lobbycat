@@ -2,6 +2,7 @@ import { SiteShell } from "@/components/site-shell";
 import { db } from "@/db";
 import { companies, frames as framesTable, frameScores } from "@/db/schema";
 import { inArray } from "drizzle-orm";
+import { CompareForm } from "./compare-form";
 
 export default async function ComparePage({
   searchParams,
@@ -52,42 +53,10 @@ export default async function ComparePage({
           obvious in isolation may not be in comparison.
         </p>
 
-        <form className="mt-8">
-          <div className="eyebrow mb-2">Select companies</div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-            {allCompanies.map((c) => (
-              <label
-                key={c.id}
-                className="flex items-center gap-2 mono text-xs text-muted hover:text-ink cursor-pointer"
-              >
-                <input
-                  type="checkbox"
-                  name="slugs"
-                  value={c.slug}
-                  defaultChecked={slugs.includes(c.slug)}
-                  className="accent-accent"
-                />
-                {c.name}
-              </label>
-            ))}
-          </div>
-          <button
-            type="submit"
-            className="mt-4 mono text-xs uppercase tracking-[0.14em] px-4 py-2 bg-ink text-white rounded-sm hover:bg-accent transition"
-          >
-            Compare ↗
-          </button>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `document.currentScript.previousElementSibling.previousElementSibling.parentElement.addEventListener('submit', function(e){
-                e.preventDefault();
-                const f = e.target;
-                const vals = Array.from(f.querySelectorAll('input[name="slugs"]:checked')).map(i=>i.value).join(',');
-                window.location.href = '/compare' + (vals ? '?slugs=' + vals : '');
-              });`,
-            }}
-          />
-        </form>
+        <CompareForm
+          companies={allCompanies.map((c) => ({ id: c.id, slug: c.slug, name: c.name }))}
+          initialSelected={slugs}
+        />
       </section>
 
       {selectedCompanies.length > 0 && (
