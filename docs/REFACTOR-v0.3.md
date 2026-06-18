@@ -23,7 +23,7 @@ After v0.2 (17 → 30 companies, /about, name greet) the dashboard was honest bu
 | # | Step | Status | Est | Notes |
 |---|---|---|---|---|
 | 1 | Fix `/compare` submission bug | ✅ done | 5m | Replaced inline `<script>` with `CompareForm` client component (useRouter + state) |
-| 2 | Earthcore palette + better tag pills | pending | 25m | Sage, moss, ochre, terracotta; tag colours + bigger pills; new tag taxonomy |
+| 2 | Earthcore palette + better tag pills | ✅ done | 25m | Sage, moss, ochre, terracotta; tag colours + bigger pills; new tag taxonomy (2a palette, 2b pills+colour map, 2c human labels + seed prune) |
 | 3 | Fit-note rewrite: bullets + chat thread | pending | 40m | New `fit_note_messages` table, conversational UI, regenerate as bullets |
 | 4 | Wire chosen cat (cat-3) | pending | 15m | Wordmark, fit-note header, empty states |
 | 5 | Frames CRUD + frame kinds | pending | 60m | `kind`: `scale`/`tag`/`question`. Edit, add, delete. Cat helps suggest frames. **CHECKPOINT DEPLOY** |
