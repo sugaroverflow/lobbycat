@@ -29,7 +29,7 @@ After v0.2 (17 → 30 companies, /about, name greet) the dashboard was honest bu
 | 5 | Frames CRUD + frame kinds | ✅ done | 60m | `kind`: `scale`/`tag`/`question`. 5a ✅ schema + migration (`kind` col, `frame_answers` table, `prompt` col). 5b ✅ CRUD UI (`/frames` group-by-kind, inline edit, add, delete; `createFrame`/`updateFrame`/`deleteFrame` actions). 5c ✅ cat suggestions (`suggestFrames` action returns structured JSON of 2–3 gap-filling frames; `CatSuggestions` panel offers one-click adds). **CHECKPOINT DEPLOY** |
 | 6 | The Map | ✅ done | 75m | 2D scatter, axes = any two scale-kind frames, hover-cards, click-through. 6a ✅ route split (`/` = map, `/companies` = tier list) + axis pickers + SVG scatter + hover-card v1. 6b ✅ richer hover-card (top-4 tag pills + fit-note preview) + click-to-pin with × close. 6c ✅ filter chips (tier / HQ / tag) reduce plotted set + legend + unscored counts in place; axis-swap button between pickers; pinned/hover state clears when filtered out. |
 | 7 | Live tracker table | pending | 60m | Roles + publications, filter chips (tier, HQ, tag, status), sortable columns |
-| 8 | Profile editor on `/about` | pending | 25m | Inline-edit bio, concerns, weights |
+| 8 | Profile editor on `/about` | ✅ done | 25m | Per-section inline edit (header, bio, concerns, weights, sources) via `ProfileEditor` client component + `updateProfile` server action |
 | 9 | Cat-led onboarding overlay | pending | 35m | 4-step walkthrough on first login, cookie-remembered, dismissible. Cat introduces frames and gives Aadi 3 default questions to answer |
 
 Total: ~6 hours of focused work.

@@ -565,3 +565,55 @@ export async function sendFitNoteMessage({
 
   revalidatePath(`/companies/[slug]`, "page");
 }
+
+/* ------------------------------------------------------------------ */
+/* User profile editor                                                */
+/* ------------------------------------------------------------------ */
+
+export async function updateProfile(patch: {
+  displayName?: string;
+  headline?: string | null;
+  bio?: string | null;
+  concerns?: string[];
+  weights?: Record<string, string>;
+  sources?: string[];
+}) {
+  const [existing] = await db.select().from(userProfile).limit(1);
+  if (!existing) throw new Error("No profile to update.");
+
+  const next: Record<string, unknown> = { updatedAt: new Date() };
+
+  if (patch.displayName !== undefined) {
+    const v = patch.displayName.trim();
+    if (!v) throw new Error("Display name cannot be empty.");
+    next.displayName = v;
+  }
+  if (patch.headline !== undefined) {
+    next.headline = patch.headline?.trim() || null;
+  }
+  if (patch.bio !== undefined) {
+    next.bio = patch.bio?.trim() || null;
+  }
+  if (patch.concerns !== undefined) {
+    next.concerns = patch.concerns.map((c) => c.trim()).filter((c) => c.length > 0);
+  }
+  if (patch.weights !== undefined) {
+    const cleaned: Record<string, string> = {};
+    for (const [k, v] of Object.entries(patch.weights)) {
+      const key = k.trim();
+      const val = (v ?? "").toString().trim();
+      if (!key || !val) continue;
+      cleaned[key] = val;
+    }
+    next.weights = cleaned;
+  }
+  if (patch.sources !== undefined) {
+    next.sources = patch.sources.map((s) => s.trim()).filter((s) => s.length > 0);
+  }
+
+  await db.update(userProfile).set(next).where(eq(userProfile.id, existing.id));
+
+  revalidatePath("/about");
+  // Profile feeds fit-note grounding; company pages reflect it next nav.
+  revalidatePath(`/companies/[slug]`, "page");
+}
