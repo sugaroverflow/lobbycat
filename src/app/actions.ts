@@ -5,10 +5,11 @@ import {
   companies,
   frameScores,
   fitNotes,
+  fitNoteMessages,
   userProfile,
   frames as framesTable,
 } from "@/db/schema";
-import { eq, and } from "drizzle-orm";
+import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
 export async function setFrameScore({
@@ -159,6 +160,119 @@ Format — STRICT:
     citations: [],
     honesty: null,
   });
+
+  revalidatePath(`/companies/[slug]`, "page");
+}
+
+/**
+ * Append a user message to a company's fit-note thread, generate a grounded
+ * cat reply, and persist both. The cat is given the user profile, the
+ * company facts, the latest fit-note body (if any), and the full prior
+ * conversation so its replies stay specific and on-topic.
+ */
+export async function sendFitNoteMessage({
+  companyId,
+  content,
+}: {
+  companyId: number;
+  content: string;
+}) {
+  const trimmed = content.trim();
+  if (!trimmed) return;
+  if (trimmed.length > 2000) throw new Error("message too long");
+
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) throw new Error("ANTHROPIC_API_KEY not set");
+
+  const [profile] = await db.select().from(userProfile).limit(1);
+  if (!profile) throw new Error("user profile not seeded");
+
+  const [company] = await db
+    .select()
+    .from(companies)
+    .where(eq(companies.id, companyId));
+  if (!company) throw new Error("company not found");
+
+  // Persist the user message first so the UI reflects it even if the
+  // model call fails downstream.
+  await db
+    .insert(fitNoteMessages)
+    .values({ companyId, role: "user", content: trimmed });
+
+  const [latestNote] = await db
+    .select()
+    .from(fitNotes)
+    .where(eq(fitNotes.companyId, companyId))
+    .orderBy(desc(fitNotes.createdAt))
+    .limit(1);
+
+  const thread = await db
+    .select()
+    .from(fitNoteMessages)
+    .where(eq(fitNoteMessages.companyId, companyId))
+    .orderBy(asc(fitNoteMessages.createdAt));
+
+  const system = `You are lobbycat — a thoughtful, slightly catty research familiar helping ${profile.displayName.split(" ")[0]} think through whether a specific policy-AI company is a fit. You answer follow-up questions about ONE company at a time, grounded in the user's profile and the company's public facts. Be specific, never flattering, never generic. If you don't know something, say so plainly. Keep replies short — 1 to 4 sentences, conversational, no headings, no bullet lists unless the user explicitly asks for a list.`;
+
+  const groundingBlocks: string[] = [
+    `# User profile\n\n**${profile.displayName}** — ${profile.headline}\n\n${profile.bio}\n\nStated concerns:\n${(profile.concerns as string[]).map((c) => `- ${c}`).join("\n")}`,
+    `# Company: ${company.name}\n\nHQ: ${company.hq || "unknown"}\nFocus areas: ${(company.focusAreas as string[]).join(", ") || "none listed"}\n\n${company.description}`,
+  ];
+  if (latestNote?.body) {
+    groundingBlocks.push(`# Current fit-note for this company\n\n${latestNote.body}`);
+  }
+  const grounding = groundingBlocks.join("\n\n---\n\n");
+
+  // Anthropic Messages API requires alternating user/assistant. Map
+  // our 'cat' role to 'assistant'. Prepend the grounding to the FIRST
+  // user message in the thread so the model sees it as context without
+  // breaking the alternation.
+  const apiMessages: Array<{ role: "user" | "assistant"; content: string }> = [];
+  let groundingInjected = false;
+  for (const m of thread) {
+    const role = m.role === "cat" ? "assistant" : "user";
+    let text = m.content;
+    if (role === "user" && !groundingInjected) {
+      text = `${grounding}\n\n---\n\n${text}`;
+      groundingInjected = true;
+    }
+    apiMessages.push({ role, content: text });
+  }
+  // Safety net: if the thread somehow starts with an assistant message
+  // (shouldn't happen, but), prepend a grounding-only user turn.
+  if (!groundingInjected) {
+    apiMessages.unshift({ role: "user", content: grounding });
+  }
+
+  const res = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: {
+      "x-api-key": apiKey,
+      "anthropic-version": "2023-06-01",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-5",
+      max_tokens: 400,
+      system,
+      messages: apiMessages,
+    }),
+  });
+  if (!res.ok) throw new Error(`Anthropic error: ${res.status} ${await res.text()}`);
+  const data = (await res.json()) as {
+    content: Array<{ type: string; text: string }>;
+  };
+  const reply = data.content
+    .filter((c) => c.type === "text")
+    .map((c) => c.text)
+    .join("\n")
+    .trim();
+
+  if (reply) {
+    await db
+      .insert(fitNoteMessages)
+      .values({ companyId, role: "cat", content: reply });
+  }
 
   revalidatePath(`/companies/[slug]`, "page");
 }

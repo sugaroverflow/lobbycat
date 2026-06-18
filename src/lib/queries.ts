@@ -10,8 +10,9 @@ import {
   people,
   userProfile,
   fitNotes,
+  fitNoteMessages,
 } from "@/db/schema";
-import { eq, desc, sql, inArray, and } from "drizzle-orm";
+import { eq, desc, sql, inArray, and, asc } from "drizzle-orm";
 
 export async function getCompaniesWithTags() {
   const allCompanies = await db
@@ -71,6 +72,7 @@ export async function getCompanyBySlug(slug: string) {
     companyTagList,
     companyFrameScores,
     companyFitNotes,
+    companyFitNoteMessages,
   ] = await Promise.all([
     db
       .select()
@@ -107,6 +109,11 @@ export async function getCompanyBySlug(slug: string) {
       .where(eq(fitNotes.companyId, company.id))
       .orderBy(desc(fitNotes.createdAt))
       .limit(1),
+    db
+      .select()
+      .from(fitNoteMessages)
+      .where(eq(fitNoteMessages.companyId, company.id))
+      .orderBy(asc(fitNoteMessages.createdAt)),
   ]);
 
   const allFrames = await db
@@ -129,6 +136,7 @@ export async function getCompanyBySlug(slug: string) {
       rationale: scoresByFrame.get(f.id)?.rationale ?? null,
     })),
     fitNote: companyFitNotes[0] ?? null,
+    fitNoteThread: companyFitNoteMessages,
   };
 }
 

@@ -22,7 +22,7 @@ export default async function CompanyDetail({
   const data = await getCompanyBySlug(slug);
   if (!data) notFound();
 
-  const { company, roles, people, publications, tags, frames, fitNote } = data;
+  const { company, roles, people, publications, tags, frames, fitNote, fitNoteThread } = data;
 
   return (
     <SiteShell>
@@ -149,7 +149,7 @@ export default async function CompanyDetail({
           </div>
 
           <aside className="lg:col-span-1 space-y-6">
-            <FitNotePanel companyId={company.id} fitNote={fitNote} />
+            <FitNotePanel companyId={company.id} fitNote={fitNote} thread={fitNoteThread} />
           </aside>
         </div>
       </article>
