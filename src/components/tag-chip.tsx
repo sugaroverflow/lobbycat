@@ -1,11 +1,11 @@
 /**
  * Tag pill.
  *
- * v0.3 step 2b: bigger, rounder pills + a slug-keyed colour map keyed on the
- * v0.2 taxonomy. The human-readable taxonomy rewrite (step 2c) will land via a
- * seed-data slug → label rewrite; this component keeps a label-text fallback
- * so unknown labels still render with the legacy `color` prop applied to the
- * text on a neutral wash.
+ * v0.3 step 2c: pill colours are keyed off the human-readable labels we now
+ * store in the DB (`Hiring policy lead`, `Frontier lab`, …). Geography pills
+ * (UK/EU/US) stay deliberately neutral per the refactor spec. Unknown labels
+ * still render with the legacy DB `color` prop applied to the text on a
+ * neutral wash, so any new tag added through the UI degrades gracefully.
  */
 
 type Variant = {
@@ -20,19 +20,19 @@ const NEUTRAL: Variant = {
 
 const VARIANTS: Record<string, Variant> = {
   // policy posture
-  "hiring-policy": { bg: "bg-terracotta-soft", text: "text-terracotta" },
-  "first-policy-hire": { bg: "bg-ochre-soft", text: "text-ochre" },
-  "established-policy-team": { bg: "bg-mushroom-soft", text: "text-mushroom" },
+  "Hiring policy lead": { bg: "bg-terracotta-soft", text: "text-terracotta" },
+  "First policy hire": { bg: "bg-ochre-soft", text: "text-ochre" },
+  "Established team": { bg: "bg-mushroom-soft", text: "text-mushroom" },
   // lab / product shape
-  "frontier-lab": { bg: "bg-sage-soft", text: "text-moss" },
-  "voice-AI": { bg: "bg-sage-soft", text: "text-sage-dark" },
-  agentic: { bg: "bg-sage-soft", text: "text-sage-dark" },
-  "self-driving": { bg: "bg-sage-soft", text: "text-sage-dark" },
-  "open-weights": { bg: "bg-sage-soft", text: "text-moss" },
+  "Frontier lab": { bg: "bg-sage-soft", text: "text-moss" },
+  "Voice / media AI": { bg: "bg-sage-soft", text: "text-sage-dark" },
+  "Agentic / coding AI": { bg: "bg-sage-soft", text: "text-sage-dark" },
+  "Autonomous / mobility": { bg: "bg-sage-soft", text: "text-sage-dark" },
+  "Open weights": { bg: "bg-sage-soft", text: "text-moss" },
   // geography — neutral by design (per refactor spec)
-  "UK-HQ": NEUTRAL,
-  "EU-HQ": NEUTRAL,
-  "US-HQ": NEUTRAL,
+  UK: NEUTRAL,
+  EU: NEUTRAL,
+  US: NEUTRAL,
 };
 
 export function TagChip({
@@ -43,8 +43,10 @@ export function TagChip({
   color?: string | null;
 }) {
   const variant = VARIANTS[label];
+  // Labels are now human-readable sentences (mixed case). Drop the uppercase
+  // transform so `Hiring policy lead` reads as a sentence, not a shout.
   const base =
-    "inline-flex items-center mono text-[0.7rem] uppercase tracking-[0.08em] py-1 px-2.5 rounded-full";
+    "inline-flex items-center mono text-[0.7rem] tracking-[0.04em] py-1 px-2.5 rounded-full";
 
   if (variant) {
     return (

@@ -17,7 +17,7 @@ import {
   seedFrames,
   seedUserProfile,
 } from "./seed-data";
-import { eq } from "drizzle-orm";
+import { eq, notInArray } from "drizzle-orm";
 
 async function main() {
   console.log("seeding…");
@@ -31,6 +31,21 @@ async function main() {
         target: tagsTable.label,
         set: { color: t.color },
       });
+  }
+  // v0.3 step 2c: prune any tag rows whose labels aren't in the current
+  // taxonomy (e.g. the old `hiring-policy` / `UK-HQ` slugs from v0.2).
+  // company_tags rows cascade on tag delete.
+  const keepLabels = seedTags.map((t) => t.label);
+  const pruned = await db
+    .delete(tagsTable)
+    .where(notInArray(tagsTable.label, keepLabels))
+    .returning({ label: tagsTable.label });
+  if (pruned.length) {
+    console.log(
+      `  tags: pruned ${pruned.length} stale (${pruned
+        .map((p) => p.label)
+        .join(", ")})`,
+    );
   }
   const allTags = await db.select().from(tagsTable);
   const tagId = new Map(allTags.map((t) => [t.label, t.id]));

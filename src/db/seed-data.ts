@@ -32,17 +32,17 @@ export type SeedCompany = {
 };
 
 export const seedTags = [
-  { label: "frontier-lab", color: "#406896" },
-  { label: "UK-HQ", color: "#1C6C34" },
-  { label: "EU-HQ", color: "#406896" },
-  { label: "US-HQ", color: "#B85048" },
-  { label: "hiring-policy", color: "#B85048" },
-  { label: "first-policy-hire", color: "#1C6C34" },
-  { label: "established-policy-team", color: "#4A5260" },
-  { label: "voice-AI", color: "#406896" },
-  { label: "self-driving", color: "#406896" },
-  { label: "open-weights", color: "#1C6C34" },
-  { label: "agentic", color: "#406896" },
+  { label: "Frontier lab", color: "#406896" },
+  { label: "UK", color: "#1C6C34" },
+  { label: "EU", color: "#406896" },
+  { label: "US", color: "#B85048" },
+  { label: "Hiring policy lead", color: "#B85048" },
+  { label: "First policy hire", color: "#1C6C34" },
+  { label: "Established team", color: "#4A5260" },
+  { label: "Voice / media AI", color: "#406896" },
+  { label: "Autonomous / mobility", color: "#406896" },
+  { label: "Open weights", color: "#1C6C34" },
+  { label: "Agentic / coding AI", color: "#406896" },
 ];
 
 export const seedFrames = [
@@ -109,10 +109,10 @@ export const seedCompanies: SeedCompany[] = [
     description:
       "Frontier AI lab with a dedicated policy team across SF and London. Large established policy function — specialist roles, deep ties to AISI / NIST / EU AI Office. Live openings include 'Regulatory Counsel, Content & Frontier AI Regulation' partnering directly on EU AI Act engagement.",
     tags: [
-      "frontier-lab",
-      "US-HQ",
-      "hiring-policy",
-      "established-policy-team",
+      "Frontier lab",
+      "US",
+      "Hiring policy lead",
+      "Established team",
     ],
     roles: [
       {
@@ -134,7 +134,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["global affairs", "EU AI Act", "UK AI Bill", "national security"],
     description:
       "Global Affairs is OpenAI's policy umbrella, structured around regional leads (EMEA, UK, US). Many open roles in 2026 including Head of EMEA Global Affairs (London) and UK Policy and Partnerships Lead.",
-    tags: ["frontier-lab", "US-HQ", "hiring-policy", "established-policy-team"],
+    tags: ["Frontier lab", "US", "Hiring policy lead", "Established team"],
     roles: [
       {
         title: "Head of EMEA, Global Affairs",
@@ -172,10 +172,10 @@ export const seedCompanies: SeedCompany[] = [
     description:
       "Voice-AI scale-up facing genuinely novel policy challenges: consent for voice cloning, content provenance, licensing infrastructure. Public Policy Lead role is a global remit, likely the first major senior policy hire — opportunity to build the team and define firsts.",
     tags: [
-      "voice-AI",
-      "US-HQ",
-      "hiring-policy",
-      "first-policy-hire",
+      "Voice / media AI",
+      "US",
+      "Hiring policy lead",
+      "First policy hire",
     ],
     roles: [
       {
@@ -202,7 +202,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["agentic AI", "developer-tools policy"],
     description:
       "Makers of Devin (AI software engineer). Small policy function, if any — most public engagement is product-side. A policy hire here would shape the company's public-facing stance from near-zero, with agentic-AI questions (autonomy, liability, deployment guardrails) all up for grabs.",
-    tags: ["agentic", "US-HQ", "first-policy-hire"],
+    tags: ["Agentic / coding AI", "US", "First policy hire"],
   },
   {
     slug: "reflection-ai",
@@ -214,7 +214,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["autonomous coding agents", "agentic safety"],
     description:
       "Reflection AI is building autonomous coding agents, founded by ex-DeepMind researchers. Early-stage; likely no senior policy function yet. Would be a true ground-floor role with a research-flavoured product.",
-    tags: ["agentic", "US-HQ", "first-policy-hire"],
+    tags: ["Agentic / coding AI", "US", "First policy hire"],
   },
 
   /* ----------------- TIER 2 (discovered) --------------------------- */
@@ -233,9 +233,9 @@ export const seedCompanies: SeedCompany[] = [
     description:
       "Frontier AI research lab inside Google. London HQ. Large established policy + governance function — high prestige, specialist roles within a deep org. Strategic Planning roles in GenAI policy/governance routinely open.",
     tags: [
-      "frontier-lab",
-      "UK-HQ",
-      "established-policy-team",
+      "Frontier lab",
+      "UK",
+      "Established team",
     ],
   },
   {
@@ -254,7 +254,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Europe's flagship frontier-AI company, deeply involved in EU AI Act negotiation and the GPAI Code of Practice. Policy work here means being in the room as European AI governance is written. EU-HQ — natural counterweight to UK-pigeonhole concern.",
-    tags: ["frontier-lab", "EU-HQ", "open-weights", "established-policy-team"],
+    tags: ["Frontier lab", "EU", "Open weights", "Established team"],
   },
   {
     slug: "huggingface",
@@ -270,7 +270,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Open-source AI hub, very active in EU AI Act / GPAI Code discussions on behalf of the open-source community. Public Policy Director Bruna de Castro e Silva and team are visible in EU and US forums. Mission-aligned for someone with open-standards orientation.",
-    tags: ["open-weights", "US-HQ", "EU-HQ", "established-policy-team"],
+    tags: ["Open weights", "US", "EU", "Established team"],
   },
   {
     slug: "cohere-aleph-alpha",
@@ -288,7 +288,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Cohere and Aleph Alpha merged April 2026 (~$20B) to build a transatlantic, sovereign-AI-focused enterprise lab. EU compliance + on-prem deployment are the explicit pitch. Policy work here straddles Canada, UK, Germany and EU institutions — unusually broad jurisdictional remit for a single role.",
-    tags: ["frontier-lab", "EU-HQ", "open-weights"],
+    tags: ["Frontier lab", "EU", "Open weights"],
   },
   {
     slug: "wayve",
@@ -305,7 +305,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "UK self-driving / embodied-AI scale-up; the poster child for the £500M UK Sovereign AI Unit and the Action Plan. 'Head of UK and EU Policy' role open — defines the company's external engagement across the UK and EU. Mobility/transport policy specifically.",
-    tags: ["self-driving", "UK-HQ", "hiring-policy", "first-policy-hire"],
+    tags: ["Autonomous / mobility", "UK", "Hiring policy lead", "First policy hire"],
     roles: [
       {
         title: "Head of UK and EU Policy",
@@ -322,10 +322,10 @@ export const seedCompanies: SeedCompany[] = [
     hq: "London",
     websiteUrl: "https://stability.ai",
     careersUrl: "https://stability.ai/careers",
-    focusAreas: ["generative-media policy", "open-weights", "copyright"],
+    focusAreas: ["generative-media policy", "Open weights", "copyright"],
     description:
       "Generative-media company. Has been in the centre of copyright/AI litigation. Policy function smaller post-restructure; if hiring, would be a high-pressure role on copyright and content provenance.",
-    tags: ["open-weights", "UK-HQ"],
+    tags: ["Open weights", "UK"],
   },
   {
     slug: "synthesia",
@@ -341,7 +341,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "London-based synthetic media / AI video platform. Strong enterprise focus and a deliberately conservative content policy (no political/news, strict consent). A policy role would lean heavily into provenance, consent, and content moderation infrastructure.",
-    tags: ["voice-AI", "UK-HQ"],
+    tags: ["Voice / media AI", "UK"],
   },
   {
     slug: "faculty-ai",
@@ -357,7 +357,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Applied-AI consultancy with deep UK government contracts (incl. former AI Safety Institute work). Less a pure 'lab' more an AI-for-government delivery org. Heaviest UK-pigeonhole risk on this list — but maximal civic-infrastructure overlap.",
-    tags: ["UK-HQ"],
+    tags: ["UK"],
   },
   {
     slug: "xai",
@@ -369,7 +369,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["frontier AI", "free-speech framing", "compute infrastructure"],
     description:
       "Elon Musk's frontier-AI lab. Public stance leans anti-regulation and free-speech-framed. Policy function exists but heavily influenced by founder politics. Worth mapping for completeness; fit depends heavily on political comfort.",
-    tags: ["frontier-lab", "US-HQ"],
+    tags: ["Frontier lab", "US"],
   },
   {
     slug: "thinking-machines",
@@ -381,7 +381,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["frontier AI research", "alignment"],
     description:
       "Mira Murati's new frontier-AI lab. Very early stage; likely no policy function yet. Pure greenfield for someone wanting to define the policy stance of a brand-new lab.",
-    tags: ["frontier-lab", "US-HQ", "first-policy-hire"],
+    tags: ["Frontier lab", "US", "First policy hire"],
   },
   {
     slug: "anysphere",
@@ -393,7 +393,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["developer-tools policy", "AI-in-coding"],
     description:
       "Maker of Cursor. Massive growth but very engineering-focused; no visible senior policy hire yet. A policy role would help define enterprise procurement and IP positioning as Cursor scales into regulated industries.",
-    tags: ["agentic", "US-HQ", "first-policy-hire"],
+    tags: ["Agentic / coding AI", "US", "First policy hire"],
   },
   {
     slug: "physical-intelligence",
@@ -405,7 +405,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["embodied AI / robotics policy"],
     description:
       "Robotics + foundation models. Embodied-AI policy is a near-empty space; high regulatory novelty, deep technical demand. Almost certainly no policy function yet.",
-    tags: ["US-HQ", "first-policy-hire"],
+    tags: ["US", "First policy hire"],
   },
 
   /* ----------------- EUROPE ---------------------------------------- */
@@ -424,7 +424,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Stability-AI alumni building open generative image/video models from Germany. Heavy German government and EU policy attention given the sovereign-AI narrative. A policy hire would shape content provenance and GPAI obligations from inside the EU's flagship generative-media lab.",
-    tags: ["frontier-lab", "EU-HQ", "open-weights", "first-policy-hire"],
+    tags: ["Frontier lab", "EU", "Open weights", "First policy hire"],
   },
   {
     slug: "helsing",
@@ -441,7 +441,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "European defence-AI scale-up. Policy here means defence procurement, export controls, dual-use frameworks, NATO interoperability — a very different policy world than commercial AI. Worth flagging because it's a clear off-ramp from frontier-lab work; possibly mismatched with civic-infrastructure interests.",
-    tags: ["EU-HQ"],
+    tags: ["EU"],
   },
   {
     slug: "deepl",
@@ -457,7 +457,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "German translation-AI scale-up serving large EU and global enterprise customers. Policy work would centre on data residency, EU enterprise AI compliance, and language-tech procurement standards. Smaller policy footprint than frontier labs but a stable established product.",
-    tags: ["EU-HQ"],
+    tags: ["EU"],
   },
   {
     slug: "silo-ai",
@@ -473,7 +473,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Nordic applied-AI shop acquired by AMD (2024). Builds the Poro / Viking multilingual open-source models with the EuroLLM consortium — explicit EU sovereignty play. Has hired Policy Analyst / EU Partnership Lead roles. Civic-infrastructure overlap is unusually high.",
-    tags: ["EU-HQ", "open-weights"],
+    tags: ["EU", "Open weights"],
   },
   {
     slug: "photoroom",
@@ -485,7 +485,7 @@ export const seedCompanies: SeedCompany[] = [
     focusAreas: ["generative image policy", "creator IP", "SMB AI"],
     description:
       "Paris-based generative image scale-up serving creators and SMBs. Smaller and less policy-active than Black Forest, but interesting if you want a more product-shaped role inside a French AI champion.",
-    tags: ["EU-HQ"],
+    tags: ["EU"],
   },
   {
     slug: "sakana-ai",
@@ -501,7 +501,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Tokyo-based frontier lab founded by ex-Google researchers. Works closely with Japanese government and large enterprises. Policy here means being a bridge between Japanese public policy and the international frontier-AI conversation — unusual remit, narrow geography.",
-    tags: ["frontier-lab"],
+    tags: ["Frontier lab"],
   },
 
   /* ----------------- US (more) ------------------------------------- */
@@ -522,7 +522,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Data labelling + AI evaluation platform; subject of Meta's 2025 acqui-hire (Alex Wang and senior team moved). Active policy footprint around US national-security AI and labour practices. Genuine FTC scrutiny means policy work here is high-stakes.",
-    tags: ["US-HQ", "established-policy-team"],
+    tags: ["US", "Established team"],
   },
   {
     slug: "perplexity",
@@ -539,7 +539,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "AI-native search. Hot policy zone: publisher disputes, content licensing, news/media relations. A policy hire here would deal with newsroom partnerships and IP frameworks more than frontier-AI questions.",
-    tags: ["US-HQ"],
+    tags: ["US"],
   },
   {
     slug: "runway",
@@ -556,7 +556,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Generative video, deep ties to Hollywood/Lionsgate. Policy lives at the intersection of entertainment industry, copyright, and synthetic media. Cultural fluency matters as much as regulatory fluency.",
-    tags: ["voice-AI", "US-HQ"],
+    tags: ["Voice / media AI", "US"],
   },
   {
     slug: "suno",
@@ -573,7 +573,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "AI music generation, centre of the RIAA copyright lawsuits. Warner settled Nov 2025; Sony still litigating. Policy work here is litigation-shaped — settlements, licensing frameworks, songwriter/publisher relations. A hot, hostile, defining space.",
-    tags: ["voice-AI", "US-HQ", "hiring-policy", "first-policy-hire"],
+    tags: ["Voice / media AI", "US", "Hiring policy lead", "First policy hire"],
   },
   {
     slug: "character-ai",
@@ -590,7 +590,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Consumer AI companion product. Heavy product-policy lift around youth safety, content moderation, and ongoing DOJ analysis of the Google deal. A policy role here is product-shaped, high-pressure, real-stakes safety work.",
-    tags: ["US-HQ"],
+    tags: ["US"],
   },
   {
     slug: "groq",
@@ -606,7 +606,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Specialised AI inference chips. Policy work here is hardware-shaped: export controls, energy regulation, US-China compute competition. Adjacent to but distinct from frontier-model policy.",
-    tags: ["US-HQ"],
+    tags: ["US"],
   },
   {
     slug: "cerebras",
@@ -622,7 +622,7 @@ export const seedCompanies: SeedCompany[] = [
     ],
     description:
       "Wafer-scale AI chip company with significant Gulf-state deployment partnerships. Policy work straddles US export controls and international sovereign-compute deals. Niche but structurally important.",
-    tags: ["US-HQ"],
+    tags: ["US"],
   },
 ];
 
