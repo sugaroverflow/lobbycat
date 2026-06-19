@@ -256,8 +256,15 @@ export async function getAllFrames() {
 }
 
 export async function getMapData() {
-  const [allCompanies, scaleFrames, scores, allCompanyTags, latestFitNotes] =
-    await Promise.all([
+  const [
+    allCompanies,
+    scaleFrames,
+    scores,
+    allCompanyTags,
+    latestFitNotes,
+    openRolesRows,
+    recentPubsRows,
+  ] = await Promise.all([
       db.select().from(companies).orderBy(companies.tier, companies.name),
       db
         .select()
@@ -287,6 +294,29 @@ export async function getMapData() {
         })
         .from(fitNotes)
         .orderBy(desc(fitNotes.createdAt)),
+      db
+        .select({
+          companyId: roles.companyId,
+          id: roles.id,
+          title: roles.title,
+          url: roles.url,
+          location: roles.location,
+          seenAt: roles.seenAt,
+        })
+        .from(roles)
+        .where(eq(roles.isOpen, true))
+        .orderBy(desc(roles.seenAt)),
+      db
+        .select({
+          companyId: publications.companyId,
+          id: publications.id,
+          title: publications.title,
+          url: publications.url,
+          type: publications.type,
+          publishedAt: publications.publishedAt,
+        })
+        .from(publications)
+        .orderBy(desc(publications.publishedAt)),
     ]);
 
   const scoresByCompany = new Map<number, Record<number, number>>();
@@ -312,6 +342,42 @@ export async function getMapData() {
     if (preview) fitPreviewByCompany.set(n.companyId, preview);
   }
 
+  // Open roles + recent publications for the pinned-card drawer. Cap at 3
+  // each — the card is narrow and meant to *signal* activity, not exhaust
+  // it. Deep dives live on /companies/[slug].
+  const rolesByCompany = new Map<
+    number,
+    Array<{ id: number; title: string; url: string; location: string | null }>
+  >();
+  for (const r of openRolesRows) {
+    const list = rolesByCompany.get(r.companyId) || [];
+    if (list.length < 3)
+      list.push({ id: r.id, title: r.title, url: r.url, location: r.location });
+    rolesByCompany.set(r.companyId, list);
+  }
+  const pubsByCompany = new Map<
+    number,
+    Array<{
+      id: number;
+      title: string;
+      url: string;
+      type: string;
+      publishedAt: Date | null;
+    }>
+  >();
+  for (const p of recentPubsRows) {
+    const list = pubsByCompany.get(p.companyId) || [];
+    if (list.length < 3)
+      list.push({
+        id: p.id,
+        title: p.title,
+        url: p.url,
+        type: p.type,
+        publishedAt: p.publishedAt,
+      });
+    pubsByCompany.set(p.companyId, list);
+  }
+
   return {
     companies: allCompanies.map((c) => ({
       id: c.id,
@@ -323,6 +389,8 @@ export async function getMapData() {
       tagList: tagsByCompany.get(c.id) || [],
       scores: scoresByCompany.get(c.id) || {},
       fitNotePreview: fitPreviewByCompany.get(c.id) ?? null,
+      openRoles: rolesByCompany.get(c.id) || [],
+      recentPublications: pubsByCompany.get(c.id) || [],
     })),
     scaleFrames: scaleFrames.map((f) => ({
       id: f.id,

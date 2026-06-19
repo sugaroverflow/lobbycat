@@ -15,6 +15,19 @@ export type MapCompany = {
   tagList: Array<{ label: string; color: string | null }>;
   scores: Record<number, number>;
   fitNotePreview: string | null;
+  openRoles: Array<{
+    id: number;
+    title: string;
+    url: string;
+    location: string | null;
+  }>;
+  recentPublications: Array<{
+    id: number;
+    title: string;
+    url: string;
+    type: string;
+    publishedAt: Date | string | null;
+  }>;
 };
 
 export type MapFrame = {
@@ -588,6 +601,56 @@ function HoverCard({
           <p className="serif text-sm text-muted leading-snug line-clamp-3">
             {company.fitNotePreview}
           </p>
+        </div>
+      )}
+
+      {pinned && company.openRoles.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-rule">
+          <div className="eyebrow text-[0.55rem] mb-1.5">Open roles</div>
+          <ul className="space-y-1">
+            {company.openRoles.map((r) => (
+              <li key={r.id} className="text-sm leading-snug">
+                <a
+                  href={r.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="serif text-ink hover:underline pointer-events-auto"
+                >
+                  {r.title}
+                </a>
+                {r.location && (
+                  <span className="mono text-[0.6rem] uppercase tracking-[0.1em] text-whisper ml-1.5">
+                    {r.location}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {pinned && company.recentPublications.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-rule">
+          <div className="eyebrow text-[0.55rem] mb-1.5">Recent publications</div>
+          <ul className="space-y-1">
+            {company.recentPublications.map((p) => (
+              <li key={p.id} className="text-sm leading-snug">
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="serif text-ink hover:underline pointer-events-auto"
+                >
+                  {p.title}
+                </a>
+                <span className="mono text-[0.6rem] uppercase tracking-[0.1em] text-whisper ml-1.5">
+                  {p.type}
+                  {p.publishedAt &&
+                    ` · ${new Date(p.publishedAt).toISOString().slice(0, 7)}`}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
