@@ -92,3 +92,55 @@ For Aadi: closely related to **Policy posture** but distinct — a company can b
 They are not a scoring system that ranks companies. There is no "best frame" and no aggregate "lobbycat score" anywhere in v0.5. A company that's a 1 on every frame and a company that's a 5 on every frame are equally valid; the frames exist so Aadi can find the *interesting variation* across the field, not so the field can be linearly ordered.
 
 They are also not stable across time. A company's stage changes; a posture can shift after a leadership hire; the geographic remit moves when a hub opens. The (company × frame) scores are editorial *as of a date*, and a re-curation pass is part of the v0.5 implementation order (§9).
+
+---
+
+## 3. Information architecture
+
+v0.4 had five top-level destinations (`Map`, `Compare`, `Frames`, `Companies`, `About`) plus an inline-expand drawer on `/companies` and a pinned drawer on the Map. It worked, but it taught us the wrong thing: the list page kept pulling Aadi *out* of the frame-shaped reading and back into directory mode, where the editorial work is hardest to see. v0.5 collapses the nav around the frames and makes the list a fallback, not a destination.
+
+### 3.1 Global nav
+
+**`Map · Compare · Frames · About`** — four items, in that order.
+
+- **Map** is the home view. The first thing Aadi sees is a 2D plot of London companies positioned on the two frames he's chosen (axis-picker right above the plot), with hover-preview and click-to-pin behaviour carried over from v0.4. Map is where most sessions start and where most sessions return between detours.
+- **Compare** is the side-by-side reading. Pick 2–4 companies; see their frame scores, fit-notes, open roles, and recent publications in adjacent columns. This is the view Aadi opens when he's already narrowed down — pre-meeting prep lives here as much as scouting does.
+- **Frames** is the editor and the explainer. It lists the six frames with their pole labels and one-paragraph descriptions (the prose in §2), lets Aadi edit the descriptions on his own copy, and — in v0.5 — lets him re-weight how heavily each frame contributes to the implicit "fit" sort wherever a sort exists. Frames is also the canonical place to *read* what the six frames mean if onboarding skipped it.
+- **About** is the personal-state surface: profile (name, current role context, weights, concerns), the "show me around again" replay link for onboarding, the next-role textarea (the cat's diff-review loop carried over from v0.4 N2), and the small printed list of who built this and when.
+
+What's gone from the nav: **`Companies`**. The list page dies as a destination (see §3.4 below for the migration path).
+
+### 3.2 The home view in detail
+
+Home is `Map` — there is no separate landing page. The home route renders:
+
+1. A **single-sentence product line** at the top (the §1 sentence, or a tightened version of it), small and quiet — not hero copy.
+2. The **axis-picker row**: two `<select>`s, one for the X-axis frame and one for the Y-axis frame, defaulting to *Policy posture* × *Working style* (the pair Aadi reaches for most). Changing either axis re-plots without a route change.
+3. The **map plot** itself: a 2D positioning of every London company in v0.5's dataset, dotted by tier, with pinned-state opening the `<CompanyDrawer>` below the plot (carried over from v0.4 N1 part 3 — see §8).
+4. A **Surprise button** anchored top-right of the plot area: a single, prominent button labelled `Surprise me`. Clicking opens the Surprise modal (full spec in §5). The button is the *only* entry point to Surprise — no global nav slot, no separate page.
+
+That's the whole home view. No "featured companies" carousel, no "recent activity" feed, no curated rail. The frame-shaped Map is the editorial statement; Surprise is the playful escape hatch.
+
+### 3.3 Surprise as a modal, not a page
+
+The Surprise feature lives behind a **modal button**, not as a sibling of Map / Compare / Frames. This is deliberate.
+
+- **It's a moment, not a section.** Surprise is the equivalent of flipping to a random page of a well-edited magazine — fun precisely because it interrupts the structured reading. Putting it in the global nav would turn it into a destination Aadi feels he *should* visit, which kills the delight.
+- **It always answers from the current Map context.** Because Surprise is summoned from home, it can know which two frames are currently on the axes, which companies are visible in the current viewport, and which tier filters (if any) are active. Variant logic (§5) uses this context.
+- **It never blocks navigation.** The modal is dismissable with ESC, click-outside, or an explicit `Close`. Picking a Surprise result navigates to the company drawer (in-place on the Map) — not a separate detail page.
+
+### 3.4 What replaces the Companies list page
+
+The `/companies` route, the inline-expanded rows, and the dedicated "browse the full list" link are removed in v0.5. Reading a company in v0.5 happens through one of three routes, in priority order:
+
+1. **From the Map.** Click a dot → `<CompanyDrawer>` opens below the plot with roles + publications + frame scores + fit-note + a link to the full company page. This is the dominant path.
+2. **From Compare.** Pick a company in the compare selector → it appears as a column with the same drawer-shaped content. Used when Aadi already has a shortlist in mind.
+3. **From Surprise.** A Surprise pick opens the same drawer in-place on the Map. Used when Aadi wants to be nudged.
+
+There is no fourth route. If Aadi wants to scan the whole field flat, he uses the Map with no axis filtering — the plot *is* the index. The `/companies/[slug]` deep-work route survives unchanged (linked from every drawer's `Open full view →`) because that's the home of fit-notes, full publication lists, and frame-score editing; it's just no longer reachable from a list page.
+
+### 3.5 What the IA is *for*
+
+The load-bearing claim of this section is: **every primary surface in v0.5 puts a frame between Aadi and a company.** Map plots companies on two frames at once. Compare reads companies along all six frames in parallel. Frames is the frames themselves. Surprise picks a company because of a frame-shaped reason. About holds the weights that re-rank everything across the frames.
+
+When we're tempted to add a feature in v0.5, the test is: *does this put a frame between Aadi and a company, or does it route around the frames?* If it routes around them, it doesn't belong in v0.5 — it belongs in v0.6 or in the drawer of "things v0.4 over-built."
