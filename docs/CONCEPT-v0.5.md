@@ -27,7 +27,9 @@ Unpacked, briefly, so the sentence has teeth:
 - **Scout + Calibrate (sometimes Pre-meeting prep)** — the JTBD, in Fatima's words. Scout = "who's in this space?" Calibrate = "where do I think each one sits?" Pre-meeting prep = "what should I know before this conversation?" Everything else is a nice-to-have we are deliberately not building yet.
 - **Aadi** — one user, one mental model, one set of priors. Designing for n=1 is the discipline that lets the frames carry editorial weight instead of pretending to be neutral.
 
-Out of scope for v0.5, stated plainly so we don't drift: warm intros, ATS feeds, RSS ingestion, EU Transparency Register, US LDA, magic-link auth, in-app agent chat. v0.4 was the over-build; v0.5 is the pullback.
+Out of scope for v0.5, stated plainly so we don't drift: warm intros, US LDA, magic-link auth, in-app agent chat (deferred to v0.6 as the *companion* tab — see §9 follow-up). v0.4 was the over-build; v0.5 is the pullback.
+
+**In scope for v0.5 but delegated to a parallel sub-agent track** (so the main rebuild stays focused): ATS job feeds (Greenhouse / Lever / Ashby), RSS publication ingestion, EU Transparency Register lobbying data. Each is a self-contained data pipeline that lands in the existing Postgres schema and surfaces through the existing Map / Drawer / Compare surfaces. The sub-agent ships them via GitHub PRs that Lotus reviews before merge.
 
 ---
 
@@ -39,11 +41,11 @@ Each frame is a 1–5 scale with named poles. The poles aren't moral ("1 is bad,
 
 ### 2.1 Geographic remit
 
-**1 — Very UK-bound  ↔  5 — Globally distributed**
+**1 — UK-only policy remit  ↔  5 — Multi-jurisdiction policy remit**
 
-How much of the company's policy work happens *in and for the UK* versus across multiple jurisdictions. A 1 is a London shop that briefs UK regulators, talks to UK media, hires from UK PhD programmes, and treats Brussels and DC as someone else's problem. A 5 is a multi-hub operation where the London office is one node among several, the policy team coordinates across timezones, and "UK position" is a thing they have *opinions* about rather than a default.
+What the company's policy work *covers*, not where it *sits*. Aadi has already chosen London — he wants a London office. The frame asks the next question: does this London-based policy team only engage with UK regulators (CMA, AISI, OFCOM, gov.uk consultations), or do they also work across EU institutions, US agencies, and international forums? A 1 is a London-headquartered or London-office team whose policy surface stops at the UK border. A 5 is a London office that's one node in a multi-jurisdiction policy operation — same desk, but the calendar has EU AI Office meetings, NIST submissions, and a real opinion on Singapore.
 
-For Aadi: relevant because the bet on the UK-specific career path narrows or widens depending on where a company's centre of gravity actually sits. A London office isn't the same as a London company.
+For Aadi: the goal isn't to leave London. The goal is to find London-based work that doesn't *only* deal with UK policy — so he keeps the city and gains the international reach. This frame surfaces exactly that distinction.
 
 ### 2.2 Policy area scope
 
@@ -55,7 +57,7 @@ For Aadi: the specialists are where you learn the dossier; the generalists are w
 
 ### 2.3 Stage of company
 
-**1 — Pre-product / early-stage  ↔  5 — Scaled / established**
+**1 — Pre-product  ↔  5 — Established**
 
 Where the company sits on the maturity curve — funding, headcount, product-in-market, regulatory footprint. A 1 is six people in a WeWork with a Stripe account and a strong opinion. A 5 has a global comms team, a regulatory affairs function, and a seat at the table when the AI Safety Institute calls a meeting.
 
@@ -175,10 +177,10 @@ The cat is mid-shrug, paws on a single button reading `Surprise me`. The button 
 
 ### 4.2 The password gate
 
-v0.5 is a small, named pre-launch product for one user; it does not need real auth and does not yet have a magic-link flow. A single shared password — **`candy-kittens-pink`** — gates the surface. The gate exists for two reasons:
+v0.5 is a small, named pre-launch product for one user; it does not need real auth and does not yet have a magic-link flow. A single shared password — **`[the password — see private handoff, not in repo]`** — gates the surface. The gate exists for two reasons:
 
 1. **It keeps the surface unindexed.** Bots and link-share previews can't reach the Map. The robots.txt + the gate together mean a stray tweet doesn't surface the URL to the open web.
-2. **It marks the threshold.** The password is the small ritual that says *you are entering a curated thing, not a directory*. "candy-kittens-pink" carries that register on purpose — it's whimsical, low-stakes, and unmistakably *not* enterprise auth.
+2. **It marks the threshold.** The password is the small ritual that says *you are entering a curated thing, not a directory*. "[the password — see private handoff, not in repo]" carries that register on purpose — it's whimsical, low-stakes, and unmistakably *not* enterprise auth.
 
 Mechanics: one input, monospaced placeholder *enter the password*, submit button reads `Unlock`. Wrong password shakes the input and shows *try again* in coral; no rate limit, no lockout, no "forgot password" link (if Aadi forgets, the cron-running operator tells him). Right password sets a long-lived cookie (`lc_v05_unlocked`, 90 days, `httpOnly`, `sameSite: lax`) and pushes him to home. The cookie's presence — not a session table — is the entire auth state. Logout is `Forget me` on About, which clears the cookie.
 
@@ -378,7 +380,7 @@ It's replaced — at first-run only — by the comic-strip onboarding (§4). The
 
 ### 7.5 The `/login` page as a templated form
 
-v0.4's `/login` is a centered card with an email field, a password field, a "sign in" button, and the cartoon cat in the corner. It dies in this shape. v0.5 replaces it with the **password gate** described in §4.2 — single field, no email, no "sign in" copy, the cat in the comic-panel register above the field, the candy-kittens-pink password as the only credential. The route stays `/login` (so existing redirects from the gated route middleware keep working without a migration), but the contents are rewritten end-to-end.
+v0.4's `/login` is a centered card with an email field, a password field, a "sign in" button, and the cartoon cat in the corner. It dies in this shape. v0.5 replaces it with the **password gate** described in §4.2 — single field, no email, no "sign in" copy, the cat in the comic-panel register above the field, the [the password — see private handoff, not in repo] password as the only credential. The route stays `/login` (so existing redirects from the gated route middleware keep working without a migration), but the contents are rewritten end-to-end.
 
 The reason `/login`'s current shape dies even though "a login screen" survives: v0.4's `/login` was designed assuming this product would eventually open up to multi-user auth — Resend magic-links, a `users` table, etc. — and it was a placeholder for that future. v0.5's scope is explicit that **multi-user auth is not happening** in this cycle (it's named as deferred in the v0.4 closing note); designing the gate for a future that isn't coming earns nothing and costs a templated form on the front door. Single field, single password, single user. When (if) multi-user lands, the new gate is a separate design pass, not an evolution of v0.4's placeholder.
 
@@ -512,7 +514,7 @@ Five steps. Each step has a *deliverable*, a *gate* (what has to be true before 
 
 **Anti-goal during Step 1:** Starting to code "the easy bits" of the visual revamp while sign-off is pending. Easy bits aren't easy if the section that names them moves. The whole point of a sign-off doc is that *the doc is the contract*, and a contract under construction can't be coded against.
 
-**What "sign-off" actually checks:** That §§2, 5, 6, 7 reflect Fatima's stated taste (the frames, the explicit no-variant-D, the navy/green palette, the pixel-retro-terminal cat, the candy-kittens-pink password) — these are the load-bearing personalisation calls and a wrong section here propagates downstream. §§1, 3, 4, 8, 9 are mostly Lotus's editorial; sign-off here is checking the prose register and structural calls (Surprise-as-modal, IA-without-companies-page, four-comic-panel onboarding) rather than catching factual errors.
+**What "sign-off" actually checks:** That §§2, 5, 6, 7 reflect Fatima's stated taste (the frames, the explicit no-variant-D, the navy/green palette, the pixel-retro-terminal cat, the [the password — see private handoff, not in repo] password) — these are the load-bearing personalisation calls and a wrong section here propagates downstream. §§1, 3, 4, 8, 9 are mostly Lotus's editorial; sign-off here is checking the prose register and structural calls (Surprise-as-modal, IA-without-companies-page, four-comic-panel onboarding) rather than catching factual errors.
 
 ### Step 2 — Visual revamp (Machine system, swatch session, asset set)
 
@@ -574,7 +576,7 @@ Five steps. Each step has a *deliverable*, a *gate* (what has to be true before 
 - Confirms the dataset's *coverage* across each frame's 1–5 range — if the field has zero 1s on Working style or zero 5s on Stage of company, the Surprise variants (especially C — Underrated, §5.2) won't have outliers to surface. Where coverage is thin, the pass *either* adds 1–3 marginal companies to fill the gap *or* explicitly notes the gap in `research/london-companies.md` so a future re-curation knows.
 - Confirms tier balance — roughly 10 S, 15 A, 15 B is the rough target for ~40 total, adjustable based on what the curation pass actually surfaces. Tier is editorial, not a quota, but a heavily skewed tier mix makes the size-and-stroke channel (§6.4) less legible.
 
-**Gate to launch:** Fatima's sign-off message that the re-curated dataset reads true. After that: `v0.5` branch merges to `main`, the preview URL is promoted to production, the cron job that drove this concept-doc effort is disabled (it has done its job), and Aadi gets a Discord ping with the password — `candy-kittens-pink` — and a one-sentence "this is the new shape; tell me what changes." The launch *is* the handoff to feedback; v0.6 starts from what Aadi says back.
+**Gate to launch:** Fatima's sign-off message that the re-curated dataset reads true. After that: `v0.5` branch merges to `main`, the preview URL is promoted to production, the cron job that drove this concept-doc effort is disabled (it has done its job), and Aadi gets a Discord ping with the password — `[the password — see private handoff, not in repo]` — and a one-sentence "this is the new shape; tell me what changes." The launch *is* the handoff to feedback; v0.6 starts from what Aadi says back.
 
 **Anti-goal during Step 5:** Adding new features. The temptation during a re-curation pass is to notice a friction point and fix it ("the drawer should show last-publication date inline"). Don't — log it in `journal/` as a v0.6 candidate, finish the curation pass, and *then* decide whether the feature earns inclusion later. v0.5's whole posture is that surface area without editorial work is just surface area; adding a feature mid-curation is exactly the failure mode v0.5 exists to correct.
 
@@ -600,6 +602,13 @@ Lotus-pace, not crunch-pace. Rough orientation, on the understanding that real d
 Total orientation: ~6 weeks from sign-off of this doc to v0.5 launch, assuming no parallel work and no scope drift. The bet of v0.5 is that 6 weeks of disciplined sequential work outperforms 6 weeks of v0.4-style parallel work that compounds half-finished decisions — which is the bet the whole document has been making, restated as a timeline.
 
 ---
+
+
+### Follow-up task (v0.6 candidate, not v0.5)
+
+**In-app companion agent** — a chat surface where Aadi can talk to an LLM that's been *briefed primarily on the app*: it knows the company catalogue, the frame definitions, the fit-notes, the publication corpus, his profile. He can ask clarifying questions ("what's the difference between Frontier-defining and Set the frontier?"), ask for re-summaries ("write a one-paragraph brief on Wayve's policy posture for a meeting tomorrow"), and ask for changes to the dashboard itself ("re-pole the working-style frame", "raise my civic-infra weight"). The cat is the assistant; the dashboard is the workspace. This is the right shape for the v0.4 "lobbycat says" chat panel to grow into.
+
+Why this is v0.6 not v0.5: requires tool-calling against the DB and a real session-scoped context window — not a half-day job. v0.5 ships the dataset and the visual revamp first, then v0.6 makes the cat actually *talk back* across the whole app.
 
 ## Sign-off
 
