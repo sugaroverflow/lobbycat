@@ -9,12 +9,14 @@ import {
   tags as tagsTable,
   companyTags,
   frames,
+  frameScores,
   userProfile,
 } from "./schema";
 import {
   seedCompanies,
   seedTags,
   seedFrames,
+  seedFrameScores,
   seedUserProfile,
 } from "./seed-data";
 import { eq, notInArray } from "drizzle-orm";
@@ -157,6 +159,47 @@ async function main() {
     }
   }
   console.log(`  companies: ${seedCompanies.length}`);
+
+  /* Frame scores — hand-picked editorial pass. Map (company slug, frame name)
+   * onto (company id, frame id) using the rows we just upserted, then
+   * onConflictDoUpdate on the composite PK so re-runs cleanly overwrite. */
+  {
+    const allCompanies = await db.select().from(companies);
+    const companyIdBySlug = new Map(allCompanies.map((c) => [c.slug, c.id]));
+    const allFrames = await db.select().from(frames);
+    const frameIdByName = new Map(allFrames.map((f) => [f.name, f.id]));
+    let inserted = 0;
+    let missing = 0;
+    for (const [slug, scoreByFrame] of Object.entries(seedFrameScores)) {
+      const companyId = companyIdBySlug.get(slug);
+      if (companyId == null) {
+        missing++;
+        console.warn(`  frame_scores: skipped unknown company slug "${slug}"`);
+        continue;
+      }
+      for (const [frameName, score] of Object.entries(scoreByFrame)) {
+        const frameId = frameIdByName.get(frameName);
+        if (frameId == null) {
+          missing++;
+          console.warn(
+            `  frame_scores: skipped unknown frame "${frameName}" (slug=${slug})`,
+          );
+          continue;
+        }
+        await db
+          .insert(frameScores)
+          .values({ companyId, frameId, score })
+          .onConflictDoUpdate({
+            target: [frameScores.companyId, frameScores.frameId],
+            set: { score, updatedAt: new Date() },
+          });
+        inserted++;
+      }
+    }
+    console.log(
+      `  frame_scores: ${inserted} upserted${missing ? `, ${missing} skipped` : ""}`,
+    );
+  }
 
   console.log("done.");
   process.exit(0);

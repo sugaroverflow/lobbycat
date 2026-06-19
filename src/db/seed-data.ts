@@ -660,3 +660,51 @@ export const seedUserProfile = {
     "research/profile-user.md",
   ],
 };
+
+/**
+ * Hand-picked scores for the 30 seeded companies on the 5 scale-kind frames.
+ * Keyed by company slug → frame name → 1..5 (matching `seedFrames[].scale`).
+ *
+ * Editorial scoring guide (each frame anchored by its low/high labels):
+ *   UK-pigeonhole risk:           1 clearly international → 5 very UK-bound
+ *   Charting the unknown:         1 well-mapped → 5 frontier / first-of-its-kind
+ *   Cog vs. build-the-team:       1 established team → 5 first/early policy hire
+ *   Policy vs. product/GTM:       1 pure policy → 5 product / GTM / licensing
+ *   Civic-infrastructure overlap: 1 purely commercial → 5 high civic overlap
+ *
+ * Scores reflect the company `description` text + role context. Each is one
+ * editor's read; the point is to have *something* on the map so axis swaps and
+ * filters actually do work. Aadi can re-score from `/companies/[slug]`.
+ */
+export const seedFrameScores: Record<string, Record<string, number>> = {
+  anthropic: { "UK-pigeonhole risk": 2, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 2 },
+  openai: { "UK-pigeonhole risk": 2, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
+  elevenlabs: { "UK-pigeonhole risk": 2, "Charting the unknown": 5, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
+  cognition: { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
+  "reflection-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
+  "google-deepmind": { "UK-pigeonhole risk": 4, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 2 },
+  mistral: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
+  huggingface: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 3 },
+  "cohere-aleph-alpha": { "UK-pigeonhole risk": 3, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
+  wayve: { "UK-pigeonhole risk": 4, "Charting the unknown": 5, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
+  "stability-ai": { "UK-pigeonhole risk": 4, "Charting the unknown": 4, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
+  synthesia: { "UK-pigeonhole risk": 4, "Charting the unknown": 4, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
+  "faculty-ai": { "UK-pigeonhole risk": 5, "Charting the unknown": 2, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 5 },
+  xai: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 1 },
+  "thinking-machines": { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 2 },
+  anysphere: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 5, "Civic-infrastructure overlap": 1 },
+  "physical-intelligence": { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
+  "black-forest-labs": { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
+  helsing: { "UK-pigeonhole risk": 2, "Charting the unknown": 4, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 4 },
+  deepl: { "UK-pigeonhole risk": 1, "Charting the unknown": 2, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 3 },
+  "silo-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 5 },
+  photoroom: { "UK-pigeonhole risk": 1, "Charting the unknown": 2, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
+  "sakana-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
+  "scale-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 3 },
+  perplexity: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 2 },
+  runway: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
+  suno: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 1 },
+  "character-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 5, "Civic-infrastructure overlap": 2 },
+  groq: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
+  cerebras: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
+};
