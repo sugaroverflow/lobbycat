@@ -1,0 +1,115 @@
+/* ============================================================================
+ * Machine — Lobbycat v0.5 design tokens
+ *
+ * Token-first design system per CONCEPT-v0.5.md §6. Every colour, type,
+ * space, radius, and motion value on the v0.5 surface comes from a token
+ * named for its ROLE (--bg-canvas, --fg-readout, --signal-warn), not its
+ * value (--navy-900, --cyan-300). A swatch-session tune updates one file,
+ * not 200 components.
+ *
+ * Values below are first-pass per §6.2's character notes and Fatima's
+ * locked picks (deep navy #0E1530, dark green #1A3D2E). The paired swatch
+ * session (§9 Step 2) tunes everything else; this file is the only place
+ * those edits land.
+ *
+ * Discipline: components reach for tokens via the @layer extensions in
+ * globals.css or via `bg-[--bg-panel]` arbitrary values. No raw Tailwind
+ * colour utilities in v0.5 components — see §6.6 non-template guardrails.
+ * ========================================================================= */
+
+@layer base {
+  :root {
+    /* --------------------------------------------------------------------
+     * Palette — six roles, per §6.2. OKLCH chosen for perceptual stability
+     * across screens; hex preserved in comments as the swatch-session anchor.
+     * ----------------------------------------------------------------- */
+
+    /* Surfaces */
+    --bg-canvas: oklch(0.18 0.06 270);          /* #0E1530 — deep navy (Fatima 2026-06-19) */
+    --bg-panel: oklch(0.32 0.05 155);           /* #1A3D2E — dark green (Fatima 2026-06-19) */
+    --bg-panel-raised: oklch(0.36 0.05 155);    /* one step warmer for hovered/active panels */
+    --bg-panel-sunk: oklch(0.28 0.05 155);      /* one step deeper for nested wells */
+
+    /* Foreground prose */
+    --fg-prose: oklch(0.93 0.025 85);           /* warm off-white, parchment-tinted */
+    --fg-prose-muted: oklch(0.93 0.025 85 / 0.6);   /* whisper line, metadata */
+    --fg-prose-soft: oklch(0.93 0.025 85 / 0.8);    /* secondary body */
+
+    /* Action — the only colour the eye tracks as "press me" */
+    --accent-action: oklch(0.65 0.18 252);      /* electric blue, primary CTAs */
+    --accent-action-hover: oklch(0.72 0.17 252);
+    --accent-action-press: oklch(0.58 0.18 252);
+
+    /* Readout — data voice; cyan for parsed-from-the-DB values */
+    --readout-cyan: oklch(0.85 0.10 200);       /* cyan, frame names + n/5 scores + axis labels */
+    --readout-cyan-dim: oklch(0.75 0.08 200);   /* dimmer for non-active rows in mini-readouts */
+
+    /* Signal — coral, "flagged for your attention" (rare) */
+    --signal-coral: oklch(0.75 0.16 30);        /* errors, recent-change tag, Forget me */
+    --signal-coral-soft: oklch(0.75 0.16 30 / 0.18);
+
+    /* Hairlines & focus */
+    --rule: oklch(0.93 0.025 85 / 0.18);        /* 1px panel-to-panel borders */
+    --rule-strong: oklch(0.93 0.025 85 / 0.32);
+    --focus-ring: var(--accent-action);
+
+    /* --------------------------------------------------------------------
+     * Typography — §6.3 ratio 80% mono / 20% sans. Family choices are
+     * placeholders for the swatch session (per §6.3: "Reach for something
+     * with character" — Berkeley Mono / MD IO / Departure Mono are candidates).
+     * ----------------------------------------------------------------- */
+    --font-mono: var(--font-mono-loaded), "JetBrains Mono", "SF Mono",
+      ui-monospace, "Menlo", monospace;
+    --font-sans: var(--font-sans-loaded), "Inter", system-ui, sans-serif;
+    /* No serif. No display face. Italic = "the cat is speaking." */
+
+    /* Fixed rem scale per impeccable product register: tighter ratio (1.125–1.2),
+     * not fluid clamp. Headings here are mono at scale. */
+    --text-xs:   0.75rem;     /* 12px — metadata, whispers */
+    --text-sm:   0.8125rem;   /* 13px — labels, controls */
+    --text-base: 0.9375rem;   /* 15px — body */
+    --text-md:   1.0625rem;   /* 17px — drawer headings */
+    --text-lg:   1.25rem;     /* 20px — section headings */
+    --text-xl:   1.5rem;      /* 24px — page headings */
+    --text-2xl:  1.875rem;    /* 30px — comic captions, hero */
+
+    /* --------------------------------------------------------------------
+     * Spacing — four steps per §6.1 "narrow on purpose"
+     * ----------------------------------------------------------------- */
+    --space-1: 0.375rem;      /* 6px  — tight intra-control */
+    --space-2: 0.75rem;       /* 12px — control to label */
+    --space-3: 1.25rem;       /* 20px — section internal */
+    --space-4: 2rem;          /* 32px — section to section */
+
+    /* --------------------------------------------------------------------
+     * Edges — two radii per §6.4
+     * ----------------------------------------------------------------- */
+    --radius-tight: 4px;      /* buttons, pills, inputs, chips */
+    --radius-panel: 10px;     /* cards, modals, drawers */
+
+    /* --------------------------------------------------------------------
+     * Motion — two curves, two durations per §6.4
+     * ----------------------------------------------------------------- */
+    --motion-fast: 120ms;
+    --motion-slow: 280ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);          /* ease-out-quart */
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);       /* surface transitions */
+
+    /* --------------------------------------------------------------------
+     * Semantic z-index (per impeccable layout rule, no arbitrary 999s)
+     * ----------------------------------------------------------------- */
+    --z-dropdown: 50;
+    --z-sticky: 100;
+    --z-modal-backdrop: 200;
+    --z-modal: 210;
+    --z-toast: 300;
+    --z-tooltip: 400;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --motion-fast: 1ms;
+      --motion-slow: 1ms;
+    }
+  }
+}

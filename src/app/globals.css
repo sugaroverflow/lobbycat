@@ -1,87 +1,183 @@
 @import "tailwindcss";
+@import "../styles/machine.css";
+
+/* ============================================================================
+ * v0.5 Machine token surface
+ *
+ * Tokens live in src/styles/machine.css (§6 of the v0.5 concept).
+ * This file:
+ *   1. Re-exports Machine tokens into Tailwind v4's @theme so utility
+ *      classes (`bg-canvas`, `text-prose`, `border-rule`) resolve correctly.
+ *   2. Aliases the v0.3/v0.4 earthcore token names to Machine roles so the
+ *      existing component tree keeps rendering during the Step 4 rebuild
+ *      (no component-by-component rewrite required up-front).
+ *   3. Sets body defaults and the small set of editorial helpers v0.5 needs.
+ *
+ * Earthcore aliases will be removed at the end of Step 4 (Rebuild) when no
+ * component references them. Until then they let the surface switch palette
+ * without breaking. — Lotus 🪷, 2026-06-19
+ * ========================================================================= */
 
 @theme {
-  /* surfaces — earthcore (v0.3) */
-  --color-bg: #f4f1e8;          /* warm cream */
-  --color-surface: #fffef8;     /* paper */
-  --color-surface-sunk: #ece6d3;
-  --color-cream-dark: #e8e1cc;  /* tracker stripes, hover wash */
+  /* Machine — role-named utilities. Use these in v0.5 components.
+   * (Tailwind v4 generates utilities like `bg-canvas`, `text-prose`,
+   *  `border-rule` from --color-<name> entries below.) */
+  --color-canvas: var(--bg-canvas);
+  --color-panel: var(--bg-panel);
+  --color-panel-raised: var(--bg-panel-raised);
+  --color-panel-sunk: var(--bg-panel-sunk);
+  --color-prose: var(--fg-prose);
+  --color-prose-soft: var(--fg-prose-soft);
+  --color-prose-muted: var(--fg-prose-muted);
+  --color-action: var(--accent-action);
+  --color-action-hover: var(--accent-action-hover);
+  --color-readout: var(--readout-cyan);
+  --color-readout-dim: var(--readout-cyan-dim);
+  --color-coral: var(--signal-coral);
+  --color-coral-soft: var(--signal-coral-soft);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
 
-  /* ink */
-  --color-ink: #0e1217;
-  --color-body: #1b2330;
-  --color-muted: #4a5260;
-  --color-whisper: #98a1ac;
+  /* Earthcore backward-compat aliases — v0.3/v0.4 names → Machine roles.
+   * These exist so unmodified v0.4 components render in the Machine palette
+   * during the rebuild. Do NOT add new components that reach for these. */
+  --color-bg: var(--bg-canvas);
+  --color-surface: var(--bg-panel);
+  --color-surface-sunk: var(--bg-panel-sunk);
+  --color-cream-dark: var(--bg-panel-raised);
+  --color-ink: var(--fg-prose);
+  --color-body: var(--fg-prose);
+  --color-muted: var(--fg-prose-soft);
+  --color-whisper: var(--fg-prose-muted);
+  --color-rule-strong-compat: var(--rule-strong);
+  --color-accent: var(--accent-action);
+  --color-accent-soft: var(--readout-cyan);
+  --color-accent-wash: var(--bg-panel-raised);
+  --color-moss: var(--accent-action);
+  --color-sage: var(--readout-cyan);
+  --color-sage-soft: var(--bg-panel-raised);
+  --color-sage-dark: var(--readout-cyan-dim);
+  --color-ochre: var(--readout-cyan);
+  --color-ochre-soft: var(--bg-panel-raised);
+  --color-terracotta: var(--signal-coral);
+  --color-terracotta-soft: var(--signal-coral-soft);
+  --color-mushroom: var(--fg-prose-muted);
+  --color-mushroom-soft: var(--bg-panel-raised);
+  --color-warm: var(--signal-coral);
+  --color-warm-soft: var(--signal-coral-soft);
+  --color-positive: var(--accent-action);
+  --color-positive-soft: var(--readout-cyan);
 
-  /* hairline */
-  --color-rule: #d8d2bf;
-  --color-rule-strong: #a89f86;
-
-  /* earthcore palette */
-  --color-moss: #3e5c3a;        /* buttons, links, primary accent */
-  --color-sage: #a8c09a;        /* tag pills, chart slices */
-  --color-sage-soft: #d9e5c9;   /* pill backgrounds */
-  --color-sage-dark: #6b8a5c;
-  --color-ochre: #c49a4b;       /* secondary signal */
-  --color-ochre-soft: #ecdcb6;
-  --color-terracotta: #b85048;  /* warning / signal */
-  --color-terracotta-soft: #f2d9d6;
-  --color-mushroom: #857366;    /* muted accent */
-  --color-mushroom-soft: #d8cfc5;
-
-  /* accent aliases (backwards compatible — moss replaces the old steel blue) */
-  --color-accent: #3e5c3a;
-  --color-accent-soft: #a8c09a;
-  --color-accent-wash: #d9e5c9;
-
-  /* signal aliases */
-  --color-warm: #b85048;
-  --color-warm-soft: #f2d9d6;
-  --color-positive: #3e5c3a;
-  --color-positive-soft: #d9e5c9;
-
-  /* fonts */
-  --font-serif: var(--font-serif), "Iowan Old Style", "Charter", Georgia, serif;
-  --font-sans: var(--font-sans), system-ui, sans-serif;
-  --font-mono: var(--font-mono), ui-monospace, "SF Mono", Menlo, monospace;
+  /* Fonts — Machine wants mono-forward (§6.3, ~80/20 ratio).
+   * Swap default body face to mono; sans is for prose-length reading only. */
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-mono);   /* v0.4 `.serif` helper retargets to mono — no serif in Machine */
 }
 
 html {
   font-feature-settings: "ss01" on, "cv11" on;
+  color-scheme: dark;
 }
 
 body {
-  font-family: var(--font-sans);
-  color: var(--color-body);
-  background: var(--color-bg);
+  /* Machine is mono-forward: chrome, controls, nav, labels, readouts all mono.
+   * Components that need prose-length reading opt in via .prose-face. */
+  font-family: var(--font-mono);
+  color: var(--fg-prose);
+  background: var(--bg-canvas);
   font-feature-settings: "cv11" on;
 }
 
 ::selection {
-  background: var(--color-accent-wash);
-  color: var(--color-ink);
+  background: color-mix(in oklch, var(--accent-action) 30%, transparent);
+  color: var(--fg-prose);
 }
 
-/* Editorial helpers */
-.eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-whisper);
+:focus-visible {
+  outline: 2px solid var(--accent-action);
+  outline-offset: 2px;
+  border-radius: var(--radius-tight);
 }
 
-.serif {
-  font-family: var(--font-serif);
-  font-feature-settings: "ss01" on, "cv11" on;
-  letter-spacing: -0.005em;
+/* Scrollbars — themed per §6.4 */
+* {
+  scrollbar-color: var(--fg-prose-muted) var(--bg-panel);
+}
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: var(--bg-panel);
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--fg-prose) 30%, transparent);
+  border-radius: var(--radius-tight);
 }
 
+/* ----------------------------------------------------------------------------
+ * Editorial helpers
+ * ------------------------------------------------------------------------- */
+
+/* Mono is the body face, so `.mono` is a no-op kept for v0.4 callsite compat. */
 .mono {
   font-family: var(--font-mono);
   font-feature-settings: "ss03" on, "cv11" on;
 }
 
+/* `.prose-face` opts a region into the sans for reading-length copy
+ * (frame descriptions, fit-notes, comic captions over ~12 words). */
+.prose-face {
+  font-family: var(--font-sans);
+  line-height: 1.55;
+  max-width: 70ch;
+}
+
+/* Italic = "the cat is speaking" (§6.3). */
+.cat-voice {
+  font-style: italic;
+  color: var(--fg-prose-soft);
+}
+
+/* The eyebrow helper survives — Machine uses cyan readouts for it, not whisper. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--readout-cyan);
+}
+
+/* v0.4 `.serif` callsites retarget to mono — no serif in Machine. */
+.serif {
+  font-family: var(--font-mono);
+  letter-spacing: -0.005em;
+}
+
+/* Hairline border for panel-to-panel separators. */
 .hairline {
-  border-color: var(--color-rule);
+  border-color: var(--rule);
+}
+
+/* Readout — small `n/5` style values, axis labels, variant pills. */
+.readout {
+  font-family: var(--font-mono);
+  color: var(--readout-cyan);
+  letter-spacing: 0.04em;
+}
+
+/* Variant pill (Surprise modal, §5.1). */
+.variant-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.18rem 0.5rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--readout-cyan);
+  border: 1px solid var(--readout-cyan-dim);
+  border-radius: var(--radius-tight);
 }
