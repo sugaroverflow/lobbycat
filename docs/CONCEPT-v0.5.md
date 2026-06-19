@@ -144,3 +144,66 @@ There is no fourth route. If Aadi wants to scan the whole field flat, he uses th
 The load-bearing claim of this section is: **every primary surface in v0.5 puts a frame between Aadi and a company.** Map plots companies on two frames at once. Compare reads companies along all six frames in parallel. Frames is the frames themselves. Surprise picks a company because of a frame-shaped reason. About holds the weights that re-rank everything across the frames.
 
 When we're tempted to add a feature in v0.5, the test is: *does this put a frame between Aadi and a company, or does it route around the frames?* If it routes around them, it doesn't belong in v0.5 — it belongs in v0.6 or in the drawer of "things v0.4 over-built."
+
+---
+
+## 4. First-time experience flow
+
+The first session sets the editorial register for everything that follows. v0.4's onboarding was a driver.js coachmark tour layered over the live Map — functional, but it leaked the product *into* the explanation: Aadi met Lobbycat by being walked around its UI chrome. v0.5 inverts that. Before he touches the surface, he reads a four-panel comic strip that says what this is, who it's for, and how the frames work. Then a gentle password gate. Then he lands on the home Map with a Surprise *already cued up*, so the first thing he does is pull a lever, not stare at axes.
+
+The ordering is the point: **story → gate → first delight**, in that sequence. Each step is one screen, dismissable forward only, no skip until panel 4.
+
+### 4.1 The four comic panels
+
+The panels are styled in the v0.5 design language (§6): mono-forward type, deep-navy panels, the pixel-retro-terminal cat as the recurring character, cyan readouts and coral signals for the small interface details inside the comic. Each panel is one screen at mobile and desktop; advancing is a single button — `Next →` on panels 1–3, `Open the door` on panel 4. There is no back button (the comic is short enough that re-reading means restarting from About → "show me around again").
+
+**Panel 1 — "This is Lobbycat."**
+
+The pixel-retro-terminal cat sits in front of a CRT showing a sparse 2D plot of dots. One-line caption above: *A curated map of London's AI-policy companies.* One-line caption below, in the cat's voice: *I read the field so you can pick where to point next.* This panel does the **what** — a sentence and an image, no scrolling, no chrome. Aadi should be able to close the tab here and have an accurate mental model of the product.
+
+**Panel 2 — "Six frames."**
+
+The cat is at a desk with six labelled cards laid out in front of it (the §2 frames, named, one short pole-pair each). The cards aren't legible as a reading surface — they're props that show *there are six*, that they have *named poles*, and that they're *editorial cards, not metrics*. Caption, cat's voice: *Every company gets read along these six. You'll see them on the axes, in compare, and behind every nudge I give you.* This panel does the **lens** — it plants the frames as the load-bearing concept before Aadi sees the Map.
+
+**Panel 3 — "Two at a time."**
+
+The cat is pointing at a stylised version of the home Map: an X-axis and a Y-axis labelled with two of the frames, a scatter of dots, one dot pinned with a small drawer-stub underneath. Caption, cat's voice: *Pick any two frames for the axes. Hover a dot to peek, click to pin, dig in below.* This panel does the **how** — it pre-loads the map gesture (hover / click / drawer) so the first session on the real Map doesn't need a tooltip to explain itself. No driver.js, no coachmark, no live-element highlight.
+
+**Panel 4 — "And when you don't know where to look —"**
+
+The cat is mid-shrug, paws on a single button reading `Surprise me`. The button on screen is the same one Aadi will see on the Map seconds later — same shape, same type, same colour treatment. Caption, cat's voice: *— I'll pick one for you, and tell you why.* Button reads `Open the door`. The transition from panel 4 to the password screen is the only "don't break the spell" moment in the onboarding: the comic panel fades, the password input rises into the same frame, and the cat stays on screen during the gate.
+
+### 4.2 The password gate
+
+v0.5 is a small, named pre-launch product for one user; it does not need real auth and does not yet have a magic-link flow. A single shared password — **`candy-kittens-pink`** — gates the surface. The gate exists for two reasons:
+
+1. **It keeps the surface unindexed.** Bots and link-share previews can't reach the Map. The robots.txt + the gate together mean a stray tweet doesn't surface the URL to the open web.
+2. **It marks the threshold.** The password is the small ritual that says *you are entering a curated thing, not a directory*. "candy-kittens-pink" carries that register on purpose — it's whimsical, low-stakes, and unmistakably *not* enterprise auth.
+
+Mechanics: one input, monospaced placeholder *enter the password*, submit button reads `Unlock`. Wrong password shakes the input and shows *try again* in coral; no rate limit, no lockout, no "forgot password" link (if Aadi forgets, the cron-running operator tells him). Right password sets a long-lived cookie (`lc_v05_unlocked`, 90 days, `httpOnly`, `sameSite: lax`) and pushes him to home. The cookie's presence — not a session table — is the entire auth state. Logout is `Forget me` on About, which clears the cookie.
+
+The gate is **outside** the comic strip. Re-arriving on the gate (cookie expired, new device) does *not* replay the comic — the comic ran once and the user-profile row remembers that. Re-replay is opt-in from About (the v0.4 *show me around again* affordance survives, now triggering the comic instead of the coachmark tour).
+
+### 4.3 First home — Surprise already cued
+
+After the gate, Aadi lands on `/` — the home Map (§3.2). The first-session render differs from every subsequent render in exactly one way: **the Surprise modal is already open**, with a freshly generated pick visible.
+
+- The Map renders behind the modal at default axes (*Policy posture* × *Working style*), so when he closes the modal he's already on the canvas.
+- The Surprise inside the modal is a variant A (Adjacency) pick by default for the first run (see §5.2 for variant logic) — Adjacency is the most legible variant for a cold start because its reason references the axes Aadi can see behind the modal.
+- The modal is dismissable normally (ESC, click-outside, `Close`). Clicking the pick navigates to that company's drawer on the Map, in-place; the modal closes behind him.
+- A small whisper line under the pick reads *every surprise has a reason — here's yours.* This line only appears on the first-session modal; subsequent Surprise opens don't repeat it.
+
+**Why open the modal automatically.** Panel 4 of the comic just promised "I'll pick one for you." The first-home modal *delivers* on that promise inside the same gesture. The alternative — landing on an empty Map and waiting for him to find the Surprise button — would teach him that the comic's promises and the surface's behaviour are weakly linked. The auto-open is the only place in v0.5 where the product does something for him without being asked; that one indulgence pays for the comic's editorial weight.
+
+**Why default to variant A.** The Adjacency reason ("this company sits close to *X* on the axes you're viewing") is the only Surprise reason that's *immediately verifiable* against the Map behind the modal. Recency and Underrated both need context Aadi doesn't yet have on first run (the recency of the field's publications, his own under-attention pattern). Variant A is the kindest first taste.
+
+### 4.4 What the first session does *not* include
+
+Things deliberately not in the first-time experience flow, with reasons:
+
+- **No name / role / weight collection on first run.** v0.4 asked for these upfront and slowed the time-to-first-Surprise to a minute. v0.5 lets the About page collect them whenever Aadi gets there; the comic and the first Surprise both work without a profile row. (Frame weighting defaults to uniform until he sets it.)
+- **No tutorial on Compare or Frames.** Those surfaces are reached from the global nav and are self-explanatory enough that explaining them in panels 5 and 6 would push the comic past its readable length. Compare's first-visit can carry one whisper line; Frames is its own explainer (it *is* the explainer).
+- **No "meet the cat" anthropomorphism beyond the panels.** The cat is the comic's narrator and a small presence on About; it does *not* live in the corner of the Map giving running commentary. The frames carry the editorial voice on the live surface; the cat carries it in the onboarding moment and in the diff-review loop on About.
+- **No skip-to-end on the comic.** The skip button on panels 1–3 reads `Skip` and dismisses the *whole* comic (goes straight to the password gate), it does not advance to panel 4. Skipping is allowed but it's all-or-nothing — partial onboarding is worse than no onboarding for setting the editorial register.
+
+---
