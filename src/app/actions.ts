@@ -208,7 +208,7 @@ Return STRICT JSON in this exact shape — an object with a "frames" array. No o
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      model: "claude-sonnet-4-5",
+      model: "claude-3-5-haiku-latest",
       max_tokens: 1200,
       system,
       messages: [{ role: "user", content: userPrompt }],
@@ -541,7 +541,7 @@ export async function sendFitNoteMessage({
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      model: "claude-sonnet-4-5",
+      model: "claude-3-5-haiku-latest",
       max_tokens: 400,
       system,
       messages: apiMessages,
