@@ -45,3 +45,41 @@ The remaining `Deployment was blocked` status on the latest preview push is **Ve
 **Would change if:**
 - Swatch session reveals the accent/readout/coral first-pass values clash badly with the locked navy/green — these are all in one file, one edit each.
 - Drizzle's `relations` or `with` clauses rely on prototype chains that break under Proxy (the db fix from above) — would refactor to a memoised getter instead of a Proxy.
+
+---
+
+## 2026-06-20 00:05 UTC — [data-pipelines] EU Transparency Register source URL is env-configurable, defaults to spec URL even though it currently 404s
+
+**Decided:** `runEuTransparencyPipeline()` reads the source URL from \`options.url\` → \`EU_TRANSPARENCY_CSV_URL\` env → fallback constant \`DEFAULT_REGISTER_URL\` (the URL the task spec gave: `https://ec.europa.eu/transparencyregister/public/openFile.do?fileName=full_export.csv`). A `?url=` query param on the cron route lets ops re-point on the fly.
+
+**Why:**
+- The spec URL responds with HTTP 404 right now (verified `curl -I` at 23:43 UTC). The official dataset page at `data.europa.eu/data/datasets/transparency-register` lists XML/Excel exports rather than CSV.
+- Two failure modes: (a) URL is real and intermittently down, (b) URL was wrong in the spec. Cron-route URL override + env override handle both without redeploying.
+- Pipeline gracefully degrades on fetch failure (returns `warning:"fetch failed: …"`, zero rows) so the cron is a no-op rather than a 500 when upstream is down.
+
+**Alternatives considered:**
+- Hard-code a different URL — rejected: we'd be guessing too, and we'd have to redeploy to fix it.
+- Block the PR pending URL verification with Fatima — rejected by overnight rule.
+- Switch to the Excel/XML export now — rejected: doubles the parsing surface for this PR; can be a follow-up.
+
+**Would change if:**
+- Real URL surfaces (Fatima / Aadi confirm, or the official page is re-checked) → set `EU_TRANSPARENCY_CSV_URL` on Vercel, no code change needed.
+- The real export turns out to be XML-only → add an Atom/XML adapter and select by content-type.
+
+## 2026-06-20 00:05 UTC — [data-pipelines] Tolerant column detection over a fixed schema
+
+**Decided:** Column names in the CSV are detected via `pickColumn(headers, candidates)` (case + whitespace + dash + underscore insensitive, with substring fallback). We try a handful of plausible names for registrant, registration id, closed-financial-year costs, and fields of interest. If the registrant-name column isn't found we return a `warning` with the parsed headers so reviewers can extend the candidate list without guessing.
+
+**Why:** We don't have the file in hand. The schema has shifted before (the register CSV columns have been renamed across formats). Making detection liberal + observable beats hard-coding a schema we'd then have to ship a fix for. The dryRun route + `headers[]` in the response give a clean "tell me what's actually in there" debug loop.
+
+**Would change if:**
+- The real schema turns out to be column-positional rather than header-keyed (unlikely for an official register feed).
+
+## 2026-06-20 00:05 UTC — [data-pipelines] Permissive name-matcher: normalised exact OR prefix containment (≥4 chars)
+
+**Decided:** Matcher normalises both sides (lowercase, NFD-strip diacritics, drop parentheticals + non-alphanumerics, strip trailing legal suffixes from a curated list — "sas, sa, gmbh, ltd, plc, inc, llc, bv, …"). Then: exact normalised match OR `prefix + " "` containment in either direction, as long as the normalised key is ≥4 chars (avoids "ai" matching everything).
+
+**Why:** Trade-off favours false positives over false negatives — see comment block in `match.ts`. Verified manually against test cases: "Anthropic PBC", "Mistral AI SAS", "Hugging Face, Inc.", "OpenAI Ireland Limited" all match correctly; "Google LLC" returns null when not in seed.
+
+**Would change if:**
+- A reviewer flags a real false-positive (e.g. an unrelated org that prefix-matches one of our seed names). Mitigation already in place: drop the ≥4-char floor lower or move to token-bag Jaccard.
