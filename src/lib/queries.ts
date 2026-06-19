@@ -58,6 +58,117 @@ export async function getCompaniesWithTags() {
   }));
 }
 
+export async function getCompaniesWithExpandableDetails() {
+  const baseCompanies = await getCompaniesWithTags();
+  if (baseCompanies.length === 0) {
+    return [] as Array<
+      (typeof baseCompanies)[number] & {
+        openRolesList: Array<{
+          id: number;
+          title: string;
+          url: string;
+          department: string | null;
+          location: string | null;
+        }>;
+        recentPublications: Array<{
+          id: number;
+          title: string;
+          url: string;
+          type: string;
+          publishedAt: Date | null;
+        }>;
+        scores: Array<{
+          frameId: number;
+          frameName: string;
+          lowLabel: string;
+          highLabel: string;
+          score: number | null;
+        }>;
+      }
+    >;
+  }
+  const companyIds = baseCompanies.map((c) => c.id);
+
+  const [openRolesRows, recentPubsRows, allFramesRows, scoreRows] = await Promise.all([
+    db
+      .select({
+        id: roles.id,
+        companyId: roles.companyId,
+        title: roles.title,
+        url: roles.url,
+        department: roles.department,
+        location: roles.location,
+        seenAt: roles.seenAt,
+      })
+      .from(roles)
+      .where(and(inArray(roles.companyId, companyIds), eq(roles.isOpen, true)))
+      .orderBy(desc(roles.seenAt)),
+    db
+      .select({
+        id: publications.id,
+        companyId: publications.companyId,
+        title: publications.title,
+        url: publications.url,
+        type: publications.type,
+        publishedAt: publications.publishedAt,
+      })
+      .from(publications)
+      .where(inArray(publications.companyId, companyIds))
+      .orderBy(desc(publications.publishedAt)),
+    db.select().from(frames).orderBy(frames.sortIndex),
+    db
+      .select({
+        companyId: frameScores.companyId,
+        frameId: frameScores.frameId,
+        score: frameScores.score,
+      })
+      .from(frameScores)
+      .where(inArray(frameScores.companyId, companyIds)),
+  ]);
+
+  const rolesByCompany = new Map<number, typeof openRolesRows>();
+  for (const r of openRolesRows) {
+    const list = rolesByCompany.get(r.companyId) || [];
+    list.push(r);
+    rolesByCompany.set(r.companyId, list);
+  }
+  const pubsByCompany = new Map<number, typeof recentPubsRows>();
+  for (const p of recentPubsRows) {
+    const list = pubsByCompany.get(p.companyId) || [];
+    list.push(p);
+    pubsByCompany.set(p.companyId, list);
+  }
+  const scoreByCoFrame = new Map<string, number>();
+  for (const s of scoreRows) {
+    scoreByCoFrame.set(`${s.companyId}:${s.frameId}`, s.score);
+  }
+
+  return baseCompanies.map((c) => ({
+    ...c,
+    openRolesList: (rolesByCompany.get(c.id) || []).slice(0, 5).map((r) => ({
+      id: r.id,
+      title: r.title,
+      url: r.url,
+      department: r.department,
+      location: r.location,
+    })),
+    recentPublications: (pubsByCompany.get(c.id) || []).slice(0, 5).map((p) => ({
+      id: p.id,
+      title: p.title,
+      url: p.url,
+      type: p.type,
+      publishedAt: p.publishedAt,
+    })),
+    scores: allFramesRows.map((f) => ({
+      frameId: f.id,
+      frameName: f.name,
+      lowLabel: f.lowLabel,
+      highLabel: f.highLabel,
+      score: scoreByCoFrame.get(`${c.id}:${f.id}`) ?? null,
+    })),
+  }));
+}
+
 export async function getCompanyBySlug(slug: string) {
   const [company] = await db
     .select()
