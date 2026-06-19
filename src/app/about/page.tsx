@@ -1,5 +1,6 @@
 import { SiteShell } from "@/components/site-shell";
 import { ProfileEditor } from "@/components/profile-editor";
+import { ReplayOnboardingLink } from "@/components/replay-onboarding-link";
 import { getUserProfile } from "@/lib/queries";
 
 export default async function AboutPage() {
@@ -32,6 +33,9 @@ export default async function AboutPage() {
         weights={weights}
         sources={sources}
       />
+      <div className="max-w-[42rem] mx-auto px-6 pb-16">
+        <ReplayOnboardingLink />
+      </div>
     </SiteShell>
   );
 }

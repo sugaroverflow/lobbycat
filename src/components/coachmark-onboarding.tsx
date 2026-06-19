@@ -60,14 +60,26 @@ export function CoachmarkOnboarding({
       d?.destroy();
     };
 
+    // Cleanup handles for interaction listeners we attach per-step.
+    const cleanups: Array<() => void> = [];
+    const clearListeners = () => {
+      while (cleanups.length) cleanups.pop()?.();
+    };
+
     d = driver({
       showProgress: true,
       progressText: "{{current}} of {{total}}",
       nextBtnText: "next →",
       prevBtnText: "← back",
       doneBtnText: "let's go",
-      onCloseClick: () => finish(),
-      onDestroyed: () => finish(),
+      onCloseClick: () => {
+        clearListeners();
+        finish();
+      },
+      onDestroyed: () => {
+        clearListeners();
+        finish();
+      },
       steps: [
         {
           element: "[data-coachmark='hero']",
@@ -84,20 +96,54 @@ export function CoachmarkOnboarding({
           popover: {
             title: "First, edit your frames.",
             description:
-              "Frames are the lenses you look through. Open /frames and add or tweak one — make at least one of them yours before mapping anything.",
+              "Click into /frames and add or tweak one — make at least one of them yours before mapping anything.",
             side: "bottom",
             align: "center",
+            // No next button — advancing requires actually clicking the nav.
+            showButtons: ["close", "previous"],
           },
+          onHighlighted: () => {
+            const nav = document.querySelector<HTMLAnchorElement>(
+              "[data-coachmark='frames-nav']",
+            );
+            if (!nav) return;
+            const handler = () => {
+              // They actually clicked through — mark onboarded so the tour
+              // doesn't replay when they come back from /frames.
+              writeCookie(COOKIE_NAME, "1");
+              void markOnboarded().catch(() => {});
+            };
+            nav.addEventListener("click", handler, { once: true });
+            cleanups.push(() => nav.removeEventListener("click", handler));
+          },
+          onDeselected: () => clearListeners(),
         },
         {
           element: "[data-coachmark='axis-picker']",
           popover: {
             title: "Now, map the companies.",
             description:
-              "Pick any two scale-frames and watch the field rearrange. When you want to talk something through, the cat is here — just ask.",
+              "Switch one of the axes and watch the field rearrange. When you want to talk something through, the cat is here — just ask.",
             side: "bottom",
             align: "start",
+            // No done button — advancing requires actually switching an axis.
+            showButtons: ["close", "previous"],
           },
+          onHighlighted: () => {
+            const picker = document.querySelector<HTMLElement>(
+              "[data-coachmark='axis-picker']",
+            );
+            if (!picker) return;
+            const handler = () => {
+              clearListeners();
+              d?.destroy();
+            };
+            picker.addEventListener("change", handler, { once: true });
+            cleanups.push(() =>
+              picker.removeEventListener("change", handler),
+            );
+          },
+          onDeselected: () => clearListeners(),
         },
       ],
     });
@@ -105,6 +151,7 @@ export function CoachmarkOnboarding({
     d.drive();
 
     return () => {
+      clearListeners();
       d?.destroy();
     };
   }, [onboardedAt, firstName, force]);
