@@ -4,6 +4,10 @@
     {
       "path": "/api/cron/ats-feeds",
       "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/rss-ingestion",
+      "schedule": "30 6 * * *"
     }
   ]
 }

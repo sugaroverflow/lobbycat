@@ -13,6 +13,8 @@ export type SeedCompany = {
   policyPageUrl?: string;
   rolesSource?: "greenhouse" | "lever" | "ashby" | "custom";
   rolesSourceId?: string; // board token
+  blogRssUrl?: string;
+  pressRssUrl?: string;
   focusAreas: string[];
   description: string;
   tags: string[];
@@ -121,6 +123,7 @@ export const seedCompanies: SeedCompany[] = [
     policyPageUrl: "https://www.anthropic.com/policy",
     rolesSource: "greenhouse",
     rolesSourceId: "anthropic",
+    blogRssUrl: "https://www.anthropic.com/news/rss.xml",
     focusAreas: ["frontier-AI regulation", "safety policy", "EU AI Act"],
     description:
       "Frontier AI lab with a dedicated policy team across SF and London. Large established policy function — specialist roles, deep ties to AISI / NIST / EU AI Office. Live openings include 'Regulatory Counsel, Content & Frontier AI Regulation' partnering directly on EU AI Act engagement.",
@@ -148,6 +151,7 @@ export const seedCompanies: SeedCompany[] = [
     websiteUrl: "https://openai.com",
     careersUrl: "https://openai.com/careers/",
     policyPageUrl: "https://openai.com/news/global-affairs/",
+    blogRssUrl: "https://openai.com/blog/rss.xml",
     focusAreas: ["global affairs", "EU AI Act", "UK AI Bill", "national security"],
     description:
       "Global Affairs is OpenAI's policy umbrella, structured around regional leads (EMEA, UK, US). Many open roles in 2026 including Head of EMEA Global Affairs (London) and UK Policy and Partnerships Lead.",
@@ -243,6 +247,7 @@ export const seedCompanies: SeedCompany[] = [
     hq: "London · Mountain View",
     websiteUrl: "https://deepmind.google",
     careersUrl: "https://deepmind.google/careers/",
+    blogRssUrl: "https://deepmind.google/blog/rss.xml",
     focusAreas: [
       "AI governance",
       "frontier safety",
@@ -282,6 +287,7 @@ export const seedCompanies: SeedCompany[] = [
     hq: "New York · Paris",
     websiteUrl: "https://huggingface.co",
     careersUrl: "https://apply.workable.com/huggingface/",
+    blogRssUrl: "https://huggingface.co/blog/feed.xml",
     focusAreas: [
       "open-source AI policy",
       "GPAI obligations",
