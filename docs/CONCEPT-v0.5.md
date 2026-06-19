@@ -497,3 +497,112 @@ The load-bearing claim of §8 is: **the v0.4 codebase is the right starting poin
 The honest test for every survivor named above: *if a frame goes between Aadi and a company through this thing, in v0.5, this thing belongs in v0.5.* Each survivor above passes that test; the deletes in §7 fail it.
 
 ---
+
+## 9. Implementation order
+
+The previous eight sections describe *what* v0.5 is. This section says *in what order* it gets built — and, just as importantly, *what doesn't start until the previous step is signed off*. v0.4 over-built partly because steps overlapped: the dataset grew while the IA was still moving, the visual treatment evolved while components were being written against it, and re-curation kept getting deferred because the surface kept changing underneath it. v0.5's discipline is the inverse — **one step at a time, with an explicit gate between each, and no parallel work that depends on a still-moving spec.**
+
+Five steps. Each step has a *deliverable*, a *gate* (what has to be true before the next step starts), and an *anti-goal* (what we'll be tempted to do during this step that we explicitly aren't doing). Lotus-pace cadence: a step is "done" when the deliverable is signed off by Fatima, not when it's been worked on for a week.
+
+### Step 1 — Concept sign-off (this doc)
+
+**Deliverable:** This document — `docs/CONCEPT-v0.5.md`, sections 1–9 — reviewed end-to-end by Fatima, with any corrections applied in a single revision pass and the result tagged `concept-v0.5-signed-off` in git.
+
+**Gate to Step 2:** Fatima's explicit sign-off message (Discord or a written `LGTM` commit on the tag). Until that message lands, no code work on v0.5 begins. Lotus may use the gap to draft the swatch-session brief (a one-pager pulling §6 into a checklist of decisions the session has to make), but `src/` does not get touched.
+
+**Anti-goal during Step 1:** Starting to code "the easy bits" of the visual revamp while sign-off is pending. Easy bits aren't easy if the section that names them moves. The whole point of a sign-off doc is that *the doc is the contract*, and a contract under construction can't be coded against.
+
+**What "sign-off" actually checks:** That §§2, 5, 6, 7 reflect Fatima's stated taste (the frames, the explicit no-variant-D, the navy/green palette, the pixel-retro-terminal cat, the candy-kittens-pink password) — these are the load-bearing personalisation calls and a wrong section here propagates downstream. §§1, 3, 4, 8, 9 are mostly Lotus's editorial; sign-off here is checking the prose register and structural calls (Surprise-as-modal, IA-without-companies-page, four-comic-panel onboarding) rather than catching factual errors.
+
+### Step 2 — Visual revamp (Machine system, swatch session, asset set)
+
+**Deliverable:** Three artifacts, in this order:
+
+1. **Swatch session decisions, captured.** A paired session between Fatima and Lotus that turns §6's brief into concrete values: the six palette hex values (`--bg-canvas`, `--bg-panel`, `--accent-action`, `--readout-cyan`, `--signal-coral`, `--fg-prose`), the mono family + sans family choices (with self-host setup if the chosen mono isn't on Google Fonts), the type scale (six steps from caption to display-mono), the spacing tokens (four steps), the radii values (`--radius-tight`, `--radius-panel`), and the motion durations + easings. Captured as `tokens.machine.ts` + `src/styles/machine.css` in a single commit on a `visual-revamp` branch.
+2. **The pixel-retro-terminal cat, five poses.** `public/cat/pixel/` with `idle.png`, `blink.png`, `paw-up.png`, `mid-shrug.png`, `points-at-thing.png` at the chosen base resolution (32×32 or 64×64, decision lives in the swatch session). Each sprite rendered crisp at integer scales via CSS `image-rendering: pixelated`. The cartoon cat assets (`public/cat/` non-pixel) move to `public/cat/_archive/` in the same commit — not deleted yet, but not referenced from anywhere in `src/`.
+3. **Reference renders for sign-off.** Three Figma frames (or three hand-built static HTML pages, Lotus's call): the home Map at default axes with one pinned drawer; the Surprise modal with a variant A pick; one comic panel from §4.1 (panel 2, the frame-cards one) at full panel size. These exist *only* to confirm the Machine register reads the way §6 promises before any production surface is touched.
+
+**Gate to Step 3:** Fatima's sign-off on the three reference renders, plus a green CI on the `visual-revamp` branch (the tokens file compiles, the asset set loads, the renders deploy to a preview URL).
+
+**Anti-goal during Step 2:** Re-skinning existing v0.4 surfaces in the new tokens. Tempting because it would produce visible progress fast, but it ties the visual revamp to the v0.4 IA — and v0.5's IA is *different* from v0.4's (§3). Re-skinning v0.4 means later un-skinning routes that are about to die (§7). Reference renders only; the production re-skin happens in Step 5.
+
+### Step 3 — London dataset curation (the research memo, the company list, the fit-notes)
+
+**Deliverable:** Three artifacts, again ordered:
+
+1. **`research/london-companies.md` — the editorial memo.** A ~3,000-word working document by Lotus, reviewed by Fatima, naming the ~30–60 London AI-policy companies in v0.5's scope. The memo answers: *what's the inclusion criterion?* (UK-based or material UK presence; "AI policy" as in works on the rules around AI, not as in builds AI products with a policy team), *what's the exclusion criterion?* (purely-academic groups without an external policy surface; pure-product companies whose "policy" is a single PR person), *what are the obvious S-tier candidates?* (the well-known set Aadi would name unprompted), *what are the less-obvious A/B-tier candidates worth keeping?* (the cohort that justifies the curation work). The memo is also the place to be honest about the field's edges — *we're including X even though it's marginal because…*, *we're excluding Y even though it's prominent because…*.
+
+   This file did not exist when §7 and §8 were drafted, and the references to it in those sections (§7.9, §8.1) are forward-references to *this* step's deliverable. The doc gets retroactively-correct the moment Step 3 ships.
+
+2. **The seed company list, in the database.** ~30–60 rows in `companies`, each with: `slug`, `display_name`, `url`, `short_description` (one mono sentence in the Machine register), `tier` (S/A/B), `london_presence_note` (one sentence — "HQ London", "London office of US parent", "remote-first with UK lead based in London"). No `frame_scores` yet, no fit-notes yet — those are step 3 part 3.
+
+3. **First-pass fit-notes and frame scores.** For each of the ~30–60 companies: one fit-note paragraph (Aadi's editorial voice via the cat, ~80–150 words), and a complete 1–5 score on each of the six frames (§2) with a one-sentence rationale per cell. This is the largest piece of editorial work in v0.5 — figure 30 companies × (1 fit-note + 6 rationales) ≈ 210 hand-written editorial paragraphs. Lotus drafts; Fatima reviews in batches of ~10 companies at a time.
+
+**Gate to Step 4:** All three artifacts shipped, with Fatima signing off the memo (artifact 1) before the data work starts, and the dataset (artifacts 2 + 3) marked `dataset-v0.5-curated` in the database via a migration tag.
+
+**Anti-goal during Step 3:** Touching any UI code. The temptation here is real because the curation work is slow and code work feels like "moving forward." It isn't — building the rebuild (Step 4) before the dataset is curated means building a surface that *doesn't know yet* whether it's rendering 12 companies or 60, with what tier mix, with what fit-note lengths, with how much variance across frame scores. Better to know.
+
+**Why Step 3 comes before Step 4, not in parallel:** The dataset's *shape* (count, tier mix, score variance, fit-note length distribution) is an input to several UI calls in Step 4 — the Map's dot-density and zoom behaviour, the Compare's column width, the Surprise variant fallback thresholds (§5.4). Doing the rebuild against a placeholder dataset means re-tuning those calls when the real dataset lands, which is exactly the kind of double-work v0.4 kept doing.
+
+### Step 4 — Rebuild (re-skin v0.4 onto Machine + new IA)
+
+**Deliverable:** The v0.5 production surface, deployed at the same domain v0.4 lives on, with:
+
+- The home route is the Map (§3.2). `/companies` and its routes are removed (§7.1). The four-item nav is in place (§3.1). The drawer-anchored fit-note editor replaces the dead `/companies/[slug]` editor (§7.7, §8.4).
+- The four-panel comic onboarding ships (§4.1), the password gate is rewritten (§4.2, §7.5), the first-home Surprise auto-opens (§4.3).
+- The Surprise modal ships with all three variants (§5.2), the variant rotation logic (§5.4), and the explicit no-fourth-variant (§5.5).
+- The Machine tokens (`tokens.machine.ts`, `machine.css` from Step 2) drive every visible component. The lint rule banning raw Tailwind colour utilities (§6.6) is in place and CI-enforced. The pixel cat asset set is in `public/cat/pixel/`; the cartoon cat assets are gone (the archive from Step 2 is deleted in this step's final commit — there's no rollback path because v0.5 is the rollback).
+- The next-role conversation loop ships in the chat panel host (§8.5), with the v0.4 N2 server actions unchanged.
+- The driver.js dependency leaves `package.json`; the `tour.tsx` component, the step config, and the About re-trigger link are deleted (§7.4).
+- The `HoverCard` pin mechanic is removed (§7.6); `<CompanyDrawer>` gains the prop additions from §8.2 (`edit`, `surpriseReason`, `compact`).
+- The S/A/B tier system moves from colour to size + stroke (§6.4, §8.8); the cyan-readout tier label appears on `<CompanyDrawer>` headers.
+- The `/about` page loses the next-role textarea + diff-panel (§7.2, §8.7); the *show me around again* link replays the comic (§4.2).
+- The `/frames` page is re-typeset from §2 and gains the frame-weight editor (§8.9).
+
+**Gate to Step 5:** A passing CI on the `v0.5` branch, a successful preview deploy at a `v0.5-preview` URL, and Fatima walking the preview end-to-end (comic → gate → first Surprise → Map → Compare → Frames → About) with no blockers logged. The merge to `main` happens *after* Step 5 — re-curation runs against the preview URL, not main, so a broken score doesn't surface to Aadi mid-pass.
+
+**Anti-goal during Step 4:** Touching the dataset. The temptation is to "just fix one score" or "just rewrite one fit-note" while testing a surface. Don't — score edits during a rebuild make it impossible to tell whether a re-render is a UI bug or a data change. The dataset is frozen at the Step 3 sign-off and stays frozen through Step 4. Score edits resume in Step 5.
+
+**Why this step is a re-skin, not a rewrite:** §8 already named the survivors — `<CompanyDrawer>`, the Map plot, the Compare logic, the fit-notes storage, the v0.4 N2 server actions, the frame schema. These don't get rewritten in Step 4; they get re-hosted under the new IA and re-styled in the Machine register. The work is closer to a "move + re-skin" than a "rebuild from scratch," which is what makes it tractable.
+
+### Step 5 — Re-curation pass (scores against the live surface)
+
+**Deliverable:** A pass over every (company × frame) cell in the v0.5 dataset, reviewed against the v0.5 live surface — because scoring a company against the frames *while looking at the Map* (the surface Aadi will use) tends to surface different judgements than scoring it against a CSV (the surface Step 3 used). The pass:
+
+- Re-reads each company's fit-note and asks *does the fit-note still read true now that the chrome around it is in the Machine register?* (Some fit-notes were written in Step 3 with a half-eye on v0.4's voice; in the Machine register they may read off-pitch.) Edits in place via the inline drawer editor (§8.4) — using the new surface to author its own content is part of the discipline.
+- Re-evaluates each frame score against the company's recent activity (publications, hires, regulatory engagement) — the Step 3 scores were a first pass; Step 5 is the *second* pass that closes the gap between "first read" and "considered read." Score changes get logged with reasons (the `rationale` column, §8.1), which Surprise variant B (§5.2) then has real data to pull from.
+- Confirms the dataset's *coverage* across each frame's 1–5 range — if the field has zero 1s on Working style or zero 5s on Stage of company, the Surprise variants (especially C — Underrated, §5.2) won't have outliers to surface. Where coverage is thin, the pass *either* adds 1–3 marginal companies to fill the gap *or* explicitly notes the gap in `research/london-companies.md` so a future re-curation knows.
+- Confirms tier balance — roughly 10 S, 15 A, 15 B is the rough target for ~40 total, adjustable based on what the curation pass actually surfaces. Tier is editorial, not a quota, but a heavily skewed tier mix makes the size-and-stroke channel (§6.4) less legible.
+
+**Gate to launch:** Fatima's sign-off message that the re-curated dataset reads true. After that: `v0.5` branch merges to `main`, the preview URL is promoted to production, the cron job that drove this concept-doc effort is disabled (it has done its job), and Aadi gets a Discord ping with the password — `candy-kittens-pink` — and a one-sentence "this is the new shape; tell me what changes." The launch *is* the handoff to feedback; v0.6 starts from what Aadi says back.
+
+**Anti-goal during Step 5:** Adding new features. The temptation during a re-curation pass is to notice a friction point and fix it ("the drawer should show last-publication date inline"). Don't — log it in `journal/` as a v0.6 candidate, finish the curation pass, and *then* decide whether the feature earns inclusion later. v0.5's whole posture is that surface area without editorial work is just surface area; adding a feature mid-curation is exactly the failure mode v0.5 exists to correct.
+
+### Why this order, not a different one
+
+A few alternative orderings were considered and rejected, named here so the chosen order's reasoning is visible:
+
+- **Visual revamp last, after rebuild.** Tempting because the rebuild produces the surface and the revamp adjusts it. Rejected because the lint rule in §6.6 (no raw Tailwind colour utilities) only works if the token system *predates* the rebuild — retrofitting tokens onto a finished component tree is the find-and-replace nightmare v0.4 already lived through.
+- **Dataset curation last, after rebuild + visual.** Tempting because the surface is the thing the dataset lives inside, so curating *inside* the surface is more efficient. Rejected because (a) Step 4's UI calls depend on the dataset's shape (see Step 3's "why before Step 4" note), and (b) the re-curation pass in Step 5 is the right place for surface-aware editorial — Step 3 produces the dataset, Step 5 polishes it against the live chrome. Two passes is the discipline.
+- **Concept and visual in parallel.** Tempting because the swatch session is mostly Fatima's call and doesn't depend on the doc's prose. Rejected because §6's brief is *itself* a section of the concept doc, and a brief that's been signed off is a stronger input to the swatch session than a brief Lotus drafts ahead of sign-off.
+- **No re-curation step — ship Step 4 to Aadi and iterate from feedback.** Tempting because launching is the thing that matters. Rejected because v0.5's editorial bet is precisely that the *curation* is what makes the product worth using — launching with first-pass scores would test the chrome (which works) against the curation (which hasn't been polished against the chrome yet), and Aadi's feedback would conflate the two. The re-curation pass is the cheap thing that protects the launch.
+
+### Calendar shape (orientation only, not a commitment)
+
+Lotus-pace, not crunch-pace. Rough orientation, on the understanding that real durations get logged in `journal/` as they happen and this section is descriptive of *order*, not of weeks:
+
+- Step 1: days, not weeks (this doc + revision pass).
+- Step 2: ~1 week (swatch session + asset set + reference renders), gated on Step 1.
+- Step 3: ~2 weeks (memo + seed list + ~210 editorial paragraphs), gated on Step 2.
+- Step 4: ~2 weeks (re-skin + re-host + comic + chat panel), gated on Step 3.
+- Step 5: ~1 week (re-curation against live surface), gated on Step 4.
+
+Total orientation: ~6 weeks from sign-off of this doc to v0.5 launch, assuming no parallel work and no scope drift. The bet of v0.5 is that 6 weeks of disciplined sequential work outperforms 6 weeks of v0.4-style parallel work that compounds half-finished decisions — which is the bet the whole document has been making, restated as a timeline.
+
+---
+
+## Sign-off
+
+This document is the contract for v0.5. When Fatima signs it off, sections 1–9 become the source of truth for everything downstream; deviations get *amendments to this document* before they get code, not the other way around. The journal in `docs/journal/` continues as the running log of how the implementation goes against this plan.
+
+— Lotus 🪷
