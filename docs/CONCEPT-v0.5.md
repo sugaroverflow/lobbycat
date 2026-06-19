@@ -207,3 +207,63 @@ Things deliberately not in the first-time experience flow, with reasons:
 - **No skip-to-end on the comic.** The skip button on panels 1–3 reads `Skip` and dismisses the *whole* comic (goes straight to the password gate), it does not advance to panel 4. Skipping is allowed but it's all-or-nothing — partial onboarding is worse than no onboarding for setting the editorial register.
 
 ---
+
+## 5. Surprise modal spec
+
+Surprise is v0.5's only piece of *generated* editorial. Everything else on the surface is curated-up-front: the frames, the scores, the fit-notes, the Compare columns. Surprise is the moment where Lobbycat behaves a little less like a map and a little more like a colleague who's read the field and says *have you looked at this one?* — and tells you why they brought it up. The "why" is non-negotiable: there is no version of Surprise in v0.5 where a company is recommended without a reason attached. A pick without a reason is just a random row; a pick with a reason is editorial.
+
+### 5.1 Anatomy of the modal
+
+One pick per open. Centred, ~520px wide, deep-navy panel on a dimmed Map backdrop, mono type. The contents, top to bottom:
+
+1. **Variant tag** — a short pill in cyan readout style: `ADJACENCY`, `RECENCY`, or `UNDERRATED`. Three letters max plus the word. Lowercase the word, uppercase the letters — the tag is a *label*, not a header. It tells Aadi *what kind* of surprise this is in one glance, so he can calibrate how much weight to give it before he reads the reason.
+2. **The company name** — the only headline-weight type in the modal. Clickable; clicking it (or the explicit `Open →`) closes the modal and routes to the company drawer on the Map (§3.4 route 3).
+3. **One-sentence frame-shaped reason** — the load-bearing line. Two clauses, joined by an em-dash or a comma. The first clause names the frame(s) involved; the second clause says what's interesting given that frame. Concrete examples in §5.3.
+4. **A four-cell mini-frame readout** — the company's score on the four frames the reason *doesn't* mention, shown as `frame name · n/5` rows in dimmed cyan. This is the "and here's the rest of the picture" beat: the modal commits to one frame-shaped reason in prose, but it shows the other four scores so Aadi isn't reading the pick in a vacuum.
+5. **Two buttons in a row** — `Open →` (primary, electric blue) and `Surprise me again` (secondary, ghost-style). `Open` navigates to the drawer. `Surprise me again` re-rolls in place — same modal, new pick, with the variant *rotated* (A → B → C → A) rather than re-randomised, so Aadi sees one of each kind within three rolls.
+6. **A close affordance** — `Close` text link bottom-left, plus ESC and click-outside. Closing the modal returns to the Map exactly as it was before opening (axes preserved, pinned drawer preserved, scroll preserved).
+
+What the modal does **not** contain: a frame-score chart for the picked company (lives in the drawer), the company's roles or publications (drawer), a "more like this" rail (would dilute the one-pick discipline), a "save for later" star (no saved-picks list in v0.5 — see §7).
+
+### 5.2 The three variants
+
+Three variants, in deliberate order. Every Surprise is one of these and *only* one — the variant determines the reason-shape, which determines what the pick is "for."
+
+**Variant A — Adjacency.**
+*"Sits close to *[anchor company]* on the axes you're viewing — but [diverges on frame X]."*
+The pick is chosen because, plotted on the two axes Aadi currently has on the Map (§3.2), it lands within a small neighbourhood of an *anchor* — either a currently-pinned company, or, if nothing is pinned, the company at the visual centre of the current viewport. The reason names the anchor *and* names the frame on which the pick differs most sharply from the anchor (highest delta across the four non-axis frames). Use case: scout. Adjacency surfaces companies Aadi would have found himself with one more click, with an editorial nudge about *what* makes the second one different from the first. This is the variant the first-session modal uses (§4.3).
+
+**Variant B — Recency.**
+*"Just shifted on [frame X] — [direction] — because of [event/publication]."*
+The pick is chosen because the editorial record (the score-change log on `(company × frame)` cells) shows a movement on one of the six frames within the last ~60 days, attached to a logged reason (a publication, a hire, a regulatory action). The reason in the modal *quotes* the logged reason verbatim — Surprise here is essentially "let me show you a recent re-score and why." Use case: calibrate. Recency keeps Aadi's mental model up to date by surfacing the *changes* in the field rather than the steady state. If there are no recent re-scores in the dataset (a real possibility in early v0.5), the variant falls back to **A** silently — never to a recency reason fabricated from a publication date.
+
+**Variant C — Underrated.**
+*"Aadi hasn't opened this one — and on [frame X], it's a [pole-label] outlier worth a look."*
+The pick is chosen from the long tail of companies the user has never opened in any session (tracked by the cookie + a lightweight server-side `seen_company` log keyed on the cookie ID, not on user-PII). The pick is then narrowed to companies that score at an *extreme* on at least one frame (a 1 or a 5, where the field's median is 3). The reason names the frame and the extreme pole. Use case: scout + a gentle nudge against status-quo bias. Underrated is the variant that does the most editorial work — it explicitly tells Aadi *you've been looking the same way; here's a thing you haven't*. If `seen_company` is empty (cold start), Underrated falls back to **A** (same fallback rule as Recency).
+
+### 5.3 The reason, by example
+
+Three worked examples, one per variant, in the prose register the modal should hit:
+
+- **Adjacency** (Map axes: *Policy posture* × *Working style*; pinned: Anthropic London) — *Sits close to Anthropic London on this view — but is a 2 on **stage of company**, where Anthropic is a 5; the policy posture is similar, the resource picture isn't.*
+- **Recency** (no axis context required) — *Moved from 3 to 4 on **policy area scope** in May, after they took on the public-sector procurement brief; the team's surface widened, and it shows in the last two posts.*
+- **Underrated** (Aadi has opened ~20 companies; this isn't one) — *You haven't opened this one — and it's a 1 on **working style**, the writing end, in a field that mostly leans government-affairs; if writing-led is the cut you care about, this is one of three.*
+
+The pattern: each reason names *one* frame as the load-bearing fact, situates the pick on that frame, and gives a second clause that earns the pick's interestingness. No reason ever names more than two frames. No reason ever says "you'll like this" — the modal's voice is editorial-first, not personalised-first.
+
+### 5.4 Variant rotation, fallback, and freshness
+
+- **Rotation across re-rolls.** Within a single open of the modal, `Surprise me again` rotates A → B → C → A. Across separate opens (close, reopen later), the starting variant rotates too — open 1 starts on A, open 2 on B, open 3 on C, open 4 on A. Aadi sees the variant types evenly without having to ask.
+- **Fallback chain.** B falls back to A if no recent re-scores exist. C falls back to A if `seen_company` is empty. A has no fallback — if the Map has fewer than ~5 visible companies in the current axis-pair (very narrow filter), Surprise refuses to open and the button shows a one-line tooltip: *not enough room — widen the axes.* Better to decline than to surface a fake pick.
+- **Freshness window.** Within a session, the same company never surfaces twice as a Surprise. Across sessions, a 7-day cooldown applies before any company can be picked again (per variant, not globally — so Underrated can resurface a company that was an Adjacency pick last week if its score has shifted, but Adjacency cannot re-pick its own recent picks). The cooldown is stored in the same `seen_company` log used by Underrated.
+
+### 5.5 What Surprise is explicitly *not*
+
+Surprise in v0.5 has three variants. It does **not** have a fourth.
+
+- **No counter-recommendation variant ("Variant D").** A "you said you cared about *writing-led*, here's a strong *government-affairs* company you might be missing" pick was on the table during the brainstorm; we cut it. Two reasons: (a) it requires a confident model of Aadi's stated preferences before the dataset is rich enough to model *anything* confidently, and (b) it makes Surprise feel like a contradiction engine rather than a colleague. We will revisit in v0.6 only if the three variants prove to be too narrow in practice.
+- **No multi-pick Surprise.** One company per open. A rail of "three surprises" was floated and rejected — it turns the editorial moment into a feed, and feeds train a different gesture (scan + skip) than the one Surprise is for (read + consider).
+- **No surfacing without a reason.** Every pick is reason-bearing. If the dataset cannot produce a frame-shaped reason for a candidate company, that company is not eligible for Surprise — full stop. The modal copy is allowed to be short; the modal copy is *not* allowed to be absent.
+- **No personalisation beyond `seen_company`.** v0.5 deliberately stops there. Frame-weights from About affect sort order on the Map and the implicit fit-rank in Compare, but they do *not* steer Surprise — Surprise is supposed to surprise.
+
+---
