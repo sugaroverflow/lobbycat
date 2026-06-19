@@ -218,7 +218,7 @@ export function MapView({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-4">
+      <div data-coachmark="axis-picker" className="flex flex-col sm:flex-row sm:items-end gap-4 sm:gap-4">
         <AxisPicker
           label="X axis"
           frames={frames}

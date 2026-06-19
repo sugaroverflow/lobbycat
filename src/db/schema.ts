@@ -274,6 +274,7 @@ export const userProfile = pgTable("user_profile", {
   weights: jsonb("weights").$type<Record<string, unknown>>(),
   concerns: jsonb("concerns").$type<string[]>().default([]).notNull(),
   sources: jsonb("sources").$type<string[]>().default([]).notNull(),
+  onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .defaultNow()
     .notNull(),
