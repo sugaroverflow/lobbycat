@@ -339,3 +339,70 @@ The failure mode for a small editorial product is *templated-by-accident* — Ta
 The test for every new visible element on the v0.5 surface: *could this element appear, unmodified, on a different startup's dashboard tomorrow?* If yes, it isn't ready.
 
 ---
+
+## 7. What dies
+
+A sign-off doc earns its keep by being explicit about the things v0.5 is *removing*, not just the things it's adding. Every item below is something that shipped in v0.3 or v0.4 (or was inherited from v0.2's templated bones) that v0.5 deletes outright. "Move it" decisions live in §8; this list is the deletes.
+
+The discipline here is honesty. v0.4 took six weeks to build. Some of that work is being struck through. Naming each piece, with the reason, is how we don't quietly carry dead weight into the rebuild — and how we don't quietly resurrect it three months from now because we forgot why it went.
+
+### 7.1 The `/companies` list page
+
+Dies entirely. §3.4 already named this; restating it here because it's the single largest piece of surface area being deleted, and the reason it dies is the most load-bearing concept call in v0.5.
+
+The list page is the templated default for a directory product: a sortable, filterable table of all companies, one row per company, exhaustive. It made sense in v0.2 when "look at the data" was the only verb the product offered. By v0.4 it had become an unloved third surface that competed with the Map for the same reading without doing it as well — the Map plots companies *against frames*; the list plots companies *against each other in a flat order Aadi didn't ask for*. Surface area without editorial work is just surface area.
+
+What replaces it: the Map *is* the list view. Filter the Map and the visible dot set is the filtered list; click a dot and the drawer below the plot is the row's expanded detail (already unified into `<CompanyDrawer>` in v0.4 N1 part 3, so the component survives — see §8). The companies-as-rows reading is preserved; the dedicated *page* for it is not.
+
+### 7.2 The v0.4 free-text "next role" intent UX, in its current shape
+
+v0.4 N2 shipped an `/about` textarea where Aadi types a paragraph about his next role, the cat proposes itemised diffs across concerns + weights + frame scores with per-row accept/reject, and one click applies them. The *loop* is correct and survives (see §8). What dies is the **placement and the visual treatment**: the textarea sitting halfway down `/about` under "your profile", styled as a generic form input, with the suggests panel rendering as a stacked list of plain rows.
+
+v0.5 reframes this surface as a **conversation between Aadi and the cat**, visible from the home Map (not buried on `/about`) — likely as the chat panel mentioned in §8 rather than a form. The grammar (concerns / weights / frame scores) and the server actions (`proposeNextRoleChanges`, `applyNextRoleChanges`) carry across; the form-shaped UI does not. The reason: the v0.4 placement reads as "fill in this form to update your profile" — a CRM verb. The thing the cat is actually doing — *taking dictation, proposing edits, asking for sign-off* — is closer to messaging than to form-filling, and the visual language should match.
+
+If §6's swatch session and §8's chat-panel scope don't both land before the rebuild, this surface gets *paused* (textarea hidden behind a feature flag) rather than re-shipped in its v0.4 shape. A half-built version of the right answer is better than a finished version of the wrong one.
+
+### 7.3 The cartoon cat (assets, poses, placements)
+
+Dies. §6.5 named the replacement (pixel-retro-terminal cat); §7 names what gets deleted to make room for it: the round-headed, friendly-tones, ~12-pose cartoon cat that lives in `public/cat/` and gets referenced from the empty states, the onboarding hints, the `/about` header, the `404` page, and the favicon. Every reference goes; the asset directory is replaced wholesale with `public/cat/pixel/` containing the five-pose sprite set (idle, blink, paw-up, mid-shrug, points-at-thing) from the swatch session.
+
+The cartoon cat was the right call at v0.2 — it warmed up a directory product that needed warming up. It is the wrong call at v0.5 because v0.5's whole bet is that the *editorial frames* (and the curated dataset behind them) carry the warmth, and the chrome should read as the instrument that surfaces them. A cartoon mascot pasted onto an instrument reads as a children's-app dashboard; a pixel cat *inside* the instrument reads as a character the instrument summoned. The asset switch is small; the register shift is the whole point.
+
+### 7.4 The driver.js coachmark tour (v0.4 N3)
+
+Dies. v0.4 N3 shipped a driver.js step-through tour: interaction-gated coachmarks pointing at the Map filters, the company drawer, the Compare button, and the frames index, plus an "About → take the tour again" re-trigger link.
+
+It's replaced — at first-run only — by the comic-strip onboarding (§4). The replacement is not one-to-one: the comic teaches *the product's premise* (frames, lens, curated set, Surprise) before the surface ever appears; the coachmark tour was teaching *the surface's controls* after the surface appeared. v0.5's bet is that the premise needs explicit onboarding and the controls do not — if the controls need a coachmark to find, the controls are wrong. The driver.js dependency leaves `package.json`; the `tour.tsx` component, the step config, and the About re-trigger link all delete.
+
+(For returning visitors who actually want a refresher, the About page's "what is lobbycat" section — see §3.1 — replays the comic in a smaller, scroll-through layout. Same content, different surface. One way in.)
+
+### 7.5 The `/login` page as a templated form
+
+v0.4's `/login` is a centered card with an email field, a password field, a "sign in" button, and the cartoon cat in the corner. It dies in this shape. v0.5 replaces it with the **password gate** described in §4.2 — single field, no email, no "sign in" copy, the cat in the comic-panel register above the field, the candy-kittens-pink password as the only credential. The route stays `/login` (so existing redirects from the gated route middleware keep working without a migration), but the contents are rewritten end-to-end.
+
+The reason `/login`'s current shape dies even though "a login screen" survives: v0.4's `/login` was designed assuming this product would eventually open up to multi-user auth — Resend magic-links, a `users` table, etc. — and it was a placeholder for that future. v0.5's scope is explicit that **multi-user auth is not happening** in this cycle (it's named as deferred in the v0.4 closing note); designing the gate for a future that isn't coming earns nothing and costs a templated form on the front door. Single field, single password, single user. When (if) multi-user lands, the new gate is a separate design pass, not an evolution of v0.4's placeholder.
+
+### 7.6 The `HoverCard` "pin on click" mechanic
+
+Dies. v0.4 N1 part 3 already split the responsibilities — `HoverCard` is now a hover-only preview, the drawer-below-plot is the pinned reading — and the click-to-pin gesture on the floating card no longer has a job. The whole "card has two modes (preview + pinned)" mental model was a transitional state and v0.5 retires the second mode formally. `HoverCard` stays as a pure preview component (see §8); its `pinned` prop, the `setPinned` from inside the card, and the pinned-state CSS branches are all removed.
+
+This is small but worth naming: the pin mechanic was the single most confusing piece of interaction in v0.4 (cards that sometimes accepted clicks and sometimes didn't, depending on a hover-leave window). Deleting it cleanly — rather than "leaving it in case" — is exactly the kind of choice v0.5 is supposed to be making.
+
+### 7.7 The `/companies/[slug]` *fit-note editor* surface
+
+Mostly dies in its current shape. The fit-note itself absolutely survives (it is the single highest-signal piece of content in the product — see §8); what dies is the **per-company editor page** as a separate full-bleed surface with its own header, its own breadcrumbs, and its own back-to-list navigation. The list it goes back to no longer exists (§7.1), and the dedicated full-page editor is a CMS verb the product doesn't otherwise speak.
+
+Editing a fit-note in v0.5 happens *inside* the company drawer — inline, expandable, with the same `<CompanyDrawer>` component that renders it for reading. The drawer gains an "edit fit-note" affordance that turns the rendered paragraph into a textarea with save/cancel, in place. The `/companies/[slug]` route either redirects to "Map filtered to this dot, drawer open in edit mode" or 404s; the call between those two is a small implementation detail for the rebuild step.
+
+### 7.8 The v0.4 footer and the "built with" tail
+
+Small one, but worth naming because the design brief in §6.6 explicitly forbids it. v0.4's footer reads `lobbycat · built with Next.js + Supabase · 2026` in a soft-grey serif. The "built with" half dies; the rest gets re-typeset into the Machine register (mono, `--fg-prose-muted`). Templated-by-accident usually starts at the footer; the surface should stop telling the visitor which stack rendered it.
+
+### 7.9 The implicit assumption that "more companies = better product"
+
+Not a UI element but worth naming as a *death* because it has shaped a lot of v0.3/v0.4 thinking. The product has been growing the dataset by ingestion — RSS, sitemaps, ATS feeds (deferred from v0.4 N4), with a roadmap toward EU Transparency Register and US LDA bulk imports. v0.5 explicitly **stops adding companies** until the London curation pass (§9) is done.
+
+The bet underneath: a tight London-only dataset (target: ~30–60 companies, hand-picked, fit-notes written for each) outperforms a sprawling pan-European set with thin coverage for every individual user. Aadi's JTBD is Scout + Calibrate, sometimes Pre-meeting prep — all three are *better* served by a small dataset he can recognise and trust than by a large one he has to filter through. The implicit-growth assumption dies; the explicit-curation discipline replaces it. See §9 for how the dataset gets rebuilt.
+
+---
+
