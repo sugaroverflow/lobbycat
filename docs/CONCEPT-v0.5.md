@@ -267,3 +267,75 @@ Surprise in v0.5 has three variants. It does **not** have a fourth.
 - **No personalisation beyond `seen_company`.** v0.5 deliberately stops there. Frame-weights from About affect sort order on the Map and the implicit fit-rank in Compare, but they do *not* steer Surprise — Surprise is supposed to surprise.
 
 ---
+
+## 6. Design language brief
+
+v0.4 read as *a Tailwind starter kit with editorial intent painted on top*. The frames did editorial work; the chrome did not. v0.5 reverses that: the visual language *itself* carries the editorial register — quiet, mono-forward, machine-ish, with a small, restrained colour vocabulary doing specific jobs. The frames are the load-bearing concept; the chrome should look like *a piece of equipment for reading frames*, not a generic dashboard.
+
+This section is a brief, not a spec. It names the system, the palette by role, the type, the chrome, and the cat — at the level of detail Fatima can sign off on. The exact hex values, the type-scale numbers, and the spacing tokens are tuned in a paired swatch session immediately after sign-off (see §9, step 2). The point of the brief is to constrain that session, not to substitute for it.
+
+### 6.1 The system: Machine tokens
+
+The design system is named **Machine** — internally, in the codebase, and in the file structure (`src/styles/machine.css`, `tokens.machine.ts`, etc.). The name is a small commitment: it tells the next person opening the repo that this is not a Bootstrap-ish thing, not a shadcn-ish thing, and not a brand-warm thing. It's instrument panel. It reads scores. It logs deltas. The cat lives inside it.
+
+Machine is token-first: every colour, type, space, radius, and motion value used on the surface comes from a named token, not an inline literal. The token names use the role (`--bg-panel`, `--fg-readout`, `--signal-warn`), not the value (`--navy-900`, `--cyan-300`) — so a swatch change in the paired session updates one file, not 200 components. Tailwind utilities reference the tokens via `@layer` extensions or CSS-variable arbitrary values; no hard-coded `bg-blue-600` in components. This is the discipline that lets v0.5's visual revamp ship as one tight diff rather than a sprawling find-and-replace.
+
+Machine is also *narrow on purpose*: a small palette, two type families, four spacing steps, two radii, two motion curves. The point isn't completeness; it's *consistency under constraint*. A narrow system is harder to template — there's nowhere for a stock component to hide because the chrome it brings doesn't match the tokens it can't find.
+
+### 6.2 Palette, by role
+
+Six roles. Every colour on the surface answers to one of these. Exact hex values are TBD in the swatch session; the character notes below pin the *feel* tightly enough that the swatch session is a tuning pass, not an open question.
+
+- **`--bg-canvas` — deep navy.** The background of every full-bleed surface (home, Compare, Frames, About). Dark enough that a white-on-canvas type passes WCAG AA at body sizes without strain; not so dark it becomes pure black (which would lose the navy character and read as terminal-emulator generic). Think: *the inside of a quiet instrument case at night.*
+- **`--bg-panel` — dark green.** Cards, the Surprise modal, drawers, the comic panels, the gated login surface. A *very* dark green — closer to navy than to forest — so it reads as a sibling of the canvas rather than a contrasting block, with a subtle warmth that keeps the surface from feeling sterile. The navy/green pairing is Fatima's call and it's the single most distinctive choice in the system: it gives Machine its character without leaning on an accent for it.
+- **`--accent-action` — electric blue.** Primary buttons (`Open →`, `Unlock`, the Surprise CTA), the active state on axis-picker `<select>`s, the highlight on the currently-hovered Map dot, the underline-on-focus for links. The *only* colour the eye should track as "that's the thing I can press / that's where the surface wants me to look next." Used sparingly — never decoratively, never as a background fill on more than one element per viewport.
+- **`--readout-cyan` — cyan readouts.** Frame names in the mini-readout under Surprise picks, the `n/5` score values throughout, the axis labels on the Map, the variant pill (`ADJACENCY` etc.), the password placeholder. Cyan is the *data voice* of the system: anything that's a parsed-from-the-DB value rather than prose copy gets the cyan readout treatment. A clear semantic separation from `--accent-action` (which is for things you press) and `--fg-prose` (below, for things you read).
+- **`--signal-coral` — coral signals.** Errors (`try again` on the password gate), the strikethrough on a remove-concern diff, the small destructive affordance (`Forget me` on About), the "recent change" tag on a frame score that's moved within the freshness window. Coral, not red — softer, less alarm-system, more "flagged for your attention." Used even more sparingly than electric blue: most viewports should contain zero coral. When coral appears, it *means* something.
+- **`--fg-prose` — warm off-white.** Body copy on the canvas and panels. Not pure white (`#ffffff` against deep navy is hostile at long reading lengths); a slight warmth toward bone/parchment that pairs against the green-navy without picking up a tint. The fit-note prose, the §2-style frame descriptions, the comic captions, the cat's voice — all `--fg-prose`. A dimmed variant `--fg-prose-muted` (~60% opacity) handles whispers, metadata, the *every surprise has a reason* line, and the *click dot to pin* hint in `HoverCard`.
+
+That's the full vocabulary. No tertiary accent, no chart palette, no per-tier company colour (tier is expressed through size + weight, see §6.4). If a v0.5 surface ever needs a seventh colour, the conversation is *which existing role does this collapse into*, not *which new token do we add*.
+
+### 6.3 Type
+
+Two families, used deliberately:
+
+- **A monospace** as the system default. Not the IBM Plex Mono / JetBrains Mono / Fira Code obvious picks — those have become the *templated* mono look. Reach for something with character (e.g. Berkeley Mono, MD IO, Departure Mono, or a self-hosted unloved-but-perfect option) in the swatch session. The mono carries: all UI labels, all readouts, all nav, all button copy, all the cat's voice in the comic and the next-role summary, all metadata. It does *most* of the visible type on the surface.
+- **A neutral sans** as the prose face — used only for body copy at reading lengths (the §2-style frame descriptions, the fit-notes, the About profile blurb, the comic captions when they run over ~12 words). Something with low personality (Inter is fine, a quieter alternative is finer) so it sits behind the mono rather than fighting it. The sans is the *prose voice*; the mono is *everything else*.
+
+The ratio is deliberate: ~80% of visible glyphs are mono, ~20% are sans. This is the inverse of a typical dashboard. It's the single fastest visual cue that Lobbycat isn't a templated product.
+
+No serif anywhere. No display face for headings (mono at scale handles the header weight). No italic except in the cat's voice (Surprise reasons, comic captions, About summary) — italic in v0.5 *means* "this sentence is the cat speaking."
+
+### 6.4 Chrome, motion, and edges
+
+- **Edges.** Two radii: `--radius-tight` (~4px, for buttons, pills, inputs, small chips) and `--radius-panel` (~10px, for cards, modals, drawers). No fully rounded shapes anywhere; no zero-radius hard edges either. The radius is small enough to read as *instrument*, not card-app.
+- **Borders.** 1px borders in `--fg-prose-muted` at ~25% opacity, used to separate panel from panel and section from section. No drop shadows on panels — the navy/green pairing does the layering work that shadows usually do, and drop shadows pull the system toward a stock-card aesthetic.
+- **Motion.** Two curves, two durations. Fast (~120ms, ease-out) for state changes on already-visible elements: hover, focus, the variant pill changing on `Surprise me again`, the axis re-plot. Slow (~280ms, ease-in-out) for surface transitions: modal open/close, drawer open/close, comic-panel advance. No spring physics, no parallax, no decorative ambient motion. The cat blinks; nothing else animates without a reason.
+- **Tier expression.** Companies on the Map carry tier (S, A, B from v0.3+) via *dot size + stroke weight*, not via colour. S-tier dots are larger and have a 1.5px stroke; A-tier dots are mid-sized and 1px stroke; B-tier dots are smallest and stroke-less. Tier never gets its own colour because colour is already spoken-for (palette is role-based, §6.2) — and "bigger dot = more important" is the legible map convention regardless.
+- **Scrollbars, focus rings, selection.** All themed to the palette — scrollbar track in `--bg-panel`, thumb in `--fg-prose-muted`; focus ring in `--accent-action` at 2px offset; text selection in `--accent-action` at ~30% opacity. These are the easy details every templated product skips; getting them right is most of the "non-templated" feel.
+
+### 6.5 The cat
+
+v0.4 shipped a cartoon cat — friendly, rounded, slightly *children's-app*. It worked as a placeholder; it does not work as a load-bearing character for a curated editorial product. v0.5 replaces it with a **pixel-retro-terminal cat**: low-resolution pixel art (think 32×32 to 64×64 base sprites, rendered crisp at integer scales), monochrome or two-tone, sitting *inside* the Machine palette — the cat is a `--fg-prose` silhouette with `--readout-cyan` for its eyes, drawn as if it lives on the CRT not in front of it.
+
+What this gets us:
+
+- **The cat looks native to the surface.** A cartoon cat reads as a mascot pasted onto a dashboard. A pixel-terminal cat reads as a character the dashboard *summoned* — and the dashboard's whole register (mono type, cyan readouts, deep navy) prepares the eye for it. Aesthetic coherence is editorial coherence.
+- **The cat has fewer poses, with more weight.** Pixel art at this size is expensive per-frame, which is the point: rather than a cartoon cat with 20 expressions, the pixel cat gets ~5 (idle, blink, paw-up, mid-shrug, points-at-thing) and each one is a deliberate beat. The comic strip in §4.1 uses four of these.
+- **The cat is not on the Map.** As stated in §4.4, the cat lives in the onboarding comic, on the About page (next to the next-role textarea), and in the Surprise modal's micro-byline (a small sprite next to the variant pill). It does *not* sit in the corner of the home Map giving running commentary; the frames carry the editorial voice on the live surface, and the cat is reserved for the moments where editorial voice *is* the product.
+
+The pixel cat's design — exact pixel grid, palette inside the silhouette, idle-loop frames — is a swatch-session deliverable alongside the colour values. Brief for the swatch session: *a small, slightly tired cat with one ear bent, eyes the same cyan as the readouts; reads as a kept companion at a workstation rather than a mascot.*
+
+### 6.6 Non-template guardrails
+
+The failure mode for a small editorial product is *templated-by-accident* — Tailwind defaults, shadcn primitives unstyled, generic radii, generic shadows, blue links. Machine resists this by construction:
+
+- **No raw Tailwind colour utilities in components.** `bg-blue-600`, `text-gray-500`, `border-slate-700` are forbidden by lint rule. Every component reaches for tokens via `bg-[--bg-panel]` / `text-[--fg-prose]` arbitrary values, or via the `@layer` extensions that map token roles to short utility names (`bg-canvas`, `text-prose`, `border-muted`). The lint rule is the discipline.
+- **No shadcn/Radix component imported unstyled.** When a primitive comes in (a `Dialog`, a `Select`, a `Popover`), the v0.5 surface re-skins it in Machine *before* it ships — never "good enough for now, theme later." Themed later means never.
+- **No icon library used at default weight.** If we use Lucide or similar, weights are pinned (e.g. 1.25px stroke) and sizes are pinned to one of two values across the whole surface; icons sit in `--fg-prose-muted` and brighten to `--fg-prose` on hover only when interactive. Decorative icons are off the table — every icon either *labels a control* or it doesn't render.
+- **No stock empty-states.** Empty states (no companies in current filter, no recent re-scores for Recency, no `seen_company` rows for Underrated) get hand-written one-line copy in the cat's voice, not a centered illustration with a generic CTA.
+- **No "powered by" / "built with" badges anywhere.** The footer says who built this and when (per §3.1's About description), in `--fg-prose-muted` mono, and stops there.
+
+The test for every new visible element on the v0.5 surface: *could this element appear, unmodified, on a different startup's dashboard tomorrow?* If yes, it isn't ready.
+
+---
