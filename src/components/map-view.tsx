@@ -23,6 +23,8 @@ export type MapFrame = {
   scale: number;
   lowLabel: string | null;
   highLabel: string | null;
+  lowDescription: string | null;
+  highDescription: string | null;
 };
 
 const TIER_FILL: Record<number, string> = {
@@ -405,6 +407,8 @@ export function MapView({
         )}
       </div>
 
+      <AxisCaptions xFrame={xFrame} yFrame={yFrame} />
+
       <Legend tierCounts={countByTier(plotted.map((p) => p.c))} />
 
       {unscored.length > 0 && (
@@ -427,6 +431,46 @@ export function MapView({
         </details>
       )}
     </div>
+  );
+}
+
+function AxisCaptions({
+  xFrame,
+  yFrame,
+}: {
+  xFrame: MapFrame | null;
+  yFrame: MapFrame | null;
+}) {
+  const hasX = xFrame && (xFrame.lowDescription || xFrame.highDescription);
+  const hasY = yFrame && (yFrame.lowDescription || yFrame.highDescription);
+  if (!hasX && !hasY) return null;
+  return (
+    <dl className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-sm text-muted serif leading-relaxed">
+      {hasX && (
+        <div>
+          <dt className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper mb-1">
+            X · {xFrame!.name}
+          </dt>
+          <dd>
+            <span className="text-ink">{xFrame!.lowDescription ?? xFrame!.lowLabel}</span>
+            <span className="mx-2 text-whisper">↔</span>
+            <span className="text-ink">{xFrame!.highDescription ?? xFrame!.highLabel}</span>
+          </dd>
+        </div>
+      )}
+      {hasY && (
+        <div>
+          <dt className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper mb-1">
+            Y · {yFrame!.name}
+          </dt>
+          <dd>
+            <span className="text-ink">{yFrame!.lowDescription ?? yFrame!.lowLabel}</span>
+            <span className="mx-2 text-whisper">↔</span>
+            <span className="text-ink">{yFrame!.highDescription ?? yFrame!.highLabel}</span>
+          </dd>
+        </div>
+      )}
+    </dl>
   );
 }
 

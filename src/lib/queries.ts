@@ -219,6 +219,8 @@ export async function getMapData() {
       scale: f.scale,
       lowLabel: f.lowLabel,
       highLabel: f.highLabel,
+      lowDescription: f.lowDescription,
+      highDescription: f.highDescription,
     })),
   };
 }

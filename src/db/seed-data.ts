@@ -59,6 +59,8 @@ export const seedFrames = [
     scale: 5,
     lowLabel: "clearly international",
     highLabel: "very UK-bound",
+    lowDescription: "International remit — global affairs, multi-jurisdictional policy work.",
+    highDescription: "UK policy only — narrow national focus, hard to port elsewhere.",
     sortIndex: 0,
   },
   {
@@ -68,6 +70,8 @@ export const seedFrames = [
     scale: 5,
     lowLabel: "well-mapped territory",
     highLabel: "frontier / first-of-its-kind",
+    lowDescription: "Established regulatory terrain — playing a known game well.",
+    highDescription: "First-of-its-kind questions — defining the rules as you go.",
     sortIndex: 1,
   },
   {
@@ -77,6 +81,8 @@ export const seedFrames = [
     scale: 5,
     lowLabel: "established team, specialist role",
     highLabel: "first/early policy hire, build the team",
+    lowDescription: "Established team / specialist role — slot into a working function.",
+    highDescription: "First policy hire / build the function — set strategy from scratch.",
     sortIndex: 2,
   },
   {
@@ -86,6 +92,8 @@ export const seedFrames = [
     scale: 5,
     lowLabel: "pure policy/regulatory",
     highLabel: "product / GTM / licensing",
+    lowDescription: "Pure policy & regulatory work — writing, engagement, advocacy.",
+    highDescription: "Product-shaped — commercial, licensing, GTM-flavoured policy.",
     sortIndex: 3,
   },
   {
@@ -95,6 +103,8 @@ export const seedFrames = [
     scale: 5,
     lowLabel: "purely commercial AI",
     highLabel: "high civic-infrastructure overlap",
+    lowDescription: "Purely commercial AI — no public-service overlap.",
+    highDescription: "High civic-infrastructure overlap — public delivery, gov digital, excluded access.",
     sortIndex: 4,
   },
 ];

@@ -65,6 +65,8 @@ async function main() {
           scale: f.scale,
           lowLabel: f.lowLabel,
           highLabel: f.highLabel,
+          lowDescription: f.lowDescription,
+          highDescription: f.highDescription,
           sortIndex: f.sortIndex,
         },
       });

@@ -207,8 +207,10 @@ export const frames = pgTable(
     description: text("description"),
     kind: text("kind").notNull().default("scale"), // 'scale' | 'tag' | 'question'
     scale: integer("scale").notNull().default(5), // 1..scale (scale-kind only)
-    highLabel: text("high_label"), // what a 5 means (scale-kind)
-    lowLabel: text("low_label"), // what a 1 means (scale-kind)
+    highLabel: text("high_label"), // short label for max (scale-kind)
+    lowLabel: text("low_label"), // short label for min (scale-kind)
+    highDescription: text("high_description"), // full descriptive sentence for max
+    lowDescription: text("low_description"), // full descriptive sentence for min
     prompt: text("prompt"), // question text (question-kind)
     sortIndex: integer("sort_index").notNull().default(0),
     createdAt: timestamp("created_at", { withTimezone: true })
