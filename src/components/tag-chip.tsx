@@ -29,6 +29,12 @@ const VARIANTS: Record<string, Variant> = {
   "Agentic / coding AI": { bg: "bg-sage-soft", text: "text-sage-dark" },
   "Autonomous / mobility": { bg: "bg-sage-soft", text: "text-sage-dark" },
   "Open weights": { bg: "bg-sage-soft", text: "text-moss" },
+  // product-shape (v0.3.1 F1) — what kind of policy work this role would be
+  "International policy": { bg: "bg-sage-soft", text: "text-sage-dark" },
+  "Government affairs": { bg: "bg-sage-soft", text: "text-sage-dark" },
+  "Regulatory counsel": { bg: "bg-sage-soft", text: "text-sage-dark" },
+  "Trust & safety": { bg: "bg-sage-soft", text: "text-sage-dark" },
+  "Product / GTM": { bg: "bg-sage-soft", text: "text-sage-dark" },
   // geography — neutral by design (per refactor spec)
   UK: NEUTRAL,
   EU: NEUTRAL,
