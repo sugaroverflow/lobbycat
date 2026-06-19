@@ -718,3 +718,132 @@ export const seedFrameScores: Record<string, Record<string, number>> = {
   groq: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
   cerebras: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
 };
+
+/* ------------------------------------------------------------------ */
+/* Seed publications                                                  */
+/* ------------------------------------------------------------------ */
+
+export type SeedPublication = {
+  type: "blog" | "press" | "filing" | "paper" | "other";
+  title: string;
+  url: string;
+  /** ISO-8601 date (UTC). */
+  publishedAt: string;
+  summary?: string;
+  topics?: string[];
+};
+
+/**
+ * Hand-picked publications to populate the tracker. Keyed by company slug.
+ * Weighted toward higher-signal companies so the tracker *demonstrates* the
+ * surface rather than evenly-sparse noise.
+ *
+ * Selection rule: canonical, well-cited posts with stable URLs. Real titles,
+ * real dates, real URLs. Summaries are one editorial sentence each; topics
+ * mirror the kind of free-text tagging the v0.4 ingestion pipeline will
+ * eventually produce.
+ */
+export const seedPublications: Record<string, SeedPublication[]> = {
+  anthropic: [
+    {
+      type: "filing",
+      title: "Anthropic's Responsible Scaling Policy",
+      url: "https://www.anthropic.com/news/anthropics-responsible-scaling-policy",
+      publishedAt: "2023-09-19",
+      summary:
+        "Frontier-lab safety commitments tied to model capability thresholds (ASL levels); a template that shaped later voluntary policy frameworks.",
+      topics: ["frontier safety", "voluntary commitments", "capability thresholds"],
+    },
+    {
+      type: "blog",
+      title: "Core Views on AI Safety: When, Why, What, and How",
+      url: "https://www.anthropic.com/news/core-views-on-ai-safety",
+      publishedAt: "2023-03-08",
+      summary:
+        "Anthropic's worldview statement on transformative AI risk and the policy posture that follows from it.",
+      topics: ["AI safety", "worldview", "policy posture"],
+    },
+    {
+      type: "blog",
+      title: "Claude's Constitution",
+      url: "https://www.anthropic.com/news/claudes-constitution",
+      publishedAt: "2023-05-09",
+      summary:
+        "The principles guiding Constitutional AI training, including how Claude is steered around harmful content and political topics.",
+      topics: ["constitutional AI", "alignment", "model behaviour"],
+    },
+  ],
+  openai: [
+    {
+      type: "blog",
+      title: "Planning for AGI and beyond",
+      url: "https://openai.com/index/planning-for-agi-and-beyond/",
+      publishedAt: "2023-02-24",
+      summary:
+        "OpenAI's long-horizon thinking on transitioning to AGI and the governance posture they hope partners and regulators will adopt.",
+      topics: ["AGI", "governance", "long-term planning"],
+    },
+    {
+      type: "blog",
+      title: "Governance of superintelligence",
+      url: "https://openai.com/index/governance-of-superintelligence/",
+      publishedAt: "2023-05-22",
+      summary:
+        "A proposal for international coordination on frontier AI, including an IAEA-style oversight body.",
+      topics: ["international governance", "superintelligence", "oversight"],
+    },
+    {
+      type: "blog",
+      title: "Our approach to AI safety",
+      url: "https://openai.com/index/our-approach-to-ai-safety/",
+      publishedAt: "2023-04-05",
+      summary:
+        "OpenAI's safety practices in deployment: red-teaming, child-safety, privacy, and accuracy commitments.",
+      topics: ["deployment safety", "red-teaming", "child safety"],
+    },
+  ],
+  "google-deepmind": [
+    {
+      type: "filing",
+      title: "Introducing the Frontier Safety Framework",
+      url: "https://deepmind.google/discover/blog/introducing-the-frontier-safety-framework/",
+      publishedAt: "2024-05-17",
+      summary:
+        "DeepMind's first-pass framework for identifying and mitigating frontier model risk, paralleling Anthropic's RSP.",
+      topics: ["frontier safety", "framework", "capability evaluations"],
+    },
+  ],
+  huggingface: [
+    {
+      type: "blog",
+      title:
+        "AI Policy @\uD83E\uDD17: Open ML Considerations in the EU AI Act",
+      url: "https://huggingface.co/blog/eu-ai-act-oss",
+      publishedAt: "2023-07-25",
+      summary:
+        "Open-source-leaning analysis of how the EU AI Act's tiered obligations land on open ML projects.",
+      topics: ["EU AI Act", "open source", "compliance"],
+    },
+    {
+      type: "blog",
+      title: "Ethics and Society Newsletter #1",
+      url: "https://huggingface.co/blog/ethics-soc-1",
+      publishedAt: "2022-09-22",
+      summary:
+        "First in HF's ongoing ethics-and-society series, framing how the company thinks about model harm at scale.",
+      topics: ["ethics", "society", "newsletter"],
+    },
+  ],
+  mistral: [
+    {
+      type: "press",
+      title: "Cheaper, Better, Faster, Stronger \u2014 Continuing to push the frontier of AI and making it accessible to all",
+      url: "https://mistral.ai/news/mixtral-8x22b/",
+      publishedAt: "2024-04-17",
+      summary:
+        "Mixtral 8x22B launch \u2014 Mistral's most capable open-weights model at the time, framed around accessibility and openness.",
+      topics: ["model release", "open weights", "frontier"],
+    },
+  ],
+};
+

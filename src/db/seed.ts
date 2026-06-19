@@ -10,6 +10,7 @@ import {
   companyTags,
   frames,
   frameScores,
+  publications,
   userProfile,
 } from "./schema";
 import {
@@ -17,6 +18,7 @@ import {
   seedTags,
   seedFrames,
   seedFrameScores,
+  seedPublications,
   seedUserProfile,
 } from "./seed-data";
 import { eq, notInArray } from "drizzle-orm";
@@ -200,6 +202,50 @@ async function main() {
     }
     console.log(
       `  frame_scores: ${inserted} upserted${missing ? `, ${missing} skipped` : ""}`,
+    );
+  }
+
+  /* Publications \u2014 hand-picked editorial pass. Keyed by company slug;
+   * idempotent on (company_id, url). */
+  {
+    const allCompanies = await db.select().from(companies);
+    const companyIdBySlug = new Map(allCompanies.map((c) => [c.slug, c.id]));
+    let inserted = 0;
+    let missing = 0;
+    for (const [slug, pubs] of Object.entries(seedPublications)) {
+      const companyId = companyIdBySlug.get(slug);
+      if (companyId == null) {
+        missing++;
+        console.warn(`  publications: skipped unknown company slug "${slug}"`);
+        continue;
+      }
+      for (const p of pubs) {
+        await db
+          .insert(publications)
+          .values({
+            companyId,
+            type: p.type,
+            title: p.title,
+            url: p.url,
+            publishedAt: new Date(p.publishedAt),
+            summary: p.summary,
+            topics: p.topics ?? [],
+          })
+          .onConflictDoUpdate({
+            target: [publications.companyId, publications.url],
+            set: {
+              type: p.type,
+              title: p.title,
+              publishedAt: new Date(p.publishedAt),
+              summary: p.summary,
+              topics: p.topics ?? [],
+            },
+          });
+        inserted++;
+      }
+    }
+    console.log(
+      `  publications: ${inserted} upserted${missing ? `, ${missing} skipped` : ""}`,
     );
   }
 
