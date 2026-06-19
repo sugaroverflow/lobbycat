@@ -406,3 +406,94 @@ The bet underneath: a tight London-only dataset (target: ~30–60 companies, han
 
 ---
 
+
+## 8. What survives but moves
+
+§7 is the deletes; §8 is the *carries* — things that shipped in v0.3 or v0.4 and survive into v0.5, but with their placement, surface, or role re-cast around the new IA. Naming these is the second half of the editorial-honesty pass: it makes clear that v0.5 isn't a rebuild from zero (which would waste real signal) but a *re-framing* — most of the load-bearing pieces from v0.4 carry over; what changes is where they live, what they answer to, and what they look like in the Machine register.
+
+Each item below names the v0.4 origin, the v0.5 destination, and the reason for the move. Where the move overlaps with a death in §7, the cross-reference is explicit so the deletes and the carries reconcile.
+
+### 8.1 The six frames (concept + data model)
+
+**Was:** Five frames in v0.4 (Geographic remit, Policy area scope, Stage of company, Policy posture, Working style), surfaced as a `/frames` index page + per-company score grids + axis options on the Map. Editorial-but-uneven — some frames carried more weight than others, and the page read as a reference doc rather than the product's central organising idea.
+
+**Becomes:** The six frames are the **load-bearing IA of v0.5** (§2, §3.5). A sixth frame — *Team style* (set the frontier ↔ execute the playbook) — joins the set; the existing five are renamed/sharpened where the prose in §2 nudges the pole labels. The `frames` table in the database gains one row (Team style) and a small schema migration to allow the renamed labels; the `frame_scores` matrix gains one column-worth of (company × frame) cells that need re-curation (see §9). The `rationale` column on `frame_scores` carries unchanged — and it's promoted from "useful metadata" to *load-bearing editorial provenance*, because every Surprise reason (§5) and every fit-note edit traces back to it.
+
+**Why it moves rather than re-builds:** The schema is right. The concept is right. What was missing was the *commitment* — v0.4 treated the frames as one feature among five; v0.5 makes them the lens through which every other feature is read. Six instead of five because *Team style* is the most consequential frame Aadi actually uses when describing the field in conversation, and its absence in v0.4 forced him to read it through *Policy posture* by proxy. Splitting the two makes the matrix more honest.
+
+### 8.2 The `<CompanyDrawer>` component
+
+**Was:** Introduced in v0.4 N1 part 3 as the unifying surface across `/companies` (inline-expanded rows) and the home Map (pinned-state below-plot drawer). Shared `slug`, `openRoles[]`, `recentPublications[]`, `scores[]`, optional `onClose`. Already the cleanest piece of architecture in v0.4.
+
+**Becomes:** The **universal reading surface for a company in v0.5** — used by the Map (pinned dot → drawer below plot, unchanged), by Compare (each picked company renders as a drawer-shaped column, §3.4 route 2), by Surprise (clicking a pick opens this drawer in-place on the Map, §3.4 route 3), and as the inline fit-note editor target (§8.4 below, replacing the dead `/companies/[slug]` full-bleed editor from §7.7). The prop shape gains: an `edit?: "fit-note" | null` prop for the inline-editor mode, an optional `surpriseReason?` prop for the "you got here from a Surprise" provenance line at the top of the drawer, and a `compact?: boolean` for the narrower Compare-column rendering. Visual treatment moves into the Machine register (§6): mono labels, cyan readouts on the `n/5` cells, electric blue on the `Open full view →` and `Edit fit-note` affordances.
+
+**Why it moves rather than dies:** This is the highest-leverage component in v0.4 — it already did the *right* thing (one body, multiple hosts) before v0.5 had a name for that pattern. Expanding it to be the universal reading surface (rather than introducing a separate Surprise-detail view, or a separate Compare-column component) collapses three near-identical layouts back into one, which is exactly the consolidation v0.5 is supposed to do.
+
+### 8.3 The Compare page
+
+**Was:** A separate destination in v0.4's nav (`/compare`), used to put 2–4 companies side-by-side with frame scores + roles + publications + an implicit fit-rank derived from weights. Functional but under-used — Aadi tended to flip back to `/companies` to pick the next comparison subject, which broke the gesture.
+
+**Becomes:** Survives in the v0.5 nav (§3.1), but its **role sharpens to the pre-meeting / already-narrowed reading** — the surface Aadi opens when he's past scouting and into pick-or-prep mode. Two structural changes carry it across:
+
+1. **The company picker becomes drawer-aware.** Adding a company to a Compare column happens from the Map (right-click a dot, or pin-then-`Add to compare`), from inside another Compare column (`Add adjacent` → opens a small frame-shaped picker pre-filtered to neighbours on the current axis pair), or from a Surprise modal (`Add to compare` as a secondary action next to `Open →`). The flat list-style picker dies along with the companies list page (§7.1).
+2. **Each column renders as a `<CompanyDrawer compact />`** rather than a bespoke compare-column layout. The "all six frames in adjacent columns" reading falls out naturally — it's just three or four drawers side by side, with the frame-score grids aligning row-wise across columns because the frame order is canonical.
+
+**Why it moves rather than dies:** The verb *compare* survives the IA collapse; the visual treatment of *Compare-as-its-own-page-with-its-own-layout* does not. Routing Compare through the same drawer component that the Map and Surprise already use is the consolidation move that makes Compare cheap to maintain *and* makes the editorial register consistent across surfaces (a frame score reads the same way wherever you encounter it).
+
+### 8.4 Fit-notes
+
+**Was:** The single highest-signal piece of content in the product — a paragraph per (company), in Aadi's editorial voice via the cat, capturing the *non-frame-shaped* read on the company ("they're stronger on government affairs than the publications suggest, because…"). Lived in `frame_scores`-adjacent storage at the company level. Rendered everywhere the company appeared. Edited on the now-dying `/companies/[slug]` full-bleed editor (§7.7).
+
+**Becomes:** Storage **unchanged** (one `fit_note` text field per company, with `updated_at` + `updated_by_cat_run_id` for provenance). Surfaces **unchanged-but-redistributed**: the fit-note renders in `<CompanyDrawer>` everywhere — on the Map drawer, in Compare columns, under the Surprise modal's variant pill (one-line teaser only, full text after `Open →`). Editing **moves** from the dedicated full-bleed page to an **inline edit mode on `<CompanyDrawer>` itself** (§8.2's `edit="fit-note"` prop): clicking `Edit fit-note` swaps the rendered paragraph for a textarea in the same panel, with `Save` and `Cancel` in the Machine button treatment; saving revalidates the surface in-place.
+
+**Why it moves rather than dies (or rebuilds):** Fit-notes are the *editorial voice* of the product on a per-company basis — deleting them would gut the curation v0.5 is otherwise leaning into. But the dedicated editor page added a CRM verb the product doesn't otherwise speak (browse → click → land on a form), and v0.5's IA explicitly rejects that verb (§3.4). Inline drawer edit preserves the editorial gesture (write a paragraph about this company) without leaving the reading context (the Map dot, the Compare column, the Surprise pick) where the gesture got summoned.
+
+### 8.5 The next-role conversation (v0.4 N2 loop)
+
+**Was:** Shipped in v0.4 N2 parts 1–3. Server actions `proposeNextRoleChanges(text)` + `applyNextRoleChanges(weights, concerns, frameScores)`. Claude Haiku reads a paragraph from Aadi, proposes itemised diffs across concerns / weights / frame scores with reasons, panel renders them with per-row accept/reject, one click applies. The *loop* is correct: it does exactly the editorial work the product needs it to do. The *placement* — a textarea + diff-panel form sitting on `/about` — does not (§7.2).
+
+**Becomes:** The conversation **migrates into a chat panel** — a small persistent surface, available from the Map (a floating chat affordance, or a slide-in panel summoned from the global nav), styled in the Machine register as a terminal-shaped exchange between Aadi and the cat. Aadi types a paragraph (or even a single sentence — "this one's stronger on writing than I gave them credit for"); the cat replies in italic (per §6.3, italic is reserved for the cat's voice) with the same itemised diffs Aadi already trusts from v0.4 N2; per-row accept happens inline in the conversation thread (checkboxes next to each diff line); the apply step is a single chat-action button at the end of the cat's turn. Crucially, **the existing server actions carry across unchanged** — `proposeNextRoleChanges` and `applyNextRoleChanges` are the right grammar; only the front-end host changes.
+
+**Why it moves rather than dies (or rebuilds):** The hard part of v0.4 N2 was the *grammar* — the JSON contract for concerns / weights / frame-score changes, the verbatim-match guards, the catalogue injection, the rationale-as-provenance pattern. That grammar is solid and survives untouched. What dies is the form-shaped chrome (§7.2); what survives is the loop, in a new host that matches what the loop is actually doing (a conversation, not a CRM submission). The chat panel also gives the cat a *persistent* place to live on the surface — which solves the v0.4 problem that the cat appeared only inside a single form and otherwise existed only as a mascot.
+
+(Subtle but important: the chat panel is *not* a general-purpose agent chat. It only knows the next-role grammar — concerns, weights, frame scores. v0.5 explicitly defers in-app agent chat with broader DB tool-calling to a later cycle. The chat-shaped host is the right *visual* for the next-role loop; it is not a license to expand the loop's scope.)
+
+### 8.6 The Map plot (axes, dots, hover, pin)
+
+**Was:** Built in v0.3, refined in v0.4 N1 — 2D scatter of companies on two user-chosen frame axes, with tier-coloured dots, `HoverCard` floating preview on hover, click-to-pin opening either the pinned-state floating card (early v0.4) or the below-plot `<CompanyDrawer>` (v0.4 N1 part 3). Already the most-used surface in the product.
+
+**Becomes:** **Promoted to the home route** (§3.2) — there is no separate landing page in v0.5; `/` *is* the Map. The plot itself carries across with three changes: (a) the axis-picker row moves from beside-the-plot to *directly above* the plot, giving the plot the full width of the canvas; (b) tier expression switches from colour to size + stroke weight (§6.4), freeing the colour palette to mean what §6.2 says it means; (c) the Surprise button anchors top-right of the plot area as the single CTA on home (§3.2 point 4). `HoverCard` survives as a hover-only preview (the pin-on-click mechanic dies, §7.6); `<CompanyDrawer>` below the plot survives as the pinned-state reading surface (§8.2).
+
+**Why it moves rather than rebuilds:** Nothing about the Map's *behaviour* is wrong — the gestures (hover to peek, click to pin, drawer to read deeper) are the right gestures for a small editorial dataset. What was wrong was the framing: in v0.4 the Map was one of five destinations competing for attention; in v0.5 it's the home, the first thing Aadi sees, and the surface every other route returns to. The behavioural carryover means the visual revamp ships as a re-skin, not a re-implementation.
+
+### 8.7 The `/about` page (profile, weights, concerns, `Forget me`)
+
+**Was:** Personal-state surface in v0.4 — name, role context, weight sliders, concern list, the v0.4 N2 textarea + diff-panel (now moving out, §8.5), the v0.4 N3 *show me around again* link (now retriggering the comic instead of the driver.js tour, §7.4), the cookie-clearing `Forget me` affordance.
+
+**Becomes:** Survives as the **personal-state surface in v0.5's nav** (§3.1) — name, role context, weight controls, concern list, `Forget me`, and the *show me around again* link (now replays the comic strip, §4.2). The textarea + diff-panel for next-role inference leaves (it moves to the chat panel, §8.5); the cat appears here as a small pixel sprite next to the next-role replay link (one of the few non-comic, non-Surprise placements the cat keeps, per §6.5). The page gains nothing structurally — if anything, it gets *smaller* in v0.5 because the chunkiest piece of content on it now lives elsewhere.
+
+**Why it moves rather than dies:** Personal state has to live somewhere; About is the right somewhere. What dies on About is the *form-shaped* surface area (§7.2), not the surface itself.
+
+### 8.8 The S / A / B tier system
+
+**Was:** Editorial tier on every company (S = top-cohort, A = strong, B = present-but-secondary), used in v0.4 to colour-tier the Map dots, sort the list page, and ribbon-label rows. A real piece of editorial work that carries genuine information about the curated set.
+
+**Becomes:** Survives as a data field; **moves in its visual expression** from colour to size + stroke weight on the Map (§6.4), and from row-ribbon to a small `cyan readout` label on `<CompanyDrawer>` headers (`S-tier`, `A-tier`, `B-tier` in the variant-pill style, §5.1's grammar). The sort-by-tier behaviour on the dead `/companies` list page (§7.1) goes with the page; tier no longer affects ordering anywhere else in v0.5 because the Map doesn't have an order (it has a plot) and Compare's ordering is driven by Aadi's picks.
+
+**Why it moves rather than dies:** Tier is real editorial information — the curated London set (§9) will have ~10 S-tier companies that should look more present on the Map than the ~25 B-tier ones. But colour was the wrong channel for it (the palette is spoken-for by role, §6.2), and the list-page sort was a templated default that v0.5 isn't keeping. Size-and-stroke is the right channel; cyan-readout label is the right label.
+
+### 8.9 The frames index at `/frames`
+
+**Was:** A reference page listing each frame with its pole labels and a short description. Lightly used; Aadi mostly read the frame descriptions inline on company pages rather than visiting `/frames` directly.
+
+**Becomes:** Survives at `/frames`, but **gains two roles**: (a) it's now the canonical surface for *reading* the §2 prose — the prose in this concept doc *is* the v0.5 content of `/frames`, lightly re-typeset for the surface; (b) it gains the **frame-weight editor** Aadi uses to influence the implicit fit-rank in Compare and the implicit Map-default axis pair (§3.1). The page also serves as the doubled-up onboarding fallback — the About page's *show me around again* link replays the comic; if Aadi wants to *read* the frames rather than re-watch the comic, `/frames` is where that lives.
+
+**Why it moves rather than dies:** v0.4's `/frames` was the right page with the wrong centrality — it should have been the *explainer of the lens*, but the lens wasn't yet the load-bearing concept. v0.5 makes the lens the load-bearing concept, which is exactly the situation where this page earns its keep. Re-typesetting it into the Machine register (and giving it the weight-editor it was always implicitly missing) is the move.
+
+### 8.10 What this section is *for*
+
+The load-bearing claim of §8 is: **the v0.4 codebase is the right starting point for v0.5, not a thing to discard.** Most of v0.4's components, server actions, schemas, and gestures carry across — what changes is the IA (§3), the editorial framing (§§2,5), the visual language (§6), and the specific surfaces named in §7. The implementation order in §9 leans heavily on this — the rebuild step is closer to a re-skin + re-host than a rewrite, which is what makes the four-step plan (concept → visual revamp → London dataset → rebuild → re-curate) tractable on a Lotus-pace cadence.
+
+The honest test for every survivor named above: *if a frame goes between Aadi and a company through this thing, in v0.5, this thing belongs in v0.5.* Each survivor above passes that test; the deletes in §7 fail it.
+
+---
