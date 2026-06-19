@@ -14,11 +14,17 @@ export type WeightChangeProposal = {
   reason: string;
 };
 
+export type ConcernChangeProposal =
+  | { op: "add"; text: string; reason: string }
+  | { op: "remove"; text: string; reason: string }
+  | { op: "edit"; text: string; from: string; reason: string };
+
 export type NextRoleProposal =
   | {
       ok: true;
       summary: string; // 2-sentence "what changed and why" signed by the cat
       weightChanges: WeightChangeProposal[];
+      concernChanges: ConcernChangeProposal[];
     }
   | { ok: false; error: string };
 
@@ -36,7 +42,7 @@ function coerceLevel(v: unknown): WeightLevel | null {
  * proposed weight changes plus a short signed summary. Apply step is
  * a separate action so Aadi can accept/reject per item first.
  *
- * Scope (v0.4 N2 part 1): weights only. Concerns + frame scores land in part 2.
+ * Scope (v0.4 N2 part 2): weights + concerns. Frame scores land in part 3.
  */
 export async function proposeNextRoleChanges(
   text: string,
@@ -69,16 +75,21 @@ export async function proposeNextRoleChanges(
     "  - an UPDATE to an existing weight (use its existing key verbatim; from = current level)",
     "  - a NEW weight (a key that doesn't yet exist; from = null) — only when the note clearly names a new dimension Aadi cares about that none of the existing weights cover.",
     "For each change give a one-sentence reason that quotes or paraphrases what Aadi said. Be specific. Don't invent facts.",
+    "Aadi also has a list of *concerns* — short, plain-language phrases naming things he's wary about or wants to avoid (e.g. \"narrow specialist trap\", \"slow-moving institutions\"). Propose 0–4 itemised concern changes when the note clearly warrants them:",
+    "  - { op: 'add', text, reason } — a NEW concern phrase Aadi just named that isn't already in his list. Match phrasing to existing concerns' tone (short, lowercase-ish, plain).",
+    "  - { op: 'remove', text, reason } — an existing concern Aadi explicitly says no longer worries him. text must match an existing concern verbatim.",
+    "  - { op: 'edit', text, from, reason } — rewording an existing concern. from must match verbatim; text is the replacement.",
+    "If the note doesn't clearly warrant any concern changes, return an empty concernChanges array. Don't fish.",
     "Also give a 2-sentence \"summary\" signed off as the cat — 'lobbycat here:' or similar — describing what changed and why, in plain prose.",
     "Return STRICTLY a single JSON object, no prose around it, matching this TypeScript type:",
-    "{ \"summary\": string, \"weightChanges\": Array<{ \"key\": string, \"from\": \"low\"|\"medium\"|\"high\"|null, \"to\": \"low\"|\"medium\"|\"high\", \"reason\": string }> }",
+    "{ \"summary\": string, \"weightChanges\": Array<{ \"key\": string, \"from\": \"low\"|\"medium\"|\"high\"|null, \"to\": \"low\"|\"medium\"|\"high\", \"reason\": string }>, \"concernChanges\": Array<{ \"op\": \"add\"|\"remove\"|\"edit\", \"text\": string, \"from\"?: string, \"reason\": string }> }",
   ].join("\n");
 
   const user = [
     "CURRENT WEIGHTS:",
     JSON.stringify(currentWeights, null, 2),
     "",
-    "CURRENT CONCERNS (for context, do not change in this pass):",
+    "CURRENT CONCERNS:",
     JSON.stringify(concerns, null, 2),
     "",
     "AADI'S NOTE ABOUT WHAT HE'S LOOKING FOR:",
@@ -151,36 +162,93 @@ export async function proposeNextRoleChanges(
     weightChanges.push({ key, from, to, reason });
   }
 
-  return { ok: true, summary: summary || "lobbycat here: a couple of small nudges, nothing dramatic.", weightChanges };
+  const concernsRaw = Array.isArray(p.concernChanges) ? p.concernChanges : [];
+  const concernChanges: ConcernChangeProposal[] = [];
+  const existingConcernsSet = new Set(concerns);
+  for (const entry of concernsRaw) {
+    if (!entry || typeof entry !== "object") continue;
+    const e = entry as Record<string, unknown>;
+    const op = typeof e.op === "string" ? e.op.trim().toLowerCase() : "";
+    const text = typeof e.text === "string" ? e.text.trim() : "";
+    const reason = typeof e.reason === "string" ? e.reason.trim() : "";
+    if (!text) continue;
+    if (op === "add") {
+      if (existingConcernsSet.has(text)) continue; // dedupe — the cat re-proposed something he already has
+      concernChanges.push({ op: "add", text, reason });
+    } else if (op === "remove") {
+      if (!existingConcernsSet.has(text)) continue; // skip phantom removes
+      concernChanges.push({ op: "remove", text, reason });
+    } else if (op === "edit") {
+      const from = typeof e.from === "string" ? e.from.trim() : "";
+      if (!from || !existingConcernsSet.has(from)) continue;
+      if (from === text) continue;
+      concernChanges.push({ op: "edit", text, from, reason });
+    }
+  }
+
+  return {
+    ok: true,
+    summary: summary || "lobbycat here: a couple of small nudges, nothing dramatic.",
+    weightChanges,
+    concernChanges,
+  };
 }
 
 /**
- * Apply a subset of accepted weight changes to the profile. Each entry
- * has been reviewed in the side-panel; we just merge them in.
+ * Apply a subset of accepted weight + concern changes to the profile,
+ * transactionally (one UPDATE). Each entry has been reviewed in the
+ * side-panel; we just merge them in.
  */
-export async function applyNextRoleWeightChanges(
-  accepted: Array<{ key: string; to: WeightLevel }>,
+export async function applyNextRoleChanges(
+  acceptedWeights: Array<{ key: string; to: WeightLevel }>,
+  acceptedConcerns: ConcernChangeProposal[],
 ): Promise<{ ok: true } | { ok: false; error: string }> {
-  if (!Array.isArray(accepted) || accepted.length === 0) {
+  const hasWeights = Array.isArray(acceptedWeights) && acceptedWeights.length > 0;
+  const hasConcerns = Array.isArray(acceptedConcerns) && acceptedConcerns.length > 0;
+  if (!hasWeights && !hasConcerns) {
     return { ok: false, error: "Nothing accepted." };
   }
   const [existing] = await db.select().from(userProfile).limit(1);
   if (!existing) return { ok: false, error: "No profile to update." };
 
-  const current = { ...((existing.weights as Record<string, unknown>) ?? {}) };
-  for (const { key, to } of accepted) {
+  const nextWeights = { ...((existing.weights as Record<string, unknown>) ?? {}) };
+  for (const { key, to } of acceptedWeights ?? []) {
     const k = (key ?? "").trim();
     const v = coerceLevel(to);
     if (!k || !v) continue;
-    current[k] = v;
+    nextWeights[k] = v;
+  }
+
+  let nextConcerns = [...((existing.concerns as string[]) ?? [])];
+  for (const change of acceptedConcerns ?? []) {
+    if (!change) continue;
+    if (change.op === "add") {
+      const t = (change.text ?? "").trim();
+      if (t && !nextConcerns.includes(t)) nextConcerns.push(t);
+    } else if (change.op === "remove") {
+      const t = (change.text ?? "").trim();
+      nextConcerns = nextConcerns.filter((c) => c !== t);
+    } else if (change.op === "edit") {
+      const from = (change.from ?? "").trim();
+      const to = (change.text ?? "").trim();
+      if (!from || !to) continue;
+      nextConcerns = nextConcerns.map((c) => (c === from ? to : c));
+    }
   }
 
   await db
     .update(userProfile)
-    .set({ weights: current, updatedAt: new Date() })
+    .set({ weights: nextWeights, concerns: nextConcerns, updatedAt: new Date() })
     .where(eq(userProfile.id, existing.id));
 
   revalidatePath("/about");
   revalidatePath(`/companies/[slug]`, "page");
   return { ok: true };
+}
+
+// Back-compat shim (kept until any cached client bundles roll over).
+export async function applyNextRoleWeightChanges(
+  accepted: Array<{ key: string; to: WeightLevel }>,
+) {
+  return applyNextRoleChanges(accepted, []);
 }
