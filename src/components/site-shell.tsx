@@ -12,7 +12,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="flex items-center gap-6 mono text-xs uppercase tracking-[0.14em] text-muted">
             <Link href="/" className="hover:text-ink transition">Map</Link>
-            <Link href="/companies" className="hover:text-ink transition">Companies</Link>
             <Link href="/compare" className="hover:text-ink transition">Compare</Link>
             <Link href="/frames" className="hover:text-ink transition">Frames</Link>
             <Link href="/about" className="hover:text-ink transition">About</Link>
