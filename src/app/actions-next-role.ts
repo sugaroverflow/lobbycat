@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db";
-import { userProfile } from "@/db/schema";
+import { companies, frames, frameScores, userProfile } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -19,12 +19,24 @@ export type ConcernChangeProposal =
   | { op: "remove"; text: string; reason: string }
   | { op: "edit"; text: string; from: string; reason: string };
 
+export type FrameScoreChangeProposal = {
+  companySlug: string;
+  companyName: string; // resolved server-side for display
+  frameName: string;
+  frameId: number; // resolved server-side
+  companyId: number; // resolved server-side
+  from: number | null; // current score, null if unscored
+  to: number; // 1..frame.scale
+  reason: string;
+};
+
 export type NextRoleProposal =
   | {
       ok: true;
       summary: string; // 2-sentence "what changed and why" signed by the cat
       weightChanges: WeightChangeProposal[];
       concernChanges: ConcernChangeProposal[];
+      frameScoreChanges: FrameScoreChangeProposal[];
     }
   | { ok: false; error: string };
 
@@ -68,6 +80,33 @@ export async function proposeNextRoleChanges(
   const currentWeights = (profile.weights as Record<string, unknown>) ?? {};
   const concerns = (profile.concerns as string[]) ?? [];
 
+  // Frame catalogue + current scores so the cat can propose company×frame rescorings.
+  const allFrames = await db
+    .select({
+      id: frames.id,
+      name: frames.name,
+      kind: frames.kind,
+      scale: frames.scale,
+      lowLabel: frames.lowLabel,
+      highLabel: frames.highLabel,
+    })
+    .from(frames);
+  const scaleFrames = allFrames.filter((f) => f.kind === "scale");
+  const allCompanies = await db
+    .select({ id: companies.id, slug: companies.slug, name: companies.name })
+    .from(companies);
+  const companyBySlug = new Map(allCompanies.map((c) => [c.slug, c]));
+  const frameByName = new Map(scaleFrames.map((f) => [f.name, f]));
+  const currentScores = await db
+    .select({
+      companyId: frameScores.companyId,
+      frameId: frameScores.frameId,
+      score: frameScores.score,
+    })
+    .from(frameScores);
+  const scoreLookup = new Map<string, number>();
+  for (const s of currentScores) scoreLookup.set(`${s.companyId}:${s.frameId}`, s.score);
+
   const system = [
     "You are lobbycat — a thoughtful, slightly playful assistant helping Aadi figure out his next policy/AI-policy role.",
     "Aadi has a set of *weights* on his profile: each weight is a short label (e.g. \"big firm vs. founding\", \"UK pigeonhole risk\") with a level of low | medium | high. These weights shape how the dashboard scores companies for him.",
@@ -80,10 +119,21 @@ export async function proposeNextRoleChanges(
     "  - { op: 'remove', text, reason } — an existing concern Aadi explicitly says no longer worries him. text must match an existing concern verbatim.",
     "  - { op: 'edit', text, from, reason } — rewording an existing concern. from must match verbatim; text is the replacement.",
     "If the note doesn't clearly warrant any concern changes, return an empty concernChanges array. Don't fish.",
+    "Aadi also has scores on each (company, frame) pair, on a 1..scale integer scale. Frames are listed below with their scale and low/high labels. Propose 0–4 frameScoreChanges ONLY when Aadi's note implies a clear re-evaluation of how a specific company sits on a specific frame (e.g. he says he now thinks Cohere is more UK-bound than he assumed → bump up its UK-pigeonhole-risk score).",
+    "  - { companySlug, frameName, to: integer, reason } — companySlug must be one from the catalogue, frameName must match verbatim, to must be an integer within the frame's scale.",
+    "If nothing in the note clearly warrants a re-score, return an empty frameScoreChanges array. Don't fish; weights are the primary lever.",
     "Also give a 2-sentence \"summary\" signed off as the cat — 'lobbycat here:' or similar — describing what changed and why, in plain prose.",
     "Return STRICTLY a single JSON object, no prose around it, matching this TypeScript type:",
-    "{ \"summary\": string, \"weightChanges\": Array<{ \"key\": string, \"from\": \"low\"|\"medium\"|\"high\"|null, \"to\": \"low\"|\"medium\"|\"high\", \"reason\": string }>, \"concernChanges\": Array<{ \"op\": \"add\"|\"remove\"|\"edit\", \"text\": string, \"from\"?: string, \"reason\": string }> }",
+    "{ \"summary\": string, \"weightChanges\": Array<{ \"key\": string, \"from\": \"low\"|\"medium\"|\"high\"|null, \"to\": \"low\"|\"medium\"|\"high\", \"reason\": string }>, \"concernChanges\": Array<{ \"op\": \"add\"|\"remove\"|\"edit\", \"text\": string, \"from\"?: string, \"reason\": string }>, \"frameScoreChanges\": Array<{ \"companySlug\": string, \"frameName\": string, \"to\": number, \"reason\": string }> }",
   ].join("\n");
+
+  const frameCatalogue = scaleFrames.map((f) => ({
+    name: f.name,
+    scale: f.scale,
+    low: f.lowLabel,
+    high: f.highLabel,
+  }));
+  const companyCatalogue = allCompanies.map((c) => ({ slug: c.slug, name: c.name }));
 
   const user = [
     "CURRENT WEIGHTS:",
@@ -91,6 +141,12 @@ export async function proposeNextRoleChanges(
     "",
     "CURRENT CONCERNS:",
     JSON.stringify(concerns, null, 2),
+    "",
+    "FRAME CATALOGUE (name, 1..scale, low↔high labels):",
+    JSON.stringify(frameCatalogue, null, 2),
+    "",
+    "COMPANY CATALOGUE (slug, name):",
+    JSON.stringify(companyCatalogue, null, 2),
     "",
     "AADI'S NOTE ABOUT WHAT HE'S LOOKING FOR:",
     trimmed,
@@ -186,11 +242,41 @@ export async function proposeNextRoleChanges(
     }
   }
 
+  const frameScoreRaw = Array.isArray(p.frameScoreChanges) ? p.frameScoreChanges : [];
+  const frameScoreChanges: FrameScoreChangeProposal[] = [];
+  for (const entry of frameScoreRaw) {
+    if (!entry || typeof entry !== "object") continue;
+    const e = entry as Record<string, unknown>;
+    const companySlug = typeof e.companySlug === "string" ? e.companySlug.trim() : "";
+    const frameName = typeof e.frameName === "string" ? e.frameName.trim() : "";
+    const toRaw = e.to;
+    const reason = typeof e.reason === "string" ? e.reason.trim() : "";
+    if (!companySlug || !frameName) continue;
+    const company = companyBySlug.get(companySlug);
+    const frame = frameByName.get(frameName);
+    if (!company || !frame) continue;
+    const to = typeof toRaw === "number" ? Math.round(toRaw) : NaN;
+    if (!Number.isFinite(to) || to < 1 || to > frame.scale) continue;
+    const current = scoreLookup.get(`${company.id}:${frame.id}`) ?? null;
+    if (current === to) continue; // no-op
+    frameScoreChanges.push({
+      companySlug,
+      companyName: company.name,
+      frameName,
+      frameId: frame.id,
+      companyId: company.id,
+      from: current,
+      to,
+      reason,
+    });
+  }
+
   return {
     ok: true,
     summary: summary || "lobbycat here: a couple of small nudges, nothing dramatic.",
     weightChanges,
     concernChanges,
+    frameScoreChanges,
   };
 }
 
@@ -202,10 +288,12 @@ export async function proposeNextRoleChanges(
 export async function applyNextRoleChanges(
   acceptedWeights: Array<{ key: string; to: WeightLevel }>,
   acceptedConcerns: ConcernChangeProposal[],
+  acceptedFrameScores: Array<{ companyId: number; frameId: number; to: number; reason?: string }> = [],
 ): Promise<{ ok: true } | { ok: false; error: string }> {
   const hasWeights = Array.isArray(acceptedWeights) && acceptedWeights.length > 0;
   const hasConcerns = Array.isArray(acceptedConcerns) && acceptedConcerns.length > 0;
-  if (!hasWeights && !hasConcerns) {
+  const hasScores = Array.isArray(acceptedFrameScores) && acceptedFrameScores.length > 0;
+  if (!hasWeights && !hasConcerns && !hasScores) {
     return { ok: false, error: "Nothing accepted." };
   }
   const [existing] = await db.select().from(userProfile).limit(1);
@@ -241,7 +329,21 @@ export async function applyNextRoleChanges(
     .set({ weights: nextWeights, concerns: nextConcerns, updatedAt: new Date() })
     .where(eq(userProfile.id, existing.id));
 
+  for (const fs of acceptedFrameScores ?? []) {
+    if (!fs) continue;
+    const score = Number.isFinite(fs.to) ? Math.round(fs.to) : NaN;
+    if (!Number.isFinite(score) || score < 1) continue;
+    await db
+      .insert(frameScores)
+      .values({ companyId: fs.companyId, frameId: fs.frameId, score, rationale: fs.reason ?? null })
+      .onConflictDoUpdate({
+        target: [frameScores.companyId, frameScores.frameId],
+        set: { score, rationale: fs.reason ?? null, updatedAt: new Date() },
+      });
+  }
+
   revalidatePath("/about");
+  revalidatePath("/");
   revalidatePath(`/companies/[slug]`, "page");
   return { ok: true };
 }

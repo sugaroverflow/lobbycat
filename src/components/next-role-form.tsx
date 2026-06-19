@@ -7,6 +7,7 @@ import {
   type NextRoleProposal,
   type WeightChangeProposal,
   type ConcernChangeProposal,
+  type FrameScoreChangeProposal,
 } from "@/app/actions-next-role";
 
 const LABEL = "mono text-[0.65rem] uppercase tracking-[0.16em] text-whisper";
@@ -16,6 +17,7 @@ export function NextRoleForm() {
   const [proposal, setProposal] = useState<NextRoleProposal | null>(null);
   const [accepted, setAccepted] = useState<Set<number>>(new Set());
   const [acceptedConcerns, setAcceptedConcerns] = useState<Set<number>>(new Set());
+  const [acceptedScores, setAcceptedScores] = useState<Set<number>>(new Set());
   const [pending, startTransition] = useTransition();
   const [applied, setApplied] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -30,6 +32,7 @@ export function NextRoleForm() {
         // default to all accepted; Aadi unchecks the ones he doesn't want
         setAccepted(new Set(p.weightChanges.map((_, i) => i)));
         setAcceptedConcerns(new Set(p.concernChanges.map((_, i) => i)));
+        setAcceptedScores(new Set(p.frameScoreChanges.map((_, i) => i)));
       }
     });
   }
@@ -42,9 +45,12 @@ export function NextRoleForm() {
     const concernPicks = proposal.concernChanges.filter((_, i) =>
       acceptedConcerns.has(i),
     );
+    const scorePicks = proposal.frameScoreChanges
+      .filter((_, i) => acceptedScores.has(i))
+      .map((s) => ({ companyId: s.companyId, frameId: s.frameId, to: s.to, reason: s.reason }));
     setErr(null);
     startTransition(async () => {
-      const res = await applyNextRoleChanges(weightPicks, concernPicks);
+      const res = await applyNextRoleChanges(weightPicks, concernPicks, scorePicks);
       if (!res.ok) setErr(res.error);
       else {
         setApplied(true);
@@ -85,6 +91,7 @@ export function NextRoleForm() {
                 setProposal(null);
                 setAccepted(new Set());
                 setAcceptedConcerns(new Set());
+                setAcceptedScores(new Set());
                 setApplied(false);
                 setErr(null);
               }}
@@ -135,11 +142,13 @@ export function NextRoleForm() {
               <h4 className={LABEL + " mb-2 text-whisper"}>weights</h4>
             )}
             <ul className="space-y-3">
-              {proposal.weightChanges.length === 0 && proposal.concernChanges.length === 0 && (
-                <li className="serif text-sm text-muted">
-                  The cat didn&apos;t see anything in your note that warrants a change. That&apos;s a fine answer.
-                </li>
-              )}
+              {proposal.weightChanges.length === 0 &&
+                proposal.concernChanges.length === 0 &&
+                proposal.frameScoreChanges.length === 0 && (
+                  <li className="serif text-sm text-muted">
+                    The cat didn&apos;t see anything in your note that warrants a change. That&apos;s a fine answer.
+                  </li>
+                )}
               {proposal.weightChanges.map((c, i) => (
                 <ProposalRow
                   key={i}
@@ -156,15 +165,45 @@ export function NextRoleForm() {
               ))}
             </ul>
 
-            {(proposal.weightChanges.length > 0 || proposal.concernChanges.length > 0) && !applied && (
+            {proposal.frameScoreChanges.length > 0 && (
+              <div className="mt-6">
+                <h4 className={LABEL + " mb-2 text-whisper"}>frame scores</h4>
+                <ul className="space-y-3">
+                  {proposal.frameScoreChanges.map((c, i) => (
+                    <FrameScoreRow
+                      key={i}
+                      change={c}
+                      accepted={acceptedScores.has(i)}
+                      onToggle={() => {
+                        const next = new Set(acceptedScores);
+                        if (next.has(i)) next.delete(i);
+                        else next.add(i);
+                        setAcceptedScores(next);
+                      }}
+                      disabled={applied}
+                    />
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {(proposal.weightChanges.length > 0 ||
+              proposal.concernChanges.length > 0 ||
+              proposal.frameScoreChanges.length > 0) && !applied && (
               <button
                 onClick={apply}
-                disabled={pending || (accepted.size === 0 && acceptedConcerns.size === 0)}
+                disabled={
+                  pending ||
+                  (accepted.size === 0 && acceptedConcerns.size === 0 && acceptedScores.size === 0)
+                }
                 className="mt-5 mono text-xs uppercase tracking-[0.14em] px-3 py-1.5 border border-moss bg-moss text-paper hover:bg-ink hover:border-ink disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {pending
                   ? "applying…"
-                  : `apply ${accepted.size + acceptedConcerns.size} change${accepted.size + acceptedConcerns.size === 1 ? "" : "s"}`}
+                  : (() => {
+                      const n = accepted.size + acceptedConcerns.size + acceptedScores.size;
+                      return `apply ${n} change${n === 1 ? "" : "s"}`;
+                    })()}
               </button>
             )}
 
@@ -224,6 +263,42 @@ function ConcernRow({
               {change.text}
             </span>
           )}
+        </div>
+        <p className="serif text-sm text-muted mt-1">{change.reason}</p>
+      </div>
+    </li>
+  );
+}
+
+function FrameScoreRow({
+  change,
+  accepted,
+  onToggle,
+  disabled,
+}: {
+  change: FrameScoreChangeProposal;
+  accepted: boolean;
+  onToggle: () => void;
+  disabled: boolean;
+}) {
+  return (
+    <li className="flex items-start gap-3 border border-whisper/40 px-3 py-2">
+      <input
+        type="checkbox"
+        checked={accepted}
+        onChange={onToggle}
+        disabled={disabled}
+        className="mt-1.5 accent-moss"
+        aria-label={`Accept rescoring ${change.companyName} on ${change.frameName}`}
+      />
+      <div className="flex-1">
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+          <span className="serif text-sm font-medium">{change.companyName}</span>
+          <span className="serif text-sm text-muted">on</span>
+          <span className="serif text-sm italic">{change.frameName}</span>
+          <span className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper">
+            {change.from === null ? "unscored" : change.from} → <span className="text-moss">{change.to}</span>
+          </span>
         </div>
         <p className="serif text-sm text-muted mt-1">{change.reason}</p>
       </div>
