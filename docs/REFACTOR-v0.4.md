@@ -33,6 +33,12 @@ Coherent UX upgrade. Each feature has its own DoD; ship together.
 
 **Done when:** Clicking a row anywhere in the dashboard expands it inline without navigating; clicking again collapses; one row open at a time; expanded row shows roles + publications + tags + scores; "open full view" link in the drawer goes to `/companies/[slug]`.
 
+**Update 2026-06-19 from Fatima:** Same disclosure style EVERYWHERE. The map currently uses a pinned `HoverCard` (panel-card next to the dot) and `/companies` uses a row-drawer expanding inline. Per Fatima: pick one pattern and use it on both surfaces.
+
+**Recommendation:** Use the `/companies` row-drawer style as the canonical pattern (it's the wider/more-readable one, and the explicit accept/reject buttons in fit-notes already live in a wide horizontal layout). Retrofit the Map: clicking a dot opens a row-drawer-style panel *below* the map plot, anchored to the map section (not floating next to the dot). Keep the dot's hover-preview tiny (just name + 1-line description) so the spatial scan still works.
+
+**Task:** N1 part 3 — unify the map drawer pattern with the `/companies` row drawer. ~30m: extract `<CompanyDrawer>` from `expandable-company-row.tsx`, render it below the map plot when a dot is clicked, keep the small HoverCard for pure-hover preview.
+
 ### N2: Free-text "next role" → LLM inference
 
 **What:** Textarea on `/about` titled "What I'm looking for in my next role." When Aadi submits, the cat reads it, then proposes updates to his concerns / weights / frame scores. He reviews each proposed change in a side-panel (accept / reject) and applies them with one click. The cat shows a "what changed and why" summary after.
