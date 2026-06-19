@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { TagChip } from "@/components/tag-chip";
+import { CompanyDrawer } from "@/components/company-drawer";
 
 type RowCompany = {
   id: number;
@@ -109,111 +109,16 @@ function CompanyRow({
         </div>
       </button>
 
-      {isOpen && <ExpandedDetail company={c} />}
+      {isOpen && (
+        <div className="-mx-3 px-3 pb-6">
+          <CompanyDrawer
+            slug={c.slug}
+            openRoles={c.openRolesList}
+            recentPublications={c.recentPublications}
+            scores={c.scores}
+          />
+        </div>
+      )}
     </li>
-  );
-}
-
-function ExpandedDetail({ company: c }: { company: RowCompany }) {
-  const scored = c.scores.filter((s) => s.score !== null);
-  return (
-    <div className="-mx-3 px-3 pb-6 pt-1">
-      <div className="grid sm:grid-cols-2 gap-x-10 gap-y-6 border-t border-rule pt-5">
-        <Section title="Open roles">
-          {c.openRolesList.length === 0 ? (
-            <p className="serif text-sm text-whisper">No open roles tracked.</p>
-          ) : (
-            <ul className="space-y-2">
-              {c.openRolesList.map((r) => (
-                <li key={r.id} className="text-sm leading-snug">
-                  <a
-                    href={r.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="serif text-ink hover:underline decoration-rule"
-                  >
-                    {r.title}
-                  </a>
-                  {(r.department || r.location) && (
-                    <div className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper">
-                      {[r.department, r.location].filter(Boolean).join(" · ")}
-                    </div>
-                  )}
-                </li>
-              ))}
-            </ul>
-          )}
-        </Section>
-
-        <Section title="Recent publications">
-          {c.recentPublications.length === 0 ? (
-            <p className="serif text-sm text-whisper">
-              No publications tracked yet.
-            </p>
-          ) : (
-            <ul className="space-y-2">
-              {c.recentPublications.map((p) => (
-                <li key={p.id} className="text-sm leading-snug">
-                  <a
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="serif text-ink hover:underline decoration-rule"
-                  >
-                    {p.title}
-                  </a>
-                  <div className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper">
-                    {p.type}
-                    {p.publishedAt &&
-                      ` · ${new Date(p.publishedAt).toISOString().slice(0, 10)}`}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-        </Section>
-
-        {scored.length > 0 && (
-          <Section title="Frame scores" wide>
-            <dl className="grid sm:grid-cols-2 gap-x-6 gap-y-2 text-sm">
-              {scored.map((s) => (
-                <div key={s.frameId} className="flex items-baseline justify-between gap-3">
-                  <dt className="serif text-muted truncate" title={s.frameName}>
-                    {s.frameName}
-                  </dt>
-                  <dd className="mono text-ink shrink-0">{s.score}/5</dd>
-                </div>
-              ))}
-            </dl>
-          </Section>
-        )}
-      </div>
-
-      <div className="mt-5">
-        <Link
-          href={`/companies/${c.slug}`}
-          className="mono text-[0.65rem] uppercase tracking-[0.12em] text-accent hover:underline"
-        >
-          Open full view →
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function Section({
-  title,
-  children,
-  wide,
-}: {
-  title: string;
-  children: React.ReactNode;
-  wide?: boolean;
-}) {
-  return (
-    <div className={wide ? "sm:col-span-2" : ""}>
-      <div className="eyebrow text-[0.6rem] mb-2">{title}</div>
-      {children}
-    </div>
   );
 }

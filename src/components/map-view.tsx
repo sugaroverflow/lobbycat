@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { TagChip } from "@/components/tag-chip";
 import { FilterChip, FilterRowLabel } from "@/components/filter-chip";
+import { CompanyDrawer } from "@/components/company-drawer";
 
 export type MapCompany = {
   id: number;
@@ -407,18 +408,55 @@ export function MapView({
           />
         </svg>
 
-        {activeCo && (
+        {activeCo && pinned !== activeCo.id && (
           <HoverCard
             company={activeCo}
             xFrameName={xFrame?.name ?? ""}
             yFrameName={yFrame?.name ?? ""}
             xScore={xFrame ? activeCo.scores[xFrame.id] : undefined}
             yScore={yFrame ? activeCo.scores[yFrame.id] : undefined}
-            pinned={pinned === activeCo.id}
-            onClose={() => setPinned(null)}
           />
         )}
       </div>
+
+      {activeCo && pinned === activeCo.id && (
+        <div className="border-t border-rule pt-1 -mt-2">
+          <div className="flex items-baseline justify-between gap-4 mb-1">
+            <div>
+              <div className="eyebrow text-[0.6rem] mb-1">
+                Tier {activeCo.tier} · {TIER_LABEL[activeCo.tier]}
+              </div>
+              <Link
+                href={`/companies/${activeCo.slug}`}
+                className="serif text-2xl text-ink font-medium tracking-tight hover:underline decoration-rule"
+              >
+                {activeCo.name}
+              </Link>
+              {activeCo.hq && (
+                <span className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper ml-3">
+                  {activeCo.hq}
+                </span>
+              )}
+            </div>
+          </div>
+          {activeCo.fitNotePreview && (
+            <p className="serif text-sm text-muted leading-snug max-w-3xl mt-2">
+              {activeCo.fitNotePreview}
+            </p>
+          )}
+          <CompanyDrawer
+            slug={activeCo.slug}
+            openRoles={activeCo.openRoles}
+            recentPublications={activeCo.recentPublications}
+            scores={frames.map((f) => ({
+              frameId: f.id,
+              frameName: f.name,
+              score: activeCo.scores[f.id] ?? null,
+            }))}
+            onClose={() => setPinned(null)}
+          />
+        </div>
+      )}
 
       <AxisCaptions xFrame={xFrame} yFrame={yFrame} />
 
@@ -524,55 +562,30 @@ function HoverCard({
   yFrameName,
   xScore,
   yScore,
-  pinned,
-  onClose,
 }: {
   company: MapCompany;
   xFrameName: string;
   yFrameName: string;
   xScore: number | undefined;
   yScore: number | undefined;
-  pinned: boolean;
-  onClose: () => void;
 }) {
-  // When pinned, the card accepts pointer events (close button, link clicks);
-  // when hover-only, stay pointer-events-none so the cursor can keep moving
-  // between points without flicker.
+  // Pure-hover preview only. The pinned/detailed view is rendered as a
+  // CompanyDrawer below the plot, so this card stays pointer-events-none and
+  // intentionally compact.
   const topTags = company.tagList.slice(0, 4);
   return (
-    <div
-      className={`absolute top-3 right-3 w-72 bg-surface border rounded-md shadow-sm p-4 ${
-        pinned
-          ? "border-moss/40 ring-1 ring-moss/20 pointer-events-auto"
-          : "border-rule pointer-events-none"
-      }`}
-    >
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <div className="eyebrow text-[0.6rem] mb-1">
-            Tier {company.tier} · {TIER_LABEL[company.tier]}
-          </div>
-          <Link
-            href={`/companies/${company.slug}`}
-            className="serif text-lg text-ink font-medium leading-tight pointer-events-auto hover:underline block"
-          >
-            {company.name}
-          </Link>
-          {company.hq && (
-            <div className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper mt-0.5">
-              {company.hq}
-            </div>
-          )}
+    <div className="absolute top-3 right-3 w-72 bg-surface border border-rule rounded-md shadow-sm p-4 pointer-events-none">
+      <div className="min-w-0">
+        <div className="eyebrow text-[0.6rem] mb-1">
+          Tier {company.tier} · {TIER_LABEL[company.tier]}
         </div>
-        {pinned && (
-          <button
-            type="button"
-            onClick={onClose}
-            className="mono text-[0.65rem] uppercase tracking-[0.12em] text-whisper hover:text-ink -mt-1 -mr-1 p-1 leading-none"
-            aria-label="Unpin"
-          >
-            ×
-          </button>
+        <div className="serif text-lg text-ink font-medium leading-tight">
+          {company.name}
+        </div>
+        {company.hq && (
+          <div className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper mt-0.5">
+            {company.hq}
+          </div>
         )}
       </div>
 
@@ -604,64 +617,9 @@ function HoverCard({
         </div>
       )}
 
-      {pinned && company.openRoles.length > 0 && (
-        <div className="mt-3 pt-3 border-t border-rule">
-          <div className="eyebrow text-[0.55rem] mb-1.5">Open roles</div>
-          <ul className="space-y-1">
-            {company.openRoles.map((r) => (
-              <li key={r.id} className="text-sm leading-snug">
-                <a
-                  href={r.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="serif text-ink hover:underline pointer-events-auto"
-                >
-                  {r.title}
-                </a>
-                {r.location && (
-                  <span className="mono text-[0.6rem] uppercase tracking-[0.1em] text-whisper ml-1.5">
-                    {r.location}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {pinned && company.recentPublications.length > 0 && (
-        <div className="mt-3 pt-3 border-t border-rule">
-          <div className="eyebrow text-[0.55rem] mb-1.5">Recent publications</div>
-          <ul className="space-y-1">
-            {company.recentPublications.map((p) => (
-              <li key={p.id} className="text-sm leading-snug">
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="serif text-ink hover:underline pointer-events-auto"
-                >
-                  {p.title}
-                </a>
-                <span className="mono text-[0.6rem] uppercase tracking-[0.1em] text-whisper ml-1.5">
-                  {p.type}
-                  {p.publishedAt &&
-                    ` · ${new Date(p.publishedAt).toISOString().slice(0, 7)}`}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {pinned && (
-        <Link
-          href={`/companies/${company.slug}`}
-          className="mt-3 inline-block mono text-[0.65rem] uppercase tracking-[0.12em] text-accent hover:underline pointer-events-auto"
-        >
-          Open profile →
-        </Link>
-      )}
+      <div className="mt-3 pt-3 border-t border-rule mono text-[0.6rem] uppercase tracking-[0.12em] text-whisper">
+        click dot to pin · see roles, pubs, scores
+      </div>
     </div>
   );
 }
