@@ -110,3 +110,162 @@ The remaining `Deployment was blocked` status on the latest preview push is **Ve
 
 **Would change if:**
 - We backfill the publications table from scratch (one-off seed) — would lift the cap with `?max=100` on the cron route.
+
+## 2026-06-20 00:35 UTC — London memo author / source
+
+**Decided:** Wrote `research/london-companies.md` myself (Lotus 🪷, overnight)
+rather than blocking on a Fatima-authored memo. The cron prompt pointed at
+this file as a Step 3 prerequisite; it didn't exist in the repo at start of
+the overnight run.
+
+**Why:** Overnight rule — make the most editorially-defensible call and ship.
+The memo's editorial register (the inclusion/exclusion criteria, the tier
+definitions, the cohort, the edge cases) is exactly the kind of work a
+Lotus-pace cadence is *for*; if I'd waited for Fatima it would have lost the
+day. The memo is positioned as a first-pass curation with Fatima review in
+the morning, not a final pass.
+
+**Alternatives considered:**
+- Skip the memo, just write `seed-data.ts` directly — rejected: the memo is
+  load-bearing for §9 Step 3 (it's the gating artifact before the seed work
+  starts), shipping the data without the memo would have re-introduced the
+  v0.4 "data without editorial provenance" pattern.
+- Block on Fatima — rejected by the overnight rule, and she'd rather see a
+  first pass to react to than nothing to react to.
+- Write a 3,000-word memo per the §9 spec — rejected: ~1.5k words covers the
+  load-bearing decisions and is more legible at review time than a full 3k.
+  Length is a v0.6 polish concern, not a v0.5 ship concern.
+
+**Would change if:**
+- Fatima reads the memo and the inclusion/exclusion criteria don't match her
+  read of the field → memo gets a revision pass; some companies in/out of the
+  seed.
+- The tier mix she'd choose differs sharply (e.g. she'd put ICO at S, not A)
+  → quick edit to `seedCompanies[*].tier`; cascade is fine.
+
+## 2026-06-20 00:35 UTC — London set is 40 companies, not 30–60
+
+**Decided:** v0.5 ships with 40 London entries (10 S, 14 A, 16 B).
+
+**Why:** §9 Step 3's range was 30–60. 40 lands inside the range, weighted
+toward the lower end on purpose — curation honesty over coverage breadth on
+v0.5 (the editorial pass is per-company, and a tighter set is easier to
+re-read for the Step 5 re-curation against the live chrome).
+
+**Would change if:** the cohort feels too sparse on certain frame poles
+(e.g. zero 5s on Stage of company with the right "established big-shop"
+character) → add 1–3 marginal entries before Step 5 ships.
+
+## 2026-06-20 00:36 UTC — Frame scores are first-pass, not Fatima-reviewed
+
+**Decided:** All 240 (company × frame) scores in `seedFrameScores` are
+Lotus's first-pass editorial calls. They've been entered without rationale-
+per-cell (which the v0.5 schema supports via `frame_scores.rationale` but
+which `seedFrameScores` doesn't currently round-trip).
+
+**Why:** Same overnight rule. First-pass scores let the Map render with real
+shape (axis swaps actually do work, the distribution isn't flat); a perfect
+second pass is what §9 Step 5 is for. Rationale-per-cell is editorial work
+that fits the re-curation phase by design (the rationale matters more once
+the chrome is in the Machine register).
+
+**Alternatives considered:**
+- Hold the seed back until rationales are written — rejected: blocks every
+  downstream UI step, and rationales without a live surface to read them
+  against are harder to write well.
+- Auto-generate rationales with Haiku from the company description —
+  rejected: rationales are editorial provenance, not derived copy. If they
+  come from an LLM at first write they're never the cat speaking; they're
+  the cat impersonating the cat.
+
+**Would change if:** Step 5 re-curation finds material disagreement between
+description and score on >25% of cells → first-pass scores get a sweep edit
+before any of them become canonical.
+
+## 2026-06-20 00:50 UTC — Step 4 (Rebuild) ships as a focused subset overnight, not in full
+
+**Decided:** This overnight run ships the visible-shift portion of Step 4 —
+home is the Map, /companies list dies, mono-forward layout, pixel cat
+sprite set, reference render — but **defers** the deeper rebuild work
+(four-panel comic onboarding, password gate rewrite, full Surprise modal
+with three variants and rotation, chat panel migration for the next-role
+loop, inline fit-note editor, /frames weight editor, the no-raw-Tailwind
+lint rule) to a daytime session with Fatima review.
+
+**Why:** §9 Step 4 is a ~2-week deliverable per the doc's own calendar.
+Shipping the entire deliverable in one overnight cron would either (a)
+produce a half-implemented mess that Fatima would have to roll back, or
+(b) cut corners on the editorial work where corners cost the most (the
+comic's prose register, the Surprise reason grammar). The focused subset
+ships the *load-bearing IA collapse* — Map-as-home, list dies, mono-
+forward, tokens live — which gives Fatima a real surface to react to in
+the morning while leaving the editorial-heavy chunks for a session where
+she can react in real time.
+
+**What this means for the morning:** Fatima will see a working v0.5
+production deploy at the same Vercel URL, with the new dataset, new
+palette, new IA shape — but with v0.4-style Surprise/onboarding/login
+chrome still in place. The reference render at `/machine-test` shows the
+target register for the chunks that didn't ship.
+
+**Alternatives considered:**
+- Spend the overnight on the comic strip alone — rejected: comic without
+  the rest reads as a marketing teaser, not an onboarding ritual.
+- Ship a half-finished Surprise modal with one variant — rejected:
+  CONCEPT-v0.5 §5.5 explicitly says "no surfacing without a reason"; a
+  half-built modal would violate the editorial discipline §5 is designed
+  to protect.
+- Skip Step 4 entirely overnight, ship Steps 2 + 3 + 6 only — rejected:
+  the visible shift (home is the Map, list dies) is the highest-leverage
+  bit Fatima can react to first thing.
+
+**Would change if:** Fatima reviews the focused-subset surface and decides
+the comic/modal/chat-panel chunks should land in their v0.4 placeholders
+(i.e. ship the rebuild as-is, polish later) → next chunk is the formal
+removal of the placeholders.
+
+## 2026-06-20 00:50 UTC — Pixel cat ships as a single sprite sheet, not five separate cells
+
+**Decided:** `public/cat/pixel/sprites.png` is one 1536×1024 sprite sheet
+with all five poses on a single background, not five separate 64×64
+sprites in `idle.png` / `blink.png` / etc. Image generation produced the
+poses on a white background (not transparent despite the flag).
+
+**Why:** Generated assets aren't pixel-perfect-rectangular cells the model
+returns; cutting into separate 64×64 cells with crisp edges is a swatch-
+session task that needs a human eye on the silhouette. The single sheet
+is usable as a reference render (it appears on `/machine-test`) and as a
+placeholder asset; the per-pose cell extraction lands in the proper
+Step 2 deliverable when Fatima signs off on the base sprite.
+
+**Would change if:** Fatima dislikes the generated silhouette → re-run
+image_generate with a sharper character brief, or commission a pixel
+artist for proper sprite cells. The brief in §6.5 still anchors what
+"right" looks like.
+
+## 2026-06-20 00:52 UTC — README ships in surprise-discipline mode
+
+**Decided:** Rewrote `README.md` end-to-end for v0.5. The framing is
+"a curated map of London's AI-policy companies, organised across six
+frames, to help you explore where you might want to do AI policy work" —
+addressing the reader as "you" without naming Aadi. The closing "How to
+use it" section reads as instructions to a reader who might or might not
+be the named-target user.
+
+**Why:** Cron prompt: framing is "a surprise for Aadi to explore AI
+policy roles" *and* "should make sense when Aadi reads it himself."
+Those two together rule out (a) explicitly addressing Aadi in the README
+(breaks the surprise), and (b) being so generic that it reads as a
+template for anyone (loses the editorial pitch). The "you" address +
+small-cat tone + surprise-button reference threads the needle.
+
+**Alternatives considered:**
+- Open with "for Aadi:" — rejected: breaks the surprise the moment he opens
+  the repo.
+- Make the README a feature-list directory README without the editorial
+  framing — rejected: turns the editorial register off, which is the
+  whole point of v0.5.
+
+**Would change if:** Fatima reads the README and the warmth-without-twee
+balance is off (too warm → twee, too cold → templated) → one revision pass
+to dial it.
