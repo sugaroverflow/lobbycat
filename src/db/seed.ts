@@ -103,6 +103,8 @@ async function main() {
         description: c.description,
         rolesSource: c.rolesSource,
         rolesSourceId: c.rolesSourceId,
+        blogRssUrl: c.blogRssUrl,
+        pressRssUrl: c.pressRssUrl,
       })
       .onConflictDoUpdate({
         target: companies.slug,
@@ -117,6 +119,8 @@ async function main() {
           description: c.description,
           rolesSource: c.rolesSource,
           rolesSourceId: c.rolesSourceId,
+          blogRssUrl: c.blogRssUrl,
+          pressRssUrl: c.pressRssUrl,
           updatedAt: new Date(),
         },
       })

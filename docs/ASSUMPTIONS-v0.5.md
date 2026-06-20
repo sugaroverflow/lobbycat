@@ -45,3 +45,32 @@ The remaining `Deployment was blocked` status on the latest preview push is **Ve
 **Would change if:**
 - Swatch session reveals the accent/readout/coral first-pass values clash badly with the locked navy/green — these are all in one file, one edit each.
 - Drizzle's `relations` or `with` clauses rely on prototype chains that break under Proxy (the db fix from above) — would refactor to a memoised getter instead of a Proxy.
+
+---
+
+## 2026-06-19 23:50 UTC — [data-pipelines] RSS ingestion ships without a curated feed-URL inventory
+
+**Decided:** Build the RSS pipeline against `companies.blogRssUrl` / `companies.pressRssUrl` as it stands today (mostly NULL), and seed only four well-known feeds: Anthropic (`/news/rss.xml`), OpenAI (`/blog/rss.xml`), Google DeepMind (`/blog/rss.xml`), Hugging Face (`/blog/feed.xml`). Hugging Face is verified to exist; the other three are best-guess paths. Pipeline treats fetch failure per-feed as a non-fatal warning, so a 404 doesn't poison the cron.
+
+**Why:**
+- Overnight rule: ship a defensible default, log it, move on. Spending the cron run hand-curating ~40 RSS URLs against possibly-stale company sites blocks PRs #2 and #3.
+- The schema already supports per-company feeds; the pipeline is data-driven, not URL-list-driven. Backfill of URLs becomes a separate "data-curation" task Fatima or Aadi can do in a spreadsheet later.
+- A small starter set proves the pipeline end-to-end (Haiku summarise → publications row) on at least one feed (Hugging Face) for sure.
+
+**Alternatives considered:**
+- Block on full feed inventory — rejected: blocks downstream PRs and turns a code task into a research task.
+- Drop seed entirely, ship pipeline only — rejected: would mean the cron is a no-op for the first 24h and reviewer can't eyeball any rows.
+- Hard-code a giant URL list in `src/lib/rss/index.ts` outside the `companies` table — rejected: violates "single source of truth" (the schema field exists for a reason).
+
+**Would change if:**
+- Any of the three guessed feeds 404s in the first cron run → drop the URL from seed-data, file a curation TODO.
+- Fatima wants summaries from a non-RSS source (newsletter, atom-only press page) → add a second adapter alongside the parser.
+
+## 2026-06-19 23:50 UTC — [data-pipelines] Per-feed Haiku call cap = 10 new items
+
+**Decided:** `runRssPipeline({ maxNewPerFeed: 10 })`. Newest items first; older fresh items spill to the next run if they're still in the feed window.
+
+**Why:** Predictable cost ceiling for the cron. With ~40 companies × 2 feeds × 10 items × claude-3-5-haiku-latest, worst-case daily Haiku spend is well under $0.10 even at $0.001/call equivalents.
+
+**Would change if:**
+- We backfill the publications table from scratch (one-off seed) — would lift the cap with `?max=100` on the cron route.
