@@ -73,6 +73,20 @@ async function main() {
         },
       });
   }
+  // v0.5: prune frames whose name isn't in the v0.5 set (drops the v0.4
+  // frame rows like "UK-pigeonhole risk" etc.). frame_scores cascade.
+  const keepFrameNames = seedFrames.map((f) => f.name);
+  const prunedFrames = await db
+    .delete(frames)
+    .where(notInArray(frames.name, keepFrameNames))
+    .returning({ name: frames.name });
+  if (prunedFrames.length) {
+    console.log(
+      `  frames: pruned ${prunedFrames.length} stale (${prunedFrames
+        .map((p) => p.name)
+        .join(", ")})`,
+    );
+  }
   console.log(`  frames: ${seedFrames.length}`);
 
   /* User profile (single row) */
@@ -165,6 +179,21 @@ async function main() {
           .onConflictDoNothing();
       }
     }
+  }
+  // v0.5: prune companies whose slug isn't in the v0.5 London set (drops
+  // v0.4 entries like "anthropic", "openai", global-flavoured rows).
+  // All dependent rows cascade.
+  const keepSlugs = seedCompanies.map((c) => c.slug);
+  const prunedCompanies = await db
+    .delete(companies)
+    .where(notInArray(companies.slug, keepSlugs))
+    .returning({ slug: companies.slug });
+  if (prunedCompanies.length) {
+    console.log(
+      `  companies: pruned ${prunedCompanies.length} stale (${prunedCompanies
+        .map((p) => p.slug)
+        .join(", ")})`,
+    );
   }
   console.log(`  companies: ${seedCompanies.length}`);
 

@@ -1,6 +1,17 @@
 /**
- * Seed data. Hand-curated from public sources (Jun 2026).
- * Every fact has a cite-able public URL. No private info.
+ * Seed data — v0.5 London curation.
+ *
+ * Editorial set of London-based AI-policy organisations: frontier labs with
+ * London offices, UK-native AI companies with real policy functions, AI
+ * think tanks and research institutes, industry consultancies, and the
+ * government-adjacent regulators that actually make UK AI policy.
+ *
+ * Source memo: /research/london-companies.md (first-pass curation).
+ *
+ * Tiers (editorial, not metric):
+ *   1 = S-tier — obvious + load-bearing, ~10 entries
+ *   2 = A-tier — strong, real footprint, ~14 entries
+ *   3 = B-tier — present-but-secondary, smaller surface, ~16 entries
  */
 
 export type SeedCompany = {
@@ -12,7 +23,7 @@ export type SeedCompany = {
   careersUrl?: string;
   policyPageUrl?: string;
   rolesSource?: "greenhouse" | "lever" | "ashby" | "custom";
-  rolesSourceId?: string; // board token
+  rolesSourceId?: string;
   blogRssUrl?: string;
   pressRssUrl?: string;
   focusAreas: string[];
@@ -33,324 +44,322 @@ export type SeedCompany = {
   }>;
 };
 
+/* ------------------------------------------------------------------ */
+/* Tags (v0.5 — simplified)                                           */
+/* ------------------------------------------------------------------ */
+
 export const seedTags = [
-  { label: "Frontier lab", color: "#406896" },
-  { label: "UK", color: "#1C6C34" },
-  { label: "EU", color: "#406896" },
-  { label: "US", color: "#B85048" },
-  { label: "Hiring policy lead", color: "#B85048" },
-  { label: "First policy hire", color: "#1C6C34" },
-  { label: "Established team", color: "#4A5260" },
-  { label: "Voice / media AI", color: "#406896" },
-  { label: "Autonomous / mobility", color: "#406896" },
-  { label: "Open weights", color: "#1C6C34" },
-  { label: "Agentic / coding AI", color: "#406896" },
-  // product-shape pills (v0.3.1 F1) — what kind of policy work this role would be
-  { label: "International policy", color: "#3E5C3A" },
-  { label: "Government affairs", color: "#3E5C3A" },
-  { label: "Regulatory counsel", color: "#3E5C3A" },
-  { label: "Trust & safety", color: "#3E5C3A" },
-  { label: "Product / GTM", color: "#3E5C3A" },
+  { label: "Frontier lab", color: "#4D8DFF" },
+  { label: "UK-native", color: "#6FE0E8" },
+  { label: "Think tank", color: "#F2EAD8" },
+  { label: "Government", color: "#FF8C73" },
+  { label: "Consultancy", color: "#F2EAD8" },
+  { label: "Law firm", color: "#F2EAD8" },
+  { label: "Advocacy", color: "#FF8C73" },
+  { label: "Defence/security", color: "#FF8C73" },
+  { label: "Hiring policy lead", color: "#4D8DFF" },
+  { label: "First policy hire", color: "#6FE0E8" },
+  { label: "Established team", color: "#F2EAD8" },
 ];
+
+/* ------------------------------------------------------------------ */
+/* Frames (v0.5 — the six)                                            */
+/* ------------------------------------------------------------------ */
 
 export const seedFrames = [
   {
-    name: "UK-pigeonhole risk",
+    name: "Geographic remit",
     description:
-      "How much would taking this role tie you to UK-only policy work? Higher = more UK-bound; lower = clearly international remit.",
+      "What the company's policy work covers, not where it sits. Does the London team only engage UK regulators, or does the same desk work across EU, US, and international forums?",
     scale: 5,
-    lowLabel: "clearly international",
-    highLabel: "very UK-bound",
-    lowDescription: "International remit — global affairs, multi-jurisdictional policy work.",
-    highDescription: "UK policy only — narrow national focus, hard to port elsewhere.",
+    lowLabel: "UK-only policy remit",
+    highLabel: "Multi-jurisdiction policy remit",
+    lowDescription:
+      "London-based team whose policy surface stops at the UK border — CMA, AISI, OFCOM, gov.uk consultations.",
+    highDescription:
+      "London office that's one node in a multi-jurisdiction policy operation — EU AI Office, NIST, international forums all on the same calendar.",
     sortIndex: 0,
   },
   {
-    name: "Charting the unknown",
+    name: "Policy area scope",
     description:
-      "Is the work treading well-mapped ground, or is the company facing first-of-its-kind regulatory questions you'd help define?",
+      "How wide the company's policy surface is. Single-issue specialists go deep on one fight; broad shops touch everything from compute export controls to age-appropriate design.",
     scale: 5,
-    lowLabel: "well-mapped territory",
-    highLabel: "frontier / first-of-its-kind",
-    lowDescription: "Established regulatory terrain — playing a known game well.",
-    highDescription: "First-of-its-kind questions — defining the rules as you go.",
+    lowLabel: "Single-issue specialist",
+    highLabel: "Broad multi-domain",
+    lowDescription:
+      "Picked one fight (model evaluations, copyright, open weights) and gone deep.",
+    highDescription:
+      "Touches compute export controls, public-sector procurement, age-appropriate design, content provenance, more — accepts being shallower in any one area.",
     sortIndex: 1,
   },
   {
-    name: "Cog vs. build-the-team",
+    name: "Stage of company",
     description:
-      "Are you joining a large established policy operation (cog in a system) or building the policy function from early days?",
+      "Where the company sits on the maturity curve — funding, headcount, product-in-market, regulatory footprint. Not a quality signal; an axis of the kind of work.",
     scale: 5,
-    lowLabel: "established team, specialist role",
-    highLabel: "first/early policy hire, build the team",
-    lowDescription: "Established team / specialist role — slot into a working function.",
-    highDescription: "First policy hire / build the function — set strategy from scratch.",
+    lowLabel: "Pre-product",
+    highLabel: "Established",
+    lowDescription:
+      "Six people in a WeWork with a Stripe account and a strong opinion.",
+    highDescription:
+      "Global comms team, regulatory affairs function, a seat at the table when AISI calls a meeting.",
     sortIndex: 2,
   },
   {
-    name: "Policy vs. product/GTM",
+    name: "Policy posture",
     description:
-      "Is this role primarily about policy writing/engagement, or is it more product-shaped (commercial, licensing, GTM-flavoured)?",
+      "Whether the company is writing the rules of the game or playing the existing ones well. The two ends look similar from outside; the day-to-day work could not differ more.",
     scale: 5,
-    lowLabel: "pure policy/regulatory",
-    highLabel: "product / GTM / licensing",
-    lowDescription: "Pure policy & regulatory work — writing, engagement, advocacy.",
-    highDescription: "Product-shaped — commercial, licensing, GTM-flavoured policy.",
+    lowLabel: "Frontier-defining",
+    highLabel: "Compliance-maintaining",
+    lowDescription:
+      "Publishes Responsible Scaling Policies, drafts model cards before anyone asks, shows up to consultations with new frameworks.",
+    highDescription:
+      "Mature compliance function, reads every new statutory instrument carefully, competes on doing the known thing reliably.",
     sortIndex: 3,
   },
   {
-    name: "Civic-infrastructure overlap",
+    name: "Working style",
     description:
-      "How much does the role intersect with public service delivery, government digital infrastructure, or excluded-population access?",
+      "How the policy team spends its hours. Writing-led shops produce long-form posts and position papers; government affairs shops do Westminster meetings and coalition work.",
     scale: 5,
-    lowLabel: "purely commercial AI",
-    highLabel: "high civic-infrastructure overlap",
-    lowDescription: "Purely commercial AI — no public-service overlap.",
-    highDescription: "High civic-infrastructure overlap — public delivery, gov digital, excluded access.",
+    lowLabel: "Writing-led",
+    highLabel: "Government affairs-led",
+    lowDescription:
+      "Long-form public posts, position papers, technical reports, blog essays other people quote.",
+    highDescription:
+      "Westminster meetings, briefings to officials, coalition work, off-the-record conversations that show up in regulation months later.",
     sortIndex: 4,
+  },
+  {
+    name: "Team style",
+    description:
+      "Whether the team is figuring out what good looks like as they go, or executing a known playbook well. Related to Policy posture but distinct — about what a Monday morning feels like.",
+    scale: 5,
+    lowLabel: "Set the frontier",
+    highLabel: "Execute the playbook",
+    lowDescription:
+      "Small team building the practice from scratch — no template, lots of judgement calls, two-year feedback loops.",
+    highDescription:
+      "Clear set of plays, run them tightly, measured on consistency rather than novelty.",
+    sortIndex: 5,
   },
 ];
 
+/* ------------------------------------------------------------------ */
+/* Companies — London AI-policy curation                              */
+/* ------------------------------------------------------------------ */
+
 export const seedCompanies: SeedCompany[] = [
-  /* ----------------- TIER 1 ---------------------------------------- */
+  /* ----------------- S-TIER (1) — ~10 ------------------------------ */
   {
-    slug: "anthropic",
-    name: "Anthropic",
+    slug: "google-deepmind",
+    name: "Google DeepMind",
     tier: 1,
-    hq: "San Francisco · London",
+    hq: "London (King's Cross)",
+    websiteUrl: "https://deepmind.google",
+    careersUrl: "https://deepmind.google/careers/",
+    policyPageUrl: "https://deepmind.google/about/",
+    blogRssUrl: "https://deepmind.google/blog/rss.xml",
+    focusAreas: [
+      "frontier safety",
+      "AI governance",
+      "international AI cooperation",
+      "responsible AI",
+    ],
+    description:
+      "London's biggest AI-policy operation by headcount. Inside a Big Tech parent (Google), which shapes the work — the policy function is established, specialist, and reaches across DSIT, AISI, EU AI Office, NIST in parallel. If you want a deep org with multiple career tracks inside the policy function, this is the floor.",
+    tags: ["Frontier lab", "Established team", "Hiring policy lead"],
+  },
+  {
+    slug: "anthropic-london",
+    name: "Anthropic (London)",
+    tier: 1,
+    hq: "London",
     websiteUrl: "https://www.anthropic.com",
     careersUrl: "https://www.anthropic.com/careers",
     policyPageUrl: "https://www.anthropic.com/policy",
     rolesSource: "greenhouse",
     rolesSourceId: "anthropic",
     blogRssUrl: "https://www.anthropic.com/news/rss.xml",
-    focusAreas: ["frontier-AI regulation", "safety policy", "EU AI Act"],
+    focusAreas: [
+      "frontier safety policy",
+      "Responsible Scaling Policy",
+      "UK AISI partnership",
+      "EU AI Act",
+    ],
     description:
-      "Frontier AI lab with a dedicated policy team across SF and London. Large established policy function — specialist roles, deep ties to AISI / NIST / EU AI Office. Live openings include 'Regulatory Counsel, Content & Frontier AI Regulation' partnering directly on EU AI Act engagement.",
-    tags: [
-      "Frontier lab",
-      "US",
-      "Hiring policy lead",
-      "Established team",
-      "Regulatory counsel",
-    ],
-    roles: [
-      {
-        title: "Regulatory Counsel, Content & Frontier AI Regulation",
-        location: "London, UK",
-        url: "https://job-boards.greenhouse.io/anthropic/jobs/5201506008",
-        source: "greenhouse",
-      },
-    ],
+      "The London office that partners directly with AISI on frontier-model evaluations. Smaller policy desk than DeepMind, sharper editorial register — Responsible Scaling Policies, public reasoning about frontier risk, model cards before anyone asks. Frontier-defining; writing-led with growing government affairs.",
+    tags: ["Frontier lab", "Hiring policy lead", "Established team"],
   },
   {
-    slug: "openai",
-    name: "OpenAI",
+    slug: "openai-london",
+    name: "OpenAI (London)",
     tier: 1,
-    hq: "San Francisco · London · Brussels · Dublin",
+    hq: "London",
     websiteUrl: "https://openai.com",
     careersUrl: "https://openai.com/careers/",
     policyPageUrl: "https://openai.com/news/global-affairs/",
     blogRssUrl: "https://openai.com/blog/rss.xml",
-    focusAreas: ["global affairs", "EU AI Act", "UK AI Bill", "national security"],
-    description:
-      "Global Affairs is OpenAI's policy umbrella, structured around regional leads (EMEA, UK, US). Many open roles in 2026 including Head of EMEA Global Affairs (London) and UK Policy and Partnerships Lead.",
-    tags: ["Frontier lab", "US", "Hiring policy lead", "Established team", "Government affairs"],
-    roles: [
-      {
-        title: "Head of EMEA, Global Affairs",
-        location: "London, UK",
-        url: "https://openai.com/careers/head-of-emea-global-affairs-london-uk/",
-        source: "custom",
-      },
-      {
-        title: "UK Policy and Partnerships Lead, Global Affairs",
-        location: "London, UK",
-        url: "https://uk.linkedin.com/jobs/view/uk-policy-and-partnerships-lead-global-affairs-at-openai-3646630159",
-        source: "custom",
-      },
-      {
-        title: "Europe National Security Lead, Global Affairs",
-        location: "Brussels, BE",
-        url: "https://be.linkedin.com/jobs/view/europe-national-security-lead-global-affairs-at-openai-4337481958",
-        source: "custom",
-      },
-    ],
-  },
-  {
-    slug: "elevenlabs",
-    name: "ElevenLabs",
-    tier: 1,
-    hq: "New York · London",
-    websiteUrl: "https://elevenlabs.io",
-    careersUrl: "https://elevenlabs.io/careers",
     focusAreas: [
-      "voice cloning consent",
-      "deepfake & content provenance",
-      "licensing frameworks",
-      "EU AI Act GPAI",
+      "global affairs",
+      "UK AI policy",
+      "EU AI Act",
+      "national security",
     ],
     description:
-      "Voice-AI scale-up facing genuinely novel policy challenges: consent for voice cloning, content provenance, licensing infrastructure. Public Policy Lead role is a global remit, likely the first major senior policy hire — opportunity to build the team and define firsts.",
-    tags: [
-      "Voice / media AI",
-      "US",
-      "Hiring policy lead",
-      "First policy hire",
-      "Trust & safety",
-    ],
-    roles: [
-      {
-        title: "Public Policy Lead",
-        location: "New York, US (global remit)",
-        url: "https://www.builtinnyc.com/job/public-policy-lead/6945036",
-        source: "custom",
-      },
-      {
-        title: "Privacy Counsel",
-        location: "Remote",
-        url: "https://elevenlabs.io/careers/f591a101-0ffe-44ba-8ff3-a913c86442b6/privacy-counsel",
-        source: "custom",
-      },
-    ],
-  },
-  {
-    slug: "cognition",
-    name: "Cognition",
-    tier: 2,
-    hq: "San Francisco · New York",
-    websiteUrl: "https://cognition.ai",
-    careersUrl: "https://cognition.ai/careers",
-    focusAreas: ["agentic AI", "developer-tools policy"],
-    description:
-      "Makers of Devin (AI software engineer). Small policy function, if any — most public engagement is product-side. A policy hire here would shape the company's public-facing stance from near-zero, with agentic-AI questions (autonomy, liability, deployment guardrails) all up for grabs.",
-    tags: ["Agentic / coding AI", "US", "First policy hire", "Product / GTM"],
-  },
-  {
-    slug: "reflection-ai",
-    name: "Reflection AI",
-    tier: 2,
-    hq: "New York",
-    websiteUrl: "https://reflection.ai",
-    careersUrl: "https://reflection.ai/careers",
-    focusAreas: ["autonomous coding agents", "agentic safety"],
-    description:
-      "Reflection AI is building autonomous coding agents, founded by ex-DeepMind researchers. Early-stage; likely no senior policy function yet. Would be a true ground-floor role with a research-flavoured product.",
-    tags: ["Agentic / coding AI", "US", "First policy hire", "Trust & safety"],
-  },
-
-  /* ----------------- TIER 2 (discovered) --------------------------- */
-  {
-    slug: "google-deepmind",
-    name: "Google DeepMind",
-    tier: 1,
-    hq: "London · Mountain View",
-    websiteUrl: "https://deepmind.google",
-    careersUrl: "https://deepmind.google/careers/",
-    blogRssUrl: "https://deepmind.google/blog/rss.xml",
-    focusAreas: [
-      "AI governance",
-      "frontier safety",
-      "international AI cooperation",
-    ],
-    description:
-      "Frontier AI research lab inside Google. London HQ. Large established policy + governance function — high prestige, specialist roles within a deep org. Strategic Planning roles in GenAI policy/governance routinely open.",
-    tags: [
-      "Frontier lab",
-      "UK",
-      "Established team",
-      "International policy",
-    ],
-  },
-  {
-    slug: "mistral",
-    name: "Mistral AI",
-    tier: 2,
-    hq: "Paris",
-    websiteUrl: "https://mistral.ai",
-    careersUrl: "https://jobs.lever.co/mistral",
-    rolesSource: "lever",
-    rolesSourceId: "mistral",
-    focusAreas: [
-      "EU AI Act GPAI",
-      "open-weights regulation",
-      "European tech sovereignty",
-    ],
-    description:
-      "Europe's flagship frontier-AI company, deeply involved in EU AI Act negotiation and the GPAI Code of Practice. Policy work here means being in the room as European AI governance is written. EU-HQ — natural counterweight to UK-pigeonhole concern.",
-    tags: ["Frontier lab", "EU", "Open weights", "Established team", "Regulatory counsel"],
-  },
-  {
-    slug: "huggingface",
-    name: "Hugging Face",
-    tier: 2,
-    hq: "New York · Paris",
-    websiteUrl: "https://huggingface.co",
-    careersUrl: "https://apply.workable.com/huggingface/",
-    blogRssUrl: "https://huggingface.co/blog/feed.xml",
-    focusAreas: [
-      "open-source AI policy",
-      "GPAI obligations",
-      "model transparency",
-    ],
-    description:
-      "Open-source AI hub, very active in EU AI Act / GPAI Code discussions on behalf of the open-source community. Public Policy Director Bruna de Castro e Silva and team are visible in EU and US forums. Mission-aligned for someone with open-standards orientation.",
-    tags: ["Open weights", "US", "EU", "Established team", "Regulatory counsel"],
-  },
-  {
-    slug: "cohere-aleph-alpha",
-    name: "Cohere × Aleph Alpha",
-    tier: 2,
-    hq: "Toronto · London · Heidelberg",
-    websiteUrl: "https://cohere.com",
-    careersUrl: "https://cohere.com/careers",
-    focusAreas: [
-      "enterprise AI policy",
-      "sovereign AI",
-      "EU AI Act compliance",
-      "explainability",
-      "data residency",
-    ],
-    description:
-      "Cohere and Aleph Alpha merged April 2026 (~$20B) to build a transatlantic, sovereign-AI-focused enterprise lab. EU compliance + on-prem deployment are the explicit pitch. Policy work here straddles Canada, UK, Germany and EU institutions — unusually broad jurisdictional remit for a single role.",
-    tags: ["Frontier lab", "EU", "Open weights", "Regulatory counsel"],
+      "Global Affairs UK lead based in London. Smaller than DeepMind or Anthropic on the policy side but heavily Westminster-shaped — government affairs and partnerships, less long-form public writing. The shop to learn government-affairs craft at frontier-lab scale.",
+    tags: ["Frontier lab", "Established team"],
   },
   {
     slug: "wayve",
     name: "Wayve",
     tier: 1,
-    hq: "London",
+    hq: "London (King's Cross)",
     websiteUrl: "https://wayve.ai",
     careersUrl: "https://wayve.ai/careers/",
     focusAreas: [
-      "AV regulation",
+      "autonomous vehicle regulation",
       "embodied AI policy",
-      "UK Sovereign AI",
-      "EU mobility policy",
+      "transport safety",
     ],
     description:
-      "UK self-driving / embodied-AI scale-up; the poster child for the £500M UK Sovereign AI Unit and the Action Plan. 'Head of UK and EU Policy' role open — defines the company's external engagement across the UK and EU. Mobility/transport policy specifically.",
-    tags: ["Autonomous / mobility", "UK", "Hiring policy lead", "First policy hire", "Regulatory counsel"],
-    roles: [
-      {
-        title: "Head of UK and EU Policy",
-        location: "London, UK",
-        url: "https://bebee.com/gb/jobs/head-of-uk-and-eu-policy-wayve-london-england--theirstack-688123943",
-        source: "custom",
-      },
+      "King's Cross-based autonomous-driving foundation-model company. Policy team is small but the work is genuinely first-of-its-kind — AV regulation is being written as Wayve operates, with DfT and the Automated Vehicles Act as the live policy surface. Frontier-defining; cross-cutting transport + AI safety.",
+    tags: ["UK-native", "Hiring policy lead", "First policy hire"],
+  },
+  {
+    slug: "alan-turing-institute",
+    name: "Alan Turing Institute",
+    tier: 1,
+    hq: "London (British Library)",
+    websiteUrl: "https://www.turing.ac.uk",
+    careersUrl: "https://www.turing.ac.uk/work-turing",
+    focusAreas: [
+      "AI public policy",
+      "data ethics",
+      "public-sector AI",
+      "AI standards",
     ],
+    description:
+      "The UK's national AI institute. Public policy programme writes the briefs ministers actually read. Established, multi-domain, mostly writing-led with serious convening power. Mature playbook on consultation responses; less about defining brand-new positions than carrying them through to policy.",
+    tags: ["Think tank", "Established team"],
+  },
+  {
+    slug: "ada-lovelace-institute",
+    name: "Ada Lovelace Institute",
+    tier: 1,
+    hq: "London (Soho)",
+    websiteUrl: "https://www.adalovelaceinstitute.org",
+    careersUrl: "https://www.adalovelaceinstitute.org/about/working-at-ada/",
+    focusAreas: [
+      "algorithmic accountability",
+      "data rights",
+      "public-sector AI",
+      "AI assurance",
+    ],
+    description:
+      "Most quoted UK AI think tank in the press over the last two years. Compact team, deep ground game. Strong on data rights, algorithmic accountability, and AI in the public sector. Writing-led with serious government-affairs reach — Ada interrogates where TBI proposes.",
+    tags: ["Think tank", "Hiring policy lead", "Established team"],
+  },
+  {
+    slug: "cltr",
+    name: "Centre for Long-Term Resilience (CLTR)",
+    tier: 1,
+    hq: "London (Westminster)",
+    websiteUrl: "https://www.longtermresilience.org",
+    careersUrl: "https://www.longtermresilience.org/jobs",
+    focusAreas: [
+      "AI safety policy",
+      "catastrophic risk",
+      "frontier governance",
+      "Bletchley Declaration follow-on",
+    ],
+    description:
+      "~15-person Westminster shop punching far above its weight on AI safety and catastrophic-risk policy. Co-authored the Bletchley Declaration framing. Frontier-defining; small team setting the frontier, very much not executing a known playbook.",
+    tags: ["Think tank", "First policy hire", "Hiring policy lead"],
+  },
+  {
+    slug: "aisi",
+    name: "AI Safety Institute (AISI)",
+    tier: 1,
+    hq: "London (Whitehall)",
+    websiteUrl: "https://www.aisi.gov.uk",
+    careersUrl: "https://www.aisi.gov.uk/careers",
+    focusAreas: [
+      "frontier model evaluations",
+      "AI safety standards",
+      "national security",
+      "international AI coordination",
+    ],
+    description:
+      "The UK's national AI safety body, inside DSIT. Most influential policy buyer in the UK landscape — what AISI says sets the direction the market moves in. Frontier-defining at gov scale; growing fast, with technical and policy tracks side by side. The single highest-leverage AI policy desk in the country.",
+    tags: ["Government", "Hiring policy lead", "Established team"],
+  },
+  {
+    slug: "dsit-ai-policy",
+    name: "DSIT — AI Policy Directorate",
+    tier: 1,
+    hq: "London (Whitehall)",
+    websiteUrl: "https://www.gov.uk/government/organisations/department-for-science-innovation-and-technology",
+    focusAreas: [
+      "UK AI strategy",
+      "AI regulation framework",
+      "AI Opportunity Plan",
+      "international AI",
+    ],
+    description:
+      "Whitehall home of UK AI policy. Smaller core team than AISI but the regulatory levers live here. Mature government-affairs shop by design — policy is *made* here in the formal sense. The Westminster job, with the calendar that comes with it.",
+    tags: ["Government", "Established team"],
+  },
+  {
+    slug: "tbi",
+    name: "Tony Blair Institute",
+    tier: 1,
+    hq: "London (Mayfair)",
+    websiteUrl: "https://www.institute.global",
+    careersUrl: "https://www.institute.global/careers",
+    focusAreas: [
+      "AI for state capacity",
+      "AI Opportunity Plan",
+      "public services AI",
+      "international AI",
+    ],
+    description:
+      "AI-as-state-capacity work; closely involved with the AI Opportunity Plan. Government-affairs heavy, mature shop, broad policy scope. Different register from Ada — TBI proposes the next state move; Ada audits the current one.",
+    tags: ["Think tank", "Established team"],
+  },
+
+  /* ----------------- A-TIER (2) — ~14 ------------------------------ */
+  {
+    slug: "mistral-london",
+    name: "Mistral AI (London office)",
+    tier: 2,
+    hq: "Paris HQ · London office",
+    websiteUrl: "https://mistral.ai",
+    careersUrl: "https://jobs.lever.co/mistral",
+    rolesSource: "lever",
+    rolesSourceId: "mistral",
+    focusAreas: ["open weights policy", "EU AI Act", "UK-EU bridge"],
+    description:
+      "French frontier lab; London is a beachhead, not the policy HQ (Paris). Real policy work happens here on EU-UK-US bridge questions, but the team is smaller. Open-weights advocacy is the editorial signature.",
+    tags: ["Frontier lab"],
   },
   {
     slug: "stability-ai",
     name: "Stability AI",
-    tier: 3,
+    tier: 2,
     hq: "London",
     websiteUrl: "https://stability.ai",
     careersUrl: "https://stability.ai/careers",
-    focusAreas: ["generative-media policy", "Open weights", "copyright"],
+    focusAreas: [
+      "generative-image regulation",
+      "copyright",
+      "model weights policy",
+    ],
     description:
-      "Generative-media company. Has been in the centre of copyright/AI litigation. Policy function smaller post-restructure; if hiring, would be a high-pressure role on copyright and content provenance.",
-    tags: ["Open weights", "UK", "Regulatory counsel"],
+      "London-HQ generative-image foundation-model company. Policy posture shifted toward compliance over the last 18 months as legal pressure landed (Getty case, copyright suits). Smaller policy desk; mature playbook on dealing with formal complaints.",
+    tags: ["UK-native"],
   },
   {
     slug: "synthesia",
@@ -361,300 +370,364 @@ export const seedCompanies: SeedCompany[] = [
     careersUrl: "https://www.synthesia.io/careers",
     focusAreas: [
       "synthetic media policy",
-      "consent + provenance",
-      "enterprise AI ethics",
-    ],
-    description:
-      "London-based synthetic media / AI video platform. Strong enterprise focus and a deliberately conservative content policy (no political/news, strict consent). A policy role would lean heavily into provenance, consent, and content moderation infrastructure.",
-    tags: ["Voice / media AI", "UK", "Trust & safety"],
-  },
-  {
-    slug: "faculty-ai",
-    name: "Faculty AI",
-    tier: 3,
-    hq: "London",
-    websiteUrl: "https://faculty.ai",
-    careersUrl: "https://faculty.ai/careers",
-    focusAreas: [
-      "AI for government",
-      "UK public sector",
-      "AI Safety Institute partnerships",
-    ],
-    description:
-      "Applied-AI consultancy with deep UK government contracts (incl. former AI Safety Institute work). Less a pure 'lab' more an AI-for-government delivery org. Heaviest UK-pigeonhole risk on this list — but maximal civic-infrastructure overlap.",
-    tags: ["UK", "Government affairs"],
-  },
-  {
-    slug: "xai",
-    name: "xAI",
-    tier: 3,
-    hq: "San Francisco · Memphis",
-    websiteUrl: "https://x.ai",
-    careersUrl: "https://x.ai/careers",
-    focusAreas: ["frontier AI", "free-speech framing", "compute infrastructure"],
-    description:
-      "Elon Musk's frontier-AI lab. Public stance leans anti-regulation and free-speech-framed. Policy function exists but heavily influenced by founder politics. Worth mapping for completeness; fit depends heavily on political comfort.",
-    tags: ["Frontier lab", "US", "Government affairs"],
-  },
-  {
-    slug: "thinking-machines",
-    name: "Thinking Machines Lab",
-    tier: 2,
-    hq: "San Francisco",
-    websiteUrl: "https://thinkingmachines.ai",
-    careersUrl: "https://thinkingmachines.ai/careers",
-    focusAreas: ["frontier AI research", "alignment"],
-    description:
-      "Mira Murati's new frontier-AI lab. Very early stage; likely no policy function yet. Pure greenfield for someone wanting to define the policy stance of a brand-new lab.",
-    tags: ["Frontier lab", "US", "First policy hire", "Trust & safety"],
-  },
-  {
-    slug: "anysphere",
-    name: "Anysphere (Cursor)",
-    tier: 3,
-    hq: "San Francisco · New York",
-    websiteUrl: "https://anysphere.inc",
-    careersUrl: "https://anysphere.inc/careers",
-    focusAreas: ["developer-tools policy", "AI-in-coding"],
-    description:
-      "Maker of Cursor. Massive growth but very engineering-focused; no visible senior policy hire yet. A policy role would help define enterprise procurement and IP positioning as Cursor scales into regulated industries.",
-    tags: ["Agentic / coding AI", "US", "First policy hire", "Product / GTM"],
-  },
-  {
-    slug: "physical-intelligence",
-    name: "Physical Intelligence",
-    tier: 3,
-    hq: "San Francisco",
-    websiteUrl: "https://physicalintelligence.company",
-    careersUrl: "https://physicalintelligence.company/careers",
-    focusAreas: ["embodied AI / robotics policy"],
-    description:
-      "Robotics + foundation models. Embodied-AI policy is a near-empty space; high regulatory novelty, deep technical demand. Almost certainly no policy function yet.",
-    tags: ["US", "First policy hire", "Regulatory counsel"],
-  },
-
-  /* ----------------- EUROPE ---------------------------------------- */
-  {
-    slug: "black-forest-labs",
-    name: "Black Forest Labs",
-    tier: 2,
-    hq: "Freiburg / Munich",
-    websiteUrl: "https://blackforestlabs.ai",
-    careersUrl: "https://blackforestlabs.ai/careers",
-    focusAreas: [
-      "generative image policy",
-      "EU AI Act GPAI",
-      "German tech sovereignty",
+      "deepfake consent",
       "content provenance",
+      "trust & safety",
     ],
     description:
-      "Stability-AI alumni building open generative image/video models from Germany. Heavy German government and EU policy attention given the sovereign-AI narrative. A policy hire would shape content provenance and GPAI obligations from inside the EU's flagship generative-media lab.",
-    tags: ["Frontier lab", "EU", "Open weights", "First policy hire", "Trust & safety"],
+      "London-HQ video synthesis. Growing policy function; one of the best London shops where trust-and-safety policy actually meets product. Consent frameworks, content provenance, deepfake mitigations — frontier-shaped work with a real shipping cadence.",
+    tags: ["UK-native", "Hiring policy lead"],
   },
   {
     slug: "helsing",
     name: "Helsing",
-    tier: 3,
-    hq: "Munich · London · Paris",
+    tier: 2,
+    hq: "Munich · London",
     websiteUrl: "https://helsing.ai",
-    careersUrl: "https://helsing.ai/careers",
+    careersUrl: "https://helsing.ai/jobs",
     focusAreas: [
       "defence AI policy",
       "export controls",
-      "European sovereignty",
-      "dual-use regulation",
+      "dual-use frameworks",
+      "AUKUS",
     ],
     description:
-      "European defence-AI scale-up. Policy here means defence procurement, export controls, dual-use frameworks, NATO interoperability — a very different policy world than commercial AI. Worth flagging because it's a clear off-ramp from frontier-lab work; possibly mismatched with civic-infrastructure interests.",
-    tags: ["EU", "Government affairs"],
+      "Defence AI; London office grew through 2025. Policy work touches the most regulated end of the field — export controls, AUKUS, AI in weapons-system governance. High civic-overlap if you read defence as civic infrastructure. Not for everyone; a real career destination for the people it is for.",
+    tags: ["Defence/security", "Established team"],
   },
   {
-    slug: "deepl",
-    name: "DeepL",
-    tier: 3,
-    hq: "Cologne",
-    websiteUrl: "https://www.deepl.com",
-    careersUrl: "https://jobs.deepl.com/en",
+    slug: "demos",
+    name: "Demos",
+    tier: 2,
+    hq: "London",
+    websiteUrl: "https://demos.co.uk",
+    careersUrl: "https://demos.co.uk/jobs/",
+    focusAreas: ["AI in public services", "data rights", "digital democracy"],
+    description:
+      "Long-running progressive think tank with a growing AI strand. Policy-area broad rather than AI-specialist; AI work sits inside wider conversations about public services and democratic infrastructure. Solid mid-sized shop, established playbook.",
+    tags: ["Think tank", "Established team"],
+  },
+  {
+    slug: "nesta",
+    name: "Nesta",
+    tier: 2,
+    hq: "London",
+    websiteUrl: "https://www.nesta.org.uk",
+    careersUrl: "https://www.nesta.org.uk/about-us/work-with-us/",
     focusAreas: [
-      "language AI policy",
-      "EU data residency",
-      "enterprise compliance",
+      "public innovation",
+      "AI in early years / childcare",
+      "AI in public services",
     ],
     description:
-      "German translation-AI scale-up serving large EU and global enterprise customers. Policy work would centre on data residency, EU enterprise AI compliance, and language-tech procurement standards. Smaller policy footprint than frontier labs but a stable established product.",
-    tags: ["EU", "International policy"],
+      "Public-innovation focus; AI work is one strand among many but has a real surface (childcare AI, public services, early-years tech). Mature shop, mostly writing-led with a policy-influencing tail.",
+    tags: ["Think tank", "Established team"],
   },
   {
-    slug: "silo-ai",
-    name: "Silo AI / AMD",
-    tier: 3,
-    hq: "Helsinki",
-    websiteUrl: "https://silo.ai",
-    careersUrl: "https://silo.ai/careers",
+    slug: "royal-society-policy",
+    name: "Royal Society — Policy",
+    tier: 2,
+    hq: "London (Carlton House Terrace)",
+    websiteUrl: "https://royalsociety.org/topics-policy/",
     focusAreas: [
-      "sovereign AI",
-      "EU multilingual models",
-      "public sector AI",
+      "AI in science",
+      "data and AI policy",
+      "research-systems policy",
     ],
     description:
-      "Nordic applied-AI shop acquired by AMD (2024). Builds the Poro / Viking multilingual open-source models with the EuroLLM consortium — explicit EU sovereignty play. Has hired Policy Analyst / EU Partnership Lead roles. Civic-infrastructure overlap is unusually high.",
-    tags: ["EU", "Open weights", "International policy"],
+      "Working group on AI in science. Convenes rather than drafts; specialist + prestige but smaller surface. The kind of policy work that ends up cited rather than the kind that ends up implemented.",
+    tags: ["Think tank", "Established team"],
   },
   {
-    slug: "photoroom",
-    name: "Photoroom",
-    tier: 3,
-    hq: "Paris",
-    websiteUrl: "https://www.photoroom.com",
-    careersUrl: "https://www.photoroom.com/careers",
-    focusAreas: ["generative image policy", "creator IP", "SMB AI"],
-    description:
-      "Paris-based generative image scale-up serving creators and SMBs. Smaller and less policy-active than Black Forest, but interesting if you want a more product-shaped role inside a French AI champion.",
-    tags: ["EU", "Regulatory counsel"],
-  },
-  {
-    slug: "sakana-ai",
-    name: "Sakana AI",
-    tier: 3,
-    hq: "Tokyo",
-    websiteUrl: "https://sakana.ai",
-    careersUrl: "https://sakana.ai/careers",
+    slug: "cetas",
+    name: "CETaS (RUSI)",
+    tier: 2,
+    hq: "London (Whitehall)",
+    websiteUrl: "https://cetas.turing.ac.uk",
     focusAreas: [
-      "Japanese AI policy",
-      "public sector AI",
-      "international AI cooperation",
+      "security AI policy",
+      "AI in national security",
+      "AI assurance for defence",
     ],
     description:
-      "Tokyo-based frontier lab founded by ex-Google researchers. Works closely with Japanese government and large enterprises. Policy here means being a bridge between Japanese public policy and the international frontier-AI conversation — unusual remit, narrow geography.",
-    tags: ["Frontier lab", "International policy"],
+      "Centre for Emerging Technology and Security at RUSI (with Turing). Defence/security AI policy. One of the few shops with clearance-shaped work — research surface that lands inside MoD/UK Intelligence Community channels.",
+    tags: ["Defence/security", "Think tank"],
+  },
+  {
+    slug: "odi",
+    name: "Open Data Institute",
+    tier: 2,
+    hq: "London (Shoreditch)",
+    websiteUrl: "https://theodi.org",
+    careersUrl: "https://theodi.org/about-the-odi/jobs/",
+    focusAreas: ["data rights", "data trusts", "data and AI policy"],
+    description:
+      "Data-rights and data-trust work; AI policy as a function of data policy. Compact but well-respected; an older shop than most of the AI-specific ones, with infrastructure-shaped editorial taste.",
+    tags: ["Think tank", "Established team"],
+  },
+  {
+    slug: "frontier-economics",
+    name: "Frontier Economics",
+    tier: 2,
+    hq: "London (Westminster)",
+    websiteUrl: "https://www.frontier-economics.com",
+    careersUrl: "https://www.frontier-economics.com/uk/en/careers/",
+    focusAreas: ["AI competition policy", "digital regulation economics"],
+    description:
+      "Economic-policy consultancy with a serious AI/digital practice. Quantitative register; advises government and regulators. The shop where you learn to write the kind of memo a CMA economist takes seriously.",
+    tags: ["Consultancy", "Established team"],
+  },
+  {
+    slug: "cma-dmu",
+    name: "CMA — Digital Markets Unit",
+    tier: 2,
+    hq: "London (Whitehall)",
+    websiteUrl: "https://www.gov.uk/government/organisations/competition-and-markets-authority",
+    focusAreas: [
+      "AI competition",
+      "foundation-model market study",
+      "digital markets regulation",
+    ],
+    description:
+      "AI competition work; foundation-model market study (the one that established the live regulatory frame). Highly technical, regulatory-shaped, established team — career civil-service register.",
+    tags: ["Government", "Established team"],
+  },
+  {
+    slug: "elevenlabs-london",
+    name: "ElevenLabs (London)",
+    tier: 2,
+    hq: "New York · London office",
+    websiteUrl: "https://elevenlabs.io",
+    careersUrl: "https://elevenlabs.io/careers",
+    focusAreas: ["voice cloning consent", "deepfake policy", "content provenance"],
+    description:
+      "Voice-AI scale-up; London is a smaller desk than New York. Genuinely novel policy challenges (consent, voice cloning, licensing), most work done from US. Worth tracking because the issues sit at the front of trust-and-safety policy.",
+    tags: ["Hiring policy lead", "First policy hire"],
+  },
+  {
+    slug: "ico-ai",
+    name: "ICO — AI strand",
+    tier: 2,
+    hq: "London + Wilmslow",
+    websiteUrl: "https://ico.org.uk",
+    focusAreas: ["data protection AI", "AI auditing", "ADM regulation"],
+    description:
+      "Information Commissioner's Office. Data-protection-shaped AI policy; the regulator companies meet first on AI questions. Mature shop, compliance-shaped, established playbook. Interesting if you want a regulator's-eye view of AI before going to a frontier shop.",
+    tags: ["Government", "Established team"],
+  },
+  {
+    slug: "ofcom-ai",
+    name: "Ofcom — Online Safety / AI",
+    tier: 2,
+    hq: "London (Southwark)",
+    websiteUrl: "https://www.ofcom.org.uk",
+    focusAreas: [
+      "online safety",
+      "synthetic media policy",
+      "content moderation",
+    ],
+    description:
+      "Online-safety regime; AI policy intersects through synthetic-media and content-moderation work. Larger Ofcom umbrella means the AI work sits alongside broadcasting and telecoms regulation; established machinery, specialist roles within it.",
+    tags: ["Government", "Established team"],
   },
 
-  /* ----------------- US (more) ------------------------------------- */
+  /* ----------------- B-TIER (3) — ~16 ------------------------------ */
   {
-    slug: "scale-ai",
-    name: "Scale AI",
-    tier: 2,
-    hq: "San Francisco",
-    websiteUrl: "https://scale.com",
-    careersUrl: "https://scale.com/careers",
-    rolesSource: "greenhouse",
-    rolesSourceId: "scaleai",
-    focusAreas: [
-      "US national security AI",
-      "data labelling labour policy",
-      "AI evaluation",
-      "Meta-Scale acquihire",
-    ],
+    slug: "xai-london",
+    name: "xAI (London)",
+    tier: 3,
+    hq: "San Francisco · London (small)",
+    websiteUrl: "https://x.ai",
+    careersUrl: "https://x.ai/careers",
+    focusAreas: ["frontier AI"],
     description:
-      "Data labelling + AI evaluation platform; subject of Meta's 2025 acqui-hire (Alex Wang and senior team moved). Active policy footprint around US national-security AI and labour practices. Genuine FTC scrutiny means policy work here is high-stakes.",
-    tags: ["US", "Established team", "Government affairs"],
+      "Small London footprint; most policy work comes from US. Included for completeness so the map doesn't surprise Aadi with an absence. Treat as a pin, not a destination.",
+    tags: ["Frontier lab"],
   },
   {
-    slug: "perplexity",
-    name: "Perplexity",
+    slug: "polyai",
+    name: "PolyAI",
     tier: 3,
-    hq: "San Francisco",
-    websiteUrl: "https://www.perplexity.ai",
-    careersUrl: "https://www.perplexity.ai/careers",
-    focusAreas: [
-      "AI search policy",
-      "publisher relations",
-      "content licensing",
-      "news/media policy",
-    ],
+    hq: "London",
+    websiteUrl: "https://poly.ai",
+    careersUrl: "https://poly.ai/careers/",
+    focusAreas: ["voice AI", "customer-service AI compliance"],
     description:
-      "AI-native search. Hot policy zone: publisher disputes, content licensing, news/media relations. A policy hire here would deal with newsroom partnerships and IP frameworks more than frontier-AI questions.",
-    tags: ["US", "Product / GTM"],
+      "London voice AI for customer service. Smaller policy function — mostly compliance and customer-facing data-protection rather than frontier work. The kind of shop where 'policy' means 'GDPR review on a tight deadline'.",
+    tags: ["UK-native"],
   },
   {
-    slug: "runway",
-    name: "Runway",
+    slug: "benevolentai",
+    name: "BenevolentAI",
     tier: 3,
-    hq: "New York",
-    websiteUrl: "https://runwayml.com",
-    careersUrl: "https://runwayml.com/careers",
-    focusAreas: [
-      "generative video policy",
-      "Hollywood relations",
-      "copyright",
-      "creator IP",
-    ],
+    hq: "London",
+    websiteUrl: "https://www.benevolent.com",
+    careersUrl: "https://www.benevolent.com/careers/",
+    focusAreas: ["healthcare AI regulation", "MHRA engagement"],
     description:
-      "Generative video, deep ties to Hollywood/Lionsgate. Policy lives at the intersection of entertainment industry, copyright, and synthetic media. Cultural fluency matters as much as regulatory fluency.",
-    tags: ["Voice / media AI", "US", "Trust & safety"],
+      "London drug-discovery AI. Healthcare-AI regulatory work; intersects with MHRA more than AISI. Niche but real — a place to do specialist work that doesn't read as 'AI policy' in the frontier-lab sense.",
+    tags: ["UK-native"],
   },
   {
-    slug: "suno",
-    name: "Suno",
+    slug: "improbable",
+    name: "Improbable",
     tier: 3,
-    hq: "Cambridge, MA",
-    websiteUrl: "https://suno.com",
-    careersUrl: "https://suno.com/careers",
-    focusAreas: [
-      "music AI policy",
-      "copyright litigation",
-      "label relations",
-      "songwriter rights",
-    ],
+    hq: "London",
+    websiteUrl: "https://www.improbable.io",
+    careersUrl: "https://www.improbable.io/careers",
+    focusAreas: ["simulation policy", "dual-use frameworks", "defence policy"],
     description:
-      "AI music generation, centre of the RIAA copyright lawsuits. Warner settled Nov 2025; Sony still litigating. Policy work here is litigation-shaped — settlements, licensing frameworks, songwriter/publisher relations. A hot, hostile, defining space.",
-    tags: ["Voice / media AI", "US", "Hiring policy lead", "First policy hire", "Regulatory counsel"],
+      "Simulation and synthetic environments. Defence and dual-use policy questions; small but consequential desk on export controls and dual-use frameworks. London-native with an older policy-ecosystem footprint than most AI startups.",
+    tags: ["UK-native", "Defence/security"],
   },
   {
-    slug: "character-ai",
-    name: "Character.AI",
+    slug: "big-brother-watch",
+    name: "Big Brother Watch",
     tier: 3,
-    hq: "Menlo Park",
-    websiteUrl: "https://character.ai",
-    careersUrl: "https://character.ai/careers",
+    hq: "London",
+    websiteUrl: "https://bigbrotherwatch.org.uk",
     focusAreas: [
-      "AI safety for consumers",
-      "youth protection",
-      "DOJ scrutiny",
-      "product policy",
+      "facial recognition",
+      "predictive policing",
+      "ADM in public sector",
     ],
     description:
-      "Consumer AI companion product. Heavy product-policy lift around youth safety, content moderation, and ongoing DOJ analysis of the Google deal. A policy role here is product-shaped, high-pressure, real-stakes safety work.",
-    tags: ["US", "Trust & safety"],
+      "Civil-liberties watchdog with growing AI work. Advocacy more than research; one-sided by design. The UK's closest thing to EFF on AI surveillance issues. Loud, useful, narrow.",
+    tags: ["Advocacy"],
   },
   {
-    slug: "groq",
-    name: "Groq",
+    slug: "connected-by-data",
+    name: "Connected by Data",
     tier: 3,
-    hq: "Mountain View",
-    websiteUrl: "https://groq.com",
-    careersUrl: "https://groq.com/careers",
-    focusAreas: [
-      "AI infrastructure policy",
-      "compute / energy",
-      "chip export controls",
-    ],
+    hq: "London",
+    websiteUrl: "https://connectedbydata.org",
+    focusAreas: ["data rights", "AI policy advocacy"],
     description:
-      "Specialised AI inference chips. Policy work here is hardware-shaped: export controls, energy regulation, US-China compute competition. Adjacent to but distinct from frontier-model policy.",
-    tags: ["US", "Government affairs"],
+      "Small (~2023) advocacy + research outfit on data and AI rights. Worth watching; not yet a destination but a clear voice in the conversation.",
+    tags: ["Advocacy", "First policy hire"],
   },
   {
-    slug: "cerebras",
-    name: "Cerebras",
+    slug: "public-law-project",
+    name: "Public Law Project",
     tier: 3,
-    hq: "Sunnyvale",
-    websiteUrl: "https://www.cerebras.ai",
-    careersUrl: "https://www.cerebras.ai/careers",
-    focusAreas: [
-      "AI chip policy",
-      "export controls",
-      "sovereign infrastructure",
-    ],
+    hq: "London",
+    websiteUrl: "https://publiclawproject.org.uk",
+    focusAreas: ["ADM in public sector", "algorithmic decision-making law"],
     description:
-      "Wafer-scale AI chip company with significant Gulf-state deployment partnerships. Policy work straddles US export controls and international sovereign-compute deals. Niche but structurally important.",
-    tags: ["US", "Government affairs"],
+      "Legal-aid organisation; the algorithmic-decision-making strand has produced some of the sharpest case-law-shaped AI policy work in the UK. Niche but with real bite — judicial reviews land.",
+    tags: ["Advocacy"],
+  },
+  {
+    slug: "oliver-wyman-london",
+    name: "Oliver Wyman London",
+    tier: 3,
+    hq: "London (City)",
+    websiteUrl: "https://www.oliverwyman.com",
+    careersUrl: "https://www.oliverwyman.com/careers.html",
+    focusAreas: ["AI in financial services regulation"],
+    description:
+      "AI policy as one strand within financial-services regulatory practice. Mature consultancy, specialist roles within a deep org. Best as a destination for someone wanting AI policy with a finance flavour.",
+    tags: ["Consultancy", "Established team"],
+  },
+  {
+    slug: "hogan-lovells-ai",
+    name: "Hogan Lovells — AI practice",
+    tier: 3,
+    hq: "London (City)",
+    websiteUrl: "https://www.hoganlovells.com",
+    focusAreas: ["AI Act compliance", "regulatory advisory"],
+    description:
+      "City law firm; AI Act compliance and regulatory advisory. Mature compliance shop — the kind of work where the playbook is half the value.",
+    tags: ["Law firm", "Established team"],
+  },
+  {
+    slug: "linklaters-ai",
+    name: "Linklaters — AI practice",
+    tier: 3,
+    hq: "London (City)",
+    websiteUrl: "https://www.linklaters.com",
+    focusAreas: ["AI regulation", "data and digital regulation"],
+    description:
+      "Magic-circle firm with growing AI regulatory work. Slower-moving but very well-resourced; specialist roles inside a long-tenured org.",
+    tags: ["Law firm", "Established team"],
+  },
+  {
+    slug: "bain-london-ai",
+    name: "Bain & Co London — AI practice",
+    tier: 3,
+    hq: "London",
+    websiteUrl: "https://www.bain.com",
+    focusAreas: ["AI strategy advisory", "AI-readiness for gov clients"],
+    description:
+      "Strategy consulting; AI-readiness advisory for gov clients. Different verb from 'policy' (advise, not regulate), but for someone scouting the field it's a real adjacent destination.",
+    tags: ["Consultancy", "Established team"],
+  },
+  {
+    slug: "techuk",
+    name: "techUK",
+    tier: 3,
+    hq: "London (Westminster)",
+    websiteUrl: "https://www.techuk.org",
+    careersUrl: "https://www.techuk.org/careers.html",
+    focusAreas: ["AI industry advocacy", "tech sector policy"],
+    description:
+      "Industry body for UK tech. AI policy work is one strand among many; advocacy-shaped, government-affairs heavy. Useful inside-the-Westminster-village destination.",
+    tags: ["Advocacy", "Established team"],
+  },
+  {
+    slug: "cma-broader-ai",
+    name: "CMA — broader AI work (non-DMU)",
+    tier: 3,
+    hq: "London (Whitehall)",
+    websiteUrl: "https://www.gov.uk/government/organisations/competition-and-markets-authority",
+    focusAreas: ["AI mergers", "AI in competition cases"],
+    description:
+      "Outside the Digital Markets Unit, the broader CMA still encounters AI as it comes up in mergers and competition cases. Smaller surface than DMU; specialist roles inside a regulator.",
+    tags: ["Government", "Established team"],
+  },
+  {
+    slug: "dsit-ai-opportunity",
+    name: "DSIT — AI Opportunity Unit",
+    tier: 3,
+    hq: "London (Whitehall)",
+    websiteUrl: "https://www.gov.uk/government/organisations/department-for-science-innovation-and-technology",
+    focusAreas: ["AI growth policy", "AI adoption in public sector"],
+    description:
+      "Smaller sibling team to DSIT's main AI Policy Directorate; focused on the AI Opportunity Plan and adoption-side work. Newer team, less established playbook, more growth-shaped.",
+    tags: ["Government", "First policy hire"],
+  },
+  {
+    slug: "rusi-ai",
+    name: "RUSI (AI work, non-CETaS)",
+    tier: 3,
+    hq: "London (Whitehall)",
+    websiteUrl: "https://rusi.org",
+    focusAreas: ["national security AI", "geopolitics of AI"],
+    description:
+      "Royal United Services Institute outside of CETaS. AI policy work as it intersects with broader defence and security analysis. Established think tank; AI work is recent and growing.",
+    tags: ["Defence/security", "Think tank"],
+  },
+  {
+    slug: "lse-ai-policy",
+    name: "LSE — AI policy research strand",
+    tier: 3,
+    hq: "London (Holborn)",
+    websiteUrl: "https://www.lse.ac.uk",
+    focusAreas: ["AI in regulation research", "tech policy academia"],
+    description:
+      "Academic surface that produces policy-adjacent work. Not a destination for an industry policy job, but a place to read from. Included as a marker on the map; the engagement test is weak.",
+    tags: ["Think tank"],
   },
 ];
+
+/* ------------------------------------------------------------------ */
+/* User profile                                                       */
+/* ------------------------------------------------------------------ */
 
 export const seedUserProfile = {
   displayName: "Aadi Kulkarni",
   headline:
-    "International policy officer at Coinbase. Government digitisation, regulatory infrastructure, public-service accessibility.",
+    "International policy officer at Coinbase, exploring AI policy roles. Government digitisation, regulatory infrastructure, public-service accessibility.",
   bio: "Works on cross-border crypto policy from London. Built career at the intersection of government digitisation, data ethics, and regulatory infrastructure for emerging technology. Co-founded Polici.org. Harvard LIL. NSF data-ethics research at Cornell with Solon Barocas and Karen Levy. Mitchell Scholar (UCD).",
   weights: {
     accessibility: "high",
@@ -666,10 +739,11 @@ export const seedUserProfile = {
     crossJurisdictional: "low",
   },
   concerns: [
-    "UK-pigeonhole risk: is this role too UK-focused for someone wanting an international career?",
-    "Charting the unknown: would this role be more fun if it's defining first-of-its-kind policy, vs joining an established system?",
-    "Policy vs GTM-flavoured policy: how product-shaped is the role?",
-    "Cog vs build: large established team, or early enough to build the function?",
+    "Geographic remit: I want London but I don't want UK-only — does this team actually work across EU/US/international as well?",
+    "Policy posture: am I more interested in shops defining the rules, or shops executing a known playbook well?",
+    "Stage of company: how early am I willing to go — is the policy function being built or is it already running?",
+    "Working style: writing-led vs government-affairs-led — both real, but I have a preference.",
+    "Team style: do I want to set the frontier (small, judgement-heavy team) or execute a playbook well (consistency, scale)?",
   ],
   sources: [
     "https://github.com/nwspk/politech-awards-2026 (PR #73, branch project-mirror-v2/aadi-kulkarni)",
@@ -677,135 +751,95 @@ export const seedUserProfile = {
   ],
 };
 
+/* ------------------------------------------------------------------ */
+/* Frame scores — first pass, v0.5                                     */
+/* ------------------------------------------------------------------ */
+
 /**
- * Hand-picked scores for the 30 seeded companies on the 5 scale-kind frames.
- * Keyed by company slug → frame name → 1..5 (matching `seedFrames[].scale`).
+ * First-pass scores for the London set on the six v0.5 frames.
+ * Keyed by company slug → frame name → 1..5.
  *
- * Editorial scoring guide (each frame anchored by its low/high labels):
- *   UK-pigeonhole risk:           1 clearly international → 5 very UK-bound
- *   Charting the unknown:         1 well-mapped → 5 frontier / first-of-its-kind
- *   Cog vs. build-the-team:       1 established team → 5 first/early policy hire
- *   Policy vs. product/GTM:       1 pure policy → 5 product / GTM / licensing
- *   Civic-infrastructure overlap: 1 purely commercial → 5 high civic overlap
+ * Scale anchors:
+ *   Geographic remit:    1 UK-only       → 5 Multi-jurisdiction
+ *   Policy area scope:   1 Single-issue  → 5 Broad multi-domain
+ *   Stage of company:    1 Pre-product   → 5 Established
+ *   Policy posture:      1 Frontier-def. → 5 Compliance-maint.
+ *   Working style:       1 Writing-led   → 5 Government-affairs-led
+ *   Team style:          1 Set frontier  → 5 Execute playbook
  *
- * Scores reflect the company `description` text + role context. Each is one
- * editor's read; the point is to have *something* on the map so axis swaps and
- * filters actually do work. Aadi can re-score from `/companies/[slug]`.
+ * These are first-pass editorial reads against the v0.4 codebase, not the
+ * v0.5 surface (see CONCEPT-v0.5 §9 Step 5 — the re-curation pass closes
+ * the gap between first read and considered read against the live chrome).
  */
 export const seedFrameScores: Record<string, Record<string, number>> = {
-  anthropic: { "UK-pigeonhole risk": 2, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 2 },
-  openai: { "UK-pigeonhole risk": 2, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
-  elevenlabs: { "UK-pigeonhole risk": 2, "Charting the unknown": 5, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
-  cognition: { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
-  "reflection-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
-  "google-deepmind": { "UK-pigeonhole risk": 4, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 2 },
-  mistral: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
-  huggingface: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 3 },
-  "cohere-aleph-alpha": { "UK-pigeonhole risk": 3, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
-  wayve: { "UK-pigeonhole risk": 4, "Charting the unknown": 5, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
-  "stability-ai": { "UK-pigeonhole risk": 4, "Charting the unknown": 4, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
-  synthesia: { "UK-pigeonhole risk": 4, "Charting the unknown": 4, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
-  "faculty-ai": { "UK-pigeonhole risk": 5, "Charting the unknown": 2, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 5 },
-  xai: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 1 },
-  "thinking-machines": { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 1, "Civic-infrastructure overlap": 2 },
-  anysphere: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 5, "Civic-infrastructure overlap": 1 },
-  "physical-intelligence": { "UK-pigeonhole risk": 1, "Charting the unknown": 5, "Cog vs. build-the-team": 5, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 2 },
-  "black-forest-labs": { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 2 },
-  helsing: { "UK-pigeonhole risk": 2, "Charting the unknown": 4, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 4 },
-  deepl: { "UK-pigeonhole risk": 1, "Charting the unknown": 2, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 3 },
-  "silo-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 5 },
-  photoroom: { "UK-pigeonhole risk": 1, "Charting the unknown": 2, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
-  "sakana-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
-  "scale-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 2, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 3 },
-  perplexity: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 2 },
-  runway: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 4, "Civic-infrastructure overlap": 1 },
-  suno: { "UK-pigeonhole risk": 1, "Charting the unknown": 4, "Cog vs. build-the-team": 4, "Policy vs. product/GTM": 3, "Civic-infrastructure overlap": 1 },
-  "character-ai": { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 5, "Civic-infrastructure overlap": 2 },
-  groq: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
-  cerebras: { "UK-pigeonhole risk": 1, "Charting the unknown": 3, "Cog vs. build-the-team": 3, "Policy vs. product/GTM": 2, "Civic-infrastructure overlap": 3 },
+  // S-tier
+  "google-deepmind":       { "Geographic remit": 5, "Policy area scope": 5, "Stage of company": 5, "Policy posture": 2, "Working style": 3, "Team style": 4 },
+  "anthropic-london":      { "Geographic remit": 5, "Policy area scope": 4, "Stage of company": 4, "Policy posture": 1, "Working style": 2, "Team style": 2 },
+  "openai-london":         { "Geographic remit": 5, "Policy area scope": 4, "Stage of company": 5, "Policy posture": 2, "Working style": 4, "Team style": 3 },
+  "wayve":                 { "Geographic remit": 3, "Policy area scope": 2, "Stage of company": 3, "Policy posture": 1, "Working style": 3, "Team style": 1 },
+  "alan-turing-institute": { "Geographic remit": 3, "Policy area scope": 5, "Stage of company": 5, "Policy posture": 3, "Working style": 2, "Team style": 4 },
+  "ada-lovelace-institute":{ "Geographic remit": 3, "Policy area scope": 4, "Stage of company": 4, "Policy posture": 2, "Working style": 2, "Team style": 2 },
+  "cltr":                  { "Geographic remit": 4, "Policy area scope": 3, "Stage of company": 2, "Policy posture": 1, "Working style": 2, "Team style": 1 },
+  "aisi":                  { "Geographic remit": 4, "Policy area scope": 4, "Stage of company": 3, "Policy posture": 1, "Working style": 3, "Team style": 1 },
+  "dsit-ai-policy":        { "Geographic remit": 3, "Policy area scope": 5, "Stage of company": 5, "Policy posture": 3, "Working style": 5, "Team style": 4 },
+  "tbi":                   { "Geographic remit": 5, "Policy area scope": 5, "Stage of company": 5, "Policy posture": 2, "Working style": 4, "Team style": 4 },
+  // A-tier
+  "mistral-london":        { "Geographic remit": 5, "Policy area scope": 3, "Stage of company": 4, "Policy posture": 1, "Working style": 2, "Team style": 2 },
+  "stability-ai":          { "Geographic remit": 4, "Policy area scope": 2, "Stage of company": 3, "Policy posture": 4, "Working style": 4, "Team style": 4 },
+  "synthesia":             { "Geographic remit": 3, "Policy area scope": 2, "Stage of company": 3, "Policy posture": 2, "Working style": 3, "Team style": 2 },
+  "helsing":               { "Geographic remit": 4, "Policy area scope": 2, "Stage of company": 3, "Policy posture": 3, "Working style": 4, "Team style": 3 },
+  "demos":                 { "Geographic remit": 2, "Policy area scope": 5, "Stage of company": 5, "Policy posture": 3, "Working style": 2, "Team style": 4 },
+  "nesta":                 { "Geographic remit": 2, "Policy area scope": 5, "Stage of company": 5, "Policy posture": 3, "Working style": 2, "Team style": 4 },
+  "royal-society-policy":  { "Geographic remit": 3, "Policy area scope": 4, "Stage of company": 5, "Policy posture": 3, "Working style": 2, "Team style": 5 },
+  "cetas":                 { "Geographic remit": 4, "Policy area scope": 2, "Stage of company": 3, "Policy posture": 2, "Working style": 3, "Team style": 2 },
+  "odi":                   { "Geographic remit": 3, "Policy area scope": 3, "Stage of company": 4, "Policy posture": 2, "Working style": 2, "Team style": 3 },
+  "frontier-economics":    { "Geographic remit": 4, "Policy area scope": 4, "Stage of company": 5, "Policy posture": 4, "Working style": 3, "Team style": 5 },
+  "cma-dmu":               { "Geographic remit": 2, "Policy area scope": 3, "Stage of company": 4, "Policy posture": 3, "Working style": 5, "Team style": 3 },
+  "elevenlabs-london":     { "Geographic remit": 5, "Policy area scope": 2, "Stage of company": 3, "Policy posture": 2, "Working style": 3, "Team style": 2 },
+  "ico-ai":                { "Geographic remit": 2, "Policy area scope": 4, "Stage of company": 5, "Policy posture": 5, "Working style": 4, "Team style": 5 },
+  "ofcom-ai":              { "Geographic remit": 2, "Policy area scope": 3, "Stage of company": 5, "Policy posture": 5, "Working style": 4, "Team style": 5 },
+  // B-tier
+  "xai-london":            { "Geographic remit": 5, "Policy area scope": 2, "Stage of company": 3, "Policy posture": 2, "Working style": 3, "Team style": 3 },
+  "polyai":                { "Geographic remit": 3, "Policy area scope": 1, "Stage of company": 3, "Policy posture": 5, "Working style": 4, "Team style": 5 },
+  "benevolentai":          { "Geographic remit": 2, "Policy area scope": 1, "Stage of company": 4, "Policy posture": 4, "Working style": 3, "Team style": 4 },
+  "improbable":            { "Geographic remit": 4, "Policy area scope": 2, "Stage of company": 4, "Policy posture": 3, "Working style": 4, "Team style": 4 },
+  "big-brother-watch":     { "Geographic remit": 2, "Policy area scope": 1, "Stage of company": 4, "Policy posture": 1, "Working style": 4, "Team style": 5 },
+  "connected-by-data":     { "Geographic remit": 2, "Policy area scope": 2, "Stage of company": 2, "Policy posture": 1, "Working style": 2, "Team style": 1 },
+  "public-law-project":    { "Geographic remit": 1, "Policy area scope": 1, "Stage of company": 4, "Policy posture": 1, "Working style": 3, "Team style": 4 },
+  "oliver-wyman-london":   { "Geographic remit": 4, "Policy area scope": 2, "Stage of company": 5, "Policy posture": 5, "Working style": 3, "Team style": 5 },
+  "hogan-lovells-ai":      { "Geographic remit": 4, "Policy area scope": 3, "Stage of company": 5, "Policy posture": 5, "Working style": 3, "Team style": 5 },
+  "linklaters-ai":         { "Geographic remit": 4, "Policy area scope": 3, "Stage of company": 5, "Policy posture": 5, "Working style": 3, "Team style": 5 },
+  "bain-london-ai":        { "Geographic remit": 4, "Policy area scope": 4, "Stage of company": 5, "Policy posture": 4, "Working style": 4, "Team style": 5 },
+  "techuk":                { "Geographic remit": 2, "Policy area scope": 5, "Stage of company": 5, "Policy posture": 4, "Working style": 5, "Team style": 5 },
+  "cma-broader-ai":        { "Geographic remit": 2, "Policy area scope": 4, "Stage of company": 5, "Policy posture": 4, "Working style": 5, "Team style": 5 },
+  "dsit-ai-opportunity":   { "Geographic remit": 2, "Policy area scope": 4, "Stage of company": 3, "Policy posture": 3, "Working style": 4, "Team style": 2 },
+  "rusi-ai":               { "Geographic remit": 4, "Policy area scope": 3, "Stage of company": 5, "Policy posture": 3, "Working style": 3, "Team style": 4 },
+  "lse-ai-policy":         { "Geographic remit": 3, "Policy area scope": 4, "Stage of company": 5, "Policy posture": 2, "Working style": 1, "Team style": 4 },
 };
 
 /* ------------------------------------------------------------------ */
-/* Seed publications                                                  */
+/* Seed publications — minimal v0.5 starter set                        */
 /* ------------------------------------------------------------------ */
 
 export type SeedPublication = {
   type: "blog" | "press" | "filing" | "paper" | "other";
   title: string;
   url: string;
-  /** ISO-8601 date (UTC). */
   publishedAt: string;
   summary?: string;
   topics?: string[];
 };
 
-/**
- * Hand-picked publications to populate the tracker. Keyed by company slug.
- * Weighted toward higher-signal companies so the tracker *demonstrates* the
- * surface rather than evenly-sparse noise.
- *
- * Selection rule: canonical, well-cited posts with stable URLs. Real titles,
- * real dates, real URLs. Summaries are one editorial sentence each; topics
- * mirror the kind of free-text tagging the v0.4 ingestion pipeline will
- * eventually produce.
- */
 export const seedPublications: Record<string, SeedPublication[]> = {
-  anthropic: [
+  "anthropic-london": [
     {
       type: "filing",
       title: "Anthropic's Responsible Scaling Policy",
       url: "https://www.anthropic.com/news/anthropics-responsible-scaling-policy",
       publishedAt: "2023-09-19",
       summary:
-        "Frontier-lab safety commitments tied to model capability thresholds (ASL levels); a template that shaped later voluntary policy frameworks.",
-      topics: ["frontier safety", "voluntary commitments", "capability thresholds"],
-    },
-    {
-      type: "blog",
-      title: "Core Views on AI Safety: When, Why, What, and How",
-      url: "https://www.anthropic.com/news/core-views-on-ai-safety",
-      publishedAt: "2023-03-08",
-      summary:
-        "Anthropic's worldview statement on transformative AI risk and the policy posture that follows from it.",
-      topics: ["AI safety", "worldview", "policy posture"],
-    },
-    {
-      type: "blog",
-      title: "Claude's Constitution",
-      url: "https://www.anthropic.com/news/claudes-constitution",
-      publishedAt: "2023-05-09",
-      summary:
-        "The principles guiding Constitutional AI training, including how Claude is steered around harmful content and political topics.",
-      topics: ["constitutional AI", "alignment", "model behaviour"],
-    },
-  ],
-  openai: [
-    {
-      type: "blog",
-      title: "Planning for AGI and beyond",
-      url: "https://openai.com/index/planning-for-agi-and-beyond/",
-      publishedAt: "2023-02-24",
-      summary:
-        "OpenAI's long-horizon thinking on transitioning to AGI and the governance posture they hope partners and regulators will adopt.",
-      topics: ["AGI", "governance", "long-term planning"],
-    },
-    {
-      type: "blog",
-      title: "Governance of superintelligence",
-      url: "https://openai.com/index/governance-of-superintelligence/",
-      publishedAt: "2023-05-22",
-      summary:
-        "A proposal for international coordination on frontier AI, including an IAEA-style oversight body.",
-      topics: ["international governance", "superintelligence", "oversight"],
-    },
-    {
-      type: "blog",
-      title: "Our approach to AI safety",
-      url: "https://openai.com/index/our-approach-to-ai-safety/",
-      publishedAt: "2023-04-05",
-      summary:
-        "OpenAI's safety practices in deployment: red-teaming, child-safety, privacy, and accuracy commitments.",
-      topics: ["deployment safety", "red-teaming", "child safety"],
+        "Frontier-lab safety commitments tied to capability thresholds (ASL levels); shaped voluntary policy frameworks since.",
+      topics: ["frontier safety", "voluntary commitments", "RSP"],
     },
   ],
   "google-deepmind": [
@@ -815,41 +849,52 @@ export const seedPublications: Record<string, SeedPublication[]> = {
       url: "https://deepmind.google/discover/blog/introducing-the-frontier-safety-framework/",
       publishedAt: "2024-05-17",
       summary:
-        "DeepMind's first-pass framework for identifying and mitigating frontier model risk, paralleling Anthropic's RSP.",
-      topics: ["frontier safety", "framework", "capability evaluations"],
+        "DeepMind's first-pass framework for identifying and mitigating frontier model risk.",
+      topics: ["frontier safety", "framework"],
     },
   ],
-  huggingface: [
+  "ada-lovelace-institute": [
     {
-      type: "blog",
-      title:
-        "AI Policy @\uD83E\uDD17: Open ML Considerations in the EU AI Act",
-      url: "https://huggingface.co/blog/eu-ai-act-oss",
-      publishedAt: "2023-07-25",
+      type: "paper",
+      title: "Regulating AI in the UK",
+      url: "https://www.adalovelaceinstitute.org/report/regulating-ai-in-the-uk/",
+      publishedAt: "2023-07-18",
       summary:
-        "Open-source-leaning analysis of how the EU AI Act's tiered obligations land on open ML projects.",
-      topics: ["EU AI Act", "open source", "compliance"],
-    },
-    {
-      type: "blog",
-      title: "Ethics and Society Newsletter #1",
-      url: "https://huggingface.co/blog/ethics-soc-1",
-      publishedAt: "2022-09-22",
-      summary:
-        "First in HF's ongoing ethics-and-society series, framing how the company thinks about model harm at scale.",
-      topics: ["ethics", "society", "newsletter"],
+        "Ada's signature report on the UK's AI regulation approach, widely cited in subsequent policy debate.",
+      topics: ["UK AI regulation", "white paper response"],
     },
   ],
-  mistral: [
+  "cltr": [
     {
-      type: "press",
-      title: "Cheaper, Better, Faster, Stronger \u2014 Continuing to push the frontier of AI and making it accessible to all",
-      url: "https://mistral.ai/news/mixtral-8x22b/",
-      publishedAt: "2024-04-17",
+      type: "paper",
+      title: "Future Proof — extreme AI risks and what to do about them",
+      url: "https://www.longtermresilience.org/post/future-proof",
+      publishedAt: "2023-10-30",
       summary:
-        "Mixtral 8x22B launch \u2014 Mistral's most capable open-weights model at the time, framed around accessibility and openness.",
-      topics: ["model release", "open weights", "frontier"],
+        "Pre-Bletchley framing of frontier AI risk; co-authored work that fed into the Bletchley Declaration.",
+      topics: ["frontier safety", "catastrophic risk", "Bletchley"],
+    },
+  ],
+  "tbi": [
+    {
+      type: "paper",
+      title: "Governing in the Age of AI: A New Model for State Capacity",
+      url: "https://www.institute.global/insights/politics-and-governance/governing-in-the-age-of-ai",
+      publishedAt: "2024-07-09",
+      summary:
+        "TBI's signature paper on AI in state capacity; shaped early DSIT thinking on AI in public services.",
+      topics: ["state capacity", "public services AI", "AI Opportunity"],
+    },
+  ],
+  "aisi": [
+    {
+      type: "filing",
+      title: "AISI advanced AI evaluations — May 2024 update",
+      url: "https://www.aisi.gov.uk/work/advanced-ai-evaluations-may-update",
+      publishedAt: "2024-05-20",
+      summary:
+        "AISI's published update on frontier model evaluation methodology; sets a public bar for safety evaluations.",
+      topics: ["model evaluations", "frontier safety", "AISI"],
     },
   ],
 };
-
