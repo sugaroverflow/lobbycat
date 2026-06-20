@@ -1,61 +1,50 @@
-import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
 import { MapView } from "@/components/map-view";
-import { TrackerTable } from "@/components/tracker-table";
 import { CoachmarkOnboarding } from "@/components/coachmark-onboarding";
-import {
-  getMapData,
-  getTrackerData,
-  getUserProfile,
-} from "@/lib/queries";
+import { getMapData, getUserProfile } from "@/lib/queries";
 
+/**
+ * v0.5 home — the Map is home (§3.2 of CONCEPT-v0.5).
+ *
+ * Surface scope deliberately narrow:
+ *   - a single-sentence product line (quiet, not hero)
+ *   - the Map plot itself (axis picker + companies)
+ *   - (Surprise button + comic onboarding + first-home Surprise auto-open
+ *      land in the Step 4 rebuild; this v0.5 chunk ships the Map-as-home
+ *      collapse without the Surprise modal yet — see ASSUMPTIONS-v0.5.md)
+ *
+ * What's gone vs v0.4:
+ *   - The "See the full tier list →" link (the /companies list page dies,
+ *     §7.1).
+ *   - The Live tracker section (the list view dies, §7.1).
+ *   - The hero-weight heading (home is quiet; the Map is the editorial
+ *     statement, §3.2).
+ */
 export default async function HomePage() {
-  const [{ companies, scaleFrames }, trackerCompanies, profile] =
-    await Promise.all([
-      getMapData(),
-      getTrackerData(),
-      getUserProfile(),
-    ]);
+  const [{ companies, scaleFrames }, profile] = await Promise.all([
+    getMapData(),
+    getUserProfile(),
+  ]);
   const firstName = profile?.displayName?.split(" ")[0] || null;
 
   return (
     <SiteShell>
       <CoachmarkOnboarding
-        onboardedAt={profile?.onboardedAt ? profile.onboardedAt.toISOString() : null}
+        onboardedAt={
+          profile?.onboardedAt ? profile.onboardedAt.toISOString() : null
+        }
         firstName={firstName}
       />
-      <section data-coachmark="hero" className="max-w-[72rem] mx-auto px-6 pt-12 pb-6">
-        <div className="eyebrow mb-6">
-          {firstName ? `Welcome back, ${firstName}` : "The map"}
-        </div>
-        <h1 className="serif text-4xl sm:text-5xl font-medium leading-[1.05] tracking-tight text-ink">
-          {companies.length} companies, two axes you choose.
-        </h1>
-        <p className="serif mt-6 max-w-2xl text-lg text-muted leading-relaxed">
-          Pick any pair of your scale-kind frames and watch the field
-          rearrange. Tier colour stays put; meaning shifts under your hands.{" "}
-          <Link href="/companies" className="text-accent underline">
-            See the full tier list →
-          </Link>
+      <section className="max-w-[72rem] mx-auto px-6 pt-10 pb-4">
+        <p className="prose-face text-sm text-[var(--fg-prose-muted)] max-w-2xl leading-relaxed">
+          A curated map of London&rsquo;s AI-policy companies, organised across
+          six frames — to scout the field, calibrate where each company sits,
+          and (sometimes) prep before a meeting.
         </p>
       </section>
 
-      <section className="max-w-[72rem] mx-auto px-6 pb-16">
+      <section className="max-w-[72rem] mx-auto px-6 pb-20">
         <MapView companies={companies} frames={scaleFrames} />
-      </section>
-
-      <section className="max-w-[72rem] mx-auto px-6 pb-24">
-        <div className="flex items-baseline justify-between border-b border-rule pb-2 mb-4">
-          <h2 className="eyebrow">Live tracker</h2>
-          <span className="mono text-xs text-whisper">
-            {trackerCompanies.length} companies
-          </span>
-        </div>
-        <p className="serif text-base text-muted leading-relaxed mb-6 max-w-2xl">
-          Roles and publications across the field, sortable. The map up top
-          shows where they sit; this is what they&rsquo;re doing.
-        </p>
-        <TrackerTable companies={trackerCompanies} />
       </section>
     </SiteShell>
   );
