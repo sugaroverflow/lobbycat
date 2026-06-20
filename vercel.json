@@ -6,6 +6,10 @@
       "schedule": "0 6 * * *"
     },
     {
+      "path": "/api/cron/rss-ingestion",
+      "schedule": "30 6 * * *"
+    },
+    {
       "path": "/api/cron/eu-lobbying",
       "schedule": "0 7 * * *"
     }
