@@ -443,6 +443,24 @@ export const userProfile = pgTable("user_profile", {
   concerns: jsonb("concerns").$type<string[]>().default([]).notNull(),
   sources: jsonb("sources").$type<string[]>().default([]).notNull(),
   onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
+  // v0.7: wizard state — set on step-6 submit
+  wizardCompletedAt: timestamp("wizard_completed_at", { withTimezone: true }),
+  currentRoleOneLiner: text("current_role_one_liner"),
+  exploringText: text("exploring_text"),
+  locationPreferences: jsonb("location_preferences")
+    .$type<{
+      uk?: boolean;
+      eu?: boolean;
+      us?: boolean;
+      remoteOk?: boolean;
+      notes?: string;
+    }>()
+    .default({})
+    .notNull(),
+  openTextAnswers: jsonb("open_text_answers")
+    .$type<Array<{ question: string; answer: string; answeredAt: string }>>()
+    .default([])
+    .notNull(),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .defaultNow()
     .notNull(),

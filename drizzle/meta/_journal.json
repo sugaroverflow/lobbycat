@@ -64,6 +64,13 @@
       "when": 1782230182475,
       "tag": "0008_modern_anita_blake",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1782245215555,
+      "tag": "0009_stiff_lucky_pierre",
+      "breakpoints": true
     }
   ]
 }
