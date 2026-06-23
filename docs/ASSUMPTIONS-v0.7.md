@@ -288,3 +288,21 @@ deferred to step 7
 - **Assumed:** missing/malformed `research/feed.json` → no welcome-back panel at all (only the quote line remains). Empty window (no new events since last visit) → muted single-line "no new updates since your last visit". Both keep the card looking deliberate rather than broken.
 - **Alternatives considered:** always show *something* (last-N events regardless), or hide the entire card on empty.
 - **Would change if:** Fatima wants the empty-state hidden entirely or a "browse the feed" CTA on empty.
+
+## 2026-06-23 22:10 UTC — Step 10: surprise modal stays centred
+
+**Assumption:** The vaporwave-theatre reskin of the surprise modal
+keeps the existing centred-dialog geometry (max-w-lg, padded) rather
+than going full-bleed like the wizard step-6 takeover.
+
+**Alternatives considered:**
+- **Full-bleed takeover** like wizard step-6 — looks more "moment-y"
+  but loses the persistent "Show me another" / picks counter that
+  makes the 3-pick session usable.
+- **Slide-in panel** from the right — discarded; would conflict with
+  the dashboard cards mental model.
+
+**Would change if:** Fatima reviews the live deploy and says the
+centred dialog reads as "calm cousin" rather than "theatre". In that
+case I'd promote to full-bleed and stack the multi-pick state
+vertically with the cat moving to a corner during repeat picks.
