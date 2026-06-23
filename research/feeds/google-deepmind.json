@@ -1,0 +1,36 @@
+{
+  "slug": "google-deepmind",
+  "lastUpdated": "2026-06-23T20:10:00Z",
+  "blurb": "DeepMind's recent output straddles UK government partnership and frontier-safety research: an AI planning-decisions prototype built with UK government, plus an 'AI Control Roadmap' for securing AI agents and a $10M multi-agent-safety funding call.",
+  "hiring": { "isHiring": null, "newSincePrevious": null },
+  "publications": [
+    {
+      "date": "2026-06-16",
+      "title": "Unlocking UK house-building with AI-accelerated planning",
+      "url": "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning/",
+      "type": "blog",
+      "byline": null,
+      "summary": "DeepMind and the UK government announce a prototype aimed at faster housing/planning decisions. London-relevant: this is a frontier lab embedding directly into a UK government delivery priority (planning reform), the kind of public-sector partnership that shapes a lab's domestic policy standing."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Securing the future of AI agents",
+      "url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
+      "type": "blog",
+      "byline": null,
+      "summary": "Introduces an 'AI Control Roadmap' combining traditional safeguards with real-time monitoring to secure internal agent systems. Agent security is becoming its own policy sub-domain; worth watching whether this language shows up in DeepMind's regulatory engagement."
+    },
+    {
+      "date": "2026-06-10",
+      "title": "Investing in multi-agent AI safety research",
+      "url": "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/",
+      "type": "blog",
+      "byline": null,
+      "summary": "DeepMind and partners announce a $10M funding call for multi-agent safety research. Funding-the-field move; signals where the lab thinks the next safety frontier sits."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "notes": "blogRssUrl https://deepmind.google/blog/rss.xml confirmed working (note its <atom:link self> is a placeholder example.com URL, but item links are valid)."
+}
