@@ -116,3 +116,73 @@ change if" trigger. Updated chunk-by-chunk during the v0.7 build.
 - **Assumed:** 14 and 12 lines respectively, both in lobbycat's dry
   third-person voice. Above the 10-15 minimum the refactor doc suggests.
 - **Would change if:** Fatima edits them down or adds her own.
+
+## Step 4 — The wizard (2026-06-23 20:50 UTC)
+
+### G. Single-user `user_profile` row
+- **Assumed:** the wizard reads/writes the single shared `user_profile`
+  row (since lobbycat is one-Aadi-per-deploy gated behind a shared
+  password). If no row exists, `getOrCreateProfile` inserts one with
+  `displayName: "you"` as a holding value, overwritten in step 2.
+- **Alternatives:** key the wizard to the cookie/session. Rejected —
+  there is no per-user identity yet; the deploy gate IS the user.
+- **Would change if:** v0.8+ introduces multi-user.
+
+### H. Existing v0.5/v0.6 profiles get the new wizard, not a grandfather
+- **Assumed:** if `onboardedAt` is set but `wizardCompletedAt` is null
+  (any existing data), the home page redirects to `/wizard`. The
+  v0.6 free-text intent + L/M/H weights survive; the wizard just makes
+  Aadi confirm/edit them under the new copy.
+- **Alternatives:** auto-stamp `wizardCompletedAt` = `onboardedAt`
+  for existing rows. Rejected — the wizard *is* the new front door;
+  shipping it without forcing one pass means existing users never see
+  the cards-first dashboard or Glyphie diff card properly.
+- **Would change if:** Fatima wants to skip the wizard on staging while
+  she's iterating — easy: pass `?replay=1` on /wizard or set
+  `wizardCompletedAt` manually in psql.
+
+### I. Step 3 is rename-only inside the wizard
+- **Assumed:** the wizard's frames step lets Aadi rename the six
+  pre-seeded frames inline (autosaves on blur) and links to /frames
+  for fuller edits (descriptions, new frames, deletes). This keeps the
+  wizard ~5-7 min as scoped.
+- **Alternatives:** embed the full FramesEditor inline. Rejected — the
+  editor is heavy (modal, tag/question kinds, suggest-frames) and would
+  blow the time budget. Linking out keeps the wizard linear.
+- **Would change if:** Aadi opens /frames mid-wizard and the autosave
+  state confuses him. Mitigation: separate tab; wizard step state is
+  local to the component, server-side autosave persists everything.
+
+### J. Step 4 weight glyphs: M / S / C (Must / Should / Could)
+- **Assumed:** the existing `low | medium | high` schema is reused with
+  a UI mapping `high → Must`, `medium → Should`, `low → Could`. This
+  keeps the aggregate math + /frames page in sync without a schema
+  change.
+- **Alternatives:** add a third weight tier or a separate `mustHave`
+  boolean column. Rejected — three tiers is enough, and a separate
+  column means dual-write for /frames + wizard.
+- **Would change if:** "Must" needs hard-filter semantics (currently
+  it's just a weight multiplier). Then we add `mustHaveMin` per frame
+  in a follow-up.
+
+### K. Step 5 default open-text prompts
+- **Assumed:** three hand-written prompts seed the answer list if
+  nothing's saved. They go into `openTextAnswers` jsonb. Fit-note
+  generation will start citing them in a later chunk (step 13 / fit-note
+  refactor).
+- **Would change if:** Fatima wants different prompts — edit
+  `DEFAULT_OPEN_PROMPTS` in `src/components/wizard.tsx`.
+
+### L. Step 6 is a basic skeleton; full vaporwave-theatre is Step 5 of build
+- **Assumed:** this chunk ships a functional step 6 with progress bar +
+  cycling `firstScoring[]` quotes + grid backdrop + sunset gradient,
+  but NOT the full pixel-cat sprite, scanlines overlay, or 3D rotating
+  perspective. Those land in §10 step 5 (next chunk).
+- **Rescore fan-out:** runs in `after()` background so the UI's 25-sec
+  theatre window is independent of how long rescoring 70 companies
+  actually takes. If the rescore is slower than 25s, the home page
+  shows the rescoring-cat indicator (already wired in v0.6) until cells
+  clear.
+- **Would change if:** rescore consistently takes >60s and Aadi sees
+  empty scores on landing. Mitigation: bump theatre to a polling state
+  that waits for `/api/rescore-status` to clear.

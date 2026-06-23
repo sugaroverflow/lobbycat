@@ -1,3 +1,4 @@
+import { redirect } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { WelcomeCard } from "@/components/welcome-card";
 import { RankedTable } from "@/components/ranked-table";
@@ -25,6 +26,13 @@ export default async function HomePage() {
     getRankedHomeData(),
     getUserProfile(),
   ]);
+
+  // v0.7 step 4 — wizard is the front door. If it hasn't been completed,
+  // bounce there. The /wizard route handles its own "already done" redirect
+  // back home in the replay=1 case so this stays one-directional in normal
+  // flow.
+  if (!profile?.wizardCompletedAt) redirect("/wizard");
+
   const firstName = profile?.displayName?.split(" ")[0] || null;
 
   const pool = (quotes as unknown as Quotes).welcomeBack ?? [];
