@@ -372,3 +372,15 @@ them mid-sweep would be a separate, larger touch.
 a token-rename sweep next), or wants tags also stripped from
 `/companies/[slug]` (one-line removal of the chip block).
 
+
+## 2026-06-23 22:54 UTC — Step 13: surprise modal keeps its own theatre cat
+**Assumed:** the surprise modal does not adopt the shared
+`<LoadingCat>` component; instead it cycles `surprisePreamble[]`
+inline while keeping its existing void-purple/sunset-gradient
+animated cat.
+**Alternative:** wire `<LoadingCat>` into the modal for visual
+consistency with fit-note loading.
+**Would change if:** Fatima prefers a single visual identity for
+loading across all surfaces. The shared component's calm
+cyan-halo palette would clash with the modal's pink/cyan
+theatre context, so I kept the two distinct.

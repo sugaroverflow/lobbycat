@@ -39,6 +39,21 @@ export function SurpriseModal({
 
   const requestedRef = useRef(false);
 
+  // Loading-state quote rotator — cycles through surprisePreamble[] every 1.5s
+  // while a pick is in flight (§7 of REFACTOR-v0.7).
+  const loadingPool = q.surprisePreamble ?? [];
+  const [loadingIdx, setLoadingIdx] = useState(() =>
+    loadingPool.length > 0 ? Math.floor(Math.random() * loadingPool.length) : 0,
+  );
+  useEffect(() => {
+    if (!pending || loadingPool.length <= 1) return;
+    const id = setInterval(() => {
+      setLoadingIdx((i) => (i + 1) % loadingPool.length);
+    }, 1500);
+    return () => clearInterval(id);
+  }, [pending, loadingPool.length]);
+  const loadingQuote = loadingPool[loadingIdx] ?? "the cat is pawing through…";
+
   const randomPreamble = useCallback(() => {
     const pool = q.surprisePreamble ?? [];
     if (pool.length === 0) return "";
@@ -197,13 +212,14 @@ export function SurpriseModal({
               />
             </div>
             <p
-              className="mt-4 serif italic text-base"
+              key={loadingIdx}
+              className="mt-4 serif italic text-base text-center vw-loading-quote"
               style={{
                 color: "#FFEEFF",
                 textShadow: "0 0 8px rgba(255,0,255,0.45)",
               }}
             >
-              {picks.length === 0 ? "the cat is pawing through…" : "another pick coming…"}
+              “{loadingQuote}”
             </p>
           </div>
         ) : null}
@@ -331,6 +347,19 @@ export function SurpriseModal({
         }
         .vw-cat :global(img) {
           image-rendering: pixelated;
+        }
+        .vw-loading-quote {
+          animation: vw-quote-fade 0.4s ease-out;
+        }
+        @keyframes vw-quote-fade {
+          from {
+            opacity: 0;
+            transform: translateY(3px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
         .vw-grid-floor {
           animation: vw-grid-scroll 5s linear infinite;

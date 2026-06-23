@@ -3,6 +3,10 @@
 import { useRef, useState, useTransition } from "react";
 import { generateFitNote, sendFitNoteMessage } from "@/app/actions";
 import { CatMark } from "@/components/wordmark";
+import { LoadingCat } from "@/components/loading-cat";
+import quotes from "@/db/lobbycat-quotes.json";
+
+type QuotePools = { fitNoting?: string[] };
 
 type FitNote = {
   headline: string | null;
@@ -54,6 +58,7 @@ export function FitNotePanel({
   const [draft, setDraft] = useState("");
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const parsed = fitNote ? parseFitNote(fitNote.body) : null;
+  const fitNotingPool = (quotes as unknown as QuotePools).fitNoting ?? [];
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -87,7 +92,13 @@ export function FitNotePanel({
           {pending ? "thinking…" : fitNote ? "regenerate" : "generate"}
         </button>
       </div>
-      {parsed ? (
+      {pending ? (
+        <LoadingCat
+          quotes={fitNotingPool}
+          label={fitNote ? "re-reading" : "reading"}
+          align="row"
+        />
+      ) : parsed ? (
         <>
           <ul className="serif text-base text-body leading-relaxed space-y-2 list-none pl-0">
             {parsed.bullets.map((b, i) => (
@@ -143,9 +154,12 @@ export function FitNotePanel({
                   <span className="mono text-[10px] uppercase tracking-[0.12em] text-muted">
                     lobbycat
                   </span>
-                  <p className="serif text-sm text-muted leading-relaxed italic">
-                    thinking…
-                  </p>
+                  <LoadingCat
+                    quotes={fitNotingPool}
+                    label="following up"
+                    size={32}
+                    align="row"
+                  />
                 </li>
               )}
             </ul>
