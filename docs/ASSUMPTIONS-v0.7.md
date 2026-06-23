@@ -384,3 +384,15 @@ consistency with fit-note loading.
 loading across all surfaces. The shared component's calm
 cyan-halo palette would clash with the modal's pink/cyan
 theatre context, so I kept the two distinct.
+
+
+## 2026-06-23 23:10 UTC — Step 14: README is a rewrite, not a patch
+**Assumed:** Step 14's "README rewrite" means a full rewrite — every
+section reframed to v0.7 (lens-first / wizard / vaporwave / fit-notes
+as first-class / Compare retired), not a v0.6 README with a v0.7
+status note appended.
+**Alternative:** keep the v0.6 prose intact and append a "What's new
+in v0.7" section.
+**Would change if:** Fatima wants the v0.6 narrative preserved as
+canon and v0.7 layered on top; would revert and append a delta section
+instead.
