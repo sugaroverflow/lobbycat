@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "voice": "dry, observational, slightly catty, never twee — third person ('the cat noticed'), occasional self-awareness about being a cat",
+    "notes": "Draft lines for Fatima to edit. Categories map to UI surfaces: loading states, empty results, welcome/hero, ambient observations between sessions, and small tooltips. Reference policy work where it fits, never forced.",
+    "version": "v0.6-draft-1"
+  },
+
+  "loading": [
+    "The cat is reading consultation responses. Standard pace.",
+    "The cat is here. The data is not yet here. The cat has waited longer.",
+    "Pawing through Greenhouse boards. One moment.",
+    "The cat is cross-referencing org charts against LinkedIn. Slow work.",
+    "Loading. The cat would like to remind you this is unpaid labour, in principle.",
+    "Counting policy hires. The cat counts carefully.",
+    "The cat has opened forty-seven tabs. This is normal.",
+    "Refreshing the lobby. Nobody important has walked through yet.",
+    "The cat is verifying tier assignments. Some of them are wrong, probably.",
+    "Fetching. The cat does not fetch in the dog sense.",
+    "Re-scoring against the new weights. The cat is being precise about this.",
+    "Loading the map. The cat already knows where everyone sits."
+  ],
+
+  "empty": [
+    "The cat searched the lobby. The lobby is empty.",
+    "No results. The cat does not consider this a failure.",
+    "Nothing matches. The filters are perhaps a little severe.",
+    "The cat has looked under every chair. There is no one here.",
+    "Zero hits. The cat suggests loosening at least one weight.",
+    "The lobby is quiet. The cat finds this restful.",
+    "No matching companies. The cat is unsurprised; the criteria were specific.",
+    "Empty result set. The cat would point out that some filters cancel each other out.",
+    "The cat sees nothing. Either the field is small or the filters are large.",
+    "No one fits. The cat respects the integrity of that, briefly.",
+    "Try relaxing 'Geographic remit' or 'Stage of company'. The cat is just saying."
+  ],
+
+  "welcome": [
+    "The lobbycat watches the lobby. Sixty-eight organisations come and go.",
+    "Welcome. The cat has been here since 2023.",
+    "The cat is a small persistent observer of the UK AI policy field.",
+    "This is the lobby. The cat will help you find a seat.",
+    "Sixty-eight orgs on the map. The cat has opinions about most of them.",
+    "Adjust the weights. The cat will re-rank without comment.",
+    "Hover anywhere. The cat has annotated almost everything.",
+    "The cat watches who walks in, who walks out, and who is quietly hiring.",
+    "This is not a job board. The cat would like that on the record.",
+    "Pick your priorities. The cat will surface the matches.",
+    "The cat thinks the obvious answer is rarely the right answer. Use the frames.",
+    "Click any company. The cat has prepared a brief."
+  ],
+
+  "observation": [
+    "The cat noticed three different orgs published the same consultation response paragraph last week.",
+    "The cat noticed AISI hired again. That is the eleventh policy hire this quarter.",
+    "The cat noticed the words 'state capacity' appearing in four titles. The cat has questions.",
+    "The cat noticed that 'frontier' has stopped meaning anything in particular.",
+    "Another think tank launched an AI strand. The cat counted six this year.",
+    "The cat noticed a law firm rebranding its AI Act practice as an AI Act and Sovereign AI practice.",
+    "The cat noticed the AI Opportunity Plan being cited in places it does not appear.",
+    "The cat noticed three orgs claim to have drafted the same paragraph of the Bletchley Declaration.",
+    "The cat noticed a consultancy listing 'AI policy' as a deliverable. The cat is curious about the SoW.",
+    "The cat noticed that Westminster shops now describe themselves as 'frontier'. The cat is not convinced.",
+    "Another open letter. The cat has stopped reading these in full.",
+    "The cat noticed two organisations have hired the same person twice. The cat has thoughts.",
+    "The cat noticed that 'multi-jurisdiction' usually means London plus a Slack with three people in Brussels.",
+    "A regulator opened a sandbox. The cat will believe outcomes when it sees them.",
+    "The cat noticed a policy lead leaving for a frontier lab. The lab will be the third in their LinkedIn."
+  ],
+
+  "tooltip": [
+    "The cat suggests starting with two frames before adjusting weights.",
+    "Tier is editorial, not metric. The cat assigned them by hand.",
+    "Drag to re-weight. The cat will not judge.",
+    "Hover the frame name for the full scale anchors.",
+    "The cat sources roles where possible. Some boards are noisier than others.",
+    "Click the slug. The cat has a longer description there.",
+    "The colour means a tag, not a score. The cat understands the confusion.",
+    "The map shows the field. The list shows the ranking. They disagree on purpose.",
+    "The cat refreshes role listings on its own schedule, not yours.",
+    "If a company looks wrong on a frame, tell the cat. The cat keeps notes."
+  ]
+}
