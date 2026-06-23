@@ -2,10 +2,14 @@ import { SiteShell } from "@/components/site-shell";
 import { ProfileEditor } from "@/components/profile-editor";
 import { ReplayOnboardingLink } from "@/components/replay-onboarding-link";
 import { NextRoleForm } from "@/components/next-role-form";
-import { getUserProfile } from "@/lib/queries";
+import { CompanyNotesIndex } from "@/components/company-notes-index";
+import { getUserProfile, getAllCompanyNotes } from "@/lib/queries";
 
 export default async function AboutPage() {
-  const profile = await getUserProfile();
+  const [profile, notes] = await Promise.all([
+    getUserProfile(),
+    getAllCompanyNotes(),
+  ]);
   if (!profile) {
     return (
       <SiteShell>
@@ -35,6 +39,7 @@ export default async function AboutPage() {
         sources={sources}
       />
       <NextRoleForm />
+      <CompanyNotesIndex notes={notes} />
       <div className="max-w-[42rem] mx-auto px-6 pb-16">
         <ReplayOnboardingLink />
       </div>

@@ -9,6 +9,7 @@ import {
   userProfile,
   frames as framesTable,
   tags as tagsTable,
+  companyNotes,
 } from "@/db/schema";
 import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -331,11 +332,23 @@ export async function saveCompanyNotes({
   companyId: number;
   notes: string;
 }) {
-  await db
-    .update(companies)
-    .set({ notes, updatedAt: new Date() })
-    .where(eq(companies.id, companyId));
+  // v0.6: per-company notes live in their own table now (replaces the
+  // v0.4 free-text intent surface). Trimmed-empty body deletes the row
+  // so /about's notes index stays clean.
+  const body = notes.trim();
+  if (!body) {
+    await db.delete(companyNotes).where(eq(companyNotes.companyId, companyId));
+  } else {
+    await db
+      .insert(companyNotes)
+      .values({ companyId, body, updatedAt: new Date() })
+      .onConflictDoUpdate({
+        target: companyNotes.companyId,
+        set: { body, updatedAt: new Date() },
+      });
+  }
   revalidatePath(`/companies/[slug]`, "page");
+  revalidatePath("/about");
 }
 
 export async function setCompanyStatus({

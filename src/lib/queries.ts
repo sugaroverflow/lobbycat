@@ -11,6 +11,7 @@ import {
   userProfile,
   fitNotes,
   fitNoteMessages,
+  companyNotes,
 } from "@/db/schema";
 import { eq, desc, sql, inArray, and, asc } from "drizzle-orm";
 
@@ -184,6 +185,7 @@ export async function getCompanyBySlug(slug: string) {
     companyFrameScores,
     companyFitNotes,
     companyFitNoteMessages,
+    companyNoteRows,
   ] = await Promise.all([
     db
       .select()
@@ -225,6 +227,11 @@ export async function getCompanyBySlug(slug: string) {
       .from(fitNoteMessages)
       .where(eq(fitNoteMessages.companyId, company.id))
       .orderBy(asc(fitNoteMessages.createdAt)),
+    db
+      .select()
+      .from(companyNotes)
+      .where(eq(companyNotes.companyId, company.id))
+      .limit(1),
   ]);
 
   const allFrames = await db
@@ -251,7 +258,28 @@ export async function getCompanyBySlug(slug: string) {
     })),
     fitNote: companyFitNotes[0] ?? null,
     fitNoteThread: companyFitNoteMessages,
+    note: companyNoteRows[0] ?? null,
   };
+}
+
+/**
+ * v0.6: notes index for the /about page — every per-company note Aadi
+ * has written, joined with company name + slug so he can find what he
+ * said without remembering which company it was on.
+ */
+export async function getAllCompanyNotes() {
+  return db
+    .select({
+      id: companyNotes.id,
+      companyId: companyNotes.companyId,
+      body: companyNotes.body,
+      updatedAt: companyNotes.updatedAt,
+      companyName: companies.name,
+      companySlug: companies.slug,
+    })
+    .from(companyNotes)
+    .innerJoin(companies, eq(companyNotes.companyId, companies.id))
+    .orderBy(desc(companyNotes.updatedAt));
 }
 
 export async function getAllFrames() {

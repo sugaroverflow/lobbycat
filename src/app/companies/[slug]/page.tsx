@@ -22,7 +22,7 @@ export default async function CompanyDetail({
   const data = await getCompanyBySlug(slug);
   if (!data) notFound();
 
-  const { company, roles, people, publications, tags, frames, fitNote, fitNoteThread } = data;
+  const { company, roles, people, publications, tags, frames, fitNote, fitNoteThread, note } = data;
 
   return (
     <SiteShell>
@@ -110,7 +110,7 @@ export default async function CompanyDetail({
             </section>
 
             <section>
-              <NotesEditor companyId={company.id} initial={company.notes} />
+              <NotesEditor companyId={company.id} initial={note?.body ?? null} />
             </section>
 
             {people.length > 0 && (

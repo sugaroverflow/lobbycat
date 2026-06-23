@@ -122,3 +122,31 @@ Format: timestamp · area · assumption · alternative considered · would-chang
     "similar" semantically), or co-occurrence in user-clicked sets.
   - Would change if: adjacency picks feel arbitrary. 6-frame cosine is
     the natural upgrade and we already have all the scores.
+
+## Step 9 — Per-company notes (2026-06-23 14:00 UTC)
+
+- **Assumed:** `saveCompanyNotes` should *delete* the row when body
+  trims to empty, rather than store an empty string.
+  - Alternatives: keep an empty row (acts as a "this company was
+    visited" marker); soft-delete with a `deleted_at` column.
+  - Would change if: we later want the notes table to double as an
+    engagement / view-history signal (see Step 8 assumption). Then
+    keep empties and add `deleted_at` instead.
+
+- **Assumed:** The /about notes index lists every note, ordered by
+  `updatedAt` desc, with a flat ~220-char snippet inline (no search,
+  no pagination, no per-company grouping).
+  - Alternatives: search/filter box; group by tier or tag; full-body
+    expansion in place; client-side fuzzy search.
+  - Would change if: Aadi accumulates >30 notes and scrolling becomes
+    the bottleneck. Add a simple substring filter first; search is
+    cheap and avoids a heavier index.
+
+- **Assumed:** The legacy `companies.notes` column stays untouched for
+  now — the v0.4 free-text is left as dead data until the v0.5 kill
+  sweep (Step 12) clears it. New writes only land in `company_notes`.
+  - Alternatives: backfill `company_notes` from `companies.notes` on
+    this commit; drop the legacy column immediately.
+  - Would change if: Step 12 reveals real content in `companies.notes`
+    worth preserving — then add a one-shot backfill migration before
+    dropping the column.
