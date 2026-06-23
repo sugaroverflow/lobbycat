@@ -186,3 +186,59 @@ Format: timestamp · area · assumption · alternative considered · would-chang
   - Alternatives: daily; manual-only (no cron).
   - Would change if: the seed grows past a few hundred rows or a
     scraper lands. Bump to daily then.
+
+## Step 11 — Safety frameworks pipeline (2026-06-23 15:55 UTC)
+
+- **Assumed:** v0.6 ships with a *hand-curated* seed of safety
+  frameworks (`src/db/safety-frameworks-seed.json`, 19 rows across 17
+  slugs) — no scraper. These documents update once or twice a year per
+  lab; weekly re-ingest is overkill but cheap.
+  - Alternatives: build an RSP scraper now; auto-watch a list of URLs
+    with diff detection.
+  - Would change if: Fatima wants automated change-detection on
+    e.g. Anthropic's RSP page. Schema already supports `source =
+    'scraped'` for that path.
+
+- **Assumed:** Dedupe key is `(company_id, title)`. Re-ingestion is
+  upsert: existing rows get their `version`, `url`, `publishedAt`,
+  `summary`, `commitments`, `strength`, `rawExcerpt`, `source`
+  overwritten from the seed.
+  - Alternatives: include `framework_type` in the key (would allow the
+    same title across types); include `version` (would create a new
+    row per version, useful for history).
+  - Would change if: we want a version history of RSPs over time. Add
+    a separate `safety_framework_versions` child table then.
+
+- **Assumed:** Safety frameworks are the *highest-signal* of the four
+  evidence kinds — citation weight `1.5` (vs submissions `1.2`,
+  publications/lobbying `1.0`). These are the company's own committed
+  posture, harder to walk back than a blog or a regulator filing.
+  - Alternatives: equal weight (1.0); higher weight when `strength >=
+    4`; downweight aspirational AUPs.
+  - Would change if: spot-checks show the model over-anchors on RSPs
+    relative to actual behaviour. Strength-aware weighting is the
+    obvious next knob.
+
+- **Assumed:** Editorial `strength` (1–5) is stored but *not* fed into
+  the scoring prompt this release — it'll be used for a UI hint on the
+  evidence panel later (e.g. "⚖️ named thresholds" vs "📝 principles").
+  The model sees `commitments[]` instead, which is more legible.
+  - Alternatives: feed strength to the model as a numeric prior;
+    expose it in the rationale.
+  - Would change if: the rationales come back over-trusting weak
+    governance charters. Then pipe strength into the prompt.
+
+- **Assumed:** Vercel cron schedule is weekly (`30 7 * * 1` — Mondays
+  07:30 UTC, 15 minutes after the consultations job).
+  - Alternatives: monthly; manual-only.
+  - Would change if: a scraper lands. Bump to daily then.
+
+- **Assumed:** The 19-row seed is enough breadth for v0.6 ship. The
+  long tail of the 70 companies (policy think tanks, consultancies,
+  regulators) don't publish their *own* safety frameworks — they
+  comment on others'. Leaving those rows empty is correct, not a gap.
+  - Alternatives: invent placeholder rows for all 70; treat each
+    regulator's published "AI assurance approach" as a framework row.
+  - Would change if: we want regulator framing docs (e.g. CMA's
+    AI-foundation-models update) treated as evidence. Add them under
+    `framework_type = 'governance_charter'` then.

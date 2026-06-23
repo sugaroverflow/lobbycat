@@ -20,6 +20,10 @@
     {
       "path": "/api/cron/consultations",
       "schedule": "15 7 * * 1"
+    },
+    {
+      "path": "/api/cron/safety-frameworks",
+      "schedule": "30 7 * * 1"
     }
   ]
 }

@@ -50,6 +50,13 @@
       "when": 1782224037310,
       "tag": "0006_romantic_gunslinger",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1782229229515,
+      "tag": "0007_safety_frameworks",
+      "breakpoints": true
     }
   ]
 }

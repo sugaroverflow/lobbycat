@@ -1,0 +1,307 @@
+{
+  "_meta": {
+    "purpose": "Hand-curated initial seed of published safety / responsible-scaling / governance frameworks for AI companies with a London policy presence. Slow-moving documents — most update once or twice a year.",
+    "scoring_relevance": "Wired into the lobbycat scoring engine as `evidence_kind = 'safety_framework'` (v0.6 Step 11). High-signal: the company's own committed posture, not press spin.",
+    "strength_scale": "1 = aspirational/vague; 2 = principles only; 3 = named processes; 4 = named processes + commitments; 5 = enforceable thresholds with named capability tripwires and pre-deployment access.",
+    "framework_types": [
+      "RSP",
+      "frontier_safety_framework",
+      "deployment_policy",
+      "model_spec",
+      "aup",
+      "governance_charter",
+      "other"
+    ],
+    "last_curated": "2026-06-23"
+  },
+  "frameworks": [
+    {
+      "slug": "anthropic-london",
+      "frameworkType": "RSP",
+      "title": "Responsible Scaling Policy",
+      "version": "v2.1",
+      "url": "https://www.anthropic.com/responsible-scaling-policy",
+      "publishedAt": "2025-10-15",
+      "summary": "Defines ASL capability thresholds, pre-deployment evals, and required safeguards before scaling past each tier; commits to pausing if mitigations aren't ready.",
+      "commitments": [
+        "capability thresholds (ASL-3, ASL-4)",
+        "pre-deployment evals",
+        "third-party access",
+        "pause-if-unsafe commitment",
+        "responsible disclosure"
+      ],
+      "strength": 5
+    },
+    {
+      "slug": "anthropic-london",
+      "frameworkType": "aup",
+      "title": "Usage Policy",
+      "version": "2025-09",
+      "url": "https://www.anthropic.com/legal/aup",
+      "publishedAt": "2025-09-01",
+      "summary": "Named prohibitions on weapons uplift, CSAM, election manipulation, and high-stakes autonomous decisions; enforcement via tier and review.",
+      "commitments": [
+        "weapons uplift ban",
+        "election integrity",
+        "high-stakes autonomy review"
+      ],
+      "strength": 4
+    },
+    {
+      "slug": "google-deepmind",
+      "frameworkType": "frontier_safety_framework",
+      "title": "Frontier Safety Framework",
+      "version": "v2.0",
+      "url": "https://deepmind.google/discover/blog/updating-the-frontier-safety-framework/",
+      "publishedAt": "2025-02-04",
+      "summary": "Critical Capability Levels (CCLs) across CBRN, cyber, ML R&D, and persuasion; commits to evals at defined model scales and to mitigations before deployment.",
+      "commitments": [
+        "Critical Capability Levels",
+        "pre-deployment evaluation",
+        "deployment mitigations",
+        "external red-teaming"
+      ],
+      "strength": 5
+    },
+    {
+      "slug": "openai-london",
+      "frameworkType": "frontier_safety_framework",
+      "title": "Preparedness Framework",
+      "version": "v2.0",
+      "url": "https://openai.com/safety/preparedness/",
+      "publishedAt": "2025-04-15",
+      "summary": "Tracked risk categories (biological, cyber, AI self-improvement, persuasion) with Low/Medium/High/Critical thresholds; Safety Advisory Group reviews before deployment.",
+      "commitments": [
+        "tracked risk categories",
+        "deployment thresholds",
+        "Safety Advisory Group review",
+        "model card pre-deployment"
+      ],
+      "strength": 4
+    },
+    {
+      "slug": "openai-london",
+      "frameworkType": "model_spec",
+      "title": "Model Spec",
+      "version": "2025-02",
+      "url": "https://model-spec.openai.com/",
+      "publishedAt": "2025-02-12",
+      "summary": "Public statement of intended model behaviour — chain-of-command, defaults, hard rules; used as a public anchor for what's a bug vs a deliberate choice.",
+      "commitments": [
+        "behavioural spec disclosure",
+        "hard-rule list",
+        "instruction hierarchy"
+      ],
+      "strength": 3
+    },
+    {
+      "slug": "microsoft-ai-london",
+      "frameworkType": "governance_charter",
+      "title": "Responsible AI Standard",
+      "version": "v2",
+      "url": "https://www.microsoft.com/en-us/ai/responsible-ai",
+      "publishedAt": "2022-06-21",
+      "summary": "Six principles (fairness, reliability, privacy, inclusiveness, transparency, accountability) operationalised via internal Sensitive Uses review.",
+      "commitments": [
+        "Sensitive Uses review",
+        "Impact Assessment requirement",
+        "deployment gating for restricted scenarios"
+      ],
+      "strength": 3
+    },
+    {
+      "slug": "meta-london-policy",
+      "frameworkType": "frontier_safety_framework",
+      "title": "Frontier AI Framework",
+      "version": "2025-02",
+      "url": "https://ai.meta.com/static-resource/meta-frontier-ai-framework/",
+      "publishedAt": "2025-02-03",
+      "summary": "Defines 'high-risk' vs 'critical-risk' outcomes (CBRN, cyber); commits to halt internal development if critical outcomes are reached without mitigation.",
+      "commitments": [
+        "outcome-based risk classification",
+        "halt-development commitment",
+        "open-weights gating"
+      ],
+      "strength": 4
+    },
+    {
+      "slug": "mistral-london",
+      "frameworkType": "deployment_policy",
+      "title": "Mistral Acceptable Use Policy",
+      "version": "2025-03",
+      "url": "https://mistral.ai/terms",
+      "publishedAt": "2025-03-10",
+      "summary": "Named prohibited uses (CSAM, illegal content, critical-infrastructure attacks); thin on capability-threshold commitments, more posture than process.",
+      "commitments": [
+        "prohibited uses list",
+        "downstream-license clause"
+      ],
+      "strength": 2
+    },
+    {
+      "slug": "cohere-london",
+      "frameworkType": "deployment_policy",
+      "title": "Cohere Usage Guidelines",
+      "version": "2025-01",
+      "url": "https://docs.cohere.com/docs/usage-policy",
+      "publishedAt": "2025-01-22",
+      "summary": "Enterprise-oriented usage guidelines — sectoral prohibitions, customer responsibility model; no published capability-threshold framework.",
+      "commitments": [
+        "sectoral prohibitions",
+        "customer responsibility model"
+      ],
+      "strength": 2
+    },
+    {
+      "slug": "xai-london",
+      "frameworkType": "frontier_safety_framework",
+      "title": "xAI Risk Management Framework",
+      "version": "draft-2025-02",
+      "url": "https://x.ai/documents/2025.02.10-RMF-Draft.pdf",
+      "publishedAt": "2025-02-10",
+      "summary": "Draft framework outlining benchmark categories and mitigation classes; light on thresholds and external-access commitments compared to peers.",
+      "commitments": [
+        "benchmark categories",
+        "mitigation classes"
+      ],
+      "strength": 2
+    },
+    {
+      "slug": "stability-ai",
+      "frameworkType": "aup",
+      "title": "Stability AI Acceptable Use Policy",
+      "version": "2024-11",
+      "url": "https://stability.ai/use-policy",
+      "publishedAt": "2024-11-04",
+      "summary": "Image-/audio-model focused AUP — bans CSAM, non-consensual intimate imagery, deepfake identity fraud; relies on downstream licensee enforcement.",
+      "commitments": [
+        "NCII prohibition",
+        "CSAM prohibition",
+        "downstream licensee duties"
+      ],
+      "strength": 2
+    },
+    {
+      "slug": "synthesia",
+      "frameworkType": "deployment_policy",
+      "title": "Synthesia AI Content Standards",
+      "version": "2025-04",
+      "url": "https://www.synthesia.io/policies/ai-content-policy",
+      "publishedAt": "2025-04-18",
+      "summary": "Avatar-consent regime + content moderation tiers; explicit deepfake-of-public-figures ban and KYC for stock avatars.",
+      "commitments": [
+        "avatar consent regime",
+        "deepfake-of-public-figures ban",
+        "content moderation tiers",
+        "C2PA provenance"
+      ],
+      "strength": 4
+    },
+    {
+      "slug": "elevenlabs-london",
+      "frameworkType": "deployment_policy",
+      "title": "ElevenLabs Voice AI Safety Policy",
+      "version": "2025-05",
+      "url": "https://elevenlabs.io/safety",
+      "publishedAt": "2025-05-12",
+      "summary": "Voice-clone consent verification, no-go list of public figures, AI Speech Classifier for detection; KYC tied to higher-risk tiers.",
+      "commitments": [
+        "voice-clone consent",
+        "no-go list",
+        "AI speech classifier",
+        "KYC tiers"
+      ],
+      "strength": 3
+    },
+    {
+      "slug": "wayve",
+      "frameworkType": "governance_charter",
+      "title": "Wayve Safety Case Approach",
+      "version": "2024-09",
+      "url": "https://wayve.ai/safety/",
+      "publishedAt": "2024-09-30",
+      "summary": "Safety-case methodology for autonomous driving — claims, arguments, evidence; aligned to UK Automated Vehicles Act expectations.",
+      "commitments": [
+        "safety-case methodology",
+        "AV Act alignment",
+        "ODD definition"
+      ],
+      "strength": 4
+    },
+    {
+      "slug": "helsing",
+      "frameworkType": "governance_charter",
+      "title": "Helsing AI Ethics Principles",
+      "version": "2024-06",
+      "url": "https://helsing.ai/ethics",
+      "publishedAt": "2024-06-04",
+      "summary": "Defence-AI ethics statement — democratic-values framing, meaningful human control, IHL compliance; light on independent oversight detail.",
+      "commitments": [
+        "democratic values framing",
+        "meaningful human control",
+        "IHL compliance"
+      ],
+      "strength": 2
+    },
+    {
+      "slug": "apollo-research",
+      "frameworkType": "other",
+      "title": "Apollo Research Scheming Evaluations Methodology",
+      "version": "2025-06",
+      "url": "https://www.apolloresearch.ai/research",
+      "publishedAt": "2025-06-15",
+      "summary": "Public methodology for pre-deployment scheming/deception evals; not a self-deployment policy but the spec other labs and AISI lean on.",
+      "commitments": [
+        "scheming eval methodology",
+        "open publication",
+        "third-party eval offer"
+      ],
+      "strength": 3
+    },
+    {
+      "slug": "conjecture",
+      "frameworkType": "governance_charter",
+      "title": "Conjecture Public Position on Frontier Limits",
+      "version": "2024-12",
+      "url": "https://www.conjecture.dev/",
+      "publishedAt": "2024-12-09",
+      "summary": "Public statement against training systems above defined capability lines without controllability guarantees; advocacy-flavoured, not a corporate RSP.",
+      "commitments": [
+        "controllability-first stance",
+        "named capability red lines",
+        "advocacy posture"
+      ],
+      "strength": 3
+    },
+    {
+      "slug": "polyai",
+      "frameworkType": "deployment_policy",
+      "title": "PolyAI Enterprise AI Safety Guidelines",
+      "version": "2025-02",
+      "url": "https://poly.ai/security/",
+      "publishedAt": "2025-02-26",
+      "summary": "Voice-agent enterprise deployment guardrails — refusal taxonomies, no health-decisioning, audit logs for regulated sectors.",
+      "commitments": [
+        "refusal taxonomy",
+        "no health decisioning",
+        "audit logs"
+      ],
+      "strength": 2
+    },
+    {
+      "slug": "benevolentai",
+      "frameworkType": "governance_charter",
+      "title": "BenevolentAI Responsible AI in Drug Discovery",
+      "version": "2024-10",
+      "url": "https://www.benevolent.com/responsible-ai/",
+      "publishedAt": "2024-10-14",
+      "summary": "Drug-discovery focused AI principles — validation requirements, dual-use review for target identification, audit trail for evidence chains.",
+      "commitments": [
+        "validation requirements",
+        "dual-use review",
+        "evidence audit trail"
+      ],
+      "strength": 3
+    }
+  ]
+}

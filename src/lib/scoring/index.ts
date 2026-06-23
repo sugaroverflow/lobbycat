@@ -7,6 +7,7 @@
  *  - recent publications (title + summary)
  *  - lobbying records (spend, topics)
  *  - consultation submissions (regulator, consultation name, editorial summary)
+ *  - safety frameworks (RSP / Frontier Safety Framework / AUP commitments)
  *
  * Call Anthropic (claude-3-5-sonnet) to produce a JSON
  *   { score: 1.0..5.0, rationale: "...", confidence: "low|medium|high",
@@ -27,15 +28,21 @@ import {
   frameScoreEvidence,
   lobbyingRecords,
   publications,
+  safetyFrameworks,
 } from "@/db/schema";
 
 const ANTHROPIC_MODEL = "claude-3-5-sonnet-latest";
 const MAX_PUBS = 12;
 const MAX_LOBBY = 8;
 const MAX_SUBS = 8;
+const MAX_SAFETY = 6;
 
 export type ScoringEvidence = {
-  kind: "publication" | "lobbying_record" | "submission";
+  kind:
+    | "publication"
+    | "lobbying_record"
+    | "submission"
+    | "safety_framework";
   id: number;
   weight: number;
 };
@@ -56,6 +63,7 @@ You score a single (AI company, frame) pair on a 1.0–5.0 decimal scale, given:
 - a short description of the company
 - recent publications, blog posts, filings, and lobbying records
 - public consultation submissions (the company's own arguments to regulators)
+- the company's own safety / responsible-scaling / governance frameworks (their committed posture)
 
 Return STRICT JSON, no preamble, no markdown:
 {
@@ -78,6 +86,7 @@ function median(scale: number): number {
 
 function hashEvidence(payload: {
   pubs: Array<{ id: number; title: string | null; summary: string | null }>;
+  safety: Array<{ id: number; title: string; version: string | null; summary: string | null }>;
   lobby: Array<{ id: number; topics: string[]; spend: number | null }>;
   subs: Array<{ id: number; summary: string | null; consultationName: string }>;
 }): string {
@@ -87,6 +96,8 @@ function hashEvidence(payload: {
     h.update(`l:${l.id}:${l.spend ?? ""}:${(l.topics ?? []).join(",")}\n`);
   for (const s of payload.subs)
     h.update(`s:${s.id}:${s.consultationName}:${s.summary ?? ""}\n`);
+  for (const sf of payload.safety)
+    h.update(`f:${sf.id}:${sf.title}:${sf.version ?? ""}:${sf.summary ?? ""}\n`);
   return h.digest("hex").slice(0, 16);
 }
 
@@ -128,8 +139,18 @@ async function callAnthropic(args: {
     topics: string[];
     submittedAt: Date | null;
   }>;
+  safety: Array<{
+    id: number;
+    frameworkType: string;
+    title: string;
+    version: string | null;
+    summary: string | null;
+    commitments: string[];
+    strength: number | null;
+    publishedAt: Date | null;
+  }>;
 }): Promise<Omit<ScoringResult, "evidenceVersion" | "fallback"> | null> {
-  const { company, frame, pubs, lobby, subs } = args;
+  const { company, frame, pubs, lobby, subs, safety } = args;
   const userMsg = JSON.stringify(
     {
       frame: {
@@ -170,6 +191,16 @@ async function callAnthropic(args: {
           summary: s.summary,
           topics: s.topics,
           submitted_at: s.submittedAt?.toISOString() ?? null,
+        })),
+        safety_frameworks: safety.map((sf) => ({
+          id: sf.id,
+          framework_type: sf.frameworkType,
+          title: sf.title,
+          version: sf.version,
+          summary: sf.summary,
+          commitments: sf.commitments,
+          strength: sf.strength,
+          published_at: sf.publishedAt?.toISOString() ?? null,
         })),
       },
     },
@@ -232,6 +263,8 @@ async function callAnthropic(args: {
         citations.push({ kind: "lobbying_record", id, weight: 1.0 });
       else if (subs.some((s) => s.id === id))
         citations.push({ kind: "submission", id, weight: 1.2 });
+      else if (safety.some((sf) => sf.id === id))
+        citations.push({ kind: "safety_framework", id, weight: 1.5 });
     }
 
     return { score, rationale, confidence, citations };
@@ -306,6 +339,22 @@ export async function rescoreCompanyFrame(
     .orderBy(desc(consultationSubmissions.submittedAt))
     .limit(MAX_SUBS);
 
+  const safety = await db
+    .select({
+      id: safetyFrameworks.id,
+      frameworkType: safetyFrameworks.frameworkType,
+      title: safetyFrameworks.title,
+      version: safetyFrameworks.version,
+      summary: safetyFrameworks.summary,
+      commitments: safetyFrameworks.commitments,
+      strength: safetyFrameworks.strength,
+      publishedAt: safetyFrameworks.publishedAt,
+    })
+    .from(safetyFrameworks)
+    .where(eq(safetyFrameworks.companyId, companyId))
+    .orderBy(desc(safetyFrameworks.publishedAt))
+    .limit(MAX_SAFETY);
+
   const evidenceVersion = hashEvidence({
     pubs: pubs.map((p) => ({ id: p.id, title: p.title, summary: p.summary })),
     lobby: lobby.map((l) => ({
@@ -317,6 +366,12 @@ export async function rescoreCompanyFrame(
       id: s.id,
       summary: s.summary,
       consultationName: s.consultationName,
+    })),
+    safety: safety.map((sf) => ({
+      id: sf.id,
+      title: sf.title,
+      version: sf.version,
+      summary: sf.summary,
     })),
   });
 
@@ -382,6 +437,16 @@ export async function rescoreCompanyFrame(
         summary: s.summary,
         topics: s.topics ?? [],
         submittedAt: s.submittedAt,
+      })),
+      safety: safety.map((sf) => ({
+        id: sf.id,
+        frameworkType: sf.frameworkType,
+        title: sf.title,
+        version: sf.version,
+        summary: sf.summary,
+        commitments: sf.commitments ?? [],
+        strength: sf.strength,
+        publishedAt: sf.publishedAt,
       })),
     });
   }

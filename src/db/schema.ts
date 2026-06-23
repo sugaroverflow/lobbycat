@@ -205,6 +205,59 @@ export const consultationSubmissions = pgTable(
 );
 
 /* ------------------------------------------------------------------ */
+/* Safety frameworks — v0.6 evidence pipeline #5 (Step 11)            */
+/* ------------------------------------------------------------------ */
+
+/**
+ * A company's published safety / responsible-scaling / governance
+ * framework. Hand-curated initial seed — these are slow-moving
+ * documents (RSPs, Frontier Safety Frameworks, AUPs with teeth,
+ * model cards-with-policy, deployment policies).
+ *
+ * Treated by the scoring engine as a high-signal evidence kind
+ * (`evidence_kind = 'safety_framework'`) because they're the
+ * company's own committed posture, not press spin.
+ */
+export const safetyFrameworks = pgTable(
+  "safety_frameworks",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    // RSP | frontier_safety_framework | deployment_policy |
+    // model_spec | aup | governance_charter | other
+    frameworkType: text("framework_type").notNull(),
+    title: text("title").notNull(),
+    version: text("version"), // e.g. "v2.1", "2025-03"
+    url: text("url"),
+    publishedAt: timestamp("published_at", { withTimezone: true }),
+    // Editorial 1-sentence line about what the framework actually commits to.
+    summary: text("summary"),
+    // Hand-tagged commitments — e.g. "pre-deployment evals",
+    // "capability thresholds", "third-party access".
+    commitments: jsonb("commitments").$type<string[]>().default([]).notNull(),
+    // Editorial 1-5 scale for how teeth-y the framework is
+    // (1 = aspirational, 5 = enforceable with named thresholds).
+    strength: integer("strength"),
+    rawExcerpt: text("raw_excerpt"), // optional grounding quote
+    source: text("source").default("curated").notNull(), // curated | scraped
+    seenAt: timestamp("seen_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("safety_frameworks_company_idx").on(t.companyId),
+    index("safety_frameworks_type_idx").on(t.frameworkType),
+    index("safety_frameworks_published_idx").on(t.publishedAt),
+    uniqueIndex("safety_frameworks_company_title_idx").on(
+      t.companyId,
+      t.title,
+    ),
+  ],
+);
+
+/* ------------------------------------------------------------------ */
 /* Tags                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -473,6 +526,7 @@ export const companiesRelations = relations(companies, ({ many }) => ({
   publications: many(publications),
   lobbyingRecords: many(lobbyingRecords),
   consultationSubmissions: many(consultationSubmissions),
+  safetyFrameworks: many(safetyFrameworks),
   tags: many(companyTags),
   frameScores: many(frameScores),
   frameAnswers: many(frameAnswers),
@@ -513,6 +567,16 @@ export const consultationSubmissionsRelations = relations(
   ({ one }) => ({
     company: one(companies, {
       fields: [consultationSubmissions.companyId],
+      references: [companies.id],
+    }),
+  }),
+);
+
+export const safetyFrameworksRelations = relations(
+  safetyFrameworks,
+  ({ one }) => ({
+    company: one(companies, {
+      fields: [safetyFrameworks.companyId],
       references: [companies.id],
     }),
   }),
@@ -588,6 +652,8 @@ export type ConsultationSubmission =
   typeof consultationSubmissions.$inferSelect;
 export type NewConsultationSubmission =
   typeof consultationSubmissions.$inferInsert;
+export type SafetyFramework = typeof safetyFrameworks.$inferSelect;
+export type NewSafetyFramework = typeof safetyFrameworks.$inferInsert;
 export type Tag = typeof tags.$inferSelect;
 export type Frame = typeof frames.$inferSelect;
 export type FrameScore = typeof frameScores.$inferSelect;
