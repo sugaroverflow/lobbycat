@@ -1,7 +1,6 @@
 import { SiteShell } from "@/components/site-shell";
 import { ProfileEditor } from "@/components/profile-editor";
 import { ReplayOnboardingLink } from "@/components/replay-onboarding-link";
-import { NextRoleForm } from "@/components/next-role-form";
 import { CompanyNotesIndex } from "@/components/company-notes-index";
 import { getUserProfile, getAllCompanyNotes } from "@/lib/queries";
 
@@ -38,7 +37,6 @@ export default async function AboutPage() {
         weights={weights}
         sources={sources}
       />
-      <NextRoleForm />
       <CompanyNotesIndex notes={notes} />
       <div className="max-w-[42rem] mx-auto px-6 pb-16">
         <ReplayOnboardingLink />

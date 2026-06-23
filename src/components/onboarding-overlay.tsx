@@ -35,24 +35,24 @@ const STEPS: Array<{
   body: string;
 }> = [
   {
-    eyebrow: "Step 1 of 4 — the room",
-    title: "A map up top, a tracker below.",
-    body: "The map plots companies on any two of your scale frames; the tracker lists who's hiring and who's publishing. Filters on either side narrow both views to the slice you care about.",
+    eyebrow: "Step 1 of 4 — the engine",
+    title: "Lobbycat is a live scoring engine.",
+    body: "Tell it what you care about and it ranks London's AI policy companies for you. Six frames, a weighted aggregate per company, the cat's reasoning attached to every cell. The home table is the field; click a row to dive deep, click a cell to see why.",
   },
   {
-    eyebrow: "Step 2 of 4 — frames",
-    title: "Frames are the lenses you look through.",
-    body: "Three kinds: scales (1–5 axes you can plot on the map), tags (categorical labels), and questions (open-ended prompts you answer in your own words). Edit, rename, or invent new ones whenever your thinking shifts.",
+    eyebrow: "Step 2 of 4 — frames + weights",
+    title: "Six lenses, three weight settings.",
+    body: "Each frame is a 1–5 axis the cat scores every company on. You weight them low · medium · high in /frames — changes the sort instantly. Edit a frame definition and the cat re-reads the field in the background; the animated cat in the corner means it's working.",
   },
   {
-    eyebrow: "Step 3 of 4 — the tracker",
-    title: "Roles + publications, sortable and filterable.",
-    body: "Who's currently hiring, what they last wrote, which tier they sit in. Use the chips to filter by tier, HQ, tag, or hiring status. Sortable on every column.",
+    eyebrow: "Step 3 of 4 — explore, dive deep, decide",
+    title: "Three modes on top of the ranking.",
+    body: "Scan the ranked table to explore. Open a company for the deep-dive fit-note, evidence, and your own notes. Use Compare to pit 2–5 companies with sandbox weights that don't touch your saved ones — and Surprise for adjacent / recent / underrated picks when you want the cat to push you.",
   },
   {
     eyebrow: "Step 4 of 4 — three to get you started",
     title: "Some opening questions from the cat.",
-    body: "These are three default question-kind frames you can answer per company. Add them now and you'll find them ready in /frames; skip if you'd rather invent your own.",
+    body: "Beyond the six scored frames, you can keep question-kind frames for free-text answers per company. Here are three the cat suggests — add them now and you'll find them ready in /frames, or skip and invent your own.",
   },
 ];
 

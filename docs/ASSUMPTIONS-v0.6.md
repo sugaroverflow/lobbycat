@@ -304,3 +304,32 @@ surfaces while cells are stale.
   traffic volume.
   - Alternatives: gate behind the existing session cookie.
   - Would change if: lobbycat ever becomes multi-tenant.
+
+---
+
+## Step 12 — Onboarding panel update + v0.5 kill sweep (2026-06-23 ~16:25 UTC)
+
+- **Assumed:** Refactor doc §3.7 said "one panel update" mentioning the
+  engine model, but Step 1 still referred to the dead Map and Step 3 to
+  the dead tracker — unshippable copy. Rewrote all 4 panels for the v0.6
+  engine framing while keeping the 4-panel comic shape and the
+  question-frame add-defaults gesture on panel 4.
+  - Alternatives: rewrite only Step 1 (literal "one panel update") and
+    leave Steps 2/3 references to "tracker"/"map" intact.
+  - Would change if: Fatima wants the original panel-3 tracker copy back
+    because the home table is conceptually the same thing.
+
+- **Assumed:** `NextRoleForm` on `/about` is fully retired (refactor §3.7:
+  "Free-text 'next role' intent on /about — Dies — Replaced by per-company
+  notes"). Deleted `src/components/next-role-form.tsx` and
+  `src/app/actions-next-role.ts`. No schema columns reference it, no
+  other routes import it.
+  - Alternatives: keep the surface around as a hidden replay path.
+  - Would change if: per-company notes prove insufficient and Fatima
+    wants an open-ended "what am I looking for right now" capture again.
+
+- **Assumed:** `src/components/map-view.tsx` is dead and safe to remove —
+  no imports outside of itself, and the Map page route doesn't exist.
+  - Alternatives: leave the component in tree as a museum piece.
+  - Would change if: a v0.7 surface wants to revive a 2-axis plot. The
+    git history will have it.
