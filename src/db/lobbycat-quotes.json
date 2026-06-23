@@ -2,8 +2,38 @@
   "_meta": {
     "voice": "dry, observational, slightly catty, never twee — third person ('the cat noticed'), occasional self-awareness about being a cat",
     "notes": "Categories map to UI surfaces. rescoring=loading/re-score states, welcomeBack=welcome card / home hero, emptyState=zero-result surfaces, surprisePreamble=intro lines for the Surprise modal (3-variant), observation+tooltip kept for future ambient/inline use.",
-    "version": "v0.6-build-step5"
+    "version": "v0.7-build-step3"
   },
+  "firstScoring": [
+    "The cat is reading seventy company files at once. One moment.",
+    "This is the first pass. The cat takes the first pass seriously.",
+    "Counting policy hires across the whole field. The cat counts carefully.",
+    "Cross-referencing what you said you cared about against what they actually do. Slow work, done properly.",
+    "The cat has opened seventy tabs. Yes, all at once. The cat is fine.",
+    "Weighing the frames. The cat takes the must / should / could distinction seriously.",
+    "First-time scoring. The cat would like you to know this only happens once.",
+    "Reading every consultation response, every blog post, every job listing. The cat is thorough.",
+    "The cat is building your map of the lobby. Personalised, this time.",
+    "Sorting seventy organisations by your weights. Some of them will surprise you.",
+    "Doing the maths so you don't have to. The cat is good at the maths.",
+    "The cat has prepared seventy briefs. The dashboard will show them ranked.",
+    "Aligning what you wrote with what the field is actually doing. The cat is precise about this.",
+    "A moment. The cat is being unusually careful with this one."
+  ],
+  "fitNoting": [
+    "The cat is writing a brief on this one. A moment.",
+    "Drafting a fit-note. The cat is choosing its words carefully.",
+    "Pulling the citations together. The cat does not write without sources.",
+    "The cat is reading the recent publications back through your frames.",
+    "Composing the bullets. The cat keeps these short on purpose.",
+    "Reviewing the open roles and recent activity. The cat will fold both in.",
+    "The cat is asking itself whether this is a fit. Then writing down the answer.",
+    "A short brief, citations included. The cat will be done shortly.",
+    "The cat is making sure every claim has a source. This takes a moment.",
+    "Reading their last six months back through your weights. The cat is being honest about what it finds.",
+    "Drafting. The cat would rather take a moment than guess.",
+    "The cat has notes. The cat is turning the notes into a brief."
+  ],
   "rescoring": [
     "The cat is reading consultation responses. Standard pace.",
     "The cat is here. The data is not yet here. The cat has waited longer.",

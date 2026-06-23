@@ -1,23 +1,24 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Orbitron, Share_Tech_Mono } from "next/font/google";
 import "./globals.css";
 import { RescoringCat } from "@/components/rescoring-cat";
 
-// v0.5: mono-forward register per CONCEPT-v0.5 §6.3. Mono is the system
-// default; sans is the prose face (~20% of visible glyphs).
-//
-// Fonts are placeholders for the swatch session — Berkeley Mono / MD IO /
-// Departure Mono are the candidates in §6.3. JetBrains Mono carries until
-// then. The `--font-mono` and `--font-sans` CSS variables let the swatch
-// session swap a self-hosted face in one place.
-const mono = JetBrains_Mono({
-  variable: "--font-mono",
+// v0.7 Vaporwave register per REFACTOR-v0.7 §4.2:
+//   - Orbitron       — geometric, futuristic; headings / hero / section heads
+//   - Share Tech Mono — terminal-flavoured monospace; body / UI / labels
+// Both Google Fonts. The variables wire into --font-sans-loaded and
+// --font-mono-loaded in vaporwave.css so tokens resolve identically across
+// calm-cousin and theatre surfaces.
+const mono = Share_Tech_Mono({
+  variable: "--font-mono-loaded",
+  weight: "400",
   subsets: ["latin"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-sans",
+const sans = Orbitron({
+  variable: "--font-sans-loaded",
+  weight: ["400", "500", "700", "900"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -36,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${mono.variable} h-full antialiased`}
+      className={`${sans.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-canvas text-prose">
         {children}

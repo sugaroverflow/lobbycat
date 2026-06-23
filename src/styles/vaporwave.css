@@ -1,0 +1,140 @@
+/* ============================================================================
+ * Vaporwave — Lobbycat v0.7 design tokens (calm cousin)
+ *
+ * Token-first design system per REFACTOR-v0.7.md §4. Two-surface model:
+ *   - calm cousin: dashboard / frames / about — vaporwave palette,
+ *     no scanlines, no skew, straight geometry, glow used sparingly
+ *   - full theatre: wizard / scoring takeover / surprise modal — perspective
+ *     grid, scanlines, sunset gradients, theatrical hover (added later in
+ *     dedicated component CSS; this token sheet powers both)
+ *
+ * Role names match v0.5 Machine (--bg-canvas, --fg-prose, --accent-action,
+ * --readout-cyan, --signal-coral, etc.) so existing components keep
+ * rendering on the new palette without a component-by-component rewrite.
+ * Machine CSS is purged wholesale in Step 12.
+ *
+ * Palette anchors from research/v0.7/vaporwave-prompt.md:
+ *   #090014 void purple · #1a103c panel deep purple
+ *   #E0E0E0 chrome silver prose
+ *   #FF00FF hot magenta (primary action — the hero colour)
+ *   #00FFFF electric cyan (readouts / data voice / links)
+ *   #FF9900 sunset orange (signal / flag / rare attention)
+ *   #2D1B4E muted dark purple (default borders)
+ *
+ * — Lotus 🪷, 2026-06-23
+ * ========================================================================= */
+
+@layer base {
+  :root {
+    /* --------------------------------------------------------------------
+     * Palette — calm cousin defaults. Theatre surfaces layer scanlines and
+     * perspective grids on top via their own component CSS.
+     * ----------------------------------------------------------------- */
+
+    /* Surfaces */
+    --bg-canvas: #090014;            /* void purple — infinite digital space */
+    --bg-panel: #1a103c;             /* deep purple card background */
+    --bg-panel-raised: #241552;      /* one step warmer for hover/active */
+    --bg-panel-sunk: #120932;        /* one step deeper for nested wells */
+
+    /* Foreground prose — chrome silver, not pure white (less harsh) */
+    --fg-prose: #E0E0E0;
+    --fg-prose-soft: rgb(224 224 224 / 0.8);
+    --fg-prose-muted: rgb(224 224 224 / 0.6);
+
+    /* Action — hot magenta is THE hero colour. Primary CTAs only. */
+    --accent-action: #FF00FF;
+    --accent-action-hover: #FF66FF;
+    --accent-action-press: #CC00CC;
+
+    /* Readout — electric cyan. Frame names, n/5 scores, axis labels,
+     * links, focus rings. The data voice. */
+    --readout-cyan: #00FFFF;
+    --readout-cyan-dim: rgb(0 255 255 / 0.65);
+
+    /* Signal — sunset orange. Rare attention-grab (recent-change tag,
+     * "flagged for your attention"). Replaces v0.5 coral role. */
+    --signal-coral: #FF9900;
+    --signal-coral-soft: rgb(255 153 0 / 0.18);
+
+    /* Hairlines & focus */
+    --rule: #2D1B4E;                                  /* muted dark purple */
+    --rule-strong: rgb(0 255 255 / 0.35);             /* cyan-tinted on emphasis */
+    --focus-ring: var(--readout-cyan);
+
+    /* Vaporwave-specific accents (used by theatre surfaces, exposed
+     * here so component CSS can reach them via tokens not raw hex). */
+    --vw-sunset-gradient: linear-gradient(to right, #FF9900, #FF00FF, #00FFFF);
+    --vw-accent-bar: linear-gradient(to right, #FF00FF, #00FFFF);
+    --vw-glow-gradient: linear-gradient(to bottom, #FF9900, #FF00FF);
+    --vw-grid-line: #FF00FF;                          /* perspective grid */
+    --vw-scanline: rgb(0 0 0 / 0.25);                 /* CRT overlay */
+    --vw-glow-magenta: 0 0 12px rgb(255 0 255 / 0.55);
+    --vw-glow-cyan: 0 0 12px rgb(0 255 255 / 0.55);
+    --vw-glow-soft: 0 0 24px rgb(0 255 255 / 0.18);
+
+    /* --------------------------------------------------------------------
+     * Typography — Orbitron (geometric futuristic) for headings,
+     * Share Tech Mono (terminal) for body / UI / labels.
+     *
+     * `--font-sans-loaded` and `--font-mono-loaded` are wired from
+     * next/font in src/app/layout.tsx so the actual Google Font face
+     * resolves first, with safe fallbacks behind it.
+     * ----------------------------------------------------------------- */
+    --font-mono: var(--font-mono-loaded), "Share Tech Mono", "JetBrains Mono",
+      "SF Mono", ui-monospace, "Menlo", monospace;
+    --font-sans: var(--font-sans-loaded), "Orbitron", "Inter", system-ui,
+      sans-serif;
+    /* No serif. Italic = "the cat is speaking." */
+
+    /* Fixed rem scale — tight ratio, same as v0.5. Vaporwave reserves
+     * dramatic scale for theatre surfaces only. */
+    --text-xs:   0.75rem;     /* 12px — metadata, whispers */
+    --text-sm:   0.8125rem;   /* 13px — labels, controls */
+    --text-base: 0.9375rem;   /* 15px — body */
+    --text-md:   1.0625rem;   /* 17px — drawer headings */
+    --text-lg:   1.25rem;     /* 20px — section headings */
+    --text-xl:   1.5rem;      /* 24px — page headings */
+    --text-2xl:  1.875rem;    /* 30px — comic captions, hero */
+
+    /* --------------------------------------------------------------------
+     * Spacing — four steps, unchanged from v0.5
+     * ----------------------------------------------------------------- */
+    --space-1: 0.375rem;      /* 6px  — tight intra-control */
+    --space-2: 0.75rem;       /* 12px — control to label */
+    --space-3: 1.25rem;       /* 20px — section internal */
+    --space-4: 2rem;          /* 32px — section to section */
+
+    /* --------------------------------------------------------------------
+     * Edges — vaporwave is aggressively geometric: prefer sharp.
+     * Roles unchanged so existing components don't break.
+     * ----------------------------------------------------------------- */
+    --radius-tight: 2px;      /* near-square for buttons, pills, inputs */
+    --radius-panel: 4px;      /* gentle radius on cards/modals */
+
+    /* --------------------------------------------------------------------
+     * Motion — two curves, two durations
+     * ----------------------------------------------------------------- */
+    --motion-fast: 120ms;
+    --motion-slow: 280ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+
+    /* --------------------------------------------------------------------
+     * Semantic z-index
+     * ----------------------------------------------------------------- */
+    --z-dropdown: 50;
+    --z-sticky: 100;
+    --z-modal-backdrop: 200;
+    --z-modal: 210;
+    --z-toast: 300;
+    --z-tooltip: 400;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --motion-fast: 1ms;
+      --motion-slow: 1ms;
+    }
+  }
+}

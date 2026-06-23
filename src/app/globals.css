@@ -1,10 +1,17 @@
 @import "tailwindcss";
-@import "../styles/machine.css";
+@import "../styles/vaporwave.css";
 
 /* ============================================================================
- * v0.5 Machine token surface
+ * v0.7 Vaporwave token surface (calm cousin)
  *
- * Tokens live in src/styles/machine.css (§6 of the v0.5 concept).
+ * Tokens live in src/styles/vaporwave.css (§4 of REFACTOR-v0.7).
+ * Role names match v0.5 Machine so existing components keep rendering on
+ * the new palette without a component-by-component rewrite. The Machine
+ * CSS file is purged wholesale in v0.7 Step 12 (sweep deletion).
+ *
+ * Legacy comment below preserved for context; everywhere it says "Machine"
+ * read "Vaporwave" until Step 12.
+ * ---------------------------------------------------------------------------
  * This file:
  *   1. Re-exports Machine tokens into Tailwind v4's @theme so utility
  *      classes (`bg-canvas`, `text-prose`, `border-rule`) resolve correctly.
