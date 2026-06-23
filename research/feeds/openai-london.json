@@ -1,0 +1,20 @@
+{
+  "slug": "openai-london",
+  "lastUpdated": "2026-06-23T20:10:00Z",
+  "blurb": "OpenAI's policy arm is in standards-building mode: it helped found the Appia Foundation (hosted by the Linux Foundation) to turn international AI standards into modular, third-party-checkable conformity specs. A trust-layer play, positioning OpenAI as architect of the assessment plumbing.",
+  "hiring": { "isHiring": null, "newSincePrevious": null },
+  "publications": [
+    {
+      "date": "2026-06-23",
+      "title": "Helping build shared standards for advanced AI",
+      "url": "https://openai.com/index/helping-build-shared-standards-for-advanced-ai/",
+      "type": "blog",
+      "byline": null,
+      "summary": "OpenAI announces it helped found the Appia Foundation, hosted by the Linux Foundation, to develop open, modular specifications translating international standards into practical assessment criteria across the AI value chain. The framing: a missing 'trust layer' so third parties can check conformity and produce reusable evidence when models, infrastructure and apps come from different orgs. Ties back to OpenAI's earlier 'blueprint for democratic governance of frontier AI' (which calls for a strengthened US CAISI) and its CAISI/UK-AISI testing partnerships. The posture is unmistakable: OpenAI wants to shape the interoperable standards layer, not just comply with it."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "notes": "policyPageUrl https://openai.com/news/global-affairs/ confirmed active. blogRssUrl in seed (openai.com/blog/rss.xml) is stale; working feed is https://openai.com/news/rss.xml (Global Affairs items carry <category>Global Affairs</category>)."
+}
