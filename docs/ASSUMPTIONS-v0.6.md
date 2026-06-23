@@ -82,3 +82,43 @@ Format: timestamp · area · assumption · alternative considered · would-chang
 - **Assumed:** Companies in the comparison table are auto-sorted by sandbox-overall (descending). Selection chip order is preserved in the picker but the table re-orders to show ranking.
   - Alternatives: respect insertion order; let user toggle sort.
   - Would change if: comparing-by-rank turns out less useful than comparing-in-Aadi's-selection-order.
+
+## Step 8 — Surprise modal (2026-06-23 13:55 UTC)
+
+- **Assumed:** `claude-3-5-haiku-latest` is the right model for the
+  "why this pick" sentence (≤30 words, one call per pick, up to 3 picks
+  per session).
+  - Alternatives: sonnet (more nuanced, ~5× cost), template-only (zero
+    cost, less voice).
+  - Would change if: lines feel flat or repetitive in re-curation. Bump
+    to sonnet for the surprise surface only — it's bounded at 3 calls
+    per session, so cost ceiling is tiny.
+
+- **Assumed:** `company_notes` presence is the right engagement proxy
+  ("user has opened this company"). No separate view-history table.
+  - Alternatives: add a `company_views` table + write on detail-page
+    load; or use cookie-based session view history.
+  - Would change if: Aadi reports the surprise repeatedly pitches
+    companies he's clearly read but not written notes on.
+
+- **Assumed:** Modal resets pick state on close — picks do NOT persist
+  across re-opens of the modal in the same session.
+  - Alternatives: persist to sessionStorage so closing/reopening keeps
+    the cat "tired" until full page reload.
+  - Would change if: closing the modal accidentally is annoying — Aadi
+    loses his 3 picks. Then promote to sessionStorage with a "fresh
+    deck" affordance.
+
+- **Assumed:** "Recency" looks back **21 days** and requires score
+  ≥3.5 on the user's top-weighted frame for relevance.
+  - Alternatives: 7 days (tighter, often empty); no score gate (any
+    publication, ranked by date only).
+  - Would change if: the variant is starving (no candidates) or noisy
+    (irrelevant publications). Move to 14d gate-off as a first lever.
+
+- **Assumed:** "Adjacency" uses score-on-top-frame within ±1.0 of the
+  anchor as the similarity heuristic. Anchor = user-engaged top scorer.
+  - Alternatives: cosine similarity across the full 6-frame vector (more
+    "similar" semantically), or co-occurrence in user-clicked sets.
+  - Would change if: adjacency picks feel arbitrary. 6-frame cosine is
+    the natural upgrade and we already have all the scores.
