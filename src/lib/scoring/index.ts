@@ -31,7 +31,7 @@ import {
   safetyFrameworks,
 } from "@/db/schema";
 
-const ANTHROPIC_MODEL = "claude-3-5-sonnet-latest";
+const ANTHROPIC_MODEL = process.env.LOBBYCAT_SCORING_MODEL ?? "claude-sonnet-4-6";
 const MAX_PUBS = 12;
 const MAX_LOBBY = 8;
 const MAX_SUBS = 8;

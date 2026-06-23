@@ -333,3 +333,58 @@ surfaces while cells are stale.
   - Alternatives: leave the component in tree as a museum piece.
   - Would change if: a v0.7 surface wants to revive a 2-axis plot. The
     git history will have it.
+
+## 2026-06-23 16:30 UTC · Step 13 · Re-curation pass
+
+- **Assumed (caught + fixed):** Migrations 0006 (consultation_submissions),
+  0007 (safety_frameworks), and 0008 (frame_scores.stale_at) had been
+  generated but never `db:push`'d to the Neon prod db. Step 10/11/11.5
+  commits landed code referencing tables/columns that didn't exist.
+  Caught when the rescore engine threw `relation "consultation_submissions"
+  does not exist`. Applied 0006, 0007, 0008 in order via a small
+  scripts/apply-migrations.ts. Re-ran the consultations + safety-frameworks
+  ingestion pipelines so the seed JSON actually populates.
+  - Alternatives: `drizzle-kit push` (would also work; chose targeted apply
+    to keep the script auditable and avoid drift in unrelated columns).
+  - Would change if: a future migration introduces destructive ALTERs
+    where drizzle-kit's interactive guards matter.
+
+- **Assumed:** Scoring model default updated from `claude-3-5-sonnet-latest`
+  (404 on api.anthropic.com — model retired) to `claude-sonnet-4-6`, with
+  a `LOBBYCAT_SCORING_MODEL` env override. claude-sonnet-4-6 is the current
+  Sonnet-class model on the Anthropic API as of 2026-06-23.
+  - Alternatives: hop to `claude-opus-4-7` (more expensive, more thorough);
+    pin a dated id like `claude-sonnet-4-5-20250929` (cheaper but trailing).
+  - Would change if: cost telemetry shows Sonnet-4-6 is uneconomical at
+    420-cell scale, or if rationale quality drops below Sonnet-3.5 baseline.
+
+- **Assumed:** The 70-company target in the refactor doc is aspirational;
+  the live `companies` table holds 40 rows (40 × 6 = 240 cells). Ran the
+  re-curation against the real 40, not a fictional 70. Re-curation across
+  the missing 30 is a future step (15+) once the company list expands.
+  - Alternatives: stub 30 placeholder companies just to hit the 70 number.
+  - Would change if: Fatima wants 70 specifically as a v0.6-ship gate.
+
+- **Assumed:** "Low confidence on cells with zero citations" is a feature,
+  not a bug. 78/240 cells have no scrape-able publications, lobbying
+  records, consultation submissions, or safety frameworks — these are the
+  "support cast" entries (DSIT, CMA, Linklaters, Hogan Lovells, Oliver
+  Wyman, Bain, Royal Society, etc.) where the engine is correctly saying
+  "I'm not sure" and surfacing it via `confidence: 'low'`.
+  - Per-frame skew: `Stage of company` lands medium/high broadly (it can
+    score from the company description alone); the other 5 frames lean low
+    on the support cast (no policy artefacts to read). This matches the
+    rubric — the engine is admitting evidence thinness rather than
+    confabulating.
+  - Alternatives: hide low-confidence cells; or pre-curate one
+    publication/note per support-cast entry to anchor the score.
+  - Would change if: Aadi finds the "lots of low confidence" UX frustrating
+    on first read of the home table.
+
+- **Snapshot (post-recuration, 240 cells):**
+  - Confidence distribution: low=161 · medium=70 · high=9 (avg score 2.63 / 3.10 / 3.64)
+  - Total citations: 234 (avg 0.98 per cell)
+  - Score histogram spans 1.2–5.0 — no degenerate clustering
+  - Per-frame averages: Geo 2.58 · Scope 2.36 · Posture 2.41 · Stage 3.94 · Team 2.61 · Working 2.91
+  - Spot-checked anthropic-london, google-deepmind, openai-london, wayve, helsing, synthesia, stability-ai — rationales are evidence-grounded, no marketing hype, low/medium labels track citation count.
+  - CSV dump in `docs/recuration-v0.6.csv` for downstream auditing.
