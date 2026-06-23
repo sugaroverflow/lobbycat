@@ -1,10 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import {
-  aggregateScore,
-  type FrameWeightLevel,
-} from "./index";
+import { aggregateScore, type FrameWeightLevel } from "./aggregate";
 
 export type FrameScoreSnapshot = {
   companyId: number;

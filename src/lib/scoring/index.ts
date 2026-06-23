@@ -415,32 +415,6 @@ export async function rescoreCompany(
 /* Live aggregate maths (shared with client hook)                     */
 /* ------------------------------------------------------------------ */
 
-const WEIGHT_MULT: Record<"low" | "medium" | "high", number> = {
-  low: 1,
-  medium: 2,
-  high: 3,
-};
-
-export type FrameWeightLevel = "low" | "medium" | "high";
-
-export function aggregateScore(
-  perFrame: Array<{ frameId: number; score: number | null }>,
-  weights: Record<string, FrameWeightLevel>,
-): { overall: number | null; coverage: number } {
-  let weightedSum = 0;
-  let weightTotal = 0;
-  let covered = 0;
-  for (const row of perFrame) {
-    const w =
-      WEIGHT_MULT[weights[String(row.frameId)] ?? "medium"];
-    if (row.score === null) continue;
-    weightedSum += row.score * w;
-    weightTotal += w;
-    covered += 1;
-  }
-  const overall = weightTotal === 0 ? null : weightedSum / weightTotal;
-  return {
-    overall: overall === null ? null : Number(overall.toFixed(2)),
-    coverage: covered,
-  };
-}
+// Implementation lives in ./aggregate.ts (client-safe, no DB deps).
+// Re-exported here so existing server callers keep working.
+export { aggregateScore, type FrameWeightLevel } from "./aggregate";

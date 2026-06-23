@@ -1,31 +1,43 @@
 import { SiteShell } from "@/components/site-shell";
-import { MapView } from "@/components/map-view";
+import { WelcomeCard } from "@/components/welcome-card";
+import { RankedTable } from "@/components/ranked-table";
 import { CoachmarkOnboarding } from "@/components/coachmark-onboarding";
-import { getMapData, getUserProfile } from "@/lib/queries";
+import { getRankedHomeData, getUserProfile } from "@/lib/queries";
+import quotes from "@/db/lobbycat-quotes.json";
+
+type Quotes = { welcomeBack: string[] };
 
 /**
- * v0.5 home — the Map is home (§3.2 of CONCEPT-v0.5).
+ * v0.6 home — welcome card + ranked table (§3.2 of REFACTOR-v0.6).
  *
- * Surface scope deliberately narrow:
- *   - a single-sentence product line (quiet, not hero)
- *   - the Map plot itself (axis picker + companies)
- *   - (Surprise button + comic onboarding + first-home Surprise auto-open
- *      land in the Step 4 rebuild; this v0.5 chunk ships the Map-as-home
- *      collapse without the Surprise modal yet — see ASSUMPTIONS-v0.5.md)
+ * The Map is gone. The home is the engine:
+ *   - WelcomeCard rotates a `welcomeBack` quote (picked here on the server
+ *     to keep the client render pure) and exposes a Re-score button when
+ *     the oldest score is > 7d stale.
+ *   - RankedTable shows every company, ranked by weighted aggregate.
+ *     Click a frame header to sort by that frame.
  *
- * What's gone vs v0.4:
- *   - The "See the full tier list →" link (the /companies list page dies,
- *     §7.1).
- *   - The Live tracker section (the list view dies, §7.1).
- *   - The hero-weight heading (home is quiet; the Map is the editorial
- *     statement, §3.2).
+ * Weights are read-only here; editing happens on /frames. The aggregate
+ * recomputes client-side from the snapshot via useLiveAggregates.
  */
 export default async function HomePage() {
-  const [{ companies, scaleFrames }, profile] = await Promise.all([
-    getMapData(),
+  const [home, profile] = await Promise.all([
+    getRankedHomeData(),
     getUserProfile(),
   ]);
   const firstName = profile?.displayName?.split(" ")[0] || null;
+
+  const pool = (quotes as unknown as Quotes).welcomeBack ?? [];
+  const welcomeLine =
+    pool.length > 0 ? pool[Math.floor(Math.random() * pool.length)] : "";
+
+  const ageDays =
+    home.oldestScoreAt === null
+      ? null
+      : Math.floor(
+          (Date.now() - new Date(home.oldestScoreAt).getTime()) /
+            (24 * 60 * 60 * 1000),
+        );
 
   return (
     <SiteShell>
@@ -35,17 +47,19 @@ export default async function HomePage() {
         }
         firstName={firstName}
       />
-      <section className="max-w-[72rem] mx-auto px-6 pt-10 pb-4">
-        <p className="prose-face text-sm text-[var(--fg-prose-muted)] max-w-2xl leading-relaxed">
-          A curated map of London&rsquo;s AI-policy companies, organised across
-          six frames — to scout the field, calibrate where each company sits,
-          and (sometimes) prep before a meeting.
-        </p>
-      </section>
-
-      <section className="max-w-[72rem] mx-auto px-6 pb-20">
-        <MapView companies={companies} frames={scaleFrames} />
-      </section>
+      <WelcomeCard
+        welcomeLine={welcomeLine}
+        oldestScoreAt={home.oldestScoreAt}
+        ageDays={ageDays}
+        companyIds={home.companies.map((c) => c.id)}
+      />
+      <RankedTable
+        companies={home.companies}
+        frames={home.frames}
+        scores={home.scores}
+        activity={home.activity}
+        frameWeights={home.frameWeights}
+      />
     </SiteShell>
   );
 }

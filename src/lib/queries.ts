@@ -530,3 +530,141 @@ export async function getCompaniesForCompare(slugs: string[]) {
     scores: scores.filter((s) => s.companyId === c.id),
   }));
 }
+
+/* ------------------------------------------------------------------ */
+/* v0.6 ranked-table home                                              */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Data for the ranked-table home (v0.6 §3.2).
+ *
+ * Returns:
+ *  - frames: the six scale frames, in sort order
+ *  - companies: all companies (id, slug, name, hq, short description)
+ *  - scores: every (companyId, frameId) frame score with scoredAt
+ *  - activity: per-company, the dates (last 90 days) of publication + role
+ *              + lobbying record events, for the recent-activity dot pattern
+ *  - frameWeights: the user's current L/M/H weights (keyed by frame id)
+ *  - oldestScoreAt: the oldest scoredAt across all rows (drives the "stale"
+ *    Re-score button on the welcome card; > 7 days is stale)
+ */
+export async function getRankedHomeData() {
+  const NINETY_DAYS_MS = 90 * 24 * 60 * 60 * 1000;
+  const sinceDate = new Date(Date.now() - NINETY_DAYS_MS);
+  // Pass as ISO string — drizzle's raw sql template hands params to
+  // postgres.js which serialises strings, not Date instances.
+  const since = sinceDate.toISOString();
+
+  const [allCompanies, scaleFrames, scoreRows, recentPubs, recentRoles, profile] =
+    await Promise.all([
+      db
+        .select({
+          id: companies.id,
+          slug: companies.slug,
+          name: companies.name,
+          hq: companies.hq,
+          description: companies.description,
+        })
+        .from(companies)
+        .orderBy(companies.name),
+      db
+        .select()
+        .from(frames)
+        .where(eq(frames.kind, "scale"))
+        .orderBy(frames.sortIndex),
+      db
+        .select({
+          companyId: frameScores.companyId,
+          frameId: frameScores.frameId,
+          score: frameScores.score,
+          confidence: frameScores.confidence,
+          scoredAt: frameScores.scoredAt,
+        })
+        .from(frameScores),
+      db
+        .select({
+          companyId: publications.companyId,
+          at: publications.publishedAt,
+        })
+        .from(publications)
+        .where(sql`${publications.publishedAt} >= ${since}`),
+      db
+        .select({
+          companyId: roles.companyId,
+          at: roles.seenAt,
+        })
+        .from(roles)
+        .where(sql`${roles.seenAt} >= ${since}`),
+      db.select().from(userProfile).limit(1),
+    ]);
+
+  // Flatten scores; coerce score numeric -> number
+  const scores = scoreRows.map((r) => ({
+    companyId: r.companyId,
+    frameId: r.frameId,
+    score: r.score === null ? null : Number(r.score),
+    confidence: r.confidence ?? null,
+    scoredAt: r.scoredAt ? new Date(r.scoredAt).toISOString() : null,
+  }));
+
+  // Recent activity: pre-bucket on the server so the client renders pure.
+  // 12 buckets × ~7.5d each, oldest → newest.
+  const ACTIVITY_BUCKETS = 12;
+  const BUCKET_MS = (90 * 24 * 60 * 60 * 1000) / ACTIVITY_BUCKETS;
+  const now = Date.now();
+  type Bucket = { pub: number; role: number };
+  const activityByCompany = new Map<number, Bucket[]>();
+  const ensure = (id: number) => {
+    let b = activityByCompany.get(id);
+    if (!b) {
+      b = Array.from({ length: ACTIVITY_BUCKETS }, () => ({ pub: 0, role: 0 }));
+      activityByCompany.set(id, b);
+    }
+    return b;
+  };
+  const place = (companyId: number, at: Date | null, kind: "pub" | "role") => {
+    if (!at) return;
+    const t = at instanceof Date ? at.getTime() : new Date(at).getTime();
+    if (Number.isNaN(t)) return;
+    const ageMs = now - t;
+    if (ageMs < 0 || ageMs > 90 * 24 * 60 * 60 * 1000) return;
+    const idx = ACTIVITY_BUCKETS - 1 - Math.floor(ageMs / BUCKET_MS);
+    if (idx < 0 || idx >= ACTIVITY_BUCKETS) return;
+    const buckets = ensure(companyId);
+    if (kind === "pub") buckets[idx].pub += 1;
+    else buckets[idx].role += 1;
+  };
+  for (const p of recentPubs) place(p.companyId, p.at as Date | null, "pub");
+  for (const r of recentRoles) place(r.companyId, r.at as Date | null, "role");
+
+  let oldestScoreAt: string | null = null;
+  for (const s of scores) {
+    if (!s.scoredAt) continue;
+    if (oldestScoreAt === null || s.scoredAt < oldestScoreAt) {
+      oldestScoreAt = s.scoredAt;
+    }
+  }
+
+  const [p] = profile;
+
+  return {
+    frames: scaleFrames.map((f) => ({
+      id: f.id,
+      name: f.name,
+      sortIndex: f.sortIndex,
+      lowLabel: f.lowLabel,
+      highLabel: f.highLabel,
+    })),
+    companies: allCompanies,
+    scores,
+    activity: Array.from(activityByCompany.entries()).map(([companyId, buckets]) => ({
+      companyId,
+      buckets,
+    })),
+    frameWeights: (p?.frameWeights ?? {}) as Record<
+      string,
+      "low" | "medium" | "high"
+    >,
+    oldestScoreAt,
+  };
+}
