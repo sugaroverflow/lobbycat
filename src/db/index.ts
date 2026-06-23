@@ -19,10 +19,10 @@ function getDb(): ReturnType<typeof drizzle<typeof schema>> {
   if (globalThis.__drizzle) return globalThis.__drizzle;
   const url = process.env.DATABASE_URL;
   if (!url) throw new Error("DATABASE_URL is not set");
-  const client = globalThis.__pg ?? postgres(url, { prepare: false, max: 5 });
-  if (process.env.NODE_ENV !== "production") globalThis.__pg = client;
+  const client = globalThis.__pg ?? postgres(url, { prepare: false, max: 1, idle_timeout: 20, connect_timeout: 10 });
+  globalThis.__pg = client;  // cache pool across lambda invocations (works in prod too)
   const instance = drizzle(client, { schema });
-  if (process.env.NODE_ENV !== "production") globalThis.__drizzle = instance;
+  globalThis.__drizzle = instance;  // cache across lambda invocations
   return instance;
 }
 
