@@ -16,7 +16,7 @@ async function main() {
     WHERE c.slug IN (${sql.join(slugs.map(s => sql`${s}`), sql`, `)})
     ORDER BY c.slug, f.name;
   `);
-  for (const r of rows as any[]) {
+  for (const r of rows as unknown as any[]) {
     console.log(`\n${r.slug} / ${r.name} → ${r.score} (${r.confidence}, ${r.citations} cites)`);
     console.log(`  ${r.rationale}`);
   }
