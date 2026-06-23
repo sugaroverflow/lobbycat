@@ -11,10 +11,10 @@ import * as schema from "./schema";
 neonConfig.fetchConnectionCache = true;
 
 declare global {
-  // eslint-disable-next-line no-var
-  var __neon: ReturnType<typeof neon> | undefined;
-  // eslint-disable-next-line no-var
-  var __drizzle: ReturnType<typeof drizzle<typeof schema>> | undefined;
+  // eslint-disable-next-line no-var, @typescript-eslint/no-explicit-any
+  var __neon: any;
+  // eslint-disable-next-line no-var, @typescript-eslint/no-explicit-any
+  var __drizzle: any;
 }
 
 function getDb(): ReturnType<typeof drizzle<typeof schema>> {
