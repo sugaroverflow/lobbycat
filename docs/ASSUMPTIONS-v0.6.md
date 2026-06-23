@@ -64,3 +64,21 @@ Format: timestamp · area · assumption · alternative considered · would-chang
   (step 13 / v0.6.1) once the editorial muscle is built.
 - **Would change if:** Anthropic cost drops by 5× OR the dataset stays <30
   companies AND Fatima explicitly asks for live rescoring on label edits.
+
+## Step 7 — Compare with alt-weights sandbox (2026-06-23 13:35 UTC)
+
+- **Assumed:** Sandbox weights live in client state only — no persistence, no URL serialisation. Refreshing the page resets the sandbox to the user's saved weights.
+  - Alternatives: (a) persist sandbox to localStorage; (b) encode in query string so a sandbox view is shareable.
+  - Would change if: Aadi says "I tuned the sandbox, switched tabs, and lost my exploration" — then promote to localStorage.
+
+- **Assumed:** Rationales collapsed by default with click-to-expand per cell. No bulk "expand all" affordance yet.
+  - Alternatives: rationales visible by default (heavier wall of text); top-level toggle.
+  - Would change if: Aadi reports he wants to scan rationales side-by-side without clicking through.
+
+- **Assumed:** "Recent activity" column (called out in §3.4) is deferred from step 7. The aggregate row + per-frame rationales were the load-bearing comparison surface; the activity strip is a nice-to-have we can fold in alongside step 13's curation pass.
+  - Alternatives: ship the 90-day dot pattern now (we have the bucketing logic in `getRankedHomeData`).
+  - Would change if: step 7 review flags the comparison as feeling thin without temporal signal.
+
+- **Assumed:** Companies in the comparison table are auto-sorted by sandbox-overall (descending). Selection chip order is preserved in the picker but the table re-orders to show ranking.
+  - Alternatives: respect insertion order; let user toggle sort.
+  - Would change if: comparing-by-rank turns out less useful than comparing-in-Aadi's-selection-order.

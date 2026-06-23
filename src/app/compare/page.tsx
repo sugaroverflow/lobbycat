@@ -1,8 +1,14 @@
 import { SiteShell } from "@/components/site-shell";
 import { db } from "@/db";
-import { companies, frames as framesTable, frameScores } from "@/db/schema";
-import { inArray } from "drizzle-orm";
-import { CompareForm } from "./compare-form";
+import {
+  companies,
+  frames as framesTable,
+  frameScores,
+  userProfile,
+} from "@/db/schema";
+import { eq, inArray } from "drizzle-orm";
+import { CompareSandbox } from "./compare-sandbox";
+import type { FrameWeightLevel } from "@/lib/scoring/aggregate";
 
 export default async function ComparePage({
   searchParams,
@@ -12,23 +18,28 @@ export default async function ComparePage({
   const { slugs: slugsParam } = await searchParams;
   const slugs = slugsParam ? slugsParam.split(",").filter(Boolean) : [];
 
-  const allCompanies = await db
-    .select()
-    .from(companies)
-    .orderBy(companies.tier, companies.name);
+  const [allCompanies, scaleFrames, profile] = await Promise.all([
+    db.select().from(companies).orderBy(companies.name),
+    db
+      .select()
+      .from(framesTable)
+      .where(eq(framesTable.kind, "scale"))
+      .orderBy(framesTable.sortIndex),
+    db.select().from(userProfile).limit(1),
+  ]);
 
   const selectedCompanies = slugs.length
     ? allCompanies.filter((c) => slugs.includes(c.slug))
     : [];
 
-  const allFrames = await db
-    .select()
-    .from(framesTable)
-    .orderBy(framesTable.sortIndex);
-
-  const allScores = selectedCompanies.length
+  const cellRows = selectedCompanies.length
     ? await db
-        .select()
+        .select({
+          companyId: frameScores.companyId,
+          frameId: frameScores.frameId,
+          score: frameScores.score,
+          rationale: frameScores.rationale,
+        })
         .from(frameScores)
         .where(
           inArray(
@@ -38,79 +49,53 @@ export default async function ComparePage({
         )
     : [];
 
-  const scoreFor = (companyId: number, frameId: number) =>
-    allScores.find((s) => s.companyId === companyId && s.frameId === frameId);
+  const cells = cellRows.map((r) => ({
+    companyId: r.companyId,
+    frameId: r.frameId,
+    score: r.score === null ? null : Number(r.score),
+    rationale: r.rationale ?? null,
+  }));
+
+  const savedWeights =
+    (profile[0]?.frameWeights as Record<string, FrameWeightLevel> | undefined) ??
+    {};
 
   return (
     <SiteShell>
-      <section className="max-w-[64rem] mx-auto px-6 pt-12 pb-12">
+      <section className="max-w-[64rem] mx-auto px-6 pt-12 pb-4">
         <div className="eyebrow mb-3">Compare</div>
         <h1 className="serif text-4xl font-medium text-ink tracking-tight">
-          Side-by-side on your frames
+          Side-by-side, with a sandbox
         </h1>
         <p className="serif mt-4 text-muted max-w-2xl">
-          Pick 2–4 companies. The frames are yours; the scores are yours; what looks
-          obvious in isolation may not be in comparison.
+          Pick 2–5 companies. Push the L · M · H sliders around to see how the
+          ranking changes if you cared about different things — your saved
+          weights stay put.
         </p>
-
-        <CompareForm
-          companies={allCompanies.map((c) => ({ id: c.id, slug: c.slug, name: c.name }))}
-          initialSelected={slugs}
-        />
       </section>
 
-      {selectedCompanies.length > 0 && (
-        <section className="max-w-[64rem] mx-auto px-6 pb-24">
-          <table className="w-full border-collapse">
-            <thead>
-              <tr className="border-b border-rule">
-                <th className="text-left py-3 eyebrow w-56">Frame</th>
-                {selectedCompanies.map((c) => (
-                  <th
-                    key={c.id}
-                    className="text-left py-3 px-2 serif text-base text-ink"
-                  >
-                    {c.name}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {allFrames.map((f) => (
-                <tr key={f.id} className="border-b border-rule align-top">
-                  <td className="py-4 pr-4">
-                    <div className="serif text-sm text-ink">{f.name}</div>
-                    <div className="mono text-[10px] text-whisper uppercase tracking-[0.1em]">
-                      {f.lowLabel} → {f.highLabel}
-                    </div>
-                  </td>
-                  {selectedCompanies.map((c) => {
-                    const s = scoreFor(c.id, f.id);
-                    return (
-                      <td key={c.id} className="py-4 px-2">
-                        {s ? (
-                          <div>
-                            <div className="mono text-base text-ink">
-                              {s.score} <span className="text-whisper">/ {f.scale}</span>
-                            </div>
-                            {s.rationale && (
-                              <div className="serif text-sm text-muted mt-1 leading-snug">
-                                {s.rationale}
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <span className="mono text-xs text-whisper">—</span>
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </section>
-      )}
+      <CompareSandbox
+        allCompanies={allCompanies.map((c) => ({
+          id: c.id,
+          slug: c.slug,
+          name: c.name,
+        }))}
+        initialSelected={slugs}
+        selectedCompanies={selectedCompanies.map((c) => ({
+          id: c.id,
+          slug: c.slug,
+          name: c.name,
+        }))}
+        frames={scaleFrames.map((f) => ({
+          id: f.id,
+          name: f.name,
+          scale: f.scale,
+          lowLabel: f.lowLabel,
+          highLabel: f.highLabel,
+        }))}
+        cells={cells}
+        savedWeights={savedWeights}
+      />
     </SiteShell>
   );
 }
