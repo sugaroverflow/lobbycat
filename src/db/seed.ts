@@ -223,12 +223,13 @@ async function main() {
           );
           continue;
         }
+        const scoreStr = Number(score).toFixed(1);
         await db
           .insert(frameScores)
-          .values({ companyId, frameId, score })
+          .values({ companyId, frameId, score: scoreStr })
           .onConflictDoUpdate({
             target: [frameScores.companyId, frameScores.frameId],
-            set: { score, updatedAt: new Date() },
+            set: { score: scoreStr, updatedAt: new Date() },
           });
         inserted++;
       }

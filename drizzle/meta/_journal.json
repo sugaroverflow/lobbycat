@@ -36,6 +36,13 @@
       "when": 1781876992478,
       "tag": "0004_glossy_blue_shield",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1782217230326,
+      "tag": "0005_material_nova",
+      "breakpoints": true
     }
   ]
 }

@@ -312,12 +312,13 @@ export async function setFrameScore({
   score: number;
   rationale?: string;
 }) {
+  const scoreStr = score.toFixed(1);
   await db
     .insert(frameScores)
-    .values({ companyId, frameId, score, rationale })
+    .values({ companyId, frameId, score: scoreStr, rationale })
     .onConflictDoUpdate({
       target: [frameScores.companyId, frameScores.frameId],
-      set: { score, rationale, updatedAt: new Date() },
+      set: { score: scoreStr, rationale, updatedAt: new Date() },
     });
   revalidatePath("/");
   revalidatePath(`/companies/[slug]`, "page");

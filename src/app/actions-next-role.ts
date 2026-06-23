@@ -105,7 +105,8 @@ export async function proposeNextRoleChanges(
     })
     .from(frameScores);
   const scoreLookup = new Map<string, number>();
-  for (const s of currentScores) scoreLookup.set(`${s.companyId}:${s.frameId}`, s.score);
+  for (const s of currentScores)
+    scoreLookup.set(`${s.companyId}:${s.frameId}`, Number(s.score));
 
   const system = [
     "You are lobbycat — a thoughtful, slightly playful assistant helping Aadi figure out his next policy/AI-policy role.",
@@ -333,12 +334,13 @@ export async function applyNextRoleChanges(
     if (!fs) continue;
     const score = Number.isFinite(fs.to) ? Math.round(fs.to) : NaN;
     if (!Number.isFinite(score) || score < 1) continue;
+    const scoreStr = score.toFixed(1);
     await db
       .insert(frameScores)
-      .values({ companyId: fs.companyId, frameId: fs.frameId, score, rationale: fs.reason ?? null })
+      .values({ companyId: fs.companyId, frameId: fs.frameId, score: scoreStr, rationale: fs.reason ?? null })
       .onConflictDoUpdate({
         target: [frameScores.companyId, frameScores.frameId],
-        set: { score, rationale: fs.reason ?? null, updatedAt: new Date() },
+        set: { score: scoreStr, rationale: fs.reason ?? null, updatedAt: new Date() },
       });
   }
 

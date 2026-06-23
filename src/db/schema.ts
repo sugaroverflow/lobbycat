@@ -6,6 +6,7 @@ import {
   serial,
   boolean,
   jsonb,
+  numeric,
   index,
   uniqueIndex,
   primaryKey,
@@ -253,8 +254,18 @@ export const frameScores = pgTable(
     frameId: integer("frame_id")
       .references(() => frames.id, { onDelete: "cascade" })
       .notNull(),
-    score: integer("score").notNull(),
+    // v0.6: decimal scores 1.0..5.0 (one decimal place)
+    score: numeric("score", { precision: 2, scale: 1 }).notNull(),
     rationale: text("rationale"),
+    confidence: text("confidence"), // 'low' | 'medium' | 'high' (v0.6)
+    // When the score was produced (separate from updatedAt mutation timestamp)
+    scoredAt: timestamp("scored_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    // Hash of the evidence set used for this score (for invalidation)
+    evidenceVersion: text("evidence_version"),
+    // user_profile.updated_at at scoring time
+    profileVersion: timestamp("profile_version", { withTimezone: true }),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
@@ -263,15 +274,80 @@ export const frameScores = pgTable(
 );
 
 /* ------------------------------------------------------------------ */
+/* Frame-score evidence (citations supporting each score) — v0.6      */
+/* ------------------------------------------------------------------ */
+
+export const frameScoreEvidence = pgTable(
+  "frame_score_evidence",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    frameId: integer("frame_id")
+      .references(() => frames.id, { onDelete: "cascade" })
+      .notNull(),
+    // 'publication' | 'role' | 'lobbying_record' | 'submission' | 'safety_framework'
+    evidenceKind: text("evidence_kind").notNull(),
+    evidenceId: integer("evidence_id").notNull(),
+    weight: numeric("weight", { precision: 2, scale: 1 })
+      .notNull()
+      .default("1.0"),
+    scoredAt: timestamp("scored_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("frame_score_evidence_company_frame_idx").on(t.companyId, t.frameId),
+    index("frame_score_evidence_kind_idx").on(t.evidenceKind),
+  ],
+);
+
+/* ------------------------------------------------------------------ */
+/* Per-company notes (replaces v0.4 free-text intent) — v0.6          */
+/* ------------------------------------------------------------------ */
+
+export const companyNotes = pgTable(
+  "company_notes",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    body: text("body").notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [uniqueIndex("company_notes_company_idx").on(t.companyId)],
+);
+
+/* ------------------------------------------------------------------ */
 /* User profile (single-row, for fit-notes grounding)                 */
 /* ------------------------------------------------------------------ */
+
+export type FrameWeightLevel = "low" | "medium" | "high";
+export type FrameWeightsMap = Record<string, FrameWeightLevel>;
 
 export const userProfile = pgTable("user_profile", {
   id: serial("id").primaryKey(),
   displayName: text("display_name").notNull(),
   headline: text("headline"),
   bio: text("bio"),
+  // v0.5 legacy free-text-derived weights (deprecated, removal slated v0.7)
   weights: jsonb("weights").$type<Record<string, unknown>>(),
+  // v0.6: user's L/M/H weight per frame, keyed by frame id (string)
+  frameWeights: jsonb("frame_weights")
+    .$type<FrameWeightsMap>()
+    .default({
+      "1": "medium",
+      "2": "medium",
+      "3": "medium",
+      "4": "medium",
+      "5": "medium",
+      "6": "medium",
+    })
+    .notNull(),
   concerns: jsonb("concerns").$type<string[]>().default([]).notNull(),
   sources: jsonb("sources").$type<string[]>().default([]).notNull(),
   onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
@@ -465,6 +541,11 @@ export type LobbyingRecord = typeof lobbyingRecords.$inferSelect;
 export type Tag = typeof tags.$inferSelect;
 export type Frame = typeof frames.$inferSelect;
 export type FrameScore = typeof frameScores.$inferSelect;
+export type NewFrameScore = typeof frameScores.$inferInsert;
+export type FrameScoreEvidence = typeof frameScoreEvidence.$inferSelect;
+export type NewFrameScoreEvidence = typeof frameScoreEvidence.$inferInsert;
+export type CompanyNote = typeof companyNotes.$inferSelect;
+export type NewCompanyNote = typeof companyNotes.$inferInsert;
 export type FrameAnswer = typeof frameAnswers.$inferSelect;
 export type NewFrameAnswer = typeof frameAnswers.$inferInsert;
 export type FitNote = typeof fitNotes.$inferSelect;

@@ -140,7 +140,7 @@ export async function getCompaniesWithExpandableDetails() {
   }
   const scoreByCoFrame = new Map<string, number>();
   for (const s of scoreRows) {
-    scoreByCoFrame.set(`${s.companyId}:${s.frameId}`, s.score);
+    scoreByCoFrame.set(`${s.companyId}:${s.frameId}`, Number(s.score));
   }
 
   return baseCompanies.map((c) => ({
@@ -243,7 +243,10 @@ export async function getCompanyBySlug(slug: string) {
     tags: companyTagList,
     frames: allFrames.map((f) => ({
       ...f,
-      score: scoresByFrame.get(f.id)?.score ?? null,
+      score:
+        scoresByFrame.get(f.id)?.score != null
+          ? Number(scoresByFrame.get(f.id)!.score)
+          : null,
       rationale: scoresByFrame.get(f.id)?.rationale ?? null,
     })),
     fitNote: companyFitNotes[0] ?? null,
@@ -322,7 +325,7 @@ export async function getMapData() {
   const scoresByCompany = new Map<number, Record<number, number>>();
   for (const s of scores) {
     const m = scoresByCompany.get(s.companyId) || {};
-    m[s.frameId] = s.score;
+    m[s.frameId] = Number(s.score);
     scoresByCompany.set(s.companyId, m);
   }
   const tagsByCompany = new Map<
