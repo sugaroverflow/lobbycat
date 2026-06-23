@@ -1,11 +1,10 @@
 {
   "_meta": {
     "voice": "dry, observational, slightly catty, never twee — third person ('the cat noticed'), occasional self-awareness about being a cat",
-    "notes": "Draft lines for Fatima to edit. Categories map to UI surfaces: loading states, empty results, welcome/hero, ambient observations between sessions, and small tooltips. Reference policy work where it fits, never forced.",
-    "version": "v0.6-draft-1"
+    "notes": "Categories map to UI surfaces. rescoring=loading/re-score states, welcomeBack=welcome card / home hero, emptyState=zero-result surfaces, surprisePreamble=intro lines for the Surprise modal (3-variant), observation+tooltip kept for future ambient/inline use.",
+    "version": "v0.6-build-step5"
   },
-
-  "loading": [
+  "rescoring": [
     "The cat is reading consultation responses. Standard pace.",
     "The cat is here. The data is not yet here. The cat has waited longer.",
     "Pawing through Greenhouse boards. One moment.",
@@ -19,22 +18,7 @@
     "Re-scoring against the new weights. The cat is being precise about this.",
     "Loading the map. The cat already knows where everyone sits."
   ],
-
-  "empty": [
-    "The cat searched the lobby. The lobby is empty.",
-    "No results. The cat does not consider this a failure.",
-    "Nothing matches. The filters are perhaps a little severe.",
-    "The cat has looked under every chair. There is no one here.",
-    "Zero hits. The cat suggests loosening at least one weight.",
-    "The lobby is quiet. The cat finds this restful.",
-    "No matching companies. The cat is unsurprised; the criteria were specific.",
-    "Empty result set. The cat would point out that some filters cancel each other out.",
-    "The cat sees nothing. Either the field is small or the filters are large.",
-    "No one fits. The cat respects the integrity of that, briefly.",
-    "Try relaxing 'Geographic remit' or 'Stage of company'. The cat is just saying."
-  ],
-
-  "welcome": [
+  "welcomeBack": [
     "The lobbycat watches the lobby. Sixty-eight organisations come and go.",
     "Welcome. The cat has been here since 2023.",
     "The cat is a small persistent observer of the UK AI policy field.",
@@ -48,7 +32,32 @@
     "The cat thinks the obvious answer is rarely the right answer. Use the frames.",
     "Click any company. The cat has prepared a brief."
   ],
-
+  "emptyState": [
+    "The cat searched the lobby. The lobby is empty.",
+    "No results. The cat does not consider this a failure.",
+    "Nothing matches. The filters are perhaps a little severe.",
+    "The cat has looked under every chair. There is no one here.",
+    "Zero hits. The cat suggests loosening at least one weight.",
+    "The lobby is quiet. The cat finds this restful.",
+    "No matching companies. The cat is unsurprised; the criteria were specific.",
+    "Empty result set. The cat would point out that some filters cancel each other out.",
+    "The cat sees nothing. Either the field is small or the filters are large.",
+    "No one fits. The cat respects the integrity of that, briefly.",
+    "Try relaxing 'Geographic remit' or 'Stage of company'. The cat is just saying."
+  ],
+  "surprisePreamble": [
+    "The cat picks one company at random. The cat would like you to know this is not a recommendation.",
+    "Surprise. The cat closed its eyes and pointed. Open your mind a little.",
+    "The cat has chosen, for reasons it will not explain. Have a look anyway.",
+    "Random does not mean unconsidered. The cat narrowed the field, then closed its eyes.",
+    "Here is one you might have missed. The cat misses very little, statistically.",
+    "The cat suggests this one. Take it as a starting point, not a verdict.",
+    "Picked without weights. The cat thinks weights make people lazy on Tuesdays.",
+    "A drawn-at-random brief. The cat reserves the right to be wrong about this one.",
+    "The cat rolled a six-sided die in its head. This is what came up.",
+    "Pure chance, lightly curated. The cat is not above the occasional nudge.",
+    "Not the obvious answer. The cat finds that more interesting than the obvious answer."
+  ],
   "observation": [
     "The cat noticed three different orgs published the same consultation response paragraph last week.",
     "The cat noticed AISI hired again. That is the eleventh policy hire this quarter.",
@@ -66,7 +75,6 @@
     "A regulator opened a sandbox. The cat will believe outcomes when it sees them.",
     "The cat noticed a policy lead leaving for a frontier lab. The lab will be the third in their LinkedIn."
   ],
-
   "tooltip": [
     "The cat suggests starting with two frames before adjusting weights.",
     "Tier is editorial, not metric. The cat assigned them by hand.",
