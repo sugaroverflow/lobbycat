@@ -3,7 +3,7 @@ export const dynamic = "force-dynamic";
 import { redirect } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { WelcomeCard } from "@/components/welcome-card";
-import { RankedTable } from "@/components/ranked-table";
+import { DashboardCards } from "@/components/dashboard-cards";
 import { CoachmarkOnboarding } from "@/components/coachmark-onboarding";
 import { getRankedHomeData, getUserProfile } from "@/lib/queries";
 import quotes from "@/db/lobbycat-quotes.json";
@@ -17,8 +17,10 @@ type Quotes = { welcomeBack: string[] };
  *   - WelcomeCard rotates a `welcomeBack` quote (picked here on the server
  *     to keep the client render pure) and exposes a Re-score button when
  *     the oldest score is > 7d stale.
- *   - RankedTable shows every company, ranked by weighted aggregate.
- *     Click a frame header to sort by that frame.
+ *   - DashboardCards (v0.7 step 6) renders one stacked card per company:
+ *     name + blurb + hiring badge, 6 frame score bars, the single newest
+ *     event (“Latest:”), and a “show more” reveal for all recent pubs +
+ *     open roles. Step 7 will add the filters/sorting toolbar above it.
  *
  * Weights are read-only here; editing happens on /frames. The aggregate
  * recomputes client-side from the snapshot via useLiveAggregates.
@@ -63,11 +65,11 @@ export default async function HomePage() {
         ageDays={ageDays}
         companyIds={home.companies.map((c) => c.id)}
       />
-      <RankedTable
+      <DashboardCards
         companies={home.companies}
         frames={home.frames}
         scores={home.scores}
-        activity={home.activity}
+        details={home.details}
         frameWeights={home.frameWeights}
       />
     </SiteShell>

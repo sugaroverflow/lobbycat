@@ -212,3 +212,50 @@ change if" trigger. Updated chunk-by-chunk during the v0.7 build.
   sunset-gradient text-clip, italic cycling quotes, sunset-gradient
   progress bar with magenta glow. `prefers-reduced-motion` disables
   cat-float and grid-scroll.
+
+### N. Step 6 — hiring badge is binary-or-unknown
+- **Assumed:** `isHiring` is `true` when the company has ≥1 currently
+  open role tracked, and `null` (UNKNOWN — rendered as "hiring · unknown")
+  otherwise. No company currently shows "NOT HIRING" because we don't
+  have an ATS-attached signal that says "ATS configured, zero roles
+  open this run." Adding that would require either a `rolesLastCheckedAt`
+  column on `companies` or counting "any roles row ever, all closed" as
+  the proxy for NOT HIRING.
+- **Alternatives:** show "NOT HIRING" whenever `openRoleCount === 0` and
+  `rolesSource` is set on the company. Rejected for this chunk — adding
+  the rolesSource check ramifies into the query plus the badge legend,
+  and "unknown" reads less stale than a false "not hiring" while ATS
+  coverage is still partial.
+- **Would change if:** Fatima wants the dashboard to surface confident
+  NOT HIRING for ATS-attached companies. Easy follow-up: gate the
+  `false` branch on `company.rolesSource !== null`.
+
+### O. Step 6 — show-more reveals link out to /companies/[slug] for
+fit-note + notes
+- **Assumed:** the show-more reveal on each card surfaces recent pubs +
+  open roles inline, but the fit-note panel + per-company notes editor
+  stay on `/companies/[slug]` (their v0.6 home). The card links there
+  with a "Fit-note + notes →" pill, plus a "Leave a note" anchor to the
+  `#notes` section.
+- **Alternatives:** inline both panels in the show-more reveal per the
+  literal reading of §3.2. Rejected — the fit-note panel is a chat
+  thread with an Anthropic-backed generation flow + a textarea editor;
+  embedding ~10 of them inline below the dashboard cards would either
+  hydrate all of them eagerly (slow) or need lazy-load plumbing that
+  blows the chunk budget. Linking out keeps the dashboard the
+  scan-everything surface and the company page the deep-read surface.
+- **Would change if:** Fatima wants the fit-note specifically inline.
+  Then we ship a lazy `<FitNotePanelLite>` keyed by `companyId` that
+  fetches the existing note on click and renders read-only — full
+  editing still on /companies/{slug}.
+
+### P. Step 6 — default sort = overall desc; filters/sorting toolbar
+deferred to step 7
+- **Assumed:** the dashboard ships with overall-desc as the only sort
+  (alpha tie-break). Filters (hiring / has-open-role / has-recent-pub /
+  tier / HQ) and frame-specific sort land in step 7 as one toolbar
+  chunk — same surface, same component file or a thin
+  `<DashboardToolbar>` companion.
+- **Would change if:** Fatima needs frame-specific sort before step 7
+  for review. Quick patch: lift the `<RankedTable>` `clickHeader` idea
+  into a tiny sort dropdown at the top of `<DashboardCards>`.

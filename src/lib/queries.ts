@@ -583,8 +583,20 @@ export async function getRankedHomeData() {
   // postgres.js which serialises strings, not Date instances.
   const since = sinceDate.toISOString();
 
-  const [allCompanies, scaleFrames, scoreRows, recentPubs, recentRoles, profile] =
-    await Promise.all([
+  const SIX_MONTHS_MS = 6 * 30 * 24 * 60 * 60 * 1000;
+  const sixMonthsAgo = new Date(Date.now() - SIX_MONTHS_MS).toISOString();
+
+  const [
+    allCompanies,
+    scaleFrames,
+    scoreRows,
+    recentPubs,
+    recentRoles,
+    profile,
+    pubsForCards,
+    openRolesForCards,
+    fitNoteCompanyIds,
+  ] = await Promise.all([
       db
         .select({
           id: companies.id,
@@ -624,6 +636,38 @@ export async function getRankedHomeData() {
         .from(roles)
         .where(sql`${roles.seenAt} >= ${since}`),
       db.select().from(userProfile).limit(1),
+      // Recent publications (last 6mo) for the dashboard cards' expand reveal
+      db
+        .select({
+          id: publications.id,
+          companyId: publications.companyId,
+          title: publications.title,
+          url: publications.url,
+          type: publications.type,
+          publishedAt: publications.publishedAt,
+        })
+        .from(publications)
+        .where(sql`${publications.publishedAt} >= ${sixMonthsAgo}`)
+        .orderBy(desc(publications.publishedAt)),
+      // All currently-open roles for the dashboard cards' expand reveal
+      db
+        .select({
+          id: roles.id,
+          companyId: roles.companyId,
+          title: roles.title,
+          department: roles.department,
+          location: roles.location,
+          url: roles.url,
+          postedAt: roles.postedAt,
+          seenAt: roles.seenAt,
+        })
+        .from(roles)
+        .where(eq(roles.isOpen, true))
+        .orderBy(desc(roles.seenAt)),
+      // Which companies have a fit-note (drives the “Fit-note ready” badge)
+      db
+        .select({ companyId: fitNotes.companyId })
+        .from(fitNotes),
     ]);
 
   // Flatten scores; coerce score numeric -> number
@@ -675,6 +719,138 @@ export async function getRankedHomeData() {
 
   const [p] = profile;
 
+  // ---------- Per-company card details (v0.7 step 6) ---------------------
+  // For each company, surface:
+  //   - recentPublications: top 6 in the last 6mo, newest first
+  //   - openRoles: top 6 currently-open roles, newest first
+  //   - hasFitNote: has the user generated a fit-note for this company
+  //   - isHiring: derived from openRoles.length > 0 (null when we have no
+  //     ATS source configured — surfaced as UNKNOWN, not NOT HIRING)
+  //   - latestEvent: newest of {publication, open role} — powers the
+  //     “Latest:” strip on collapsed cards
+  const CARD_LIMIT = 6;
+  const pubsByCompany = new Map<
+    number,
+    Array<{
+      id: number;
+      title: string;
+      url: string;
+      type: string | null;
+      publishedAt: string | null;
+    }>
+  >();
+  for (const p of pubsForCards) {
+    let list = pubsByCompany.get(p.companyId);
+    if (!list) {
+      list = [];
+      pubsByCompany.set(p.companyId, list);
+    }
+    if (list.length < CARD_LIMIT) {
+      list.push({
+        id: p.id,
+        title: p.title,
+        url: p.url,
+        type: p.type ?? null,
+        publishedAt: p.publishedAt
+          ? new Date(p.publishedAt as unknown as Date).toISOString()
+          : null,
+      });
+    }
+  }
+  const rolesByCompany = new Map<
+    number,
+    Array<{
+      id: number;
+      title: string;
+      url: string;
+      department: string | null;
+      location: string | null;
+      seenAt: string | null;
+    }>
+  >();
+  const openRoleCount = new Map<number, number>();
+  for (const r of openRolesForCards) {
+    openRoleCount.set(
+      r.companyId,
+      (openRoleCount.get(r.companyId) ?? 0) + 1,
+    );
+    let list = rolesByCompany.get(r.companyId);
+    if (!list) {
+      list = [];
+      rolesByCompany.set(r.companyId, list);
+    }
+    if (list.length < CARD_LIMIT) {
+      list.push({
+        id: r.id,
+        title: r.title,
+        url: r.url,
+        department: r.department ?? null,
+        location: r.location ?? null,
+        seenAt: r.seenAt
+          ? new Date(r.seenAt as unknown as Date).toISOString()
+          : null,
+      });
+    }
+  }
+  const hasFitNoteSet = new Set<number>(
+    fitNoteCompanyIds.map((r) => r.companyId),
+  );
+
+  const details = allCompanies.map((c) => {
+    const pubs = pubsByCompany.get(c.id) ?? [];
+    const roleList = rolesByCompany.get(c.id) ?? [];
+    const openRoles = openRoleCount.get(c.id) ?? 0;
+    const newestPubAt = pubs[0]?.publishedAt ?? null;
+    const newestRoleAt = roleList[0]?.seenAt ?? null;
+    let latestEvent: {
+      kind: "publication" | "role";
+      title: string;
+      url: string;
+      at: string | null;
+    } | null = null;
+    if (pubs[0] && roleList[0]) {
+      const pubT = newestPubAt ? Date.parse(newestPubAt) : 0;
+      const roleT = newestRoleAt ? Date.parse(newestRoleAt) : 0;
+      latestEvent =
+        pubT >= roleT
+          ? {
+              kind: "publication",
+              title: pubs[0].title,
+              url: pubs[0].url,
+              at: newestPubAt,
+            }
+          : {
+              kind: "role",
+              title: roleList[0].title,
+              url: roleList[0].url,
+              at: newestRoleAt,
+            };
+    } else if (pubs[0]) {
+      latestEvent = {
+        kind: "publication",
+        title: pubs[0].title,
+        url: pubs[0].url,
+        at: newestPubAt,
+      };
+    } else if (roleList[0]) {
+      latestEvent = {
+        kind: "role",
+        title: roleList[0].title,
+        url: roleList[0].url,
+        at: newestRoleAt,
+      };
+    }
+    return {
+      companyId: c.id,
+      recentPublications: pubs,
+      openRoles: roleList,
+      openRoleCount: openRoles,
+      isHiring: openRoles > 0 ? true : null, // null = UNKNOWN (no source)
+      hasFitNote: hasFitNoteSet.has(c.id),
+      latestEvent,
+    };
+  });
+
   return {
     frames: scaleFrames.map((f) => ({
       id: f.id,
@@ -684,6 +860,7 @@ export async function getRankedHomeData() {
       highLabel: f.highLabel,
     })),
     companies: allCompanies,
+    details,
     scores,
     activity: Array.from(activityByCompany.entries()).map(([companyId, buckets]) => ({
       companyId,
