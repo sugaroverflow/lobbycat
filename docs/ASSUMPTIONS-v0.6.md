@@ -50,3 +50,17 @@ Format: timestamp · area · assumption · alternative considered · would-chang
 - **Assumption:** Aggregate = weighted mean of per-frame scores using L=1/M=2/H=3 multipliers. No persisted aggregate column — the table re-ranks instantly on weight change without a server round trip. Per-frame scores remain server-authoritative.
 - **Alternative considered:** persist `aggregate_score` and re-server-render on weight change. Rejected — adds latency and a stale-cache class of bugs for zero correctness benefit.
 - **Would change if:** Aadi wants ranking that's not a weighted mean (e.g. lexicographic by highest-weight frame). Then promote ranking to a strategy fn but keep client-side eval.
+
+## 2026-06-23 13:20 UTC · Step 6 · Frame definition edits do NOT auto-rescore
+- **Assumption:** Saving a frame name/lowLabel/highLabel/description does not
+  fire `rescoreCompanyFrame` for every affected (company × frame) cell. Step 6
+  ships the L/M/H weights panel and keeps the existing `updateFrame` action
+  unchanged. Aadi can still trigger a rescore via the home "re-score now"
+  button when scores look stale, and step 13's re-curation pass does the full
+  reseed.
+- **Alternative considered:** Hook `rescoreCompanyFrame` into `updateFrame` as
+  a fire-and-forget. Rejected for v0.6 — a typo in a label would cost 70 Sonnet
+  calls. Better to give Aadi an explicit "rescore this frame" button later
+  (step 13 / v0.6.1) once the editorial muscle is built.
+- **Would change if:** Anthropic cost drops by 5× OR the dataset stays <30
+  companies AND Fatima explicitly asks for live rescoring on label edits.

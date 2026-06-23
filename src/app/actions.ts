@@ -571,6 +571,40 @@ export async function sendFitNoteMessage({
 /* User profile editor                                                */
 /* ------------------------------------------------------------------ */
 
+/**
+ * v0.6 step 6 — persist the user's per-frame L/M/H weights.
+ *
+ * The home table re-aggregates client-side via `useLiveAggregates`, but the
+ * canonical weights live on `user_profile.frameWeights` so a fresh session
+ * picks them up. Pass a partial map; missing keys keep their current value.
+ */
+export async function setFrameWeights(
+  patch: Record<string, "low" | "medium" | "high">,
+) {
+  const [existing] = await db.select().from(userProfile).limit(1);
+  if (!existing) throw new Error("No profile to update.");
+
+  const current = (existing.frameWeights ?? {}) as Record<string, string>;
+  const next: Record<string, "low" | "medium" | "high"> = { ...current } as Record<
+    string,
+    "low" | "medium" | "high"
+  >;
+  for (const [k, v] of Object.entries(patch)) {
+    if (v !== "low" && v !== "medium" && v !== "high") continue;
+    const key = k.trim();
+    if (!key) continue;
+    next[key] = v;
+  }
+
+  await db
+    .update(userProfile)
+    .set({ frameWeights: next, updatedAt: new Date() })
+    .where(eq(userProfile.id, existing.id));
+
+  revalidatePath("/");
+  revalidatePath("/frames");
+}
+
 export async function updateProfile(patch: {
   displayName?: string;
   headline?: string | null;

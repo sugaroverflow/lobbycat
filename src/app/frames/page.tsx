@@ -1,9 +1,14 @@
 import { SiteShell } from "@/components/site-shell";
 import { FramesEditor, type EditableFrame } from "@/components/frames-editor";
-import { getAllFrames } from "@/lib/queries";
+import { FrameWeightsPanel } from "@/components/frame-weights-panel";
+import { getAllFrames, getUserProfile } from "@/lib/queries";
+import type { FrameWeightLevel } from "@/lib/scoring/aggregate";
 
 export default async function FramesPage() {
-  const frames = await getAllFrames();
+  const [frames, profile] = await Promise.all([
+    getAllFrames(),
+    getUserProfile(),
+  ]);
   const editable: EditableFrame[] = frames.map((f) => ({
     id: f.id,
     name: f.name,
@@ -15,6 +20,21 @@ export default async function FramesPage() {
     prompt: f.prompt ?? null,
     sortIndex: f.sortIndex ?? 0,
   }));
+
+  const scaleFrames = editable
+    .filter((f) => f.kind === "scale")
+    .sort((a, b) => a.sortIndex - b.sortIndex)
+    .map((f) => ({
+      id: f.id,
+      name: f.name,
+      lowLabel: f.lowLabel,
+      highLabel: f.highLabel,
+    }));
+
+  const initialWeights = (profile?.frameWeights ?? {}) as Record<
+    string,
+    FrameWeightLevel
+  >;
 
   return (
     <SiteShell>
@@ -28,6 +48,9 @@ export default async function FramesPage() {
           it; you do. Add more as your thinking changes — scales for 1–N axes,
           tags for binary lenses, questions for free-text answers per company.
         </p>
+        <div className="mt-10">
+          <FrameWeightsPanel frames={scaleFrames} initial={initialWeights} />
+        </div>
         <FramesEditor frames={editable} />
       </section>
     </SiteShell>
