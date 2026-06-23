@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { SiteShell } from "@/components/site-shell";
 import { FramesEditor, type EditableFrame } from "@/components/frames-editor";
 import { FrameWeightsPanel } from "@/components/frame-weights-panel";

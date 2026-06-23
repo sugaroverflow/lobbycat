@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { SiteShell } from "@/components/site-shell";
 import { ProfileEditor } from "@/components/profile-editor";
 import { ReplayOnboardingLink } from "@/components/replay-onboarding-link";

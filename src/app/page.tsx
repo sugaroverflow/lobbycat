@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { redirect } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { WelcomeCard } from "@/components/welcome-card";

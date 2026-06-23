@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { redirect } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { Wizard, type WizardInitial } from "@/components/wizard";
