@@ -259,3 +259,15 @@ deferred to step 7
 - **Would change if:** Fatima needs frame-specific sort before step 7
   for review. Quick patch: lift the `<RankedTable>` `clickHeader` idea
   into a tiny sort dropdown at the top of `<DashboardCards>`.
+
+## 2026-06-23 21:25 UTC — Step 7 tier filter semantics
+- **Assumed:** "filter: tier" in §10 step 7 means the existing `companies.tier` column (1 = top focus, 2 = serious, 3 = on-radar).
+- **Alternatives considered:** a derived tier from overall score, or a fresh column.
+- **Implemented as:** chip-toggle multi-select. Empty selection = all tiers (no filter).
+- **Would change if:** Fatima tells me she wanted a derived/score-bucket tier, or wanted single-radio "show only T1" semantics — easy swap, change the Set<number> to a single state and the include-check.
+
+## 2026-06-23 21:25 UTC — Step 7 sort options
+- **Assumed:** "frame-specific" = one sort entry per scale frame (descending by that frame's raw score, nulls last; ties fall back to overall-desc → alpha).
+- **Alternatives considered:** a separate "sort by frame X" picker, or always-on per-frame column headers.
+- **Implemented as:** single Sort `<select>` with options Overall ↓, Recent activity, Alphabetical, and one option per frame.
+- **Would change if:** Fatima wants ascending-too / column-header sort affordances on the cards themselves.
