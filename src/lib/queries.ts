@@ -604,6 +604,7 @@ export async function getRankedHomeData() {
           name: companies.name,
           hq: companies.hq,
           description: companies.description,
+          tier: companies.tier,
         })
         .from(companies)
         .orderBy(companies.name),

@@ -16,6 +16,7 @@ type Company = {
   name: string;
   hq: string | null;
   description: string | null;
+  tier: number;
 };
 
 type Frame = {
@@ -462,26 +463,156 @@ export function DashboardCards({
     return m;
   }, [details]);
 
-  // Default sort: overall desc, nulls last. Step 7 wires a real toolbar.
-  const sorted = useMemo(() => {
-    const arr = [...companies];
-    arr.sort((a, b) => {
+  const detailMapForSort = detailMap;
+
+  // ---- Toolbar state (v0.7 step 7) ---------------------------------
+  // Sort key: "overall" | "recent" | "alpha" | `frame:<id>`.
+  // Filters are independent toggles + a multi-select HQ + tier set.
+  const [sortKey, setSortKey] = useState<string>("overall");
+  const [filterHiring, setFilterHiring] = useState(false);
+  const [filterOpenRole, setFilterOpenRole] = useState(false);
+  const [filterRecentPub, setFilterRecentPub] = useState(false);
+  const [filterFitNote, setFilterFitNote] = useState(false);
+  const [tierSet, setTierSet] = useState<Set<number>>(new Set());
+  const [hq, setHq] = useState<string>("");
+
+  const allHqs = useMemo(() => {
+    const s = new Set<string>();
+    for (const c of companies) if (c.hq) s.add(c.hq);
+    return Array.from(s).sort();
+  }, [companies]);
+
+  const visible = useMemo(() => {
+    const filtered = companies.filter((c) => {
+      const d = detailMapForSort.get(c.id);
+      if (filterHiring && d?.isHiring !== true) return false;
+      if (filterOpenRole && (d?.openRoleCount ?? 0) <= 0) return false;
+      if (filterRecentPub && (d?.recentPublications.length ?? 0) <= 0)
+        return false;
+      if (filterFitNote && !d?.hasFitNote) return false;
+      if (tierSet.size > 0 && !tierSet.has(c.tier)) return false;
+      if (hq && c.hq !== hq) return false;
+      return true;
+    });
+
+    const arr = [...filtered];
+    const cmpOverallDesc = (a: Company, b: Company) => {
       const oa = aggMap.get(a.id)?.overall ?? null;
       const ob = aggMap.get(b.id)?.overall ?? null;
       if (oa === ob) return a.name.localeCompare(b.name);
       if (oa === null) return 1;
       if (ob === null) return -1;
       return ob - oa;
-    });
+    };
+
+    if (sortKey === "alpha") {
+      arr.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortKey === "recent") {
+      const t = (c: Company) => {
+        const at = detailMapForSort.get(c.id)?.latestEvent?.at;
+        return at ? Date.parse(at) : 0;
+      };
+      arr.sort((a, b) => {
+        const d = t(b) - t(a);
+        return d !== 0 ? d : a.name.localeCompare(b.name);
+      });
+    } else if (sortKey.startsWith("frame:")) {
+      const fid = Number(sortKey.slice("frame:".length));
+      const s = (c: Company) => scoreLookup.get(`${c.id}:${fid}`) ?? null;
+      arr.sort((a, b) => {
+        const sa = s(a);
+        const sb = s(b);
+        if (sa === sb) return cmpOverallDesc(a, b);
+        if (sa === null) return 1;
+        if (sb === null) return -1;
+        return sb - sa;
+      });
+    } else {
+      arr.sort(cmpOverallDesc);
+    }
     return arr;
-  }, [companies, aggMap]);
+  }, [
+    companies,
+    detailMapForSort,
+    aggMap,
+    scoreLookup,
+    sortKey,
+    filterHiring,
+    filterOpenRole,
+    filterRecentPub,
+    filterFitNote,
+    tierSet,
+    hq,
+  ]);
+
+  const anyFilterActive =
+    filterHiring ||
+    filterOpenRole ||
+    filterRecentPub ||
+    filterFitNote ||
+    tierSet.size > 0 ||
+    hq !== "";
+
+  const toggleTier = (t: number) =>
+    setTierSet((prev) => {
+      const next = new Set(prev);
+      if (next.has(t)) next.delete(t);
+      else next.add(t);
+      return next;
+    });
+
+  const clearFilters = () => {
+    setFilterHiring(false);
+    setFilterOpenRole(false);
+    setFilterRecentPub(false);
+    setFilterFitNote(false);
+    setTierSet(new Set());
+    setHq("");
+  };
 
   return (
     <section
       className="max-w-[72rem] mx-auto px-6 pb-20 space-y-4"
       data-testid="dashboard-cards"
     >
-      {sorted.map((c) => (
+      <DashboardToolbar
+        frames={frames}
+        allHqs={allHqs}
+        sortKey={sortKey}
+        onSortKey={setSortKey}
+        filterHiring={filterHiring}
+        onFilterHiring={() => setFilterHiring((v) => !v)}
+        filterOpenRole={filterOpenRole}
+        onFilterOpenRole={() => setFilterOpenRole((v) => !v)}
+        filterRecentPub={filterRecentPub}
+        onFilterRecentPub={() => setFilterRecentPub((v) => !v)}
+        filterFitNote={filterFitNote}
+        onFilterFitNote={() => setFilterFitNote((v) => !v)}
+        tierSet={tierSet}
+        onToggleTier={toggleTier}
+        hq={hq}
+        onHq={setHq}
+        anyFilterActive={anyFilterActive}
+        onClear={clearFilters}
+        visibleCount={visible.length}
+        totalCount={companies.length}
+      />
+      {visible.length === 0 && (
+        <p
+          className="mono text-xs text-whisper text-center py-12"
+          style={{ border: "1px dashed var(--rule)", borderRadius: "var(--radius-panel)" }}
+        >
+          No companies match these filters.{" "}
+          <button
+            type="button"
+            onClick={clearFilters}
+            className="text-readout underline decoration-dotted underline-offset-4"
+          >
+            Clear filters
+          </button>
+        </p>
+      )}
+      {visible.map((c) => (
         <CompanyCard
           key={c.id}
           company={c}
@@ -493,11 +624,192 @@ export function DashboardCards({
         />
       ))}
       <p className="mono text-[10px] uppercase tracking-[0.16em] text-whisper pt-3">
-        {companies.length} companies · weights live on{" "}
+        {visible.length === companies.length
+          ? `${companies.length} companies`
+          : `${visible.length} of ${companies.length} companies`}{" "}
+        · weights live on{" "}
         <Link href="/frames" className="text-readout underline">
           Frames
         </Link>
       </p>
     </section>
+  );
+}
+
+/* ---------- toolbar ---------------------------------------------------- */
+
+function DashboardToolbar({
+  frames,
+  allHqs,
+  sortKey,
+  onSortKey,
+  filterHiring,
+  onFilterHiring,
+  filterOpenRole,
+  onFilterOpenRole,
+  filterRecentPub,
+  onFilterRecentPub,
+  filterFitNote,
+  onFilterFitNote,
+  tierSet,
+  onToggleTier,
+  hq,
+  onHq,
+  anyFilterActive,
+  onClear,
+  visibleCount,
+  totalCount,
+}: {
+  frames: Frame[];
+  allHqs: string[];
+  sortKey: string;
+  onSortKey: (v: string) => void;
+  filterHiring: boolean;
+  onFilterHiring: () => void;
+  filterOpenRole: boolean;
+  onFilterOpenRole: () => void;
+  filterRecentPub: boolean;
+  onFilterRecentPub: () => void;
+  filterFitNote: boolean;
+  onFilterFitNote: () => void;
+  tierSet: Set<number>;
+  onToggleTier: (t: number) => void;
+  hq: string;
+  onHq: (v: string) => void;
+  anyFilterActive: boolean;
+  onClear: () => void;
+  visibleCount: number;
+  totalCount: number;
+}) {
+  return (
+    <div
+      className="sticky top-0 z-10 -mx-2 px-2 py-3 mb-1"
+      style={{
+        background: "var(--bg-page)",
+        borderBottom: "1px solid var(--rule)",
+      }}
+      data-testid="dashboard-toolbar"
+    >
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+        {/* Sort */}
+        <label className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+          Sort
+          <select
+            value={sortKey}
+            onChange={(e) => onSortKey(e.target.value)}
+            className="mono text-xs px-2 py-1 rounded-sm bg-transparent"
+            style={{
+              border: "1px solid var(--rule)",
+              color: "var(--ink)",
+            }}
+          >
+            <option value="overall">Overall ↓</option>
+            <option value="recent">Recent activity</option>
+            <option value="alpha">Alphabetical</option>
+            {frames.map((f) => (
+              <option key={f.id} value={`frame:${f.id}`}>
+                {f.name} ↓
+              </option>
+            ))}
+          </select>
+        </label>
+
+        {/* HQ */}
+        {allHqs.length > 0 && (
+          <label className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+            HQ
+            <select
+              value={hq}
+              onChange={(e) => onHq(e.target.value)}
+              className="mono text-xs px-2 py-1 rounded-sm bg-transparent"
+              style={{ border: "1px solid var(--rule)", color: "var(--ink)" }}
+            >
+              <option value="">All</option>
+              {allHqs.map((h) => (
+                <option key={h} value={h}>
+                  {h}
+                </option>
+              ))}
+            </select>
+          </label>
+        )}
+
+        {/* Tier */}
+        <div className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+          Tier
+          <div className="flex gap-1">
+            {[1, 2, 3].map((t) => (
+              <ToolbarChip
+                key={t}
+                active={tierSet.has(t)}
+                onClick={() => onToggleTier(t)}
+              >
+                {t}
+              </ToolbarChip>
+            ))}
+          </div>
+        </div>
+
+        {/* Boolean filter chips */}
+        <div className="flex flex-wrap items-center gap-1">
+          <ToolbarChip active={filterHiring} onClick={onFilterHiring}>
+            ● Hiring
+          </ToolbarChip>
+          <ToolbarChip active={filterOpenRole} onClick={onFilterOpenRole}>
+            Open role
+          </ToolbarChip>
+          <ToolbarChip active={filterRecentPub} onClick={onFilterRecentPub}>
+            Recent pub
+          </ToolbarChip>
+          <ToolbarChip active={filterFitNote} onClick={onFilterFitNote}>
+            ✦ Fit-note
+          </ToolbarChip>
+        </div>
+
+        <div className="ml-auto flex items-center gap-3">
+          <span className="mono text-[10px] uppercase tracking-[0.16em] text-whisper">
+            {visibleCount}/{totalCount}
+          </span>
+          {anyFilterActive && (
+            <button
+              type="button"
+              onClick={onClear}
+              className="mono text-[10px] uppercase tracking-[0.16em] text-readout underline decoration-dotted underline-offset-4"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ToolbarChip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={active}
+      className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-1 rounded-sm transition-colors"
+      style={{
+        border: active
+          ? "1px solid var(--accent-action)"
+          : "1px solid var(--rule)",
+        color: active ? "var(--accent-action)" : "var(--fg-prose-muted)",
+        background: active ? "rgb(255 0 255 / 0.06)" : "transparent",
+        boxShadow: active ? "var(--vw-glow-magenta)" : "none",
+      }}
+    >
+      {children}
+    </button>
   );
 }
