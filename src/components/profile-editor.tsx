@@ -1,26 +1,35 @@
 "use client";
 
 import { useState, useTransition } from "react";
+import Link from "next/link";
 import { updateProfile } from "@/app/actions";
 
-type Weights = Record<string, string>;
+type LocationPrefs = {
+  uk?: boolean;
+  eu?: boolean;
+  us?: boolean;
+  remoteOk?: boolean;
+  notes?: string;
+};
+
+type OpenTextAnswer = {
+  question: string;
+  answer: string;
+  answeredAt?: string;
+};
 
 export type ProfileEditorProps = {
   displayName: string;
-  headline: string | null;
-  bio: string | null;
-  concerns: string[];
-  weights: Weights;
-  sources: string[];
+  currentRoleOneLiner: string | null;
+  exploringText: string | null;
+  locationPreferences: LocationPrefs;
+  openTextAnswers: OpenTextAnswer[];
 };
 
-type Section = null | "header" | "bio" | "concerns" | "weights" | "sources";
+type Section = null | "name" | "role" | "exploring" | "location" | "answers";
 
-const SECTION_LABEL = "mono text-[0.65rem] uppercase tracking-[0.16em] text-whisper hover:text-moss";
-
-function humanizeKey(k: string) {
-  return k.replace(/([A-Z])/g, " $1").replace(/^./, (s) => s.toUpperCase());
-}
+const SECTION_LABEL =
+  "mono text-[0.65rem] uppercase tracking-[0.16em] text-whisper hover:text-moss";
 
 export function ProfileEditor(initial: ProfileEditorProps) {
   const [editing, setEditing] = useState<Section>(null);
@@ -42,11 +51,14 @@ export function ProfileEditor(initial: ProfileEditorProps) {
   }
 
   return (
-    <article className="max-w-[42rem] mx-auto px-6 pt-12 pb-24">
+    <article className="max-w-[42rem] mx-auto px-6 pt-12 pb-16">
       <div className="mb-8">
-        <a href="/" className="mono text-xs uppercase tracking-[0.14em] text-whisper hover:text-ink">
+        <Link
+          href="/"
+          className="mono text-xs uppercase tracking-[0.14em] text-whisper hover:text-ink"
+        >
           ← Index
-        </a>
+        </Link>
       </div>
 
       {err && (
@@ -55,13 +67,12 @@ export function ProfileEditor(initial: ProfileEditorProps) {
         </div>
       )}
 
-      {/* HEADER: name + headline */}
-      {editing === "header" ? (
-        <HeaderForm
+      {/* NAME */}
+      {editing === "name" ? (
+        <NameForm
           displayName={data.displayName}
-          headline={data.headline}
           onCancel={() => setEditing(null)}
-          onSave={(v) => save(v)}
+          onSave={(displayName) => save({ displayName })}
           pending={pending}
         />
       ) : (
@@ -70,7 +81,7 @@ export function ProfileEditor(initial: ProfileEditorProps) {
             <div className="eyebrow mb-4">The user</div>
             <button
               type="button"
-              onClick={() => setEditing("header")}
+              onClick={() => setEditing("name")}
               className={SECTION_LABEL}
             >
               edit
@@ -79,126 +90,113 @@ export function ProfileEditor(initial: ProfileEditorProps) {
           <h1 className="serif text-5xl font-medium text-ink tracking-tight leading-[1.05]">
             {data.displayName}
           </h1>
-          {data.headline && (
-            <p className="serif mt-5 text-xl text-muted leading-relaxed">
-              {data.headline}
-            </p>
-          )}
         </header>
       )}
 
-      {/* BIO */}
+      {/* CURRENT ROLE ONE-LINER */}
       <Section
-        title="Bio"
-        editing={editing === "bio"}
-        onEdit={() => setEditing("bio")}
-        onCancel={() => setEditing(null)}
+        title="Current role (one-liner)"
+        editing={editing === "role"}
+        onEdit={() => setEditing("role")}
       >
-        {editing === "bio" ? (
-          <BioForm
-            bio={data.bio}
+        {editing === "role" ? (
+          <ShortTextForm
+            value={data.currentRoleOneLiner}
+            placeholder="What you do right now, in a sentence"
             onCancel={() => setEditing(null)}
-            onSave={(bio) => save({ bio })}
+            onSave={(v) => save({ currentRoleOneLiner: v })}
             pending={pending}
           />
-        ) : data.bio ? (
-          <p className="serif text-base text-body leading-relaxed">{data.bio}</p>
+        ) : data.currentRoleOneLiner ? (
+          <p className="serif text-base text-body leading-relaxed">
+            {data.currentRoleOneLiner}
+          </p>
         ) : (
-          <p className="serif text-base text-whisper italic">No bio yet.</p>
+          <p className="serif text-base text-whisper italic">Not set.</p>
         )}
       </Section>
 
-      {/* CONCERNS */}
+      {/* WHAT EXPLORING */}
       <Section
-        title="Concerns while deciding"
-        editing={editing === "concerns"}
-        onEdit={() => setEditing("concerns")}
-        onCancel={() => setEditing(null)}
+        title="What you're exploring"
+        editing={editing === "exploring"}
+        onEdit={() => setEditing("exploring")}
       >
-        {editing === "concerns" ? (
-          <ListForm
-            items={data.concerns}
-            placeholder="One concern per line"
+        {editing === "exploring" ? (
+          <LongTextForm
+            value={data.exploringText}
+            placeholder="The kind of role, work, or company you're looking for next"
             onCancel={() => setEditing(null)}
-            onSave={(concerns) => save({ concerns })}
+            onSave={(v) => save({ exploringText: v })}
             pending={pending}
           />
-        ) : data.concerns.length > 0 ? (
-          <ul className="space-y-3">
-            {data.concerns.map((c, i) => (
-              <li
-                key={i}
-                className="serif text-base text-body leading-relaxed pl-4 border-l-2 border-rule-strong"
-              >
-                {c}
+        ) : data.exploringText ? (
+          <p className="serif text-base text-body leading-relaxed whitespace-pre-wrap">
+            {data.exploringText}
+          </p>
+        ) : (
+          <p className="serif text-base text-whisper italic">Not set.</p>
+        )}
+      </Section>
+
+      {/* LOCATION PREFERENCES */}
+      <Section
+        title="Location"
+        editing={editing === "location"}
+        onEdit={() => setEditing("location")}
+      >
+        {editing === "location" ? (
+          <LocationForm
+            prefs={data.locationPreferences}
+            onCancel={() => setEditing(null)}
+            onSave={(prefs) => save({ locationPreferences: prefs })}
+            pending={pending}
+          />
+        ) : (
+          <LocationDisplay prefs={data.locationPreferences} />
+        )}
+      </Section>
+
+      {/* OPEN-TEXT ANSWERS */}
+      <Section
+        title="Open-text thoughts"
+        editing={editing === "answers"}
+        onEdit={() => setEditing("answers")}
+      >
+        {editing === "answers" ? (
+          <AnswersForm
+            answers={data.openTextAnswers}
+            onCancel={() => setEditing(null)}
+            onSave={(openTextAnswers) => save({ openTextAnswers })}
+            pending={pending}
+          />
+        ) : data.openTextAnswers.length > 0 ? (
+          <ul className="space-y-5">
+            {data.openTextAnswers.map((a, i) => (
+              <li key={i}>
+                <p className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper mb-1">
+                  {a.question}
+                </p>
+                <p className="serif text-base text-body leading-relaxed whitespace-pre-wrap">
+                  {a.answer || (
+                    <span className="text-whisper italic">no answer</span>
+                  )}
+                </p>
               </li>
             ))}
           </ul>
         ) : (
-          <p className="serif text-base text-whisper italic">None yet.</p>
-        )}
-      </Section>
-
-      {/* WEIGHTS */}
-      <Section
-        title="How he weights things"
-        editing={editing === "weights"}
-        onEdit={() => setEditing("weights")}
-        onCancel={() => setEditing(null)}
-      >
-        {editing === "weights" ? (
-          <WeightsForm
-            weights={data.weights}
-            onCancel={() => setEditing(null)}
-            onSave={(weights) => save({ weights })}
-            pending={pending}
-          />
-        ) : Object.keys(data.weights).length > 0 ? (
-          <dl className="grid grid-cols-2 gap-x-6 gap-y-3">
-            {Object.entries(data.weights).map(([k, v]) => (
-              <div
-                key={k}
-                className="flex items-baseline justify-between border-b border-rule pb-2"
-              >
-                <dt className="serif text-sm text-body">{humanizeKey(k)}</dt>
-                <dd className="mono text-xs uppercase tracking-[0.12em] text-muted">{v}</dd>
-              </div>
-            ))}
-          </dl>
-        ) : (
-          <p className="serif text-base text-whisper italic">No weights set.</p>
-        )}
-      </Section>
-
-      {/* SOURCES */}
-      <Section
-        title="Sources"
-        editing={editing === "sources"}
-        onEdit={() => setEditing("sources")}
-        onCancel={() => setEditing(null)}
-      >
-        {editing === "sources" ? (
-          <ListForm
-            items={data.sources}
-            placeholder="One source per line"
-            onCancel={() => setEditing(null)}
-            onSave={(sources) => save({ sources })}
-            pending={pending}
-          />
-        ) : data.sources.length > 0 ? (
-          <ul className="mono text-xs text-whisper space-y-1">
-            {data.sources.map((s, i) => (
-              <li key={i}>{s}</li>
-            ))}
-          </ul>
-        ) : (
-          <p className="serif text-base text-whisper italic">None yet.</p>
+          <p className="serif text-base text-whisper italic">No answers yet.</p>
         )}
       </Section>
 
       <p className="serif text-sm text-whisper mt-12 italic">
         Used by the lobbycat agent to ground every fit-note. Read it critically;
-        tell the cat where it&apos;s wrong.
+        tell the cat where it&apos;s wrong. Frames + weights live on{" "}
+        <Link href="/frames" className="underline hover:text-ink">
+          /frames
+        </Link>
+        .
       </p>
     </article>
   );
@@ -215,7 +213,6 @@ function Section({
   title: string;
   editing: boolean;
   onEdit: () => void;
-  onCancel: () => void;
   children: React.ReactNode;
 }) {
   return (
@@ -264,31 +261,30 @@ function FormActions({
   );
 }
 
-function HeaderForm({
+function NameForm({
   displayName,
-  headline,
   onCancel,
   onSave,
   pending,
 }: {
   displayName: string;
-  headline: string | null;
   onCancel: () => void;
-  onSave: (v: { displayName: string; headline: string | null }) => void;
+  onSave: (v: string) => void;
   pending: boolean;
 }) {
   const [name, setName] = useState(displayName);
-  const [head, setHead] = useState(headline ?? "");
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        onSave({ displayName: name, headline: head || null });
+        if (name.trim()) onSave(name.trim());
       }}
     >
       <div className="eyebrow mb-4">The user</div>
       <label className="block">
-        <span className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper">name</span>
+        <span className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper">
+          name
+        </span>
         <input
           className={INPUT + " mt-1 serif text-3xl font-medium tracking-tight"}
           value={name}
@@ -296,13 +292,163 @@ function HeaderForm({
           required
         />
       </label>
+      <FormActions onCancel={onCancel} pending={pending} />
+    </form>
+  );
+}
+
+function ShortTextForm({
+  value,
+  placeholder,
+  onCancel,
+  onSave,
+  pending,
+}: {
+  value: string | null;
+  placeholder: string;
+  onCancel: () => void;
+  onSave: (v: string | null) => void;
+  pending: boolean;
+}) {
+  const [v, setV] = useState(value ?? "");
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSave(v.trim() || null);
+      }}
+    >
+      <input
+        className={INPUT}
+        value={v}
+        onChange={(e) => setV(e.target.value)}
+        placeholder={placeholder}
+      />
+      <FormActions onCancel={onCancel} pending={pending} />
+    </form>
+  );
+}
+
+function LongTextForm({
+  value,
+  placeholder,
+  onCancel,
+  onSave,
+  pending,
+}: {
+  value: string | null;
+  placeholder: string;
+  onCancel: () => void;
+  onSave: (v: string | null) => void;
+  pending: boolean;
+}) {
+  const [v, setV] = useState(value ?? "");
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSave(v.trim() || null);
+      }}
+    >
+      <textarea
+        className={TEXTAREA}
+        rows={6}
+        value={v}
+        onChange={(e) => setV(e.target.value)}
+        placeholder={placeholder}
+      />
+      <FormActions onCancel={onCancel} pending={pending} />
+    </form>
+  );
+}
+
+function LocationDisplay({ prefs }: { prefs: LocationPrefs }) {
+  const flags: { key: keyof LocationPrefs; label: string }[] = [
+    { key: "uk", label: "UK" },
+    { key: "eu", label: "EU" },
+    { key: "us", label: "US" },
+    { key: "remoteOk", label: "Remote OK" },
+  ];
+  const set = flags.filter((f) => prefs[f.key]);
+  if (set.length === 0 && !prefs.notes) {
+    return <p className="serif text-base text-whisper italic">Not set.</p>;
+  }
+  return (
+    <div>
+      {set.length > 0 && (
+        <ul className="flex flex-wrap gap-2">
+          {set.map((f) => (
+            <li
+              key={f.key}
+              className="mono text-[0.65rem] uppercase tracking-[0.14em] text-moss border border-moss/40 px-2 py-1 rounded-sm"
+            >
+              {f.label}
+            </li>
+          ))}
+        </ul>
+      )}
+      {prefs.notes && (
+        <p className="serif text-sm text-body leading-relaxed mt-3">
+          {prefs.notes}
+        </p>
+      )}
+    </div>
+  );
+}
+
+function LocationForm({
+  prefs,
+  onCancel,
+  onSave,
+  pending,
+}: {
+  prefs: LocationPrefs;
+  onCancel: () => void;
+  onSave: (v: LocationPrefs) => void;
+  pending: boolean;
+}) {
+  const [uk, setUk] = useState(!!prefs.uk);
+  const [eu, setEu] = useState(!!prefs.eu);
+  const [us, setUs] = useState(!!prefs.us);
+  const [remoteOk, setRemote] = useState(!!prefs.remoteOk);
+  const [notes, setNotes] = useState(prefs.notes ?? "");
+  return (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSave({ uk, eu, us, remoteOk, notes: notes.trim() });
+      }}
+    >
+      <div className="flex flex-wrap gap-4">
+        {(
+          [
+            ["uk", "UK", uk, setUk],
+            ["eu", "EU", eu, setEu],
+            ["us", "US", us, setUs],
+            ["remoteOk", "Remote OK", remoteOk, setRemote],
+          ] as const
+        ).map(([k, label, val, setVal]) => (
+          <label key={k} className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={val}
+              onChange={(e) => setVal(e.target.checked)}
+              className="accent-moss"
+            />
+            <span className="serif text-sm text-body">{label}</span>
+          </label>
+        ))}
+      </div>
       <label className="block mt-4">
-        <span className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper">headline</span>
-        <input
-          className={INPUT + " mt-1"}
-          value={head}
-          onChange={(e) => setHead(e.target.value)}
-          placeholder="A one-line description"
+        <span className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper">
+          notes
+        </span>
+        <textarea
+          className={TEXTAREA + " mt-1"}
+          rows={3}
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder="e.g. London-based, prefer hybrid"
         />
       </label>
       <FormActions onCancel={onCancel} pending={pending} />
@@ -310,99 +456,26 @@ function HeaderForm({
   );
 }
 
-function BioForm({
-  bio,
+function AnswersForm({
+  answers,
   onCancel,
   onSave,
   pending,
 }: {
-  bio: string | null;
+  answers: OpenTextAnswer[];
   onCancel: () => void;
-  onSave: (bio: string | null) => void;
+  onSave: (v: OpenTextAnswer[]) => void;
   pending: boolean;
 }) {
-  const [value, setValue] = useState(bio ?? "");
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        onSave(value || null);
-      }}
-    >
-      <textarea
-        className={TEXTAREA}
-        rows={6}
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="A few sentences about who you are and what you're looking for."
-      />
-      <FormActions onCancel={onCancel} pending={pending} />
-    </form>
+  const [rows, setRows] = useState<OpenTextAnswer[]>(
+    answers.length > 0 ? answers : [{ question: "", answer: "" }],
   );
-}
 
-function ListForm({
-  items,
-  placeholder,
-  onCancel,
-  onSave,
-  pending,
-}: {
-  items: string[];
-  placeholder: string;
-  onCancel: () => void;
-  onSave: (items: string[]) => void;
-  pending: boolean;
-}) {
-  const [text, setText] = useState(items.join("\n"));
-  return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        const parsed = text
-          .split(/\r?\n/)
-          .map((s) => s.trim())
-          .filter((s) => s.length > 0);
-        onSave(parsed);
-      }}
-    >
-      <textarea
-        className={TEXTAREA}
-        rows={Math.max(4, items.length + 1)}
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder={placeholder}
-      />
-      <p className="mono text-[0.65rem] uppercase tracking-[0.14em] text-whisper mt-1">
-        one per line
-      </p>
-      <FormActions onCancel={onCancel} pending={pending} />
-    </form>
-  );
-}
-
-function WeightsForm({
-  weights,
-  onCancel,
-  onSave,
-  pending,
-}: {
-  weights: Weights;
-  onCancel: () => void;
-  onSave: (weights: Weights) => void;
-  pending: boolean;
-}) {
-  const initialRows =
-    Object.entries(weights).length > 0
-      ? Object.entries(weights).map(([k, v]) => ({ key: k, value: v }))
-      : [{ key: "", value: "" }];
-  const [rows, setRows] = useState(initialRows);
-
-  function update(i: number, patch: Partial<{ key: string; value: string }>) {
+  function update(i: number, patch: Partial<OpenTextAnswer>) {
     setRows((rs) => rs.map((r, j) => (i === j ? { ...r, ...patch } : r)));
   }
   function add() {
-    setRows((rs) => [...rs, { key: "", value: "" }]);
+    setRows((rs) => [...rs, { question: "", answer: "" }]);
   }
   function remove(i: number) {
     setRows((rs) => rs.filter((_, j) => j !== i));
@@ -412,47 +485,44 @@ function WeightsForm({
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        const out: Weights = {};
-        for (const r of rows) {
-          const k = r.key.trim();
-          const v = r.value.trim();
-          if (k && v) out[k] = v;
-        }
-        onSave(out);
+        onSave(rows.filter((r) => r.question.trim().length > 0));
       }}
     >
-      <div className="space-y-2">
+      <ul className="space-y-5">
         {rows.map((r, i) => (
-          <div key={i} className="flex items-center gap-2">
-            <input
-              className={INPUT + " flex-1"}
-              value={r.key}
-              onChange={(e) => update(i, { key: e.target.value })}
-              placeholder="key (e.g. policyDepth)"
+          <li key={i} className="border-l-2 border-rule pl-4">
+            <div className="flex items-baseline justify-between gap-3">
+              <input
+                className={INPUT + " mb-2"}
+                value={r.question}
+                onChange={(e) => update(i, { question: e.target.value })}
+                placeholder="Question"
+              />
+              <button
+                type="button"
+                onClick={() => remove(i)}
+                className="mono text-xs text-whisper hover:text-terracotta px-2"
+                aria-label="remove answer"
+              >
+                ×
+              </button>
+            </div>
+            <textarea
+              className={TEXTAREA}
+              rows={3}
+              value={r.answer}
+              onChange={(e) => update(i, { answer: e.target.value })}
+              placeholder="Your answer"
             />
-            <input
-              className={INPUT + " flex-1"}
-              value={r.value}
-              onChange={(e) => update(i, { value: e.target.value })}
-              placeholder="weight (e.g. high)"
-            />
-            <button
-              type="button"
-              onClick={() => remove(i)}
-              className="mono text-xs text-whisper hover:text-terracotta px-2"
-              aria-label="remove row"
-            >
-              ×
-            </button>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
       <button
         type="button"
         onClick={add}
         className="mono text-[0.65rem] uppercase tracking-[0.14em] text-moss hover:text-ink mt-3"
       >
-        + add weight
+        + add answer
       </button>
       <FormActions onCancel={onCancel} pending={pending} />
     </form>

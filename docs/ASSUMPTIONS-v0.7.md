@@ -306,3 +306,33 @@ than going full-bleed like the wizard step-6 takeover.
 centred dialog reads as "calm cousin" rather than "theatre". In that
 case I'd promote to full-bleed and stack the multi-pick state
 vertically with the cat moving to a corner during repeat picks.
+
+## 2026-06-23 22:30 UTC — Step 11: About is the wizard's mirror
+
+**Assumption:** /about edits the v0.7 wizard fields (name,
+currentRoleOneLiner, exploringText, locationPreferences,
+openTextAnswers) and *not* the v0.6 legacy fields (headline, bio,
+concerns, free-text weights, sources). The legacy editor sections are
+dropped from the surface; the columns remain in the DB so nothing
+silently deletes, and `updateProfile` still accepts them for any
+non-About caller. Frames + Must/Should/Could weights live exclusively
+on /frames and About links there.
+
+**Alternatives considered:**
+- **Show both old and new sections** — too noisy; the wizard is now
+  the source of truth and About should reflect what the wizard
+  collected, not v0.6's vocabulary.
+- **Drop the legacy columns now** — premature; step 12 is the sweep
+  and that's the right place. Keeping the columns lets fit-note
+  grounding fall back to bio/concerns if a profile pre-dates the
+  wizard run.
+
+**Replay onboarding:** the button now calls both `resetOnboarding()`
+(coachmark) *and* `resetWizard()` (clears `wizardCompletedAt`) and
+bounces the user to `/wizard` rather than `/`. That matches the spec
+language "re-launches the wizard from step 1".
+
+**Would change if:** Fatima wants the legacy bio/concerns/sources
+surfaced as a read-only "historical" block for profiles that have
+both — would add a collapsed "imported from v0.6" expander above the
+notes index.

@@ -662,6 +662,18 @@ export async function setFrameWeights(
 
 export async function updateProfile(patch: {
   displayName?: string;
+  // v0.7 wizard-era fields
+  currentRoleOneLiner?: string | null;
+  exploringText?: string | null;
+  locationPreferences?: {
+    uk?: boolean;
+    eu?: boolean;
+    us?: boolean;
+    remoteOk?: boolean;
+    notes?: string;
+  };
+  openTextAnswers?: Array<{ question: string; answer: string; answeredAt?: string }>;
+  // v0.6 legacy survivors (kept for backwards-compat; About no longer edits them)
   headline?: string | null;
   bio?: string | null;
   concerns?: string[];
@@ -677,6 +689,31 @@ export async function updateProfile(patch: {
     const v = patch.displayName.trim();
     if (!v) throw new Error("Display name cannot be empty.");
     next.displayName = v;
+  }
+  if (patch.currentRoleOneLiner !== undefined) {
+    next.currentRoleOneLiner = patch.currentRoleOneLiner?.trim() || null;
+  }
+  if (patch.exploringText !== undefined) {
+    next.exploringText = patch.exploringText?.trim() || null;
+  }
+  if (patch.locationPreferences !== undefined) {
+    next.locationPreferences = {
+      uk: !!patch.locationPreferences.uk,
+      eu: !!patch.locationPreferences.eu,
+      us: !!patch.locationPreferences.us,
+      remoteOk: !!patch.locationPreferences.remoteOk,
+      notes: patch.locationPreferences.notes?.trim() || "",
+    };
+  }
+  if (patch.openTextAnswers !== undefined) {
+    const now = new Date().toISOString();
+    next.openTextAnswers = patch.openTextAnswers
+      .map((a) => ({
+        question: (a.question || "").trim(),
+        answer: (a.answer || "").trim(),
+        answeredAt: a.answeredAt || now,
+      }))
+      .filter((a) => a.question.length > 0);
   }
   if (patch.headline !== undefined) {
     next.headline = patch.headline?.trim() || null;
