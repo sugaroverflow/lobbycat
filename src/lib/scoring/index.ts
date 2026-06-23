@@ -6,6 +6,7 @@
  *  - company description, focus areas, status
  *  - recent publications (title + summary)
  *  - lobbying records (spend, topics)
+ *  - consultation submissions (regulator, consultation name, editorial summary)
  *
  * Call Anthropic (claude-3-5-sonnet) to produce a JSON
  *   { score: 1.0..5.0, rationale: "...", confidence: "low|medium|high",
@@ -20,6 +21,7 @@ import { and, desc, eq } from "drizzle-orm";
 import { db } from "@/db";
 import {
   companies,
+  consultationSubmissions,
   frames as framesTable,
   frameScores,
   frameScoreEvidence,
@@ -30,9 +32,10 @@ import {
 const ANTHROPIC_MODEL = "claude-3-5-sonnet-latest";
 const MAX_PUBS = 12;
 const MAX_LOBBY = 8;
+const MAX_SUBS = 8;
 
 export type ScoringEvidence = {
-  kind: "publication" | "lobbying_record";
+  kind: "publication" | "lobbying_record" | "submission";
   id: number;
   weight: number;
 };
@@ -52,6 +55,7 @@ You score a single (AI company, frame) pair on a 1.0–5.0 decimal scale, given:
 - the frame's definition (low/high anchor descriptions)
 - a short description of the company
 - recent publications, blog posts, filings, and lobbying records
+- public consultation submissions (the company's own arguments to regulators)
 
 Return STRICT JSON, no preamble, no markdown:
 {
@@ -75,11 +79,14 @@ function median(scale: number): number {
 function hashEvidence(payload: {
   pubs: Array<{ id: number; title: string | null; summary: string | null }>;
   lobby: Array<{ id: number; topics: string[]; spend: number | null }>;
+  subs: Array<{ id: number; summary: string | null; consultationName: string }>;
 }): string {
   const h = createHash("sha256");
   for (const p of payload.pubs) h.update(`p:${p.id}:${p.summary ?? p.title ?? ""}\n`);
   for (const l of payload.lobby)
     h.update(`l:${l.id}:${l.spend ?? ""}:${(l.topics ?? []).join(",")}\n`);
+  for (const s of payload.subs)
+    h.update(`s:${s.id}:${s.consultationName}:${s.summary ?? ""}\n`);
   return h.digest("hex").slice(0, 16);
 }
 
@@ -112,8 +119,17 @@ async function callAnthropic(args: {
     spendUsd: number | null;
     meetings: number | null;
   }>;
+  subs: Array<{
+    id: number;
+    jurisdiction: string;
+    regulator: string;
+    consultationName: string;
+    summary: string | null;
+    topics: string[];
+    submittedAt: Date | null;
+  }>;
 }): Promise<Omit<ScoringResult, "evidenceVersion" | "fallback"> | null> {
-  const { company, frame, pubs, lobby } = args;
+  const { company, frame, pubs, lobby, subs } = args;
   const userMsg = JSON.stringify(
     {
       frame: {
@@ -145,6 +161,15 @@ async function callAnthropic(args: {
           spend_eur: l.spendEur,
           spend_usd: l.spendUsd,
           meetings: l.meetings,
+        })),
+        consultation_submissions: subs.map((s) => ({
+          id: s.id,
+          jurisdiction: s.jurisdiction,
+          regulator: s.regulator,
+          consultation_name: s.consultationName,
+          summary: s.summary,
+          topics: s.topics,
+          submitted_at: s.submittedAt?.toISOString() ?? null,
         })),
       },
     },
@@ -205,6 +230,8 @@ async function callAnthropic(args: {
         citations.push({ kind: "publication", id, weight: 1.0 });
       else if (lobby.some((l) => l.id === id))
         citations.push({ kind: "lobbying_record", id, weight: 1.0 });
+      else if (subs.some((s) => s.id === id))
+        citations.push({ kind: "submission", id, weight: 1.2 });
     }
 
     return { score, rationale, confidence, citations };
@@ -264,12 +291,32 @@ export async function rescoreCompanyFrame(
     .where(eq(lobbyingRecords.companyId, companyId))
     .limit(MAX_LOBBY);
 
+  const subs = await db
+    .select({
+      id: consultationSubmissions.id,
+      jurisdiction: consultationSubmissions.jurisdiction,
+      regulator: consultationSubmissions.regulator,
+      consultationName: consultationSubmissions.consultationName,
+      summary: consultationSubmissions.summary,
+      topics: consultationSubmissions.topics,
+      submittedAt: consultationSubmissions.submittedAt,
+    })
+    .from(consultationSubmissions)
+    .where(eq(consultationSubmissions.companyId, companyId))
+    .orderBy(desc(consultationSubmissions.submittedAt))
+    .limit(MAX_SUBS);
+
   const evidenceVersion = hashEvidence({
     pubs: pubs.map((p) => ({ id: p.id, title: p.title, summary: p.summary })),
     lobby: lobby.map((l) => ({
       id: l.id,
       topics: l.topics ?? [],
       spend: l.spendEur ?? l.spendUsd ?? null,
+    })),
+    subs: subs.map((s) => ({
+      id: s.id,
+      summary: s.summary,
+      consultationName: s.consultationName,
     })),
   });
 
@@ -327,6 +374,15 @@ export async function rescoreCompanyFrame(
         publishedAt: p.publishedAt,
       })),
       lobby,
+      subs: subs.map((s) => ({
+        id: s.id,
+        jurisdiction: s.jurisdiction,
+        regulator: s.regulator,
+        consultationName: s.consultationName,
+        summary: s.summary,
+        topics: s.topics ?? [],
+        submittedAt: s.submittedAt,
+      })),
     });
   }
   if (!result) {

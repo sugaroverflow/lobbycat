@@ -1,0 +1,289 @@
+{
+  "_meta": {
+    "purpose": "Curated initial seed of public consultation submissions by London AI-policy companies. Hand-edited; not scraped. Used by /api/cron/consultations to upsert into the consultation_submissions table.",
+    "scoring_relevance": "Wired into the lobbycat scoring engine as `evidence_kind = 'submission'` (v0.6 Step 10).",
+    "last_curated": "2026-06-23"
+  },
+  "submissions": [
+    {
+      "slug": "anthropic-london",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Argued for context-specific regulation with mandatory pre-deployment evals for frontier models, anchored to AISI.",
+      "topics": ["frontier models", "evals", "AISI"]
+    },
+    {
+      "slug": "anthropic-london",
+      "regulator": "AISI",
+      "jurisdiction": "uk",
+      "consultationName": "AISI evaluations framework feedback",
+      "submittedAt": "2025-02-14",
+      "url": "https://www.aisi.gov.uk/",
+      "summary": "Backed pre-deployment access for AISI on frontier models; offered Responsible Scaling Policy as a template.",
+      "topics": ["frontier models", "RSP", "pre-deployment access"]
+    },
+    {
+      "slug": "openai-london",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-19",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Preferred a sector-led approach with voluntary commitments and a light-touch central function.",
+      "topics": ["voluntary commitments", "sector-led"]
+    },
+    {
+      "slug": "openai-london",
+      "regulator": "EU AI Office",
+      "jurisdiction": "eu",
+      "consultationName": "General-Purpose AI Code of Practice consultation",
+      "submittedAt": "2025-03-28",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice",
+      "summary": "Pushed for narrower scope of systemic-risk GPAI obligations; opposed broad copyright disclosure rules.",
+      "topics": ["GPAI", "copyright", "systemic risk"]
+    },
+    {
+      "slug": "google-deepmind",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Argued the existing regulator network is sufficient with coordinated guidance; cautioned against a horizontal AI Act.",
+      "topics": ["existing regulators", "horizontal regulation"]
+    },
+    {
+      "slug": "google-deepmind",
+      "regulator": "CMA",
+      "jurisdiction": "uk",
+      "consultationName": "Foundation Models market study response",
+      "submittedAt": "2024-01-19",
+      "url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review",
+      "summary": "Argued the foundation-model market is competitive and contestable; opposed structural remedies.",
+      "topics": ["competition", "foundation models", "vertical integration"]
+    },
+    {
+      "slug": "microsoft-ai-london",
+      "regulator": "CMA",
+      "jurisdiction": "uk",
+      "consultationName": "Foundation Models market study response",
+      "submittedAt": "2024-01-22",
+      "url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review",
+      "summary": "Defended cloud-AI partnerships as pro-competitive; emphasised customer choice across model providers.",
+      "topics": ["cloud", "partnerships", "competition"]
+    },
+    {
+      "slug": "microsoft-ai-london",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-20",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Favoured a principles-based, regulator-led model with international interoperability as the headline ask.",
+      "topics": ["interoperability", "principles-based"]
+    },
+    {
+      "slug": "meta-london-policy",
+      "regulator": "EU AI Office",
+      "jurisdiction": "eu",
+      "consultationName": "General-Purpose AI Code of Practice consultation",
+      "submittedAt": "2025-03-31",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice",
+      "summary": "Strongly opposed copyright-data disclosure and 'open model' carve-outs being narrowed.",
+      "topics": ["open models", "copyright", "GPAI"]
+    },
+    {
+      "slug": "ada-lovelace-institute",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Called the proposals 'insufficient' \u2014 wanted statutory duties on regulators, an AI Bill, and an independent ombudsman.",
+      "topics": ["statutory duties", "AI Bill", "rights"]
+    },
+    {
+      "slug": "ada-lovelace-institute",
+      "regulator": "AISI",
+      "jurisdiction": "uk",
+      "consultationName": "AISI evaluations framework feedback",
+      "submittedAt": "2025-02-19",
+      "url": "https://www.aisi.gov.uk/",
+      "summary": "Pushed AISI's scope beyond capability evals into societal-impact evaluations and external accountability.",
+      "topics": ["societal impact", "accountability", "evals"]
+    },
+    {
+      "slug": "cltr",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-20",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Argued for a binding regulatory regime on frontier models with mandatory third-party evals.",
+      "topics": ["frontier models", "third-party evals", "binding regulation"]
+    },
+    {
+      "slug": "cltr",
+      "regulator": "AISI",
+      "jurisdiction": "uk",
+      "consultationName": "AISI mandate scoping submission",
+      "submittedAt": "2024-09-12",
+      "url": "https://www.aisi.gov.uk/",
+      "summary": "Recommended AISI gain statutory powers for pre-deployment access and incident reporting.",
+      "topics": ["statutory powers", "incident reporting"]
+    },
+    {
+      "slug": "techuk",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Coordinated member view: keep the principles-based approach; resist mandatory pre-deployment requirements.",
+      "topics": ["industry coalition", "principles-based"]
+    },
+    {
+      "slug": "techuk",
+      "regulator": "CMA",
+      "jurisdiction": "uk",
+      "consultationName": "Foundation Models market study response",
+      "submittedAt": "2024-01-22",
+      "url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review",
+      "summary": "Argued the foundation-model market remains contestable; cautioned against pre-emptive structural intervention.",
+      "topics": ["competition", "contestability"]
+    },
+    {
+      "slug": "demos",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-19",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Argued for democratic-participation duties on regulators and a public-interest test in AI procurement.",
+      "topics": ["democracy", "procurement", "public interest"]
+    },
+    {
+      "slug": "connected-by-data",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-20",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Centred collective data rights and called for an AI-rights bill; rejected the 'pro-innovation' framing.",
+      "topics": ["collective rights", "AI Bill"]
+    },
+    {
+      "slug": "public-law-project",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "Automated decision-making in public services",
+      "submittedAt": "2024-11-04",
+      "url": "https://publiclawproject.org.uk/resources/",
+      "summary": "Demanded statutory transparency duties on public-sector ADM systems and a public register of algorithmic tools.",
+      "topics": ["ADM", "transparency", "public sector"]
+    },
+    {
+      "slug": "big-brother-watch",
+      "regulator": "OFCOM",
+      "jurisdiction": "uk",
+      "consultationName": "Online Safety Act AI guidance",
+      "submittedAt": "2025-01-30",
+      "url": "https://www.ofcom.org.uk/",
+      "summary": "Opposed expansion of live facial recognition obligations on platforms; flagged chilling-effect risks.",
+      "topics": ["facial recognition", "OSA", "platforms"]
+    },
+    {
+      "slug": "nesta",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-18",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Argued regulator capacity-building is the binding constraint; called for ring-fenced funding.",
+      "topics": ["capacity", "regulator funding"]
+    },
+    {
+      "slug": "ico-ai",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Updated guidance and clarified ICO's interpretation of UK GDPR for generative AI training and deployment.",
+      "topics": ["GDPR", "data protection", "generative AI"]
+    },
+    {
+      "slug": "ofcom-ai",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Mapped how Online Safety Act duties already cover generative-AI harms; supported regulator coordination function.",
+      "topics": ["OSA", "coordination", "platforms"]
+    },
+    {
+      "slug": "apollo-research",
+      "regulator": "AISI",
+      "jurisdiction": "uk",
+      "consultationName": "AISI evaluations framework feedback",
+      "submittedAt": "2025-02-12",
+      "url": "https://www.aisi.gov.uk/",
+      "summary": "Pushed AISI to publish deception/scheming evals and prioritise dangerous-capability behavioural testing.",
+      "topics": ["deception evals", "dangerous capabilities"]
+    },
+    {
+      "slug": "govai",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Argued for an AI Bill establishing a frontier-AI regulator with binding powers and licensing for the largest systems.",
+      "topics": ["AI Bill", "licensing", "frontier"]
+    },
+    {
+      "slug": "rusi-ai",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI in national security guidance",
+      "submittedAt": "2025-04-09",
+      "url": "https://rusi.org/explore-our-research/topics/technology",
+      "summary": "Recommended export-control alignment with allies on advanced chips and inference compute thresholds.",
+      "topics": ["export controls", "national security", "compute"]
+    },
+    {
+      "slug": "alan-turing-institute",
+      "regulator": "DSIT",
+      "jurisdiction": "uk",
+      "consultationName": "AI Regulation White Paper response",
+      "submittedAt": "2024-06-21",
+      "url": "https://www.gov.uk/government/consultations/ai-regulation-a-pro-innovation-approach",
+      "summary": "Endorsed the regulator-network model but called for a stronger central coordination function and clearer assurance standards.",
+      "topics": ["assurance", "coordination", "standards"]
+    },
+    {
+      "slug": "frontier-economics",
+      "regulator": "CMA",
+      "jurisdiction": "uk",
+      "consultationName": "Foundation Models market study response",
+      "submittedAt": "2024-01-22",
+      "url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review",
+      "summary": "Economic analysis arguing observed concentration reflects scale economies, not entrenched market power \u2014 yet.",
+      "topics": ["competition", "scale economies"]
+    },
+    {
+      "slug": "cohere-london",
+      "regulator": "EU AI Office",
+      "jurisdiction": "eu",
+      "consultationName": "General-Purpose AI Code of Practice consultation",
+      "submittedAt": "2025-03-29",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice",
+      "summary": "Supported tiered obligations but pushed against blanket data-disclosure rules for non-systemic models.",
+      "topics": ["GPAI", "tiered obligations"]
+    }
+  ]
+}

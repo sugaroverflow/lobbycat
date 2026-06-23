@@ -150,3 +150,39 @@ Format: timestamp · area · assumption · alternative considered · would-chang
   - Would change if: Step 12 reveals real content in `companies.notes`
     worth preserving — then add a one-shot backfill migration before
     dropping the column.
+
+## Step 10 — Consultation submissions pipeline (2026-06-23 15:40 UTC)
+
+- **Assumed:** v0.6 ships with a *hand-curated* seed of public
+  consultation submissions (`src/db/consultations-seed.json`, ~28 rows
+  across 21 slugs) rather than a live scraper. The cron route only
+  re-ingests the seed file.
+  - Alternatives: build a gov.uk + EU Have-Your-Say scraper now;
+    skip the table and infer consultation behaviour from publications.
+  - Would change if: Fatima wants real-time signal — then add a scraper
+    that writes `source = 'scraped'` rows. Schema and scoring already
+    handle that case.
+
+- **Assumed:** `(company_id, consultation_name)` is the dedupe key.
+  Re-ingestion is upsert: existing rows get their summary / topics /
+  url / submittedAt overwritten from the seed.
+  - Alternatives: include regulator + jurisdiction in the key (allows
+    the same consultation name across regulators); never-update,
+    insert-only.
+  - Would change if: a regulator name actually collides across
+    jurisdictions in the curated set. None do today.
+
+- **Assumed:** The scoring engine treats consultation submissions as a
+  slightly higher-signal evidence kind than publications or lobbying
+  records — citation weight `1.2` vs `1.0`. They're the company's own
+  arguments to a regulator, not blog spin.
+  - Alternatives: equal weight (1.0) across all evidence kinds.
+  - Would change if: we find Anthropic citations skew artificially
+    toward submissions in spot-checks. Easy single-number knob.
+
+- **Assumed:** Vercel cron schedule for ingestion is weekly
+  (`15 7 * * 1` — Mondays 07:15 UTC). The seed is small and curated;
+  daily would just be noise.
+  - Alternatives: daily; manual-only (no cron).
+  - Would change if: the seed grows past a few hundred rows or a
+    scraper lands. Bump to daily then.

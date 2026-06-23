@@ -170,6 +170,41 @@ export const lobbyingRecords = pgTable(
 );
 
 /* ------------------------------------------------------------------ */
+/* Consultation submissions — v0.6 evidence pipeline #4               */
+/* ------------------------------------------------------------------ */
+
+export const consultationSubmissions = pgTable(
+  "consultation_submissions",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    jurisdiction: text("jurisdiction").notNull(), // uk | eu | us | other
+    regulator: text("regulator").notNull(), // e.g. DSIT, CMA, AISI, OFCOM, EU AI Office
+    consultationName: text("consultation_name").notNull(),
+    submittedAt: timestamp("submitted_at", { withTimezone: true }),
+    url: text("url"), // public link to the submission or the consultation listing
+    summary: text("summary"), // one-sentence editorial line about what they argued
+    topics: jsonb("topics").$type<string[]>().default([]).notNull(),
+    rawExcerpt: text("raw_excerpt"), // optional grounding quote
+    source: text("source").default("curated").notNull(), // curated | scraped
+    seenAt: timestamp("seen_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("consultation_company_idx").on(t.companyId),
+    index("consultation_regulator_idx").on(t.regulator),
+    index("consultation_submitted_idx").on(t.submittedAt),
+    uniqueIndex("consultation_company_name_idx").on(
+      t.companyId,
+      t.consultationName,
+    ),
+  ],
+);
+
+/* ------------------------------------------------------------------ */
 /* Tags                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -437,6 +472,7 @@ export const companiesRelations = relations(companies, ({ many }) => ({
   people: many(people),
   publications: many(publications),
   lobbyingRecords: many(lobbyingRecords),
+  consultationSubmissions: many(consultationSubmissions),
   tags: many(companyTags),
   frameScores: many(frameScores),
   frameAnswers: many(frameAnswers),
@@ -471,6 +507,16 @@ export const lobbyingRelations = relations(lobbyingRecords, ({ one }) => ({
     references: [companies.id],
   }),
 }));
+
+export const consultationSubmissionsRelations = relations(
+  consultationSubmissions,
+  ({ one }) => ({
+    company: one(companies, {
+      fields: [consultationSubmissions.companyId],
+      references: [companies.id],
+    }),
+  }),
+);
 
 export const tagsRelations = relations(tags, ({ many }) => ({
   companies: many(companyTags),
@@ -538,6 +584,10 @@ export type Role = typeof roles.$inferSelect;
 export type Person = typeof people.$inferSelect;
 export type Publication = typeof publications.$inferSelect;
 export type LobbyingRecord = typeof lobbyingRecords.$inferSelect;
+export type ConsultationSubmission =
+  typeof consultationSubmissions.$inferSelect;
+export type NewConsultationSubmission =
+  typeof consultationSubmissions.$inferInsert;
 export type Tag = typeof tags.$inferSelect;
 export type Frame = typeof frames.$inferSelect;
 export type FrameScore = typeof frameScores.$inferSelect;

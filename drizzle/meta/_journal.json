@@ -43,6 +43,13 @@
       "when": 1782217230326,
       "tag": "0005_material_nova",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1782224037310,
+      "tag": "0006_romantic_gunslinger",
+      "breakpoints": true
     }
   ]
 }
