@@ -186,3 +186,29 @@ change if" trigger. Updated chunk-by-chunk during the v0.7 build.
 - **Would change if:** rescore consistently takes >60s and Aadi sees
   empty scores on landing. Mitigation: bump theatre to a polling state
   that waits for `/api/rescore-status` to clear.
+
+### M. Step 5 of build — wizard step-6 vaporwave-theatre takeover
+- **Assumed:** the takeover lives as a `fixed inset-0` overlay rendered
+  *inside* the Wizard section but breaks out of the wizard's max-w
+  layout via fixed-positioning. The site-shell header is visually
+  covered (z-index = `--z-modal`). I hide the progress bar on step 6
+  so the moment reads as a moment, not a wizard step.
+- **Alternatives:** route the user to a dedicated `/wizard/scoring`
+  page that lives outside the SiteShell. Rejected — that would re-fire
+  `completeWizard()` on a fresh component or require lifting it out of
+  the wizard, both of which add risk on the ship deadline.
+- **Cat sprite:** reuses `/cat/lobbycat.png` rather than the 5-pose
+  `/cat/pixel/sprites.png` sheet. The sprite sheet is 1536×1024 with
+  uneven cell boundaries (per the swatch-session brief, it still needs
+  re-cutting to clean 64×64). Reusing the existing single sprite keeps
+  the silhouette consistent with `rescoring-cat.tsx` and avoids cutting
+  the sheet in this chunk.
+- **Would change if:** Fatima wants pose cycling (idle → blink → paw-up).
+  Then we re-cut sprites.png into per-pose PNGs and key off `quoteIdx`.
+- **Theatre elements shipped:** full-screen overlay, deep-purple → hot-pink
+  → orange sunset gradient, sun disc behind cat, animated perspective
+  grid (scrolling 60px cells, magenta + cyan), CRT scanlines (multiply
+  blend), pixel cat floating + glowing, Orbitron uppercase title with
+  sunset-gradient text-clip, italic cycling quotes, sunset-gradient
+  progress bar with magenta glow. `prefers-reduced-motion` disables
+  cat-float and grid-scroll.

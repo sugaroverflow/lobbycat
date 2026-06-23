@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import {
   completeWizard,
@@ -77,8 +78,8 @@ export function Wizard({ initial }: { initial: WizardInitial }) {
 
   return (
     <section className="max-w-[60rem] mx-auto px-6 pt-10 pb-24">
-      <ProgressBar step={step} />
-      <div className="mt-8">
+      {step < 6 && <ProgressBar step={step} />}
+      <div className={step < 6 ? "mt-8" : "mt-0"}>
         {step === 1 && <Step1Welcome onNext={() => setStep(2)} replay={initial.replay} />}
         {step === 2 && (
           <Step2Profile
@@ -626,48 +627,166 @@ function Step6BigMoment({
   const scoredApprox = Math.floor(progress * companyCount);
   const quote = quotes[quoteIdx] ?? "scoring…";
 
+  // Full-screen vaporwave-theatre takeover. Covers the wizard shell.
   return (
-    <div className="relative overflow-hidden border border-rule bg-panel p-10 sm:p-16 min-h-[420px]">
+    <div
+      role="dialog"
+      aria-label="lobbycat is scoring companies"
+      className="vw-theatre fixed inset-0 overflow-hidden"
+      style={{
+        zIndex: "var(--z-modal, 210)",
+        background:
+          "radial-gradient(ellipse at center 28%, rgba(255,51,204,0.30), transparent 65%), linear-gradient(180deg, #0a0420 0%, #1a0840 55%, #ff3399 88%, #ff9900 100%)",
+      }}
+    >
+      {/* Sun disc behind cat */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[22%] -translate-x-1/2"
+        style={{
+          width: "320px",
+          height: "320px",
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle at 50% 50%, #FFEE66 0%, #FF9900 40%, #FF00FF 75%, transparent 80%)",
+          filter: "blur(2px)",
+          opacity: 0.85,
+        }}
+      />
+
+      {/* Perspective grid floor */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-0 vw-grid"
+        style={{
+          height: "60%",
+          backgroundImage:
+            "linear-gradient(0deg, rgba(0,255,255,0.85) 1px, transparent 1px), linear-gradient(90deg, rgba(255,0,255,0.85) 1px, transparent 1px)",
+          backgroundSize: "60px 60px, 60px 60px",
+          backgroundPosition: "center bottom",
+          maskImage:
+            "linear-gradient(180deg, transparent 0%, black 35%, black 100%)",
+          WebkitMaskImage:
+            "linear-gradient(180deg, transparent 0%, black 35%, black 100%)",
+          transform: "perspective(700px) rotateX(62deg)",
+          transformOrigin: "center bottom",
+        }}
+      />
+
+      {/* Scanlines overlay */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
-          background:
-            "radial-gradient(ellipse at center 30%, rgba(255,51,204,0.18), transparent 60%), linear-gradient(180deg, transparent 0%, rgba(255,153,0,0.18) 70%, rgba(255,51,204,0.28) 100%)",
-        }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 opacity-40"
-        style={{
           backgroundImage:
-            "linear-gradient(0deg, rgba(0,255,255,0.55) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,255,0.55) 1px, transparent 1px)",
-          backgroundSize: "40px 40px, 40px 40px",
-          maskImage:
-            "linear-gradient(180deg, transparent 0%, black 50%, black 100%)",
-          WebkitMaskImage:
-            "linear-gradient(180deg, transparent 0%, black 50%, black 100%)",
-          transform: "perspective(600px) rotateX(60deg)",
-          transformOrigin: "center bottom",
+            "repeating-linear-gradient(0deg, rgba(0,0,0,0.28) 0px, rgba(0,0,0,0.28) 1px, transparent 1px, transparent 3px)",
+          mixBlendMode: "multiply",
+          opacity: 0.55,
         }}
       />
-      <div className="relative text-center">
-        <div className="eyebrow mb-3">Step 6 — Scoring</div>
-        <div className="serif text-3xl sm:text-4xl text-prose mt-2">
-          {quote}
+
+      {/* Centre content */}
+      <div className="relative h-full w-full flex flex-col items-center justify-center px-6 text-center">
+        <div
+          className="mono text-[0.7rem] sm:text-xs tracking-[0.4em] uppercase"
+          style={{ color: "#00FFFF", textShadow: "var(--vw-glow-cyan)" }}
+        >
+          ▸ step 6 / 6 · scoring
         </div>
-        <div className="mt-10 mx-auto max-w-md">
-          <div className="h-[2px] w-full bg-panel-sunk overflow-hidden">
+
+        <h1
+          className="mt-6 font-sans text-3xl sm:text-5xl tracking-[0.08em] uppercase"
+          style={{
+            background: "var(--vw-sunset-gradient)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+            filter: "drop-shadow(0 0 18px rgba(255,0,255,0.55))",
+          }}
+        >
+          lobbycat is meeting the world
+        </h1>
+
+        <div className="vw-cat mt-10 sm:mt-12">
+          <Image
+            src="/cat/lobbycat.png"
+            alt=""
+            width={180}
+            height={180}
+            className="block"
+            priority
+          />
+        </div>
+
+        <div
+          className="mt-10 max-w-2xl mx-auto serif italic text-xl sm:text-2xl leading-snug min-h-[3.5rem]"
+          style={{ color: "#FFEEFF", textShadow: "0 0 12px rgba(255,0,255,0.45)" }}
+          key={quoteIdx}
+        >
+          “{quote}”
+        </div>
+
+        <div className="mt-12 w-full max-w-lg mx-auto">
+          <div
+            className="h-[3px] w-full overflow-hidden"
+            style={{ background: "rgba(255,255,255,0.12)" }}
+          >
             <div
-              className="h-full bg-action transition-[width] duration-150"
-              style={{ width: `${progress * 100}%` }}
+              className="h-full transition-[width] duration-150"
+              style={{
+                width: `${progress * 100}%`,
+                background: "var(--vw-sunset-gradient)",
+                boxShadow: "var(--vw-glow-magenta)",
+              }}
             />
           </div>
-          <div className="mt-3 text-xs text-prose-muted tracking-[0.2em] uppercase">
-            {fired ? `${scoredApprox} / ${companyCount}` : "warming up…"}
+          <div
+            className="mt-3 mono text-[0.7rem] sm:text-xs tracking-[0.3em] uppercase"
+            style={{ color: "#00FFFF" }}
+          >
+            {fired
+              ? `${scoredApprox} / ${companyCount} companies scored`
+              : "warming up the engines…"}
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .vw-cat {
+          animation: vw-cat-float 2.4s ease-in-out infinite;
+          filter: drop-shadow(0 0 24px rgba(255, 0, 255, 0.55))
+            drop-shadow(0 0 8px rgba(0, 255, 255, 0.35));
+        }
+        .vw-cat :global(img) {
+          image-rendering: pixelated;
+        }
+        .vw-grid {
+          animation: vw-grid-scroll 4s linear infinite;
+        }
+        @keyframes vw-cat-float {
+          0%,
+          100% {
+            transform: translateY(0) rotate(-1.5deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(1.5deg);
+          }
+        }
+        @keyframes vw-grid-scroll {
+          0% {
+            background-position: 0 0, 0 0;
+          }
+          100% {
+            background-position: 0 60px, 0 0;
+          }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .vw-cat,
+          .vw-grid {
+            animation: none;
+          }
+        }
+      `}</style>
     </div>
   );
 }
