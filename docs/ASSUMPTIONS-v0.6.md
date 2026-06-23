@@ -30,3 +30,23 @@ Format: timestamp · area · assumption · alternative considered · would-chang
 - **Assumption:** Validating `(evidence_kind, evidence_id)` joins client-side is cheaper than enforcing PG-level FKs across five different parent tables (publications, roles, lobbying_records, consultation_submissions, safety_frameworks). Postgres polymorphic FKs are awkward; we eat the cost in the application layer.
 - **Alternative considered:** one nullable FK column per evidence kind (`publication_id`, `role_id`, …). Rejected — schema bloat and CHECK constraint maintenance.
 - **Would change if:** we get a sync-drift bug where evidence rows reference deleted parents. Then add periodic cleanup queries or move to the per-kind-column shape.
+
+## 2026-06-23 12:55 UTC · Step 4 scoring engine · model = claude-3-5-sonnet-latest
+- **Assumption:** Sonnet is the right cost/quality tradeoff for per-cell scoring (420 cells × ~1 rescore/day worst case). Haiku is too thin for nuanced 1–5 rationales; Opus is overkill at the scale we'd be running.
+- **Alternative considered:** Haiku with stricter prompt + multi-shot examples (cheaper, less consistent), or Opus (better but ~10× cost). Rejected for v0.6 — Sonnet is what we already use for fit-notes; one model, fewer surprises.
+- **Would change if:** rescore costs blow up (>$5/day on Aadi alone) or rationale quality is visibly thin in re-curation. Then switch to Haiku for "stale-but-evidence-unchanged" refresh path only.
+
+## 2026-06-23 12:55 UTC · Step 4 scoring engine · short-circuit on evidence_version hash
+- **Assumption:** If the (publications+lobbying) evidence set is byte-identical to what was used last time, returning the existing score without re-calling Anthropic is correct. Frame definition changes go through `force: true` from the frames page.
+- **Alternative considered:** always re-call (simpler, no hash) or hash on prompt text rather than evidence ids (more semantically correct but brittle to wording tweaks). Rejected — id-based hash is robust enough and saves the $$.
+- **Would change if:** we see scores drift between definition versions without rescoring. Then expose evidence_version + profile_version on the staleness UI and force-rescore when either changes.
+
+## 2026-06-23 12:55 UTC · Step 4 scoring engine · cron pulls 20 cells/run, prioritises never-scored then oldest
+- **Assumption:** A nightly /api/cron/rescore picking the 20 stalest (company, frame) cells balances Vercel function budget (under maxDuration=300s) and catch-up rate (covers 420 cells over ~3 weeks of nightly runs, or instantly via manual ?max=420 trigger). Catch-up doesn't need to be aggressive — interactive rescore lives behind the home button.
+- **Alternative considered:** rescore everything nightly (would blow function budget + cost), or only rescore on demand (then never-scored cells stay empty forever). Rejected.
+- **Would change if:** 20/run feels too slow in practice. The `?max=` knob is right there — Fatima can punch up the schedule cap.
+
+## 2026-06-23 12:55 UTC · Step 4 scoring engine · client-side aggregate (useLiveAggregates) is the source of truth for ranking
+- **Assumption:** Aggregate = weighted mean of per-frame scores using L=1/M=2/H=3 multipliers. No persisted aggregate column — the table re-ranks instantly on weight change without a server round trip. Per-frame scores remain server-authoritative.
+- **Alternative considered:** persist `aggregate_score` and re-server-render on weight change. Rejected — adds latency and a stale-cache class of bugs for zero correctness benefit.
+- **Would change if:** Aadi wants ranking that's not a weighted mean (e.g. lexicographic by highest-weight frame). Then promote ranking to a strategy fn but keep client-side eval.
