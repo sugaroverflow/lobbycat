@@ -1,84 +1,93 @@
 # 🐱 lobbycat
 
-**Lobbycat is a live scoring engine: tell it what you care about, and it
-ranks London's AI policy companies for you to explore, dive deep, and make
-decisions.**
+**Lobbycat is a live scoring engine for London's AI policy field. You tell
+it what you care about; it ranks ~40 organisations against the six frames
+*you* picked, weighted the way *you* weighted them, and it re-reads the
+field every time you change your mind.**
 
 It isn't a job board. It isn't a directory. It's a small, hand-edited
-engine — about forty organisations in London that do AI policy in some
-load-bearing way — built around six editorial frames you can re-weight
-on the fly. Move a weight, the field re-sorts. Edit what a frame *means*,
-the cat re-reads every company.
+engine wrapped in a vaporwave coat — onboarding-first, opinionated, and
+honest about the fact that the *lens* (the frames, the weights, the
+words you used to describe your situation) is doing most of the work.
+Move a weight, the dashboard re-sorts. Edit what a frame *means*, the
+cat re-reads every company on that frame. Tell the cat a new thing about
+yourself in About, every fit-note re-grounds.
 
 ---
 
 ## What it's for
 
-Three modes, roughly in this order:
+Three things, in this order:
 
-- **Explore.** Scan the ranked table with your current weights in hand.
-  "Who comes up high if I care a lot about working style and not much
-  about geographic remit? What changes when I flip that?"
-- **Dive deep.** Click any cell, read the rationale and evidence. Every
-  (company × frame) score is a number, a paragraph of reasoning, and a
-  short citation list grounded in real artefacts (consultation responses,
-  safety frameworks, publications, roles, lobbying records).
-- **Decide.** Pull two to five companies into Compare, swing the weights
-  inside that sandbox without touching your global profile, and see which
-  ones move and which stay put. That's the surface to read against the
-  night before a meeting.
+- **Set the lens.** First sign-in walks through a six-step wizard:
+  who you are right now, what you're exploring, the frames that matter
+  to you, the *weight* you'd give each (Must / Should / Could), and a
+  couple of open-text prompts the cat reads when scoring. Step six is
+  a full-screen vaporwave-theatre moment where lobbycat scores the
+  whole field live against your answers.
+- **Explore the field.** The dashboard is a stacked list of company
+  cards, sorted by your weighted aggregate. Each card carries an
+  evidence summary, a fit-note grounded in *your* wizard answers, and a
+  one-click expansion into the per-company page. A filter + sort
+  toolbar sits at the top — sort by overall score / individual frame /
+  recency, filter by hiring / fit-note / tier / HQ.
+- **Decide.** The fit-note on each card is the decision surface. It's
+  what the cat thinks about *this company × you* — not a marketing
+  blurb, not a generic write-up. Disagree with one and that
+  disagreement is the useful thing.
 
-There is also a **Surprise me** button. One pick per click, with a
-frame-shaped reason. It's a moment, not a section.
+There is also a **Surprise me** button. Vaporwave-theatre modal, one
+pick per click, with a frame-shaped reason and a paragraph the cat
+wrote just now. It's a moment, not a section.
 
 ## The six frames
 
 The engine runs on six editorial frames — 1–5 scales with named poles.
-They're directional, not moral: which end is interesting depends on what
-you're looking for that day.
+They're directional, not moral: which end is "good" depends entirely on
+what you're looking for that day.
 
-1. **Geographic remit** — UK-only ↔ Multi-jurisdiction. What the company's
-   policy work *covers*, not where it sits.
+1. **Geographic remit** — UK-only ↔ Multi-jurisdiction.
 2. **Policy area scope** — Single-issue specialist ↔ Broad multi-domain.
-3. **Stage of company** — Pre-product ↔ Established. Not a quality
-   signal — the *kind* of work differs sharply by stage.
-4. **Policy posture** — Frontier-defining ↔ Compliance-maintaining. The
-   frame that most often changes a read on a company.
-5. **Working style** — Writing-led ↔ Government affairs-led. A
-   personal-fit frame; you can do either, you have a preference.
-6. **Team style** — Set the frontier ↔ Execute the playbook. Distinct
-   from policy posture; this one's about what a Monday morning feels like.
+3. **Stage of company** — Pre-product ↔ Established.
+4. **Policy posture** — Frontier-defining ↔ Compliance-maintaining.
+5. **Working style** — Writing-led ↔ Government affairs-led.
+6. **Team style** — Set the frontier ↔ Execute the playbook.
 
-The frames are editable. Renaming a pole, sharpening a description, or
-rewriting what a frame even *means* triggers a background re-score across
-every company on that frame. A small pixel cat appears while the re-score
-is in flight and disappears when the field is fresh again.
+The frames page has two halves: **What you care about** (the
+definitions — editable, with a "Ask lobbycat for frame ideas" affordance
+that proposes 2–3 new frames you might want to add) and **Weighing what
+you care about** (every frame, Must / Should / Could). Editing a
+definition or a weight triggers a background re-score with the cat
+animation; the field re-sorts when the new scores land.
 
 ## How the scoring works
 
 Two things move:
 
-- **Weights** — each frame carries a user weight: **low (×1)**,
-  **medium (×2)**, **high (×3)**. Defaults to medium across the board.
-  Editing a weight is instant — no LLM call, just a client-side recompute
-  and a re-sort.
-- **Scores** — each (company × frame) cell carries a decimal score on a
-  1.0–5.0 scale, a stored rationale, and a list of evidence citations.
-  Scores are LLM-produced from real artefacts; they refresh in the
-  background when evidence lands or a frame definition changes.
+- **Weights** — each frame carries a **Must (×3) / Should (×2) /
+  Could (×1)** weight. Editing a weight is instant — client-side
+  recompute, no LLM call, dashboard re-sorts.
+- **Scores + fit-notes** — each (company × frame) cell carries a
+  decimal score on a 1.0–5.0 scale, a stored rationale, and a list of
+  evidence citations. Each company also carries a **fit-note** grounded
+  in your wizard answers (current role one-liner, what you're
+  exploring, location preferences, open-text answers). Both are
+  LLM-produced from real artefacts and refresh in the background when
+  evidence lands, when you edit a frame, or when you change a wizard
+  answer in About.
 
 The aggregate is a weighted mean across the six frames, displayed as a
-single decimal to one place ("4.2 / 5"). Sortable. Visible in the table.
-No tiers, no badges. It's "what you said matters to you, applied to the
-field" — not "the objectively best company."
+single decimal to one place ("4.2 / 5"). Sortable. No tiers, no badges.
+It's "what you said matters to you, applied to the field" — not "the
+objectively best company."
 
-Every score carries an as-of timestamp. Stale-but-displayed beats
-hidden-while-recomputing.
+Every score and every fit-note carries an as-of timestamp.
+Stale-but-displayed beats hidden-while-recomputing.
 
 ## The dataset
 
 Forty London organisations across three tiers (S/A/B). Editorial choice,
-not coverage. The set is curated against two criteria:
+not coverage. Two criteria:
 
 1. Real London presence — HQ, material office, or UK research/think-tank
    footprint that lives mostly here.
@@ -89,46 +98,66 @@ The full memo is in `research/london-companies.md`. The seed data is in
 `src/db/seed-data.ts`. Every entry is hand-edited; there is no automated
 ingestion of the company list itself. The *evidence* beneath each
 company — publications, roles, lobbying records, consultation
-submissions, safety frameworks — is pulled by the data pipelines.
+submissions, safety frameworks — is pulled by the data pipelines and
+fed into both the scoring and the fit-notes.
 
-## The surfaces
+## The surfaces (v0.7)
 
-- **Table** is the home view. Every company on every frame, sortable by
-  the weighted aggregate (or any individual frame). Cells expand to
-  reveal rationale + citations.
-- **Company** is the dive-deep page. Fit-note, all six frame cells with
-  full rationale, per-company notes, recent publications, open roles,
-  consultation submissions, safety frameworks.
-- **Compare** is the decision sandbox. Two to five companies in adjacent
-  columns; an alt-weights panel that re-ranks only inside the sandbox.
-- **Frames** is the editorial surface. Read and edit what each frame
-  means; edits trigger background re-scoring.
-- **About** is the personal-state surface: profile, weights, concerns.
+- **`/wizard`** — six-step onboarding (welcome → role one-liner →
+  exploring → location prefs → frame weights → open-text → vaporwave
+  scoring takeover). Autosaves per step; resumes if abandoned.
+- **`/` (dashboard)** — stacked company cards sorted by weighted
+  aggregate. Top-3 frame cells visible per card; "show more" reveals
+  the rest. Filter + sort toolbar at the top. A welcome-back card
+  above the list shows research-feed diffs since your last visit.
+- **`/companies/[slug]`** — dive-deep page. Fit-note, all six frame
+  cells with full rationale, per-company notes, publications, open
+  roles, consultation submissions, safety frameworks.
+- **`/frames`** — definitions (editable, with "Ask lobbycat for frame
+  ideas") + Must/Should/Could weights.
+- **`/about`** — edit-in-place on every wizard field. A "replay
+  onboarding" link relaunches the wizard from step 1.
+
+The **Compare sandbox** from v0.6 is gone. The wizard + the fit-note
+on every card carries the decision weight now.
+
+## The look (vaporwave, calm cousin)
+
+v0.7 swaps the v0.6 earthcore palette for a calm-cousin vaporwave
+system: cyan / magenta / void-purple on a near-black ground, Orbitron
+for display, Share Tech Mono for code, perspective grid + sunset
+gradient on the onboarding hero and the scoring takeover. The pixel
+cat survives — same sprite, new halo.
+
+The full design tokens live in `src/styles/globals.css`.
 
 ## Architecture (short)
 
 ```
 Next.js 16 (App Router, TypeScript, Tailwind v4)
-  ↳ Neon (Postgres) via Drizzle ORM
-  ↳ Anthropic API for scoring + editorial actions
-  ↳ Vercel for hosting (cron + background scoring via after())
+  ↳ Neon (Postgres) via Drizzle ORM (@neondatabase/serverless HTTP)
+  ↳ Anthropic API for scoring + fit-notes + editorial actions
+  ↳ Vercel for hosting (cron + background work via after())
 
-src/styles/machine.css         the design tokens (palette, type, motion)
-src/db/schema.ts               schema (companies, frames, frame_scores, …)
-src/db/seed-data.ts            the curated London set (editorial source)
+src/styles/globals.css         design tokens (vaporwave palette, type, motion)
+src/db/schema.ts               schema (companies, frames, frame_scores, user_profile, …)
+src/db/seed-data.ts            the curated London set
 src/lib/scoring/               the live scoring engine
+src/lib/fit-notes/             fit-note generation grounded in wizard answers
 src/lib/ats/                   ATS feed adapters (Greenhouse / Lever / Ashby)
 src/lib/rss/                   RSS publication ingestion
 src/lib/eu-transparency/       EU Transparency Register matcher
 src/lib/consultations/         consultation submissions evidence pipeline
 src/lib/safety-frameworks/     safety frameworks evidence pipeline
+src/app/wizard/                the six-step onboarding wizard
 src/app/api/cron/              Vercel cron handlers for each pipeline
 src/app/api/rescore-status/    "is the cat busy?" endpoint
 src/app/                       the App Router surfaces
-docs/REFACTOR-v0.6.md          the v0.6 sign-off doc (read this first)
+src/components/loading-cat.tsx shared calm-cousin loading animation
+research/feed.json             Glyphie's research feed (diff source for welcome-back)
+docs/REFACTOR-v0.7.md          the v0.7 sign-off doc
 docs/journal/                  the running build journal
-docs/ASSUMPTIONS-v0.6.md       in-flight decisions log
-research/london-companies.md   the editorial memo behind the seed
+docs/ASSUMPTIONS-v0.7.md       in-flight decisions log
 ```
 
 ## The data pipelines
@@ -149,16 +178,21 @@ company list without expanding the list itself:
   scaling / RAI policy frameworks per company.
 
 Each pipeline is idempotent, per-source failure-tolerant, and runs
-against the *existing* curated list — they never add companies. When a
-pipeline lands new evidence, the scoring engine re-scores affected cells
-in the background.
+against the *existing* curated list. When a pipeline lands new evidence,
+the scoring engine re-scores affected cells in the background and any
+fit-note grounded in that evidence re-generates.
+
+Alongside the structured pipelines, **Glyphie** (a sibling research
+agent) writes a free-form feed of *what changed in the AI policy field
+this week* into `research/feed.json`. The dashboard's welcome-back card
+reads from there.
 
 ## Running it
 
 ```bash
 npm install
 cp .env.example .env.local        # fill in DATABASE_URL, ANTHROPIC_API_KEY
-npm run db:push                   # apply schema (or scripts/apply-migrations.ts)
+npm run db:push                   # apply schema
 npm run db:seed                   # seed the London set + frames
 npm run dev                       # http://localhost:3000
 ```
@@ -169,39 +203,44 @@ gate.
 
 ## Status
 
-**v0.6 — live scoring engine (2026-06-23).** Concept signed off. Step 1
-through Step 13 landed: schema + weights, the ranked table, dive-deep
-company pages, the Compare sandbox, Surprise, per-company notes, the
-consultations + safety-frameworks evidence pipelines, auto-rescore on
-frame edit with the animated cat, onboarding rewrite, and a full
-re-curation pass across 40 × 6 = 240 cells (zero fallbacks, real
-citations on every cell that had evidence to cite). See `docs/journal/`
-for the running log and `docs/ASSUMPTIONS-v0.6.md` for the in-flight
-decisions taken without pausing for sign-off.
+**v0.7 — onboarding-first vaporwave engine (2026-06-23).** Concept
+signed off. Steps 1 through 15 landed: schema migrations for wizard
+state, vaporwave token system (calm cousin) with Orbitron +
+Share Tech Mono, the six-step `/wizard` route with autosave + the
+step-6 scoring takeover, dashboard cards with stacked-list + top-3
+visible / show-more reveals, filter + sort toolbar, welcome-back card
+reading `research/feed.json`, frames page redesign with
+Must/Should/Could + "Ask lobbycat for frame ideas", surprise modal
+vaporwave-theatre reskin, About page mirroring the wizard fields with
+edit-in-place + replay-onboarding, sweep of `/compare` + driver.js
+coachmark + Machine swatch page + other v0.4/v0.5 residue, and shared
+loading-cat animation wired into fit-note + surprise with cycling
+quotes. See `docs/journal/` for the running log and
+`docs/ASSUMPTIONS-v0.7.md` for the in-flight decisions taken without
+pausing for sign-off.
 
 ## How to use it
 
 A short note for the person this is for:
 
-Open the table. The default weights are medium across the board, which
-is the field as it stands without any opinion from you. Now pick the
-frame you actually care about most and click it up to **high**. Watch
-the table re-sort. Pick the frame you care about least and click it
-down to **low**. Watch the table re-sort again. That motion — the field
-rearranging because *you* said something — is the product.
+Open `/wizard`. Six steps, about five minutes. Tell it who you are
+right now, what you're poking at, where you'd live, and which frames
+you actually care about. The last step is theatre — let it run; it's
+the cat reading every company against what you just said.
 
-When a cell catches your eye, click it. The rationale is a paragraph of
-real editorial reasoning, with citations to artefacts you can read
-yourself. If you disagree with the read, that disagreement is the
-useful thing; it tells you something about how you actually weight the
-frame.
+You'll land on the dashboard with the field already sorted for you.
+Scan the top three cards. Read the fit-notes; they're written *to you*,
+grounded in what you typed in the wizard. If one lands, click into the
+company page. If one feels wrong, that's the more useful signal — it
+means something about how you actually weight a frame.
+
+Edit a weight on `/frames` (Must / Should / Could) and watch the
+dashboard re-sort. Edit a frame *definition* and watch the cat
+re-read every company on that frame. Change something about yourself
+on `/about` and every fit-note re-grounds.
 
 When you don't know where to look, hit **Surprise me**. The reason will
 either land or it won't — and the *wrong* picks tell you something too.
-
-The Compare view is for after you have a shortlist. The alt-weights
-sandbox there lets you swing the field one more time without committing
-to it globally.
 
 That's it. There's nothing hidden, no second algorithm in the
 background. Just the field, the lens you chose, and a small cat that's
