@@ -50,6 +50,44 @@ export default async function FramesPage() {
           it; you do. Add more as your thinking changes — scales for 1–N axes,
           tags for binary lenses, questions for free-text answers per company.
         </p>
+
+        {/* Definitions — quick reference for the three frame kinds. */}
+        <section
+          aria-label="Frame definitions"
+          className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-3"
+        >
+          <div className="border border-rule rounded-sm bg-panel-raised/40 p-4">
+            <div className="mono text-[10px] uppercase tracking-[0.14em] text-whisper mb-1">
+              scale
+            </div>
+            <div className="serif text-ink text-base">A 1–N axis</div>
+            <p className="serif text-sm text-muted mt-1">
+              Low label → high label. Used by the dashboard ranking and the
+              comparator. Most frames are scales.
+            </p>
+          </div>
+          <div className="border border-rule rounded-sm bg-panel-raised/40 p-4">
+            <div className="mono text-[10px] uppercase tracking-[0.14em] text-whisper mb-1">
+              tag
+            </div>
+            <div className="serif text-ink text-base">A binary lens</div>
+            <p className="serif text-sm text-muted mt-1">
+              Either a company is tagged or it isn&apos;t. Good for cohorts
+              you want to filter on (e.g. <em>frontier lab</em>).
+            </p>
+          </div>
+          <div className="border border-rule rounded-sm bg-panel-raised/40 p-4">
+            <div className="mono text-[10px] uppercase tracking-[0.14em] text-whisper mb-1">
+              question
+            </div>
+            <div className="serif text-ink text-base">A free-text prompt</div>
+            <p className="serif text-sm text-muted mt-1">
+              Each company gets a written answer. Lives in the drawer,
+              doesn&apos;t affect the ranking.
+            </p>
+          </div>
+        </section>
+
         <div className="mt-10">
           <FrameWeightsPanel frames={scaleFrames} initial={initialWeights} />
         </div>

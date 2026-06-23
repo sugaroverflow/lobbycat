@@ -12,16 +12,17 @@ type WeightFrame = {
   highLabel: string | null;
 };
 
+// MoSCoW-style labels for v0.7 — internally low/med/high; surfaced as Could/Should/Must.
 const LEVELS: FrameWeightLevel[] = ["low", "medium", "high"];
 const GLYPH: Record<FrameWeightLevel, string> = {
-  low: "L",
-  medium: "M",
-  high: "H",
+  low: "Could",
+  medium: "Should",
+  high: "Must",
 };
 const COPY: Record<FrameWeightLevel, string> = {
-  low: "low",
-  medium: "medium",
-  high: "high",
+  low: "could care",
+  medium: "should care",
+  high: "must care",
 };
 
 /**
@@ -90,10 +91,10 @@ export function FrameWeightsPanel({
             What you care about
           </h2>
           <p className="serif text-sm text-muted mt-0.5">
-            Set each frame to{" "}
-            <span className="mono text-xs">low</span> ·{" "}
-            <span className="mono text-xs">medium</span> ·{" "}
-            <span className="mono text-xs">high</span>. The{" "}
+            Weight each frame —{" "}
+            <span className="mono text-xs">Must</span> ·{" "}
+            <span className="mono text-xs">Should</span> ·{" "}
+            <span className="mono text-xs">Could</span>. The{" "}
             <Link href="/" className="underline hover:text-ink">
               ranked table
             </Link>{" "}
@@ -111,7 +112,7 @@ export function FrameWeightsPanel({
             onClick={resetAll}
             disabled={pending}
             className="border border-rule-strong px-2 py-1 rounded-sm hover:bg-panel disabled:opacity-60"
-            title="Reset every frame to medium"
+            title="Reset every frame to Should"
           >
             reset to default
           </button>
@@ -151,7 +152,7 @@ export function FrameWeightsPanel({
                       onClick={() => setOne(f.id, lvl)}
                       disabled={pending}
                       className={[
-                        "px-3 py-1.5 mono text-[11px] uppercase tracking-[0.14em]",
+                        "px-3 py-1.5 mono text-[10px] uppercase tracking-[0.14em]",
                         "border-r border-rule-strong last:border-r-0",
                         active
                           ? "bg-ink text-bg"

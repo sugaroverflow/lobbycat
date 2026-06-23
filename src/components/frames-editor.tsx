@@ -404,7 +404,7 @@ function CatSuggestions() {
           <CatMark size={28} className="mt-1 shrink-0" />
           <div className="min-w-0">
             <h2 className="serif text-lg text-ink font-medium">
-              Ask the cat for frame ideas
+              Ask lobbycat for frame ideas
             </h2>
             <p className="serif text-sm text-muted mt-1 max-w-2xl">
               Lobbycat reads your profile, your existing frames, and the
