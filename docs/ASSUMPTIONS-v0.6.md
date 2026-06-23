@@ -242,3 +242,65 @@ Format: timestamp · area · assumption · alternative considered · would-chang
   - Would change if: we want regulator framing docs (e.g. CMA's
     AI-foundation-models update) treated as evidence. Add them under
     `framework_type = 'governance_charter'` then.
+
+## 2026-06-23 16:10 UTC · Step 11.5 · Auto-rescore on frame edit + animated cat
+
+Overrides the deferred-rescore assumption from Step 6. Per `v0.6-FATIMA-FEEDBACK.md`
+(2026-06-23 15:43 UTC), frame definition edits now fan out a background
+rescore across every company; an animated pixel cat in the bottom-right
+surfaces while cells are stale.
+
+- **Assumed:** Background fan-out via Next 16's `after(() => …)` inside the
+  `updateFrame` server action. Returns the action immediately; the worker
+  rescores each (company × frame) cell sequentially.
+  - Alternatives: queue table + cron drainer; client-side fire-and-forget
+    fetch to a worker route. Rejected — `after` is the canonical primitive
+    on Vercel for "do this after the response flushes" and it survives the
+    function lifetime under the same invocation.
+  - Would change if: a single frame edit blows past the Vercel function
+    `maxDuration` for 70 companies. Then chunk into multiple `after` slices
+    triggered by an internal route.
+
+- **Assumed:** "Meaningful change" = trimmed/whitespace-normalised diff of
+  `name`, `description`, `kind`, `scale`, `lowLabel`, `highLabel`, `prompt`.
+  `lowDescription`/`highDescription` are in the schema but not yet exposed
+  in the FramesEditor UI; they're omitted from the diff so reads-as-null
+  doesn't false-positive into a rescore.
+  - Alternatives: SHA-hash the prompt the model would actually see and
+    compare. More semantically correct, but requires invoking the prompt
+    builder server-side just to diff.
+  - Would change if: editorial descriptions land in the form. Add them.
+
+- **Assumed:** 2-second debounce isn't *currently* needed because the
+  FramesEditor saves on explicit form submit (not per-keystroke). Live-edit
+  debounce becomes relevant only when we move to keystroke-saving. Skipping
+  it for now means simpler code; the "no double rescore for the same frame
+  version" guarantee is provided by the worker setting `stale_at` up-front
+  and the action only firing on save.
+  - Alternatives: implement the 2s debounce client-side anyway, in case the
+    form gains autosave.
+  - Would change if: per-keystroke saves land. Then add a `setTimeout(…2000)`
+    client-side around the rescore trigger.
+
+- **Assumed:** `stale_at timestamptz` column on `frame_scores` is the single
+  source of truth for "cell in flight". `/api/rescore-status` counts rows
+  where `stale_at IS NOT NULL`; the cat polls every 2s while pending and
+  every 8s while idle.
+  - Alternatives: Redis/PG NOTIFY pub-sub; client-side optimistic state only.
+  - Would change if: poll volume gets visible in logs. Switch idle poll to
+    every 30s, or move to Server-Sent Events.
+
+- **Assumed:** Animated cat is a CSS-only treatment over the existing
+  `public/cat/lobbycat.png` sprite — tail-sway keyframes + a brightness
+  blink — not a sprite-sheet. Sprite-sheet animation can land later under
+  `public/cat/pixel/sprites.png` (which already exists).
+  - Alternatives: ship the sprite-sheet animation now.
+  - Would change if: Fatima wants the animation richer for the v0.6 LIVE
+    moment. Swap in a `steps()` background-position animation against the
+    existing sprite sheet.
+
+- **Assumed:** `/api/rescore-status` is unauthenticated — payload is just
+  counts and frame ids, no user data, no rate-limit concern at Aadi's
+  traffic volume.
+  - Alternatives: gate behind the existing session cookie.
+  - Would change if: lobbycat ever becomes multi-tenant.

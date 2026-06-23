@@ -57,6 +57,13 @@
       "when": 1782229229515,
       "tag": "0007_safety_frameworks",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1782230182475,
+      "tag": "0008_modern_anita_blake",
+      "breakpoints": true
     }
   ]
 }

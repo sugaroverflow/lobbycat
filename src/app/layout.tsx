@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { RescoringCat } from "@/components/rescoring-cat";
 
 // v0.5: mono-forward register per CONCEPT-v0.5 §6.3. Mono is the system
 // default; sans is the prose face (~20% of visible glyphs).
@@ -39,6 +40,10 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-canvas text-prose">
         {children}
+        {/* v0.6 step 11.5: floating animated cat while a frame-edit rescore
+            is in flight. Mounted at layout level so it persists across page
+            transitions during the worker run. */}
+        <RescoringCat />
       </body>
     </html>
   );

@@ -532,6 +532,52 @@ export async function rescoreCompany(
   return results;
 }
 
+/**
+ * v0.6 step 11.5 — fan a single frame across every company.
+ *
+ * Called from `updateFrame` after a meaningful definition edit. Marks every
+ * (company × this frame) cell stale, then rescores them one at a time so the
+ * UI's animated cat can clear as cells refresh. `force: true` so the
+ * evidence-version short-circuit doesn't skip cells whose evidence happens to
+ * be unchanged — the FRAME changed, that's the whole point.
+ */
+export async function rescoreFrameAcrossCompanies(
+  frameId: number,
+  opts: { onProgress?: (done: number, total: number) => void } = {},
+): Promise<{ rescored: number; failed: number }> {
+  const allCompanies = await db.select({ id: companies.id }).from(companies);
+  // Mark stale up-front so the indicator turns on immediately even before
+  // the first rescoreCompanyFrame call returns.
+  await db
+    .update(frameScores)
+    .set({ staleAt: new Date() })
+    .where(eq(frameScores.frameId, frameId));
+
+  let rescored = 0;
+  let failed = 0;
+  for (let i = 0; i < allCompanies.length; i++) {
+    const c = allCompanies[i];
+    try {
+      await rescoreCompanyFrame(c.id, frameId, { force: true });
+      // Clear staleness as each cell completes.
+      await db
+        .update(frameScores)
+        .set({ staleAt: null })
+        .where(
+          and(
+            eq(frameScores.companyId, c.id),
+            eq(frameScores.frameId, frameId),
+          ),
+        );
+      rescored++;
+    } catch {
+      failed++;
+    }
+    opts.onProgress?.(i + 1, allCompanies.length);
+  }
+  return { rescored, failed };
+}
+
 /* ------------------------------------------------------------------ */
 /* Live aggregate maths (shared with client hook)                     */
 /* ------------------------------------------------------------------ */

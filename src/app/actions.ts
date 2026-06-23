@@ -13,6 +13,8 @@ import {
 } from "@/db/schema";
 import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
+import { rescoreFrameAcrossCompanies } from "@/lib/scoring";
 
 type FrameKind = "scale" | "tag" | "question";
 
@@ -103,10 +105,50 @@ export async function updateFrame(input: {
   prompt?: string | null;
 }) {
   const values = normalizeFrameInput(input);
+
+  // v0.6 step 11.5: read the previous row so we can detect a *meaningful*
+  // definition change. Pure whitespace / cosmetic edits don't get to spend
+  // Sonnet tokens; anything that lands in the prompt does.
+  const [previous] = await db
+    .select()
+    .from(framesTable)
+    .where(eq(framesTable.id, input.id))
+    .limit(1);
+
   await db.update(framesTable).set(values).where(eq(framesTable.id, input.id));
   revalidatePath("/frames");
   revalidatePath("/");
   revalidatePath(`/companies/[slug]`, "page");
+
+  const normalise = (v: unknown) =>
+    (typeof v === "string" ? v : v == null ? "" : String(v))
+      .trim()
+      .replace(/\s+/g, " ");
+  const meaningful =
+    !previous ||
+    normalise(previous.name) !== normalise(values.name) ||
+    normalise(previous.description) !== normalise(values.description) ||
+    normalise(previous.kind) !== normalise(values.kind) ||
+    normalise(previous.scale) !== normalise(values.scale) ||
+    normalise(previous.lowLabel) !== normalise(values.lowLabel) ||
+    normalise(previous.highLabel) !== normalise(values.highLabel) ||
+    normalise(previous.prompt) !== normalise(values.prompt);
+  // Note: low/highDescription aren't editable from the FramesEditor yet, so
+  // they're not in the comparison — they get exercised the day we ship an
+  // editor for them.
+
+  if (meaningful) {
+    // Background fan-out via Next 15+'s `after` so the action returns
+    // immediately. The worker marks each (company × this frame) cell stale,
+    // rescores it, and clears the stale flag — driving the animated cat.
+    after(async () => {
+      try {
+        await rescoreFrameAcrossCompanies(input.id);
+      } catch {
+        // Swallow — the nightly /api/cron/rescore catches anything still stale.
+      }
+    });
+  }
 }
 
 export type SuggestedFrame = {

@@ -357,6 +357,10 @@ export const frameScores = pgTable(
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
+    // v0.6 step 11.5: set when a frame definition edit invalidates this
+    // cell. Cleared when the background rescore worker writes a fresh row.
+    // Drives the animated-cat indicator on the home page.
+    staleAt: timestamp("stale_at", { withTimezone: true }),
   },
   (t) => [primaryKey({ columns: [t.companyId, t.frameId] })],
 );
