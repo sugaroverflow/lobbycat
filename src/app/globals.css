@@ -5,28 +5,24 @@
  * v0.7 Vaporwave token surface (calm cousin)
  *
  * Tokens live in src/styles/vaporwave.css (§4 of REFACTOR-v0.7).
- * Role names match v0.5 Machine so existing components keep rendering on
- * the new palette without a component-by-component rewrite. The Machine
- * CSS file is purged wholesale in v0.7 Step 12 (sweep deletion).
- *
- * Legacy comment below preserved for context; everywhere it says "Machine"
- * read "Vaporwave" until Step 12.
+ * Step 12 (sweep) removed the Machine narrative — only the role-named
+ * utilities and the earthcore back-compat aliases survive, both feeding
+ * the Vaporwave palette underneath.
  * ---------------------------------------------------------------------------
  * This file:
- *   1. Re-exports Machine tokens into Tailwind v4's @theme so utility
- *      classes (`bg-canvas`, `text-prose`, `border-rule`) resolve correctly.
- *   2. Aliases the v0.3/v0.4 earthcore token names to Machine roles so the
- *      existing component tree keeps rendering during the Step 4 rebuild
- *      (no component-by-component rewrite required up-front).
- *   3. Sets body defaults and the small set of editorial helpers v0.5 needs.
- *
- * Earthcore aliases will be removed at the end of Step 4 (Rebuild) when no
- * component references them. Until then they let the surface switch palette
- * without breaking. — Lotus 🪷, 2026-06-19
+ *   1. Re-exports the role tokens into Tailwind v4's @theme so utility
+ *      classes (`bg-canvas`, `text-prose`, `border-rule`, etc.) resolve
+ *      against the Vaporwave palette.
+ *   2. Aliases the v0.3/v0.4 earthcore names (cream-dark, ink, moss, sage,
+ *      ochre, terracotta, mushroom, warm, positive, whisper, …) onto the
+ *      role tokens so unmodified components keep rendering. Plenty of
+ *      callsites still reach for these — a follow-up cleanup can drop the
+ *      aliases once everything has migrated to role names.
+ *   3. Sets body defaults and the editorial helpers the surface needs.
  * ========================================================================= */
 
 @theme {
-  /* Machine — role-named utilities. Use these in v0.5 components.
+  /* Role-named utilities. Use these in new components.
    * (Tailwind v4 generates utilities like `bg-canvas`, `text-prose`,
    *  `border-rule` from --color-<name> entries below.) */
   --color-canvas: var(--bg-canvas);
@@ -45,9 +41,9 @@
   --color-rule: var(--rule);
   --color-rule-strong: var(--rule-strong);
 
-  /* Earthcore backward-compat aliases — v0.3/v0.4 names → Machine roles.
-   * These exist so unmodified v0.4 components render in the Machine palette
-   * during the rebuild. Do NOT add new components that reach for these. */
+  /* Earthcore backward-compat aliases — v0.3/v0.4 names → role tokens.
+   * These exist so unmodified legacy components render in the Vaporwave
+   * palette. Do NOT add new components that reach for these. */
   --color-bg: var(--bg-canvas);
   --color-surface: var(--bg-panel);
   --color-surface-sunk: var(--bg-panel-sunk);
@@ -75,11 +71,11 @@
   --color-positive: var(--accent-action);
   --color-positive-soft: var(--readout-cyan);
 
-  /* Fonts — Machine wants mono-forward (§6.3, ~80/20 ratio).
-   * Swap default body face to mono; sans is for prose-length reading only. */
+  /* Fonts — mono-forward (~80/20 ratio).
+   * Default body face is mono; sans is for prose-length reading only. */
   --font-mono: var(--font-mono);
   --font-sans: var(--font-sans);
-  --font-serif: var(--font-mono);   /* v0.4 `.serif` helper retargets to mono — no serif in Machine */
+  --font-serif: var(--font-mono);   /* v0.4 `.serif` helper retargets to mono — no serif in Vaporwave */
 }
 
 html {
@@ -88,7 +84,7 @@ html {
 }
 
 body {
-  /* Machine is mono-forward: chrome, controls, nav, labels, readouts all mono.
+  /* Mono-forward: chrome, controls, nav, labels, readouts all mono.
    * Components that need prose-length reading opt in via .prose-face. */
   font-family: var(--font-mono);
   color: var(--fg-prose);
@@ -147,7 +143,7 @@ body {
   color: var(--fg-prose-soft);
 }
 
-/* The eyebrow helper survives — Machine uses cyan readouts for it, not whisper. */
+/* The eyebrow helper survives — cyan readout, not whisper. */
 .eyebrow {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -156,7 +152,7 @@ body {
   color: var(--readout-cyan);
 }
 
-/* v0.4 `.serif` callsites retarget to mono — no serif in Machine. */
+/* v0.4 `.serif` callsites retarget to mono — no serif in Vaporwave. */
 .serif {
   font-family: var(--font-mono);
   letter-spacing: -0.005em;

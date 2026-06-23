@@ -336,3 +336,39 @@ language "re-launches the wizard from step 1".
 surfaced as a read-only "historical" block for profiles that have
 both — would add a collapsed "imported from v0.6" expander above the
 notes index.
+
+## 2026-06-23 22:50 UTC — Step 12: sweep what's clearly dead, leave the rest
+
+**Assumption:** Step 12's "kill list" applies to anything the v0.7
+surface no longer reaches — `/compare` (entire dir), the v0.5
+coachmark + driver.js dependency + `actions-mark-onboarded.ts`, the
+dead `TrackerTable`/`ExpandableCompanyRow` components replaced by
+`DashboardCards`, and the v0.5 `/machine-test` swatch reference page.
+It does **not** yet drop the earthcore back-compat aliases in
+`globals.css` (cream-dark, ink, moss, sage, ochre, terracotta,
+mushroom, warm, positive, whisper), the legacy v0.6 columns on
+`user_profile` (`onboardedAt`, headline, bio, concerns, free-text
+weights, sources), or the `tags`/`TagChip` machinery on
+`/companies/[slug]` — those still have live callsites and dropping
+them mid-sweep would be a separate, larger touch.
+
+**Alternatives considered:**
+- **Drop the earthcore aliases too** — would be the cleanest "calm
+  cousin" end-state, but 13 distinct alias families are still in use
+  across ~21 components (`text-ink` alone has 21 callsites). That's a
+  per-component rewrite job, not a sweep; better scoped after v0.7
+  ships.
+- **Drop `user_profile.onboardedAt`, `headline`, `bio`, `concerns`,
+  free-text weight columns, `sources`** — premature deletion of data.
+  The v0.6 → v0.7 migration kept them as fallbacks for fit-note
+  grounding. A future "purge legacy columns" migration is the right
+  vehicle.
+- **Sweep `TagChip` + tags on `/companies/[slug]`** — spec §9 says
+  "Tags display in the dashboard (the seed data keeps tags for future
+  use, just not rendered)". I read that as dashboard-only; the
+  per-company detail page is its own surface and still renders tags.
+
+**Would change if:** Fatima wants the earthcore aliases gone now (do
+a token-rename sweep next), or wants tags also stripped from
+`/companies/[slug]` (one-line removal of the chip block).
+

@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { SiteShell } from "@/components/site-shell";
 import { WelcomeCard } from "@/components/welcome-card";
 import { DashboardCards } from "@/components/dashboard-cards";
-import { CoachmarkOnboarding } from "@/components/coachmark-onboarding";
 import {
   getRankedHomeData,
   getUserProfile,
@@ -73,12 +72,6 @@ export default async function HomePage() {
 
   return (
     <SiteShell>
-      <CoachmarkOnboarding
-        onboardedAt={
-          profile?.onboardedAt ? profile.onboardedAt.toISOString() : null
-        }
-        firstName={firstName}
-      />
       <WelcomeCard
         welcomeLine={welcomeLine}
         oldestScoreAt={home.oldestScoreAt}

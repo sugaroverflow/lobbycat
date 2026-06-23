@@ -2,7 +2,6 @@
 
 import { useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { resetOnboarding } from "@/app/actions-mark-onboarded";
 import { resetWizard } from "@/app/actions-wizard";
 
 const COOKIE_NAME = "lc_onboarded_v2";
@@ -10,9 +9,10 @@ const COOKIE_NAME = "lc_onboarded_v2";
 /**
  * v0.7 step 11 — "redo my setup" affordance on /about.
  *
- * Clears `onboardedAt` (legacy coachmark), clears `wizardCompletedAt`
- * (v0.7 wizard gate), drops the cookie fallback, and bounces to
- * `/wizard` so the user re-enters at step 1.
+ * Clears `wizardCompletedAt` (v0.7 wizard gate), drops the legacy
+ * `lc_onboarded_v2` cookie (left over from the v0.5 coachmark tour
+ * that step 12 swept), and bounces to `/wizard` so the user re-enters
+ * at step 1.
  */
 export function ReplayOnboardingLink() {
   const router = useRouter();
@@ -27,7 +27,7 @@ export function ReplayOnboardingLink() {
           document.cookie = `${COOKIE_NAME}=; path=/; max-age=0; samesite=lax`;
         }
         startTransition(async () => {
-          await Promise.all([resetOnboarding(), resetWizard()]);
+          await resetWizard();
           router.push("/wizard");
         });
       }}

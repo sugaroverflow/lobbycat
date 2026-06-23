@@ -12,8 +12,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Wordmark size={26} />
           </Link>
           <nav className="flex items-center gap-6 mono text-xs uppercase tracking-[0.14em] text-muted">
-            <Link href="/compare" className="hover:text-ink transition">Compare</Link>
-            <Link data-coachmark="frames-nav" href="/frames" className="hover:text-ink transition">Frames</Link>
+            <Link href="/frames" className="hover:text-ink transition">Frames</Link>
             <SurpriseButton />
             <Link href="/about" className="hover:text-ink transition">About</Link>
           </nav>
