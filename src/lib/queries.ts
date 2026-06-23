@@ -531,6 +531,33 @@ export async function getUserProfile() {
   return profile ?? null;
 }
 
+/**
+ * v0.7 step 8 — record a home-page visit and return the *previous*
+ * `last_seen_at` so the caller can compute the welcome-back diff window.
+ *
+ * Debounced ~5 minutes: if the previous visit is within that window we
+ * don't bump, so a refresh doesn't wipe the diff that's still on screen.
+ */
+const LAST_SEEN_DEBOUNCE_MS = 5 * 60 * 1000;
+export async function recordHomeVisit(): Promise<{
+  previousLastSeen: string | null;
+}> {
+  const [profile] = await db.select().from(userProfile).limit(1);
+  if (!profile) return { previousLastSeen: null };
+  const prev = profile.lastSeenAt
+    ? new Date(profile.lastSeenAt as unknown as Date).toISOString()
+    : null;
+  const prevMs = prev ? Date.parse(prev) : 0;
+  const now = Date.now();
+  if (!prev || now - prevMs > LAST_SEEN_DEBOUNCE_MS) {
+    await db
+      .update(userProfile)
+      .set({ lastSeenAt: new Date() })
+      .where(eq(userProfile.id, profile.id));
+  }
+  return { previousLastSeen: prev };
+}
+
 export async function getCompaniesForCompare(slugs: string[]) {
   if (slugs.length === 0) return [];
   const cos = await db

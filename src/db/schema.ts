@@ -461,6 +461,10 @@ export const userProfile = pgTable("user_profile", {
     .$type<Array<{ question: string; answer: string; answeredAt: string }>>()
     .default([])
     .notNull(),
+  // v0.7 step 8 — last time the user landed on home. Used to compute the
+  // welcome-back "new since you were last in" diff. Bumped server-side on
+  // each home render (debounced ~5 min so refresh doesn't wipe the diff).
+  lastSeenAt: timestamp("last_seen_at", { withTimezone: true }),
   updatedAt: timestamp("updated_at", { withTimezone: true })
     .defaultNow()
     .notNull(),

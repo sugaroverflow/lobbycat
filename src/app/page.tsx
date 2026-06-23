@@ -5,7 +5,12 @@ import { SiteShell } from "@/components/site-shell";
 import { WelcomeCard } from "@/components/welcome-card";
 import { DashboardCards } from "@/components/dashboard-cards";
 import { CoachmarkOnboarding } from "@/components/coachmark-onboarding";
-import { getRankedHomeData, getUserProfile } from "@/lib/queries";
+import {
+  getRankedHomeData,
+  getUserProfile,
+  recordHomeVisit,
+} from "@/lib/queries";
+import { buildWelcomeBack } from "@/lib/welcome-back";
 import quotes from "@/db/lobbycat-quotes.json";
 
 type Quotes = { welcomeBack: string[] };
@@ -37,6 +42,21 @@ export default async function HomePage() {
   // flow.
   if (!profile?.wizardCompletedAt) redirect("/wizard");
 
+  // v0.7 step 8 — welcome-back diff. We bump last_seen_at *after* reading
+  // its previous value so the window start is the user's previous visit.
+  const { previousLastSeen } = await recordHomeVisit();
+  const welcomeBack = await buildWelcomeBack({
+    prevLastSeen: previousLastSeen,
+    companies: home.companies.map((c) => ({
+      id: c.id,
+      slug: c.slug,
+      name: c.name,
+    })),
+    scores: home.scores,
+    frameWeights: home.frameWeights,
+    frames: home.frames,
+  });
+
   const firstName = profile?.displayName?.split(" ")[0] || null;
 
   const pool = (quotes as unknown as Quotes).welcomeBack ?? [];
@@ -64,6 +84,8 @@ export default async function HomePage() {
         oldestScoreAt={home.oldestScoreAt}
         ageDays={ageDays}
         companyIds={home.companies.map((c) => c.id)}
+        firstName={firstName}
+        welcomeBack={welcomeBack}
       />
       <DashboardCards
         companies={home.companies}

@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import quotes from "@/db/lobbycat-quotes.json";
 import { rescoreCompanyAction } from "@/app/actions-rescore";
+import type { WelcomeBackData } from "@/lib/welcome-back";
 
 type Quotes = {
   welcomeBack: string[];
@@ -24,11 +25,15 @@ export function WelcomeCard({
   oldestScoreAt,
   ageDays,
   companyIds,
+  firstName,
+  welcomeBack,
 }: {
   welcomeLine: string;
   oldestScoreAt: string | null;
   ageDays: number | null;
   companyIds: number[];
+  firstName?: string | null;
+  welcomeBack?: WelcomeBackData;
 }) {
   const q = quotes as unknown as Quotes;
   const stale = ageDays !== null && ageDays > STALE_DAYS;
@@ -88,6 +93,78 @@ export function WelcomeCard({
       {pending && progress ? (
         <p className="prose-face text-xs text-muted italic pt-2">{progress}</p>
       ) : null}
+      {welcomeBack?.available ? (
+        <WelcomeBackDiff
+          welcomeBack={welcomeBack}
+          firstName={firstName ?? null}
+        />
+      ) : null}
     </section>
+  );
+}
+
+/**
+ * v0.7 step 8 — "New since you were last in:" panel.
+ *
+ * Renders Glyphie's diff (filtered against the user's frame weights) under
+ * the welcome quote. Three named bullets max, with an optional rollup
+ * count for the residual. Degrades to a single muted line when the window
+ * is empty, and the parent skips rendering entirely when the feed is
+ * missing / malformed (`welcomeBack.available === false`).
+ */
+function WelcomeBackDiff({
+  welcomeBack,
+  firstName,
+}: {
+  welcomeBack: WelcomeBackData;
+  firstName: string | null;
+}) {
+  const heading = firstName
+    ? `New since you were last in, ${firstName}…`
+    : "New since you were last in…";
+  if (welcomeBack.newEventCount === 0) {
+    return (
+      <div
+        className="pt-4 mono text-[11px] uppercase tracking-[0.14em] text-whisper"
+        data-testid="welcome-back-empty"
+      >
+        no new updates since your last visit
+      </div>
+    );
+  }
+  return (
+    <div
+      className="pt-4"
+      data-testid="welcome-back"
+      aria-label="new since you were last in"
+    >
+      <p className="mono text-[11px] uppercase tracking-[0.14em] text-whisper pb-2">
+        {heading}
+      </p>
+      <ul className="prose-face text-sm text-[var(--fg-prose)] space-y-1.5">
+        {welcomeBack.bullets.map((b, i) => (
+          <li key={i} className="flex gap-2">
+            <span
+              aria-hidden
+              className="text-[var(--accent,#FF00FF)] select-none"
+            >
+              ·
+            </span>
+            {b.href ? (
+              <a
+                href={b.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-rule hover:decoration-current"
+              >
+                {b.text}
+              </a>
+            ) : (
+              <span className="text-muted">{b.text}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

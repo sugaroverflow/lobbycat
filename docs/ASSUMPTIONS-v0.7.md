@@ -271,3 +271,20 @@ deferred to step 7
 - **Alternatives considered:** a separate "sort by frame X" picker, or always-on per-frame column headers.
 - **Implemented as:** single Sort `<select>` with options Overall ↓, Recent activity, Alphabetical, and one option per frame.
 - **Would change if:** Fatima wants ascending-too / column-header sort affordances on the cards themselves.
+
+## 2026-06-23 21:35 UTC — Step 8 welcome-back diff window
+- **Assumed:** the diff window starts at the user's *previous* `last_seen_at` timestamp (new `user_profile.last_seen_at` column, migration 0010). We bump on every home render but debounce 5 minutes so a quick refresh doesn't wipe what's on screen. First-ever visit defaults the window to the last 14 days.
+- **Alternatives considered:** session-cookie based window (broke across devices); per-event "seen" tracking (way too granular for now); show-last-N events regardless of recency.
+- **Implemented as:** server-side read of `research/feed.json`, filtered to events with `date >= windowStart`, ranked by company score on the user's high-weighted frames, then date desc. Top 3 surfaced as named bullets with source links; residual rolled into a count bullet.
+- **Would change if:** Fatima wants per-device windows (then move to cookie) or a "mark all read" affordance (then surface a reset button + a `seen_event_ids` set on user_profile).
+
+## 2026-06-23 21:35 UTC — Step 8 frame-relevance scoring
+- **Assumed:** for ranking the diff, "user frame weights" = pick the user's Must (high) frames; if none, fall back to the first frame in sort order. An event's company score on those frames is the priority signal.
+- **Alternatives considered:** show events for *all* companies scored ≥4 on any high frame; LLM-summarise the diff into one paragraph per visit (too expensive, too slow); pure recency only.
+- **Implemented as:** events sorted by max(company score on priority frames) desc, then event date desc.
+- **Would change if:** Fatima wants stricter filtering (drop events from companies scoring <3) or LLM-narrated diffs.
+
+## 2026-06-23 21:35 UTC — Step 8 graceful degradation
+- **Assumed:** missing/malformed `research/feed.json` → no welcome-back panel at all (only the quote line remains). Empty window (no new events since last visit) → muted single-line "no new updates since your last visit". Both keep the card looking deliberate rather than broken.
+- **Alternatives considered:** always show *something* (last-N events regardless), or hide the entire card on empty.
+- **Would change if:** Fatima wants the empty-state hidden entirely or a "browse the feed" CTA on empty.
