@@ -47,6 +47,9 @@ export default async function AboutPage() {
 
   return (
     <SiteShell>
+      <div className="max-w-[42rem] mx-auto px-6 pb-6 flex justify-end">
+        <ReplayOnboardingLink />
+      </div>
       <ProfileEditor
         displayName={profile.displayName}
         currentRoleOneLiner={profile.currentRoleOneLiner ?? null}
@@ -55,9 +58,6 @@ export default async function AboutPage() {
         openTextAnswers={openTextAnswers}
       />
       <CompanyNotesIndex notes={notes} />
-      <div className="max-w-[42rem] mx-auto px-6 pb-16">
-        <ReplayOnboardingLink />
-      </div>
     </SiteShell>
   );
 }
