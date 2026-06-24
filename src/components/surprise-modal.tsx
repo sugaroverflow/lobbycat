@@ -326,7 +326,7 @@ export function SurpriseModal({
                 boxShadow: "0 0 12px rgba(255,0,255,0.25)",
               }}
             >
-              {pending ? "Pawing…" : "▸ Show me another"}
+              {pending ? "Pawing…" : "▸ Draw another"}
             </button>
           ) : !canShowAnother && latest ? (
             <span

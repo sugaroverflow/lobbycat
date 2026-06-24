@@ -338,3 +338,36 @@ already locked in REFACTOR-v0.7.2.md §11.
   here. Rejected — cross-agent coupling; respects domain split.
 - **Would change if:** The split changes, or Glyphie explicitly defers
   it back to me.
+
+### A7.1 — Step 7 copy hunt: both target strings already absent; one micro-rename.
+
+- **Assumed:** The Step 7 spec ("grep for 'what happened by quiz' +
+  'show me'") was written before the v0.7.1 ux pass that already
+  killed the bigger offenders. Live grep on `src/`:
+  - `what happened by quiz` → 0 hits.
+  - `show me` → 1 hit only: `▸ Show me another` in
+    `src/components/surprise-modal.tsx` (the draw-another-company
+    button in the Surprise cat modal).
+  - The historical "show me around again" affordance on `/about` was
+    already renamed to "🪷 re-take the setup" in `a2a6354`.
+  So the spec was effectively prosecuted across prior commits. The one
+  live remnant is the surprise-modal button.
+- **Did:** Renamed `Show me another` → `Draw another`. Reasons:
+  - Matches the cat-action vocabulary already in the same component
+    (`Pawing…` pending state, `the cat is tired.` exhausted state).
+  - "Draw" names the action concretely (pick at random) instead of
+    asking the *user* to "show me" (which is what Fatima flagged as
+    unclear: the surface should describe what *the system* does, not
+    speak in a vague first-person imperative).
+  - One-token swap, no copy review, no layout change.
+- **Alternatives:**
+  - "Pick another" — also fine, but "draw" leans into the
+    random-draw-from-a-deck mental model the surprise-cat already
+    sells (`MAX_PICKS_PER_SESSION` counter, etc.).
+  - Leave it alone and mark Step 7 a no-op. Rejected — there *is* one
+    live "show me" string; if I'm going to claim Step 7 shipped, I
+    should actually touch it.
+  - Hunt wider (`tell me`, `find me`, etc.). Rejected — out of scope;
+    the spec named two exact strings.
+- **Would change if:** Fatima reviews and prefers "Pick another" or
+  "Another cat pick"; trivial follow-up.
