@@ -2,6 +2,7 @@ export const dynamic = "force-dynamic";
 
 import { SiteShell } from "@/components/site-shell";
 import { FramesEditor, type EditableFrame } from "@/components/frames-editor";
+import { ExplainerBox } from "@/components/explainer-box";
 import { getAllFrames, getUserProfile } from "@/lib/queries";
 import type { FrameWeightLevel } from "@/lib/scoring/aggregate";
 
@@ -34,10 +35,12 @@ export default async function FramesPage() {
         <h1 className="serif text-4xl font-medium text-ink tracking-tight">
           The axes you think on.
         </h1>
-        <p className="serif mt-4 text-muted max-w-2xl">
-          here you can adjust the frames that you care about! come here and
-          add more or adjust them as your thinking changes.
-        </p>
+
+        <ExplainerBox
+          id="frames"
+          className="mt-6"
+          body="here you can adjust the frames that you care about! come back to add more or adjust them as your thinking changes."
+        />
 
         <FramesEditor frames={editable} weights={initialWeights} />
       </section>
