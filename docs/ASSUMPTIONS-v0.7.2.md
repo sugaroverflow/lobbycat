@@ -200,6 +200,88 @@ already locked in REFACTOR-v0.7.2.md §11.
 
 ---
 
+## Step 6 — Pre-generate fit notes (backfill + Glyphie hook) (2026-06-24 22:05 UTC)
+
+### A6.1 — Skipped the optional `generated_by` telemetry column.
+
+- **Assumed:** §4.1 of REFACTOR-v0.7.2 calls the `generated_by` column
+  optional. A schema change for telemetry-only data isn't justified inside
+  v0.7.2 — Sentry breadcrumbs and the response JSON of the cron route give
+  us source attribution at the call-site without a migration. The
+  `GenerateResult.status` shape and the per-row CSV emitted by
+  `scripts/backfill-fit-notes.ts` already record provenance.
+- **Alternatives:** Add the column anyway for downstream analytics on
+  manual-vs-nightly fit-note volume. Rejected — speculative; no consumer
+  for the field today.
+- **Would change if:** Aadi or Fatima asks for a dashboard counting manual
+  vs nightly overrides, or Glyphie wants to attribute her runs.
+
+### A6.2 — Backfill is run-from-CLI, not auto-triggered on deploy.
+
+- **Assumed:** §4.2 mentions a "first-run backfill" on v0.7.2 deploy. Wiring
+  it into the Vercel build / a deploy hook risks the same call burning a
+  $1 round-trip on every PR preview, and the Anthropic key would have to
+  leak into the build phase. Cleaner: `scripts/backfill-fit-notes.ts` runs
+  once from my dev shell when Step 10 lands.
+- **Alternatives:** Trigger it via a one-off Vercel cron entry that
+  self-disables. Rejected — adds infra and we want the CSV summary on
+  disk, not buried in Vercel logs.
+- **Would change if:** v0.8 wants a self-bootstrapping deploy where the
+  whole DB seeds itself; we'd add a `BACKFILL_FIT_NOTES_ON_BUILD=1`
+  branch in the build script.
+
+### A6.3 — Nightly cron "what changed" = new publications OR rescore in last 26h.
+
+- **Assumed:** §4 mentions "frame-score change > 0.3" as a trigger. v0.7
+  rescoring writes a new `frame_scores` row on every change (with the new
+  score) so a window query on `scored_at` already captures rescored
+  companies. Cheaper to check window membership than to compute deltas
+  across two row generations. New `publications` rows are detected via
+  `seen_at` in the 26h window. The 26h overlap allows for a missed run.
+- **Alternatives:** Diff the old and new `frame_scores` per company and
+  only trigger if max-delta > 0.3. Rejected — adds two extra scans, and a
+  small-delta rescore can still represent a real evidence change worth
+  reflecting in the fit-note copy.
+- **Would change if:** The nightly cron starts regenerating too many fit
+  notes per day; tighten the gate to "rescore with confidence-bump" or
+  diff against the prior `frame_scores.scored_at`.
+
+### A6.4 — `skipIfNewerHours=20` default on the cron, `SKIP_IF_NEWER_HOURS=168` on the script.
+
+- **Assumed:** Different defaults for different use-cases. The nightly cron
+  only wants to avoid double-regenerating a company that *just* got a
+  manual click (20h covers the prior nightly + a recent click). The
+  one-off backfill script wants to avoid clobbering anything done in the
+  past week — Fatima might have hand-regenerated some during testing.
+- **Would change if:** Either default annoys the user; both are env vars.
+
+### A6.5 — Cron `max=25` budget guard per run.
+
+- **Assumed:** 25 cap × Anthropic call (~$0.015) ≈ $0.40 worst-case per
+  night. Enough headroom for a typical "daily-research-came-in" day
+  without ever blowing past a couple of dollars/month. The current company
+  count (40) means a full re-fan-out caps under the limit.
+- **Alternatives:** No cap. Rejected — Glyphie pulling a big tranche
+  could otherwise spike a $5 night.
+- **Would change if:** v0.8 scales companies past 100 and the daily diff
+  set is consistently bigger than 25; bump the cap or add a queue.
+
+### A6.6 — Card empty-state copy stays as a fallback.
+
+- **Assumed:** §4.2 says "Card empty-state replaced with the actual fit-
+  note." Once the backfill runs on deploy, no company has an empty state —
+  the replacement happens at data level. Keeping the friendly empty-state
+  copy ("No fit note yet…") in `fit-note-panel.tsx` covers the brief
+  window between adding a new company and the next nightly run, plus any
+  Anthropic outage that fails generation. Deleting it would degrade UX in
+  exactly the failure modes we'd want a graceful fallback for.
+- **Alternatives:** Render `<LoadingCat>` instead. Rejected — it'd spin
+  forever for new companies until the next cron.
+- **Would change if:** Empty-state copy becomes confusing once Aadi uses
+  it for a few weeks and never sees it; revisit in v0.8.
+
+---
+
 ## Step 5 — Card-interior token subset (2026-06-24 21:55 UTC)
 
 ### A5.1 — Tokens land as `--card-interior-*` in `vaporwave.css`, exposed via `--color-card-interior-*` in `globals.css`.
