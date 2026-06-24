@@ -1,16 +1,34 @@
 "use client";
 
+/**
+ * v0.7.2 Step 3 — combined frames page.
+ *
+ * One card per frame. Each card surfaces:
+ *   - editable title
+ *   - friendly description (replaces the v0.7 low/high label pair as the
+ *     primary explainer; low/high labels still exist for the scoring engine
+ *     and edit underneath in an "advanced" disclosure)
+ *   - Must / Should / Could weight (inline)
+ *   - delete affordance
+ *
+ * The page below this only renders `kind === 'scale'` frames. The DB may
+ * still hold zombie `'tag'` / `'question'` rows from v0.6/v0.7; the page
+ * filters them out (see A3.2 in ASSUMPTIONS-v0.7.2.md). Server actions
+ * accept the same shape as before — we just stop sending non-scale kinds
+ * from the UI.
+ */
+
 import { useState, useTransition } from "react";
 import {
   createFrame,
   updateFrame,
   deleteFrame,
+  setFrameWeights,
   suggestFrames,
   type SuggestedFrame,
 } from "@/app/actions";
 import { CatMark } from "@/components/wordmark";
-
-type FrameKind = "scale" | "tag" | "question";
+import type { FrameWeightLevel } from "@/lib/scoring/aggregate";
 
 export type EditableFrame = {
   id: number;
@@ -24,71 +42,90 @@ export type EditableFrame = {
   sortIndex: number;
 };
 
-const KIND_LABELS: Record<FrameKind, string> = {
-  scale: "Scale",
-  tag: "Tag",
-  question: "Question",
+const WEIGHT_LEVELS: FrameWeightLevel[] = ["high", "medium", "low"];
+const WEIGHT_LABEL: Record<FrameWeightLevel, string> = {
+  high: "Must",
+  medium: "Should",
+  low: "Could",
+};
+const WEIGHT_HELP: Record<FrameWeightLevel, string> = {
+  high: "deal-breaker — score this heavily",
+  medium: "matters — default weighting",
+  low: "nice-to-have — gentle nudge only",
 };
 
-const KIND_BLURBS: Record<FrameKind, string> = {
-  scale: "A 1–N axis with a low and a high label. Used by the map and the comparator.",
-  tag: "A binary categorical lens. Companies are tagged with it or not.",
-  question: "A free-text prompt each company gets an answer to.",
-};
+export function FramesEditor({
+  frames,
+  weights: initialWeights,
+}: {
+  frames: EditableFrame[];
+  weights: Record<string, FrameWeightLevel>;
+}) {
+  // Only scale frames render. Zombie 'tag'/'question' rows are filtered out
+  // and will be cleaned up in a later v0.8 schema pass (see A3.2).
+  const scaleFrames = frames
+    .filter((f) => f.kind === "scale")
+    .sort((a, b) => a.sortIndex - b.sortIndex);
 
-export function FramesEditor({ frames }: { frames: EditableFrame[] }) {
-  const grouped: Record<FrameKind, EditableFrame[]> = {
-    scale: [],
-    tag: [],
-    question: [],
-  };
-  for (const f of frames) {
-    const k = (["scale", "tag", "question"] as const).includes(f.kind as FrameKind)
-      ? (f.kind as FrameKind)
-      : "scale";
-    grouped[k].push(f);
+  const [weights, setWeights] = useState<Record<string, FrameWeightLevel>>(
+    () => {
+      const seed: Record<string, FrameWeightLevel> = {};
+      for (const f of scaleFrames) {
+        seed[String(f.id)] = initialWeights[String(f.id)] ?? "medium";
+      }
+      return seed;
+    },
+  );
+
+  function handleWeightChange(frameId: number, level: FrameWeightLevel) {
+    const key = String(frameId);
+    if (weights[key] === level) return;
+    setWeights((prev) => ({ ...prev, [key]: level }));
+    // Fire-and-forget; the page revalidates after the action returns.
+    void setFrameWeights({ [key]: level });
   }
 
   return (
-    <div className="mt-10 space-y-12">
+    <div className="mt-10 space-y-8">
       <CatSuggestions />
-      {(["scale", "tag", "question"] as const).map((kind) => (
-        <section key={kind}>
-          <div className="flex items-baseline justify-between border-b border-rule pb-2">
-            <h2 className="serif text-xl text-ink font-medium">
-              {KIND_LABELS[kind]} frames
-              <span className="ml-2 mono text-xs uppercase tracking-[0.1em] text-whisper">
-                {grouped[kind].length}
-              </span>
-            </h2>
-          </div>
-          <p className="serif text-sm text-muted mt-2 max-w-2xl">
-            {KIND_BLURBS[kind]}
-          </p>
-          <ul className="mt-4 divide-y divide-rule">
-            {grouped[kind].map((f) => (
-              <FrameRow key={f.id} frame={f} />
-            ))}
-            {grouped[kind].length === 0 && (
-              <li className="py-6 serif text-sm text-whisper italic">
-                None yet.
-              </li>
-            )}
-          </ul>
-          <NewFrameForm defaultKind={kind} />
-        </section>
-      ))}
+
+      <ul className="space-y-4">
+        {scaleFrames.map((f) => (
+          <li key={f.id}>
+            <FrameCard
+              frame={f}
+              weight={weights[String(f.id)] ?? "medium"}
+              onWeightChange={(level) => handleWeightChange(f.id, level)}
+            />
+          </li>
+        ))}
+        {scaleFrames.length === 0 && (
+          <li className="serif text-sm text-whisper italic px-4 py-6 border border-dashed border-rule rounded">
+            No frames yet. Add one below.
+          </li>
+        )}
+      </ul>
+
+      <NewFrameForm />
     </div>
   );
 }
 
-function FrameRow({ frame }: { frame: EditableFrame }) {
+function FrameCard({
+  frame,
+  weight,
+  onWeightChange,
+}: {
+  frame: EditableFrame;
+  weight: FrameWeightLevel;
+  onWeightChange: (level: FrameWeightLevel) => void;
+}) {
   const [editing, setEditing] = useState(false);
   const [pending, start] = useTransition();
 
   if (editing) {
     return (
-      <li className="py-6">
+      <div className="border border-rule rounded-md p-5 bg-surface">
         <FrameForm
           initial={frame}
           submitLabel="Save"
@@ -101,31 +138,25 @@ function FrameRow({ frame }: { frame: EditableFrame }) {
           }
           pending={pending}
         />
-      </li>
+      </div>
     );
   }
 
   return (
-    <li className="py-6">
-      <div className="flex items-start justify-between gap-6">
+    <article
+      className="border border-rule rounded-md bg-surface px-5 py-5 hover:border-rule-strong transition-colors"
+      aria-label={`Frame: ${frame.name}`}
+    >
+      <header className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h3 className="serif text-lg text-ink font-medium">{frame.name}</h3>
-          {frame.description && (
-            <p className="serif text-sm text-muted mt-1 max-w-2xl">
+          {frame.description ? (
+            <p className="serif text-sm text-muted mt-2 max-w-2xl leading-relaxed">
               {frame.description}
             </p>
-          )}
-          {frame.kind === "scale" && (
-            <div className="flex items-center gap-3 mt-2 mono text-xs uppercase tracking-[0.1em] text-whisper">
-              <span>{frame.lowLabel || "—"}</span>
-              <span>→</span>
-              <span>{frame.highLabel || "—"}</span>
-              <span>· 1–{frame.scale}</span>
-            </div>
-          )}
-          {frame.kind === "question" && frame.prompt && (
-            <p className="serif text-sm text-ink mt-2 italic max-w-2xl">
-              “{frame.prompt}”
+          ) : (
+            <p className="serif text-sm text-whisper mt-2 italic">
+              no description yet — click edit to add one
             </p>
           )}
         </div>
@@ -133,28 +164,70 @@ function FrameRow({ frame }: { frame: EditableFrame }) {
           <button
             onClick={() => setEditing(true)}
             className="text-moss hover:underline"
+            aria-label={`Edit frame ${frame.name}`}
           >
             edit
           </button>
           <button
             onClick={() => {
-              if (!confirm(`Delete frame “${frame.name}”? Existing scores/answers will cascade.`)) return;
+              if (
+                !confirm(
+                  `Delete frame "${frame.name}"? Existing scores will cascade.`,
+                )
+              )
+                return;
               start(async () => {
                 await deleteFrame(frame.id);
               });
             }}
             disabled={pending}
             className="text-terracotta hover:underline disabled:opacity-50"
+            aria-label={`Delete frame ${frame.name}`}
           >
             {pending ? "…" : "delete"}
           </button>
         </div>
-      </div>
-    </li>
+      </header>
+
+      <footer className="mt-4 pt-4 border-t border-rule/60 flex flex-wrap items-center gap-3">
+        <span className="mono text-[10px] uppercase tracking-[0.14em] text-whisper">
+          weight
+        </span>
+        <div
+          role="radiogroup"
+          aria-label={`Weight for ${frame.name}`}
+          className="inline-flex border border-rule rounded-sm overflow-hidden"
+        >
+          {WEIGHT_LEVELS.map((level) => {
+            const active = weight === level;
+            return (
+              <button
+                key={level}
+                type="button"
+                role="radio"
+                aria-checked={active}
+                title={WEIGHT_HELP[level]}
+                onClick={() => onWeightChange(level)}
+                className={`mono text-xs uppercase tracking-[0.1em] px-3 py-1.5 transition-colors ${
+                  active
+                    ? "bg-moss text-white"
+                    : "bg-bg text-muted hover:text-ink hover:bg-panel-raised/60"
+                }`}
+              >
+                {WEIGHT_LABEL[level]}
+              </button>
+            );
+          })}
+        </div>
+        <span className="mono text-[10px] text-whisper ml-auto">
+          {frame.lowLabel || "—"} → {frame.highLabel || "—"} · 1–{frame.scale}
+        </span>
+      </footer>
+    </article>
   );
 }
 
-function NewFrameForm({ defaultKind }: { defaultKind: FrameKind }) {
+function NewFrameForm() {
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
 
@@ -162,21 +235,21 @@ function NewFrameForm({ defaultKind }: { defaultKind: FrameKind }) {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="mt-4 mono text-xs uppercase tracking-[0.1em] text-moss hover:underline"
+        className="mono text-xs uppercase tracking-[0.1em] text-moss hover:underline"
       >
-        + add {defaultKind} frame
+        + add a new frame
       </button>
     );
   }
 
   return (
-    <div className="mt-6 border border-rule rounded-md p-5 bg-surface">
+    <div className="border border-rule rounded-md p-5 bg-surface">
       <FrameForm
         initial={{
           id: 0,
           name: "",
           description: null,
-          kind: defaultKind,
+          kind: "scale",
           scale: 5,
           highLabel: null,
           lowLabel: null,
@@ -209,26 +282,20 @@ function FrameForm({
   onSubmit: (values: {
     name: string;
     description: string | null;
-    kind: FrameKind;
+    kind: "scale";
     scale: number | null;
     highLabel: string | null;
     lowLabel: string | null;
-    prompt: string | null;
+    prompt: null;
   }) => void;
   onCancel: () => void;
   pending: boolean;
 }) {
   const [name, setName] = useState(initial.name);
   const [description, setDescription] = useState(initial.description ?? "");
-  const [kind, setKind] = useState<FrameKind>(
-    (["scale", "tag", "question"] as const).includes(initial.kind as FrameKind)
-      ? (initial.kind as FrameKind)
-      : "scale",
-  );
   const [scale, setScale] = useState<number>(initial.scale ?? 5);
   const [highLabel, setHighLabel] = useState(initial.highLabel ?? "");
   const [lowLabel, setLowLabel] = useState(initial.lowLabel ?? "");
-  const [prompt, setPrompt] = useState(initial.prompt ?? "");
   const [error, setError] = useState<string | null>(null);
 
   return (
@@ -240,11 +307,11 @@ function FrameForm({
           onSubmit({
             name,
             description: description || null,
-            kind,
-            scale: kind === "scale" ? scale : null,
-            highLabel: kind === "scale" ? highLabel || null : null,
-            lowLabel: kind === "scale" ? lowLabel || null : null,
-            prompt: kind === "question" ? prompt || null : null,
+            kind: "scale",
+            scale,
+            highLabel: highLabel || null,
+            lowLabel: lowLabel || null,
+            prompt: null,
           });
         } catch (err) {
           setError(err instanceof Error ? err.message : "Something went wrong.");
@@ -252,50 +319,37 @@ function FrameForm({
       }}
       className="space-y-4"
     >
-      <div className="grid sm:grid-cols-[1fr_10rem] gap-4">
-        <label className="block">
-          <span className="mono text-xs uppercase tracking-[0.1em] text-whisper">
-            Name
-          </span>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="mt-1 w-full bg-bg border border-rule rounded px-3 py-2 serif text-base text-ink focus:outline-none focus:border-moss"
-            placeholder="e.g. UK-friendliness"
-          />
-        </label>
-        <label className="block">
-          <span className="mono text-xs uppercase tracking-[0.1em] text-whisper">
-            Kind
-          </span>
-          <select
-            value={kind}
-            onChange={(e) => setKind(e.target.value as FrameKind)}
-            className="mt-1 w-full bg-bg border border-rule rounded px-3 py-2 serif text-base text-ink focus:outline-none focus:border-moss"
-          >
-            <option value="scale">Scale</option>
-            <option value="tag">Tag</option>
-            <option value="question">Question</option>
-          </select>
-        </label>
-      </div>
+      <label className="block">
+        <span className="mono text-xs uppercase tracking-[0.1em] text-whisper">
+          Name
+        </span>
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          className="mt-1 w-full bg-bg border border-rule rounded px-3 py-2 serif text-base text-ink focus:outline-none focus:border-moss"
+          placeholder="e.g. UK-friendliness"
+        />
+      </label>
 
       <label className="block">
         <span className="mono text-xs uppercase tracking-[0.1em] text-whisper">
-          Description (optional)
+          What does this mean in your work?
         </span>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          rows={2}
-          className="mt-1 w-full bg-bg border border-rule rounded px-3 py-2 serif text-base text-ink focus:outline-none focus:border-moss"
-          placeholder="What does this frame mean? How should you read a high vs a low?"
+          rows={3}
+          className="mt-1 w-full bg-bg border border-rule rounded px-3 py-2 serif text-base text-ink focus:outline-none focus:border-moss leading-relaxed"
+          placeholder="One friendly paragraph — when does this matter, what would a strong vs weak company look like?"
         />
       </label>
 
-      {kind === "scale" && (
-        <div className="grid sm:grid-cols-[1fr_1fr_6rem] gap-4">
+      <details className="border border-rule/60 rounded p-3 bg-bg/40">
+        <summary className="mono text-xs uppercase tracking-[0.1em] text-whisper cursor-pointer">
+          advanced — scale poles (used by the scoring engine)
+        </summary>
+        <div className="mt-4 grid sm:grid-cols-[1fr_1fr_6rem] gap-4">
           <label className="block">
             <span className="mono text-xs uppercase tracking-[0.1em] text-whisper">
               Low label (1)
@@ -332,27 +386,9 @@ function FrameForm({
             />
           </label>
         </div>
-      )}
+      </details>
 
-      {kind === "question" && (
-        <label className="block">
-          <span className="mono text-xs uppercase tracking-[0.1em] text-whisper">
-            Prompt (the question asked of each company)
-          </span>
-          <textarea
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            rows={2}
-            required
-            className="mt-1 w-full bg-bg border border-rule rounded px-3 py-2 serif text-base text-ink focus:outline-none focus:border-moss"
-            placeholder="e.g. What would you need to see before recommending them to a UK gov contact?"
-          />
-        </label>
-      )}
-
-      {error && (
-        <p className="serif text-sm text-terracotta">{error}</p>
-      )}
+      {error && <p className="serif text-sm text-terracotta">{error}</p>}
 
       <div className="flex items-center gap-3">
         <button
@@ -386,13 +422,20 @@ function CatSuggestions() {
     startLoading(async () => {
       try {
         const result = await suggestFrames();
-        setSuggestions(result);
+        // v0.7.2: page only renders scale frames; filter anything else out
+        // even if the model returns it. See A3.6.
+        const scaleOnly = result.filter((s) => s.kind === "scale");
+        setSuggestions(scaleOnly);
         setAdded(new Set());
-        if (result.length === 0) {
-          setError("the cat didn’t come back with anything useful. try again?");
+        if (scaleOnly.length === 0) {
+          setError("the cat didn't come back with anything useful. try again?");
         }
       } catch (e) {
-        setError(e instanceof Error ? e.message : "the cat napped through it. try again?");
+        setError(
+          e instanceof Error
+            ? e.message
+            : "the cat napped through it. try again?",
+        );
       }
     });
   }
@@ -408,8 +451,8 @@ function CatSuggestions() {
             </h2>
             <p className="serif text-sm text-muted mt-1 max-w-2xl">
               Lobbycat reads your profile, your existing frames, and the
-              company set, and proposes 2–3 questions you aren’t yet asking.
-              One-click to add.
+              company set, and proposes a couple of axes you aren&apos;t yet
+              scoring on. One-click to add.
             </p>
           </div>
         </div>
@@ -422,34 +465,19 @@ function CatSuggestions() {
         </button>
       </div>
 
-      {error && (
-        <p className="serif text-sm text-terracotta mt-3">{error}</p>
-      )}
+      {error && <p className="serif text-sm text-terracotta mt-3">{error}</p>}
 
       {suggestions && suggestions.length > 0 && (
         <ul className="mt-5 space-y-3">
           {suggestions.map((s, i) => {
             const isAdded = added.has(i);
             return (
-              <li
-                key={i}
-                className="rounded border border-rule bg-surface p-4"
-              >
+              <li key={i} className="rounded border border-rule bg-surface p-4">
                 <div className="flex items-start justify-between gap-4">
                   <div className="min-w-0 flex-1">
-                    <div className="flex items-baseline gap-2 flex-wrap">
-                      <h3 className="serif text-base text-ink font-medium">
-                        {s.name}
-                      </h3>
-                      <span className="mono text-[0.65rem] uppercase tracking-[0.1em] text-whisper">
-                        {s.kind}
-                      </span>
-                    </div>
-                    {s.kind === "question" && s.prompt && (
-                      <p className="serif text-sm text-ink mt-2 italic">
-                        “{s.prompt}”
-                      </p>
-                    )}
+                    <h3 className="serif text-base text-ink font-medium">
+                      {s.name}
+                    </h3>
                     {s.kind === "scale" && (
                       <div className="mono text-xs uppercase tracking-[0.1em] text-whisper mt-2">
                         {s.lowLabel} → {s.highLabel} · 1–{s.scale}
@@ -474,11 +502,11 @@ function CatSuggestions() {
                           await createFrame({
                             name: s.name,
                             description: s.description,
-                            kind: s.kind,
+                            kind: "scale",
                             scale: s.scale,
                             highLabel: s.highLabel,
                             lowLabel: s.lowLabel,
-                            prompt: s.prompt,
+                            prompt: null,
                           });
                           setAdded((prev) => {
                             const next = new Set(prev);
@@ -489,7 +517,7 @@ function CatSuggestions() {
                           setError(
                             e instanceof Error
                               ? e.message
-                              : "couldn’t add that frame.",
+                              : "couldn't add that frame.",
                           );
                         }
                       });
