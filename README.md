@@ -250,6 +250,10 @@ re-reading every time you change your mind.
 
 ## Operations
 
+### Error tracking
+
+Errors are captured in Sentry — DSN in env (`NEXT_PUBLIC_SENTRY_DSN`), view at [sentry.io](https://sentry.io). Server Components render errors (otherwise opaque in production) come through with full stack + digest, which is how we debug the "specific message is omitted in production builds" class of bug.
+
 ### Health check
 
 `GET /api/health` is an unauthenticated liveness + DB reachability probe
