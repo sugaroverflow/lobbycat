@@ -199,3 +199,48 @@ already locked in REFACTOR-v0.7.2.md §11.
 
 
 
+
+---
+
+## Step 4 — ExplainerBox component + mount on /frames (2026-06-24 21:48 UTC)
+
+### A4.1 — Dismissal state via cookie + `useSyncExternalStore`, not localStorage or a server-side flag.
+
+- **Assumed:** A per-id cookie (`lc_explainer_<id>`, 365-day max-age, samesite=lax)
+  read via `useSyncExternalStore` is the right vehicle: it's wipeable by the
+  existing re-take-setup cookie sweep on /about, it survives across devices
+  on the same browser, and `useSyncExternalStore` keeps SSR clean without
+  tripping the React 19 "no setState in effects" rule that bit
+  `onboarding-overlay.tsx` (cf. 70df253 follow-up history).
+- **Alternatives:** (a) `localStorage` — pure client, harder to wipe from the
+  server's re-take flow without an extra round-trip; (b) `user_profile`
+  column — overkill for an explainer dismissal, would need a migration; (c)
+  `useEffect` + `useState` — works but lint-errors under the React 19 rule
+  set we just adopted.
+- **Would change if:** Re-take-setup ever moves off cookies, or we add a
+  signed-in cross-device "I dismissed this" expectation. Both are v0.8+.
+
+### A4.2 — Built tiny in-memory pub/sub for sibling explainer dismissals.
+
+- **Assumed:** When one ExplainerBox is dismissed on a page that mounts
+  several (none today, but Step 5/6/7 will), siblings should hide too without
+  a route change. A 7-line `Set<() => void>` + `notifyCookieListeners()` is
+  cheap and keeps the component self-contained — no global event bus needed.
+- **Alternatives:** (a) `storage` events — don't fire for the same tab that
+  wrote them; (b) skip it — only matters once we mount multiple explainers
+  per page, which is one or two steps away.
+- **Would change if:** We end up wanting cross-tab sync, which would push us
+  toward `BroadcastChannel`.
+
+### A4.3 — Shipped Step 4 onto the open `v0.7.2/step3-combined-frames-cards` branch.
+
+- **Assumed:** Per Fatima's "don't pause for sign-off mid-step" rule, it's
+  fine to keep stacking v0.7.2 commits onto whichever feature branch is open
+  rather than spinning a fresh `step4-explainer-box` branch every step. The
+  branch will get squashed/merged into `scope/v0.7.2` as one PR at Step 10
+  anyway.
+- **Alternatives:** Open a clean `step4-` branch off `45135d9`. Rejected as
+  bookkeeping cost without a review-time payoff (single reviewer, one PR
+  at the end).
+- **Would change if:** Fatima asks for per-step PRs — easy to retroactively
+  cherry-pick `952496c` onto a fresh branch.
