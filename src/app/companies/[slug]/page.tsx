@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { SiteShell } from "@/components/site-shell";
-import { TagChip } from "@/components/tag-chip";
 import { FrameScorer } from "@/components/frame-scorer";
 import { NotesEditor } from "@/components/notes-editor";
 import { FitNotePanel } from "@/components/fit-note-panel";
@@ -22,7 +21,7 @@ export default async function CompanyDetail({
   const data = await getCompanyBySlug(slug);
   if (!data) notFound();
 
-  const { company, roles, people, publications, tags, frames, fitNote, fitNoteThread, note } = data;
+  const { company, roles, people, publications, frames, fitNote, fitNoteThread, note } = data;
 
   return (
     <SiteShell>
@@ -46,11 +45,6 @@ export default async function CompanyDetail({
               {company.description}
             </p>
           )}
-          <div className="flex items-center gap-2 flex-wrap mt-5">
-            {tags.map((t) => (
-              <TagChip key={t.id} label={t.label} color={t.color} />
-            ))}
-          </div>
           <div className="flex items-center gap-5 mt-6 mono text-xs uppercase tracking-[0.12em]">
             {company.websiteUrl && (
               <a href={company.websiteUrl} target="_blank" rel="noopener" className="text-accent hover:underline">
