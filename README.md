@@ -247,3 +247,25 @@ background. Just the field, the lens you chose, and a small cat that's
 re-reading every time you change your mind.
 
 — made with love 🪷
+
+## Operations
+
+### Health check
+
+`GET /api/health` is an unauthenticated liveness + DB reachability probe
+intended for external uptime monitors (UptimeRobot, BetterStack, etc.).
+
+It runs one cheap query against the `frames` table and returns JSON:
+
+```json
+{
+  "status": "ok",
+  "dbLatencyMs": 42,
+  "version": "0.7.1",
+  "checkedAt": "2026-06-24T16:45:00.000Z"
+}
+```
+
+- `200` when `status === "ok"`
+- `503` when `status === "down"` (DB unreachable / query failed; includes `errorClass`)
+- `Cache-Control: no-store` so monitors get a fresh check every time
