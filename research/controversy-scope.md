@@ -74,8 +74,23 @@ Each entry carries a `status`: `alleged` | `ongoing` | `settled` | `decided` | `
 ### Tier 3 — Watchdog / NGO (for criticism-tier signals, named-source only)
 - **Big Brother Watch**, **Foxglove**, **Open Rights Group**, **Connected by Data**, **AlgorithmWatch**, **EDRi** — several are themselves seed companies; their *reports about other companies* are valid Tier-3 sources when they name a subject.
 
+### Tier 1.5 — Structured litigation & incident trackers (the LinkedIn replacement)
+These are why losing LinkedIn costs us nothing: LinkedIn never *documented* controversy, it managed reputation. The real signal lives in dockets and incident repositories. Several are crowdsourced — treat them as **lead sources**: each item must still be traced to its underlying primary record (court docket, regulator notice, named article) before it is logged. They are how I *find* the controversy, not what I *cite* for it.
+
+| Source | Covers | Access | Use as |
+|---|---|---|---|
+| **AI Incident Database** (incidentdatabase.ai) | Canonical free repository of real-world AI harms; run with Partnership on AI; per-incident citations + source links | Free web | Lead → trace to primary |
+| **MIT AI Incident Tracker** (airisk.mit.edu/ai-incident-tracker) | AIID reports classified by CSET harm taxonomy + severity score | Free web | Lead + severity calibration |
+| **AIAAIC Repository** (aiaaic.org) | Independent open repository of AI/algorithmic incidents & controversies | Free web | Lead → trace to primary |
+| **OECD AI Incidents Monitor (AIM)** (oecd.ai) | Open-access incident monitor, civil-society partnered | Free web | Lead → trace to primary |
+| **Mishcon de Reya GenAI IP & policy tracker** (mishcon.com) | UK law firm's maintained tracker of GenAI IP cases; docket-accurate | Free web | Lead → docket |
+| **McKool Smith AI Litigation Tracker** (mckoolsmith.com) | GenAI copyright litigation, regularly updated | Free web | Lead → docket |
+| **Information is Beautiful AI-lawsuits viz** (informationisbeautiful.net) | Visualised index of 100+ filed AI lawsuits | Free web | Lead → docket |
+
+**Important:** these trackers skew toward US frontier-lab IP/copyright suits. For the UK-anchored seed set (regulators, think tanks, UK firms), Tier-1 UK primary sources (ICO/CMA/FCA/Ofcom/BAILII) remain the backbone — the trackers fill in the frontier-lab tier.
+
 ### Explicitly excluded
-- **LinkedIn** (ToS — no scraping).
+- **LinkedIn** (ToS — no scraping). *Not a loss:* LinkedIn never documented controversy — it's a reputation-management surface. Every signal it might carry (a quiet executive departure, a contested claim) is better evidenced via court records, regulator notices, named journalism, or the incident trackers above. Where LinkedIn would have been the *only* source for a leadership-departure signal, that signal is downgraded to a daily-note lead until a citable source confirms it — never logged on LinkedIn's say-so.
 - **X/Twitter pile-ons, Reddit, anonymous blogs** — not credible single sources; may be a *lead* in the daily note, never a logged controversy.
 - **Paywalled article bodies** — title + URL + outlet only.
 
