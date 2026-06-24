@@ -264,21 +264,11 @@ Re-click through wizard → home → company card → frames → about, looking 
 
 ---
 
-## 11. Open questions for Fatima
+## 11. Resolved sign-off answers (Fatima 2026-06-24 21:09 UTC)
 
-Three things to confirm before I queue the heartbeat:
-
-### Q1 — Kill the `'question'` frame kind too?
-
-§3.1 proposes killing `'tag'` confidently but `'question'` is borderline. v0.8's clarify session replaces what question-frames were trying to be. Confirm cut?
-
-### Q2 — "What happened by quiz" — where is it?
-
-I need to find this copy. Welcome-back card? Wizard step header? Or somewhere on About? A screenshot or the URL where you saw it would unblock the copy-hunt step.
-
-### Q3 — Visual stub for "Ask lobbycat" in v0.7.2, or wait for v0.8?
-
-§3.5 proposes waiting. Confirm — or if you want a visual placeholder ("🪷 ask lobbycat — coming soon") for v0.7.2, say so.
+- **Q1:** ✅ Yes, kill `'question'` frame kind too. Only `'scale'` frames going forward.
+- **Q2:** N/A — the symptom was the silent `wizard_completed_at`, not bad copy. The 're-take the setup' button already shipped fixes the user-facing problem. No copy hunt needed.
+- **Q3:** Ship a visual stub for "Ask lobbycat" in v0.7.2. Actual behaviour lands in v0.8 (clarify skill).
 
 ---
 
