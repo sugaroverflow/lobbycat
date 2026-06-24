@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Wordmark } from "@/components/wordmark";
 import { SurpriseButton } from "@/components/surprise-modal";
+import { AskLobbycatStub } from "@/components/ask-lobbycat-stub";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -15,6 +16,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Link href="/frames" className="hover:text-ink transition">Frames</Link>
             <SurpriseButton />
             <Link href="/about" className="hover:text-ink transition">About</Link>
+            <AskLobbycatStub />
           </nav>
         </div>
       </header>

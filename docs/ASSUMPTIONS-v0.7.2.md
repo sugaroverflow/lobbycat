@@ -417,3 +417,15 @@ already locked in REFACTOR-v0.7.2.md §11.
   with `Sentry.captureMessage` at error level), or a real second user
   joins and we discover a legit non-wizard completion path (e.g. admin
   impersonation) — then we add that as a third allowed value.
+
+---
+
+## Step 9 — "Ask lobbycat" visual stub placement & affordance (2026-06-24 22:46 UTC)
+
+- **Decision:** Render the stub as a sunset-gradient pill (`#ffb066 → #ff6f91 → #b86bff`) in the site header nav, after the About link, with the pixel cat sprite + the word "soon" appended in muted small caps. Click opens a centred modal that says "coming soon in v0.8 🪷" with a one-line explanation of what the real affordance will do, then a close button.
+- **Alternatives considered:**
+  - Floating bottom-right FAB. Rejected — competes with the surprise modal and reads like a chat widget, which over-promises ahead of v0.8 actually shipping the clarify panel.
+  - Inline CTA on the dashboard only. Rejected — the spec asks for the surface to read as a *distinct* new affordance globally, and limiting to /companies hides it from /frames and /about where the explainer already primes the user.
+  - Tooltip-only ("Ask lobbycat — coming in v0.8") with no modal. Rejected — feels like a dead link; the modal copy ("you'll be able to ask me anything…") sells the v0.8 feature without faking the behaviour.
+- **Why this is defensible:** The sunset palette is intentionally off the cyan/magenta scale so it doesn't blend in (this is exactly the "visually distinct" requirement in §3.5 of the refactor doc). Putting it in the header guarantees discoverability on every route. The modal is honest about being a stub — no input box, no fake "ask" — so we're not lying about capabilities.
+- **Would change if:** v0.8 work reveals the real entry point should be inline on a company card (i.e. "ask about Anthropic" rather than a global "ask lobbycat"), in which case the header pill becomes a secondary affordance and the per-card button takes the gradient treatment. Also: if Fatima reviews and prefers a different gradient (e.g. tone-down on the orange end), trivial to retune.
