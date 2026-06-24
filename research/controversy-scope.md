@@ -96,32 +96,59 @@ These are why losing LinkedIn costs us nothing: LinkedIn never *documented* cont
 
 ---
 
-## JSON schema — new `controversies` field in `research/feeds/<slug>.json`
+## JSON schema — maps to the existing evidence model
 
-Added alongside existing `publications` / `roles` / `filings` / `leadership`:
+**Decision (Fatima, 2026-06-24): controversies map to the existing evidence model** — i.e. a `controversies` table that is a *peer evidence kind* alongside `publications`, `consultation_submissions`, and `safety_frameworks`, not a bolt-on. The JSON I emit mirrors those tables' column shapes so Lotus's ingestion is a near-copy of her existing pipelines (companyId + type discriminator + title/url/timestamp + summary + topics jsonb + rawExcerpt + source + companyId/url unique index).
+
+Emitted as a `controversies[]` array in each `research/feeds/<slug>.json`, alongside `publications` / `roles` / `filings` / `leadership`. Field names chosen to match the evidence-table convention (`type`, `title`, `url`, `summary`, `topics`, `rawExcerpt`, `source`):
 
 ```json
 "controversies": [
   {
-    "date": "2025-11-14",
+    "type": "legal_case | regulatory_action | public_criticism | broken_promise",
     "title": "Short factual headline of the matter.",
-    "category": "legal_case | regulatory_action | public_criticism | broken_promise",
-    "severity": "high | medium | low",
+    "url": "https://...  (the primary source — court record / regulator notice / named article)",
+    "occurredAt": "2025-11-14",
     "status": "alleged | ongoing | settled | decided | dismissed | withdrawn",
+    "severity": "high | medium | low",
+    "companyRole": "defendant | respondent | investigated | plaintiff | subject_of_reporting",
     "summary": "2-4 sentences, investigative-report tone. What is documented, by whom, at what stage. State plainly if alleged vs decided. No assertion of guilt beyond what the source establishes.",
-    "primary_source": { "label": "ICO enforcement notice", "url": "https://..." },
-    "corroboration": [
-      { "outlet": "Reuters", "url": "https://...", "paywalled": false }
-    ],
-    "company_role": "defendant | respondent | investigated | plaintiff | subject_of_reporting",
-    "attribution_checked": true
+    "topics": ["data_protection", "copyright"],
+    "rawExcerpt": "optional grounding quote from the primary source",
+    "corroboration": [ { "outlet": "Reuters", "url": "https://...", "paywalled": false } ],
+    "source": "curated | scraped",
+    "attributionChecked": true
   }
 ]
 ```
 
-- `attribution_checked: true` is mandatory — it's the audit flag that the three-test check above was run. No entry ships without it.
-- `primary_source` is **required**. If there is no primary or named-byline source, the item does not belong in the JSON.
-- `corroboration` is optional but encouraged; paywalled items allowed here as `{outlet, url, paywalled:true}` with no body.
+### Proposed `controversies` table (for Lotus — mirrors `consultation_submissions` / `safety_frameworks`)
+```
+controversies
+  id            serial pk
+  companyId     integer fk -> companies.id (cascade)   -- the named-party / same-entity check lands here
+  type          text notnull   -- legal_case | regulatory_action | public_criticism | broken_promise
+  title         text notnull
+  url           text           -- PRIMARY source; required by my pipeline before a row is emitted
+  occurredAt    timestamptz    -- date of the matter (filing / decision / publication)
+  status        text notnull   -- alleged | ongoing | settled | decided | dismissed | withdrawn
+  severity      text           -- high | medium | low
+  companyRole   text           -- defendant | respondent | investigated | plaintiff | subject_of_reporting
+  summary       text           -- investigative-report editorial line
+  topics        jsonb default []
+  rawExcerpt    text           -- grounding quote
+  corroboration jsonb default [] -- [{outlet,url,paywalled}]
+  source        text default 'curated'  -- curated | scraped
+  seenAt        timestamptz defaultNow notnull
+  unique(companyId, url)        -- idempotent upsert, same pattern as publications_company_url_idx
+```
+
+This slots in as another **`evidence_kind`** the scoring engine already understands (cf. `safety_framework`), so Lotus *can* later let controversy weigh on a company's read if she wants — but it doesn't have to.
+
+- `attributionChecked: true` is mandatory — the audit flag that the three-test check above was run. No entry ships without it. (It's a pipeline guard, not necessarily a DB column.)
+- `url` (primary source) is **required**. No primary or named-byline source → the item does not belong in the JSON.
+- `corroboration` optional but encouraged; paywalled items allowed as `{outlet, url, paywalled:true}` with no body.
+- `status` distinct from `severity`: an *alleged* item is never rendered as *decided*; severity is the magnitude, status is the stage.
 
 ---
 

@@ -1,0 +1,31 @@
+{
+  "slug": "stability-ai",
+  "lastUpdated": "2026-06-24T21:05:00Z",
+  "blurb": "London-based image-generation lab. Subject of the first major UK court ruling on copyright/trademark and generative AI — Getty Images v Stability AI (High Court, Nov 2025), a mixed result it largely prevailed in.",
+  "hiring": { "isHiring": null, "newSincePrevious": null },
+  "publications": [],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [
+    {
+      "type": "legal_case",
+      "title": "Getty Images v Stability AI — first major UK High Court ruling on copyright & generative AI",
+      "url": "https://www.judiciary.uk/judgments/getty-images-v-stability-ai/",
+      "occurredAt": "2025-11-04",
+      "status": "decided",
+      "severity": "high",
+      "companyRole": "defendant",
+      "summary": "On 4 November 2025 the High Court (Mrs Justice Joanna Smith, [2025] EWHC 2863 (Ch), case IL-2023-000007) handed down the first major UK judgment on how copyright and trade-mark law apply to generative-AI model development. The result is mixed, not a clean win: Getty had to drop its primary copyright/training claim mid-trial because there was no evidence the training of Stable Diffusion occurred in the UK; Stability then prevailed on the remaining secondary-infringement claim, with the judge holding that 'an AI model such as Stable Diffusion which does not store or reproduce any copyright works (and has never done so) is not an infringing copy'. However, Getty succeeded on a limited trade-mark claim where Stable Diffusion outputs reproduced Getty watermarks in circumstances capable of causing confusion; the judge declined to rule on passing off. Widely read as a setback for rights-holders relying on the UK's secondary-copyright regime, and landing amid the live UK government consultation on copyright and AI.",
+      "topics": ["copyright", "trademark", "generative_ai", "training_data"],
+      "rawExcerpt": "An AI model such as Stable Diffusion which does not store or reproduce any copyright works (and has never done so) is not an 'infringing copy'. — Mrs Justice Joanna Smith, [2025] EWHC 2863 (Ch)",
+      "corroboration": [
+        { "outlet": "The Guardian", "url": "https://www.theguardian.com/media/2025/nov/04/stabilty-ai-high-court-getty-images-copyright", "paywalled": false },
+        { "outlet": "Judiciary.uk (full judgment PDF)", "url": "https://www.judiciary.uk/wp-content/uploads/2025/11/Getty-Images-v-Stability-AI.pdf", "paywalled": false }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
+  "notes": "Worked example for controversy-scope.md (2026-06-24). Attribution checks passed: (1) named-party — Stability AI Ltd is the defendant, not a passing mention; (2) primary-source — official judiciary.uk judgment + PDF, neutral citation [2025] EWHC 2863 (Ch); (3) same-entity — Stability AI Ltd, the Stable Diffusion maker, matches seed slug stability-ai. Tone test: summary refuses to oversimplify 'who won' — it states the dropped training claim, the secondary-infringement win, AND the limited trademark loss, because the honest read is mixed. Related prior interlocutory rulings on BAILII if the table ever wants case history: [2025] EWHC 109 (Ch), [2025] EWCA Civ 749, [2023] EWHC 3090 (Ch)."
+}
