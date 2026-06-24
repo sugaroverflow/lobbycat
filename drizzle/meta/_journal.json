@@ -78,6 +78,13 @@
       "when": 1782250655718,
       "tag": "0010_brown_landau",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1782340137389,
+      "tag": "0011_wizard_completed_via",
+      "breakpoints": true
     }
   ]
 }

@@ -371,3 +371,49 @@ already locked in REFACTOR-v0.7.2.md §11.
     the spec named two exact strings.
 - **Would change if:** Fatima reviews and prefers "Pick another" or
   "Another cat pick"; trivial follow-up.
+
+## Step 8 — Wizard auto-fill defense (2026-06-24 22:35 UTC)
+
+- **Assumed:** The spec said "Sentry-grade alert on 'seed' values" but
+  lobbycat has no Sentry wired in (grepped `Sentry`/`sentry` across the
+  repo — zero hits). Translated this to: a dedicated
+  `/api/health/wizard-integrity` route that returns 503 + structured
+  JSON when any `user_profile` row has `wizard_completed_at IS NOT NULL
+  AND completed_via != 'wizard-form'`. Hook the same uptime monitor
+  that watches `/api/health` and you get the alert. Also `console.error`
+  with a `[wizard-integrity]` prefix so Vercel function logs surface it
+  even without a probe.
+- **Assumed (defaulting):** New column `completed_via` defaults to
+  `'seed'` (NOT NULL). Only the legit `finalizeWizard()` path stamps
+  `'wizard-form'`. Default `'seed'` is the safer choice — anything that
+  bypasses the wizard (seed scripts, manual SQL, a future regression of
+  the auto-fill bug) leaves the column at the default, which trips the
+  alert. Considered defaulting to `'wizard-form'` to keep historical
+  rows quiet; rejected because that hides the very class of bug we're
+  defending against.
+- **Assumed (backfill):** Existing rows with `wizard_completed_at IS
+  NOT NULL` are backfilled to `'wizard-form'`. There's effectively one
+  user (Fatima) and she *did* complete the wizard; the v0.7.1 bug was a
+  re-write of an already-completed flag, not retroactive corruption.
+  Backfilling silences the alert for legit history while still
+  catching any future bypass.
+- **Did:**
+  - `drizzle/0011_wizard_completed_via.sql` — add column + backfill.
+  - `src/db/schema.ts` — `completedVia` field on `userProfile`.
+  - `src/app/actions-wizard.ts` — `finalizeWizard` stamps
+    `'wizard-form'`; `resetWizard` resets to `'seed'` so a replayed
+    wizard re-arms the defense.
+  - `src/app/api/health/wizard-integrity/route.ts` — 503 if any bad
+    row, with count + `console.error`. Allowlisted by the
+    `/api/health` prefix in `src/middleware.ts`.
+- **Alternatives:**
+  - Add a DB CHECK constraint forbidding `wizard_completed_at IS NOT
+    NULL AND completed_via = 'seed'`. Rejected — it would block the
+    bug from landing but give no signal *that* it tried, and migrations
+    would have to handle the historical case anyway.
+  - Wire up Sentry properly. Out of scope for a ~30m chunk; flagged for
+    a later infra ticket (route via Techie).
+- **Would change if:** Sentry gets wired (replace the `console.error`
+  with `Sentry.captureMessage` at error level), or a real second user
+  joins and we discover a legit non-wizard completion path (e.g. admin
+  impersonation) — then we add that as a third allowed value.

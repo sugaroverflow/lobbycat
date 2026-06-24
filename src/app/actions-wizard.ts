@@ -146,6 +146,10 @@ export async function completeWizard(): Promise<{ ok: true; total: number }> {
     .update(userProfile)
     .set({
       wizardCompletedAt: new Date(),
+      // v0.7.2 step 8 — only legit completion path stamps 'wizard-form'.
+      // Anything else leaves the column at its 'seed' default, which the
+      // wizard-integrity health route flags.
+      completedVia: "wizard-form",
       onboardedAt: profile.onboardedAt ?? new Date(),
       updatedAt: new Date(),
     })
@@ -178,7 +182,7 @@ export async function resetWizard() {
   const profile = await getOrCreateProfile();
   await db
     .update(userProfile)
-    .set({ wizardCompletedAt: null, updatedAt: new Date() })
+    .set({ wizardCompletedAt: null, completedVia: "seed", updatedAt: new Date() })
     .where(eq(userProfile.id, profile.id));
   revalidatePath("/");
   revalidatePath("/wizard");

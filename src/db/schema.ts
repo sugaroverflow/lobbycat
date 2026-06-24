@@ -445,6 +445,13 @@ export const userProfile = pgTable("user_profile", {
   onboardedAt: timestamp("onboarded_at", { withTimezone: true }),
   // v0.7: wizard state — set on step-6 submit
   wizardCompletedAt: timestamp("wizard_completed_at", { withTimezone: true }),
+  // v0.7.2 step 8 — provenance of wizard completion. 'wizard-form' is
+  // the only legit value (set by finalizeWizard in actions-wizard.ts).
+  // Default 'seed' so anything that bypasses the wizard (seed scripts,
+  // manual SQL, broken auto-fill paths) is detectable. The wizard-
+  // integrity health route alerts if any row has wizard_completed_at
+  // set AND completed_via = 'seed'.
+  completedVia: text("completed_via").default("seed").notNull(),
   currentRoleOneLiner: text("current_role_one_liner"),
   exploringText: text("exploring_text"),
   locationPreferences: jsonb("location_preferences")
