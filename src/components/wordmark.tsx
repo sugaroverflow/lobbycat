@@ -12,7 +12,7 @@ export function Wordmark({
   className?: string;
 }) {
   return (
-    <span className={`inline-flex items-baseline gap-2 ${className ?? ""}`}>
+    <span className={`inline-flex items-center gap-2 ${className ?? ""}`}>
       <Image
         src="/cat/lobbycat.png"
         alt=""
