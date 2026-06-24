@@ -62,6 +62,23 @@
     --rule-strong: rgb(0 255 255 / 0.35);             /* cyan-tinted on emphasis */
     --focus-ring: var(--readout-cyan);
 
+    /* --------------------------------------------------------------------
+     * Card interior — v0.7.2 §3.4 of REFACTOR.
+     *
+     * The card *frame* stays full-vaporwave (cyan top border, magenta side
+     * border, hover glow). The card *interior* (everything inside the
+     * frame) uses a calmer subset so 70 stacked cards stay readable. No
+     * glow inside, muted magenta/cyan accents, softer foreground.
+     * ----------------------------------------------------------------- */
+    --card-interior-bg: #14102A;             /* between void & panel */
+    --card-interior-bg-sunk: #100C22;        /* nested wells inside cards */
+    --card-interior-text: #E0DEF0;           /* softer than #E0E0E0 */
+    --card-interior-text-muted: rgb(224 222 240 / 0.7);
+    --card-interior-text-whisper: rgb(224 222 240 / 0.45);
+    --card-interior-rule: #1F1640;           /* dimmer than --rule */
+    --card-interior-accent-magenta: rgb(255 0 255 / 0.55);  /* muted, no glow */
+    --card-interior-accent-cyan: rgb(0 255 255 / 0.65);     /* muted, no glow */
+
     /* Vaporwave-specific accents (used by theatre surfaces, exposed
      * here so component CSS can reach them via tokens not raw hex). */
     --vw-sunset-gradient: linear-gradient(to right, #FF9900, #FF00FF, #00FFFF);

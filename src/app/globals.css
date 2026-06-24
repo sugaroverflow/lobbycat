@@ -41,6 +41,15 @@
   --color-rule: var(--rule);
   --color-rule-strong: var(--rule-strong);
 
+  /* Card-interior tokens — v0.7.2 §3.4. The card frame stays full-
+   * vaporwave; the body inside the frame uses these. */
+  --color-card-interior: var(--card-interior-bg);
+  --color-card-interior-sunk: var(--card-interior-bg-sunk);
+  --color-card-interior-text: var(--card-interior-text);
+  --color-card-interior-muted: var(--card-interior-text-muted);
+  --color-card-interior-whisper: var(--card-interior-text-whisper);
+  --color-card-interior-rule: var(--card-interior-rule);
+
   /* Earthcore backward-compat aliases — v0.3/v0.4 names → role tokens.
    * These exist so unmodified legacy components render in the Vaporwave
    * palette. Do NOT add new components that reach for these. */

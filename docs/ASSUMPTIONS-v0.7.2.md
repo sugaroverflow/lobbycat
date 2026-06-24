@@ -198,49 +198,71 @@ already locked in REFACTOR-v0.7.2.md §11.
   under the h1.
 
 
-
-
 ---
 
-## Step 4 — ExplainerBox component + mount on /frames (2026-06-24 21:48 UTC)
+## Step 5 — Card-interior token subset (2026-06-24 21:55 UTC)
 
-### A4.1 — Dismissal state via cookie + `useSyncExternalStore`, not localStorage or a server-side flag.
+### A5.1 — Tokens land as `--card-interior-*` in `vaporwave.css`, exposed via `--color-card-interior-*` in `globals.css`.
 
-- **Assumed:** A per-id cookie (`lc_explainer_<id>`, 365-day max-age, samesite=lax)
-  read via `useSyncExternalStore` is the right vehicle: it's wipeable by the
-  existing re-take-setup cookie sweep on /about, it survives across devices
-  on the same browser, and `useSyncExternalStore` keeps SSR clean without
-  tripping the React 19 "no setState in effects" rule that bit
-  `onboarding-overlay.tsx` (cf. 70df253 follow-up history).
-- **Alternatives:** (a) `localStorage` — pure client, harder to wipe from the
-  server's re-take flow without an extra round-trip; (b) `user_profile`
-  column — overkill for an explainer dismissal, would need a migration; (c)
-  `useEffect` + `useState` — works but lint-errors under the React 19 rule
-  set we just adopted.
-- **Would change if:** Re-take-setup ever moves off cookies, or we add a
-  signed-in cross-device "I dismissed this" expectation. Both are v0.8+.
+- **Assumed:** Per §3.4, the card frame stays full-vaporwave (cyan top
+  border, magenta side border) while only the *interior* shifts to the
+  calmer palette. Adding the subset as new tokens (not a re-targeting
+  of `--bg-panel`) keeps theatre surfaces — wizard, scoring screen,
+  surprise modal — unchanged. New tokens:
+    - `--card-interior-bg: #14102A` (between void `#090014` and panel `#1a103c`)
+    - `--card-interior-bg-sunk: #100C22`
+    - `--card-interior-text: #E0DEF0` (softer than chrome `#E0E0E0`)
+    - `--card-interior-text-muted: rgb(224 222 240 / 0.7)`
+    - `--card-interior-text-whisper: rgb(224 222 240 / 0.45)`
+    - `--card-interior-rule: #1F1640` (dimmer than `--rule`)
+    - `--card-interior-accent-magenta: rgb(255 0 255 / 0.55)` (muted, no glow)
+    - `--card-interior-accent-cyan: rgb(0 255 255 / 0.65)` (muted, no glow)
+- **Alternatives:** Retarget `--bg-panel` directly. Rejected — it bleeds
+  into theatre surfaces.
+- **Would change if:** A future scope wants the interior subset to be the
+  default everywhere (then promote it and demote theatre to its own subset).
 
-### A4.2 — Built tiny in-memory pub/sub for sibling explainer dismissals.
+### A5.2 — Only `CompanyCard` retargets in this commit. Other surfaces (e.g. company detail page, frames cards) stay on `--bg-panel` for now.
 
-- **Assumed:** When one ExplainerBox is dismissed on a page that mounts
-  several (none today, but Step 5/6/7 will), siblings should hide too without
-  a route change. A 7-line `Set<() => void>` + `notifyCookieListeners()` is
-  cheap and keeps the component self-contained — no global event bus needed.
-- **Alternatives:** (a) `storage` events — don't fire for the same tab that
-  wrote them; (b) skip it — only matters once we mount multiple explainers
-  per page, which is one or two steps away.
-- **Would change if:** We end up wanting cross-tab sync, which would push us
-  toward `BroadcastChannel`.
+- **Assumed:** Per §3.4 Fatima's specific complaint was *inside the
+  company cards* on the dashboard. Other panels weren't called out as
+  unreadable. Retargeting everything to the calmer subset risks losing
+  the vaporwave character on surfaces that *should* feel theatrical.
+  Conservative scope: dashboard CompanyCard only. The frames-page cards
+  (Step 3) use `bg-surface` Tailwind class which already maps to the
+  legacy `--color-surface = --bg-panel`; revisiting that is a Step 5b
+  candidate if Fatima's next click-through flags it.
+- **Alternatives:** Retarget every "card-ish" surface in one pass.
+  Rejected — risk of unintended visual regressions on calm surfaces
+  that already work.
+- **Would change if:** Fatima reports the new frames-page cards (Step 3)
+  feel inconsistent next to the redone dashboard cards. Easy follow-up.
 
-### A4.3 — Shipped Step 4 onto the open `v0.7.2/step3-combined-frames-cards` branch.
+### A5.3 — The accent token (`--card-interior-accent-magenta/cyan`) is defined but not yet *applied*; the score bars and overall readout still use `--readout-cyan`.
 
-- **Assumed:** Per Fatima's "don't pause for sign-off mid-step" rule, it's
-  fine to keep stacking v0.7.2 commits onto whichever feature branch is open
-  rather than spinning a fresh `step4-explainer-box` branch every step. The
-  branch will get squashed/merged into `scope/v0.7.2` as one PR at Step 10
-  anyway.
-- **Alternatives:** Open a clean `step4-` branch off `45135d9`. Rejected as
-  bookkeeping cost without a review-time payoff (single reviewer, one PR
-  at the end).
-- **Would change if:** Fatima asks for per-step PRs — easy to retroactively
-  cherry-pick `952496c` onto a fresh branch.
+- **Assumed:** The plan says "muted versions of magenta/cyan for inline
+  elements, no glow inside cards." The dashboard card's most prominent
+  inline accent is the `text-readout` on the Overall score and the
+  6-frame score bars. Those already lack the `--vw-glow-*` filters, so
+  they don't visually glow inside the card. Demuting them to the muted
+  cyan in this commit would dampen the visual hierarchy (the score is
+  what the user reads first). Holding the muted accent tokens in
+  reserve for v0.8 when we have a click-through to validate.
+- **Alternatives:** Apply the muted accents now. Rejected without a
+  visual check from Fatima — dampening the score readouts could read as
+  a regression.
+- **Would change if:** Fatima's next look says "the cyan still pops too
+  much inside the card" — then swap `text-readout`→`text-card-interior-
+  accent-cyan` on the score readouts.
+
+### A5.4 — No global utility classes (e.g. `bg-card-interior`) are pre-rolled.
+
+- **Assumed:** Tailwind v4 should auto-generate `bg-card-interior` etc.
+  from the `--color-*` entries I added in `globals.css`. I'm not adding
+  bespoke utility classes — the inline `style={{ background:
+  'var(--card-interior-bg)' }}` pattern matches the rest of the file
+  (`CompanyCard` already uses inline `style` for its borders). Cleaner
+  refactor to className-only would be a separate styling pass.
+- **Would change if:** A future component wants the subset and inline
+  style is awkward — then verify Tailwind auto-gen, or hand-roll one
+  utility.

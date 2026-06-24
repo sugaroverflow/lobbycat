@@ -214,10 +214,14 @@ function CompanyCard({
   const isHiring = detail?.isHiring ?? null;
 
   return (
+    // v0.7.2 §3.4: the FRAME keeps the cyan-top / magenta-left vaporwave
+    // edges. The body BG retargets to --card-interior-bg so 70 stacked
+    // cards are readable. No glow inside.
     <article
       className="relative"
       style={{
-        background: "var(--bg-panel)",
+        background: "var(--card-interior-bg)",
+        color: "var(--card-interior-text)",
         borderTop: "1px solid var(--readout-cyan)",
         borderLeft: "1px solid var(--accent-action)",
         borderRight: "1px solid var(--rule)",
@@ -268,9 +272,9 @@ function CompanyCard({
       <div
         className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 px-5 py-3"
         style={{
-          borderTop: "1px solid var(--rule)",
-          borderBottom: "1px solid var(--rule)",
-          background: "var(--bg-panel-sunk)",
+          borderTop: "1px solid var(--card-interior-rule)",
+          borderBottom: "1px solid var(--card-interior-rule)",
+          background: "var(--card-interior-bg-sunk)",
         }}
       >
         {frames.map((f) => (
@@ -328,7 +332,7 @@ function CompanyCard({
       {open && detail && (
         <div
           className="px-5 pb-5 pt-3 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5"
-          style={{ borderTop: "1px solid var(--rule)" }}
+          style={{ borderTop: "1px solid var(--card-interior-rule)" }}
         >
           <section>
             <h4 className="mono text-[10px] uppercase tracking-[0.18em] text-readout mb-2">
