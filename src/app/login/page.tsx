@@ -30,9 +30,9 @@ export default async function LoginPage({
     <main className="min-h-screen flex flex-col items-center justify-center px-6 bg-bg">
       <div className="max-w-sm w-full">
         <div className="eyebrow mb-6">Locked</div>
-        <h1 className="serif text-3xl text-ink tracking-tight">
-          <Wordmark size={36} />
-        </h1>
+        <div className="serif text-3xl text-ink tracking-tight flex items-center">
+          <Wordmark size={40} />
+        </div>
         <p className="serif text-base text-muted mt-3">
           A quiet dashboard. Password, please.
         </p>
