@@ -141,4 +141,61 @@ already locked in REFACTOR-v0.7.2.md §11.
   Rejected — it's a feature Fatima signed off on in v0.7 and removing it
   here would be a scope creep.
 
+---
+
+## Step 4 — ExplainerBox + frames copy (2026-06-24 21:50 UTC)
+
+### A4.1 — `<ExplainerBox>` mounts on `/frames` only in this step (not `/about`, not wizard step transitions).
+
+- **Assumed:** Per §6.1 the plan calls /frames "primary", /about
+  "secondary", wizard transitions "tertiary". The About page is already
+  busy (replay-onboarding link in flight + profile editor + notes index);
+  adding another box there would compete with the re-take-the-setup
+  affordance Fatima just shipped. The wizard has its own voice in the
+  step copy; an extra explainer is noise. I ship the primary surface
+  in v0.7.2 and revisit secondary/tertiary in v0.8 polish.
+- **Alternatives:** Mount on all three. Rejected — explainer fatigue
+  is a real risk and the marginal benefit on About is low.
+- **Would change if:** Fatima's next click-through asks specifically for
+  the explainer on /about (e.g. "the notes index isn't obvious") — then
+  add it there with a different `id`.
+
+### A4.2 — Dismissal persisted via client-side cookie keyed by `id`, not server-side per-user.
+
+- **Assumed:** Per §6.1 ("Dismissible per-page (cookie remembers; comes
+  back on `re-take the setup`)"). A cookie is the right primitive —
+  cheap, per-browser, doesn't require a schema change or a server
+  round-trip. The dismissal lifetime is 365d. The re-take-setup flow on
+  /about already clears the `lc_onboarded` cookie; I'm **not** wiring
+  re-take to clear `lc_explainer_*` cookies in this step — deferred
+  follow-up (small, can land in Step 8 or its own commit).
+- **Alternatives:** Persist on `user_profile.dismissedExplainers` JSONB.
+  Rejected as overkill for v0.7.2 — schema change for a UI nicety.
+- **Would change if:** Aadi logs in from a fresh browser and we want the
+  dismissals to follow him — then promote to server-side. Not now.
+
+### A4.3 — Use `useSyncExternalStore` (not `useEffect`+`setState`) to read the cookie.
+
+- **Assumed:** React 19's `react-hooks/set-state-in-effect` rule fires on
+  the obvious pattern; `useSyncExternalStore` is the supported escape
+  hatch for "read a browser-only value into render output". A tiny
+  in-module pub/sub keeps sibling ExplainerBoxes in sync after a
+  dismissal without polling.
+- **Alternatives:** Match the existing `onboarding-overlay.tsx` pattern
+  (effect + setState) and accept the lint warning. Rejected — v0.7.1
+  already has 12 lint errors of this shape; adding more makes the
+  reliability backlog grow.
+- **Would change if:** A future React update makes a simpler pattern
+  obviously preferable.
+
+### A4.4 — Intro paragraph on `/frames` is removed; the ExplainerBox replaces it.
+
+- **Assumed:** Per §3.3 the v0.7.2 copy IS the explainer body. Keeping
+  the paragraph AND the explainer box would say the same thing twice.
+  The page header (h1) stays.
+- **Would change if:** UX testing shows users miss the explainer when
+  dismissed — then re-introduce a permanent (non-dismissible) one-liner
+  under the h1.
+
+
 
