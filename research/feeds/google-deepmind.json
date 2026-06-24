@@ -1,9 +1,17 @@
 {
   "slug": "google-deepmind",
-  "lastUpdated": "2026-06-23T20:10:00Z",
+  "lastUpdated": "2026-06-24T21:10:00Z",
   "blurb": "DeepMind's recent output straddles UK government partnership and frontier-safety research: an AI planning-decisions prototype built with UK government, plus an 'AI Control Roadmap' for securing AI agents and a $10M multi-agent-safety funding call.",
   "hiring": { "isHiring": null, "newSincePrevious": null },
   "publications": [
+    {
+      "date": "2026-06-24",
+      "title": "Introducing computer use in Gemini 3.5 Flash",
+      "url": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/",
+      "type": "blog",
+      "byline": null,
+      "summary": "DeepMind ships 'computer use' (agentic UI control) in Gemini 3.5 Flash. Capability news rather than policy, but policy-adjacent: it extends the agentic-systems frontier DeepMind has been framing as its own safety/governance sub-domain (cf. its Jun-16 AI Control Roadmap). Worth watching whether agent-control capabilities and agent-security policy move in step."
+    },
     {
       "date": "2026-06-16",
       "title": "Unlocking UK house-building with AI-accelerated planning",

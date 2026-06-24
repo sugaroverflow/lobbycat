@@ -1,11 +1,46 @@
 {
-  "lastUpdated": "2026-06-23T20:10:00Z",
+  "lastUpdated": "2026-06-24T21:10:00Z",
   "events": [
+    {
+      "date": "2026-06-24",
+      "company_slug": "google-deepmind",
+      "event_type": "publication",
+      "summary": "DeepMind ships 'computer use' (agentic UI control) in Gemini 3.5 Flash — extends the agentic frontier it's been framing as a safety/governance sub-domain.",
+      "source_url": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/"
+    },
+    {
+      "date": "2026-06-24",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "OpenAI + Broadcom unveil 'Jalapeño', a custom LLM-inference chip. Company/hardware news, low policy signal.",
+      "source_url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip"
+    },
+    {
+      "date": "2026-06-24",
+      "company_slug": "stability-ai",
+      "event_type": "controversy",
+      "summary": "Backfill: Getty Images v Stability AI, UK High Court [2025] EWHC 2863 (Ch), 4 Nov 2025 — first major UK copyright/genAI ruling; mixed result (Stability won secondary-infringement, Getty won a limited watermark trademark point).",
+      "source_url": "https://www.judiciary.uk/judgments/getty-images-v-stability-ai/"
+    },
+    {
+      "date": "2026-06-24",
+      "company_slug": "openai-london",
+      "event_type": "controversy",
+      "summary": "Backfill: OpenAI/Microsoft remain defendants in the NYT/news-publisher copyright suits (SDNY); Jan 2026 discovery ruling compels production of 20M ChatGPT logs. Ongoing.",
+      "source_url": "https://www.npr.org/2025/03/26/nx-s1-5288157/new-york-times-openai-copyright-case-goes-forward"
+    },
+    {
+      "date": "2026-06-24",
+      "company_slug": "elevenlabs-london",
+      "event_type": "controversy",
+      "summary": "Backfill: ElevenLabs sued (Illinois, reported May 2026) by journalists & voice actors alleging unconsented voice-model training; follows a 2024 voice-actor suit. Ongoing/alleged.",
+      "source_url": "https://sifted.eu/articles/elevenlabs-lawsuit-2026"
+    },
     {
       "date": "2026-06-23",
       "company_slug": "openai-london",
       "event_type": "publication",
-      "summary": "OpenAI helped found the Appia Foundation (hosted by the Linux Foundation) to build open, modular conformity specs for advanced-AI standards — a third-party 'trust layer' play.",
+      "summary": "OpenAI helped found the Appia Foundation (Linux Foundation-hosted) to build modular third-party conformity specs for advanced-AI standards.",
       "source_url": "https://openai.com/index/helping-build-shared-standards-for-advanced-ai/"
     },
     {
@@ -19,14 +54,14 @@
       "date": "2026-06-16",
       "company_slug": "google-deepmind",
       "event_type": "publication",
-      "summary": "DeepMind publishes an 'AI Control Roadmap' for securing AI agents, blending traditional safeguards with real-time monitoring.",
+      "summary": "DeepMind publishes an 'AI Control Roadmap' for securing AI agents.",
       "source_url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/"
     },
     {
       "date": "2026-06-12",
       "company_slug": "anthropic-london",
       "event_type": "press",
-      "summary": "[Headline only] US government reportedly issued an export-control directive suspending all access to Anthropic's Fable 5 and Mythos 5 models. Full text not yet read.",
+      "summary": "[Headline only] US government reportedly issued an export-control directive suspending all access to Anthropic's Fable 5 and Mythos 5 models.",
       "source_url": "https://www.anthropic.com/news"
     },
     {

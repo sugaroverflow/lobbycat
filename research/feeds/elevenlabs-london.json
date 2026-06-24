@@ -1,0 +1,31 @@
+{
+  "slug": "elevenlabs-london",
+  "lastUpdated": "2026-06-24T21:10:00Z",
+  "blurb": "London/US voice-AI company. Faces repeated US litigation over alleged unconsented voice cloning — a 2024 voice-actor suit and a 2026 suit by journalists and voice actors in Illinois.",
+  "hiring": { "isHiring": null, "newSincePrevious": null },
+  "publications": [],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [
+    {
+      "type": "legal_case",
+      "title": "Journalists & voice actors v ElevenLabs — alleged unconsented voice-model training (Illinois)",
+      "url": "https://sifted.eu/articles/elevenlabs-lawsuit-2026",
+      "occurredAt": "2026-05-13",
+      "status": "ongoing",
+      "severity": "medium",
+      "companyRole": "defendant",
+      "summary": "ElevenLabs is a defendant in a US lawsuit filed in an Illinois court (reported May 2026) by a group of journalists and voice actors who allege the company built its voice models using recordings of their voices without consent. Reporting frames it as the second legal action against ElevenLabs over voice use, following an earlier 2024 suit by voice actors alleging misappropriation of their voices for its text-to-speech software. Both are alleged claims at an early/ongoing stage — no merits ruling reported. Logged conservatively: the fullest free account (Sifted) returned only partially legible; detail beyond the core allegation is not reproduced here pending a cleaner primary read.",
+      "topics": ["voice_cloning", "consent", "biometric", "training_data"],
+      "rawExcerpt": null,
+      "corroboration": [
+        { "outlet": "Sifted", "url": "https://sifted.eu/articles/elevenlabs-lawsuit-2026", "paywalled": false },
+        { "outlet": "Bloomberg Law (2024 actors' suit)", "url": "https://news.bloomberglaw.com/ip-law/actors-say-ai-voice-over-generator-elevenlabs-cloned-likenesses", "paywalled": true }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
+  "notes": "Controversy attribution: named-party (ElevenLabs Inc. is the named defendant), same-entity (the text-to-speech voice-AI firm = seed elevenlabs-london), source = named reporting (Sifted, Bloomberg Law). NOT yet traced to a court docket number — flagged as a follow-up to find the Illinois case number/PACER record before upgrading detail or severity. Held at status=ongoing, severity=medium accordingly. Sifted body was partly garbled on fetch; only the clearly-legible core allegation was used, nothing inferred."
+}
