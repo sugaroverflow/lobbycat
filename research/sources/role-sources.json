@@ -1,0 +1,33 @@
+{
+  "_comment": "Curated 'where to look' map for the roles lens. Maintained by Glyphie 🌀. Mirrors how publication sources are curated — each entry says which machine-readable ATS endpoint to hit per company. ATS public JSON APIs (greenhouse/lever/ashby) are used; no LinkedIn, no HTML scraping where an API exists. Verified reachable 2026-06-24.",
+  "_updated": "2026-06-24",
+  "_endpoints": {
+    "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{id}/jobs?content=true",
+    "lever": "https://api.lever.co/v0/postings/{id}?mode=json",
+    "ashby": "https://api.ashbyhq.com/posting-api/job-board/{id}?includeCompensation=false"
+  },
+  "sources": [
+    { "slug": "anthropic-london",   "ats": "greenhouse", "id": "anthropic",  "verified": "2026-06-24" },
+    { "slug": "openai-london",      "ats": "ashby",      "id": "openai",     "verified": "2026-06-24" },
+    { "slug": "google-deepmind",    "ats": "greenhouse", "id": "deepmind",   "verified": "2026-06-24", "note": "Greenhouse board is a curated subset (~18 roles), not the full Google careers site. London frontier-safety roles do appear. Treat as partial." },
+    { "slug": "mistral-london",     "ats": "lever",      "id": "mistral",    "verified": "2026-06-24" },
+    { "slug": "elevenlabs-london",  "ats": "ashby",      "id": "elevenlabs", "verified": "2026-06-24" },
+    { "slug": "synthesia",          "ats": "ashby",      "id": "synthesia",  "verified": "2026-06-24" },
+    { "slug": "improbable",         "ats": "ashby",      "id": "improbable", "verified": "2026-06-24" },
+    { "slug": "cohere",             "ats": "ashby",      "id": "cohere",     "verified": "2026-06-24" },
+    { "slug": "faculty",            "ats": "ashby",      "id": "faculty",    "verified": "2026-06-24" },
+    { "slug": "wayve",              "ats": "greenhouse", "id": "wayve",      "verified": "2026-06-24" },
+    { "slug": "helsing",            "ats": "greenhouse", "id": "helsing",    "verified": "2026-06-24" },
+    { "slug": "polyai",             "ats": "greenhouse", "id": "polyai",     "verified": "2026-06-24" },
+    { "slug": "xai-london",         "ats": "greenhouse", "id": "xai",        "verified": "2026-06-24" }
+  ],
+  "_unmapped": {
+    "_note": "Seeded companies WITHOUT a confirmed ATS JSON endpoint as of 2026-06-24. Most are think tanks / regulators / consultancies whose careers pages are bespoke HTML (no clean API). Candidates for a future careful-HTML-read or manual check. Do NOT fabricate roles for these.",
+    "slugs": [
+      "stability-ai", "benevolentai", "alan-turing-institute", "ada-lovelace-institute",
+      "cltr", "aisi", "dsit-ai-policy", "tbi", "demos", "nesta", "royal-society-policy",
+      "cetas", "odi", "frontier-economics", "cma-dmu", "ico-ai", "ofcom-ai",
+      "big-brother-watch", "connected-by-data", "public-law-project", "oliver-wyman-london"
+    ]
+  }
+}
