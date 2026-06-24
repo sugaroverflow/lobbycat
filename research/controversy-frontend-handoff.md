@@ -29,14 +29,19 @@ A `controversies[]` array inside each `research/feeds/<slug>.json`, alongside th
 
 Most companies will have `controversies: []` on most days. First pass is a 3-year historical backfill for legal/regulatory items; thereafter incremental.
 
-## The architecture question (yours to decide)
+## Architecture — decided: map to the existing evidence model (Fatima, 2026-06-24)
 
-I looked at how v0.7 consumes my data today and there are **two paths**, and controversy could go either way:
+Controversies become a **peer evidence kind** — a `controversies` table alongside `publications` / `consultation_submissions` / `safety_frameworks`, read on the company page like the rest of the evidence. Not a flat-file side-channel.
 
-- **Path A — DB table.** Like `publications`/`lobbyingRecords` etc., add a `controversies` pgTable + an ingestion step that reads my JSON into it, then company pages read it via `queries.ts`. Consistent with the rest of the evidence model; lets you sort/filter/index and feed it into scoring if you ever want to. More work.
-- **Path B — read the JSON directly.** Like `welcome-back.ts` already reads `research/feed.json`, have the company page/drawer read `controversies[]` straight from the per-company file. Faster to ship; no schema migration; stays cleanly "Glyphie's flat-file output." Less queryable.
+I've shaped my JSON to mirror your evidence-table convention (`companyId` + type discriminator + `title`/`url`/timestamp + `summary` + `topics` jsonb + `rawExcerpt` + `source` + `unique(companyId,url)`), so the ingestion should be a near-copy of your existing pipelines. Full proposed table DDL + matching JSON is in `research/controversy-scope.md` ("JSON schema — maps to the existing evidence model").
 
-I lean toward **A long-term** (it's evidence, and the DB is where evidence lives) but **B is the fast path to get it on screen**. Genuinely your call — you own the surface and the schema.
+Key fields that differ from your other evidence kinds (controversy-specific):
+- `status` — alleged | ongoing | settled | decided | dismissed | withdrawn (so *alleged* never renders as *decided*)
+- `severity` — high | medium | low (magnitude, distinct from status/stage)
+- `companyRole` — defendant | respondent | investigated | plaintiff | subject_of_reporting
+- `corroboration` — jsonb `[{outlet,url,paywalled}]`
+
+It slots in as another `evidence_kind` the scoring engine already understands (cf. `safety_framework`), so you *can* later let controversy weigh on a company's read — but nothing forces it to.
 
 ## Display notes (suggestions, not requirements)
 
@@ -48,8 +53,8 @@ I lean toward **A long-term** (it's evidence, and the DB is where evidence lives
 
 ## What I need back from you
 
-1. Path A or Path B? (Tells me whether you want a migration or whether my JSON is the contract.)
-2. Any field changes you want in the schema above before I start backfilling — easier to adjust the shape now than after 70 files exist.
-3. Where on the page it lives, so today's note can point Aadi-facing copy at the right surface (eventually).
+1. **Field/naming sign-off** on the proposed `controversies` table in `controversy-scope.md` — tweak names/types to your conventions before I emit 70 files. (Easier to adjust the shape now than after.)
+2. **Whether you want the table + ingestion built before or after my backfill.** I can backfill the JSON in the agreed shape now (it's evidence-model-ready); your migration + ingestion step can land whenever — the JSON is the contract either way.
+3. **Where on the page it lives** — suggest a "Contested / Scrutiny" section in `company-drawer.tsx`, near publications.
 
-No rush — I won't backfill the 70 until you've picked A/B, so the data shape matches how you'll read it. Parking this here in `research/` and flagging it to you via #lobby-cat once the bot's live.
+I can start the backfill on the agreed evidence-model shape without blocking on the migration — flag me if you want a field change first. Flagged to you via #lobby-cat (PR #17).
