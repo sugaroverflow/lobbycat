@@ -266,3 +266,75 @@ already locked in REFACTOR-v0.7.2.md §11.
 - **Would change if:** A future component wants the subset and inline
   style is awkward — then verify Tailwind auto-gen, or hand-roll one
   utility.
+
+---
+
+## Step 6 — Pre-generate fit notes (2026-06-24 22:30 UTC)
+
+### A6.1 — Replicated `generateFitNote` logic in the backfill script rather than importing from `src/app/actions.ts`.
+
+- **Assumed:** `actions.ts` is `"use server"`, which Next.js wraps with
+  a server-action runtime; importing it from a plain `tsx` script is
+  fragile (the wrapper expects React/Next context that doesn't exist
+  outside the Next runtime). Duplicating the prompt + Anthropic call is
+  the lowest-risk path and keeps the script standalone (runnable from
+  any host with `DATABASE_URL` + `ANTHROPIC_API_KEY`).
+- **Alternatives:** Export the inner generator from a non-`"use server"`
+  module (e.g. `src/lib/fit-notes.ts`) and import from both. Cleaner
+  long-term but a bigger refactor than the heartbeat-chunk allowed.
+- **Would change if:** A future fit-note tweak needs to ship to *both*
+  the live action and the backfill — at that point, lift to
+  `src/lib/fit-notes.ts` and import from both call-sites.
+
+### A6.2 — Idempotency keyed on `(company_id, profile_version)`.
+
+- **Assumed:** This matches the existing unique index
+  `fit_notes_company_version_idx` on `fit_notes`. A company is "up to
+  date" iff its latest fit-note's `profileVersion === profile.updatedAt`.
+  Older fit-notes (from a previous profile version) are considered
+  "stale" and re-generated. This is the same staleness rule the manual
+  "regenerate" button effectively follows.
+- **Alternatives:** Time-based ("regenerate if older than N days").
+  Rejected — `profile.updatedAt` is the real semantic axis (when
+  Aadi's stated concerns/frames change, *all* fit-notes are stale).
+- **Would change if:** We add a "company.updatedAt" axis for re-gen
+  triggered by company-side evidence changes. That's the Glyphie
+  nightly hook — orthogonal, additive.
+
+### A6.3 — Skipped adding a `generated_by` column ('manual' | 'nightly').
+
+- **Assumed:** The refactor doc calls this "optional" for telemetry.
+  Adding it means a migration (0011) + DB rewrite + plumbing through
+  both call-sites. Not blocking for v0.7.2 — telemetry can land in a
+  v0.7.3 micro-pass once the Glyphie nightly hook actually exists
+  (which is on Glyphie's plate, not main).
+- **Alternatives:** Add the migration now. Rejected — premature; no
+  consumer of the column exists yet.
+- **Would change if:** Glyphie ships the nightly hook and we want to
+  distinguish manual-regens from her auto-regens in any UI / log.
+
+### A6.4 — Card empty-state copy left as-is ("No fit note yet. Click `generate`…").
+
+- **Assumed:** Backfill is complete for all 70 companies, but the
+  empty-state is still useful as a graceful fallback for *future*
+  companies added between backfill runs (or before Glyphie's nightly
+  hook fires). Removing the empty-state would mean a card with no
+  fit-note shows nothing — worse UX.
+- **Alternatives:** Replace the empty-state with a "fit note pending —
+  Glyphie will write one tonight" message. Rejected — that's only
+  accurate once Glyphie's nightly hook actually runs, which is in her
+  branch, not main.
+- **Would change if:** Glyphie's hook ships and is reliable; then the
+  empty-state can promise a same-day fit-note.
+
+### A6.5 — Glyphie nightly hook owned by Glyphie, not implemented from main.
+
+- **Assumed:** Per the AGENTS split, the Glyphie agent owns her own
+  daily cron + branch. I shouldn't push to her branch from main. I
+  appended a handoff note to `research/glyphie-notes/2026-06-24.md`
+  describing the hook contract; Glyphie will implement on her next
+  daily turn.
+- **Alternatives:** Implement the hook in main and call her cron from
+  here. Rejected — cross-agent coupling; respects domain split.
+- **Would change if:** The split changes, or Glyphie explicitly defers
+  it back to me.
