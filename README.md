@@ -269,3 +269,38 @@ It runs one cheap query against the `frames` table and returns JSON:
 - `200` when `status === "ok"`
 - `503` when `status === "down"` (DB unreachable / query failed; includes `errorClass`)
 - `Cache-Control: no-store` so monitors get a fresh check every time
+
+### Preview deploys + smoke tests
+
+Every PR against `main` gets a Vercel preview deploy and a Playwright
+smoke test run before it can be merged. See
+`.github/workflows/preview-smoke.yml`.
+
+Smoke tests live in `tests/smoke.spec.ts` and cover:
+
+- `/login` renders the password prompt
+- Login with `TEST_LOBBYCAT_PASSWORD` sets the `lc_auth` cookie
+- `/`, `/wizard`, `/frames`, `/about` render without a `next-error`
+- `/api/health` returns `200` with `{ status: "ok" }`
+
+**Required repo secrets:**
+
+- `VERCEL_TOKEN` — create at <https://vercel.com/account/tokens>, then
+  `gh secret set VERCEL_TOKEN -b '<token>' -R sugaroverflow/lobbycat`
+- `VERCEL_ORG_ID`, `VERCEL_PROJECT_ID` — already set
+- `TEST_LOBBYCAT_PASSWORD` — already set (matches `LOBBYCAT_PASSWORD`
+  on the preview env)
+
+The workflow degrades gracefully if `VERCEL_TOKEN` is missing: the
+preview job logs a warning and the smoke job skips with a clear note,
+so the PR check turns green instead of blocking work while the token
+is being provisioned.
+
+Run smoke tests locally against any URL:
+
+```sh
+npx playwright install chromium
+PREVIEW_URL=https://lobbycat.vercel.app \
+  TEST_LOBBYCAT_PASSWORD='<password>' \
+  npm run test:smoke
+```
