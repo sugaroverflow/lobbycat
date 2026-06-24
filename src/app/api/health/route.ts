@@ -9,7 +9,7 @@ import { db } from "@/db";
 
 export const dynamic = "force-dynamic";
 
-const VERSION = "0.7.1";
+const VERSION = "0.7.2";
 
 export async function GET() {
   const checkedAt = new Date().toISOString();

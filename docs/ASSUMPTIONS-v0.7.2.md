@@ -429,3 +429,38 @@ already locked in REFACTOR-v0.7.2.md §11.
   - Tooltip-only ("Ask lobbycat — coming in v0.8") with no modal. Rejected — feels like a dead link; the modal copy ("you'll be able to ask me anything…") sells the v0.8 feature without faking the behaviour.
 - **Why this is defensible:** The sunset palette is intentionally off the cyan/magenta scale so it doesn't blend in (this is exactly the "visually distinct" requirement in §3.5 of the refactor doc). Putting it in the header guarantees discoverability on every route. The modal is honest about being a stub — no input box, no fake "ask" — so we're not lying about capabilities.
 - **Would change if:** v0.8 work reveals the real entry point should be inline on a company card (i.e. "ask about Anthropic" rather than a global "ask lobbycat"), in which case the header pill becomes a secondary affordance and the per-card button takes the gradient treatment. Also: if Fatima reviews and prefers a different gradient (e.g. tone-down on the orange end), trivial to retune.
+
+---
+
+## Step 10+11 — Migration apply path & version bump (2026-06-24 23:00 UTC)
+
+- **Decision:** Apply migration `0011_wizard_completed_via.sql`
+  directly against the prod Neon DB via a one-shot `postgres` driver
+  script (ALTER + backfill UPDATE), instead of running `drizzle-kit
+  push`. Also bump the hardcoded `VERSION` constant in
+  `src/app/api/health/route.ts` from `"0.7.1"` to `"0.7.2"` as part
+  of the deploy.
+- **Alternatives considered:**
+  - `drizzle-kit push`: rejected. (a) Requires interactive TTY for
+    the destructive-statement confirmation. (b) Would *also* drop
+    `frame_scores_stale_at_idx`, which is real schema drift between
+    `src/db/schema.ts` and the live DB but unrelated to step 8 and
+    not something I want to touch as part of a hot-apply.
+  - Wire migrations into Vercel build / a post-deploy job: correct
+    long-term answer but out of scope for the regression chunk.
+    Flagged as infra work, route via Techie.
+  - Skip the version bump on /api/health: rejected — uptime monitors
+    + Fatima eyeballing the route would still see `0.7.1` post-ship,
+    which contradicts the "v0.7.2 LIVE" announcement.
+- **Why this is defensible:** The migration is two statements, both
+  idempotent in effect (the ALTER would fail loudly if re-run, and
+  the UPDATE matches an explicit predicate). Applying it via the
+  same `postgres` driver the app uses guarantees identical encoding
+  + transaction behaviour to what the route expected. The version
+  constant is a single-character data fix, no behavioural risk.
+- **Would change if:** We add CI migration automation in v0.8, in
+  which case the manual apply pattern goes away. Also: if the
+  health-route ever moves to reading version from `package.json`,
+  the `package.json` `"version"` field becomes the source of truth
+  (currently `0.1.0` — intentionally unrelated to lobbycat product
+  version per A2.x).
