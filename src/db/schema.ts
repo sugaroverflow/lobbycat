@@ -701,3 +701,101 @@ export type FitNote = typeof fitNotes.$inferSelect;
 export type FitNoteMessage = typeof fitNoteMessages.$inferSelect;
 export type NewFitNoteMessage = typeof fitNoteMessages.$inferInsert;
 export type UserProfile = typeof userProfile.$inferSelect;
+
+/* ------------------------------------------------------------------ */
+/* Clarify sessions (v0.8 — `clarify` skill / lobbycat chat)          */
+/* ------------------------------------------------------------------ */
+
+// A clarify session is one conversation between Aadi and the cat.
+// Triggered manually, from the wizard's final step, from the welcome-back
+// card, or from a company-detail page. One session → at most one proposal.
+// See docs/REFACTOR-v0.8.md §5 for the source of truth on shape + intent.
+
+export const clarifySessions = pgTable(
+  "clarify_sessions",
+  {
+    id: serial("id").primaryKey(),
+    startedAt: timestamp("started_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    endedAt: timestamp("ended_at", { withTimezone: true }),
+    // 'manual' | 'wizard' | 'welcome-back' | 'company-detail'
+    trigger: text("trigger").notNull(),
+    // Optional seed context — which company/frame the session opened on.
+    // Nullable so a manual session with no seed is valid. ON DELETE SET NULL
+    // so deleting a company/frame doesn't nuke the conversation history.
+    seedCompany: integer("seed_company").references(() => companies.id, {
+      onDelete: "set null",
+    }),
+    seedFrame: integer("seed_frame").references(() => frames.id, {
+      onDelete: "set null",
+    }),
+    seedNote: text("seed_note"), // the cat's opening observation
+    // 'insight-landed' | 'no-insight' | 'user-closed' (set on session end)
+    endState: text("end_state"),
+    // 'frame-weight' | 'new-frame' | 'company-note' | null
+    proposalKind: text("proposal_kind"),
+    proposalData: jsonb("proposal_data"),
+    proposalAccepted: boolean("proposal_accepted"),
+  },
+  (t) => ({
+    startedAtIdx: index("clarify_sessions_started_at_idx").on(t.startedAt),
+    seedCompanyIdx: index("clarify_sessions_seed_company_idx").on(
+      t.seedCompany,
+    ),
+  }),
+);
+
+export const clarifyMessages = pgTable(
+  "clarify_messages",
+  {
+    id: serial("id").primaryKey(),
+    sessionId: integer("session_id")
+      .references(() => clarifySessions.id, { onDelete: "cascade" })
+      .notNull(),
+    role: text("role").notNull(), // 'cat' | 'user'
+    body: text("body").notNull(),
+    // One of §2.5's move names when role='cat'. Free-text (not FK) so the
+    // moves list can evolve without a migration. Null when role='user'.
+    moveType: text("move_type"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => ({
+    sessionIdx: index("clarify_messages_session_idx").on(
+      t.sessionId,
+      t.createdAt,
+    ),
+  }),
+);
+
+export const clarifySessionsRelations = relations(
+  clarifySessions,
+  ({ one, many }) => ({
+    seedCompanyRef: one(companies, {
+      fields: [clarifySessions.seedCompany],
+      references: [companies.id],
+    }),
+    seedFrameRef: one(frames, {
+      fields: [clarifySessions.seedFrame],
+      references: [frames.id],
+    }),
+    messages: many(clarifyMessages),
+  }),
+);
+
+export const clarifyMessagesRelations = relations(
+  clarifyMessages,
+  ({ one }) => ({
+    session: one(clarifySessions, {
+      fields: [clarifyMessages.sessionId],
+      references: [clarifySessions.id],
+    }),
+  }),
+);
+
+export type ClarifySession = typeof clarifySessions.$inferSelect;
+export type NewClarifySession = typeof clarifySessions.$inferInsert;
+export type ClarifyMessage = typeof clarifyMessages.$inferSelect;
+export type NewClarifyMessage = typeof clarifyMessages.$inferInsert;
