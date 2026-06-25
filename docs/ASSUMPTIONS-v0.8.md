@@ -78,3 +78,107 @@ Source of truth for shape: `docs/REFACTOR-v0.8.md`.
   Rejected — adds no safety, slows future steps.
 - **Would change if:** A subsequent step renames or alters a column; we'd
   bundle that into a follow-up migration, not roll 0012 back.
+
+## Step 4 — Server action: `runClarifySession` (2026-06-25 22:55 UTC)
+
+### A4.1 — Non-streaming on the wire for v0.8 step 4.
+
+- **Assumed:** Scope §3.3 calls for "streams back the cat's response", but
+  the existing `sendFitNoteMessage` server action is non-streaming and the
+  UI handles the latency cleanly with `clarifying[]` quotes (scope §8 / step
+  10). Shipping non-streaming now lets steps 5–7 land on a stable contract;
+  if the chat panel needs SSE later it can wrap a `streamObject` server
+  action without touching the persistence model.
+- **Alternatives:** Wire `experimental_useObject` + an SSE route handler
+  now. Rejected — pulls AI SDK + new client wiring into Step 4 for a
+  cosmetic gain on responses that are usually <800 tokens. Step 10's
+  loading quotes were designed for exactly this gap.
+- **Would change if:** First-token latency in real use feels worse than
+  ~1.5s and the quote-line stalls don't carry it. Then wrap a streamable
+  variant in Step 5 or in v0.8.1.
+
+### A4.2 — Skill body loaded from `skills/clarify/SKILL.md` with an inline fallback.
+
+- **Assumed:** Step 1's commit message (PR #32) places the canonical skill
+  at `skills/clarify/SKILL.md`. The server action reads it via
+  `fs.readFile(process.cwd() + "/skills/clarify/SKILL.md")` and caches the
+  result in module scope. If the file isn't present on disk yet (e.g. PR
+  #32 hasn't landed when this branch deploys to a preview), a minimal
+  inline `SKILL_FALLBACK` keeps the action shippable.
+- **Alternatives:** Hard-import the markdown via a Webpack raw-loader.
+  Rejected — adds bundler config for a single file. Bake the body as a
+  TypeScript string constant. Rejected — Step 1's intent (commit message)
+  is single-source-of-truth in `skills/`, with the inline path being a
+  consumer of that file, not a duplicate.
+- **Would change if:** Vercel's serverless filesystem drops `skills/` at
+  build time. Mitigation: a `next.config.ts` outputFileTracingIncludes
+  entry for `skills/clarify/**`. Will add in step 11 (deploy) if the
+  preview build shows the file missing at runtime.
+
+### A4.3 — Two server actions, not one: `start` + `send`.
+
+- **Assumed:** A single `runClarifySession(messages)` action would force
+  the client to manage the session row, message persistence ordering, and
+  the "is this the opener?" flag. Splitting matches the existing
+  `generateFitNote` / `sendFitNoteMessage` pattern in `src/app/actions.ts`
+  and keeps the UI a thin form-+-fetch over a stable id. A third action
+  `endClarifySessionAsClosed(id)` lets the chat panel honour §4.3's
+  "closing the panel ends the session" rule without an out-of-band cron.
+- **Alternatives:** Single action that takes the full message array each
+  turn and re-derives state. Rejected — duplicate state across DB + client
+  is exactly the kind of drift v0.8 is supposed to undo.
+- **Would change if:** A future "background clarify spawn" path (scope
+  §3.3 path 2, slated v0.9) needs a single-shot run action; that one
+  doesn't share the inline persistence model so it'd be a new export
+  anyway.
+
+### A4.4 — Proposal block is a fenced \`\`\`proposal JSON block on the cat's final turn.
+
+- **Assumed:** Step 1's commit message references an "end-of-session
+  proposal block format" in the skill. Until that SKILL.md lands and we
+  can read the exact wording, this action implements a stable contract:
+  the cat ends the session by emitting one fenced block whose info-string
+  is `proposal` containing JSON `{ kind, summary, data }`. The parser
+  strips the fence from the user-visible body and stores the structured
+  payload on `clarify_sessions.proposal_*`. A malformed JSON body is
+  treated as prose (no proposal stored, session stays open) — fail-safe,
+  no silent data loss.
+- **Alternatives:** A magic prefix like `PROPOSAL:` on its own line.
+  Rejected — fragile against the cat's wrapping conventions. A separate
+  tool-call. Rejected — single-shot Anthropic call is the whole point of
+  the inline path.
+- **Would change if:** The SKILL.md from PR #32 defines a different block
+  shape. Then update `PROPOSAL_FENCE_RE` + parser; the persistence + UI
+  contracts (kind/summary/data triple) stay stable.
+
+### A4.5 — Move-tag extraction is opt-in via an HTML comment.
+
+- **Assumed:** §5.3 wants move-type tagging "when role='cat'" so we can
+  tune the prompt over time. The action extracts a tag from a leading
+  `<!-- move: name -->` HTML comment on the cat's turn; if absent,
+  `move_type` is null. The skill body (Step 1) can opt into tagging
+  without requiring it. The tag is stripped from the visible body before
+  persistence.
+- **Alternatives:** Force the cat to JSON-output every turn. Rejected —
+  the conversation feel is the whole point. Infer move type via a second
+  LLM call. Rejected — doubles cost + latency on a feature whose payoff
+  is offline tuning.
+- **Would change if:** Step 12's tuning pass shows the tag is never set,
+  in which case we either remove it or move to a single end-of-session
+  tagging pass.
+
+### A4.6 — Glyphie feed grounding filters on `company_slug`, not name.
+
+- **Assumed:** `research/feed.json` events carry a `company_slug` field
+  (verified against the file at this beat). Filtering on slug is precise
+  (no false positives from substring matches on common names like
+  "OpenAI" hitting unrelated rows). The action reads the file from disk
+  on each call — the file is small (<25 KB today) and freshness matters
+  more than caching it.
+- **Alternatives:** Substring match on `company.name` inside event
+  summaries. Rejected — both noisy and slower. Cache the file in module
+  scope. Rejected — Glyphie's nightly cron rewrites it; we want the
+  reload-on-next-session behaviour for free.
+- **Would change if:** The feed grows past ~1 MB and read latency
+  becomes a real cost on every clarify turn; then introduce an mtime-
+  keyed in-memory cache.
