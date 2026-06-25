@@ -15,6 +15,15 @@ import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 import { after } from "next/server";
 import { rescoreFrameAcrossCompanies } from "@/lib/scoring";
+import {
+  startClarifySession as startClarifySessionImpl,
+  sendClarifyMessage as sendClarifyMessageImpl,
+  endClarifySessionAsClosed as endClarifySessionAsClosedImpl,
+  type StartClarifyOptions,
+  type StartClarifyResult,
+  type SendClarifyMessageArgs,
+  type SendClarifyMessageResult,
+} from "@/lib/clarify/run-session";
 
 type FrameKind = "scale" | "tag" | "question";
 
@@ -743,4 +752,57 @@ export async function updateProfile(patch: {
   revalidatePath("/about");
   // Profile feeds fit-note grounding; company pages reflect it next nav.
   revalidatePath(`/companies/[slug]`, "page");
+}
+
+/* ------------------------------------------------------------------ */
+/* Clarify sessions (v0.8 step 4)                                     */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Open a new clarify session and generate the cat's opening turn.
+ *
+ * Thin "use server" wrapper around `src/lib/clarify/run-session.ts`
+ * so the chat panel (Step 5) can call it from a client component.
+ * All grounding/skill-body work lives in the lib module — this file
+ * stays the index of action surfaces, not their implementations.
+ */
+export async function startClarifySession(
+  opts: StartClarifyOptions,
+): Promise<StartClarifyResult> {
+  const result = await startClarifySessionImpl(opts);
+  // The /about Conversations tab (Step 9) will list sessions; revalidate
+  // proactively so a new session shows up next nav even mid-flow.
+  revalidatePath("/about");
+  return result;
+}
+
+/**
+ * Append the user's typed message to an open clarify session and
+ * generate (+ persist) the cat's next reply. Returns the reply text
+ * and — if the cat shipped an end-of-session proposal — the parsed
+ * proposal payload.
+ */
+export async function sendClarifyMessage(
+  args: SendClarifyMessageArgs,
+): Promise<SendClarifyMessageResult> {
+  const result = await sendClarifyMessageImpl(args);
+  if (result.ended) {
+    // The session row just flipped to ended + proposal-set; refresh the
+    // surfaces that show "any pending proposals?".
+    revalidatePath("/about");
+    revalidatePath("/");
+  }
+  return result;
+}
+
+/**
+ * Mark an open clarify session as user-closed without a proposal.
+ * §4.3 of REFACTOR-v0.8.md: closing the chat panel mid-flow ends the
+ * session; next click starts a fresh one.
+ */
+export async function endClarifySessionAsClosed(
+  sessionId: number,
+): Promise<void> {
+  await endClarifySessionAsClosedImpl(sessionId);
+  revalidatePath("/about");
 }
