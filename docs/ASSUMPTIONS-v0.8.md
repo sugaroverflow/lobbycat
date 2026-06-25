@@ -63,11 +63,101 @@ Assumptions logged when the identity-files PR opens.)*
 
 ---
 
-## Step 1 — `clarify` skill authored
+## Step 1 — `clarify` skill authored (2026-06-25 21:50 UTC)
 
-*(Pending. Assumptions to log when the skill files land:
-move-set choices, voice-doc tone, example selection, validation
-output.)*
+### A1.1 — Skill lives at `skills/clarify/` in the lobbycat repo, not directly at `~/.openclaw/plugin-skills/clarify/`.
+
+- **Assumed:** The repo is the source of truth for the skill body, so
+  Vercel can bundle and load it at invocation time (the inline path —
+  §3.3 path 1 — needs the SKILL.md text inside the deployed bundle).
+  Techie's existing install task (`inbox/2026-06-25-lobbycat-agent-install.md`)
+  is the right place to add a copy/symlink step from
+  `<repo>/skills/clarify/` into `~/.openclaw/plugin-skills/clarify/` for
+  the path-2 (spawned-agent) consumers landing in v0.9. The scope doc
+  says "authored as an OpenClaw skill at
+  `~/.openclaw/plugin-skills/clarify/SKILL.md`" — I'm reading that as a
+  *deployment* location, with the repo as the canonical authoring source.
+- **Alternatives:** Author directly under `~/.openclaw/plugin-skills/`
+  and symlink into the repo. Rejected — git history would live outside
+  the repo, Vercel couldn't see it without extra build steps, and PR
+  review would be invisible to Fatima. Or commit at both locations.
+  Rejected — two sources of truth.
+- **Would change if:** Techie objects to the symlink direction, or
+  there's an existing convention for how lobbycat-repo skills are
+  installed that I'm not seeing.
+
+### A1.2 — Six moves taxonomy lifted verbatim from scope doc §2.5; no additions, no renames.
+
+- **Assumed:** The scope doc is the spec; my job is to expand each move
+  with *when / data needed / phrasings / what to listen for / follow up*,
+  not invent new moves. The doc explicitly says "See §10 build steps" for
+  the expansion, so the expansion happens here in `reference/moves.md`.
+- **Alternatives:** Add a seventh move (e.g. "the silence" — when the
+  cat says nothing and waits). Rejected — that's a tactic inside other
+  moves, not its own move; lives in `voice.md` ("earn the silence")
+  instead.
+- **Would change if:** Fatima reads it and says a move is missing, or
+  Aadi's real sessions reveal a recurring pattern that doesn't fit one
+  of the six.
+
+### A1.3 — `voice.md` derived primarily from `lobbycat/SOUL.md`, not from `lobbycat-quotes.json`.
+
+- **Assumed:** SOUL.md (just shipped in Step 0) is the more recent and
+  more grill-context-shaped voice doc. The quotes JSON is for ambient UI
+  states (loading, welcome-back, fitNoting); the conversation tone
+  belongs to SOUL. `voice.md` is the conversation-specific gloss on top
+  of SOUL — explicitly says so at the top of the file.
+- **Alternatives:** Synthesise from quotes JSON only. Rejected —
+  third-person ambient voice ("the cat is reading…") doesn't translate
+  to first-person session voice. Or duplicate SOUL contents into
+  `voice.md`. Rejected — drift risk; better to reference and gloss.
+- **Would change if:** SOUL gets edited and `voice.md` needs to track,
+  or Fatima wants a single source of voice truth (probably SOUL, with
+  `voice.md` as a pointer).
+
+### A1.4 — Three worked examples in `examples.md`: one contradiction, one hidden-frame, one clean-exit (no insight).
+
+- **Assumed:** Coverage of the most-likely opening moves (contradiction,
+  hidden frame) plus the "nothing surfaced" path is the highest-value
+  selection. The other four moves (forced trade, drift check, honest
+  mirror, exit) are well-covered by their move-doc entries and don't
+  need a worked transcript each.
+- **Alternatives:** Six examples, one per move. Rejected — long file,
+  diminishing returns, and the patterns across them are what matter, not
+  one per move. Or one example only. Rejected — the clean-exit path is
+  important enough to demonstrate explicitly (the cat must be allowed to
+  end without a fake insight).
+- **Would change if:** Real sessions reveal one of the four un-exampled
+  moves is harder to get right than the move doc captures.
+
+### A1.5 — End-of-session proposal output uses a fenced text block with `KIND: weight|frame|note|none`, not JSON.
+
+- **Assumed:** A simple line-oriented format is easier for the
+  `runClarifySession` server action (Step 4) to parse out of a streamed
+  response than JSON, and tolerates the model occasionally adding
+  surrounding prose. JSON inside a stream is a known source of
+  half-parsed-object bugs. Step 4 will define the exact parser; this is
+  the shape it has to handle.
+- **Alternatives:** JSON object. Rejected — fragility with streaming +
+  the model wanting to add commentary around it. Or function-calling /
+  tool-use. Deferred — that's a Step 4 implementation choice, and the
+  skill should still emit human-readable end-of-session text even when
+  wrapped in a tool call.
+- **Would change if:** Step 4 prefers structured tool-use; the skill
+  output block stays as a fallback for path-2 (spawned agent) consumers
+  that don't have tool-use wired up.
+
+### A1.6 — Validation: `skill-creator/scripts/quick_validate.py` passed ("Skill is valid!") on `/root/projects/lobbycat/skills/clarify` at 21:50 UTC.
+
+- **Assumed:** Passing `quick_validate.py` is sufficient validation for
+  the skill author step. Behavioural validation (does the cat actually
+  sound like the cat?) happens in Step 12 (Lotus-side tuning pass)
+  against real seeded sessions.
+- **Alternatives:** Stand up a throwaway invocation now and read a
+  generated session. Rejected — that's the Step 4/12 surface, not Step
+  1's.
+- **Would change if:** Fatima reads the skill and wants edits before
+  Step 3 starts.
 
 ---
 
