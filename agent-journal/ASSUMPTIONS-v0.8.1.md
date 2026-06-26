@@ -414,3 +414,99 @@ into this same Phase A item 2 commit/PR.**
     separate F1.x item.
 - Would change if: Fatima points at the selects as still "gray on
   black."
+
+---
+
+**A-A5.1 — F3.1 "{name} — {hq} — {overall}" header row keeps the
+HiringBadge as a right-justified row trailer.**
+
+- Date: 2026-06-26 05:46 UTC
+- Decision: F3.1 explicitly says "no right-stack column" and asks for
+  ONE row of `{name} — {hq} — {overall}`. The Hiring badge was
+  previously in that right-stack column. Rather than hide it or
+  invent a new surface, the badge moves to the right-justified
+  trailer of the same header row (flex justify between an info
+  cluster on the left and the badge on the right). The badge is the
+  only filter/toggle the card surfaces at-a-glance ("Hiring") — it
+  belongs at the very top of the card, not buried under "show more."
+- Alternatives considered:
+  - (a) Inline the Hiring badge into the same em-dash chain as
+    `{name} — {hq} — {overall} — hiring`. Rejected — Hiring is a
+    state badge, not a piece of factual prose; mashing it into the
+    dash chain reads as a typo.
+  - (b) Move the badge to the score-strip row or below the blurb.
+    Rejected — that demotes Hiring, but F1.2 (which JUST shipped)
+    bumped the Hiring filter chip's contrast precisely because
+    Fatima treats it as a primary signal.
+  - (c) Drop the badge entirely now and bring it back in F3.5. F3.5
+    is about a star/favorite affordance, not Hiring. Rejected as
+    out-of-scope shrinkage.
+- Would change if: Fatima specifically points at the badge and says
+  "move it" or "drop it from the card top".
+
+**A-A5.2 — F3.1 "overall" stays the existing weighted aggregate
+formatting (label "Overall " + tabular-nums readout).**
+
+- Date: 2026-06-26 05:46 UTC
+- Decision: The spec says `{name} — {hq} — {overall}`. I read
+  `{overall}` as the same "Overall N.NN" treatment that lived in the
+  right-stack column — i.e. a small "Overall" label + the number in
+  the cyan readout treatment with `tabular-nums`, just inlined into
+  the dash chain instead of stacked. The number itself bumps to
+  `text-base` to read at the same weight as the HQ token in the row.
+- Alternatives considered:
+  - (a) Drop the "Overall" label and inline just the number. Rejected
+    — without context the bare number reads ambiguously next to
+    "{hq}" (could be a postcode, a count, etc.).
+  - (b) Render `(overall)` parenthesized at the end. Rejected — the
+    spec uses dashes between all three tokens; parens would break the
+    rhythm.
+- Would change if: Fatima sketches a mock where the overall number
+  appears un-labeled or in a different position.
+
+**A-A5.3 — F3.2 "calmer body text" reads as the muted card-interior
+token, not the full-opacity card-interior text token.**
+
+- Date: 2026-06-26 05:46 UTC
+- Decision: F3.2 calls the blurb "calmer body text." The blurb was
+  already there, but it was rendered in the same
+  `text-card-interior-text` (full opacity) as the show-more body
+  prose. To make it actually *calmer* the blurb now uses
+  `text-card-interior-muted` — same weight, same size, lower visual
+  emphasis. That keeps the header row (name + cyan overall readout)
+  as the visual anchor and lets the blurb sit underneath as
+  supporting context.
+- Alternatives considered:
+  - (a) Drop the blurb to `text-card-interior-whisper`. Rejected —
+    whisper is for tertiary metadata (timestamps, counts); a company
+    description is still substantive content.
+  - (b) Leave blurb at full opacity and rely on F3.3 spacing alone to
+    "calm" it. Rejected — F3.2 explicitly says "calmer body text," so
+    a tone change is required, not just spacing.
+- Would change if: Fatima reads the blurb as now too quiet against
+  the new header row.
+
+**A-A5.4 — F3.3 "score bars sit closer to the frames" = tighten the
+header's bottom padding and the score-strip's top padding by one
+step each.**
+
+- Date: 2026-06-26 05:46 UTC
+- Decision: F3.3 wants the score-strip to "read as the immediate body
+  of the card." The strip already had `py-3` (top and bottom padding)
+  and the header had `pb-3`. To collapse the gap without losing
+  rhythm with the latest/show-more row underneath, the header's
+  bottom padding drops to `pb-2`, the strip's top padding drops to
+  `pt-2`, and the strip's bottom padding stays `pb-3` to preserve
+  breathing room above "Latest." The blurb's top margin also drops
+  from `mt-1.5` to `mt-1` so the whole upper cluster reads as one
+  tighter unit.
+- Alternatives considered:
+  - (a) Drop the strip's `border-top` to fuse it visually with the
+    header. Rejected — the cyan rule between header and score-strip
+    is the existing card-interior language; killing it would change
+    the card's identity, which is outside F3's scope.
+  - (b) Drop strip padding to `py-1` for maximum tightness. Rejected
+    — the bars themselves need vertical room to read as bars and not
+    as overlapping rules; `py-2` (top) preserves that.
+- Would change if: Fatima still reads the strip as "disconnected"
+  from the header after this.

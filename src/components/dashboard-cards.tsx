@@ -231,46 +231,65 @@ function CompanyCard({
       data-testid="dashboard-card"
       data-slug={c.slug}
     >
-      {/* top strip — name + blurb + hiring badge */}
-      <header className="px-5 pt-4 pb-3 flex items-start gap-4">
+      {/* v0.8.1 F3.1/F3.2/F3.3: header row is ONE line
+          ({name} — {hq} — {overall}) with the hiring badge as row
+          trailer. Blurb sits directly under in calmer (muted) body
+          text. Spacing between header/blurb and the score-strip is
+          tightened so the strip reads as the immediate body of the
+          card. */}
+      <header className="px-5 pt-4 pb-2 flex items-start gap-4">
         <div className="flex-1 min-w-0">
-          <div className="flex items-baseline gap-3 flex-wrap">
+          <div className="flex items-baseline gap-2 flex-wrap font-sans">
             <Link
               href={`/companies/${c.slug}`}
-              className="font-sans text-xl tracking-tight text-ink hover:text-readout transition-colors"
+              className="text-xl tracking-tight text-ink hover:text-readout transition-colors"
               style={{ fontWeight: 500 }}
             >
               {c.name}
             </Link>
             {c.hq && (
-              <span className="font-sans text-xs text-card-interior-muted">
-                {c.hq}
-              </span>
+              <>
+                <span
+                  aria-hidden
+                  className="text-card-interior-whisper text-base"
+                >
+                  —
+                </span>
+                <span className="text-sm text-card-interior-muted">
+                  {c.hq}
+                </span>
+              </>
             )}
+            <span
+              aria-hidden
+              className="text-card-interior-whisper text-base"
+            >
+              —
+            </span>
+            <span
+              className="text-sm text-card-interior-muted"
+              title="Weighted aggregate across frames"
+            >
+              <span className="text-card-interior-muted">Overall </span>
+              <span className="text-readout text-base tabular-nums">
+                {fmtOverall(overall)}
+              </span>
+            </span>
           </div>
           {c.description && (
-            <p className="font-sans text-sm text-card-interior-text leading-relaxed mt-1.5 max-w-2xl">
+            <p className="font-sans text-sm text-card-interior-muted leading-relaxed mt-1 max-w-2xl">
               {c.description}
             </p>
           )}
         </div>
-        <div className="flex flex-col items-end gap-1.5 shrink-0">
+        <div className="shrink-0">
           <HiringBadge isHiring={isHiring} />
-          <span
-            className="font-sans text-xs text-card-interior-muted"
-            title="Weighted aggregate across frames"
-          >
-            Overall{" "}
-            <span className="text-readout text-sm tabular-nums">
-              {fmtOverall(overall)}
-            </span>
-          </span>
         </div>
       </header>
 
       {/* scores — 6 frame bars, 2 columns */}
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 px-5 py-3"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 px-5 pt-2 pb-3"
         style={{
           borderTop: "1px solid var(--card-interior-rule)",
           borderBottom: "1px solid var(--card-interior-rule)",
