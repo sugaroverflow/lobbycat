@@ -632,11 +632,122 @@ Assumptions logged when the identity-files PR opens.)*
 
 ---
 
-## Step 7 — Wizard step 5 → seeded clarify session
+## Step 7 — Wizard step 5 → seeded clarify session (2026-06-26 01:45 UTC)
 
-*(Pending. Assumptions to log: seed-message shape, what happens if the
-seeded session fails mid-onboarding, whether the old textarea data is
-preserved in the DB.)*
+### A7.1 — Inline embedded session inside `<StepCard>`, not a side-panel handoff.
+
+- **Assumed:** The wizard's step-5 surface is the right home for the
+  embedded clarify session — keeping the user inside the wizard's
+  chrome (Back / Next, progress bar, step copy) preserves the
+  onboarding flow shape. Pulling them out into the right-side
+  `<ClarifyPanel>` mid-onboarding would interrupt the wizard's
+  step-by-step rhythm and force the user to navigate back to the
+  wizard chrome to advance. The embedded variant is a new component,
+  `<WizardClarifyStep>`, that shares the message-stream + chat-input
+  patterns with `<ClarifyPanel>` but ships its own (calmer, smaller)
+  shell.
+- **Alternatives:** Reuse `<ClarifyPanel>` with a `variant="embedded"`
+  prop. Rejected — too many conditionals branching the panel for one
+  caller; the wizard variant is calmer and structurally different
+  enough (no close button, no proposal card, no z-stack) that a
+  sibling component is cleaner.
+- **Would change if:** A future step (welcome-back card in Step 8) wants
+  the same embedded shape — then promote shared bits into a
+  `<ClarifyConversation>` primitive.
+
+### A7.2 — Wizard's Next button triggers a `wizard-clarify-close` window event before advancing.
+
+- **Assumed:** The existing `<StepCard>` Next-button shape (`onNext:
+  async () => void`) accepts an async handler; we use that to close
+  the embedded session server-side via
+  `endClarifySessionAsClosed(sessionId)` before advancing. To avoid a
+  prop-drilling refactor (which would touch StepCard's API and the
+  five other steps), the embedded session listens for a window-level
+  `CustomEvent('wizard-clarify-close', { detail: { resolve } })` and
+  the wizard's Next handler dispatches it + awaits the resolution.
+  Best-effort: if the listener isn't mounted (user navigated past the
+  step), a 50ms timeout resolves the promise so the wizard doesn't
+  hang. The transcript is preserved on the row regardless of close
+  outcome.
+- **Alternatives:** Hoist the sessionId up to `<Wizard>` via callback
+  props and let `<Wizard>` call the action directly. Rejected —
+  forces the embedded component to expose its session lifecycle
+  upward, which complicates testing and re-mount semantics. Or skip
+  the explicit close and let the row time-out server-side. Rejected
+  — leaves zombie open sessions; bad analytics signal.
+- **Would change if:** Multiple embedded clarify surfaces ever live on
+  the same page simultaneously (then the event would need a session-
+  id namespace). Not a v0.8 problem.
+
+### A7.3 — The cat's wizard-trigger system prompt already biases to a "3-question seeded opener" (`run-session.ts` line ~529); no client-side question cap.
+
+- **Assumed:** Step 4 wired `trigger: "wizard"` to a custom seed line
+  that asks the cat to run a 3-question seeded opener per the skill.
+  We trust the cat to self-end after 3 questions; the `result.ended`
+  flag from `sendClarifyMessage` is the source of truth. The client
+  doesn't need a hardcoded turn counter — if the cat goes long (say,
+  5 questions because the user is gushing), the user can still hit
+  Score it → anytime to close the session.
+- **Alternatives:** Hard-cap at 3 turns client-side regardless of
+  `result.ended`. Rejected — trims the cat's natural session-end
+  observation. Or pass a `maxTurns` arg through the action. Rejected
+  — the skill body is the right place for that constraint; baking it
+  in via prompts is the v0.8 intent.
+- **Would change if:** Tuning pass (Step 12) reveals the cat
+  consistently runs past 3 questions on wizard sessions.
+
+### A7.4 — Proposal card is **suppressed** during wizard sessions; the proposal payload still saves to the session row but isn't applied.
+
+- **Assumed:** The wizard runs *before* the user has scored anyone or
+  written notes — a `frame-weight` proposal has no scored data to
+  act on, a `company-note` proposal would target a company the user
+  hasn't visited, and a `new-frame` proposal mid-onboarding
+  short-circuits the existing 6-frame default set the wizard already
+  paid for. The cat may still *emit* a proposal block at session end
+  (Step 4's parser stores it on the session row), but the
+  `<WizardClarifyStep>` UI never renders the accept/reject card. The
+  payload sits dormant; Step 12 (tuning) decides if we should surface
+  these via a "want me to revisit these in your first weekly
+  welcome-back?" handoff to Step 8.
+- **Alternatives:** Pass `suppressProposal: true` down to the server
+  action so the cat skips emitting a proposal entirely. Rejected —
+  changes the skill contract for one caller; cleaner to filter at the
+  surface. Or render the card anyway and let the user accept.
+  Rejected — see above; the apply path has no scored data to bind to.
+- **Would change if:** Step 12 tuning shows the cat's wizard-session
+  proposals are routinely valuable enough to surface — then promote
+  to a deferred-accept queue rendered on the dashboard.
+
+### A7.5 — v0.7's `openTextAnswers` schema column is preserved; nothing reads it today, but no migration drops it.
+
+- **Assumed:** Existing user profiles (Fatima's, primarily) have stored
+  `openTextAnswers` JSONB payloads from the v0.7 textarea pass. The
+  v0.8 wizard no longer writes to that column, but dropping the data
+  in this PR would be destructive on a live prod row. Leaving the
+  column + payload intact preserves history; a future migration can
+  either drop it (after a confirmed audit that nothing reads it) or
+  synthesise a clarify_session row from each historic answer-set so
+  the /about Conversations tab (Step 9) shows continuity.
+- **Alternatives:** Drop the column in migration 0014. Rejected —
+  destructive, and the data is small. Or read the historic answers
+  into the cat's wizard system prompt for returning users. Deferred
+  — nice continuity touch but not a v0.8 blocker.
+- **Would change if:** Audit shows nothing references the column.
+  Then schedule a tidy migration in v0.8.1 or v0.9.
+
+### A7.6 — No "skip & score it →" affordance beyond the existing Next button.
+
+- **Assumed:** The wizard's Next button ("Score it →") already lets
+  the user move on without engaging the embedded session. Adding a
+  second "skip" button would clutter the chrome and signal that the
+  embedded session is optional in a way that undermines the cat. The
+  subtitle copy makes the optionality clear: *"Skip if you'd rather
+  just see the dashboard."*
+- **Alternatives:** Explicit "skip" link inside the embedded panel.
+  Rejected — redundant with Next. Or auto-advance if the user sits on
+  the step for >30s without typing. Rejected — violates user control.
+- **Would change if:** First-real-user usability suggests users miss
+  that Next is the skip path.
 
 ---
 
