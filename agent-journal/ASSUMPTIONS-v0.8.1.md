@@ -685,3 +685,87 @@ hover:bg-action-hover` (token-driven primary CTA).**
 - `aria-live="polite"` + `aria-atomic="true"` on the wrapper so
   screen readers announce the save without stealing focus.
 
+
+## A-A9.1 — F5.1 frames page: section order frames → add-button → ask-lobbycat panel
+
+- Scope: frame cards on top, "+ Add a new frame" button below the
+  list, "Ask lobbycat for frame ideas" (CatSuggestions) at the very
+  bottom. Previously CatSuggestions was at the top of the page.
+- Implementation: single JSX reorder in `FramesEditor` — move
+  `<CatSuggestions />` from above the `<ul>` to after `<NewFrameForm />`.
+  No layout/spacing changes; the outer `space-y-8` already provides
+  consistent vertical rhythm so the panel reads as a distinct
+  bottom section rather than an inline footer of the form.
+- Rationale (per Fatima's note in the scope doc): with frames
+  already populated, the "ask the cat" panel is suggestion-tier,
+  not primary action — sinking it below the frame list and the
+  add-affordance puts the primary CTAs first.
+- Would change if: empty-state behaviour (zero frames) needs a
+  different shape — currently the empty `<li>` placeholder still
+  renders above the add button, which is correct: the user sees
+  "no frames yet" → "+ Add a new frame" without scrolling past
+  the ask-cat panel.
+
+## A-A9.2 — F5.2 add-frame: real button styled like the dashboard primary CTA
+
+- Previously rendered as a bare text link
+  (`text-moss hover:underline`, lowercase "+ add new frame").
+- New: a proper button styled
+  `bg-action text-canvas hover:bg-action-hover px-4 py-2 rounded` —
+  the same primary-CTA pattern PR #55 established for the
+  Save-note button (and which the scope doc says matches dashboard
+  CTAs).
+- Label also gets a capital "A": "+ Add a new frame" — matches
+  scope-doc casing and reads as a button label, not a soft link.
+- Kept inside the same conditional render (only shows when the
+  form is closed); when the form opens the affordance is replaced
+  by the form panel as before. No state-machine change.
+- Would change if: dashboard CTAs later move off `bg-action` to a
+  different primary token — we'd update both this and Save-note
+  together.
+
+## A-A9.3 — F5.3 pole-label font size: text-[10px] → text-xs
+
+- The pole-label line at the bottom-right of each frame card
+  ("Pre-product → Established · 1–5") was rendered at `text-[10px]`,
+  too small to read comfortably per Fatima.
+- Bump to `text-xs` (12px) — minimal, matches the other small
+  metadata in the card footer (the weight radio buttons are also
+  `text-xs`).
+- Kept `mono`, `text-whisper`, `ml-auto` so colour, family, and
+  right-alignment are unchanged.
+- Considered `text-sm` (14px) — felt too prominent, would compete
+  with the weight controls on the left of the footer for visual
+  weight. `text-xs` is the smallest size that's comfortably
+  readable on retina + non-retina displays in this typeface.
+- Would change if: Fatima still finds it too small — bump again to
+  `text-sm` and possibly drop `mono` for serif to match the card
+  body.
+
+## A-A9.4 — F5.4 weight vocab swap: labels only, tokens unchanged
+
+- Swap `WEIGHT_LABEL` map:
+  - high: Must → **dealbreaker**
+  - medium: Should → **important**
+  - low: Could → **nice to have**
+- Tokens (`high` / `medium` / `low`) untouched — they're the DB
+  enum values, the `FrameWeightLevel` type, the
+  `setFrameWeights` server-action input, and the scoring engine's
+  weighting key. Touching them would mean a migration, a server-
+  action shape change, and a scorer rewrite. Scope doc explicitly
+  says "Same underlying tokens — just the labels change."
+- `WEIGHT_HELP` tooltip text also updated so the long-form
+  description matches the short label ("dealbreaker — score this
+  heavily", "important — default weighting", "nice to have —
+  gentle nudge only"). Previously the help text already used
+  "deal-breaker / matters / nice-to-have" phrasings; aligned to
+  the new short labels for consistency.
+- Labels are lowercase (per scope doc: "dealbreaker | important |
+  nice to have"). The radio buttons themselves use `uppercase` in
+  their className, so they'll render as DEALBREAKER / IMPORTANT /
+  NICE TO HAVE in the UI — consistent with the previous MUST /
+  SHOULD / COULD rendering.
+- Scope: limited to `src/components/frames-editor.tsx`. The
+  scoring engine (`@/lib/scoring/aggregate`), the FrameScorer
+  component, and the DB schema all use the high/medium/low tokens
+  directly and need no changes.
