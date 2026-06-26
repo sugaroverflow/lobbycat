@@ -753,8 +753,55 @@ Assumptions logged when the identity-files PR opens.)*
 
 ## Step 8 — Welcome-back card: optional clarify offer
 
-*(Pending. Assumptions to log: drift-detection heuristic, frequency cap
-enforcement, how Glyphie hints are surfaced.)*
+### A8.1 — Drift-detection heuristic (first cut)
+
+The spec asks "is there drift worth a clarify?" without naming the
+signals. Real drift detection (e.g. tracking score deltas over time,
+learning from completed sessions, weighting Glyphie's controversy hints)
+is a bigger surface than v0.8 §10 step 8 budgets for. We shipped a
+minimal first cut:
+
+- **Signal:** there is at least one welcome-back diff event whose
+  company the user scores ≥4 on one of their high-weighted ("must")
+  frames.
+- **Rationale:** recent news (the diff) intersected with high-care +
+  high-fit = the case where a one-minute pause-and-talk is most likely
+  to land. Negative-direction news isn't distinguished from positive yet
+  — the cat reads the event in-session anyway.
+- **Fallback:** if the user weighted nothing "high", we fall back to
+  their single highest-priority frame (same tie-break the welcome-back
+  builder uses) so the heuristic doesn't go silent for default profiles.
+
+Deferred to v0.9 or Step 12 tuning:
+- Score-delta drift ("you scored Stripe 5 on Care, then 3 last week…").
+- Glyphie controversy hints from PR #40 / migration 0013 once that lands.
+- Negative-vs-positive event tone weighting.
+
+### A8.2 — Bullet → company resolution
+
+`WelcomeBackData.bullets` carry text + href but no structured
+`companyId`/`slug`. We re-derive the company by prefix-matching the
+bullet text ("{Name} — {summary}") against the companies list passed
+down. Brittle if Glyphie's feed ever renders a company under a non-
+canonical alias. Flagged for a v0.9 cleanup: lift the company id onto
+the `WelcomeBackBullet` type at the builder.
+
+### A8.3 — Frequency cap interpretation
+
+The spec says "Once a week max." We read that as a hard 7-day cooldown
+from the last `welcome-back`-triggered `clarify_sessions` row, not as a
+calendar-week boundary (which would let two offers fire on Sun+Mon).
+Any session counts, regardless of `endState` — if the user opened the
+thing, that counts as the week's offer.
+
+### A8.4 — Glyphie hints surfacing
+
+The spec mentions Glyphie's hints as an input. PR #40 (controversies
+migration 0013) isn't merged yet and Fatima asked us to defer reading
+it until after the v0.8 PR collapse. Step 8 ships without Glyphie
+hints; once #40 lands we can fold its signal into the offer builder as
+a pure additive change (one more reason to surface the CTA — doesn't
+gate the existing diff-based signal).
 
 ---
 

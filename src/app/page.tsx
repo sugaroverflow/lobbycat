@@ -10,6 +10,7 @@ import {
   recordHomeVisit,
 } from "@/lib/queries";
 import { buildWelcomeBack } from "@/lib/welcome-back";
+import { buildWelcomeBackOffer } from "@/lib/clarify/welcome-back-offer";
 import quotes from "@/db/lobbycat-quotes.json";
 
 type Quotes = { welcomeBack: string[] };
@@ -56,6 +57,21 @@ export default async function HomePage() {
     frames: home.frames,
   });
 
+  // v0.8 step 8 — "is there drift worth a clarify?" Reads the welcome-back
+  // diff + recent clarify_sessions to decide whether to offer a session.
+  // Capped to once a week. Degrades to no-offer on any signal miss.
+  const clarifyOffer = await buildWelcomeBackOffer({
+    welcomeBack,
+    companies: home.companies.map((c) => ({
+      id: c.id,
+      slug: c.slug,
+      name: c.name,
+    })),
+    scores: home.scores,
+    frameWeights: home.frameWeights,
+    frames: home.frames,
+  });
+
   const firstName = profile?.displayName?.split(" ")[0] || null;
 
   const pool = (quotes as unknown as Quotes).welcomeBack ?? [];
@@ -79,6 +95,7 @@ export default async function HomePage() {
         companyIds={home.companies.map((c) => c.id)}
         firstName={firstName}
         welcomeBack={welcomeBack}
+        clarifyOffer={clarifyOffer}
       />
       <DashboardCards
         companies={home.companies}

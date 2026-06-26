@@ -4,6 +4,8 @@ import { useState, useTransition } from "react";
 import quotes from "@/db/lobbycat-quotes.json";
 import { rescoreCompanyAction } from "@/app/actions-rescore";
 import type { WelcomeBackData } from "@/lib/welcome-back";
+import type { WelcomeBackOffer } from "@/lib/clarify/welcome-back-offer";
+import { ClarifyLauncher } from "@/components/clarify-launcher";
 
 type Quotes = {
   welcomeBack: string[];
@@ -27,6 +29,7 @@ export function WelcomeCard({
   companyIds,
   firstName,
   welcomeBack,
+  clarifyOffer,
 }: {
   welcomeLine: string;
   oldestScoreAt: string | null;
@@ -34,6 +37,7 @@ export function WelcomeCard({
   companyIds: number[];
   firstName?: string | null;
   welcomeBack?: WelcomeBackData;
+  clarifyOffer?: WelcomeBackOffer;
 }) {
   const q = quotes as unknown as Quotes;
   const stale = ageDays !== null && ageDays > STALE_DAYS;
@@ -98,6 +102,25 @@ export function WelcomeCard({
           welcomeBack={welcomeBack}
           firstName={firstName ?? null}
         />
+      ) : null}
+      {clarifyOffer?.offer ? (
+        <div
+          className="pt-4"
+          data-testid="welcome-back-clarify-offer"
+          aria-label="clarify offer"
+        >
+          <p className="prose-face text-sm text-muted italic max-w-2xl pb-1">
+            {clarifyOffer.seedLine}
+          </p>
+          <ClarifyLauncher
+            variant="link"
+            trigger="welcome-back"
+            seedCompanyId={clarifyOffer.seedCompanyId}
+            seedFrameId={clarifyOffer.seedFrameId}
+            seedLine={clarifyOffer.seedLine}
+            label="want to sit with this for a minute?"
+          />
+        </div>
       ) : null}
     </section>
   );
