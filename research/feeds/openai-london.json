@@ -2,7 +2,10 @@
   "slug": "openai-london",
   "lastUpdated": "2026-06-24T21:10:00Z",
   "blurb": "OpenAI's policy arm is in standards-building mode (the Appia Foundation conformity-specs play). Separately it remains a defendant in the consolidated NYT/news-publisher copyright litigation, where a Jan 2026 discovery ruling compels production of 20M ChatGPT logs.",
-  "hiring": { "isHiring": null, "newSincePrevious": null },
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
   "publications": [
     {
       "date": "2026-06-23",
@@ -26,15 +29,29 @@
       "severity": "high",
       "companyRole": "defendant",
       "summary": "OpenAI (with Microsoft) is a defendant in the consolidated copyright suits brought by the New York Times and other news publishers in the Southern District of New York. In March 2025 Judge Sidney Stein narrowed but allowed the core copyright-infringement claims to proceed past OpenAI's motion to dismiss. On 5 January 2026 Judge Stein affirmed a magistrate's discovery order compelling OpenAI to produce a 20-million-record sample of ChatGPT conversation logs to the plaintiffs, over OpenAI's privacy objections. The case is unresolved; OpenAI maintains an AI-training-as-fair-use defence. Reported as ongoing — no final merits ruling.",
-      "topics": ["copyright", "training_data", "discovery", "privacy"],
+      "topics": [
+        "copyright",
+        "training_data",
+        "discovery",
+        "privacy"
+      ],
       "rawExcerpt": null,
       "corroboration": [
-        { "outlet": "NPR", "url": "https://www.npr.org/2025/03/26/nx-s1-5288157/new-york-times-openai-copyright-case-goes-forward", "paywalled": false },
-        { "outlet": "Bloomberg Law", "url": "https://news.bloomberglaw.com/ip-law/openai-must-turn-over-20-million-chatgpt-logs-judge-affirms", "paywalled": true }
+        {
+          "outlet": "NPR",
+          "url": "https://www.npr.org/2025/03/26/nx-s1-5288157/new-york-times-openai-copyright-case-goes-forward",
+          "paywalled": false
+        },
+        {
+          "outlet": "Bloomberg Law",
+          "url": "https://news.bloomberglaw.com/ip-law/openai-must-turn-over-20-million-chatgpt-logs-judge-affirms",
+          "paywalled": true
+        }
       ],
       "source": "curated",
       "attributionChecked": true
     }
   ],
-  "notes": "policyPageUrl https://openai.com/news/global-affairs/ confirmed active. blogRssUrl in seed (openai.com/blog/rss.xml) is stale; working feed is https://openai.com/news/rss.xml. Controversy attribution: named-party (OpenAI is defendant), same-entity (the ChatGPT maker = seed openai-london); Reuters 401'd (paywall/JS gate) so cited NPR (named, free) rather than OpenAI's own /new-york-times/ PR page. Reuters body NOT reproduced per ToS."
+  "notes": "policyPageUrl https://openai.com/news/global-affairs/ confirmed active. blogRssUrl in seed (openai.com/blog/rss.xml) is stale; working feed is https://openai.com/news/rss.xml. Controversy attribution: named-party (OpenAI is defendant), same-entity (the ChatGPT maker = seed openai-london); Reuters 401'd (paywall/JS gate) so cited NPR (named, free) rather than OpenAI's own /new-york-times/ PR page. Reuters body NOT reproduced per ToS.",
+  "news": []
 }

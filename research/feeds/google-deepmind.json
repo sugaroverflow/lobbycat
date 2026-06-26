@@ -2,7 +2,10 @@
   "slug": "google-deepmind",
   "lastUpdated": "2026-06-24T21:10:00Z",
   "blurb": "DeepMind's recent output straddles UK government partnership and frontier-safety research: an AI planning-decisions prototype built with UK government, plus an 'AI Control Roadmap' for securing AI agents and a $10M multi-agent-safety funding call.",
-  "hiring": { "isHiring": null, "newSincePrevious": null },
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
   "publications": [
     {
       "date": "2026-06-24",
@@ -40,5 +43,15 @@
   "roles": [],
   "filings": [],
   "leadership": [],
-  "notes": "blogRssUrl https://deepmind.google/blog/rss.xml confirmed working (note its <atom:link self> is a placeholder example.com URL, but item links are valid)."
+  "notes": "blogRssUrl https://deepmind.google/blog/rss.xml confirmed working (note its <atom:link self> is a placeholder example.com URL, but item links are valid).",
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-06-01",
+      "title": "Powering the future of robotics in Europe",
+      "url": "https://deepmind.google/blog/",
+      "source": "company_blog",
+      "summary": "DeepMind 'Company'-category announcement on its European robotics push. Activity/stage signal; low policy content."
+    }
+  ]
 }

@@ -1,23 +1,23 @@
 {
-  "generated": "2026-06-26T01:22:28.966Z",
+  "generated": "2026-06-26T16:59:34.187Z",
   "date": "2026-06-26",
   "summary": {
     "companies": 13,
     "reachable": 13,
-    "totalPolicyRoles": 89,
+    "totalPolicyRoles": 88,
     "londonRoles": 26,
-    "newSincePrevious": 8
+    "newSincePrevious": 5
   },
   "perCompany": {
     "anthropic-london": {
       "ats": "greenhouse",
-      "totalJobs": 391,
+      "totalJobs": 392,
       "policyRoles": 32,
       "londonRoles": 10
     },
     "openai-london": {
       "ats": "ashby",
-      "totalJobs": 716,
+      "totalJobs": 712,
       "policyRoles": 23,
       "londonRoles": 0
     },
@@ -29,13 +29,13 @@
     },
     "mistral-london": {
       "ats": "lever",
-      "totalJobs": 169,
+      "totalJobs": 175,
       "policyRoles": 9,
       "londonRoles": 8
     },
     "elevenlabs-london": {
       "ats": "ashby",
-      "totalJobs": 151,
+      "totalJobs": 149,
       "policyRoles": 8,
       "londonRoles": 1
     },
@@ -53,19 +53,19 @@
     },
     "cohere": {
       "ats": "ashby",
-      "totalJobs": 129,
+      "totalJobs": 130,
       "policyRoles": 0,
       "londonRoles": 0
     },
     "faculty": {
       "ats": "ashby",
-      "totalJobs": 75,
+      "totalJobs": 74,
       "policyRoles": 3,
       "londonRoles": 3
     },
     "wayve": {
       "ats": "greenhouse",
-      "totalJobs": 120,
+      "totalJobs": 119,
       "policyRoles": 1,
       "londonRoles": 0
     },
@@ -84,7 +84,7 @@
     "xai-london": {
       "ats": "greenhouse",
       "totalJobs": 221,
-      "policyRoles": 11,
+      "policyRoles": 10,
       "londonRoles": 2
     }
   },
@@ -351,26 +351,6 @@
     },
     {
       "slug": "anthropic-london",
-      "title": "Commercial Counsel, SPARC",
-      "location": "New York City, NY; San Francisco, CA; Seattle, WA",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5275765008",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "anthropic-london",
-      "title": "Data Scientist, Policy",
-      "location": "New York City, NY; San Francisco, CA | New York City, NY; Washington, DC",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5232055008",
-      "matched": "policy",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "anthropic-london",
       "title": "Internal Communications Manager, Policy",
       "location": "San Francisco, CA",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5147350008",
@@ -400,20 +380,10 @@
       "isNew": true
     },
     {
-      "slug": "xai-london",
-      "title": "Paralegal - Commercial & Corporate",
-      "location": "Austin, TX; Palo Alto, CA; Washington, D.C.",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5170639007",
-      "matched": "legal",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, APAC",
-      "location": "Singapore",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270072008",
+      "location": "Sydney, Australia",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270065008",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -422,8 +392,8 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, APAC",
-      "location": "Sydney, Australia",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270065008",
+      "location": "Singapore",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270072008",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -444,6 +414,16 @@
       "title": "Commercial Counsel, Platform & Marketplace",
       "location": "San Francisco, CA | Seattle, WA | New York City, NY | Washington, DC",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5208289008",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "anthropic-london",
+      "title": "Commercial Counsel, SPARC",
+      "location": "New York City, NY; San Francisco, CA; Seattle, WA",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5275765008",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -475,6 +455,16 @@
       "location": "San Francisco, CA",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5194899008",
       "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "anthropic-london",
+      "title": "Data Scientist, Policy",
+      "location": "New York City, NY; San Francisco, CA | New York City, NY; Washington, DC",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5232055008",
+      "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -951,9 +941,9 @@
     },
     {
       "slug": "xai-london",
-      "title": "Legal Operations Analyst",
-      "location": "Singapore, SG",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5101856007",
+      "title": "Paralegal - Commercial & Corporate",
+      "location": "Austin, TX; Palo Alto, CA; Washington, D.C.",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/5170639007",
       "matched": "legal",
       "londonRelevant": false,
       "geoHit": null,
@@ -1003,26 +993,6 @@
     },
     {
       "slug": "anthropic-london",
-      "title": "Commercial Counsel, SPARC",
-      "location": "New York City, NY; San Francisco, CA; Seattle, WA",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5275765008",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "anthropic-london",
-      "title": "Data Scientist, Policy",
-      "location": "New York City, NY; San Francisco, CA | New York City, NY; Washington, DC",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5232055008",
-      "matched": "policy",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "anthropic-london",
       "title": "Internal Communications Manager, Policy",
       "location": "San Francisco, CA",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5147350008",
@@ -1047,16 +1017,6 @@
       "location": "San Francisco, CA",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5139628008",
       "matched": "safeguard",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "xai-london",
-      "title": "Paralegal - Commercial & Corporate",
-      "location": "Austin, TX; Palo Alto, CA; Washington, D.C.",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5170639007",
-      "matched": "legal",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true
