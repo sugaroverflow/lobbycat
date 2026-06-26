@@ -1014,10 +1014,81 @@ gate the existing diff-based signal).
 
 ---
 
-## Step 11 — README + deploy
+## Step 11 — README + deploy (2026-06-26 02:50 UTC)
 
-*(Pending. Assumptions to log: changelog framing, version bump
-(0.7.2 → 0.8.0 vs 0.7.2 → 0.8.0-beta), deploy gating.)*
+### A11.1 — Version bump 0.7.2 → 0.8.0 (not 0.8.0-beta).
+
+- **Assumed:** v0.8 is shippable as-is. The chain is feature-complete
+  through Step 10, every step has a tidy PR, migration 0012 is already
+  live in prod (A3.5), and there's no hidden-by-default flag. Calling
+  it `0.8.0-beta` would imply a gate Aadi has to opt in through; the
+  v0.8 design has no such gate — the launcher, the wizard-step-5
+  offer, and the welcome-back offer all surface conditionally based on
+  Aadi's state, but they're live for everyone the moment the deploy
+  point lands.
+- **Alternatives:** `0.8.0-beta` until Aadi has clicked through.
+  Rejected — we don't ship semver-pre-release tags for Aadi-facing
+  releases; we ship and iterate. v0.7 set the precedent.
+- **Would change if:** Fatima explicitly wants a beta gate. Then the
+  bump becomes 0.8.0-beta and the launcher hides behind a
+  `?clarify=1` query flag.
+
+### A11.2 — Single source of truth for VERSION: `src/app/api/health/route.ts`.
+
+- **Assumed:** `package.json` is parked at the Next.js starter default
+  (`0.1.0`) on purpose — it's never read by anything user-facing.
+  The version string that matters is what the health endpoint reports
+  to external uptime monitors, and that's the constant in
+  `src/app/api/health/route.ts`. So Step 11's version bump touches
+  that file and the README JSON example only.
+- **Alternatives:** Bump `package.json` too. Rejected for this step —
+  out of scope and would create noise in the collapse PR. If Fatima
+  wants the npm version aligned, that's a separate one-line commit.
+- **Would change if:** A tooling step ever reads `package.json.version`
+  (release-please, semantic-release, etc.). None do, today.
+
+### A11.3 — README changelog framing: "v0.8 — the soul" as a Status stanza, not a separate CHANGELOG file.
+
+- **Assumed:** v0.7 set the precedent — every release gets a Status
+  stanza in the README, no separate CHANGELOG. The stanza summarises
+  the twelve steps in one paragraph, points to
+  `docs/REFACTOR-v0.8.md` for the architecture and
+  `docs/ASSUMPTIONS-v0.8.md` for the in-flight decisions, and that's
+  the whole changelog surface.
+- **Alternatives:** Start a `CHANGELOG.md` at the repo root.
+  Rejected — the README Status section already does this job, and
+  forking it now creates two places to maintain.
+- **Would change if:** The project ever publishes to npm or has
+  downstream consumers. It doesn't.
+
+### A11.4 — "Surfaces" section retitled (v0.7) → (v0.8); old surfaces annotated with "New in v0.8".
+
+- **Assumed:** The surfaces section is the user-facing map of what
+  exists. v0.8 adds three things to existing surfaces (`/wizard`
+  step 5 seeded offer, welcome-back card offer, `/about`
+  Conversations) and one wholly new surface (the talk-to-lobbycat
+  launcher). Inline "New in v0.8" annotations on existing surfaces
+  let Aadi/anyone reading skim the diff without us forking a
+  separate "what's new" block.
+- **Alternatives:** Add a top-level "What's new in v0.8" section.
+  Rejected — the Status stanza already does that; duplicating it
+  drifts.
+- **Would change if:** A future release adds enough surfaces that the
+  inline annotations get noisy. Then we'd factor them out into a
+  diff section.
+
+### A11.5 — No deploy gating. Step 11 is the deploy point; collapse PR merge is the deploy trigger.
+
+- **Assumed:** Vercel auto-deploys on merge to `main`. The collapse
+  PR — v0.8 step PRs squashed into one tidy PR — IS the deploy.
+  No tag, no release notes, no manual `vercel --prod`. The Status
+  stanza in the README is the release note.
+- **Alternatives:** Cut a git tag `v0.8.0` and a GitHub release.
+  Rejected for now — lobbycat doesn't tag releases (v0.7 didn't),
+  and adding the ceremony here would be drift. Fatima can tag
+  retrospectively if she wants.
+- **Would change if:** Fatima wants release tags going forward.
+  Cheap to add; not in Step 11's scope.
 
 ---
 

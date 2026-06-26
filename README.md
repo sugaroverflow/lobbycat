@@ -101,25 +101,51 @@ company — publications, roles, lobbying records, consultation
 submissions, safety frameworks — is pulled by the data pipelines and
 fed into both the scoring and the fit-notes.
 
-## The surfaces (v0.7)
+## The surfaces (v0.8)
 
 - **`/wizard`** — six-step onboarding (welcome → role one-liner →
   exploring → location prefs → frame weights → open-text → vaporwave
-  scoring takeover). Autosaves per step; resumes if abandoned.
+  scoring takeover). Autosaves per step; resumes if abandoned. **New in
+  v0.8:** step 5 can seed a clarify session — if you've typed something
+  ambiguous, the cat offers to sit with it for a few turns before the
+  scoring takeover.
 - **`/` (dashboard)** — stacked company cards sorted by weighted
   aggregate. Top-3 frame cells visible per card; "show more" reveals
   the rest. Filter + sort toolbar at the top. A welcome-back card
-  above the list shows research-feed diffs since your last visit.
+  above the list shows research-feed diffs since your last visit, and
+  (**new in v0.8**) optionally offers a clarify session if something in
+  the diff looks worth sitting with.
 - **`/companies/[slug]`** — dive-deep page. Fit-note, all six frame
   cells with full rationale, per-company notes, publications, open
   roles, consultation submissions, safety frameworks.
 - **`/frames`** — definitions (editable, with "Ask lobbycat for frame
   ideas") + Must/Should/Could weights.
 - **`/about`** — edit-in-place on every wizard field. A "replay
-  onboarding" link relaunches the wizard from step 1.
+  onboarding" link relaunches the wizard from step 1. **New in v0.8:**
+  a Conversations section lists every clarify session with the cat —
+  transcript view, delete affordance, the cat's proposed edits to your
+  lens visible inline.
+- **Talk-to-lobbycat launcher** (new in v0.8) — a small floating
+  affordance on the dashboard and `/about` that opens a chat panel with
+  the cat. She runs the `clarify` skill, asks the question that needs
+  asking, and (when it lands) proposes a concrete edit to your wizard
+  answers, frame weights, or frame definitions. You apply, you reject,
+  you ignore — your lens, your call.
 
 The **Compare sandbox** from v0.6 is gone. The wizard + the fit-note
-on every card carries the decision weight now.
+on every card + the cat's clarify sessions carry the decision weight
+now.
+
+### The `clarify` skill
+
+The conversational moves the cat uses aren't a feature in the Next.js
+app — they're an OpenClaw skill at
+`~/.openclaw/plugin-skills/clarify/SKILL.md`, owned by the Lobbycat
+agent (a fourth sibling on the server alongside Lotus, Glyphie, and
+Techie). The web app is just one consumer; the same skill can be
+invoked by Glyphie when her research surfaces a contradiction worth
+grilling on, or by Lotus during a scoping pass. See
+`docs/REFACTOR-v0.8.md` for the architecture write-up.
 
 ## The look (vaporwave, calm cousin)
 
@@ -138,6 +164,8 @@ Next.js 16 (App Router, TypeScript, Tailwind v4)
   ↳ Neon (Postgres) via Drizzle ORM (@neondatabase/serverless HTTP)
   ↳ Anthropic API for scoring + fit-notes + editorial actions
   ↳ Vercel for hosting (cron + background work via after())
+  ↳ OpenClaw Lobbycat agent (server-side) running the `clarify` skill
+      for conversational sessions, called via `runClarifySession`
 
 src/styles/globals.css         design tokens (vaporwave palette, type, motion)
 src/db/schema.ts               schema (companies, frames, frame_scores, user_profile, …)
@@ -154,10 +182,16 @@ src/app/api/cron/              Vercel cron handlers for each pipeline
 src/app/api/rescore-status/    "is the cat busy?" endpoint
 src/app/                       the App Router surfaces
 src/components/loading-cat.tsx shared calm-cousin loading animation
+src/components/clarify-launcher.tsx talk-to-lobbycat floating launcher
+src/components/clarify-panel.tsx    the chat panel UI for clarify sessions
+src/lib/clarify/run-session.ts runClarifySession + apply-proposal seam
 research/feed.json             Glyphie's research feed (diff source for welcome-back)
+~/.openclaw/plugin-skills/clarify/  the clarify skill (server-side, separate repo)
 docs/REFACTOR-v0.7.md          the v0.7 sign-off doc
+docs/REFACTOR-v0.8.md          the v0.8 sign-off doc (the soul)
 docs/journal/                  the running build journal
-docs/ASSUMPTIONS-v0.7.md       in-flight decisions log
+docs/ASSUMPTIONS-v0.7.md       v0.7 in-flight decisions log
+docs/ASSUMPTIONS-v0.8.md       v0.8 in-flight decisions log
 ```
 
 ## The data pipelines
@@ -202,6 +236,22 @@ The unlock cookie keeps the surface unindexed behind a low-stakes ritual
 gate.
 
 ## Status
+
+**v0.8 — the soul (2026-06-26).** v0.7 shipped the engine; v0.7.1 made
+it reliable; v0.8 ships the part where the cat is not just a label on a
+dashboard but a conversational presence who helps Aadi notice what he
+hadn't articulated about what he actually cares about. Twelve steps:
+the `clarify` skill authored at
+`~/.openclaw/plugin-skills/clarify/SKILL.md`, the Lobbycat agent
+standing up as the fourth sibling, schema migration 0012 for
+`clarify_sessions` + `clarify_messages`, the `runClarifySession` server
+action, the chat panel UI, the talk-to-lobbycat launcher with the
+apply-proposal seam, wizard step 5 → seeded clarify session, the
+welcome-back card's optional clarify offer, the `/about` Conversations
+section, and the `clarifying[]` quote array + ambient loading + cat
+fade-in polish. See `docs/REFACTOR-v0.8.md` for the scoping doc and
+`docs/ASSUMPTIONS-v0.8.md` for the in-flight decisions taken without
+pausing for sign-off.
 
 **v0.7 — onboarding-first vaporwave engine (2026-06-23).** Concept
 signed off. Steps 1 through 15 landed: schema migrations for wizard
@@ -261,7 +311,7 @@ It runs one cheap query against the `frames` table and returns JSON:
 {
   "status": "ok",
   "dbLatencyMs": 42,
-  "version": "0.7.1",
+  "version": "0.8.0",
   "checkedAt": "2026-06-24T16:45:00.000Z"
 }
 ```
