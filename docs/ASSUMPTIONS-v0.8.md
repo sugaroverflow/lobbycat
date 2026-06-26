@@ -805,10 +805,122 @@ gate the existing diff-based signal).
 
 ---
 
-## Step 9 — `/about` Conversations tab
+## Step 9 — `/about` Conversations section (2026-06-26 02:15 UTC)
 
-*(Pending. Assumptions to log: list ordering, transcript redaction,
-delete confirmation, whether deletes are hard or soft.)*
+### A9.1 — Ship as a vertical section under Notes, not a tab UI.
+
+- **Assumed:** REFACTOR-v0.8 §6 calls for a "3-tab" /about page (Profile,
+  Notes, Conversations), but the existing /about page never shipped a
+  tab UI — it's a vertical stack of three sections today (Replay link,
+  Profile, Notes). Adding Conversations as a fourth stacked section
+  matches the existing pattern, ships the actual value (transcripts +
+  delete), and saves a tab-UI refactor for a future v0.8.x that wraps
+  all three (or four) sections together.
+- **Alternatives:** Build the real tab UI now. Rejected — retrofits
+  Profile + Notes into a tab structure (which were never built with
+  that in mind), grows the diff significantly, and risks regressions
+  on shipped surfaces. Or push Conversations onto its own route.
+  Rejected — splits the user's "my stuff" surface across two URLs.
+- **Would change if:** A v0.8.x tabification pass lands; Conversations
+  becomes the third tab then.
+
+### A9.2 — Lazy transcript fetch via `/api/clarify/sessions/[id]` GET, not a server action.
+
+- **Assumed:** The list-row component is a Client Component (it owns
+  expand/collapse state, delete confirms, etc.) and can't import the
+  query function directly. Server actions default to POST and would
+  fight cacheability + the natural "this is a read" semantic. A tiny
+  GET route forwarder is the lighter touch: it lazy-loads the
+  transcript on first expand, browser cache can dedupe re-expands of
+  the same row, and the URL is something a debugger can paste into a
+  tab.
+- **Alternatives:** Render every transcript inline at SSR time.
+  Rejected — a user with 50+ sessions would download 50 transcripts on
+  every /about visit. Or use a Server Action wrapper. Rejected — forces
+  POST semantics on a read.
+- **Would change if:** A future tenant model needs auth on the route
+  (single-user lobbycat doesn't); then the same route gains an auth
+  check.
+
+### A9.3 — Hard delete with confirm; no soft delete, no undo.
+
+- **Assumed:** REFACTOR-v0.8 §6: "deletable by him only, no questions."
+  Hard delete is the honest read — the conversations belong to the
+  user. The `clarify_messages.session_id` FK is already `ON DELETE
+  CASCADE` (per A3.2) so the messages go with the session row in one
+  shot. A `confirm()` dialog catches accidents ("the transcript is
+  gone forever. any proposal you accepted stays.") so the user has
+  one explicit click between idle browsing and a destructive write.
+  Critically: deleting a conversation does **not** roll back any
+  proposal that was applied via accept-click — that became part of
+  the user's profile data when accepted and stays. The conversation
+  history is what gets purged.
+- **Alternatives:** Soft delete (mark `deletedAt`, hide from list).
+  Rejected — implies the data is still kept somewhere, contradicting
+  the "yours to read or delete" framing. Or a trash bin with auto-
+  expiry. Rejected — too much surface for v0.8.
+- **Would change if:** A specific session needs to be retrievable
+  (e.g. for a tuning-pass audit) and we can't risk losing it. Then a
+  Lotus-only audit table would mirror inserts/deletes — v0.9
+  candidate, opt-in only.
+
+### A9.4 — Transcripts render with the cat's full prose; no redaction of move-tag, proposal-block, or PII.
+
+- **Assumed:** The transcript shown on /about is the same body string
+  stored in `clarify_messages.body`. By the time we get here, the
+  Step 4 parser has already stripped the `<!-- move: name -->` HTML
+  comment and the fenced ```proposal block from each message before
+  insert (see `extractProposal()` in run-session.ts). What remains is
+  exactly what the user saw in the chat panel — no further processing
+  needed. PII redaction is N/A: this is a single-user product and the
+  conversations are with the user about himself.
+- **Alternatives:** Show the raw body including the stripped fences
+  (debugging aid). Rejected — the user shouldn't see the model's
+  internal markup. Or show the proposal block as a separate UI
+  element above the transcript. Done — the proposal card at the
+  bottom of the expanded view shows `proposalKind` + the `summary`
+  field from `proposalData` + the accept/reject state.
+- **Would change if:** A future tenant model needs PII scrubbing
+  before export. v0.8 is solo-tenant.
+
+### A9.5 — No accept/reject buttons in the /about transcript view; only a status badge.
+
+- **Assumed:** The accept/reject affordance lives in `<ClarifyPanel>`
+  at session close — the user is in conversation mode when they
+  decide. /about is the archive view; surfacing accept/reject buttons
+  there would invite click-fatigue on old proposals and conflict with
+  the "yours to read" framing. A pending proposal shows a `○ pending
+  proposal` badge that points the user back to the dashboard cat
+  button to resume (where they'd start a fresh session, not continue
+  the old one — §4.3 says sessions are discrete sittings).
+- **Alternatives:** Surface accept/reject inline in the archive.
+  Rejected — see above; also accept-from-archive doesn't fit the
+  "session is the path to the proposal" framing. Or surface a
+  "resume the proposal" link. Rejected — §4.3 explicitly says no
+  resume.
+- **Would change if:** Real usage shows a meaningful rate of
+  "pending" proposals piling up because users close the panel
+  without deciding. Then revisit the pending state's UX entirely.
+
+### A9.6 — Trigger label maps the raw `trigger` strings to friendly names; unknown values fall through verbatim.
+
+- **Assumed:** The four known triggers (`manual`, `wizard`,
+  `welcome-back`, `company-detail`) get human labels ("dashboard
+  button", "wizard step 5", "welcome-back card", "company page").
+  Any future trigger string the DB carries that we haven't labelled
+  yet renders verbatim (kebab-case is fine in mono caps anyway).
+- **Would change if:** Step 10/11/12 introduces new triggers (e.g.
+  `daily-digest`). Add to `TRIGGER_LABEL` map.
+
+### A9.7 — Relative-time formatting; falls back to date after 30 days.
+
+- **Assumed:** "3h ago" / "5d ago" / "Jun 4" feels right for a
+  session archive — recent sessions have human-relative context,
+  older ones get a clean date. Threshold: < 60min → minutes, < 24h
+  → hours, < 30d → days, else local-format date.
+- **Would change if:** Real session volume produces awkward edge
+  cases (e.g. "32d ago" reading worse than the date). Tune in Step
+  12.
 
 ---
 

@@ -10,6 +10,7 @@ import {
   frames as framesTable,
   tags as tagsTable,
   companyNotes,
+  clarifySessions,
 } from "@/db/schema";
 import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -843,4 +844,26 @@ export async function rejectClarifyProposal(
   const result = await rejectClarifyProposalImpl(sessionId);
   revalidatePath("/about");
   return result;
+}
+
+/**
+ * Hard-delete a clarify session and all its messages. The user owns
+ * these conversations; per REFACTOR-v0.8 §6: "deletable by him only,
+ * no questions". The FK on clarify_messages.session_id is ON DELETE
+ * CASCADE so a single delete on clarify_sessions takes the whole
+ * transcript with it.
+ *
+ * Note: this does NOT roll back any previously-applied proposal. If
+ * the user accepted a frame-weight bump and later deletes the
+ * conversation, the bump stays (it became part of his profile when
+ * he accepted). The conversation history is what gets purged.
+ *
+ * v0.8 step 9.
+ */
+export async function deleteClarifySession(
+  sessionId: number,
+): Promise<{ deleted: true }> {
+  await db.delete(clarifySessions).where(eq(clarifySessions.id, sessionId));
+  revalidatePath("/about");
+  return { deleted: true };
 }
