@@ -1102,3 +1102,43 @@ on the right. No icon at the nav level — uppercase mono only —
 matching the codebase's no-icon-library convention. The star icon
 itself lives on cards, where it's an action; the nav entry is a label
 not an action so no glyph needed.
+
+**A-B13.20** Extracted the star toggle into
+`src/components/favorite-star.tsx` before duplicating it on the company
+detail page. Two call sites (`CompanyCard`, `/companies/[slug]` header)
+is the threshold where duplication starts costing more than the abstraction:
+both sites share the same optimistic flip + reconcile + revert pattern,
+the same server action (`toggleCompanyFavorite`), and the same
+five-point inline SVG polygon. Extraction also localises the `"use client"`
+boundary so the detail page itself stays a server component and only
+hydrates the star island.
+
+**A-B13.21** `<FavoriteStar>` takes per-call overrides for the unfavorited
+color class because the dashboard card sits on `--card-interior-bg` (which
+needs the `text-card-interior-whisper` tone for contrast) and the detail
+page sits on the page-level background (which needs `text-whisper`). The
+default keeps the dashboard's existing visual contract so its single
+usage didn't need a prop change; the detail page passes
+`unfavoritedClassName="text-whisper hover:text-muted"`. Favorited
+(filled) tone is `text-action` in both contexts — magenta reads on both
+backgrounds — so no override is exposed for the filled state by default
+(`favoritedClassName` is still a prop, just unused at both sites today).
+
+**A-B13.22** `getCompanyBySlug` now returns `isFavorited: boolean`. The
+lookup is a single `select 1 from company_favorites where company_id = $1
+limit 1`, fanned into the existing `Promise.all` block so it costs no
+extra round-trip wall time (the slowest query in that batch — usually
+`publications` — still dominates). Cheaper than reusing the home-page
+`favoritedCompanyIds` array (would require an extra `getRankedHomeData`
+call on a page that has no other reason to load the dashboard data).
+
+**A-B13.23** Star placement on the detail page: top of the title row,
+right of the H1, baseline-padded with `pt-2` so it doesn't crowd the
+5xl/6xl serif title's cap line. Renders at `size={24}` (vs. dashboard's
+default 18) to match the visual weight of the larger title. Sits inside
+a `flex items-start gap-4` row with the H1 taking `flex-1 min-w-0` so
+long names wrap and the star stays anchored. NOT placed in the
+`mt-6 flex items-center gap-5` meta row underneath (website/careers/
+policy links) — those are external-destination links and the star is a
+state toggle, mixing them weakens both clusters. Star above, link
+cluster below.

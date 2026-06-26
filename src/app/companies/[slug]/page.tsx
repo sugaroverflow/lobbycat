@@ -4,6 +4,7 @@ import { SiteShell } from "@/components/site-shell";
 import { FrameScorer } from "@/components/frame-scorer";
 import { NotesEditor } from "@/components/notes-editor";
 import { FitNotePanel } from "@/components/fit-note-panel";
+import { FavoriteStar } from "@/components/favorite-star";
 import { getCompanyBySlug } from "@/lib/queries";
 
 const TIER_LABEL: Record<number, string> = {
@@ -21,7 +22,17 @@ export default async function CompanyDetail({
   const data = await getCompanyBySlug(slug);
   if (!data) notFound();
 
-  const { company, roles, people, publications, frames, fitNote, fitNoteThread, note } = data;
+  const {
+    company,
+    roles,
+    people,
+    publications,
+    frames,
+    fitNote,
+    fitNoteThread,
+    note,
+    isFavorited,
+  } = data;
 
   return (
     <SiteShell>
@@ -37,9 +48,30 @@ export default async function CompanyDetail({
             Tier {company.tier} · {TIER_LABEL[company.tier]}
             {company.hq && ` · ${company.hq}`}
           </div>
-          <h1 className="serif text-5xl sm:text-6xl font-medium leading-[1] tracking-tight text-ink">
-            {company.name}
-          </h1>
+          {/* v0.8.1 Phase B item 13 (F3.5) — mirror the dashboard star
+              next to the H1 so the detail page can be (un)favorited
+              without going back to the index. The star sits at the top
+              of the title row so it stays out of the H1's descender
+              line and reads as a meta control on a page that has no
+              other header trailer. The detail page lives on the
+              page-level background (not card interior), so the
+              outline tone overrides to `text-whisper`/`text-muted`
+              for contrast. Larger size (24px) to match the visual
+              weight of the 5xl/6xl serif title. */}
+          <div className="flex items-start gap-4">
+            <h1 className="serif text-5xl sm:text-6xl font-medium leading-[1] tracking-tight text-ink flex-1 min-w-0">
+              {company.name}
+            </h1>
+            <div className="shrink-0 pt-2">
+              <FavoriteStar
+                companyId={company.id}
+                companyName={company.name}
+                initialFavorited={isFavorited}
+                size={24}
+                unfavoritedClassName="text-whisper hover:text-muted"
+              />
+            </div>
+          </div>
           {company.description && (
             <p className="serif mt-6 max-w-3xl text-lg text-muted leading-relaxed">
               {company.description}

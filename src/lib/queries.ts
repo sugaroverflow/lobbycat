@@ -187,6 +187,7 @@ export async function getCompanyBySlug(slug: string) {
     companyFitNotes,
     companyFitNoteMessages,
     companyNoteRows,
+    companyFavoriteRows,
   ] = await Promise.all([
     db
       .select()
@@ -233,6 +234,14 @@ export async function getCompanyBySlug(slug: string) {
       .from(companyNotes)
       .where(eq(companyNotes.companyId, company.id))
       .limit(1),
+    // v0.8.1 Phase B item 13 (F3.5) — single-row presence check so the
+    // detail page header can render the star in its correct initial
+    // state without a separate round-trip. `limit(1)` keeps it cheap.
+    db
+      .select({ companyId: companyFavorites.companyId })
+      .from(companyFavorites)
+      .where(eq(companyFavorites.companyId, company.id))
+      .limit(1),
   ]);
 
   const allFrames = await db
@@ -260,6 +269,7 @@ export async function getCompanyBySlug(slug: string) {
     fitNote: companyFitNotes[0] ?? null,
     fitNoteThread: companyFitNoteMessages,
     note: companyNoteRows[0] ?? null,
+    isFavorited: companyFavoriteRows.length > 0,
   };
 }
 
