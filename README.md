@@ -14,11 +14,11 @@ Lobbycat is a live-scoring, agents-based engine for London's AI policy field. Yo
   toolbar sits at the top.
 - **Decide.** The fit-note on each card is the decision surface. It's
   what the cat thinks about *this company × you*. Make note of your 
-  agreements or disagreemnts. 
+  agreements or disagreements.
 
 ### The six frames
 
-The engine default runs on six editorial frames — 1–5 scales with named poles.
+The engine runs on six editorial frames — 1–5 scales with named poles.
 You can edit these in the Frames section of the menu. 
 
 1. **Geographic remit** — UK-only ↔ Multi-jurisdiction.
