@@ -92,6 +92,13 @@
       "when": 1782425882639,
       "tag": "0012_windy_madripoor",
       "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1782467341334,
+      "tag": "0014_company_favorites",
+      "breakpoints": true
     }
   ]
 }

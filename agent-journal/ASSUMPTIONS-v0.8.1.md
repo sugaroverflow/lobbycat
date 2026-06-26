@@ -903,3 +903,64 @@ double-render in the window between revalidate and `setPendingUserMessage(null)`
 because the `finally` block runs after the server action resolves,
 which only happens once revalidatePath has been called — by which
 point the persisted row is already in `thread`.
+
+---
+
+### Phase B item 13 — F3.5 star/favorite (schema pass)
+
+**A-B13.1** Modeled favorites as a separate `company_favorites` table
+rather than a boolean column on `companies`. Reason: keeping user
+state on canonical entity rows pollutes the data model (you'd want
+to favorite something without touching the company's `updatedAt`,
+and a future multi-user world wants per-user favorites anyway).
+The join-table shape with a unique index on `company_id` matches
+the existing `company_notes` precedent (one row per company, no
+`user_id` because the app is single-user today). When we go multi-
+user we add a `user_id` column and swap the unique index for a
+composite `(user_id, company_id)` unique — same migration shape as
+we'll need on `company_notes` and `frame_scores` anyway.
+
+**A-B13.2** Schema fields kept minimal: `id` serial PK, `company_id`
+fk-cascade-on-delete, `favorited_at` timestamptz default-now not-null.
+Presence of the row == is favorited; deleting the row un-favorites.
+Considered an `is_favorited` boolean column instead so that toggling
+off keeps the row + history, but YAGNI for a single-user demo —
+delete-on-unfavorite is simpler and matches the user's mental model
+("star it / un-star it"). `favorited_at` lets the Favorites view
+sort by most-recently-starred without a separate `display_order`
+column. Would change if Fatima wants un-favorite history or a custom
+ordering UI.
+
+**A-B13.3** Migration number is **0014** rather than 0013 even though
+0013 is the next free slot in main. Reason: Glyphie's PR #40
+(`feeds-sync-roles-controversies`) already claims 0013 with its
+`drizzle/0013_controversies.sql` file. Per the v0.8.1 Phase C plan
+(Fatima 2026-06-26 02:31 UTC) Glyphie's #40 is reviewed and merged
+**after** v0.8.1 Phase B + C renderers land, so #40 will likely
+merge first chronologically once we get there. Taking 0014 leaves
+0013 for Glyphie cleanly; the cost is that if our PR happens to
+merge before #40 we'll have a 0013 gap until #40 lands — drizzle
+tolerates this because journal entries are linked by `prevId`
+snapshot IDs, not by contiguous `idx` numbers, and our snapshot's
+`prevId` correctly points at 0012's snapshot id. Alternative was
+to claim 0013 and force Glyphie to rebase #40 to 0014 — rejected
+as a higher-coordination move that isn't ours to demand.
+
+**A-B13.4** Renamed the drizzle-rolled filename
+`0013_greedy_living_lightning.sql` to `0014_company_favorites.sql`
+(descriptive) when bumping the number. Updated `drizzle/meta/_journal.json`
+entry: `idx: 14`, `tag: "0014_company_favorites"`. Snapshot file
+also renamed `0013_snapshot.json` → `0014_snapshot.json`. The
+snapshot `id`/`prevId` UUIDs are left unchanged because they don't
+encode the index — they're stable identifiers used for migration
+chain integrity. Would change if drizzle-kit complains on the next
+generate run (it would re-emit the snapshot with a fresh UUID, which
+is fine).
+
+**A-B13.5** Sliced F3.5 into migration-first (this commit) + UI/
+server-action/nav-entry follow-ups in subsequent beats, per the
+F3.5 cursor note in HEARTBEAT.md ("Plan as either a careful single
+commit or a multi-commit slice (migration first, UI second)").
+Schema-only commits are safe to merge independently because the
+table is unused until the UI lands. Would consolidate into one
+commit if Fatima asks for fewer PRs.
