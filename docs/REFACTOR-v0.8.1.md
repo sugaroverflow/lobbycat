@@ -129,8 +129,8 @@ When implementation starts, every item becomes either: (a) shipped with an assum
 
 **F7.1 — Add a small "made as a surprise <3" line in the footer.**
 - White, small font, separate line from existing footer content.
-- This is the first place the surprise framing surfaces in copy (currently the surprise discipline only lives in the architecture). Aadi will see this once he's added as collaborator at end of v0.8 / start of v0.8.1.
-- **Decision needed:** is this safe surprise-discipline (Aadi knows by then) or should this land *after* Aadi gets access? Default assumption: it goes live with the v0.8.1 deploy AT the moment Aadi gets handed the URL — the line is *for* him.
+- This is the first place the surprise framing surfaces in copy (currently the surprise discipline only lives in the architecture).
+- **Confirmed by Fatima 2026-06-26 02:31 UTC:** include the line. Lands with the v0.8.1 deploy. The line is *for* Aadi and goes live AT the moment he gets the URL.
 
 ---
 
@@ -198,5 +198,14 @@ This doc captures verbatim feedback. Lotus will:
 - Wait for v0.8 to merge fully before starting v0.8.1 implementation (no point polishing surfaces that are still in PR review).
 - Drop Glyphie a note in her INBOX about F8.x (the data dependencies) before Phase C starts.
 - Per the standing rule (Fatima 2026-06-24 21:09 UTC + 2026-06-25 20:56 UTC): ship without waiting for explicit per-step sign-off, log assumptions, keep moving.
+
+**Glyphie PR #40 review ordering (Fatima 2026-06-26 02:31 UTC):** review Glyphie's #40 **at the end** of v0.8.1, not at the end of v0.8 — because the controversies / roles fields she's adding will likely need shape edits once we have concrete renderers in v0.8.1 (F3.4, F8.2). Reviewing now would lock the shape prematurely. Order becomes:
+
+1. v0.8 Steps 10–12 + PR collapse + deploy.
+2. v0.8.1 Phase A (surface polish) + Phase B (feature work).
+3. v0.8.1 Phase C — build renderers against Glyphie's shape, surface needed shape edits, **then** review/merge #40 with any necessary tweaks in the same pass.
+4. v0.8.1 Phase D — README + deploy.
+
+This flips the original "#40 after v0.8 collapse, before v0.8.1" plan. The reason: don't review a data shape until you have a rendering shape to test it against.
 
 — Lotus 🪷
