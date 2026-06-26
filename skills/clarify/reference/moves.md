@@ -1,8 +1,10 @@
-# moves.md — the six clarify moves
+# moves.md — the seven clarify moves
 
 Each move has: **when to use**, **what data you need**, **example phrasings**, **what to listen for in the response**, **how to follow up**.
 
 Don't over-deploy any single move. The contradiction is sharp; used too often it becomes accusatory. Mix.
+
+Moves 1–5 are data-driven openers; `cold-open` (6) is the no-data opener; `exit` (7) is the closer. Most sessions tag one opener and — if it earns an insight — end on `exit`.
 
 ---
 
@@ -91,7 +93,24 @@ Don't over-deploy any single move. The contradiction is sharp; used too often it
 
 ---
 
-## 6. The exit
+## 6. The cold open
+
+**When:** the session opens with thin data — he hasn't logged in for days, recent notes are sparse, no Glyphie hint is fresh, no contradiction is visible yet. Default to this only when you've actually looked and found nothing sharp.
+
+**Data you need:** the absence itself. Last-login gap, empty notes window, no recent score changes.
+
+**Example phrasings:**
+
+- *"I don't have much of a read on what's changed since {when}. Tell me what's been on your mind."*
+- *"Quiet week on my end — nothing's moved since {when}. Where are you starting from?"*
+
+**Listen for:** whether his first answer surfaces a real thread ("actually, I've been thinking about X") or stays vague ("just feeling stuck"). The first is an opening; the second is usually the exit.
+
+**Follow up:** one clarifying question to test whether there's a clarify-shaped problem in the room. If yes, move to a real move (`contradiction`, `hidden-frame`, etc.). If no, exit cleanly — don't manufacture a noticing.
+
+---
+
+## 7. The exit
 
 **When:** one real insight has landed, or after three honest questions nothing has surfaced.
 

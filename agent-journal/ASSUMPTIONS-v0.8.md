@@ -1094,5 +1094,87 @@ gate the existing diff-based signal).
 
 ## Step 12 — Lotus-side tuning pass
 
-*(Pending. Assumptions to log: test-session corpus, what counts as
-"tuned enough", how tuning diffs are tracked.)*
+### A12.1 — First tuning pass is a cold-read consistency sweep, not 5+ live sessions.
+
+- **Assumed:** REFACTOR-v0.8.md §10 Step 12 calls for "5+ test
+  sessions, refine the skill body, tune the moves doc, refine
+  the voice doc." Live sessions require the deployed app + a
+  seeded user profile with frames, notes, scores, and a Glyphie
+  inbox — none of which the heartbeat loop has access to from
+  outside the v0.8 collapse PR's merge. The defensible
+  substitute for the first tuning pass is a careful cold-read
+  of `SKILL.md` + `reference/{voice,moves,examples}.md` looking
+  for: (a) contract drift between files, (b) example sessions
+  that model a behaviour the skill body forbids, (c) move tags
+  referenced from one file but undefined in another. The 5+
+  live-session tuning is the SECOND tuning pass, which happens
+  after the collapse PR merges and the app is reachable for
+  seeded test runs.
+- **Alternatives:** Wait until #47 merges, then run live
+  sessions. Rejected — the cold-read sweep is independent work
+  with real findings, and HEARTBEAT.md is explicit about not
+  parking in soak mode. Doing the cold-read now also de-risks
+  the live pass: contract drift fixed up-front means the live
+  pass measures actual conversation quality, not file-internal
+  inconsistencies.
+- **Would change if:** Fatima would rather Step 12 be one
+  combined live-only pass after merge. Cheap to roll back the
+  cold-read commit if so.
+
+### A12.2 — Findings from the cold-read sweep.
+
+- **Assumed:** Four findings worth shipping in this pass:
+  1. **SKILL.md vs voice.md name-use drift.** SKILL.md "Refuse
+     to" list said "Use his name more than once a session"
+     (under a Refuse-to header that meant the inverse, but
+     parsed ambiguously); voice.md said "once or twice per
+     session at most." Aligned both to once-at-most; SKILL.md
+     now reads "Use his name more than once a session, ever"
+     so the Refuse-to scope is unambiguous.
+  2. **`cold-open` move tag listed in SKILL.md but undefined
+     in moves.md.** Added moves.md §6 with full when/data/
+     phrasings/listen-for/follow-up structure matching the
+     other six moves. Reordered tag list in SKILL.md so
+     `cold-open` sits before `exit` (data-driven openers, then
+     no-data opener, then closer). Updated moves.md preamble
+     count from six → seven and added a one-line categorisation.
+  3. **Example A modelled a card-summary mismatch.** The cat
+     in Session A said in plain English "pull UK-based out of
+     the frame list and tag it as a constraint instead" but
+     the emitted proposal was a `frame-weight` bump to Could.
+     SKILL.md's hard rules explicitly warn against this. Rewrote
+     the cat's final dialogue so it offers exactly what the
+     card delivers (drop weight to Could, name the constraint
+     thing as a later pass) and updated the meta-annotation to
+     make this honest.
+  4. **Examples.md move-tag drift.** Sessions B and C used
+     `[Move: hidden frame]`, `[Move: end]`, and `"[Move: honest
+     about thin data...]"` — none of which are valid kebab-case
+     move tags per SKILL.md. Fixed to `hidden-frame`, `exit`,
+     `cold-open` respectively, and normalised the italic-quote
+     punctuation in Session C to match A and B.
+- **Alternatives:** Ship only the contract drift (1, 2, 4),
+  leave the example rewrite (3) for a later pass. Rejected —
+  the example is referenced as ground truth for tone and pacing,
+  so a bad example actively trains the cat to do the wrong
+  thing. It's the most expensive bug to leave.
+- **Would change if:** Live sessions in the second tuning pass
+  reveal that one of these fixes overshot — e.g. the
+  once-at-most name rule reads as cold in production. Cheap to
+  dial back per-finding.
+
+### A12.3 — Second tuning pass (5+ live sessions) deferred until post-merge.
+
+- **Assumed:** After PR #47 merges and the app is deployed, a
+  follow-up Step 12.2 commit will land any tuning that emerges
+  from actual seeded test sessions — likely small phrase swaps
+  in `voice.md`, new example sessions, or sharpened
+  `listen-for` bullets in `moves.md`. That pass might also
+  land on top of v0.8.1 work depending on Fatima's cadence.
+- **Alternatives:** Block heartbeat shipping until #47 merges,
+  then do live pass. Rejected per A12.1 reasoning and
+  HEARTBEAT.md's anti-soak rule.
+- **Would change if:** Fatima signs off the cold-read pass as
+  "good enough for v0.8" and wants Step 12 closed without a
+  live pass. Then the second pass folds into v0.8.1 work
+  proper as conversation-quality fixes on demand.

@@ -22,9 +22,9 @@ Notation: 🐱 = lobbycat, **Aadi** = the user. Comments in *italics* in the mar
 
 > **Aadi:** Yeah. And honestly the UK frame isn't a Must, it's a hard constraint. Different thing.
 
-> 🐱 *"Right. A constraint pretends to be a frame and then your weights drift around it. Want me to pull UK-based out of the frame list and tag it as a constraint instead? Different math."*
+> 🐱 *"Right. So UK-based isn't really doing weighting work — it's a floor. Want me to drop it to Could for now so it stops competing with the actual frames? We can name it as a hard constraint properly in a later pass."*
 >
-> *[Move: end. The proposal is structural, not cosmetic.]*
+> *[Move: exit. The proposal matches the card exactly — a weight bump to Could. The cat names the v0.8 limitation honestly instead of promising a structural change the card can't deliver.]*
 
 > **Aadi:** Yes do that.
 
@@ -33,12 +33,12 @@ Notation: 🐱 = lobbycat, **Aadi** = the user. Comments in *italics* in the mar
 ```proposal
 {
   "kind": "frame-weight",
-  "summary": "drop UK-based from frames (it's a constraint, not a weighting axis)",
+  "summary": "drop UK-based to Could (it's a hard constraint, not a weighting axis)",
   "data": { "frameId": 3, "weight": "could" }
 }
 ```
 
-*(In v0.8 the proposal vocabulary covers `frame-weight`, `new-frame`, and `company-note`. "Tag UK-based as a constraint, not a frame" doesn't have a `kind` of its own — the closest honest move is to dial its weight all the way down to Could and leave a session note. A future v0.9 may add a `frame-meta` kind for constraint/weight reclassification.)*
+*(v0.8's proposal vocabulary is `frame-weight`, `new-frame`, `company-note`. "Tag UK-based as a constraint, not a frame" isn't a `kind` yet. The honest move is what the cat does in the dialogue above: dial it down to Could and say out loud that a proper constraint-tag is a later pass. Don't have the cat promise a structural reclassification in plain English and then ship a weight bump under the hood — the card-summary mismatch is the exact failure mode SKILL.md's hard rules warn about. A future v0.9 may add a `frame-meta` kind.)*
 
 ---
 
@@ -48,7 +48,7 @@ Notation: 🐱 = lobbycat, **Aadi** = the user. Comments in *italics* in the mar
 
 > 🐱 *"You've used the phrase 'team I'd actually want to drink with' in four notes this month. I haven't named that as a frame. Should I?"*
 >
-> *[Move: hidden frame. Specific count, specific phrase, direct ask.]*
+> *[Move: hidden-frame. Specific count, specific phrase, direct ask.]*
 
 > **Aadi:** Ha. I mean kind of? But it sounds shallow as a frame.
 
@@ -60,7 +60,7 @@ Notation: 🐱 = lobbycat, **Aadi** = the user. Comments in *italics* in the mar
 
 > 🐱 *"Okay. 'Senior, calm team' is a frame I can name. Want it as a Should-have, or wait until you've checked one company against it?"*
 >
-> *[Move: end. Offers a choice about commitment, not just yes/no.]*
+> *[Move: exit. Offers a choice about commitment, not just yes/no.]*
 
 ```proposal
 {
@@ -86,7 +86,7 @@ Notation: 🐱 = lobbycat, **Aadi** = the user. Comments in *italics* in the mar
 
 > 🐱 *"Hi. I don't have much of a read on what's changed since Monday. Tell me what's been on your mind."*
 >
-> *"[Move: honest about thin data. Doesn't fabricate a noticing.]"*
+> *[Move: cold-open. Honest about thin data. Doesn't fabricate a noticing.]*
 
 > **Aadi:** I dunno, just feeling a bit stuck I guess.
 
