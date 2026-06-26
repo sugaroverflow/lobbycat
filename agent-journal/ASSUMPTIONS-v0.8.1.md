@@ -1236,3 +1236,80 @@ Specifically, this means downstream consumers (the Detail prop on
 `<DashboardCards>`) compile against the eventual shape today, and
 when Glyphie's feed shape lands we just swap `[]` for the real
 `newsByCompany.get(c.id) ?? []` without re-threading types.
+
+---
+
+## Phase C item 15 — F8.x Glyphie coordination note
+
+**A-C15.1** F8.x is a coordination ship, not a code ship. Per §10 of
+`REFACTOR-v0.8.1.md` item 15 is "F8.x — Coordinate with Glyphie on
+news[] feed shape (if she doesn't already have one), controversies
+render, hiring links render." Per §11 the explicit pre-Phase-C todo
+was "Drop Glyphie a note in her INBOX about F8.x (the data
+dependencies) before Phase C starts." That note is what this PR
+ships. The render plumbing (consuming Glyphie's eventual feed shape
+into `recentNews[]` / `recentControversies[]`) is a follow-on ship
+once she confirms (or pushes back on) the proposed `news[]` shape.
+
+**A-C15.2** Note location: `agent-journal/glyphie-notes/2026-06-26.md`.
+The scope doc says "her INBOX" without naming a path. The
+`agent-journal/glyphie-notes/` directory is where Glyphie writes her
+daily notes (`2026-06-23.md`, `2026-06-24.md`) — using it as the
+inbox-by-convention. The note itself flags this and invites her to
+name a different convention if she has one. No new directory created.
+
+**A-C15.3** Branch stacks on `scope/v0.8.1-phase-c-14-show-more-restructure`
+(PR #65) rather than branching from main, matching every prior Phase
+B/C PR's stacking pattern. There is no code dependency on F3.4 — the
+note could in principle stand alone — but the assumptions file is
+additive across the chain and branching from main would conflict at
+collapse. Pattern continues from A-C14.1's reasoning.
+
+**A-C15.4** The note proposes `occurredAt` → `surfacedAt` rename on
+the UI side (not the DB side) when wiring `recentControversies[]`.
+Reasoning given in the note: for the dashboard's "Show more" reveal
+the user-facing question is "when did this come into the public
+record," not "when did the underlying event happen" — and those are
+often the same date in practice. The note explicitly invites Glyphie
+to push back; if she prefers the DB column rename instead, that
+change lands on PR #40 before its end-of-Phase-C review.
+
+**A-C15.5** Proposed `news[]` shape on Glyphie's feed JSON:
+`{title, url, publishedAt, source, summary}`. The dashboard only
+consumes `title` / `url` / `publishedAt`; `source` + `summary` are
+requested for the company-detail page (later in Phase C or v0.8.2)
+and so Glyphie has somewhere to attribute on her side. URL is typed
+required on `NewsItem` (unlike `ControversyItem` where it's
+nullable) — news without a URL isn't really news, whereas
+controversies can be sourceless (court records etc.).
+
+**A-C15.6** Publication-vs-news distinction proposed in the note:
+`publications[]` = first-person things the company published,
+`news[]` = third-person things written about the company. Press
+releases on the company's own site go in `publications[]`;
+secondary press coverage goes in `news[]`. Stated as a proposal, not
+a decree — Glyphie owns the data-shape call per §8.3.
+
+**A-C15.7** Storage decision (new `news` table vs extending existing)
+left to Glyphie. Note expresses an instinct (new table for parity
+with publications/controversies) but explicitly defers. If Glyphie
+adds a `news` table, the note asks for the same `(companyId, url)`
+unique-index pattern PR #40 uses for `controversies` so the query
+can dedupe cleanly. This isn't a hard requirement, just a request.
+
+**A-C15.8** Hiring-links render (third item under F8.1) is already
+done — wired into the F3.4 reveal as the "Recent roles" column in
+PR #65. The note flags this so the F8.x inventory is complete on
+Glyphie's side and she doesn't think she owes anything for hiring.
+
+**A-C15.9** Phase C order on Lotus's side after this note: wait for
+Glyphie's reply. If she green-lights starting without `news[]`,
+wire `recentControversies` first (reading directly from her
+existing controversies feed JSON / the table once #40 lands). If
+she wants to ship `news[]` shape first, hold the wiring ship until
+it lands. Either way, PR #40 review remains the last item of
+Phase C per Fatima 2026-06-26 02:31 UTC.
+
+**A-C15.10** No `next.config.ts` / lint / typecheck changes — this
+PR is doc-only (one new file under `agent-journal/glyphie-notes/`
+and this assumptions entry). No need to run the build.
