@@ -1,41 +1,25 @@
 # 🐱 lobbycat
 
-**Lobbycat is a live scoring engine for London's AI policy field. You tell
-it what you care about; it ranks ~40 organisations against the six frames
-*you* picked, weighted the way *you* weighted them, and it re-reads the
-field every time you change your mind.**
-
-It isn't a job board. It isn't a directory. It's a small, hand-edited
-engine wrapped in a vaporwave coat — onboarding-first, opinionated, and
-honest about the fact that the *lens* (the frames, the weights, the
-words you used to describe your situation) is doing most of the work.
-Move a weight, the dashboard re-sorts. Edit what a frame *means*, the
-cat re-reads every company on that frame. Tell the cat a new thing about
-yourself in About, every fit-note re-grounds.
-
-Three things, in this order:
+Lobbycat is a live-scoring, agents-based engine for London's AI policy field. You share what you care about and it ranks the organizations against the frames you've articulated and weighted. 
 
 - **Set the lens.** First sign-in walks through a six-step wizard:
   who you are right now, what you're exploring, the frames that matter
   to you, the *weight* you'd give each (Must / Should / Could), and a
-  couple of open-text prompts the cat reads when scoring. Step six is
-  a full-screen vaporwave-theatre moment where lobbycat scores the
-  whole field live against your answers.
+  couple of open-text prompts Lobbycat reads when scoring. Once you're done,
+  Lobbycat will score the list of companies for you. 
 - **Explore the field.** The dashboard is a stacked list of company
   cards, sorted by your weighted aggregate. Each card carries an
   evidence summary, a fit-note grounded in *your* wizard answers, and a
   one-click expansion into the per-company page. A filter + sort
   toolbar sits at the top.
 - **Decide.** The fit-note on each card is the decision surface. It's
-  what the cat thinks about *this company × you* — not a marketing
-  blurb, not a generic write-up. Disagree with one and that
-  disagreement is the useful thing.
+  what the cat thinks about *this company × you*. Make note of your 
+  agreements or disagreemnts. 
 
 ### The six frames
 
-The engine runs on six editorial frames — 1–5 scales with named poles.
-They're directional, not moral: which end is "good" depends entirely on
-what you're looking for that day.
+The engine default runs on six editorial frames — 1–5 scales with named poles.
+You can edit these in the Frames section of the menu. 
 
 1. **Geographic remit** — UK-only ↔ Multi-jurisdiction.
 2. **Policy area scope** — Single-issue specialist ↔ Broad multi-domain.
