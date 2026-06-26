@@ -1,0 +1,36 @@
+{
+  "slug": "xai-london",
+  "lastUpdated": "2026-06-26T01:23:12Z",
+  "blurb": null,
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 0,
+    "londonPolicyRoles": 2,
+    "lastChecked": "2026-06-26"
+  },
+  "publications": [],
+  "roles": [
+    {
+      "title": "Legal & Compliance Tutor",
+      "location": "Remote",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/4931315007",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "ats",
+      "seenAt": "2026-06-26"
+    },
+    {
+      "title": "Legal Counsel",
+      "location": "London, UK",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/5032210007",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "ats",
+      "seenAt": "2026-06-26"
+    }
+  ],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "[roles-only feed] Created 2026-06-26 to carry the roles lens; publications/controversies not yet researched for this company."
+}
