@@ -22,9 +22,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
       </header>
       <main className="flex-1">{children}</main>
       <footer className="border-t border-rule">
-        <div className="max-w-[64rem] mx-auto px-6 py-6 mono text-xs uppercase tracking-[0.14em] text-whisper flex items-center justify-between">
-          <span>lobbycat · est. 2026</span>
-          <span>v0 · napping</span>
+        <div className="max-w-[64rem] mx-auto px-6 py-6 mono text-xs uppercase tracking-[0.14em] flex flex-col gap-2">
+          <div className="text-whisper flex items-center justify-between">
+            <span>lobbycat · est. 2026</span>
+            <span>v0 · napping</span>
+          </div>
+          <div className="text-ink">made as a surprise &lt;3</div>
         </div>
       </footer>
     </div>
