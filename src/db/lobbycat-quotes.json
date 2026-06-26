@@ -1,8 +1,8 @@
 {
   "_meta": {
     "voice": "dry, observational, slightly catty, never twee — third person ('the cat noticed'), occasional self-awareness about being a cat",
-    "notes": "Categories map to UI surfaces. rescoring=loading/re-score states, welcomeBack=welcome card / home hero, emptyState=zero-result surfaces, surprisePreamble=intro lines for the Surprise modal (3-variant), observation+tooltip kept for future ambient/inline use.",
-    "version": "v0.7-build-step3"
+    "notes": "Categories map to UI surfaces. rescoring=loading/re-score states, clarifying=cat-is-thinking inside a clarify session (Step 10 of v0.8), welcomeBack=welcome card / home hero, emptyState=zero-result surfaces, surprisePreamble=intro lines for the Surprise modal (3-variant), observation+tooltip kept for future ambient/inline use.",
+    "version": "v0.8-step10"
   },
   "firstScoring": [
     "The cat is reading seventy company files at once. One moment.",
@@ -116,5 +116,19 @@
     "The map shows the field. The list shows the ranking. They disagree on purpose.",
     "The cat refreshes role listings on its own schedule, not yours.",
     "If a company looks wrong on a frame, tell the cat. The cat keeps notes."
+  ],
+  "clarifying": [
+    "The cat is reading what you wrote, then what you scored, and noticing the gap.",
+    "Sitting with this for a moment. The cat does not interrupt good thinking.",
+    "Pulling the threads together. The cat keeps these conversations short on purpose.",
+    "The cat is considering which question is the real one.",
+    "Weighing what to ask. The cat asks one thing at a time, deliberately.",
+    "The cat is reading between your notes. There's usually something there.",
+    "Holding the question still. The cat does not rush its observations.",
+    "The cat is checking your frames against what you've actually been doing.",
+    "Listening for what you didn't say. The cat is good at this.",
+    "Thinking about the right thing to ask next. The cat would rather be silent than off.",
+    "The cat is comparing two things you said and seeing if they agree.",
+    "Reading the room. The cat does this even when there's only one person in it."
   ]
 }

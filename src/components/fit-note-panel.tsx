@@ -3,6 +3,7 @@
 import { useRef, useState, useTransition } from "react";
 import { generateFitNote, sendFitNoteMessage } from "@/app/actions";
 import { CatMark } from "@/components/wordmark";
+import { ClarifyLauncher } from "@/components/clarify-launcher";
 import { LoadingCat } from "@/components/loading-cat";
 import quotes from "@/db/lobbycat-quotes.json";
 
@@ -114,6 +115,17 @@ export function FitNotePanel({
               {parsed.caveat}
             </p>
           )}
+          {/* v0.8 step 6 — scoped clarify entry-point. Opens the chat
+              panel seeded to this company so the cat opens "we're
+              talking about <company>" instead of cold. */}
+          <div className="mt-4 pt-3 border-t border-rule">
+            <ClarifyLauncher
+              variant="link"
+              trigger="company-detail"
+              seedCompanyId={companyId}
+              label="clarify this fit →"
+            />
+          </div>
         </>
       ) : (
         <div className="flex items-start gap-3">
