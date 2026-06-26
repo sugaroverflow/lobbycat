@@ -1045,3 +1045,60 @@ Slicing this way means the toggle is testable on home immediately
 without waiting for the page or nav. Schema-only commit from
 part 1/N already merged into the local branch chain; this commit
 stacks on `scope/v0.8.1-phase-b-13-favorites-schema`.
+
+**A-B13.14** `/favorites` reuses `getRankedHomeData()` and filters its
+returned arrays in-place (companies, scores, details) rather than
+introducing a parallel `getFavoritedCompanies()` query. Two parallel
+queries would have to stay in lockstep on filter/sort/detail shape
+(latest event, isHiring, hasFitNote, recentPublications, openRoles)
+and any drift surfaces as silent UI inconsistency between home and
+favorites. The in-place filter is O(n) where n = total companies
+(small) and runs once per request — no measurable cost vs. a query
+that would still load all the same join data to compute per-company
+details for the favorited subset. If the company count grows past
+~10k this can be revisited; current scale is ~hundreds.
+
+**A-B13.15** `DashboardCards` reused as-is on `/favorites`, including
+its sort + hiring/open-role/recent-pub/fit-note filter toolbar. Within
+a starred set the toolbar still makes sense — "show me hiring favorites"
+is a real use. The alternative (extract a slimmer `CompanyCardList` for
+favorites) was deferred to avoid premature componentization. The cursor
+note flagged this as TBD; choosing reuse for the first ship.
+
+**A-B13.16** Two-tier empty state on `/favorites`:
+  (a) Zero favorites total → standalone vaporwave alert frame matching
+      the F2.2/F2.3 welcome-back card (cyan top + magenta left, rule
+      right + bottom, `card-interior-bg`). DashboardCards is skipped
+      entirely so the toolbar doesn't render against nothing. Copy:
+      "Click the ★ on any card on the dashboard to add it here. Your
+      favorites stay pinned across re-scores."
+  (b) Some favorites but the filter toolbar hides them all →
+      DashboardCards' existing "No companies match these filters /
+      Clear filters" branch handles it. No new copy needed — that
+      message is already correct in this context.
+
+This avoids a `mode="favorites"` prop on DashboardCards (which would
+have leaked /favorites concerns into a generic component) and keeps
+the empty-state copy adjacent to the page that owns it.
+
+**A-B13.17** No welcome card on `/favorites`. The welcome card is a
+home-specific affordance (welcome-back diff + stale-score re-score
+button) and would just clutter a single-purpose lens. Page header is
+a plain `<h1>Favorites</h1>` in the same `serif text-2xl text-ink`
+style as other page headers in the codebase.
+
+**A-B13.18** Wizard gate on `/favorites` mirrors `/` and `/profile`:
+unwizarded users (`!profile?.wizardCompletedAt`) redirect to `/wizard`.
+Avoids a confused state where someone hits `/favorites` before
+completing onboarding and sees an "empty favorites" message they have
+no way to act on. Same redirect pattern, same parallel fetch of
+profile + home data.
+
+**A-B13.19** Nav placement: Favorites sits between Frames and Surprise
+in `site-shell.tsx`. Rationale: Frames + Favorites are both dashboard-
+adjacent lenses (scoring config + starred subset), and grouping them
+on the left keeps the playful/utility cluster (surprise, profile, ask)
+on the right. No icon at the nav level — uppercase mono only —
+matching the codebase's no-icon-library convention. The star icon
+itself lives on cards, where it's an action; the nav entry is a label
+not an action so no glyph needed.

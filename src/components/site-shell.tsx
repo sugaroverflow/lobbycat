@@ -14,6 +14,12 @@ export function SiteShell({ children }: { children: ReactNode }) {
           </Link>
           <nav className="flex items-center gap-6 mono text-xs uppercase tracking-[0.14em] text-muted">
             <Link href="/frames" className="hover:text-ink transition">Frames</Link>
+            {/* v0.8.1 Phase B F3.5 part 3/N — Favorites lens. Sits between
+                Frames and Surprise to keep the dashboard-adjacent items grouped
+                on the left and the playful/utility items (surprise, profile,
+                ask) on the right. No icon at nav level — uppercase mono only
+                matches the codebase's no-icon-lib convention. */}
+            <Link href="/favorites" className="hover:text-ink transition">Favorites</Link>
             <SurpriseButton />
             <Link href="/profile" className="hover:text-ink transition">Profile</Link>
             <AskLobbycatStub />
