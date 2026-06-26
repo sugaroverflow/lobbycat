@@ -4,7 +4,12 @@ import { SiteShell } from "@/components/site-shell";
 import { ProfileEditor } from "@/components/profile-editor";
 import { ReplayOnboardingLink } from "@/components/replay-onboarding-link";
 import { CompanyNotesIndex } from "@/components/company-notes-index";
-import { getUserProfile, getAllCompanyNotes } from "@/lib/queries";
+import { ClarifyConversationsIndex } from "@/components/clarify-conversations-index";
+import {
+  getUserProfile,
+  getAllCompanyNotes,
+  getClarifySessionsForAbout,
+} from "@/lib/queries";
 
 type LocationPrefs = {
   uk?: boolean;
@@ -21,9 +26,10 @@ type OpenTextAnswer = {
 };
 
 export default async function AboutPage() {
-  const [profile, notes] = await Promise.all([
+  const [profile, notes, clarifySessions] = await Promise.all([
     getUserProfile(),
     getAllCompanyNotes(),
+    getClarifySessionsForAbout(),
   ]);
   if (!profile) {
     return (
@@ -58,6 +64,7 @@ export default async function AboutPage() {
         openTextAnswers={openTextAnswers}
       />
       <CompanyNotesIndex notes={notes} />
+      <ClarifyConversationsIndex sessions={clarifySessions} />
     </SiteShell>
   );
 }

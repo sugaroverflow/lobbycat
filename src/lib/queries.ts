@@ -12,6 +12,8 @@ import {
   fitNotes,
   fitNoteMessages,
   companyNotes,
+  clarifySessions,
+  clarifyMessages,
 } from "@/db/schema";
 import { eq, desc, sql, inArray, and, asc } from "drizzle-orm";
 
@@ -899,5 +901,156 @@ export async function getRankedHomeData() {
       "low" | "medium" | "high"
     >,
     oldestScoreAt,
+  };
+}
+
+/* ----------------------------------------------------------------------- *
+ * v0.8 Step 9 — Clarify sessions for the /about Conversations section.
+ *
+ * Two surfaces:
+ *   - getClarifySessionsForAbout()   list view, newest-first
+ *   - getClarifySessionWithMessages(id)  full transcript for the row
+ *
+ * Both return plain-shape rows the React components can render directly.
+ * Surprise discipline: nothing here exposes the cat's internal session
+ * notes (those live in ~/.openclaw/workspace/main/lobbycat/memory/),
+ * only the user-facing transcript + proposal payload.
+ * ----------------------------------------------------------------------- */
+
+export type ClarifySessionListRow = {
+  id: number;
+  startedAt: Date;
+  endedAt: Date | null;
+  trigger: string;
+  endState: string | null;
+  proposalKind: string | null;
+  proposalAccepted: boolean | null;
+  /** Cat's opening observation (truncated for the list view). */
+  seedNote: string | null;
+  /** Resolved company name when the session was seeded on one. */
+  seedCompanyName: string | null;
+  seedCompanySlug: string | null;
+  /** Number of user + cat turns in the session. */
+  messageCount: number;
+};
+
+export async function getClarifySessionsForAbout(): Promise<
+  ClarifySessionListRow[]
+> {
+  const rows = await db
+    .select({
+      id: clarifySessions.id,
+      startedAt: clarifySessions.startedAt,
+      endedAt: clarifySessions.endedAt,
+      trigger: clarifySessions.trigger,
+      endState: clarifySessions.endState,
+      proposalKind: clarifySessions.proposalKind,
+      proposalAccepted: clarifySessions.proposalAccepted,
+      seedNote: clarifySessions.seedNote,
+      seedCompanyName: companies.name,
+      seedCompanySlug: companies.slug,
+      // Aggregated message count via a correlated subquery. Cheap enough
+      // at the volumes v0.8 expects (one user, dozens of sessions over
+      // weeks); revisit if a future tenant model needs it scaling out.
+      messageCount: sql<number>`(
+        SELECT COUNT(*)::int FROM ${clarifyMessages}
+        WHERE ${clarifyMessages.sessionId} = ${clarifySessions.id}
+      )`,
+    })
+    .from(clarifySessions)
+    .leftJoin(companies, eq(companies.id, clarifySessions.seedCompany))
+    .orderBy(desc(clarifySessions.startedAt));
+
+  return rows.map((r) => ({
+    id: r.id,
+    startedAt: r.startedAt,
+    endedAt: r.endedAt,
+    trigger: r.trigger,
+    endState: r.endState,
+    proposalKind: r.proposalKind,
+    proposalAccepted: r.proposalAccepted,
+    seedNote: r.seedNote,
+    seedCompanyName: r.seedCompanyName ?? null,
+    seedCompanySlug: r.seedCompanySlug ?? null,
+    messageCount: Number(r.messageCount ?? 0),
+  }));
+}
+
+export type ClarifySessionWithMessages = {
+  id: number;
+  startedAt: Date;
+  endedAt: Date | null;
+  trigger: string;
+  endState: string | null;
+  proposalKind: string | null;
+  proposalData: Record<string, unknown> | null;
+  proposalAccepted: boolean | null;
+  seedNote: string | null;
+  seedCompanyName: string | null;
+  seedCompanySlug: string | null;
+  messages: Array<{
+    id: number;
+    role: string; // 'cat' | 'user'
+    body: string;
+    moveType: string | null;
+    createdAt: Date;
+  }>;
+};
+
+export async function getClarifySessionWithMessages(
+  sessionId: number,
+): Promise<ClarifySessionWithMessages | null> {
+  const [session] = await db
+    .select({
+      id: clarifySessions.id,
+      startedAt: clarifySessions.startedAt,
+      endedAt: clarifySessions.endedAt,
+      trigger: clarifySessions.trigger,
+      endState: clarifySessions.endState,
+      proposalKind: clarifySessions.proposalKind,
+      proposalData: clarifySessions.proposalData,
+      proposalAccepted: clarifySessions.proposalAccepted,
+      seedNote: clarifySessions.seedNote,
+      seedCompanyName: companies.name,
+      seedCompanySlug: companies.slug,
+    })
+    .from(clarifySessions)
+    .leftJoin(companies, eq(companies.id, clarifySessions.seedCompany))
+    .where(eq(clarifySessions.id, sessionId))
+    .limit(1);
+
+  if (!session) return null;
+
+  const messages = await db
+    .select({
+      id: clarifyMessages.id,
+      role: clarifyMessages.role,
+      body: clarifyMessages.body,
+      moveType: clarifyMessages.moveType,
+      createdAt: clarifyMessages.createdAt,
+    })
+    .from(clarifyMessages)
+    .where(eq(clarifyMessages.sessionId, sessionId))
+    .orderBy(asc(clarifyMessages.createdAt));
+
+  return {
+    id: session.id,
+    startedAt: session.startedAt,
+    endedAt: session.endedAt,
+    trigger: session.trigger,
+    endState: session.endState,
+    proposalKind: session.proposalKind,
+    proposalData: (session.proposalData as Record<string, unknown>) ?? null,
+    proposalAccepted: session.proposalAccepted,
+    seedNote: session.seedNote,
+    seedCompanyName: session.seedCompanyName ?? null,
+    seedCompanySlug: session.seedCompanySlug ?? null,
+    messages: messages.map((m) => ({
+      id: m.id,
+      role: m.role,
+      body: m.body,
+      moveType: m.moveType,
+      createdAt: m.createdAt,
+    })),
   };
 }

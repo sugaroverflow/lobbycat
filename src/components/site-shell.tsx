@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Wordmark } from "@/components/wordmark";
 import { SurpriseButton } from "@/components/surprise-modal";
-import { AskLobbycatStub } from "@/components/ask-lobbycat-stub";
+import { ClarifyLauncher } from "@/components/clarify-launcher";
 
 export function SiteShell({ children }: { children: ReactNode }) {
   return (
@@ -16,7 +16,6 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Link href="/frames" className="hover:text-ink transition">Frames</Link>
             <SurpriseButton />
             <Link href="/about" className="hover:text-ink transition">About</Link>
-            <AskLobbycatStub />
           </nav>
         </div>
       </header>
@@ -27,6 +26,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
           <span>v0 · napping</span>
         </div>
       </footer>
+      {/*
+        v0.8 step 6 — persistent bottom-right "talk to lobbycat" pill.
+        Replaces the v0.7.2 header `AskLobbycatStub` (kept in-repo for
+        the /about Conversations tab's screenshot history but no longer
+        mounted on live pages).
+      */}
+      <ClarifyLauncher trigger="manual" />
     </div>
   );
 }

@@ -43,13 +43,65 @@ The session ends when **one real insight has landed**. Not when a quota is fille
 
 ## End-of-session proposal
 
-When the insight has landed, emit one proposal in this shape so the caller can render it as a card:
+When the insight has landed, end your final turn with a fenced `proposal` JSON block on its own. The caller parses it to render an accept/reject card. Three valid `kind` values:
+
+**`frame-weight`** — bump a frame's weight up or down.
+
+```proposal
+{
+  "kind": "frame-weight",
+  "summary": "bump 'charting the unknown' to Must",
+  "data": { "frameId": 7, "weight": "must" }
+}
+```
+
+**`new-frame`** — add a new frame the user hasn't named yet.
+
+```proposal
+{
+  "kind": "new-frame",
+  "summary": "add a new frame: 'argue-with-able'",
+  "data": {
+    "name": "argue-with-able",
+    "description": "do you want to disagree with these people in productive ways?",
+    "scale": 5,
+    "lowLabel": "would just nod",
+    "highLabel": "would push back constructively"
+  }
+}
+```
+
+**`company-note`** — add a short note on one company.
+
+```proposal
+{
+  "kind": "company-note",
+  "summary": "add a note on Anthropic",
+  "data": {
+    "companyId": 12,
+    "note": "the work is interesting from a distance — closeness matters separately."
+  }
+}
+```
+
+When nothing actionable landed: **omit the block entirely.** No proposal is honest — don't force an empty one or invent a placeholder. The session closes clean and the user sees no card.
+
+**Hard rules for the block:**
+
+- Must be on its own (preceded by a blank line) and use the exact fence label \`proposal\` (lowercase).
+- `kind` must be exactly one of: `frame-weight`, `new-frame`, `company-note`.
+- `summary` is one short imperative phrase that goes on the proposal card.
+- `data` matches the kind's shape above. Use the actual frame/company IDs the system prompt gave you; don't invent IDs.
+- The block is the last thing in your message. Nothing after the closing fence.
+
+## Move tag (optional, recommended)
+
+On your first line, you may declare which move from `reference/moves.md` you're using, as an HTML comment:
 
 ```
-PROPOSAL: <one-line human description>
-KIND: weight | frame | note | none
-TARGET: <frame-id | company-id | "global">
-CHANGE: <concrete value or text>
+<!-- move: hidden-frame -->
 ```
 
-Use `KIND: none` if the session genuinely produced no actionable change — that's a valid outcome, not a failure.
+Valid kebab-case move names: `contradiction`, `forced-trade`, `hidden-frame`, `drift-check`, `honest-mirror`, `exit`, `cold-open`.
+
+The comment is stripped before the message shows to the user. It's used internally to track which moves earn real insights, so the skill can tune over time. If you don't tag a move, that's fine; it's analytics, not a contract.

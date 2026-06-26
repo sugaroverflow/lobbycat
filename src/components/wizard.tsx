@@ -1,17 +1,20 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState, useTransition } from "react";
+import { useCallback, useEffect, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
   completeWizard,
   renameWizardFrame,
-  saveWizardOpenText,
   saveWizardProfile,
   saveWizardWeights,
 } from "@/app/actions-wizard";
 import type { FrameWeightLevel } from "@/lib/scoring/aggregate";
+import {
+  WizardClarifyStep,
+  closeWizardClarifySession,
+} from "@/components/wizard-clarify-step";
 
 /**
  * v0.7 Step 4 — the wizard.
@@ -65,12 +68,12 @@ const WEIGHT_COPY: Record<FrameWeightLevel, { glyph: string; label: string }> = 
   low: { glyph: "C", label: "Could" },
 };
 
-// Default starter prompts for step 5 if nothing's saved yet.
-const DEFAULT_OPEN_PROMPTS = [
-  "What's making this decision hard right now?",
-  "What would a 'great' outcome of this search look like in 6 months?",
-  "What are you afraid you're optimising for that you'd rather not be?",
-];
+// v0.7's DEFAULT_OPEN_PROMPTS for the step-5 textareas was removed in
+// v0.8 step 7 — the textareas are replaced by a seeded clarify session
+// run by the cat (see WizardClarifyStep). Historical openTextAnswers
+// payloads on existing user profiles are preserved by the DB schema;
+// nothing rendered today reads them, but a future migration can roll
+// them into a synthetic clarify_session if we want continuity.
 
 export function Wizard({ initial }: { initial: WizardInitial }) {
   const router = useRouter();
@@ -105,7 +108,7 @@ export function Wizard({ initial }: { initial: WizardInitial }) {
         )}
         {step === 5 && (
           <Step5OpenText
-            initialAnswers={initial.openTextAnswers}
+            displayName={initial.displayName ?? ""}
             onBack={() => setStep(4)}
             onNext={() => setStep(6)}
           />
@@ -499,76 +502,38 @@ function Step4Weighing({
 /* ---------------- step 5 ---------------- */
 
 function Step5OpenText({
-  initialAnswers,
+  displayName,
   onBack,
   onNext,
 }: {
-  initialAnswers: WizardInitial["openTextAnswers"];
+  displayName: string;
   onBack: () => void;
   onNext: () => void;
 }) {
-  const seed = useMemo(() => {
-    if (initialAnswers.length > 0) {
-      return initialAnswers.map((a) => ({
-        question: a.question,
-        answer: a.answer,
-      }));
-    }
-    return DEFAULT_OPEN_PROMPTS.map((q) => ({ question: q, answer: "" }));
-  }, [initialAnswers]);
-
-  const [answers, setAnswers] = useState(seed);
-  const [saved, setSaved] = useState<"idle" | "saving" | "saved">("idle");
-  const [pending, startTransition] = useTransition();
-
-  const debouncedSave = useDebouncedSave(() => {
-    setSaved("saving");
-    startTransition(async () => {
-      await saveWizardOpenText(answers);
-      setSaved("saved");
-      setTimeout(() => setSaved("idle"), 1500);
-    });
-  }, 700);
-
-  useEffect(() => {
-    debouncedSave();
-  }, [answers, debouncedSave]);
+  // v0.8 Step 7: the open-text textarea graveyard is replaced by a
+  // seeded 3-question clarify session. The embedded WizardClarifyStep
+  // owns its own session lifecycle; when the user clicks Score it →
+  // we fire `closeWizardClarifySession()` so the row is cleanly closed
+  // server-side before advancing. (A7.1 / A7.2 in ASSUMPTIONS-v0.8.md.)
+  const [advancing, setAdvancing] = useState(false);
 
   return (
     <StepCard
       eyebrow="Step 5 — Thoughts"
       title="What&rsquo;s making this hard?"
-      subtitle="Skip any you want. These are read by the scoring step to flavour the fit notes."
-      saved={saved}
+      subtitle="Lobbycat will ask a few quick questions before we score. Skip if you&rsquo;d rather just see the dashboard."
+      saved="idle"
       onBack={onBack}
       onNext={async () => {
-        await saveWizardOpenText(answers);
+        if (advancing) return;
+        setAdvancing(true);
+        await closeWizardClarifySession();
         onNext();
       }}
-      nextDisabled={pending}
+      nextDisabled={advancing}
       nextLabel="Score it →"
     >
-      <ul className="space-y-5">
-        {answers.map((a, i) => (
-          <li key={i}>
-            <label className="block text-sm text-prose-soft mb-2">
-              {a.question}
-            </label>
-            <textarea
-              value={a.answer}
-              onChange={(e) =>
-                setAnswers((prev) =>
-                  prev.map((x, j) =>
-                    j === i ? { ...x, answer: e.target.value } : x,
-                  ),
-                )
-              }
-              rows={3}
-              className="w-full border border-rule bg-panel-raised px-3 py-2 text-prose focus:outline-none focus:border-action"
-            />
-          </li>
-        ))}
-      </ul>
+      <WizardClarifyStep displayName={displayName} />
     </StepCard>
   );
 }

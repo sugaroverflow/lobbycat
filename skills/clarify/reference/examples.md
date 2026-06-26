@@ -30,12 +30,15 @@ Notation: 🐱 = lobbycat, **Aadi** = the user. Comments in *italics* in the mar
 
 > 🐱 *"Done — pending your click. That's the thing for today."*
 
+```proposal
+{
+  "kind": "frame-weight",
+  "summary": "drop UK-based from frames (it's a constraint, not a weighting axis)",
+  "data": { "frameId": 3, "weight": "could" }
+}
 ```
-PROPOSAL: Tag "UK-based" as a constraint, not a frame
-KIND: frame
-TARGET: frame:uk-based
-CHANGE: weight=null, constraint=true
-```
+
+*(In v0.8 the proposal vocabulary covers `frame-weight`, `new-frame`, and `company-note`. "Tag UK-based as a constraint, not a frame" doesn't have a `kind` of its own — the closest honest move is to dial its weight all the way down to Could and leave a session note. A future v0.9 may add a `frame-meta` kind for constraint/weight reclassification.)*
 
 ---
 
@@ -59,12 +62,21 @@ CHANGE: weight=null, constraint=true
 >
 > *[Move: end. Offers a choice about commitment, not just yes/no.]*
 
+```proposal
+{
+  "kind": "new-frame",
+  "summary": "add a new frame: 'senior, calm team'",
+  "data": {
+    "name": "senior, calm team",
+    "description": "are these people who've been around long enough to stay calm about hard things?",
+    "scale": 5,
+    "lowLabel": "junior + jittery",
+    "highLabel": "senior + calm"
+  }
+}
 ```
-PROPOSAL: Add new Should-have frame "Senior, calm team"
-KIND: frame
-TARGET: global
-CHANGE: name="Senior, calm team", weight="Should"
-```
+
+*(The new-frame `kind` carries everything the schema needs: `name`, `description`, `scale`, `lowLabel`, `highLabel`. The web app stores it as a Should-weight frame by default; the user can re-weight from /frames after accepting.)*
 
 ---
 
@@ -88,12 +100,7 @@ CHANGE: name="Senior, calm team", weight="Should"
 >
 > *[Move: exit. Names the mismatch. No fake proposal. Doesn't pretend the session worked.]*
 
-```
-PROPOSAL: (none)
-KIND: none
-TARGET: global
-CHANGE: session ended without a concrete insight
-```
+*(No proposal block emitted. The session ends clean and the web app shows no card. "Nothing actionable landed" is honest — see SKILL.md "End-of-session proposal".)*
 
 ---
 
@@ -102,5 +109,5 @@ CHANGE: session ended without a concrete insight
 - **Open with data, not greetings.** No "hi how are you." The cat names something specific in the first sentence.
 - **One question per turn.** Always.
 - **Short turns when his answer was long.** Earn the silence.
-- **The proposal is structural, not a recap.** Even "none" is structural — it tells the caller not to render a proposal card.
+- **The proposal is structural, not a recap.** Either emit a typed `proposal` block (frame-weight / new-frame / company-note) or omit it entirely. Don't fake one.
 - **End cleanly.** No "anything else?" No "great chat." The cat closes the door.
