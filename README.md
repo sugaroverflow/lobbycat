@@ -140,7 +140,7 @@ Next.js 16 (App Router, TypeScript, Tailwind v4)
   ↳ Vercel for hosting (cron + background work via after())
 
 src/styles/globals.css         design tokens (vaporwave palette, type, motion)
-src/db/schema.ts               schema (companies, frames, frame_scores, user_profile, …)
+src/db/schema.ts               schema (companies, frames, frame_scores, user_profile, clarify_sessions, clarify_messages, …)
 src/db/seed-data.ts            the curated London set
 src/lib/scoring/               the live scoring engine
 src/lib/fit-notes/             fit-note generation grounded in wizard answers
@@ -154,10 +154,11 @@ src/app/api/cron/              Vercel cron handlers for each pipeline
 src/app/api/rescore-status/    "is the cat busy?" endpoint
 src/app/                       the App Router surfaces
 src/components/loading-cat.tsx shared calm-cousin loading animation
+skills/clarify/SKILL.md        the clarify skill (cat's interview move set)
+skills/clarify/reference/      moves, voice, and worked examples for the skill
 research/feed.json             Glyphie's research feed (diff source for welcome-back)
-docs/REFACTOR-v0.7.md          the v0.7 sign-off doc
-docs/journal/                  the running build journal
-docs/ASSUMPTIONS-v0.7.md       in-flight decisions log
+agent-journal/REFACTOR-v0.8.md the v0.8 sign-off doc
+agent-journal/                 build journals and in-flight decisions logs
 ```
 
 ## The data pipelines
@@ -203,21 +204,22 @@ gate.
 
 ## Status
 
-**v0.7 — onboarding-first vaporwave engine (2026-06-23).** Concept
-signed off. Steps 1 through 15 landed: schema migrations for wizard
-state, vaporwave token system (calm cousin) with Orbitron +
-Share Tech Mono, the six-step `/wizard` route with autosave + the
-step-6 scoring takeover, dashboard cards with stacked-list + top-3
-visible / show-more reveals, filter + sort toolbar, welcome-back card
-reading `research/feed.json`, frames page redesign with
-Must/Should/Could + "Ask lobbycat for frame ideas", surprise modal
-vaporwave-theatre reskin, About page mirroring the wizard fields with
-edit-in-place + replay-onboarding, sweep of `/compare` + driver.js
-coachmark + Machine swatch page + other v0.4/v0.5 residue, and shared
-loading-cat animation wired into fit-note + surprise with cycling
-quotes. See `docs/journal/` for the running log and
-`docs/ASSUMPTIONS-v0.7.md` for the in-flight decisions taken without
-pausing for sign-off.
+**v0.7.2 — live. v0.8 (the soul) in progress.**
+
+v0.7 shipped the engine: wizard, vaporwave scoring takeover, dashboard
+stacked-list with fit-notes, frames + Must/Should/Could weights,
+welcome-back card, About with edit-in-place. v0.7.1 added reliability
+(Sentry, smoke tests, retry). v0.7.2 patched scoring edge cases.
+
+v0.8 ships **the soul** — Lobbycat becomes a conversational presence
+who helps Aadi notice what he hasn't yet articulated. A custom
+`clarify` skill codifies her interview move set; a `runClarifySession`
+server action runs it inline. Steps 1–4 landed (skill authored,
+`clarify_sessions` + `clarify_messages` schema, server action). Steps
+5–12 (chat panel UI, entry points, conversations tab, animations,
+deploy) in progress. See `agent-journal/REFACTOR-v0.8.md` for the
+full scope and `agent-journal/ASSUMPTIONS-v0.8.md` for in-flight
+decisions.
 
 ## How to use it
 
