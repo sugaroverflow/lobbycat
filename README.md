@@ -47,62 +47,14 @@ full memo is in `research/london-companies.md`; the seed data is in
 `src/db/seed-data.ts`. There is no automated ingestion of the company
 list itself. Evidence beneath each company is pulled by the data pipelines.
 
-### Status
-
-**v0.7.2 — live. v0.8 (the soul) in progress.**
-
-v0.7 shipped the engine: wizard, vaporwave scoring takeover, dashboard
-stacked-list with fit-notes, frames + Must/Should/Could weights,
-welcome-back card, About with edit-in-place. v0.7.1 added reliability
-(Sentry, smoke tests, retry). v0.7.2 patched scoring edge cases.
-
-v0.8 ships **the soul** — Lobbycat becomes a conversational presence who
-helps Aadi notice what he hasn't yet articulated. A custom `clarify` skill
-codifies her interview move set; a `runClarifySession` server action runs
-it inline. Steps 1–4 landed (skill authored, `clarify_sessions` +
-`clarify_messages` schema, server action). Steps 5–12 (chat panel UI,
-entry points, conversations tab, animations, deploy) in progress. See
-`agent-journal/REFACTOR-v0.8.md` for the full scope.
-
----
-
-## How to use it
-
-Open `/wizard`. Six steps, about five minutes. Tell it who you are right
-now, what you're poking at, where you'd live, and which frames you
-actually care about. The last step is theatre — let it run; it's the cat
-reading every company against what you just said.
-
-You'll land on the dashboard with the field already sorted for you. Scan
-the top three cards. Read the fit-notes; they're written *to you*,
-grounded in what you typed in the wizard. If one lands, click into the
-company page. If one feels wrong, that's the more useful signal — it
-means something about how you actually weight a frame.
-
-Edit a weight on `/frames` (Must / Should / Could) and watch the dashboard
-re-sort. Edit a frame *definition* and watch the cat re-read every company
-on that frame. Change something about yourself on `/about` and every
-fit-note re-grounds.
-
-When you don't know where to look, hit **Surprise me**. The reason will
-either land or it won't — and the *wrong* picks tell you something too.
-
-That's it. There's nothing hidden, no second algorithm in the background.
-Just the field, the lens you chose, and a small cat that's re-reading
-every time you change your mind.
-
-— made with love 🪷
-
 ---
 
 ## Technical architecture
 
-```
-Next.js 16 (App Router, TypeScript, Tailwind v4)
-  ↳ Neon (Postgres) via Drizzle ORM (@neondatabase/serverless HTTP)
-  ↳ Anthropic API for scoring + fit-notes + clarify sessions
-  ↳ Vercel for hosting (cron + background work via after())
-```
+- [Next.js 16](https://nextjs.org/) (App Router, TypeScript, Tailwind v4)
+- [Neon](https://neon.tech/) (Postgres) via Drizzle ORM
+- [Anthropic API](https://www.anthropic.com/) for scoring, fit-notes, and clarify sessions
+- [Vercel](https://vercel.com/) for hosting (cron + background work via `after()`)
 
 **Key paths:**
 
