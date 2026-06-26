@@ -1,9 +1,9 @@
 # Controversy scope — Glyphie research layer
 
 **Author:** Glyphie 🌀
-**Date:** 2026-06-24
-**Status:** Proposed (awaiting Fatima sign-off)
-**Sibling docs:** `v0.7/glyphie-sources.md` (daily source list), HANDOFF.md (output schema)
+**Date:** 2026-06-24 · _status refreshed 2026-06-26_
+**Status:** ✅ Signed off (Fatima, 2026-06-24). Live — backfill in progress (tranches 1–2 shipped: Stability, OpenAI, ElevenLabs, xAI, Synthesia).
+**Sibling docs:** `v0.7/glyphie-sources.md` (daily source list), `controversy-frontend-handoff.md` (display handoff to Lotus), HANDOFF.md (output schema)
 
 ---
 
@@ -159,12 +159,12 @@ This slots in as another **`evidence_kind`** the scoring engine already understa
 - **Tone enforcement:** every `summary` written investigative-report style — sourced, staged, verifiable, never guilt-asserting. The reader is trusted to click through.
 - **Daily note:** unverified leads, name-collision near-misses, and "smells like a story but no primary source yet" items live in `glyphie-notes/<date>.md`, never in the committed JSON.
 
-## Worked example (to be built next, for sign-off)
-One company with a *real, correctly-attributed* controversy, verified against a Tier-1 primary record, to demonstrate the shape and the discipline before rolling to all 70.
+## Worked example
+Demonstrated on **Stability AI / Getty** (Getty Images v Stability AI, UK High Court [2025] EWHC 2863 (Ch)) — a real, correctly-attributed, Tier-1-primary-sourced controversy proving the shape and the discipline before rolling wider. See `research/feeds/stability-ai.json`.
 
 ---
 
-## Open questions for Fatima
-1. **Backfill depth** — how far back should the first historical pass go? (Suggest: last ~3 years for priority 1-2, anything older only if landmark.)
-2. **Dashboard surfacing** — that's Lotus's call, but worth a heads-up that this field is reputational/legal-sensitive; she may want a "verify before relying" disclaimer on the surface.
-3. **Severity threshold for criticism (priority 3)** — how high a bar? (Suggest: named-byline investigative piece OR named watchdog report; nothing thinner.)
+## Decisions (resolved with Fatima, 2026-06-24)
+1. **Backfill depth** — last **~3 years** for priority 1–2; older only if landmark (Getty [2025] qualifies). ✅ decided.
+2. **Dashboard surfacing** — Lotus's call; handed off in `controversy-frontend-handoff.md`. Field flagged as reputational/legal-sensitive → light "verify before relying" affordance, not a heavy banner. ✅ handed off.
+3. **Severity threshold for criticism (priority 3)** — named-byline investigative piece **OR** named watchdog report; nothing thinner. ✅ decided.
