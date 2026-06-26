@@ -800,3 +800,49 @@ hover:bg-action-hover` (token-driven primary CTA).**
   future readers aren't sent looking for a route that no longer exists.
   Seed-data URLs containing `/about` (e.g. `deepmind.google/about/`) are
   external company URLs and are left untouched.
+
+## Phase B item 11 — F2.2 / F2.3 (empty-updates state + vaporwave alert box)
+
+Single file: `src/components/welcome-card.tsx`, inside the
+`WelcomeBackDiff` subcomponent (the panel that already lives under the
+welcome quote on the dashboard home).
+
+- **A-B11.1** F2.3 "vaporwave alert box" reuses the established
+  cyan-top + magenta-left + rule-right + rule-bottom frame from
+  `src/components/dashboard-cards.tsx` §3.4, with the same `--card-interior-bg`
+  body. Defined inline (`alertFrame`) rather than promoted to a shared
+  primitive: it's the second use, not the third, and the rule of three
+  for extracting a vaporwave-frame component is still better deferred
+  until a third caller shows up. Token usage matches dashboard-cards so
+  any future palette tweak in `vaporwave.css` propagates to both
+  surfaces.
+- **A-B11.2** F2.3 keeps the existing personalized headline
+  ("New since you were last in, {firstName}…") rather than swapping to
+  the spec's illustrative "what's new". Spec uses "like 'what's new'" so
+  the headline copy was illustrative; the personalized line is the v0.7
+  step-8 named greeting Fatima specifically wanted and reads warmer than
+  a generic label. The headline color shifts from `text-whisper` to
+  `text-readout` so it reads as a cyan eyebrow on the alert frame,
+  consistent with eyebrow usage on dashboard cards
+  (e.g. dashboard-cards.tsx line 130).
+- **A-B11.3** F2.2 (empty state) gets the same alert frame as F2.3, not
+  a smaller / different treatment. Rationale: the dashboard home should
+  open with a real, recognisable panel even when there are no updates,
+  so the eye doesn't land on dead vertical space below the welcome quote
+  (that's the actual F2.2 complaint). The frame stays calm because the
+  body is a single prose-face line in `text-card-interior-muted`, not a
+  list, so the empty state is visually quieter than the populated one
+  without disappearing.
+- **A-B11.4** Empty-state copy: "nothing new since your last visit — the
+  cat will let you know." Kept short, lobbycat-voiced, prose-face. The
+  data-testid stays `welcome-back-empty` so any future smoke test that
+  asserts the presence of the empty state still finds it; the
+  `aria-label` is upgraded from implicit (the old div had none) to
+  "no new updates since you were last in" for screen-reader parity with
+  the populated state's `aria-label`.
+- **A-B11.5** Bullet glyph color switches from the literal
+  `var(--accent,#FF00FF)` fallback to `var(--accent-action)` (the
+  vaporwave magenta token). The literal hex fallback was a v0.7 fallback
+  for when the token wasn't guaranteed; in v0.8.1 the vaporwave tokens
+  are always loaded via `globals.css → vaporwave.css`, so the fallback
+  is dead code and only added drift risk if `--accent-action` ever moved.
