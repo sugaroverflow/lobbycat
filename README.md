@@ -81,7 +81,10 @@ skills/clarify/reference/      moves, voice, and worked examples for the skill
 research/feed.json             Glyphie's research feed (diff source for welcome-back)
 ```
 
-**Design:** calm-cousin vaporwave — cyan / magenta / void-purple on near-black, Orbitron for display, Share Tech Mono for data. Full tokens in `src/styles/globals.css`.
+**Design:**
+- [Orbitron](https://fonts.google.com/specimen/Orbitron) for display, [Share Tech Mono](https://fonts.google.com/specimen/Share+Tech+Mono) for data
+- Calm-cousin vaporwave palette — cyan / magenta / void-purple on near-black
+- Full tokens in `src/styles/globals.css`
 
 ## Data pipelines
 
