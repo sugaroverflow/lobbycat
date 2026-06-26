@@ -608,3 +608,80 @@ hover:bg-action-hover` (token-driven primary CTA).**
     later sweep if Fatima reacts to it.
 - Would change if: Fatima wants the button to read more
   destructive/loud (coral) or quieter (ghost border + accent text).
+
+## A-A8.1 — F4.4 saved-confirmation: placement under the textarea, above the button row
+
+- Scope doc: "After a note is saved, show a small line below the
+  textarea: *'saved to profile!'* Probably auto-clears after a few
+  seconds."
+- Placement decision: the new confirmation line lives in its own
+  div BETWEEN the textarea and the existing right-aligned Save-note
+  button row — i.e. directly under the textarea, full-width, left-
+  aligned. Rationale: Fatima's spec says "below the textarea",
+  not "below the button"; and putting it above the button row makes
+  the affirmation feel attached to the textarea's content rather
+  than to the button's click.
+- The pre-existing top-right "saved HH:MM" indicator (next to the
+  "Your notes" eyebrow) stays. It serves a different purpose
+  (timestamp of last save / persistent reassurance), and removing it
+  is out of scope for F4.4.
+- The pre-existing "saved ✓" 2s state on the button itself also
+  stays. It's a button-local affordance and F4.3 just shipped its
+  contrast fix; pulling it out now would regress that.
+- Alternatives considered:
+  - (a) Replace the top-right "saved HH:MM" with "saved to
+    profile!" Rejected — the two indicators do different jobs
+    (timestamp vs affirmation), and Fatima explicitly said "below
+    the textarea".
+  - (b) Put the line on the same row as the button (e.g. left-
+    aligned next to a right-aligned button). Rejected — gets
+    visually muddled with the button's own "saved ✓" state during
+    explicit save (two "saved" things, same row). Stacking keeps
+    them legibly separate.
+
+## A-A8.2 — F4.4 saved-confirmation: 3-second auto-clear
+
+- Scope doc says "auto-clears after a few seconds" (range, not
+  exact). Picked **3 seconds**.
+- Rationale: 2s is the button's own "saved ✓" duration and would
+  feel too fast for a separate affirmation that's meant to be read
+  as a sentence. 5s drags. 3s is the standard "toast" duration and
+  matches user expectations.
+- Implementation: separate `confirmTimer` ref so the confirmation
+  line and the button's "saved ✓" state can run independently (the
+  button clears at 2s, the line at 3s — the line lingering ~1s
+  past the button is intentional and reads naturally).
+- Would change if: Fatima wants it shorter (2s, matching the
+  button) or longer (5s+, sticky enough to notice on a slow scan).
+
+## A-A8.3 — F4.4 saved-confirmation: fires for both autosave AND explicit save
+
+- The textarea has two save paths: `onBlur` (autosave, fires
+  `persist()` directly) and the Save-note button (`handleExplicitSave`,
+  also routes through `persist()`).
+- I hoisted `showConfirm()` into `persist()` itself, so any path
+  that completes a save flashes the line. Rationale: Fatima's
+  feedback was about "after a note is saved" — she didn't
+  distinguish autosave from explicit save, and showing the line
+  only on the button click would feel arbitrary (autosave is the
+  more common path).
+- Alternative considered: fire only on explicit save, on the
+  theory that autosave is "silent". Rejected — autosave is exactly
+  where reassurance matters most (the user didn't take an
+  action; the affirmation tells them their typing was caught).
+
+## A-A8.4 — F4.4 saved-confirmation: styling = mono uppercase accent
+
+- Class: `mono text-[10px] uppercase tracking-[0.14em] text-accent`.
+- Matches the visual language of the eyebrow + button (mono, small,
+  uppercase, tracked) — sits in the same family as the other
+  metadata around the editor. `text-accent` (Vaporwave accent
+  token) gives it the affirmative "this happened, and it's good"
+  hue without screaming. Coral/success-green were both rejected —
+  coral is for warnings, and the design system doesn't have a
+  success-green token (intentionally — affirmations use accent).
+- The row reserves `min-h-[1.25rem]` so the textarea-to-button gap
+  doesn't shift when the line appears/disappears.
+- `aria-live="polite"` + `aria-atomic="true"` on the wrapper so
+  screen readers announce the save without stealing focus.
+

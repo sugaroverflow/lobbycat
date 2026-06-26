@@ -17,13 +17,24 @@ export function NotesEditor({
   const [buttonState, setButtonState] = useState<"idle" | "saving" | "saved">(
     "idle",
   );
+  // F4.4: "saved to profile!" confirmation line under the textarea.
+  // Fires whenever a save completes (autosave or explicit), auto-clears after 3s.
+  const [confirmVisible, setConfirmVisible] = useState(false);
   const savedTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const confirmTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     return () => {
       if (savedTimer.current) clearTimeout(savedTimer.current);
+      if (confirmTimer.current) clearTimeout(confirmTimer.current);
     };
   }, []);
+
+  function showConfirm() {
+    setConfirmVisible(true);
+    if (confirmTimer.current) clearTimeout(confirmTimer.current);
+    confirmTimer.current = setTimeout(() => setConfirmVisible(false), 3000);
+  }
 
   async function persist() {
     await saveCompanyNotes({ companyId, notes });
@@ -33,6 +44,7 @@ export function NotesEditor({
         minute: "2-digit",
       }),
     );
+    showConfirm();
   }
 
   function handleExplicitSave() {
@@ -73,7 +85,18 @@ export function NotesEditor({
         placeholder="What did the conversation reveal? What's missing? What still nags at you?"
         className="serif text-base text-body w-full px-4 py-3 bg-surface border border-rule rounded-sm placeholder:text-whisper focus:outline-none focus:border-accent leading-relaxed min-h-[14rem]"
       />
-      <div className="mt-2 flex justify-end">
+      <div
+        className="mt-2 min-h-[1.25rem]"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {confirmVisible ? (
+          <span className="mono text-[10px] uppercase tracking-[0.14em] text-accent transition-opacity duration-300">
+            saved to profile!
+          </span>
+        ) : null}
+      </div>
+      <div className="mt-1 flex justify-end">
         <button
           type="button"
           onClick={handleExplicitSave}
