@@ -1,6 +1,20 @@
 {
-  "lastUpdated": "2026-06-24T21:10:00Z",
+  "lastUpdated": "2026-06-26T01:23:30Z",
   "events": [
+    {
+      "date": "2026-06-26",
+      "company_slug": "anthropic-london",
+      "event_type": "role",
+      "summary": "New policy/legal opening: Policy Counsel, EMEA (Dublin, IE). Surfaced via the roles lens (public ATS feed); London/EMEA-relevant.",
+      "source_url": "https://job-boards.greenhouse.io/anthropic/jobs/5233643008"
+    },
+    {
+      "date": "2026-06-26",
+      "company_slug": "anthropic-london",
+      "event_type": "role",
+      "summary": "New policy/legal opening: Policy Counsel, EMEA (London, UK). Surfaced via the roles lens (public ATS feed); London/EMEA-relevant.",
+      "source_url": "https://job-boards.greenhouse.io/anthropic/jobs/5233645008"
+    },
     {
       "date": "2026-06-24",
       "company_slug": "google-deepmind",

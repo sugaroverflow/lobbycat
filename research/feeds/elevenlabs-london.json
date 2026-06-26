@@ -1,10 +1,25 @@
 {
   "slug": "elevenlabs-london",
-  "lastUpdated": "2026-06-24T21:10:00Z",
+  "lastUpdated": "2026-06-26T01:23:12Z",
   "blurb": "London/US voice-AI company. Faces repeated US litigation over alleged unconsented voice cloning — a 2024 voice-actor suit and a 2026 suit by journalists and voice actors in Illinois.",
-  "hiring": { "isHiring": null, "newSincePrevious": null },
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 0,
+    "londonPolicyRoles": 1,
+    "lastChecked": "2026-06-26"
+  },
   "publications": [],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Compliance Engineer - EU",
+      "location": "London",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/f4cfa7cc-5973-473d-93c6-68115d9e887d",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "ats",
+      "seenAt": "2026-06-26"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [
@@ -17,11 +32,24 @@
       "severity": "medium",
       "companyRole": "defendant",
       "summary": "ElevenLabs is a defendant in a US lawsuit filed in an Illinois court (reported May 2026) by a group of journalists and voice actors who allege the company built its voice models using recordings of their voices without consent. Reporting frames it as the second legal action against ElevenLabs over voice use, following an earlier 2024 suit by voice actors alleging misappropriation of their voices for its text-to-speech software. Both are alleged claims at an early/ongoing stage — no merits ruling reported. Logged conservatively: the fullest free account (Sifted) returned only partially legible; detail beyond the core allegation is not reproduced here pending a cleaner primary read.",
-      "topics": ["voice_cloning", "consent", "biometric", "training_data"],
+      "topics": [
+        "voice_cloning",
+        "consent",
+        "biometric",
+        "training_data"
+      ],
       "rawExcerpt": null,
       "corroboration": [
-        { "outlet": "Sifted", "url": "https://sifted.eu/articles/elevenlabs-lawsuit-2026", "paywalled": false },
-        { "outlet": "Bloomberg Law (2024 actors' suit)", "url": "https://news.bloomberglaw.com/ip-law/actors-say-ai-voice-over-generator-elevenlabs-cloned-likenesses", "paywalled": true }
+        {
+          "outlet": "Sifted",
+          "url": "https://sifted.eu/articles/elevenlabs-lawsuit-2026",
+          "paywalled": false
+        },
+        {
+          "outlet": "Bloomberg Law (2024 actors' suit)",
+          "url": "https://news.bloomberglaw.com/ip-law/actors-say-ai-voice-over-generator-elevenlabs-cloned-likenesses",
+          "paywalled": true
+        }
       ],
       "source": "curated",
       "attributionChecked": true
