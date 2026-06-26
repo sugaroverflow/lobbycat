@@ -130,7 +130,7 @@ Assumptions logged when the identity-files PR opens.)*
 - **Would change if:** Real sessions reveal one of the four un-exampled
   moves is harder to get right than the move doc captures.
 
-### A1.5 — End-of-session proposal output uses a fenced text block with `KIND: weight|frame|note|none`, not JSON.
+### A1.5 — End-of-session proposal output uses a fenced text block with `KIND: weight|frame|note|none`, not JSON. ~~(SUPERSEDED by A4.7 on 2026-06-26 01:10 UTC — see below.)~~
 
 - **Assumed:** A simple line-oriented format is easier for the
   `runClarifySession` server action (Step 4) to parse out of a streamed
@@ -146,6 +146,43 @@ Assumptions logged when the identity-files PR opens.)*
 - **Would change if:** Step 4 prefers structured tool-use; the skill
   output block stays as a fallback for path-2 (spawned agent) consumers
   that don't have tool-use wired up.
+- **What actually happened:** Step 4 shipped (PR #34) with a parser
+  that reads a fenced \`\`\`proposal JSON block, not the PROPOSAL:/KIND:
+  text block this assumption committed the skill to. The mismatch was
+  caught while resolving #34's merge conflict and is corrected in Step
+  4.1 by aligning the skill to the parser. See A4.7.
+
+### A4.7 — Step 4.1: skill rewrites the proposal contract from PROPOSAL:/KIND: text to a fenced ```proposal JSON block, matching the parser shipped in PR #34.
+
+- **Assumed:** The parser is the more constrained surface. It compiles,
+  it has a regex, it's used by the database write path. The skill is
+  free-form Markdown loaded into a system prompt; rewriting its
+  end-of-session contract is cheaper than rewriting the parser, and
+  keeps Step 4's typed `ClarifyProposal` shape (`kind`, `summary`,
+  `data`) intact. The three valid `kind` values are exactly the three
+  the parser accepts: `frame-weight`, `new-frame`, `company-note`.
+- **Concrete changes:**
+  - `skills/clarify/SKILL.md` end-of-session section rewritten with
+    three worked JSON-fence examples + hard rules.
+  - `skills/clarify/reference/examples.md` Session A/B/C proposal
+    blocks rewritten to match. Session A's "tag as constraint"
+    proposal repurposed into a `frame-weight` (weight→Could) since
+    there's no `constraint-flag` kind in v0.8.
+  - Move tag (`<!-- move: <name> -->`) documented in SKILL.md with the
+    seven valid kebab-case names the parser accepts.
+- **Verification:** end-to-end parser smoke test against four sample
+  outputs (one per kind + a clean-exit). All four extract cleanly:
+  typed `kind`, `summary`, `data` preserved verbatim, `body` stripped,
+  `ended` flag accurate. No malformed-JSON paths hit.
+- **Alternatives:** Rewrite the parser to read the old text block.
+  Rejected — changes more lines, breaks typed `data` payloads, harder
+  to evolve. Or function-calling / tool-use. Deferred — same answer as
+  A1.5; tool-use is a Step 4+ refactor, not Step 4.1.
+- **Would change if:** The model proves unreliable at emitting valid
+  JSON inside the fence (likely at smaller models, fine at
+  claude-sonnet-4-x). Step 4 already swallows malformed JSON
+  gracefully ("treat the block as prose"), so the failure mode is
+  "session ends without a proposal", which is also a valid outcome.
 
 ### A1.6 — Validation: `skill-creator/scripts/quick_validate.py` passed ("Skill is valid!") on `/root/projects/lobbycat/skills/clarify` at 21:50 UTC.
 
