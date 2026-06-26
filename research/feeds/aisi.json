@@ -1,0 +1,46 @@
+{
+  "slug": "aisi",
+  "lastUpdated": "2026-06-26T17:00:49Z",
+  "blurb": "The UK AI Security Institute (formerly AI Safety Institute) — government body running frontier-model evaluations (cyber/chem/bio/agent) and publishing safety-framework and safety-case research. High-signal, named-author technical-policy output.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": null,
+      "title": "Research Agenda",
+      "url": "https://www.aisi.gov.uk/blog/research-agenda",
+      "type": "paper",
+      "byline": "UK AI Security Institute",
+      "summary": "AISI sets out its research priorities and approach to technical solutions for the most pressing AI risks as capabilities advance — the closest thing to a UK government statement of frontier-AI-risk posture."
+    },
+    {
+      "date": null,
+      "title": "Our evaluation of OpenAI's GPT-5.5 cyber capabilities",
+      "url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
+      "type": "paper",
+      "byline": "UK AI Security Institute",
+      "summary": "AISI cyber evaluation finding GPT-5.5 among the strongest models tested, and the second to solve a multi-step cyber-attack simulation end-to-end — a concrete capability-evaluation data point feeding deployment policy."
+    },
+    {
+      "date": null,
+      "title": "Conference on frontier AI safety frameworks",
+      "url": "https://www.aisi.gov.uk/blog/conference-on-frontier-ai-safety-frameworks",
+      "type": "paper",
+      "byline": "UK AI Security Institute",
+      "summary": "AISI convenes AI companies and researchers to accelerate the design and implementation of frontier AI safety frameworks — government-led coordination on RSP-style commitments."
+    },
+    {
+      "date": null,
+      "title": "Safety cases at AISI",
+      "url": "https://www.aisi.gov.uk/blog/safety-cases-at-aisi",
+      "type": "paper",
+      "byline": "UK AI Security Institute",
+      "summary": "AISI sketches structured 'safety case' arguments for more advanced models than exist today, focused on loss-of-control and autonomy risk — a methodological bet on how frontier safety should be evidenced."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
+}

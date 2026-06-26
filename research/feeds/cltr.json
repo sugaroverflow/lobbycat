@@ -1,0 +1,46 @@
+{
+  "slug": "cltr",
+  "lastUpdated": "2026-06-26T17:00:49Z",
+  "blurb": "Centre for Long-Term Resilience — UK think tank on extreme risk (AI, bio, risk management), advising government with named-author reports and consultation submissions.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-02-12",
+      "title": "Ten things we want to see from Exercise Pegasus",
+      "url": "https://www.longtermresilience.org/reports/ten-things-we-want-to-see-from-exercise-pegasus/",
+      "type": "paper",
+      "byline": "Lydia Preston, James Ginns",
+      "summary": "CLTR's ten benchmarks for best-in-class national risk-preparedness exercising, set ahead of the UK's Exercise Pegasus."
+    },
+    {
+      "date": "2026-01-16",
+      "title": "Gap consolidation of the mirror life evidence base",
+      "url": "https://www.longtermresilience.org/reports/gap-consolidation-of-the-mirror-life-evidence-base/",
+      "type": "paper",
+      "byline": "Paul-Enguerrand Fady, Sarah Winthrope, James Walker, Cassidy Nelson",
+      "summary": "Identifies specific, safe knowledge gaps to fill for mirror-life preparedness without lowering barriers to creating it — biosecurity-meets-AI risk methodology."
+    },
+    {
+      "date": null,
+      "title": "Global Risk Index for AI-enabled Biological Tools",
+      "url": "https://www.longtermresilience.org/reports/global-risk-index-for-ai-enabled-biological-tools/",
+      "type": "paper",
+      "byline": "Toby Webster, Richard Moulange, Barbara Del Castello, James Walker, Sana Zakaria, Cassidy Nelson",
+      "summary": "CLTR-RAND introduce the first Global Risk Index for AI-enabled biological tools — a framework to assess the AI-bio risk frontier."
+    },
+    {
+      "date": null,
+      "title": "Strategic Defence Review 2024: Call for Evidence (CLTR submission)",
+      "url": "https://www.longtermresilience.org/reports/strategic-defence-review-2024-call-for-evidence/",
+      "type": "filing",
+      "byline": "Oliver Payne",
+      "summary": "CLTR's detailed recommendations to the MoD Strategic Defence Review on CBRN threats — a named consultation submission (high-signal, defended-in-public evidence)."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
+}
