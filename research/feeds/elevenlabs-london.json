@@ -55,5 +55,14 @@
       "attributionChecked": true
     }
   ],
-  "notes": "Controversy attribution: named-party (ElevenLabs Inc. is the named defendant), same-entity (the text-to-speech voice-AI firm = seed elevenlabs-london), source = named reporting (Sifted, Bloomberg Law). NOT yet traced to a court docket number — flagged as a follow-up to find the Illinois case number/PACER record before upgrading detail or severity. Held at status=ongoing, severity=medium accordingly. Sifted body was partly garbled on fetch; only the clearly-legible core allegation was used, nothing inferred."
+  "notes": "Controversy attribution: named-party (ElevenLabs Inc. is the named defendant), same-entity (the text-to-speech voice-AI firm = seed elevenlabs-london), source = named reporting (Sifted, Bloomberg Law). NOT yet traced to a court docket number — flagged as a follow-up to find the Illinois case number/PACER record before upgrading detail or severity. Held at status=ongoing, severity=medium accordingly. Sifted body was partly garbled on fetch; only the clearly-legible core allegation was used, nothing inferred.",
+  "news": [
+    {
+      "date": "2026-06-18",
+      "title": "Poland invests in ElevenLabs",
+      "url": "https://elevenlabs.io/blog/blog/poland-invests-in-elevenlabs",
+      "source": "company_blog",
+      "summary": "The Government of Poland took a stake in ElevenLabs via Vinci (BGK Group), joining the company's investor base."
+    }
+  ]
 }

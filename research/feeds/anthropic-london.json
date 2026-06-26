@@ -112,5 +112,6 @@
   ],
   "filings": [],
   "leadership": [],
-  "notes": "[source feed broken] Seed blogRssUrl https://www.anthropic.com/news/rss.xml returns 404; https://www.anthropic.com/rss.xml also 404. Only https://www.anthropic.com/news (HTML) resolves, and readability captured a single item. Needs a working feed URL or a direct article URL. Flag to Techie for the ingestion pipeline (src/lib/rss). Until fixed, Anthropic coverage is degraded to headline-scraping."
+  "notes": "[source feed broken] Seed blogRssUrl https://www.anthropic.com/news/rss.xml returns 404; https://www.anthropic.com/rss.xml also 404. Only https://www.anthropic.com/news (HTML) resolves, and readability captured a single item. Needs a working feed URL or a direct article URL. Flag to Techie for the ingestion pipeline (src/lib/rss). Until fixed, Anthropic coverage is degraded to headline-scraping.",
+  "news": []
 }
