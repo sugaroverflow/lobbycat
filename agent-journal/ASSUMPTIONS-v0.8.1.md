@@ -769,3 +769,34 @@ hover:bg-action-hover` (token-driven primary CTA).**
   scoring engine (`@/lib/scoring/aggregate`), the FrameScorer
   component, and the DB schema all use the high/medium/low tokens
   directly and need no changes.
+
+## A-B10 — F6.1 /about → /profile rename + 308 redirect + nav update (Phase B item 10)
+
+- **A-B10.1** The page at `src/app/about/{page,error}.tsx` is renamed in
+  place to `src/app/profile/{page,error}.tsx` via `git mv` — same file
+  contents, only the route segment changes. No co-located components live
+  under `src/app/about/`, so the rename is a clean two-file move.
+- **A-B10.2** The 308 permanent redirect from `/about` → `/profile` is
+  expressed via `next.config.ts` `redirects()` with `permanent: true`
+  (Next.js maps `permanent: true` to HTTP 308). This is preferred over an
+  `/about/page.tsx` stub that calls `permanentRedirect()` because (a) it
+  avoids a stray route segment in the App Router, (b) it runs at the edge
+  before the request reaches React, and (c) it's the one canonical place
+  to find route renames.
+- **A-B10.3** Nav label changes from "About" → "Profile" with `href`
+  `/about` → `/profile` in `src/components/site-shell.tsx`. The 308 means
+  the old href would still work, but updating the canonical link avoids
+  the gratuitous redirect on every nav click.
+- **A-B10.4** All eight `revalidatePath("/about")` call sites in
+  `src/app/actions.ts` and `src/app/actions-wizard.ts` switch to
+  `revalidatePath("/profile")`. These are server-action cache busts: the
+  page they revalidate is now at `/profile`, so the path argument must
+  match the new segment (revalidatePath is matched against the App Router
+  route, not the public URL, so the 308 wouldn't help here).
+- **A-B10.5** Doc-comment references to `/about` in `src/app/actions.ts`,
+  `src/app/actions-wizard.ts`, `src/lib/queries.ts`,
+  `src/components/replay-onboarding-link.tsx`, and
+  `src/components/explainer-box.tsx` are also updated to `/profile` so
+  future readers aren't sent looking for a route that no longer exists.
+  Seed-data URLs containing `/about` (e.g. `deepmind.google/about/`) are
+  external company URLs and are left untouched.

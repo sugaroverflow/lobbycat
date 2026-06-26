@@ -7,7 +7,7 @@
  * cat sprite next to it. Dismissible per-page; the dismissal is remembered
  * via a cookie keyed by the `id` prop so the user only sees each explainer
  * once. Re-takes of the setup wipe these cookies (see §5 of REFACTOR-v0.7.2
- * and the existing re-take-setup flow on /about).
+ * and the existing re-take-setup flow on /profile).
  *
  * Usage:
  *   <ExplainerBox

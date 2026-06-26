@@ -7,7 +7,7 @@ import { resetWizard } from "@/app/actions-wizard";
 const COOKIE_NAME = "lc_onboarded_v2";
 
 /**
- * "Re-take the setup" — a real visible button at the top of /about that
+ * "Re-take the setup" — a real visible button at the top of /profile that
  * resets the wizard gate and bounces back to /wizard step 1.
  *
  * Confirms before resetting: the wizard answers stay in the DB, but

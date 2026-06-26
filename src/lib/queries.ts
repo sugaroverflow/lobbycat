@@ -263,7 +263,7 @@ export async function getCompanyBySlug(slug: string) {
 }
 
 /**
- * v0.6: notes index for the /about page — every per-company note Aadi
+ * v0.6: notes index for the /profile page — every per-company note Aadi
  * has written, joined with company name + slug so he can find what he
  * said without remembering which company it was on.
  */

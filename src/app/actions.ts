@@ -385,7 +385,7 @@ export async function saveCompanyNotes({
 }) {
   // v0.6: per-company notes live in their own table now (replaces the
   // v0.4 free-text intent surface). Trimmed-empty body deletes the row
-  // so /about's notes index stays clean.
+  // so /profile's notes index stays clean.
   const body = notes.trim();
   if (!body) {
     await db.delete(companyNotes).where(eq(companyNotes.companyId, companyId));
@@ -399,7 +399,7 @@ export async function saveCompanyNotes({
       });
   }
   revalidatePath(`/companies/[slug]`, "page");
-  revalidatePath("/about");
+  revalidatePath("/profile");
 }
 
 export async function setCompanyStatus({
@@ -749,7 +749,7 @@ export async function updateProfile(patch: {
 
   await db.update(userProfile).set(next).where(eq(userProfile.id, existing.id));
 
-  revalidatePath("/about");
+  revalidatePath("/profile");
   // Profile feeds fit-note grounding; company pages reflect it next nav.
   revalidatePath(`/companies/[slug]`, "page");
 }
@@ -770,9 +770,9 @@ export async function startClarifySession(
   opts: StartClarifyOptions,
 ): Promise<StartClarifyResult> {
   const result = await startClarifySessionImpl(opts);
-  // The /about Conversations tab (Step 9) will list sessions; revalidate
+  // The /profile Conversations tab (Step 9) will list sessions; revalidate
   // proactively so a new session shows up next nav even mid-flow.
-  revalidatePath("/about");
+  revalidatePath("/profile");
   return result;
 }
 
@@ -789,7 +789,7 @@ export async function sendClarifyMessage(
   if (result.ended) {
     // The session row just flipped to ended + proposal-set; refresh the
     // surfaces that show "any pending proposals?".
-    revalidatePath("/about");
+    revalidatePath("/profile");
     revalidatePath("/");
   }
   return result;
@@ -804,5 +804,5 @@ export async function endClarifySessionAsClosed(
   sessionId: number,
 ): Promise<void> {
   await endClarifySessionAsClosedImpl(sessionId);
-  revalidatePath("/about");
+  revalidatePath("/profile");
 }

@@ -78,7 +78,7 @@ export async function saveWizardProfile(patch: {
   }
   await db.update(userProfile).set(next).where(eq(userProfile.id, profile.id));
   revalidatePath("/wizard");
-  revalidatePath("/about");
+  revalidatePath("/profile");
 }
 
 /* ------------------------------------------------------------------ */
@@ -129,7 +129,7 @@ export async function saveWizardOpenText(
     .set({ openTextAnswers: cleaned, updatedAt: new Date() })
     .where(eq(userProfile.id, profile.id));
   revalidatePath("/wizard");
-  revalidatePath("/about");
+  revalidatePath("/profile");
 }
 
 /* ------------------------------------------------------------------ */
@@ -175,7 +175,7 @@ export async function completeWizard(): Promise<{ ok: true; total: number }> {
 }
 
 /* ------------------------------------------------------------------ */
-/* Used by /about "Replay onboarding"                                 */
+/* Used by /profile "Replay onboarding"                                 */
 /* ------------------------------------------------------------------ */
 
 export async function resetWizard() {
@@ -186,7 +186,7 @@ export async function resetWizard() {
     .where(eq(userProfile.id, profile.id));
   revalidatePath("/");
   revalidatePath("/wizard");
-  revalidatePath("/about");
+  revalidatePath("/profile");
 }
 
 /* ------------------------------------------------------------------ */
