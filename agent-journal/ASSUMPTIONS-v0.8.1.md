@@ -846,3 +846,60 @@ welcome quote on the dashboard home).
   for when the token wasn't guaranteed; in v0.8.1 the vaporwave tokens
   are always loaded via `globals.css → vaporwave.css`, so the fallback
   is dead code and only added drift risk if `--accent-action` ever moved.
+
+## Phase B item 12 — F4.2 (Lobbycat-says fix)
+
+**A-B12.1** "Enter to send, Shift+Enter for newline" is the right
+default for a chat-shaped textarea. The spec said "Enter key should
+also send" without specifying a modifier; modern chat UIs (Slack,
+Discord, ChatGPT) all default to plain-Enter-sends with Shift+Enter
+for newlines, and the textarea here is one-or-two lines of follow-up
+prose, not a long-form composer. Kept ⌘/Ctrl+Enter as a parallel
+shortcut so anyone with the old muscle memory from the v0.8 ship
+isn't surprised. Also guarded against IME composition via
+`e.nativeEvent.isComposing` so CJK typing doesn't accidentally fire
+the send on the composition's terminating Enter.
+
+**A-B12.2** "Real button" means matching F4.3's save-note CTA pattern
+(`bg-action text-canvas hover:bg-action-hover` + `px-3 py-2 rounded-sm`).
+Same component family, same page, immediately adjacent visually —
+having two different "this is a real button" treatments on one page
+would look like a bug. F5.2's "+ Add a new frame" button used the same
+token family. So this is the third use of that pattern; it's getting
+close to extract-time, but per rule-of-three I'm holding until a
+fourth instance so the abstraction is shaped by actual variance, not
+guessed.
+
+**A-B12.3** "The feature doesn't actually work" — couldn't reproduce
+a hard failure in the server action (`sendFitNoteMessage` correctly
+persists the user row, calls Anthropic, persists the cat reply, then
+revalidates). What DOES read as broken from the user's seat: after
+hitting send, the textarea clears but **nothing visible happens for
+several seconds** (Anthropic round-trip), AND if the thread was empty
+the LoadingCat was gated behind `thread.length > 0` so the entire
+follow-up area went blank. Fixed by (a) optimistically rendering the
+just-sent user message via `pendingUserMessage` state, cleared in the
+`finally` of the transition once revalidate brings the persisted row
+back; and (b) showing the loading state and the optimistic message
+even when `thread.length === 0`. If there's a deeper functional bug
+Fatima saw (e.g. Anthropic key missing in prod, or revalidatePath not
+bumping a particular user's cache), the optimistic render at least
+makes the UI honest about what state it's in, and any thrown error
+restores the draft so nothing is lost.
+
+**A-B12.4** Kept `revalidatePath('/companies/[slug]', 'page')` even
+though it looks suspicious — every other action in `src/app/actions.ts`
+uses the exact same string-literal-bracket syntax and the save-note +
+frame-score flows demonstrably work (F4.3/F4.4 confirmed it).
+Next.js does support this form for dynamic segment revalidation; not
+the bug.
+
+**A-B12.5** The optimistic user-bubble uses `opacity-80` so it reads
+as "in flight" without flashing or moving once the persisted row
+arrives. The persisted row will have the same content + a real `id`,
+so React swaps the keyed list entry cleanly (the optimistic `li` has
+`key="pending-user"`; the persisted one keys off `m.id`). No
+double-render in the window between revalidate and `setPendingUserMessage(null)`
+because the `finally` block runs after the server action resolves,
+which only happens once revalidatePath has been called — by which
+point the persisted row is already in `thread`.

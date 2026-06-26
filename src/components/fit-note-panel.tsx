@@ -56,15 +56,20 @@ export function FitNotePanel({
   const [pending, start] = useTransition();
   const [sending, startSend] = useTransition();
   const [draft, setDraft] = useState("");
+  // Optimistic copy of the just-sent user message so the thread updates
+  // instantly. revalidatePath round-trips through an Anthropic call that
+  // can take several seconds; without this the UI looks frozen and the
+  // feature reads as "broken" (see F4.2).
+  const [pendingUserMessage, setPendingUserMessage] = useState<string | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const parsed = fitNote ? parseFitNote(fitNote.body) : null;
   const fitNotingPool = (quotes as unknown as QuotePools).fitNoting ?? [];
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
+  function submitDraft() {
     const content = draft.trim();
     if (!content || sending) return;
     setDraft("");
+    setPendingUserMessage(content);
     startSend(async () => {
       try {
         await sendFitNoteMessage({ companyId, content });
@@ -72,8 +77,18 @@ export function FitNotePanel({
         // Restore the draft so the user doesn't lose what they typed.
         setDraft(content);
         console.error(err);
+      } finally {
+        // Once the server action returns, the persisted thread row will
+        // appear via revalidatePath; clear the optimistic copy so we
+        // don't double-render it.
+        setPendingUserMessage(null);
       }
     });
+  }
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    submitDraft();
   }
 
   return (
@@ -128,7 +143,7 @@ export function FitNotePanel({
       {fitNote && (
         <div className="mt-6 pt-5 border-t border-rule">
           <div className="eyebrow mb-3">follow up</div>
-          {thread.length > 0 && (
+          {(thread.length > 0 || pendingUserMessage || sending) && (
             <ul className="space-y-3 mb-4 list-none pl-0">
               {thread.map((m) => {
                 const isCat = m.role === "cat";
@@ -149,6 +164,16 @@ export function FitNotePanel({
                   </li>
                 );
               })}
+              {pendingUserMessage && (
+                <li key="pending-user" className="flex flex-col gap-1">
+                  <span className="mono text-[10px] uppercase tracking-[0.12em] text-muted">
+                    you
+                  </span>
+                  <p className="serif text-sm text-ink leading-relaxed pl-3 border-l-2 border-sage-soft opacity-80">
+                    {pendingUserMessage}
+                  </p>
+                </li>
+              )}
               {sending && (
                 <li className="flex flex-col gap-1">
                   <span className="mono text-[10px] uppercase tracking-[0.12em] text-muted">
@@ -170,12 +195,14 @@ export function FitNotePanel({
               value={draft}
               onChange={(e) => setDraft(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
+                // Plain Enter sends; Shift+Enter inserts a newline. ⌘/Ctrl+Enter
+                // still works for muscle-memory parity with the old behaviour.
+                if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
                   e.preventDefault();
-                  (e.currentTarget.form as HTMLFormElement | null)?.requestSubmit();
+                  submitDraft();
                 }
               }}
-              placeholder="Ask the cat a follow-up… (⌘+Enter to send)"
+              placeholder="Ask the cat a follow-up… (Enter to send, Shift+Enter for newline)"
               rows={2}
               disabled={sending}
               className="w-full resize-none rounded-sm border border-rule bg-bg p-2 serif text-sm text-ink placeholder:text-whisper focus:outline-none focus:border-moss disabled:opacity-60"
@@ -185,7 +212,8 @@ export function FitNotePanel({
               <button
                 type="submit"
                 disabled={sending || !draft.trim()}
-                className="mono text-[10px] uppercase tracking-[0.12em] text-muted hover:text-ink disabled:text-whisper transition"
+                aria-label="Send message to lobbycat"
+                className="mono text-[10px] uppercase tracking-[0.14em] px-3 py-2 bg-action text-canvas rounded-sm hover:bg-action-hover transition disabled:opacity-60 disabled:cursor-not-allowed"
               >
                 {sending ? "sending…" : "send"}
               </button>
