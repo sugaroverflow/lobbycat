@@ -2,8 +2,8 @@
  * feeds-sync
  * ----------
  * Reads Glyphie's per-company feed files (`research/feeds/<slug>.json`)
- * and upserts their publications into the Postgres `publications` table
- * that the dashboard reads from.
+ * and upserts their evidence into the Postgres tables the dashboard reads
+ * from: `publications`, `roles`, and `controversies`.
  *
  * Why this exists: Glyphie writes JSON via daily PRs (Lotus's domain
  * boundary), but the dashboard reads from the DB. Without this sync,
@@ -13,15 +13,21 @@
  * 70 Glyphie-tracked companies; the dashboard was reading from the
  * 3-feed table.
  *
- * Idempotent: re-running is safe. Conflict target is (companyId, url),
- * matching the unique index on `publications`.
+ * v0.8: extended to also ingest `roles[]` (open job postings from the
+ * roles lens, into the pre-existing `roles` table) and `controversies[]`
+ * (reputational signals, into the new `controversies` table). Each is an
+ * independent path so a malformed roles array can't block publications.
+ *
+ * Idempotent: re-running is safe. Conflict targets match each table's
+ * unique index — (companyId, url) for publications/controversies,
+ * (companyId, externalId) for roles.
  */
 
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { eq, inArray } from "drizzle-orm";
 import { db } from "@/db";
-import { companies, publications } from "@/db/schema";
+import { companies, publications, roles, controversies } from "@/db/schema";
 
 type GlyphiePublication = {
   date?: string | null;
@@ -33,19 +39,59 @@ type GlyphiePublication = {
   topics?: string[] | null;
 };
 
+type GlyphieRole = {
+  title: string;
+  location?: string | null;
+  url: string;
+  source?: string | null; // greenhouse | lever | ashby | ats | manual
+  seenAt?: string | null;
+  londonRelevant?: boolean | null;
+  isNew?: boolean | null;
+};
+
+type GlyphieControversy = {
+  type: string;
+  title: string;
+  url: string;
+  occurredAt?: string | null;
+  status: string;
+  severity?: string | null;
+  companyRole?: string | null;
+  summary?: string | null;
+  topics?: string[] | null;
+  rawExcerpt?: string | null;
+  corroboration?: Array<{ outlet: string; url: string; paywalled?: boolean }> | null;
+  source?: string | null;
+};
+
 type GlyphieFeed = {
   slug: string;
   lastUpdated?: string;
   publications?: GlyphiePublication[];
+  roles?: GlyphieRole[];
+  controversies?: GlyphieControversy[];
+};
+
+export type FeedSyncKindResult = {
+  found: number;
+  inserted: number;
+  updated: number;
+  skipped: number;
 };
 
 export type FeedSyncCompanyResult = {
   slug: string;
   companyId?: number;
+  // Aggregate (publications + roles + controversies) — kept for backwards
+  // compatibility with existing callers/logging.
   found: number;
   inserted: number;
   updated: number;
   skipped: number;
+  // Per-kind breakdown (v0.8).
+  publications?: FeedSyncKindResult;
+  roles?: FeedSyncKindResult;
+  controversies?: FeedSyncKindResult;
   error?: string;
 };
 
@@ -109,29 +155,43 @@ function parseDate(d: string | null | undefined): Date | null {
   return Number.isFinite(ts) ? new Date(ts) : null;
 }
 
-async function syncOne(
+const EMPTY_KIND = (): FeedSyncKindResult => ({
+  found: 0,
+  inserted: 0,
+  updated: 0,
+  skipped: 0,
+});
+
+/** Derive a stable per-company external id for a role from its ATS url. */
+function roleExternalId(url: string): string {
+  // ATS job urls end in the job id, e.g.
+  //   greenhouse: .../jobs/4461450008
+  //   ashby:      .../<uuid>
+  //   lever:      .../<uuid>
+  // The last non-empty path segment is the stable id. Fall back to the
+  // whole url so we never produce an empty conflict key.
+  try {
+    const u = new URL(url);
+    const segs = u.pathname.split("/").filter(Boolean);
+    return segs[segs.length - 1] || url;
+  } catch {
+    return url;
+  }
+}
+
+async function syncPublications(
   feed: GlyphieFeed,
   companyId: number,
   options: { dryRun: boolean },
-): Promise<FeedSyncCompanyResult> {
-  const result: FeedSyncCompanyResult = {
-    slug: feed.slug,
-    companyId,
-    found: 0,
-    inserted: 0,
-    updated: 0,
-    skipped: 0,
-  };
-
+): Promise<{ kind: FeedSyncKindResult; error?: string }> {
+  const kind = EMPTY_KIND();
   const items = (feed.publications ?? []).filter(
     (p): p is GlyphiePublication =>
       !!p && typeof p.title === "string" && typeof p.url === "string",
   );
-  result.found = items.length;
-  if (items.length === 0) return result;
+  kind.found = items.length;
+  if (items.length === 0) return { kind };
 
-  // Pull the URLs we already have for this company so we can detect
-  // insert vs update without doing a round-trip per row.
   const urls = Array.from(new Set(items.map((i) => i.url)));
   const existingRows = await db
     .select({ url: publications.url })
@@ -143,16 +203,13 @@ async function syncOne(
 
   if (options.dryRun) {
     for (const item of items) {
-      if (existing.has(item.url)) result.updated += 1;
-      else result.inserted += 1;
+      if (existing.has(item.url)) kind.updated += 1;
+      else kind.inserted += 1;
     }
-    return result;
+    return { kind };
   }
 
-  // Per-row upsert. Volumes are small (≤ a few hundred per company),
-  // so this stays well within Vercel's request budget. We use
-  // onConflictDoUpdate so re-running picks up Glyphie's improved
-  // summaries on subsequent passes.
+  let error: string | undefined;
   for (const item of items) {
     try {
       await db
@@ -177,15 +234,201 @@ async function syncOne(
             topics: Array.isArray(item.topics) ? item.topics : [],
           },
         });
-      if (existing.has(item.url)) result.updated += 1;
-      else result.inserted += 1;
+      if (existing.has(item.url)) kind.updated += 1;
+      else kind.inserted += 1;
     } catch (err) {
-      result.skipped += 1;
-      result.error = err instanceof Error ? err.message : String(err);
+      kind.skipped += 1;
+      error = err instanceof Error ? err.message : String(err);
     }
   }
+  return { kind, error };
+}
 
-  return result;
+async function syncRoles(
+  feed: GlyphieFeed,
+  companyId: number,
+  options: { dryRun: boolean },
+): Promise<{ kind: FeedSyncKindResult; error?: string }> {
+  const kind = EMPTY_KIND();
+  const items = (feed.roles ?? []).filter(
+    (r): r is GlyphieRole =>
+      !!r && typeof r.title === "string" && typeof r.url === "string",
+  );
+  kind.found = items.length;
+  if (items.length === 0) return { kind };
+
+  // Conflict key for roles is (companyId, externalId), so dedupe on that.
+  const existingRows = await db
+    .select({ externalId: roles.externalId })
+    .from(roles)
+    .where(eq(roles.companyId, companyId));
+  const existing = new Set(
+    existingRows
+      .map((r) => r.externalId)
+      .filter((x): x is string => typeof x === "string"),
+  );
+
+  if (options.dryRun) {
+    for (const item of items) {
+      if (existing.has(roleExternalId(item.url))) kind.updated += 1;
+      else kind.inserted += 1;
+    }
+    return { kind };
+  }
+
+  let error: string | undefined;
+  for (const item of items) {
+    const externalId = roleExternalId(item.url);
+    try {
+      await db
+        .insert(roles)
+        .values({
+          companyId,
+          externalId,
+          title: item.title,
+          department: null,
+          location: item.location ?? null,
+          url: item.url,
+          source: item.source ?? "ats",
+          postedAt: parseDate(item.seenAt),
+          snapshot: {
+            londonRelevant: item.londonRelevant ?? null,
+            isNew: item.isNew ?? null,
+          },
+          isOpen: true,
+        })
+        .onConflictDoUpdate({
+          target: [roles.companyId, roles.externalId],
+          set: {
+            title: item.title,
+            location: item.location ?? null,
+            url: item.url,
+            source: item.source ?? "ats",
+            isOpen: true,
+            snapshot: {
+              londonRelevant: item.londonRelevant ?? null,
+              isNew: item.isNew ?? null,
+            },
+          },
+        });
+      if (existing.has(externalId)) kind.updated += 1;
+      else kind.inserted += 1;
+    } catch (err) {
+      kind.skipped += 1;
+      error = err instanceof Error ? err.message : String(err);
+    }
+  }
+  return { kind, error };
+}
+
+async function syncControversies(
+  feed: GlyphieFeed,
+  companyId: number,
+  options: { dryRun: boolean },
+): Promise<{ kind: FeedSyncKindResult; error?: string }> {
+  const kind = EMPTY_KIND();
+  const items = (feed.controversies ?? []).filter(
+    (c): c is GlyphieControversy =>
+      !!c &&
+      typeof c.title === "string" &&
+      typeof c.url === "string" &&
+      typeof c.type === "string" &&
+      typeof c.status === "string",
+  );
+  kind.found = items.length;
+  if (items.length === 0) return { kind };
+
+  const urls = Array.from(new Set(items.map((i) => i.url)));
+  const existingRows = await db
+    .select({ url: controversies.url })
+    .from(controversies)
+    .where(eq(controversies.companyId, companyId));
+  const existing = new Set(
+    existingRows.filter((r) => urls.includes(r.url)).map((r) => r.url),
+  );
+
+  if (options.dryRun) {
+    for (const item of items) {
+      if (existing.has(item.url)) kind.updated += 1;
+      else kind.inserted += 1;
+    }
+    return { kind };
+  }
+
+  let error: string | undefined;
+  for (const item of items) {
+    try {
+      await db
+        .insert(controversies)
+        .values({
+          companyId,
+          type: item.type,
+          title: item.title,
+          url: item.url,
+          occurredAt: parseDate(item.occurredAt),
+          status: item.status,
+          severity: item.severity ?? null,
+          companyRole: item.companyRole ?? null,
+          summary: item.summary ?? null,
+          topics: Array.isArray(item.topics) ? item.topics : [],
+          rawExcerpt: item.rawExcerpt ?? null,
+          corroboration: Array.isArray(item.corroboration)
+            ? item.corroboration
+            : [],
+          source: item.source ?? "curated",
+        })
+        .onConflictDoUpdate({
+          target: [controversies.companyId, controversies.url],
+          set: {
+            type: item.type,
+            title: item.title,
+            occurredAt: parseDate(item.occurredAt),
+            status: item.status,
+            severity: item.severity ?? null,
+            companyRole: item.companyRole ?? null,
+            summary: item.summary ?? null,
+            topics: Array.isArray(item.topics) ? item.topics : [],
+            rawExcerpt: item.rawExcerpt ?? null,
+            corroboration: Array.isArray(item.corroboration)
+              ? item.corroboration
+              : [],
+            source: item.source ?? "curated",
+          },
+        });
+      if (existing.has(item.url)) kind.updated += 1;
+      else kind.inserted += 1;
+    } catch (err) {
+      kind.skipped += 1;
+      error = err instanceof Error ? err.message : String(err);
+    }
+  }
+  return { kind, error };
+}
+
+async function syncOne(
+  feed: GlyphieFeed,
+  companyId: number,
+  options: { dryRun: boolean },
+): Promise<FeedSyncCompanyResult> {
+  // Each kind syncs independently so a malformed array in one doesn't
+  // block the others.
+  const pub = await syncPublications(feed, companyId, options);
+  const rol = await syncRoles(feed, companyId, options);
+  const con = await syncControversies(feed, companyId, options);
+
+  const errors = [pub.error, rol.error, con.error].filter(Boolean);
+  return {
+    slug: feed.slug,
+    companyId,
+    found: pub.kind.found + rol.kind.found + con.kind.found,
+    inserted: pub.kind.inserted + rol.kind.inserted + con.kind.inserted,
+    updated: pub.kind.updated + rol.kind.updated + con.kind.updated,
+    skipped: pub.kind.skipped + rol.kind.skipped + con.kind.skipped,
+    publications: pub.kind,
+    roles: rol.kind,
+    controversies: con.kind,
+    ...(errors.length ? { error: errors.join("; ") } : {}),
+  };
 }
 
 export async function runFeedsSync(options?: {
@@ -227,9 +470,13 @@ export async function runFeedsSync(options?: {
 
     const companyId = slugToId.get(feed.slug);
     if (!companyId) {
+      const found =
+        (feed.publications?.length ?? 0) +
+        (feed.roles?.length ?? 0) +
+        (feed.controversies?.length ?? 0);
       out.push({
         slug: feed.slug,
-        found: feed.publications?.length ?? 0,
+        found,
         inserted: 0,
         updated: 0,
         skipped: 0,
