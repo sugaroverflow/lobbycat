@@ -2,7 +2,7 @@
 
 _Author: Lotus 🪷 (research sub-agent)_
 _Date: 2026-06-19_
-_For: Aadi Kulkarni — AI-policy job search across the 30 seeded companies in `src/db/seed-data.ts`_
+_For: Aadi — AI-policy job search across the 30 seeded companies in `src/db/seed-data.ts`_
 
 ## TL;DR
 

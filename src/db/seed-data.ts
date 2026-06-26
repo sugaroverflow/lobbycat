@@ -1187,7 +1187,7 @@ export const seedCompanies: SeedCompany[] = [
 /* ------------------------------------------------------------------ */
 
 export const seedUserProfile = {
-  displayName: "Aadi Kulkarni",
+  displayName: "Aadi",
   headline:
     "International policy officer at Coinbase, exploring AI policy roles. Government digitisation, regulatory infrastructure, public-service accessibility.",
   bio: "Works on cross-border crypto policy from London. Built career at the intersection of government digitisation, data ethics, and regulatory infrastructure for emerging technology. Co-founded Polici.org. Harvard LIL. NSF data-ethics research at Cornell with Solon Barocas and Karen Levy. Mitchell Scholar (UCD).",

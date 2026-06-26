@@ -1,4 +1,4 @@
-# User profile — Aadi Kulkarni
+# User profile — Aadi
 
 > Distilled from the politech-awards-2026 soul mirror constitutional analysis (PR #73 on nwspk/politech-awards-2026, branch `project-mirror-v2/aadi-kulkarni`). That work is a constitutional estimate of how he evaluates civic technology projects. We use it here only to ground the personalised "fit notes" on company pages.
 
