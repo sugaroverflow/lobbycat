@@ -1142,3 +1142,97 @@ long names wrap and the star stays anchored. NOT placed in the
 policy links) — those are external-destination links and the star is a
 state toggle, mixing them weakens both clusters. Star above, link
 cluster below.
+
+---
+
+## Phase C item 14 — F3.4 "Show more" reveal restructure
+
+**A-C14.1** Branched off `scope/v0.8.1-phase-b-13-favorites-detail-page-star`
+(PR #64 HEAD = 5f2a859) rather than off main. F3.4 does not naturally
+depend on F3.5's favorites work — different file regions — and the
+heartbeat playbook says "branch from main" in that case. But every
+prior Phase B PR has stacked, because each one appends to this
+ASSUMPTIONS-v0.8.1.md file and branching from main would conflict at
+collapse time. Stacking on #64 keeps the file additive and matches
+the realised practice of items 10/11/12/13.
+
+**A-C14.2** F3.4's restructured reveal needs `recentNews[]` and
+`recentControversies[]` shapes on the per-company detail object. Per
+§8.2 of REFACTOR-v0.8.1.md, those plug into the same
+`getRankedHomeData`/`getCompaniesWithExpandableDetails` fetch path
+that already produces `recentPublications` and `openRoles`. F8.x is
+where Glyphie's news[] feed + controversies migration 0013 actually
+populate these. Until then I render the rendering plumbing with
+empty arrays and the friendly empty-state copy. This unblocks the UI
+restructure without waiting on data.
+
+**A-C14.3** Shape of `recentNews` items: `{ id: string; title: string;
+url: string; publishedAt: string | null }`. `id` is `string` (not the
+schema-typical `number`) because Glyphie's daily-feeds news shape is
+JSON-blob-shaped per #38's roles[] precedent — composite ids
+(`feedId:slug`) more likely than DB-row ids when she lands the feed.
+String is the safe superset; if she ends up with numeric ids, the
+component still renders fine via key coercion. Same for
+`recentControversies.id`.
+
+**A-C14.4** Shape of `recentControversies` items: `{ id: string;
+title: string; url: string | null; surfacedAt: string | null }`.
+`url` is nullable because Glyphie's controversies migration 0013
+(per the public-schema diff on her open PR #40) stores a `summary`
+column without a guaranteed source URL — some entries are
+analyst-synthesised. The render branches on `x.url ?` so we still
+display the title with the warning glyph when there's no link.
+
+**A-C14.5** Section ordering inside the expanded reveal mirrors the
+spec verbatim: two-column row (Recent publications | Recent roles),
+then full-width Recent news, then full-width Recent controversy,
+then the single CTA. The two-column publications+roles row stays
+intact because they read as a cluster ("here's what's actually
+happening at this place"). News + controversy stretch full-width
+because their items are denser (longer titles, more chrome) and
+two-column would crowd them.
+
+**A-C14.6** Renamed "Open roles" → "Recent roles" per the §3.4 spec
+("Recent publications | Recent roles"). The data is still the
+currently-open ATS pull and the count badge still shows
+`openRoleCount`. Kept the field name `openRoles` on the Detail type
+to avoid a wider rename across `queries.ts`, `company-drawer.tsx`,
+and the dashboard filter logic — only the user-facing header copy
+changed. The "(N)" badge keeps showing the open count, which reads
+as "recent and still open" without the header word "Open" being
+required.
+
+**A-C14.7** Dropped both "Fit-note + notes →" and "Leave a note" as
+separate affordances. Replaced by a single CTA "Explore in detail →"
+that points at `/companies/${c.slug}`. The "Leave a note" deep-link
+(`#notes` anchor) is no longer surfaced from the card; users get
+there via the detail page. Kept the `✦ Fit-note ready` badge —
+it's an information signal, not an affordance, and Fatima's spec
+doesn't ask to remove it. The badge sitting next to the single CTA
+still reads clearly as "click Explore — your fit-note is ready
+inside."
+
+**A-C14.8** Empty-state copy chosen per §8.2 of REFACTOR-v0.8.1.md
+which calls for "friendly empty states for each." Wording:
+- News: "No recent news in the last 6 months."
+- Controversy: "No recent controversy surfaced."
+The verb "surfaced" for controversies is deliberate — controversies
+are the kind of thing that get noticed/found rather than published
+on a known cadence, so the empty state acknowledges absence-of-signal
+rather than implying nothing-happened.
+
+**A-C14.9** Icons: 📰 for news items, ⚠️ for controversies. Matches the
+existing `pubIcon()` glyph vocabulary (📰 was already the news/press
+variant inside `pubIcon`). The controversy ⚠️ is the only non-pubIcon
+glyph added — it's the canonical "heads up" symbol and reads on a
+card-interior background. Kept inline, not extracted to a helper,
+because there's exactly one call site.
+
+**A-C14.10** `recentNews[]` and `recentControversies[]` are typed as
+empty arrays via `[] as Array<{...}>` in `getRankedHomeData` —
+giving the inferred return type the right shape now so F8.x's
+later data wiring is a body change, not a return-shape change.
+Specifically, this means downstream consumers (the Detail prop on
+`<DashboardCards>`) compile against the eventual shape today, and
+when Glyphie's feed shape lands we just swap `[]` for the real
+`newsByCompany.get(c.id) ?? []` without re-threading types.

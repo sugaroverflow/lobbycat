@@ -775,6 +775,11 @@ export async function getRankedHomeData() {
   //     ATS source configured — surfaced as UNKNOWN, not NOT HIRING)
   //   - latestEvent: newest of {publication, open role} — powers the
   //     “Latest:” strip on collapsed cards
+  //   - recentNews: press/news items in the last 6 months (v0.8.1 F3.4 —
+  //     populated by Glyphie's news[] feed in F8.x; empty until then)
+  //   - recentControversies: controversies surfaced in the last 6 months
+  //     (v0.8.1 F3.4 — populated by Glyphie's controversies migration
+  //     0013 in F8.x; empty until then)
   const CARD_LIMIT = 6;
   const pubsByCompany = new Map<
     number,
@@ -895,6 +900,22 @@ export async function getRankedHomeData() {
       openRoleCount: openRoles,
       isHiring: openRoles > 0 ? true : null, // null = UNKNOWN (no source)
       hasFitNote: hasFitNoteSet.has(c.id),
+      // v0.8.1 F3.4 — render plumbing for the restructured "Show more"
+      // reveal. F8.1/F8.2 will fill these arrays once Glyphie's news[]
+      // feed + controversies migration 0013 land. Until then the UI
+      // renders friendly empty states.
+      recentNews: [] as Array<{
+        id: string;
+        title: string;
+        url: string;
+        publishedAt: string | null;
+      }>,
+      recentControversies: [] as Array<{
+        id: string;
+        title: string;
+        url: string | null;
+        surfacedAt: string | null;
+      }>,
       latestEvent,
     };
   });

@@ -54,6 +54,20 @@ type LatestEvent =
     }
   | null;
 
+type NewsItem = {
+  id: string;
+  title: string;
+  url: string;
+  publishedAt: string | null;
+};
+
+type ControversyItem = {
+  id: string;
+  title: string;
+  url: string | null;
+  surfacedAt: string | null;
+};
+
 type Detail = {
   companyId: number;
   recentPublications: Pub[];
@@ -61,6 +75,8 @@ type Detail = {
   openRoleCount: number;
   isHiring: boolean | null;
   hasFitNote: boolean;
+  recentNews: NewsItem[];
+  recentControversies: ControversyItem[];
   latestEvent: LatestEvent;
 };
 
@@ -408,7 +424,7 @@ function CompanyCard({
 
           <section>
             <h4 className="font-sans text-sm text-readout mb-2">
-              Open roles
+              Recent roles
               {detail.openRoleCount > 0 && (
                 <span className="text-card-interior-whisper ml-2 text-xs">
                   ({detail.openRoleCount})
@@ -445,6 +461,88 @@ function CompanyCard({
             )}
           </section>
 
+          <section className="md:col-span-2">
+            <h4 className="font-sans text-sm text-readout mb-2">
+              Recent news
+              <span className="text-card-interior-whisper ml-2 text-xs">
+                (last 6mo)
+              </span>
+            </h4>
+            {detail.recentNews.length === 0 ? (
+              <p className="font-sans text-sm text-card-interior-muted italic">
+                No recent news in the last 6 months.
+              </p>
+            ) : (
+              <ul className="space-y-1.5">
+                {detail.recentNews.map((n) => (
+                  <li
+                    key={n.id}
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                  >
+                    <span aria-hidden className="mr-1">
+                      📰
+                    </span>
+                    <a
+                      href={n.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
+                    >
+                      {n.title}
+                    </a>
+                    <span className="ml-2 text-card-interior-whisper text-xs">
+                      {fmtAgo(n.publishedAt)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
+          <section className="md:col-span-2">
+            <h4 className="font-sans text-sm text-readout mb-2">
+              Recent controversy
+              <span className="text-card-interior-whisper ml-2 text-xs">
+                (last 6mo)
+              </span>
+            </h4>
+            {detail.recentControversies.length === 0 ? (
+              <p className="font-sans text-sm text-card-interior-muted italic">
+                No recent controversy surfaced.
+              </p>
+            ) : (
+              <ul className="space-y-1.5">
+                {detail.recentControversies.map((x) => (
+                  <li
+                    key={x.id}
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                  >
+                    <span aria-hidden className="mr-1">
+                      ⚠️
+                    </span>
+                    {x.url ? (
+                      <a
+                        href={x.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
+                      >
+                        {x.title}
+                      </a>
+                    ) : (
+                      <span className="text-card-interior-text">
+                        {x.title}
+                      </span>
+                    )}
+                    <span className="ml-2 text-card-interior-whisper text-xs">
+                      {fmtAgo(x.surfacedAt)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
           <section className="md:col-span-2 flex items-center gap-4 pt-1 flex-wrap">
             <Link
               href={`/companies/${c.slug}`}
@@ -455,19 +553,13 @@ function CompanyCard({
                 background: "rgb(0 255 255 / 0.04)",
               }}
             >
-              Fit-note + notes →
+              Explore in detail →
             </Link>
             {detail.hasFitNote && (
               <span className="font-sans text-xs text-readout">
                 ✦ Fit-note ready
               </span>
             )}
-            <Link
-              href={`/companies/${c.slug}#notes`}
-              className="font-sans text-xs text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
-            >
-              Leave a note
-            </Link>
           </section>
         </div>
       )}
