@@ -7,6 +7,7 @@ import {
   type FrameScoreSnapshot,
 } from "@/lib/scoring/useLiveAggregates";
 import type { FrameWeightLevel } from "@/lib/scoring/aggregate";
+import { FavoriteStar } from "@/components/favorite-star";
 
 /* ---------- shapes ----------------------------------------------------- */
 
@@ -53,6 +54,20 @@ type LatestEvent =
     }
   | null;
 
+type NewsItem = {
+  id: string;
+  title: string;
+  url: string;
+  publishedAt: string | null;
+};
+
+type ControversyItem = {
+  id: string;
+  title: string;
+  url: string | null;
+  surfacedAt: string | null;
+};
+
 type Detail = {
   companyId: number;
   recentPublications: Pub[];
@@ -60,6 +75,8 @@ type Detail = {
   openRoleCount: number;
   isHiring: boolean | null;
   hasFitNote: boolean;
+  recentNews: NewsItem[];
+  recentControversies: ControversyItem[];
   latestEvent: LatestEvent;
 };
 
@@ -69,6 +86,10 @@ type Props = {
   scores: FrameScoreSnapshot[];
   details: Detail[];
   frameWeights: Record<string, FrameWeightLevel>;
+  // v0.8.1 Phase B item 13 (F3.5) — ids of starred companies. Presence in
+  // this list == favorited. The set is built once on mount and the card's
+  // own optimistic toggle takes over from there.
+  favoritedCompanyIds: number[];
 };
 
 /* ---------- helpers ---------------------------------------------------- */
@@ -127,11 +148,11 @@ function ScoreBar({
       title={`${frame.name} — weight ${weightGlyph === "M" ? "Must" : weightGlyph === "S" ? "Should" : "Could"}`}
     >
       <span
-        className="mono text-[10px] uppercase tracking-[0.12em] text-readout truncate"
+        className="font-sans text-xs text-readout truncate"
         style={{ flex: "1 1 0" }}
       >
         {frame.name}
-        <span className="ml-1 text-whisper">[{weightGlyph}]</span>
+        <span className="ml-1 text-card-interior-whisper">[{weightGlyph}]</span>
       </span>
       <span
         className="relative inline-block h-[6px] rounded-sm overflow-hidden"
@@ -179,13 +200,13 @@ function HiringBadge({ isHiring }: { isHiring: boolean | null }) {
   }
   if (isHiring === false) {
     return (
-      <span className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-[3px] text-whisper">
+      <span className="font-sans text-xs px-2 py-[3px] text-card-interior-muted">
         Not hiring
       </span>
     );
   }
   return (
-    <span className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-[3px] text-whisper">
+    <span className="font-sans text-xs px-2 py-[3px] text-card-interior-muted">
       Hiring · unknown
     </span>
   );
@@ -200,6 +221,7 @@ function CompanyCard({
   weights,
   detail,
   overall,
+  initialFavorited,
 }: {
   company: Company;
   frames: Frame[];
@@ -207,6 +229,7 @@ function CompanyCard({
   weights: Record<string, FrameWeightLevel>;
   detail: Detail | undefined;
   overall: number | null;
+  initialFavorited: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -231,46 +254,75 @@ function CompanyCard({
       data-testid="dashboard-card"
       data-slug={c.slug}
     >
-      {/* top strip — name + blurb + hiring badge */}
-      <header className="px-5 pt-4 pb-3 flex items-start gap-4">
+      {/* v0.8.1 F3.1/F3.2/F3.3: header row is ONE line
+          ({name} — {hq} — {overall}) with the hiring badge as row
+          trailer. Blurb sits directly under in calmer (muted) body
+          text. Spacing between header/blurb and the score-strip is
+          tightened so the strip reads as the immediate body of the
+          card. */}
+      <header className="px-5 pt-4 pb-2 flex items-start gap-4">
         <div className="flex-1 min-w-0">
-          <div className="flex items-baseline gap-3 flex-wrap">
+          <div className="flex items-baseline gap-2 flex-wrap font-sans">
             <Link
               href={`/companies/${c.slug}`}
-              className="font-sans text-xl tracking-tight text-ink hover:text-readout transition-colors"
+              className="text-xl tracking-tight text-ink hover:text-readout transition-colors"
               style={{ fontWeight: 500 }}
             >
               {c.name}
             </Link>
             {c.hq && (
-              <span className="mono text-[10px] uppercase tracking-[0.16em] text-whisper">
-                {c.hq}
-              </span>
+              <>
+                <span
+                  aria-hidden
+                  className="text-card-interior-whisper text-base"
+                >
+                  —
+                </span>
+                <span className="text-sm text-card-interior-muted">
+                  {c.hq}
+                </span>
+              </>
             )}
+            <span
+              aria-hidden
+              className="text-card-interior-whisper text-base"
+            >
+              —
+            </span>
+            <span
+              className="text-sm text-card-interior-muted"
+              title="Weighted aggregate across frames"
+            >
+              <span className="text-card-interior-muted">Overall </span>
+              <span className="text-readout text-base tabular-nums">
+                {fmtOverall(overall)}
+              </span>
+            </span>
           </div>
           {c.description && (
-            <p className="mono text-sm text-muted leading-relaxed mt-1.5 max-w-2xl">
+            <p className="font-sans text-sm text-card-interior-muted leading-relaxed mt-1 max-w-2xl">
               {c.description}
             </p>
           )}
         </div>
-        <div className="flex flex-col items-end gap-1.5 shrink-0">
+        <div className="shrink-0 flex items-center gap-2">
+          {/* v0.8.1 Phase B item 13 (F3.5): star toggle. Shared
+              <FavoriteStar> so the company detail page header renders
+              the same control. Defaults match the previous inline
+              implementation (size 18, card-interior whisper as the
+              outline tone). */}
+          <FavoriteStar
+            companyId={c.id}
+            companyName={c.name}
+            initialFavorited={initialFavorited}
+          />
           <HiringBadge isHiring={isHiring} />
-          <span
-            className="mono text-[10px] uppercase tracking-[0.14em] text-whisper"
-            title="Weighted aggregate across frames"
-          >
-            Overall{" "}
-            <span className="text-readout text-xs tabular-nums">
-              {fmtOverall(overall)}
-            </span>
-          </span>
         </div>
       </header>
 
       {/* scores — 6 frame bars, 2 columns */}
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 px-5 py-3"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 px-5 pt-2 pb-3"
         style={{
           borderTop: "1px solid var(--card-interior-rule)",
           borderBottom: "1px solid var(--card-interior-rule)",
@@ -291,9 +343,9 @@ function CompanyCard({
       <div className="px-5 py-3 flex items-center justify-between gap-4">
         <div className="min-w-0 flex-1">
           {latest ? (
-            <p className="mono text-xs text-muted truncate">
-              <span className="text-whisper uppercase tracking-[0.14em] mr-2">
-                Latest
+            <p className="font-sans text-sm text-card-interior-text truncate">
+              <span className="text-card-interior-muted mr-2">
+                latest
               </span>
               <span aria-hidden className="mr-1">
                 {latest.kind === "publication" ? pubIcon(null) : "🛠"}
@@ -302,14 +354,14 @@ function CompanyCard({
                 href={latest.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-ink hover:text-readout underline decoration-dotted underline-offset-4"
+                className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
               >
                 {latest.title}
               </a>
-              <span className="ml-2 text-whisper">{fmtAgo(latest.at)}</span>
+              <span className="ml-2 text-card-interior-whisper">{fmtAgo(latest.at)}</span>
             </p>
           ) : (
-            <p className="mono text-xs text-whisper italic">
+            <p className="font-sans text-sm text-card-interior-muted italic">
               No recent activity tracked.
             </p>
           )}
@@ -318,13 +370,13 @@ function CompanyCard({
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-1 rounded-sm transition-colors shrink-0"
+          className="font-sans text-xs px-2 py-1 rounded-sm transition-colors shrink-0"
           style={{
-            color: open ? "var(--readout-cyan)" : "var(--fg-prose-muted)",
+            color: open ? "var(--readout-cyan)" : "var(--card-interior-text)",
             border: "1px solid var(--rule)",
           }}
         >
-          {open ? "Show less ↑" : "Show more ↓"}
+          {open ? "show less ↑" : "show more ↓"}
         </button>
       </div>
 
@@ -335,12 +387,12 @@ function CompanyCard({
           style={{ borderTop: "1px solid var(--card-interior-rule)" }}
         >
           <section>
-            <h4 className="mono text-[10px] uppercase tracking-[0.18em] text-readout mb-2">
+            <h4 className="font-sans text-sm text-readout mb-2">
               Recent publications
-              <span className="text-whisper ml-2">(last 6mo)</span>
+              <span className="text-card-interior-whisper ml-2 text-xs">(last 6mo)</span>
             </h4>
             {detail.recentPublications.length === 0 ? (
-              <p className="mono text-xs text-whisper italic">
+              <p className="font-sans text-sm text-card-interior-muted italic">
                 None tracked in the last 6 months.
               </p>
             ) : (
@@ -348,7 +400,7 @@ function CompanyCard({
                 {detail.recentPublications.map((p) => (
                   <li
                     key={p.id}
-                    className="mono text-xs text-muted leading-relaxed"
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
                   >
                     <span aria-hidden className="mr-1">
                       {pubIcon(p.type)}
@@ -357,11 +409,11 @@ function CompanyCard({
                       href={p.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-ink hover:text-readout underline decoration-dotted underline-offset-4"
+                      className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
                     >
                       {p.title}
                     </a>
-                    <span className="ml-2 text-whisper">
+                    <span className="ml-2 text-card-interior-whisper text-xs">
                       {fmtAgo(p.publishedAt)}
                     </span>
                   </li>
@@ -371,16 +423,16 @@ function CompanyCard({
           </section>
 
           <section>
-            <h4 className="mono text-[10px] uppercase tracking-[0.18em] text-readout mb-2">
-              Open roles
+            <h4 className="font-sans text-sm text-readout mb-2">
+              Recent roles
               {detail.openRoleCount > 0 && (
-                <span className="text-whisper ml-2">
+                <span className="text-card-interior-whisper ml-2 text-xs">
                   ({detail.openRoleCount})
                 </span>
               )}
             </h4>
             {detail.openRoles.length === 0 ? (
-              <p className="mono text-xs text-whisper italic">
+              <p className="font-sans text-sm text-card-interior-muted italic">
                 No open roles tracked.
               </p>
             ) : (
@@ -388,18 +440,18 @@ function CompanyCard({
                 {detail.openRoles.map((r) => (
                   <li
                     key={r.id}
-                    className="mono text-xs text-muted leading-relaxed"
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
                   >
                     <a
                       href={r.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-ink hover:text-readout underline decoration-dotted underline-offset-4"
+                      className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
                     >
                       {r.title}
                     </a>
                     {(r.department || r.location) && (
-                      <span className="ml-2 text-whisper">
+                      <span className="ml-2 text-card-interior-whisper text-xs">
                         {[r.department, r.location].filter(Boolean).join(" · ")}
                       </span>
                     )}
@@ -409,29 +461,105 @@ function CompanyCard({
             )}
           </section>
 
+          <section className="md:col-span-2">
+            <h4 className="font-sans text-sm text-readout mb-2">
+              Recent news
+              <span className="text-card-interior-whisper ml-2 text-xs">
+                (last 6mo)
+              </span>
+            </h4>
+            {detail.recentNews.length === 0 ? (
+              <p className="font-sans text-sm text-card-interior-muted italic">
+                No recent news in the last 6 months.
+              </p>
+            ) : (
+              <ul className="space-y-1.5">
+                {detail.recentNews.map((n) => (
+                  <li
+                    key={n.id}
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                  >
+                    <span aria-hidden className="mr-1">
+                      📰
+                    </span>
+                    <a
+                      href={n.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
+                    >
+                      {n.title}
+                    </a>
+                    <span className="ml-2 text-card-interior-whisper text-xs">
+                      {fmtAgo(n.publishedAt)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
+          <section className="md:col-span-2">
+            <h4 className="font-sans text-sm text-readout mb-2">
+              Recent controversy
+              <span className="text-card-interior-whisper ml-2 text-xs">
+                (last 6mo)
+              </span>
+            </h4>
+            {detail.recentControversies.length === 0 ? (
+              <p className="font-sans text-sm text-card-interior-muted italic">
+                No recent controversy surfaced.
+              </p>
+            ) : (
+              <ul className="space-y-1.5">
+                {detail.recentControversies.map((x) => (
+                  <li
+                    key={x.id}
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                  >
+                    <span aria-hidden className="mr-1">
+                      ⚠️
+                    </span>
+                    {x.url ? (
+                      <a
+                        href={x.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
+                      >
+                        {x.title}
+                      </a>
+                    ) : (
+                      <span className="text-card-interior-text">
+                        {x.title}
+                      </span>
+                    )}
+                    <span className="ml-2 text-card-interior-whisper text-xs">
+                      {fmtAgo(x.surfacedAt)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
           <section className="md:col-span-2 flex items-center gap-4 pt-1 flex-wrap">
             <Link
               href={`/companies/${c.slug}`}
-              className="mono text-xs uppercase tracking-[0.16em] px-3 py-1.5 rounded-sm"
+              className="font-sans text-sm px-3 py-1.5 rounded-sm"
               style={{
                 color: "var(--readout-cyan)",
                 border: "1px solid var(--readout-cyan)",
                 background: "rgb(0 255 255 / 0.04)",
               }}
             >
-              Fit-note + notes →
+              Explore in detail →
             </Link>
             {detail.hasFitNote && (
-              <span className="mono text-[10px] uppercase tracking-[0.16em] text-readout">
+              <span className="font-sans text-xs text-readout">
                 ✦ Fit-note ready
               </span>
             )}
-            <Link
-              href={`/companies/${c.slug}#notes`}
-              className="mono text-[10px] uppercase tracking-[0.16em] text-muted hover:text-readout underline decoration-dotted underline-offset-4"
-            >
-              Leave a note
-            </Link>
           </section>
         </div>
       )}
@@ -447,7 +575,12 @@ export function DashboardCards({
   scores,
   details,
   frameWeights,
+  favoritedCompanyIds,
 }: Props) {
+  const favoritedSet = useMemo(
+    () => new Set(favoritedCompanyIds),
+    [favoritedCompanyIds],
+  );
   const aggregates = useLiveAggregates(scores, frameWeights);
   const aggMap = useMemo(() => {
     const m = new Map<number, (typeof aggregates)[number]>();
@@ -625,6 +758,7 @@ export function DashboardCards({
           weights={frameWeights}
           detail={detailMap.get(c.id)}
           overall={aggMap.get(c.id)?.overall ?? null}
+          initialFavorited={favoritedSet.has(c.id)}
         />
       ))}
       <p className="mono text-[10px] uppercase tracking-[0.16em] text-whisper pt-3">
@@ -696,7 +830,7 @@ function DashboardToolbar({
     >
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
         {/* Sort */}
-        <label className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+        <label className="mono text-[10px] uppercase tracking-[0.16em] text-readout flex items-center gap-2">
           Sort
           <select
             value={sortKey}
@@ -720,7 +854,7 @@ function DashboardToolbar({
 
         {/* HQ */}
         {allHqs.length > 0 && (
-          <label className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+          <label className="mono text-[10px] uppercase tracking-[0.16em] text-readout flex items-center gap-2">
             HQ
             <select
               value={hq}
@@ -739,7 +873,7 @@ function DashboardToolbar({
         )}
 
         {/* Tier */}
-        <div className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+        <div className="mono text-[10px] uppercase tracking-[0.16em] text-readout flex items-center gap-2">
           Tier
           <div className="flex gap-1">
             {[1, 2, 3].map((t) => (
@@ -771,7 +905,7 @@ function DashboardToolbar({
         </div>
 
         <div className="ml-auto flex items-center gap-3">
-          <span className="mono text-[10px] uppercase tracking-[0.16em] text-whisper">
+          <span className="mono text-[10px] uppercase tracking-[0.16em] text-readout-dim">
             {visibleCount}/{totalCount}
           </span>
           {anyFilterActive && (
@@ -807,9 +941,9 @@ function ToolbarChip({
       style={{
         border: active
           ? "1px solid var(--accent-action)"
-          : "1px solid var(--rule)",
-        color: active ? "var(--accent-action)" : "var(--fg-prose-muted)",
-        background: active ? "rgb(255 0 255 / 0.06)" : "transparent",
+          : "1px solid var(--readout-cyan-dim)",
+        color: active ? "var(--accent-action)" : "var(--readout-cyan)",
+        background: active ? "rgb(255 0 255 / 0.12)" : "transparent",
         boxShadow: active ? "var(--vw-glow-magenta)" : "none",
       }}
     >

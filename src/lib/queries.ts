@@ -14,6 +14,7 @@ import {
   companyNotes,
   clarifySessions,
   clarifyMessages,
+  companyFavorites,
 } from "@/db/schema";
 import { eq, desc, sql, inArray, and, asc } from "drizzle-orm";
 
@@ -188,6 +189,7 @@ export async function getCompanyBySlug(slug: string) {
     companyFitNotes,
     companyFitNoteMessages,
     companyNoteRows,
+    companyFavoriteRows,
   ] = await Promise.all([
     db
       .select()
@@ -234,6 +236,14 @@ export async function getCompanyBySlug(slug: string) {
       .from(companyNotes)
       .where(eq(companyNotes.companyId, company.id))
       .limit(1),
+    // v0.8.1 Phase B item 13 (F3.5) — single-row presence check so the
+    // detail page header can render the star in its correct initial
+    // state without a separate round-trip. `limit(1)` keeps it cheap.
+    db
+      .select({ companyId: companyFavorites.companyId })
+      .from(companyFavorites)
+      .where(eq(companyFavorites.companyId, company.id))
+      .limit(1),
   ]);
 
   const allFrames = await db
@@ -261,11 +271,12 @@ export async function getCompanyBySlug(slug: string) {
     fitNote: companyFitNotes[0] ?? null,
     fitNoteThread: companyFitNoteMessages,
     note: companyNoteRows[0] ?? null,
+    isFavorited: companyFavoriteRows.length > 0,
   };
 }
 
 /**
- * v0.6: notes index for the /about page — every per-company note Aadi
+ * v0.6: notes index for the /profile page — every per-company note Aadi
  * has written, joined with company name + slug so he can find what he
  * said without remembering which company it was on.
  */
@@ -625,6 +636,7 @@ export async function getRankedHomeData() {
     pubsForCards,
     openRolesForCards,
     fitNoteCompanyIds,
+    favoritedRows,
   ] = await Promise.all([
       db
         .select({
@@ -698,6 +710,13 @@ export async function getRankedHomeData() {
       db
         .select({ companyId: fitNotes.companyId })
         .from(fitNotes),
+      // v0.8.1 Phase B item 13 (F3.5) — which companies are starred. The
+      // dashboard renders a filled star in the card header when a row is
+      // present; absence == not favorited (presence is the source of truth,
+      // same model as companyNotes).
+      db
+        .select({ companyId: companyFavorites.companyId })
+        .from(companyFavorites),
     ]);
 
   // Flatten scores; coerce score numeric -> number
@@ -758,6 +777,11 @@ export async function getRankedHomeData() {
   //     ATS source configured — surfaced as UNKNOWN, not NOT HIRING)
   //   - latestEvent: newest of {publication, open role} — powers the
   //     “Latest:” strip on collapsed cards
+  //   - recentNews: press/news items in the last 6 months (v0.8.1 F3.4 —
+  //     populated by Glyphie's news[] feed in F8.x; empty until then)
+  //   - recentControversies: controversies surfaced in the last 6 months
+  //     (v0.8.1 F3.4 — populated by Glyphie's controversies migration
+  //     0013 in F8.x; empty until then)
   const CARD_LIMIT = 6;
   const pubsByCompany = new Map<
     number,
@@ -825,6 +849,7 @@ export async function getRankedHomeData() {
   const hasFitNoteSet = new Set<number>(
     fitNoteCompanyIds.map((r) => r.companyId),
   );
+  const favoritedCompanyIds = favoritedRows.map((r) => r.companyId);
 
   const details = allCompanies.map((c) => {
     const pubs = pubsByCompany.get(c.id) ?? [];
@@ -877,6 +902,22 @@ export async function getRankedHomeData() {
       openRoleCount: openRoles,
       isHiring: openRoles > 0 ? true : null, // null = UNKNOWN (no source)
       hasFitNote: hasFitNoteSet.has(c.id),
+      // v0.8.1 F3.4 — render plumbing for the restructured "Show more"
+      // reveal. F8.1/F8.2 will fill these arrays once Glyphie's news[]
+      // feed + controversies migration 0013 land. Until then the UI
+      // renders friendly empty states.
+      recentNews: [] as Array<{
+        id: string;
+        title: string;
+        url: string;
+        publishedAt: string | null;
+      }>,
+      recentControversies: [] as Array<{
+        id: string;
+        title: string;
+        url: string | null;
+        surfacedAt: string | null;
+      }>,
       latestEvent,
     };
   });
@@ -901,6 +942,7 @@ export async function getRankedHomeData() {
       "low" | "medium" | "high"
     >,
     oldestScoreAt,
+    favoritedCompanyIds,
   };
 }
 

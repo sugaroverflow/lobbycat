@@ -103,6 +103,7 @@ export default async function HomePage() {
         scores={home.scores}
         details={home.details}
         frameWeights={home.frameWeights}
+        favoritedCompanyIds={home.favoritedCompanyIds}
       />
     </SiteShell>
   );
