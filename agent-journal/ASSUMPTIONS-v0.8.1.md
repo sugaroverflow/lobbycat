@@ -510,3 +510,55 @@ step each.**
     as overlapping rules; `py-2` (top) preserves that.
 - Would change if: Fatima still reads the strip as "disconnected"
   from the header after this.
+
+**A-A6.1 — F4.1 "frames helper copy" placement = right under the
+"Frames" h2/border-rule, above the FrameScorer list.**
+
+- Date: 2026-06-26 06:18 UTC
+- Decision: F4.1 says add a one-liner *above the per-company frame
+  scores on the company detail page*. The frames live in their own
+  `<section>` under an `eyebrow` h2 (`"Frames"`) on
+  `src/app/companies/[slug]/page.tsx`. The helper copy lands as a
+  single `<p>` between the h2 (with its bottom rule) and the
+  `divide-y` list of `<FrameScorer>` rows, so it sits inside the
+  Frames section and clearly applies to that section only — not to
+  Open roles above or NotesEditor below.
+- Alternatives considered:
+  - (a) Put the line above the section heading. Rejected — readers
+    would see prose before they see the "Frames" label, and the
+    sentence references "these" which only makes sense once Frames
+    is identified.
+  - (b) Put the line inline inside the eyebrow h2. Rejected — eyebrow
+    is mono uppercase small caps; long sentence in eyebrow is
+    unreadable and clashes with the tone Fatima wants ("calm
+    explainer copy").
+- Would change if: Fatima wants the line on a separate "explain
+  scoring" panel or as a tooltip.
+
+**A-A6.2 — F4.1 helper-copy typography = `serif text-sm
+text-muted leading-relaxed`, max-w-2xl, mb-5.**
+
+- Date: 2026-06-26 06:18 UTC
+- Decision: The detail page uses two type families: `serif` for body
+  prose (description, "no roles tracked yet", role titles), `mono
+  uppercase` for eyebrows and metadata. F4.1's helper sentence is
+  body prose explaining what users can do, so it sits in `serif`,
+  matching the page's description / empty-state voice. Size
+  `text-sm` (one step down from the description's `text-lg`) signals
+  "supporting hint, not main content"; `text-muted` matches the
+  description's foreground token for tonal consistency;
+  `leading-relaxed` keeps the line breathable;
+  `max-w-2xl` prevents the line from stretching across the full
+  3-column grid on wide viewports; `mb-5` keeps it visually grouped
+  with the frame list below rather than floating as its own block.
+- Alternatives considered:
+  - (a) `text-whisper` instead of `text-muted`. Rejected — whisper
+    is reserved for tertiary metadata (eyebrow tier line, role
+    location); helper copy is supporting prose, not metadata.
+  - (b) `text-base`, matching role titles. Rejected — would compete
+    with role titles and read as primary content, not a hint.
+  - (c) `mono uppercase` matching eyebrow style. Rejected — Fatima's
+    F1 readability complaint was explicitly that mono uppercase body
+    text is hard to read; this is body text.
+- Would change if: Fatima reads the line as too quiet against the
+  frame cards.

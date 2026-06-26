@@ -96,6 +96,9 @@ export default async function CompanyDetail({
 
             <section>
               <h2 className="eyebrow mb-4 pb-2 border-b border-rule">Frames</h2>
+              <p className="serif text-sm text-muted leading-relaxed mb-5 max-w-2xl">
+                these are scored based on your onboarding quiz, but you can change these scores and leave yourself notes.
+              </p>
               <div className="divide-y divide-rule">
                 {frames.map((f) => (
                   <FrameScorer key={f.id} companyId={company.id} frame={f} />
