@@ -15,6 +15,7 @@ import {
   clarifySessions,
   clarifyMessages,
   companyFavorites,
+  controversies,
 } from "@/db/schema";
 import { eq, desc, sql, inArray, and, asc } from "drizzle-orm";
 
@@ -637,6 +638,7 @@ export async function getRankedHomeData() {
     openRolesForCards,
     fitNoteCompanyIds,
     favoritedRows,
+    recentControversiesRows,
   ] = await Promise.all([
       db
         .select({
@@ -717,6 +719,24 @@ export async function getRankedHomeData() {
       db
         .select({ companyId: companyFavorites.companyId })
         .from(companyFavorites),
+      // v0.8.1 F8.2 / Glyphie PR #40 — controversies from migration 0013.
+      // Surface the last 6mo, newest-first, per-company. Renderer (F3.4
+      // show-more reveal) shows up to 3 per company.
+      db
+        .select({
+          id: controversies.id,
+          companyId: controversies.companyId,
+          title: controversies.title,
+          url: controversies.url,
+          occurredAt: controversies.occurredAt,
+        })
+        .from(controversies)
+        .where(
+          // Either occurredAt within window, or null occurredAt (cat-
+          // curated items may not always have a precise event date).
+          sql`(${controversies.occurredAt} IS NULL OR ${controversies.occurredAt} >= ${sixMonthsAgo})`,
+        )
+        .orderBy(desc(controversies.occurredAt), desc(controversies.seenAt)),
     ]);
 
   // Flatten scores; coerce score numeric -> number
@@ -851,6 +871,30 @@ export async function getRankedHomeData() {
   );
   const favoritedCompanyIds = favoritedRows.map((r) => r.companyId);
 
+  // v0.8.1 F8.2: per-company controversies map. Cap at 3 per company
+  // for the card show-more reveal.
+  const CONTROVERSY_LIMIT = 3;
+  const controversiesByCompany = new Map<
+    number,
+    Array<{
+      id: string;
+      title: string;
+      url: string;
+      surfacedAt: string | null;
+    }>
+  >();
+  for (const c of recentControversiesRows) {
+    const list = controversiesByCompany.get(c.companyId) ?? [];
+    if (list.length >= CONTROVERSY_LIMIT) continue;
+    list.push({
+      id: String(c.id),
+      title: c.title,
+      url: c.url,
+      surfacedAt: c.occurredAt ? new Date(c.occurredAt).toISOString() : null,
+    });
+    controversiesByCompany.set(c.companyId, list);
+  }
+
   const details = allCompanies.map((c) => {
     const pubs = pubsByCompany.get(c.id) ?? [];
     const roleList = rolesByCompany.get(c.id) ?? [];
@@ -912,12 +956,11 @@ export async function getRankedHomeData() {
         url: string;
         publishedAt: string | null;
       }>,
-      recentControversies: [] as Array<{
-        id: string;
-        title: string;
-        url: string | null;
-        surfacedAt: string | null;
-      }>,
+      // v0.8.1 §F8.2: populated from controversiesByCompany (Glyphie's
+      // migration 0013). Empty array when there's nothing in the
+      // 6-month window — renderer shows the "No recent controversy
+      // surfaced." empty state.
+      recentControversies: controversiesByCompany.get(c.id) ?? [],
       latestEvent,
     };
   });
