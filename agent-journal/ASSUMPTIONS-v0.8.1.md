@@ -299,3 +299,118 @@ into this same Phase A item 2 commit/PR.**
     PRs that Fatima can review one feedback ID at a time; bundling
     erases the per-ID trail.
 - Would change if: Fatima asks for fewer/bigger Phase A PRs.
+
+---
+
+## Phase A item 4 — F1.2 (filter chip contrast bump)
+
+**A-A4.1 — Interpret "filter chips" as `ToolbarChip` (the actual on-dashboard filter affordance), not `FilterChip` from `src/components/filter-chip.tsx`.**
+
+- Date: 2026-06-26 05:18 UTC
+- Decision: The dashboard toolbar renders its boolean filters
+  (Hiring / Open role / Recent pub / ✦ Fit-note) and the Tier 1/2/3
+  selectors through a local `ToolbarChip` component inside
+  `src/components/dashboard-cards.tsx`. The separately-defined
+  `FilterChip` in `src/components/filter-chip.tsx` is not imported
+  anywhere. Fatima's "gray on black, hard to see" feedback can only be
+  about the chips she actually sees in dev — i.e. `ToolbarChip`. So
+  F1.2 ships against `ToolbarChip` and leaves `filter-chip.tsx`
+  untouched.
+- Alternatives considered:
+  - (a) Also retheme `FilterChip` for consistency. Rejected — it has
+    zero callers; touching it adds dead-code churn without changing
+    anything Fatima sees. If a future surface adopts it, that PR can
+    align it then.
+  - (b) Delete `filter-chip.tsx` as dead code in this PR. Rejected —
+    out of scope for F1.2 (and risks fighting Glyphie if she's
+    planning to use it).
+- Would change if: someone wires `FilterChip` into a real surface, in
+  which case F1.2's contrast treatment should be ported there too.
+
+**A-A4.2 — Inactive `ToolbarChip` switches from `--fg-prose-muted` text on transparent / `--rule` border to `--readout-cyan` text on transparent / `--readout-cyan-dim` border.**
+
+- Date: 2026-06-26 05:18 UTC
+- Decision: F1.2 explicitly suggests "a softer cyan when inactive."
+  The readout-cyan token is the established "data / instrument /
+  readout voice" in the vaporwave system (already used by the eyebrow
+  helper, the `Clear` button, sage/ochre aliases, etc.), so an
+  inactive filter chip — a passive control awaiting input — reads
+  cleanly as a readout. `--readout-cyan` for the text gives a clear
+  jump above `--fg-prose-muted` against the page background;
+  `--readout-cyan-dim` for the border keeps the chip's outline visible
+  without competing with the page's `--rule` divider underneath the
+  sticky toolbar.
+- Alternatives considered:
+  - (a) Inactive = full `--card-interior-text` (1.0 alpha white-ish).
+    Rejected — that's the F1.1 *inside the box* token; using it on the
+    page-level toolbar would flatten the page-vs-card hierarchy F1.1
+    just established.
+  - (b) Inactive = `--ink` neutral. Rejected — chips are interactive
+    affordances, not body prose; tinting them as data-voice cyan tells
+    the user "these are filters" at a glance, which `--ink` doesn't.
+- Would change if: Fatima reads the inactive cyan as "looks selected"
+  and asks for a more neutral resting state.
+
+**A-A4.3 — Active `ToolbarChip` keeps the magenta accent but bumps the tinted background from `rgb(255 0 255 / 0.06)` to `rgb(255 0 255 / 0.12)`; border / glow / `--accent-action` text stay.**
+
+- Date: 2026-06-26 05:18 UTC
+- Decision: F1.2 also says "a clearer active state." The active treatment
+  was already structurally right (magenta border + magenta glow +
+  magenta foreground) but the 0.06 alpha fill was almost invisible
+  against the page bg, so a user toggling a filter mostly only saw a
+  faint border-colour change. Doubling the fill alpha to 0.12 makes
+  the "this chip is on" reading unambiguous without overpowering the
+  rest of the toolbar.
+- Alternatives considered:
+  - (a) Solid magenta fill with surface-coloured text. Rejected — way
+    too loud for a row of four boolean filters; would dominate the
+    toolbar and fight the magenta-left card edge below.
+  - (b) Swap active to cyan-solid so active = cyan, inactive = cyan-dim.
+    Rejected — the magenta-on-cyan polarity is what makes "selected"
+    legible at a glance; flattening both to cyan removes the contrast
+    Fatima asked for.
+- Would change if: Fatima wants the active state louder still, in
+  which case the next bump is fill 0.16–0.20 + a thicker (1.5px) border.
+
+**A-A4.4 — Interpret F1.2 as covering the four filter-row inline labels (`Sort` / `HQ` / `Tier` / `N/N` count), not only the chip buttons.**
+
+- Date: 2026-06-26 05:18 UTC
+- Decision: The "filters are gray on black, hard to see" complaint
+  applies equally to the `mono text-[10px] uppercase tracking-[0.16em]
+  text-whisper` labels that sit on the same toolbar row as the chips
+  — same colour family (`text-whisper` is the dimmest text token),
+  same dark page bg, same row. Bumping chip contrast while leaving
+  the labels at whisper would leave half the row still hard to read.
+  So `Sort` / `HQ` / `Tier` move from `text-whisper` to `text-readout`
+  (matching the new inactive chip foreground + the `Clear` button
+  that's already cyan), and the `N/N` visible-count readout moves
+  from `text-whisper` to `text-readout-dim` (one step softer, because
+  it's a passive count, not a control affordance).
+- Alternatives considered:
+  - (a) Keep labels at `text-whisper` and only touch chips. Rejected —
+    fails Fatima's actual readability complaint. The row IS the unit
+    of attention.
+  - (b) Bump labels all the way to `text-ink`. Rejected — labels for
+    micro-controls don't need to be as loud as body prose; the cyan
+    readout treatment correctly says "auxiliary control surface."
+- Would change if: Fatima specifically scoped F1.2 to chips only and
+  prefers labels stay quieter.
+
+**A-A4.5 — Leave the `<select>` chrome (Sort / HQ dropdowns), the `Clear` button, and the sticky-toolbar bg + rule alone.**
+
+- Date: 2026-06-26 05:18 UTC
+- Decision: The two `<select>` controls already render with
+  `var(--ink)` text and `var(--rule)` border, which is plenty
+  readable against the page bg — they were not part of the "gray on
+  black" complaint. The `Clear` button is already `text-readout` with
+  a dotted underline; that's the visual baseline F1.2's other changes
+  are converging on, so it stays. The sticky toolbar's
+  `var(--bg-page)` bg + `var(--rule)` bottom border are structural
+  page-layout chrome, not a contrast issue.
+- Alternatives considered:
+  - (a) Also reskin the selects to match the new chip language.
+    Deferred — selects + chips are different control idioms; if
+    Fatima wants visual unity across the whole toolbar, that's a
+    separate F1.x item.
+- Would change if: Fatima points at the selects as still "gray on
+  black."

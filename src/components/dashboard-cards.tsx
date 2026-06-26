@@ -696,7 +696,7 @@ function DashboardToolbar({
     >
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
         {/* Sort */}
-        <label className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+        <label className="mono text-[10px] uppercase tracking-[0.16em] text-readout flex items-center gap-2">
           Sort
           <select
             value={sortKey}
@@ -720,7 +720,7 @@ function DashboardToolbar({
 
         {/* HQ */}
         {allHqs.length > 0 && (
-          <label className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+          <label className="mono text-[10px] uppercase tracking-[0.16em] text-readout flex items-center gap-2">
             HQ
             <select
               value={hq}
@@ -739,7 +739,7 @@ function DashboardToolbar({
         )}
 
         {/* Tier */}
-        <div className="mono text-[10px] uppercase tracking-[0.16em] text-whisper flex items-center gap-2">
+        <div className="mono text-[10px] uppercase tracking-[0.16em] text-readout flex items-center gap-2">
           Tier
           <div className="flex gap-1">
             {[1, 2, 3].map((t) => (
@@ -771,7 +771,7 @@ function DashboardToolbar({
         </div>
 
         <div className="ml-auto flex items-center gap-3">
-          <span className="mono text-[10px] uppercase tracking-[0.16em] text-whisper">
+          <span className="mono text-[10px] uppercase tracking-[0.16em] text-readout-dim">
             {visibleCount}/{totalCount}
           </span>
           {anyFilterActive && (
@@ -807,9 +807,9 @@ function ToolbarChip({
       style={{
         border: active
           ? "1px solid var(--accent-action)"
-          : "1px solid var(--rule)",
-        color: active ? "var(--accent-action)" : "var(--fg-prose-muted)",
-        background: active ? "rgb(255 0 255 / 0.06)" : "transparent",
+          : "1px solid var(--readout-cyan-dim)",
+        color: active ? "var(--accent-action)" : "var(--readout-cyan)",
+        background: active ? "rgb(255 0 255 / 0.12)" : "transparent",
         boxShadow: active ? "var(--vw-glow-magenta)" : "none",
       }}
     >
