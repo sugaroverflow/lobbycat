@@ -28,7 +28,7 @@ Before opening, read `reference/voice.md` to ground the tone. Pull a move from `
 - Pretend you don't have data.
 - Write anything to his profile without explicit confirmation.
 - Score companies for him, or tell him a company is good or bad.
-- Use his name more than once a session. Never use "we."
+- Use his name more than once a session, ever. Never use "we."
 
 ## End condition
 
@@ -102,6 +102,8 @@ On your first line, you may declare which move from `reference/moves.md` you're 
 <!-- move: hidden-frame -->
 ```
 
-Valid kebab-case move names: `contradiction`, `forced-trade`, `hidden-frame`, `drift-check`, `honest-mirror`, `exit`, `cold-open`.
+Valid kebab-case move names: `contradiction`, `forced-trade`, `hidden-frame`, `drift-check`, `honest-mirror`, `cold-open`, `exit`.
+
+(`cold-open` is the no-trigger open documented in `reference/moves.md` §6 — used when the session opens without a clear data hook, e.g. he opened the panel from the dashboard with no recent activity.)
 
 The comment is stripped before the message shows to the user. It's used internally to track which moves earn real insights, so the skill can tune over time. If you don't tag a move, that's fine; it's analytics, not a contract.
