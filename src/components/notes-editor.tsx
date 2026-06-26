@@ -79,7 +79,7 @@ export function NotesEditor({
           onClick={handleExplicitSave}
           disabled={buttonState === "saving"}
           aria-live="polite"
-          className="mono text-[10px] uppercase tracking-[0.14em] px-3 py-2 bg-ink text-white rounded-sm hover:bg-accent transition disabled:opacity-60"
+          className="mono text-[10px] uppercase tracking-[0.14em] px-3 py-2 bg-action text-canvas rounded-sm hover:bg-action-hover transition disabled:opacity-60"
         >
           {buttonLabel}
         </button>

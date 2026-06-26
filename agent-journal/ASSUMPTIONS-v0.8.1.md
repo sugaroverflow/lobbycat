@@ -562,3 +562,49 @@ text-muted leading-relaxed`, max-w-2xl, mb-5.**
     text is hard to read; this is body text.
 - Would change if: Fatima reads the line as too quiet against the
   frame cards.
+
+**A-A7.1 — F4.3 Save-note button = `bg-action text-canvas
+hover:bg-action-hover` (token-driven primary CTA).**
+
+- Date: 2026-06-26 06:46 UTC
+- Decision: Swap the Save-note button in
+  `src/components/notes-editor.tsx` from `bg-ink text-white
+  hover:bg-accent` to `bg-action text-canvas hover:bg-action-hover`,
+  matching the primary-CTA convention already used by the wizard
+  (`src/components/wizard.tsx` "next step" and progress chips). All
+  other classes — `mono text-[10px] uppercase tracking-[0.14em]
+  px-3 py-2 rounded-sm transition disabled:opacity-60` — stay the
+  same; this is purely a contrast / token swap, not a size/shape
+  change.
+- Why: Fatima flagged this in v0.8.1 click-through feedback
+  (REFACTOR-v0.8.1 §4 F4.3): "Save note button is white text on
+  gray — hard to read." In the Vaporwave token surface,
+  `bg-ink` aliases to `var(--fg-prose)` (light gray on the dark
+  canvas), so white text on it is low-contrast — exactly the
+  problem. `bg-action` is the bright accent token (the same one
+  the wizard uses for its primary CTA), and `text-canvas` is the
+  dark canvas color → high contrast in dark mode and consistent
+  with the existing primary-action pattern. `hover:bg-action-hover`
+  is the token's dimmed variant, replacing the previous
+  `hover:bg-accent` (which was a no-op since `bg-accent` ==
+  `bg-action` in the alias table).
+- Alternatives considered:
+  - (a) `bg-coral text-canvas` (signal-coral token). Rejected —
+    coral is reserved for warning/destructive states (`<signal>`
+    tier); save is a calm affirmative action.
+  - (b) Custom dark button + lighten the text only. Rejected — the
+    issue is the background contrast, not the text; and the codebase
+    already has a token-driven primary-CTA pattern (`bg-action
+    text-canvas`) the button should join, not diverge from.
+  - (c) Also bump button size up (px-4 py-2.5, text-xs). Rejected —
+    Fatima only flagged contrast, not size; the small mono uppercase
+    chip-button is intentional for a "save your edits" affordance
+    that sits to the right of a textarea. F4.4 (saved-state
+    confirmation) will land in the next ship.
+  - (d) Update the login-page button (same anti-pattern, also
+    `bg-ink text-white`). Deferred — F4.3 in REFACTOR-v0.8.1 is
+    scoped to the company-detail Save-note button; login styling
+    isn't in Fatima's v0.8.1 feedback. Will be picked up in a
+    later sweep if Fatima reacts to it.
+- Would change if: Fatima wants the button to read more
+  destructive/loud (coral) or quieter (ghost border + accent text).
