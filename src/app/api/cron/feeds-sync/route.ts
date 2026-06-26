@@ -8,8 +8,9 @@ export const maxDuration = 120;
  * GET /api/cron/feeds-sync
  *
  * Syncs Glyphie's `research/feeds/<slug>.json` files into the
- * `publications` table. Runs daily after Glyphie's daily merge so the
- * dashboard sees the same publications Glyphie has captured.
+ * `publications`, `roles`, and `controversies` tables. Runs daily after
+ * Glyphie's daily merge so the dashboard sees the same evidence Glyphie
+ * has captured.
  *
  * Auth model matches the other lobbycat crons:
  *   - Vercel cron header (x-vercel-cron: 1), or

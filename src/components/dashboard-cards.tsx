@@ -64,7 +64,11 @@ type NewsItem = {
 type ControversyItem = {
   id: string;
   title: string;
-  url: string | null;
+  // v0.8.1 §F8.2 → Glyphie's controversies migration 0013 makes url
+  // NOT NULL (a controversy without a source URL isn't actionable as
+  // a signal). My v0.8.1 Phase C item 14 type was overcautious; relaxed
+  // here to match the DB shape.
+  url: string;
   surfacedAt: string | null;
 };
 

@@ -258,6 +258,69 @@ export const safetyFrameworks = pgTable(
 );
 
 /* ------------------------------------------------------------------ */
+/* Controversies — reputational / contested-signal evidence kind      */
+/* ------------------------------------------------------------------ */
+
+/**
+ * A per-company controversy / reputational signal: a legal case,
+ * regulatory action, credible public criticism, or documented
+ * broken-promise where the company is genuinely a *party to* or
+ * *named subject of* the matter (never merely co-located or topically
+ * adjacent — see research/controversy-scope.md "attribution discipline").
+ *
+ * Investigative-report tone: factual, sourced, every row one click from
+ * a primary record or named-byline article. `status` keeps it honest —
+ * an `alleged` item must never render as `decided`.
+ *
+ * Mirrors the consultation_submissions / safety_frameworks shape so the
+ * feeds-sync ingestion is a near-copy of the existing pipelines, and
+ * slots in as another scoring `evidence_kind` (controversy) if the
+ * engine later chooses to weigh it.
+ *
+ * Source of truth for the JSON shape Glyphie emits:
+ * research/controversy-scope.md.
+ */
+export const controversies = pgTable(
+  "controversies",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    // legal_case | regulatory_action | public_criticism | broken_promise
+    type: text("type").notNull(),
+    title: text("title").notNull(),
+    // PRIMARY source — required by Glyphie's pipeline before a row is emitted.
+    url: text("url").notNull(),
+    occurredAt: timestamp("occurred_at", { withTimezone: true }),
+    // alleged | ongoing | settled | decided | dismissed | withdrawn
+    status: text("status").notNull(),
+    severity: text("severity"), // high | medium | low
+    // defendant | respondent | investigated | plaintiff | subject_of_reporting
+    companyRole: text("company_role"),
+    summary: text("summary"), // investigative-report editorial line
+    topics: jsonb("topics").$type<string[]>().default([]).notNull(),
+    rawExcerpt: text("raw_excerpt"), // grounding quote from the primary source
+    // [{ outlet, url, paywalled }]
+    corroboration: jsonb("corroboration")
+      .$type<Array<{ outlet: string; url: string; paywalled?: boolean }>>()
+      .default([])
+      .notNull(),
+    source: text("source").default("curated").notNull(), // curated | scraped
+    seenAt: timestamp("seen_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("controversies_company_idx").on(t.companyId),
+    index("controversies_type_idx").on(t.type),
+    index("controversies_status_idx").on(t.status),
+    index("controversies_occurred_idx").on(t.occurredAt),
+    uniqueIndex("controversies_company_url_idx").on(t.companyId, t.url),
+  ],
+);
+
+/* ------------------------------------------------------------------ */
 /* Tags                                                               */
 /* ------------------------------------------------------------------ */
 
@@ -638,6 +701,13 @@ export const safetyFrameworksRelations = relations(
   }),
 );
 
+export const controversiesRelations = relations(controversies, ({ one }) => ({
+  company: one(companies, {
+    fields: [controversies.companyId],
+    references: [companies.id],
+  }),
+}));
+
 export const tagsRelations = relations(tags, ({ many }) => ({
   companies: many(companyTags),
 }));
@@ -710,6 +780,8 @@ export type NewConsultationSubmission =
   typeof consultationSubmissions.$inferInsert;
 export type SafetyFramework = typeof safetyFrameworks.$inferSelect;
 export type NewSafetyFramework = typeof safetyFrameworks.$inferInsert;
+export type Controversy = typeof controversies.$inferSelect;
+export type NewControversy = typeof controversies.$inferInsert;
 export type Tag = typeof tags.$inferSelect;
 export type Frame = typeof frames.$inferSelect;
 export type FrameScore = typeof frameScores.$inferSelect;
