@@ -964,3 +964,84 @@ commit or a multi-commit slice (migration first, UI second)").
 Schema-only commits are safe to merge independently because the
 table is unused until the UI lands. Would consolidate into one
 commit if Fatima asks for fewer PRs.
+
+---
+
+## Phase B item 13 part 2/N — F3.5 server action + star UI (PR #62)
+
+**A-B13.6** Server action `toggleCompanyFavorite(companyId)` lives in
+`src/app/actions.ts` next to `setCompanyStatus` (logical neighbor as
+another per-company mutation). Signature returns
+`{ favorited: boolean }` rather than `void` so the optimistic UI can
+reconcile against server truth instead of re-fetching. Idempotency
+strategy: SELECT-then-INSERT-or-DELETE, with
+`onConflictDoNothing(company_id)` on the INSERT to guard against the
+double-click race where two toggles both see "no row" in their
+SELECTs. Alternative was a single upsert that flipped a boolean, but
+the schema (presence == favorited) makes delete-on-second-call the
+natural shape and matches the `saveCompanyNotes` precedent.
+
+**A-B13.7** Read selector for the home page was added as a flat
+`favoritedCompanyIds: number[]` field on `getRankedHomeData()` rather
+than a separate `getFavoritedCompanyIds(ids[])` selector. Reason: the
+home page already fetches and renders every company, so passing a
+flat id list keeps the single home-data query path and avoids a
+second round-trip. A batch selector still makes sense later if
+favorites need to be shown on a partial-list view (e.g. search
+results), but YAGNI for now. Would extract on demand.
+
+**A-B13.8** `revalidatePath` set for the toggle action includes `/`
+(home), `/profile` (notes index neighbor), `/companies/[slug]` (the
+detail view, where part 4 may surface a star), and `/favorites`
+even though that page lands in part 3/N. Revalidating a not-yet-
+existing path is a no-op and saves a follow-up edit to actions.ts
+when the page lands. Alternative was to wait — rejected as a
+maintenance trap (easy to forget).
+
+**A-B13.9** Star UI is an inline SVG (Feather-style 5-point star
+polygon) rather than a Lucide / Heroicons import. Matches the
+codebase's no-icon-lib precedent (the wordmark and other UI marks
+are inline SVGs; no react-icons / lucide-react in package.json).
+Filled state uses `fill="currentColor"`, outline state uses
+`fill="none"` + `stroke="currentColor"`. Same SVG path in both
+states keeps the toggle visually stable. Would adopt Lucide if
+F3.5 grows to many more icons, but a star alone doesn't justify a
+new dep.
+
+**A-B13.10** Token choice for the star: `text-action` (filled) /
+`text-card-interior-whisper` (empty) — accent vs. quiet baseline,
+matching the card-interior palette. Did NOT use the `bg-action /
+text-canvas / hover:bg-action-hover` CTA pattern (which is for
+primary buttons like Save / Send) because the star is an inline
+toggle, not a CTA. HEARTBEAT cursor said `bg-action / text-ink`
+but that combination doesn't read on the vaporwave card interior
+(`text-ink` is the global prose color, not the card-interior
+text); the chosen tokens are the consistent card-interior choice.
+Hover-up to `text-action-hover` / `text-card-interior-muted` for
+affordance.
+
+**A-B13.11** Optimistic state via `useState` + `useTransition`,
+mirroring the welcome-card / profile-editor / fit-note-panel
+precedent. On action success the local state is reconciled to
+`res.favorited` (server truth, in case of an interleaved race);
+on throw the optimistic flip is reverted. `useOptimistic` would
+also work but adds a hook the codebase doesn't otherwise use yet
+— sticking with the local pattern for consistency.
+
+**A-B13.12** Initial favorited state is plumbed via a fresh
+`initialFavorited: boolean` prop on `CompanyCard` (computed from
+a `Set` of ids built in `DashboardCards`). Could have passed the
+whole set down to every card but that would re-render every card
+when any single favorite changes (Set identity churn through
+context). Keeping it as a per-card boolean keeps re-renders
+localized to the card that flipped. Set is built once with
+`useMemo`.
+
+**A-B13.13** Slicing within the F3.5 work: this beat = server
+action + star UI on home dashboard. Part 3/N (next beat) = `/favorites`
+page + nav entry in `site-shell.tsx`. Part 4/N (possible) =
+mirror the star on `/companies/[slug]` detail header for parity.
+Slicing this way means the toggle is testable on home immediately
+without waiting for the page or nav. Schema-only commit from
+part 1/N already merged into the local branch chain; this commit
+stacks on `scope/v0.8.1-phase-b-13-favorites-schema`.

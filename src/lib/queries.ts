@@ -12,6 +12,7 @@ import {
   fitNotes,
   fitNoteMessages,
   companyNotes,
+  companyFavorites,
 } from "@/db/schema";
 import { eq, desc, sql, inArray, and, asc } from "drizzle-orm";
 
@@ -623,6 +624,7 @@ export async function getRankedHomeData() {
     pubsForCards,
     openRolesForCards,
     fitNoteCompanyIds,
+    favoritedRows,
   ] = await Promise.all([
       db
         .select({
@@ -696,6 +698,13 @@ export async function getRankedHomeData() {
       db
         .select({ companyId: fitNotes.companyId })
         .from(fitNotes),
+      // v0.8.1 Phase B item 13 (F3.5) — which companies are starred. The
+      // dashboard renders a filled star in the card header when a row is
+      // present; absence == not favorited (presence is the source of truth,
+      // same model as companyNotes).
+      db
+        .select({ companyId: companyFavorites.companyId })
+        .from(companyFavorites),
     ]);
 
   // Flatten scores; coerce score numeric -> number
@@ -823,6 +832,7 @@ export async function getRankedHomeData() {
   const hasFitNoteSet = new Set<number>(
     fitNoteCompanyIds.map((r) => r.companyId),
   );
+  const favoritedCompanyIds = favoritedRows.map((r) => r.companyId);
 
   const details = allCompanies.map((c) => {
     const pubs = pubsByCompany.get(c.id) ?? [];
@@ -899,5 +909,6 @@ export async function getRankedHomeData() {
       "low" | "medium" | "high"
     >,
     oldestScoreAt,
+    favoritedCompanyIds,
   };
 }

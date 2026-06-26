@@ -10,6 +10,7 @@ import {
   frames as framesTable,
   tags as tagsTable,
   companyNotes,
+  companyFavorites,
 } from "@/db/schema";
 import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -415,6 +416,51 @@ export async function setCompanyStatus({
     .where(eq(companies.id, companyId));
   revalidatePath("/");
   revalidatePath(`/companies/[slug]`, "page");
+}
+
+/**
+ * v0.8.1 Phase B item 13 (F3.5) — toggle a company's favorite/star state.
+ *
+ * Idempotent: if a row exists for `companyId`, delete it (un-favorite) and
+ * return `false`. Otherwise insert a row and return `true`. The presence of
+ * the row IS the favorited state — same model as v0.6 companyNotes (no
+ * boolean column, no userId — single-user app today).
+ *
+ * Surfaces that show favorites are revalidated. `/favorites` is included
+ * even though the page lands in part 3/N; revalidating a not-yet-existing
+ * path is harmless and avoids a follow-up edit when the page lands.
+ */
+export async function toggleCompanyFavorite(
+  companyId: number,
+): Promise<{ favorited: boolean }> {
+  const [existing] = await db
+    .select({ id: companyFavorites.id })
+    .from(companyFavorites)
+    .where(eq(companyFavorites.companyId, companyId))
+    .limit(1);
+
+  let favorited: boolean;
+  if (existing) {
+    await db
+      .delete(companyFavorites)
+      .where(eq(companyFavorites.companyId, companyId));
+    favorited = false;
+  } else {
+    // onConflictDoNothing guards against a race where two toggles fire
+    // simultaneously and both miss the SELECT. The unique index on
+    // company_id is the source of truth.
+    await db
+      .insert(companyFavorites)
+      .values({ companyId })
+      .onConflictDoNothing({ target: companyFavorites.companyId });
+    favorited = true;
+  }
+
+  revalidatePath("/");
+  revalidatePath("/favorites");
+  revalidatePath("/profile");
+  revalidatePath(`/companies/[slug]`, "page");
+  return { favorited };
 }
 
 /**

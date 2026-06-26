@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useTransition } from "react";
 import {
   useLiveAggregates,
   type FrameScoreSnapshot,
 } from "@/lib/scoring/useLiveAggregates";
 import type { FrameWeightLevel } from "@/lib/scoring/aggregate";
+import { toggleCompanyFavorite } from "@/app/actions";
 
 /* ---------- shapes ----------------------------------------------------- */
 
@@ -69,6 +70,10 @@ type Props = {
   scores: FrameScoreSnapshot[];
   details: Detail[];
   frameWeights: Record<string, FrameWeightLevel>;
+  // v0.8.1 Phase B item 13 (F3.5) — ids of starred companies. Presence in
+  // this list == favorited. The set is built once on mount and the card's
+  // own optimistic toggle takes over from there.
+  favoritedCompanyIds: number[];
 };
 
 /* ---------- helpers ---------------------------------------------------- */
@@ -200,6 +205,7 @@ function CompanyCard({
   weights,
   detail,
   overall,
+  initialFavorited,
 }: {
   company: Company;
   frames: Frame[];
@@ -207,11 +213,33 @@ function CompanyCard({
   weights: Record<string, FrameWeightLevel>;
   detail: Detail | undefined;
   overall: number | null;
+  initialFavorited: boolean;
 }) {
   const [open, setOpen] = useState(false);
+  // v0.8.1 Phase B item 13 (F3.5): optimistic star toggle. Flip the icon
+  // immediately on click; revalidatePath in the server action keeps the
+  // server-rendered prop in sync for the next mount. If the action throws,
+  // we revert.
+  const [favorited, setFavorited] = useState(initialFavorited);
+  const [, startFavoriteTransition] = useTransition();
 
   const latest = detail?.latestEvent ?? null;
   const isHiring = detail?.isHiring ?? null;
+
+  const onToggleFavorite = () => {
+    const next = !favorited;
+    setFavorited(next);
+    startFavoriteTransition(async () => {
+      try {
+        const res = await toggleCompanyFavorite(c.id);
+        // Server is the truth; reconcile in case the optimistic guess and
+        // the actual outcome diverge (e.g. two clicks while in-flight).
+        setFavorited(res.favorited);
+      } catch {
+        setFavorited(!next);
+      }
+    });
+  };
 
   return (
     // v0.7.2 §3.4: the FRAME keeps the cyan-top / magenta-left vaporwave
@@ -282,7 +310,45 @@ function CompanyCard({
             </p>
           )}
         </div>
-        <div className="shrink-0">
+        <div className="shrink-0 flex items-center gap-2">
+          {/* v0.8.1 Phase B item 13 (F3.5): star toggle. Inline SVG to
+              match the codebase's no-icon-lib pattern (the wordmark is
+              also inline SVG). Filled = favorited (text-action), outline
+              = not (text-card-interior-whisper). aria-pressed exposes
+              state to AT; aria-label includes the company name for
+              screen-reader users who are landing on a card without prior
+              context. */}
+          <button
+            type="button"
+            onClick={onToggleFavorite}
+            aria-pressed={favorited}
+            aria-label={
+              favorited
+                ? `Unfavorite ${c.name}`
+                : `Favorite ${c.name}`
+            }
+            title={favorited ? "Unfavorite" : "Favorite"}
+            className={
+              "p-1 rounded-sm transition-colors " +
+              (favorited
+                ? "text-action hover:text-action-hover"
+                : "text-card-interior-whisper hover:text-card-interior-muted")
+            }
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill={favorited ? "currentColor" : "none"}
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </button>
           <HiringBadge isHiring={isHiring} />
         </div>
       </header>
@@ -466,7 +532,12 @@ export function DashboardCards({
   scores,
   details,
   frameWeights,
+  favoritedCompanyIds,
 }: Props) {
+  const favoritedSet = useMemo(
+    () => new Set(favoritedCompanyIds),
+    [favoritedCompanyIds],
+  );
   const aggregates = useLiveAggregates(scores, frameWeights);
   const aggMap = useMemo(() => {
     const m = new Map<number, (typeof aggregates)[number]>();
@@ -644,6 +715,7 @@ export function DashboardCards({
           weights={frameWeights}
           detail={detailMap.get(c.id)}
           overall={aggMap.get(c.id)?.overall ?? null}
+          initialFavorited={favoritedSet.has(c.id)}
         />
       ))}
       <p className="mono text-[10px] uppercase tracking-[0.16em] text-whisper pt-3">
