@@ -380,10 +380,122 @@ Assumptions logged when the identity-files PR opens.)*
 
 ---
 
-## Step 5 — Chat panel UI
+## Step 5 — Chat panel UI (2026-06-26 01:25 UTC)
 
-*(Pending. Assumptions to log: panel mount point, mobile breakpoint,
-keyboard handling, message-stream rendering, proposal-card affordances.)*
+### A5.1 — The panel is a controlled component; mount in Step 6 with an `open` prop.
+
+- **Assumed:** `<ClarifyPanel open trigger onClose onProposalAccepted>` is
+  stateless about its own visibility. The parent (Step 6's persistent
+  bottom-right button + the wizard / welcome-back / company-detail
+  entry points landing in Steps 6–8) owns the open/closed state. This
+  keeps Step 5 self-contained — you can drop the panel anywhere with a
+  one-line prop and let the parent decide when it shows.
+- **Alternatives:** Have the panel own its own "is open?" state behind a
+  global context. Rejected — four entry points means four call sites,
+  all of which already have local UI state; a global context is
+  overkill and forces Step 5 to ship a provider Step 6 has no need
+  for.
+- **Would change if:** A future cross-page persistent surface (e.g.
+  panel survives navigation) wants it. v0.9 candidate.
+
+### A5.2 — Session opens lazily on first paint of `open=true`, not on mount.
+
+- **Assumed:** `useEffect(() => { ... }, [open])` triggers
+  `startClarifySession()` exactly when the panel becomes visible. If
+  the parent mounts the component already-open (e.g. wizard step 5),
+  the session opens immediately; if the parent mounts it hidden and
+  later flips `open=true`, the session opens then. Either path works
+  with no extra ceremony.
+- **Alternatives:** Open the session on mount unconditionally.
+  Rejected — parents that mount the panel hidden (for fade-in setup)
+  would burn an Anthropic call before the user did anything.
+- **Would change if:** Latency-sensitive entry points (e.g. welcome-
+  back card) want the session pre-warmed. Then add an `eager` prop.
+
+### A5.3 — Closing the panel mid-flow ends the session server-side. No save-as-draft.
+
+- **Assumed:** Per REFACTOR-v0.8 §4.3: "closing the panel mid-flow ends
+  the session; next click starts a fresh one." The `handleClose`
+  handler fires `endClarifySessionAsClosed(sessionId)` (Step 4 server
+  action) for any session that hasn't already ended via a proposal.
+  Local state is reset so a re-open starts truly clean (new session
+  row, new opening turn from the cat).
+- **Alternatives:** Persist the in-flight message buffer to localStorage
+  and resume on re-open. Rejected — explicitly out of scope; the
+  product intent is that each clarify is a discrete sitting.
+- **Would change if:** Aadi tells us he wants drafts. (Won't.)
+
+### A5.4 — Enter sends; Shift-Enter newline. No multi-modal input, no command palette.
+
+- **Assumed:** Standard chat input shape. The textarea auto-resizes up
+  to a 160px cap (about 7 lines), then scrolls. Enter triggers send;
+  Shift-Enter inserts a newline.
+- **Alternatives:** Send button only, no Enter shortcut. Rejected —
+  unfamiliar from every other chat surface; would feel broken. Or a
+  voice-input affordance. Rejected — v0.8 is text-only by design.
+- **Would change if:** Mobile keyboard ergonomics need work (likely
+  candidate: Enter newline + a prominent send button on mobile only).
+  Defer to Step 11 / first real-device pass.
+
+### A5.5 — The proposal card lives inline in the message stream, not as a separate modal.
+
+- **Assumed:** When the cat ends the session with a proposal, the card
+  renders at the bottom of the conversation thread (above the footer's
+  `done` button which replaces the textarea). Inline is honest — the
+  proposal is the natural end of the conversation, not a popup
+  interrupting it. The card has `do it` (accept) and `not yet`
+  (reject) buttons; both transitions to a `decided` state that locks
+  the choice (no second-guessing inside the same session).
+- **Alternatives:** Modal overlay on the panel. Rejected — modal-on-
+  modal-on-page reads as panic-stacking. Or a footer-only card.
+  Rejected — splits the conversation from its conclusion visually.
+- **Would change if:** Real testing shows the card scrolls off the top
+  on long sessions and users don't realise it shipped. Mitigation
+  candidate: auto-scroll to the card on append + a subtle pulse.
+
+### A5.6 — The card *visibly* records accept/reject but doesn't *apply* the change. Application is downstream wiring.
+
+- **Assumed:** Step 4 already persists the proposal payload on the
+  session row (`clarify_sessions.proposal_data` etc.). Actually
+  applying the payload (bumping a frame weight, inserting a company
+  note, creating a new frame) is a per-`kind` mutation that touches
+  four-ish DB surfaces; sequencing that with the UI accept-click is
+  Step 6+ work. Step 5's accept button calls
+  `onProposalAccepted?.(proposal)` so the parent (Step 6's launcher)
+  can wire it up when it lands.
+- **Alternatives:** Apply the proposal directly from the panel.
+  Rejected — Step 5 ships before the application wiring exists. Or
+  defer the accept button entirely until Step 6+. Rejected — the
+  panel is incomplete without it; the accept-but-don't-apply seam is
+  honest about what v0.8 Step 5 ships.
+- **Would change if:** Step 6 lands the application wiring before this
+  PR merges. Then collapse the seam.
+
+### A5.7 — `clarifying[]` quote rotation during long waits is a Step 10 surface; Step 5 leaves a static "…" marker.
+
+- **Assumed:** Per REFACTOR-v0.8 §8 the quote-line rotation is its own
+  step (10) layered on top of a working panel. Step 5 ships a static
+  italic `…` placeholder during the `thinking` transition so the
+  panel doesn't go dead-air; Step 10 swaps it for a rotating
+  `clarifying[]` quote with a fade.
+- **Alternatives:** Ship the rotation now. Rejected — mixes Step 10's
+  quote-curation scope into Step 5 and ties a UI ship to a copy ship.
+- **Would change if:** Real first-token latency in path-1 (inline) is
+  bad enough that even a 2s static `…` reads as broken. Then we
+  promote Step 10 ahead of Step 6.
+
+### A5.8 — Panel uses the card-interior token subset (v0.7.2 §3.4), not the full vaporwave palette.
+
+- **Assumed:** The chat panel is a reading surface like the card
+  interior — long-form text the user looks at for minutes at a time.
+  The card-interior subset (calmer purple bg, softer cream text, muted
+  accents) is exactly what this needs. The cyan-top border on the
+  panel itself is the vaporwave signature without overwhelming.
+- **Alternatives:** Full vaporwave palette. Rejected — same reason
+  CompanyCard interior switched in v0.7.2: hot magenta + cyan stacked
+  on long reading is exhausting.
+- **Would change if:** A future tuning pass wants the panel to feel
+  more theatrical (it shouldn't — the cat is calm, not theatrical).
 
 ---
 
