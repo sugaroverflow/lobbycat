@@ -11,6 +11,7 @@ import {
   tags as tagsTable,
   companyNotes,
   clarifySessions,
+  companyFavorites,
 } from "@/db/schema";
 import { eq, and, asc, desc } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
@@ -392,7 +393,7 @@ export async function saveCompanyNotes({
 }) {
   // v0.6: per-company notes live in their own table now (replaces the
   // v0.4 free-text intent surface). Trimmed-empty body deletes the row
-  // so /about's notes index stays clean.
+  // so /profile's notes index stays clean.
   const body = notes.trim();
   if (!body) {
     await db.delete(companyNotes).where(eq(companyNotes.companyId, companyId));
@@ -406,7 +407,7 @@ export async function saveCompanyNotes({
       });
   }
   revalidatePath(`/companies/[slug]`, "page");
-  revalidatePath("/about");
+  revalidatePath("/profile");
 }
 
 export async function setCompanyStatus({
@@ -422,6 +423,51 @@ export async function setCompanyStatus({
     .where(eq(companies.id, companyId));
   revalidatePath("/");
   revalidatePath(`/companies/[slug]`, "page");
+}
+
+/**
+ * v0.8.1 Phase B item 13 (F3.5) — toggle a company's favorite/star state.
+ *
+ * Idempotent: if a row exists for `companyId`, delete it (un-favorite) and
+ * return `false`. Otherwise insert a row and return `true`. The presence of
+ * the row IS the favorited state — same model as v0.6 companyNotes (no
+ * boolean column, no userId — single-user app today).
+ *
+ * Surfaces that show favorites are revalidated. `/favorites` is included
+ * even though the page lands in part 3/N; revalidating a not-yet-existing
+ * path is harmless and avoids a follow-up edit when the page lands.
+ */
+export async function toggleCompanyFavorite(
+  companyId: number,
+): Promise<{ favorited: boolean }> {
+  const [existing] = await db
+    .select({ id: companyFavorites.id })
+    .from(companyFavorites)
+    .where(eq(companyFavorites.companyId, companyId))
+    .limit(1);
+
+  let favorited: boolean;
+  if (existing) {
+    await db
+      .delete(companyFavorites)
+      .where(eq(companyFavorites.companyId, companyId));
+    favorited = false;
+  } else {
+    // onConflictDoNothing guards against a race where two toggles fire
+    // simultaneously and both miss the SELECT. The unique index on
+    // company_id is the source of truth.
+    await db
+      .insert(companyFavorites)
+      .values({ companyId })
+      .onConflictDoNothing({ target: companyFavorites.companyId });
+    favorited = true;
+  }
+
+  revalidatePath("/");
+  revalidatePath("/favorites");
+  revalidatePath("/profile");
+  revalidatePath(`/companies/[slug]`, "page");
+  return { favorited };
 }
 
 /**
@@ -756,7 +802,7 @@ export async function updateProfile(patch: {
 
   await db.update(userProfile).set(next).where(eq(userProfile.id, existing.id));
 
-  revalidatePath("/about");
+  revalidatePath("/profile");
   // Profile feeds fit-note grounding; company pages reflect it next nav.
   revalidatePath(`/companies/[slug]`, "page");
 }
@@ -777,9 +823,9 @@ export async function startClarifySession(
   opts: StartClarifyOptions,
 ): Promise<StartClarifyResult> {
   const result = await startClarifySessionImpl(opts);
-  // The /about Conversations tab (Step 9) will list sessions; revalidate
+  // The /profile Conversations tab (Step 9) will list sessions; revalidate
   // proactively so a new session shows up next nav even mid-flow.
-  revalidatePath("/about");
+  revalidatePath("/profile");
   return result;
 }
 
@@ -796,7 +842,7 @@ export async function sendClarifyMessage(
   if (result.ended) {
     // The session row just flipped to ended + proposal-set; refresh the
     // surfaces that show "any pending proposals?".
-    revalidatePath("/about");
+    revalidatePath("/profile");
     revalidatePath("/");
   }
   return result;
@@ -811,7 +857,7 @@ export async function endClarifySessionAsClosed(
   sessionId: number,
 ): Promise<void> {
   await endClarifySessionAsClosedImpl(sessionId);
-  revalidatePath("/about");
+  revalidatePath("/profile");
 }
 
 /**

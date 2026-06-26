@@ -8,6 +8,19 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/": ["./research/feed.json"],
   },
+
+  // v0.8.1 F6.1 — `/about` was renamed to `/profile` (it's product-wise the
+  // user's profile page: their info + notes + conversations). Keep a 308
+  // permanent redirect so any out-of-band links to `/about` still land.
+  async redirects() {
+    return [
+      {
+        source: "/about",
+        destination: "/profile",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

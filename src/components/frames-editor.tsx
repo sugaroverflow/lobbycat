@@ -43,15 +43,18 @@ export type EditableFrame = {
 };
 
 const WEIGHT_LEVELS: FrameWeightLevel[] = ["high", "medium", "low"];
+// v0.8.1 F5.4: vocab swap Must/Should/Could → dealbreaker/important/nice to have.
+// Underlying tokens (high/medium/low) unchanged so scoring engine + DB rows
+// are untouched — labels only. See A-A9.4.
 const WEIGHT_LABEL: Record<FrameWeightLevel, string> = {
-  high: "Must",
-  medium: "Should",
-  low: "Could",
+  high: "dealbreaker",
+  medium: "important",
+  low: "nice to have",
 };
 const WEIGHT_HELP: Record<FrameWeightLevel, string> = {
-  high: "deal-breaker — score this heavily",
-  medium: "matters — default weighting",
-  low: "nice-to-have — gentle nudge only",
+  high: "dealbreaker — score this heavily",
+  medium: "important — default weighting",
+  low: "nice to have — gentle nudge only",
 };
 
 export function FramesEditor({
@@ -85,10 +88,11 @@ export function FramesEditor({
     void setFrameWeights({ [key]: level });
   }
 
+  // v0.8.1 F5.1: section order is frame cards → "+ Add a new frame" button →
+  // "Ask lobbycat for frame ideas" panel at the very bottom. Previously
+  // CatSuggestions sat at the top. See A-A9.1.
   return (
     <div className="mt-10 space-y-8">
-      <CatSuggestions />
-
       <ul className="space-y-4">
         {scaleFrames.map((f) => (
           <li key={f.id}>
@@ -107,6 +111,8 @@ export function FramesEditor({
       </ul>
 
       <NewFrameForm />
+
+      <CatSuggestions />
     </div>
   );
 }
@@ -219,7 +225,9 @@ function FrameCard({
             );
           })}
         </div>
-        <span className="mono text-[10px] text-whisper ml-auto">
+        {/* v0.8.1 F5.3: bump pole-label font from text-[10px] to text-xs for
+            readability. Tracking/colour unchanged. See A-A9.3. */}
+        <span className="mono text-xs text-whisper ml-auto">
           {frame.lowLabel || "—"} → {frame.highLabel || "—"} · 1–{frame.scale}
         </span>
       </footer>
@@ -231,13 +239,17 @@ function NewFrameForm() {
   const [open, setOpen] = useState(false);
   const [pending, start] = useTransition();
 
+  // v0.8.1 F5.2: "+ add a new frame" becomes a proper button (matches the
+    // dashboard / Save-note primary-CTA pattern: bg-action / text-canvas /
+    // hover:bg-action-hover, same as PR #55). Previously rendered as a bare
+    // text link via `text-moss hover:underline`. See A-A9.2.
   if (!open) {
     return (
       <button
         onClick={() => setOpen(true)}
-        className="mono text-xs uppercase tracking-[0.1em] text-moss hover:underline"
+        className="mono text-xs uppercase tracking-[0.1em] bg-action text-canvas hover:bg-action-hover px-4 py-2 rounded"
       >
-        + add a new frame
+        + Add a new frame
       </button>
     );
   }

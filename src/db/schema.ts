@@ -415,6 +415,29 @@ export const companyNotes = pgTable(
 );
 
 /* ------------------------------------------------------------------ */
+/* Per-company favorites (star/favorite affordance) — v0.8.1 F3.5     */
+/*                                                                    */
+/* Single-user app today: one row per favorited company. Mirrors the  */
+/* companyNotes shape (no userId column). Presence of the row == is   */
+/* favorited; deleting it un-favorites. favoritedAt lets us sort the  */
+/* Favorites view by most-recently-starred without a separate field.  */
+/* ------------------------------------------------------------------ */
+
+export const companyFavorites = pgTable(
+  "company_favorites",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    favoritedAt: timestamp("favorited_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [uniqueIndex("company_favorites_company_idx").on(t.companyId)],
+);
+
+/* ------------------------------------------------------------------ */
 /* User profile (single-row, for fit-notes grounding)                 */
 /* ------------------------------------------------------------------ */
 
@@ -695,6 +718,8 @@ export type FrameScoreEvidence = typeof frameScoreEvidence.$inferSelect;
 export type NewFrameScoreEvidence = typeof frameScoreEvidence.$inferInsert;
 export type CompanyNote = typeof companyNotes.$inferSelect;
 export type NewCompanyNote = typeof companyNotes.$inferInsert;
+export type CompanyFavorite = typeof companyFavorites.$inferSelect;
+export type NewCompanyFavorite = typeof companyFavorites.$inferInsert;
 export type FrameAnswer = typeof frameAnswers.$inferSelect;
 export type NewFrameAnswer = typeof frameAnswers.$inferInsert;
 export type FitNote = typeof fitNotes.$inferSelect;

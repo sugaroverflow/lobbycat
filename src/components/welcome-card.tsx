@@ -145,31 +145,60 @@ function WelcomeBackDiff({
   const heading = firstName
     ? `New since you were last in, ${firstName}…`
     : "New since you were last in…";
+
+  // v0.8.1 Phase B F2.2 / F2.3 — both states sit in the same vaporwave
+  // alert frame (cyan top + magenta left, rule right + bottom) as the
+  // dashboard cards (see dashboard-cards.tsx §3.4). Keeps the dashboard's
+  // visual language consistent and gives empty-state actual presence
+  // instead of a whispered one-liner.
+  const alertFrame = {
+    background: "var(--card-interior-bg)",
+    color: "var(--card-interior-text)",
+    borderTop: "1px solid var(--readout-cyan)",
+    borderLeft: "1px solid var(--accent-action)",
+    borderRight: "1px solid var(--rule)",
+    borderBottom: "1px solid var(--rule)",
+    borderRadius: "var(--radius-panel)",
+  } as const;
+
   if (welcomeBack.newEventCount === 0) {
+    // F2.2 — explicit empty state. Cyan eyebrow + a single calm prose
+    // line so the dashboard never opens into dead space.
     return (
       <div
-        className="pt-4 mono text-[11px] uppercase tracking-[0.14em] text-whisper"
+        className="mt-4 px-5 py-4"
+        style={alertFrame}
         data-testid="welcome-back-empty"
+        aria-label="no new updates since you were last in"
       >
-        no new updates since your last visit
+        <p className="mono text-[11px] uppercase tracking-[0.14em] text-readout pb-1">
+          {heading}
+        </p>
+        <p className="prose-face text-sm text-card-interior-muted">
+          nothing new since your last visit — the cat will let you know.
+        </p>
       </div>
     );
   }
+  // F2.3 — populated state. Same alert frame, with the bullet list of
+  // updates as the body. Bullet glyph stays magenta to match the frame's
+  // left edge.
   return (
     <div
-      className="pt-4"
+      className="mt-4 px-5 py-4"
+      style={alertFrame}
       data-testid="welcome-back"
       aria-label="new since you were last in"
     >
-      <p className="mono text-[11px] uppercase tracking-[0.14em] text-whisper pb-2">
+      <p className="mono text-[11px] uppercase tracking-[0.14em] text-readout pb-2">
         {heading}
       </p>
-      <ul className="prose-face text-sm text-[var(--fg-prose)] space-y-1.5">
+      <ul className="prose-face text-sm space-y-1.5">
         {welcomeBack.bullets.map((b, i) => (
           <li key={i} className="flex gap-2">
             <span
               aria-hidden
-              className="text-[var(--accent,#FF00FF)] select-none"
+              className="text-[var(--accent-action)] select-none"
             >
               ·
             </span>
@@ -178,12 +207,12 @@ function WelcomeBackDiff({
                 href={b.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-rule hover:decoration-current"
+                className="text-card-interior-text underline decoration-rule hover:decoration-current"
               >
                 {b.text}
               </a>
             ) : (
-              <span className="text-muted">{b.text}</span>
+              <span className="text-card-interior-muted">{b.text}</span>
             )}
           </li>
         ))}
