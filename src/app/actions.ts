@@ -24,6 +24,12 @@ import {
   type SendClarifyMessageArgs,
   type SendClarifyMessageResult,
 } from "@/lib/clarify/run-session";
+import {
+  applyClarifyProposal as applyClarifyProposalImpl,
+  rejectClarifyProposal as rejectClarifyProposalImpl,
+  type ApplyClarifyProposalArgs,
+  type ApplyClarifyProposalResult,
+} from "@/lib/clarify/apply-proposal";
 
 type FrameKind = "scale" | "tag" | "question";
 
@@ -805,4 +811,36 @@ export async function endClarifySessionAsClosed(
 ): Promise<void> {
   await endClarifySessionAsClosedImpl(sessionId);
   revalidatePath("/about");
+}
+
+/**
+ * Apply an accepted clarify proposal to the user's data. Wraps
+ * `src/lib/clarify/apply-proposal.ts` and refreshes whichever surfaces
+ * could be affected (frames page, dashboard, the company page if the
+ * proposal touched a company-note).
+ *
+ * v0.8 step 6.
+ */
+export async function applyClarifyProposal(
+  args: ApplyClarifyProposalArgs,
+): Promise<ApplyClarifyProposalResult> {
+  const result = await applyClarifyProposalImpl(args);
+  revalidatePath("/");
+  revalidatePath("/frames");
+  revalidatePath("/about");
+  // Company detail pages are dynamic on slug; just revalidate the route group.
+  revalidatePath("/companies/[slug]", "page");
+  return result;
+}
+
+/**
+ * Mark a proposal as rejected. No data side-effects; just stamps the
+ * session row so /about reflects the decision. v0.8 step 6.
+ */
+export async function rejectClarifyProposal(
+  sessionId: number,
+): Promise<{ rejected: true }> {
+  const result = await rejectClarifyProposalImpl(sessionId);
+  revalidatePath("/about");
+  return result;
 }

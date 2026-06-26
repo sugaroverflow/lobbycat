@@ -499,10 +499,136 @@ Assumptions logged when the identity-files PR opens.)*
 
 ---
 
-## Step 6 — "Talk to lobbycat" button on dashboard + company detail
+## Step 6 — "Talk to lobbycat" button on dashboard + company detail (2026-06-26 01:35 UTC)
 
-*(Pending. Assumptions to log: button placement, z-index vs other
-floating UI, scoped-session signal to the server action, analytics.)*
+### A6.1 — Moscow weights collapse to 3 buckets: must→high, should→medium, could/wont→low.
+
+- **Assumed:** The `clarify` skill (PR #32) emits `frame-weight`
+  proposals with `must|should|could|wont`. The DB column
+  `user_profile.frame_weights` (PR before v0.8) stores
+  `low|medium|high`. With 4→3 levels we collapse:
+  must→high, should→medium, could→low, wont→low.
+- **Why this and not something else:** "must" and "should" both mean
+  "this matters" but "should" sits below "must" — medium is the honest
+  middle. "Could" and "wont" both mean "deprioritised"; the user can
+  manually pin a frame even lower from /frames if they want.
+  Splitting could/wont across medium/low would over-promote could,
+  which the skill explicitly frames as "only if there's time".
+- **Alternatives:** Add a fourth `frame_weights` bucket as a v0.8
+  schema migration (rejected: scope creep, breaks the existing
+  ranked-table + dashboard aggregation contracts mid-stream). Map
+  must+should both to high (rejected: makes the cat's
+  must/should distinction in conversation feel placebo). Defer the
+  mapping to a follow-up commit and ship rejection-only first
+  (rejected: leaves the accept button non-functional, which would be
+  worse than an imperfect mapping).
+- **Risk if I'm wrong:** The user accepts a "should" proposal and
+  sees their frame go to medium instead of high. Fine — they can
+  re-pin from /frames in one click and the misfire is fully visible.
+- **Reversal cost:** Trivial. The mapping is one constant in
+  `apply-proposal.ts`. A v0.9 schema migration adding a fourth bucket
+  would supersede.
+
+### A6.2 — Proposal-apply errors fail loudly in console, refresh anyway, leave the session row undecided.
+
+- **Assumed:** When `applyClarifyProposal` throws (e.g. the cat
+  invented a frameId that no longer exists), the panel keeps its
+  optimistic "accepted" confirmation, the launcher logs to console
+  and still calls `router.refresh()`, and the `clarify_sessions` row
+  stays at `proposalAccepted = null`. The user can re-open the cat
+  and get the same proposal card again to retry once the underlying
+  data is fixed.
+- **Why this and not something else:** The end-of-session card is
+  Step 5 surface; threading a server-action error back into its
+  "accepted/rejected" pill-state widens the panel API mid-step.
+  Logging + an undecided session row gives full forensic visibility
+  through /about (Step 9) without breaking the inline UX. A proper
+  inline error toast is a Step 12 polish.
+- **Alternatives:** Block the optimistic state until the action
+  resolves (rejected: makes accept feel laggy on every successful
+  apply for the cosmetic benefit of perfect rare-error UX). Flip the
+  row to `proposalAccepted = false` on error (rejected: conflates
+  "user rejected" with "system failed").
+- **Risk if I'm wrong:** A silent failure that the user only notices
+  when they check /frames and the weight didn't move. Mitigated by:
+  the apply function's own preconditions throw with human-readable
+  messages, server logs surface them, and Glyphie's healthcheck loop
+  will start flagging un-decided sessions older than 24h in a
+  follow-up commit.
+- **Reversal cost:** Trivial. Surface the error via a panel error
+  prop later without changing the data path.
+
+### A6.3 — Panel callbacks pass `sessionId` to the launcher (Step 5 API tweak).
+
+- **Assumed:** `ClarifyPanel.onProposalAccepted` /
+  `onProposalRejected` now take `(sessionId, proposal)` instead of
+  `(proposal)`. The launcher needs the session id to dispatch the
+  apply/reject server actions, and the panel already owns it from
+  `startClarifySession`'s return.
+- **Why this and not something else:** The clean shape. The
+  alternative (a `window.__clarifyLastSessionId__` global) was
+  considered and rejected as embarrassing.
+- **Alternatives:** Have the server action look up the most recent
+  open session per user (rejected: lobbycat is single-user but this
+  is still a race-prone heuristic). Add a `useClarifySession` hook
+  the launcher could subscribe to (rejected: solves a problem we
+  don't yet have).
+- **Risk if I'm wrong:** Step 7 (wizard) wires its own callbacks
+  expecting the old `(proposal)` signature. It doesn't yet — Step 7
+  is unwritten — but I should make sure the wizard handler matches.
+- **Reversal cost:** Trivial.
+
+### A6.4 — The persistent pill is bottom-right `fixed`, z-index 30.
+
+- **Assumed:** Bottom-right (`bottom-5 right-5`), `z-30`. Sits above
+  page content, below the panel backdrop (`z-40`) and the panel
+  itself. Mobile: same position; the panel goes full-screen and
+  visually replaces the pill anyway.
+- **Why this and not something else:** REFACTOR-v0.8 §10 §6 says
+  "persistent bottom-right". No competing floating UI exists; if
+  one is added later it should coordinate via a shared CSS layer
+  constant, but YAGNI for now.
+- **Alternatives:** Top-right (rejected — collides with the header
+  nav). Header pill like v0.7.2's stub (rejected — scope doc said
+  bottom-right, and the persistent pill needs to be visible from
+  inside long-scroll pages like /companies/[slug]).
+- **Risk if I'm wrong:** Pill overlaps a future floating UI element.
+  Easy to fix in CSS.
+- **Reversal cost:** Trivial.
+
+### A6.5 — Replaced `AskLobbycatStub` in the header; left the file in-repo.
+
+- **Assumed:** Removed the `<AskLobbycatStub />` mount from
+  `site-shell.tsx`. Kept `src/components/ask-lobbycat-stub.tsx`
+  in-repo so the /about Conversations tab (Step 9) can show a
+  "before/after" screenshot history if Fatima wants one. Will
+  delete in Step 11 if no Step 9 consumer materialises.
+- **Why this and not something else:** Smallest reversible deletion.
+  Tree-shaking drops it from the bundle.
+- **Alternatives:** Delete it now (rejected — zero-cost optionality
+  for a doc-side consumer). Keep it mounted alongside the new pill
+  (rejected — two "talk to lobbycat" affordances in the same chrome
+  is confusing).
+- **Risk if I'm wrong:** Dead code in the next 1–2 commits. Trivial.
+- **Reversal cost:** Trivial.
+
+### A6.6 — Scoped clarify link lives inside `FitNotePanel`, only when a fit-note exists.
+
+- **Assumed:** The "clarify this fit →" link renders inside the
+  fit-note panel's parsed-fit-note branch, under the caveat. It does
+  NOT render when there's no fit-note yet (the empty-state branch),
+  because the cat opening with "we're talking about Wayve" before
+  any fit-note exists feels premature. Generate the fit-note first;
+  then clarify it.
+- **Alternatives:** Render the link always (rejected: weird in the
+  empty state). Render it at the bottom of the company page outside
+  the panel (rejected: scope doc says "under each company's
+  fit-note").
+- **Risk if I'm wrong:** Some companies don't have fit-notes yet;
+  Aadi might want to clarify before generating. Mitigated by: he can
+  hit the global pill at any time — cold sessions are always
+  available.
+- **Reversal cost:** Trivial.
 
 ---
 

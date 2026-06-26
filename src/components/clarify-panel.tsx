@@ -44,6 +44,7 @@ export function ClarifyPanel({
   seedLine = null,
   onClose,
   onProposalAccepted,
+  onProposalRejected,
 }: {
   open: boolean;
   trigger: ClarifyTrigger;
@@ -53,8 +54,13 @@ export function ClarifyPanel({
   seedLine?: string | null;
   onClose: () => void;
   /** Called after the user accepts the cat's proposal so the parent can
-   *  refresh whatever surface they're sitting on. */
-  onProposalAccepted?: (proposal: ClarifyProposal) => void;
+   *  apply it (v0.8 step 6's onProposalAccepted handler does the DB
+   *  write) and refresh whatever surface they're sitting on. Receives
+   *  the session id so the apply call can target the right row. */
+  onProposalAccepted?: (sessionId: number, proposal: ClarifyProposal) => void;
+  /** Called after the user rejects the proposal so the parent can
+   *  stamp the session row + close the surface. v0.8 step 6. */
+  onProposalRejected?: (sessionId: number, proposal: ClarifyProposal) => void;
 }) {
   const [sessionId, setSessionId] = useState<number | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
@@ -161,17 +167,21 @@ export function ClarifyPanel({
   }
 
   function acceptProposal() {
-    if (!proposal) return;
+    if (!proposal || sessionId === null) return;
     setProposalDecided("accepted");
-    onProposalAccepted?.(proposal);
+    onProposalAccepted?.(sessionId, proposal);
     // The Step 4 server action already persisted the proposal payload
-    // on the session row; the *application* of that payload to the
-    // user's frames/companies happens in Step 6+ wiring (and is
-    // deliberately scoped out of this panel — Step 5 is the surface).
+    // on the session row. The *application* of that payload to the
+    // user's frames/companies is handled by the parent's
+    // `onProposalAccepted` (v0.8 step 6's clarify-launcher calls
+    // `applyClarifyProposal` here). The panel stays focused on the
+    // surface; the data write is the launcher's responsibility.
   }
 
   function rejectProposal() {
+    if (!proposal || sessionId === null) return;
     setProposalDecided("rejected");
+    onProposalRejected?.(sessionId, proposal);
   }
 
   if (!open) return null;
