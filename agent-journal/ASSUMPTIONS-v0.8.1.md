@@ -1313,3 +1313,69 @@ Phase C per Fatima 2026-06-26 02:31 UTC.
 **A-C15.10** No `next.config.ts` / lint / typecheck changes — this
 PR is doc-only (one new file under `agent-journal/glyphie-notes/`
 and this assumptions entry). No need to run the build.
+
+---
+
+## Phase D — item 16 (README pass + version bump + deploy)
+
+**Scope:** Last item of v0.8.1. The "deploy" half is Fatima's action
+(she merges the chain, Vercel auto-deploys). What ships from Lotus is
+the prep: README pass + VERSION bump.
+
+**A-D16.1** README pass scope is **minimal**. Fatima already restructured
+the README on 2026-06-26 (commits 472aa37, 5d4acb3, 6a20099, 661fd84,
+06f92ee). The only remaining stale bits after v0.8.1 Phases A–C are
+specific path/label mentions that didn't exist when she rewrote it:
+
+  - `src/app/about/` → `src/app/profile/` (renamed in PR #58, F6.1).
+  - Add `src/app/favorites/` to Key paths (added in PR #63, F3.5).
+  - Add `company_favorites` to the schema list (added in PR #61, F3.5).
+  - "in About" → "in Profile" in the body copy at L37 (the nav label
+    is now "Profile", per `src/components/site-shell.tsx` L24).
+
+No broader narrative rewrite — Fatima's restructuring is the authoritative
+voice; Lotus only fixes the three concrete-path mismatches and the one
+nav-label reference.
+
+**A-D16.2** VERSION bump in `src/app/api/health/route.ts` goes from
+`"0.7.2"` to `"0.8.1"`, not `"0.7.2" → "0.8.0" → "0.8.1"`. The v0.8.1
+chain currently branches from main (which still reads 0.7.2 because
+PR #47 / v0.8 collapse hasn't merged yet). Merge order resolves the
+diff: Fatima merges #47 first (main → 0.8.0), then the v0.8.1 chain
+merges on top (main → 0.8.1). The chain writes the final target value
+directly — git's three-way merge will resolve the VERSION line cleanly
+(`0.7.2 → 0.8.0` on main vs `0.7.2 → 0.8.1` on the chain → 0.8.1 wins
+since both sides changed from the same base, but only one side conflicts
+with the merge base; if a conflict surfaces, the right resolution is
+0.8.1). If Fatima prefers to merge the v0.8.1 chain BEFORE #47, the bump
+still lands at 0.8.1 and #47 will conflict on the same line — that
+conflict resolves to 0.8.1 too (the newer minor wins).
+
+**A-D16.3** `package.json` version stays at `"0.1.0"`. That field is the
+private-package placeholder npm requires; it's never been used as the
+human-visible app version. Health `VERSION` is the canonical app version
+surface (returned by `/api/health`).
+
+**A-D16.4** No new doc files. No new components. No DB migration. No
+config or env changes. Doc + one-line code change only.
+
+**A-D16.5** Phase D ships BEFORE the F8.x render wiring and the #40
+review (the remaining open part of Phase C). Per HEARTBEAT.md cursor's
+branch-3 guidance (no Glyphie reply yet, don't block) and §10's stance
+that Phase D "doesn't depend on F8.x data shapes — the empty arrays
+render friendly empty states already" (F3.4 / PR #65). When Glyphie
+replies, the F8.x render-wiring ship and the #40 review become a
+follow-up under v0.8.1 — they slot in BEFORE the actual production
+deploy if Fatima hasn't merged this chain yet, or after as a v0.8.2
+patch if she has.
+
+**A-D16.6** No tsc / eslint / build run. The only code change is a
+string literal in one TypeScript file; no type surface or import graph
+change. README is markdown, doc-only. gitleaks runs in CI.
+
+**A-D16.7** Branch stacks on `scope/v0.8.1-phase-c-15-glyphie-f8x-note`
+(PR #66) for assumptions-file additivity, matching the established
+Phase B/C convention (same reasoning as A-C14.1 / A-C15.3). The
+F8.x render wiring, when it ships, will stack on this Phase D branch
+or on a fresh branch off main — either is fine since Phase D contains
+no code dependency the wiring needs.

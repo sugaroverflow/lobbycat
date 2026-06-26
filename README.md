@@ -34,7 +34,7 @@ field re-sorts when the new scores land.
 ### How the scoring works
 
 - **Weights** — each frame carries a **Must (×3) / Should (×2) / Could (×1)** weight. Editing a weight is instant — client-side recompute, no LLM call.
-- **Scores + fit-notes** — each (company × frame) cell carries a decimal score (1.0–5.0), a stored rationale, and evidence citations. Fit-notes are grounded in your wizard answers and refresh when evidence lands, when you edit a frame, or when you change something about yourself in About.
+- **Scores + fit-notes** — each (company × frame) cell carries a decimal score (1.0–5.0), a stored rationale, and evidence citations. Fit-notes are grounded in your wizard answers and refresh when evidence lands, when you edit a frame, or when you change something about yourself in Profile.
 
 The aggregate is a weighted mean across all frames, displayed as a single
 decimal ("4.2 / 5"). Stale-but-displayed beats hidden-while-recomputing.
@@ -60,7 +60,7 @@ list itself. Evidence beneath each company is pulled by the data pipelines.
 
 ```
 src/styles/globals.css         design tokens (vaporwave palette, type, motion)
-src/db/schema.ts               schema (companies, frames, frame_scores, user_profile, clarify_sessions, clarify_messages, …)
+src/db/schema.ts               schema (companies, frames, frame_scores, user_profile, clarify_sessions, clarify_messages, company_favorites, …)
 src/db/seed-data.ts            the curated London set
 src/lib/scoring/               the live scoring engine
 src/lib/fit-notes/             fit-note generation grounded in wizard answers
@@ -72,7 +72,8 @@ src/lib/safety-frameworks/     safety frameworks evidence pipeline
 src/app/wizard/                the six-step onboarding wizard
 src/app/companies/[slug]/      per-company dive-deep page
 src/app/frames/                frame definitions + weight editor
-src/app/about/                 profile editor (mirrors wizard fields)
+src/app/profile/               profile editor (mirrors wizard fields)
+src/app/favorites/             starred-companies view
 src/app/api/cron/              Vercel cron handlers for each pipeline
 src/app/api/rescore-status/    "is the cat busy?" endpoint
 src/components/loading-cat.tsx shared calm-cousin loading animation
