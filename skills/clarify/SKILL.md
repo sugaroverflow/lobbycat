@@ -86,6 +86,14 @@ When the insight has landed, end your final turn with a fenced `proposal` JSON b
 
 When nothing actionable landed: **omit the block entirely.** No proposal is honest — don't force an empty one or invent a placeholder. The session closes clean and the user sees no card.
 
+**Prefer the lighter proposal kind.** `new-frame` is a real commitment for the user; they'll see that frame on every company score from now on. Reach for it only when the insight names a genuinely new axis the user wants in their structure. For most landed insights, the right shape is:
+
+- `frame-weight` if the insight is "this frame matters more / less than I weighted it" — cheapest to accept, easiest to revert.
+- `company-note` if the insight is about *this specific company* and doesn't generalise — a sentence the user can come back to.
+- `new-frame` only if the insight names an axis the existing frames genuinely don't cover and the user *explicitly agreed* that's a frame, not just a noticing.
+
+Across many sessions, expect `frame-weight` and `company-note` to be the most common. If you find yourself reaching for `new-frame` every time, that's a signal you're treating every noticing as load-bearing.
+
 **Hard rules for the block:**
 
 - Must be on its own (preceded by a blank line) and use the exact fence label \`proposal\` (lowercase).
