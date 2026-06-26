@@ -29,6 +29,7 @@ import {
   startClarifySession,
 } from "@/app/actions";
 import { CatMark } from "@/components/wordmark";
+import { ClarifyingLine } from "@/components/clarifying-line";
 
 type Message = {
   role: "user" | "cat";
@@ -182,16 +183,12 @@ export function WizardClarifyStep({
         ref={scrollRef}
         className="px-4 py-4 space-y-4 max-h-[26rem] overflow-y-auto"
       >
-        {opening && messages.length === 0 && (
-          <p className="mono text-xs text-whisper italic">
-            <em>the cat is reading your answers…</em>
-          </p>
-        )}
+        {opening && messages.length === 0 && <ClarifyingLine />}
         {messages.map((m, i) =>
           m.role === "cat" ? (
             <p
               key={i}
-              className="font-sans text-base text-ink leading-relaxed whitespace-pre-wrap"
+              className="font-sans text-base text-ink leading-relaxed whitespace-pre-wrap cat-message-fade-in"
             >
               {m.body}
             </p>
@@ -210,11 +207,7 @@ export function WizardClarifyStep({
             </div>
           ),
         )}
-        {thinking && (
-          <p className="mono text-xs text-whisper italic">
-            <em>…</em>
-          </p>
-        )}
+        {thinking && <ClarifyingLine />}
         {ended && (
           <p className="font-sans text-sm text-muted italic">
             <em>thread closed. ready when you are.</em>
@@ -223,6 +216,26 @@ export function WizardClarifyStep({
         {error && (
           <p className="font-sans text-sm text-coral">{error}</p>
         )}
+        <style jsx>{`
+          .cat-message-fade-in {
+            animation: wcat-msg-fade 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          }
+          @keyframes wcat-msg-fade {
+            from {
+              opacity: 0;
+              transform: translateY(2px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .cat-message-fade-in {
+              animation: none;
+            }
+          }
+        `}</style>
       </div>
 
       <footer

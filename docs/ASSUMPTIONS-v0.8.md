@@ -924,10 +924,93 @@ gate the existing diff-based signal).
 
 ---
 
-## Step 10 — `clarifying[]` quote array + animations
+## Step 10 — `clarifying[]` quote array + animations (2026-06-26 02:42 UTC)
 
-*(Pending. Assumptions to log: animation library, quote source / count,
-reduced-motion behaviour.)*
+### A10.1 — `clarifying[]` lands as a parallel array in `lobbycat-quotes.json`, same shape and voice as `fitNoting[]`.
+
+- **Assumed:** The quotes JSON already has a precedent (`fitNoting`,
+  `rescoring`, `welcomeBack`, etc.) for per-surface ambient quote
+  pools. Adding a `clarifying[]` array next to them keeps the
+  curation surface in one place and matches the v0.7 conventions
+  Fatima already tuned. 12 quotes — same count as `fitNoting` — felt
+  like the right ratio (variety without dilution). All third-person
+  cat-voice ("The cat is reading what you wrote..."), short (one
+  sentence), present-tense.
+- **Alternatives:** Generate per-session quotes via an extra Anthropic
+  call. Rejected — latency + cost for cosmetic value. Or a single
+  static "the cat is thinking" line. Rejected — dead-air feel after
+  ~10 sessions.
+- **Would change if:** A future tone shift in the cat's voice needs
+  the ambient quotes to follow. The `_meta.version` field on the
+  JSON is bumped to `v0.8-step10` to mark the addition.
+
+### A10.2 — Single-line rotating quote via `<ClarifyingLine>`, not a typewriter / skeleton bubble.
+
+- **Assumed:** Per REFACTOR-v0.8 §8: "Loading animations during
+  cat-thinking + session-start typing effect." The single rotating
+  line interpretation reads as "the cat is thinking *somewhere else*"
+  which matches the voice and avoids the typewriter-cliche of
+  pretending the cat is mid-stream-typing into the box. The actual
+  reply is the artefact; the ambient quote is a separate ambient
+  signal.
+- **Alternatives:** Typewriter effect on the cat's reply itself.
+  Rejected — conflicts with non-streaming server action (A4.1) which
+  delivers the reply as a single complete string. Or a skeleton
+  bubble. Rejected — reads as "the message is being constructed"
+  rather than "the cat is thinking".
+- **Would change if:** Step 4 ever flips to streaming (A4.1 "would
+  change if"); then the typewriter shape becomes honest.
+
+### A10.3 — Rotation cadence: 3.2s per quote, 280ms cross-fade.
+
+- **Assumed:** Eyeballed from the existing fitNoting state on
+  `/companies/[slug]`. 3.2s is long enough to read each line
+  comfortably; 280ms cross-fade is fast enough to feel responsive
+  but slow enough to not flicker. Both numbers are tunable single
+  consts at the top of `clarifying-line.tsx`.
+- **Would change if:** Step 12 tuning surfaces "too fast to read" /
+  "too slow to feel alive" feedback.
+
+### A10.4 — Respect `prefers-reduced-motion`: no rotation, no cross-fade, no cat-message fade-in.
+
+- **Assumed:** The reduced-motion media query is checked once on
+  mount; when set, `<ClarifyingLine>` shows a single static quote
+  (no `setInterval`) and the `.cat-message-fade-in` keyframe is
+  disabled via CSS `@media (prefers-reduced-motion: reduce)`. Both
+  surfaces (panel + wizard) honour the same rule with the same
+  pattern.
+- **Alternatives:** Don't bother with reduced-motion. Rejected —
+  the rest of the app respects it (see vaporwave.css
+  `@media (prefers-reduced-motion: reduce)` already), and the clarify
+  panel is exactly the kind of long-attention surface where motion
+  sensitivity matters.
+
+### A10.5 — Cat-message fade-in: 360ms opacity + 2px translate, both surfaces.
+
+- **Assumed:** Per §8 "session-start typing effect" — the cat's
+  messages enter with a gentle fade + slight upward translate. Same
+  curve (`cubic-bezier(0.22, 1, 0.36, 1)`) the existing rescoring
+  surface uses. User messages don't fade — they appear instantly
+  because the user typed them and expects them to land sharply.
+- **Alternatives:** Typewriter (per-character reveal). Rejected as
+  above (A10.2). Or full slide-up. Rejected — too much motion for an
+  attention-quiet surface.
+- **Would change if:** Tuning surfaces feel-dead-air complaints.
+
+### A10.6 — Quote pool module-scoped (not React state), to keep SSR + first-paint identical.
+
+- **Assumed:** The pool itself never changes per session — only the
+  index does. Module-scope keeps SSR and the first client paint
+  rendering exactly `POOL[0]`; on mount, an effect jumps to a random
+  index (wrapped in `startTransition` to satisfy React 19's
+  no-setState-in-effect rule). The cycle proceeds deterministically
+  from there. No hydration mismatch, no `Math.random` during render.
+- **Alternatives:** React state for the pool. Rejected — forces a
+  state update on mount which makes the React 19 ESLint rule angry
+  even with `startTransition` because the wrapped update is
+  multi-step. Module-scope is the cleaner pattern.
+- **Would change if:** Pool ever becomes dynamic (e.g. per-trigger
+  custom quotes). Then per-mount state with proper memoisation.
 
 ---
 

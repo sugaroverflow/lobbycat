@@ -26,6 +26,7 @@ import {
   startClarifySession,
 } from "@/app/actions";
 import { CatMark } from "@/components/wordmark";
+import { ClarifyingLine } from "@/components/clarifying-line";
 import type {
   ClarifyProposal,
   ClarifyTrigger,
@@ -237,19 +238,11 @@ export function ClarifyPanel({
         </header>
 
         <div ref={scrollRef} className="flex-1 overflow-y-auto px-5 py-4 space-y-4">
-          {opening && messages.length === 0 && (
-            <p className="mono text-xs text-whisper italic">
-              <em>the cat is reading…</em>
-            </p>
-          )}
+          {opening && messages.length === 0 && <ClarifyingLine />}
           {messages.map((m, i) => (
             <MessageBubble key={i} role={m.role} body={m.body} />
           ))}
-          {thinking && (
-            <p className="mono text-xs text-whisper italic">
-              <em>…</em>
-            </p>
-          )}
+          {thinking && <ClarifyingLine />}
           {error && (
             <p className="font-sans text-sm text-coral">{error}</p>
           )}
@@ -304,8 +297,28 @@ export function ClarifyPanel({
 function MessageBubble({ role, body }: { role: "user" | "cat"; body: string }) {
   if (role === "cat") {
     return (
-      <div className="font-sans text-base text-ink leading-relaxed whitespace-pre-wrap max-w-[34ch]">
+      <div className="font-sans text-base text-ink leading-relaxed whitespace-pre-wrap max-w-[34ch] cat-message-fade-in">
         {body}
+        <style jsx>{`
+          .cat-message-fade-in {
+            animation: cat-msg-fade 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          }
+          @keyframes cat-msg-fade {
+            from {
+              opacity: 0;
+              transform: translateY(2px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .cat-message-fade-in {
+              animation: none;
+            }
+          }
+        `}</style>
       </div>
     );
   }
