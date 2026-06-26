@@ -186,3 +186,116 @@ into this same Phase A item 2 commit/PR.**
     commit messages pointing at the real path.
 - Would change if: Fatima objects to mixing the doc-move with feature
   work in one PR.
+
+---
+
+### Phase A item 3 — F1.1 vaporwave-but-readable inside cards
+
+**A-A3.1 — Switch card-interior labels from `mono uppercase tracking-…` to plain `font-sans` lower-case at the small text scale.**
+
+- Date: 2026-06-26 04:45 UTC
+- Decision: For the HQ pill, "Latest" eyebrow, "Show more / Show less"
+  toggle, "Recent publications" / "Open roles" h4 eyebrows, the per-bar
+  frame-name label in `ScoreBar`, the "Overall" eyebrow next to the
+  aggregate score, and the inactive `HiringBadge` states ("Not hiring",
+  "Hiring · unknown"), drop the
+  `mono text-[10px] uppercase tracking-[0.12em-0.18em]` treatment and
+  replace it with `font-sans text-xs` (or `text-sm` for headings) at
+  natural casing. This is what F1.1 calls "mono small-case or sans-small
+  at higher contrast" — the all-caps mono micro-labels were the loudest
+  bit of card-interior chrome.
+- Alternatives considered:
+  - (a) Keep mono, just drop letterspacing + uppercase. Rejected: the
+    Share Tech Mono face at 10–11px is itself part of the readability
+    problem Fatima flagged; sans (Orbitron) at the same small size reads
+    notably cleaner inside the calm card interior, while leaving the
+    company name's larger sans heading still distinctly "the vaporwave
+    bit" because of scale (`text-xl`) and weight.
+  - (b) Go full sans across the entire card body INCLUDING the company
+    name. Rejected: F1.1 is explicit — keep vaporwave on the company
+    name, tone down everything else. The h3 link is the one place
+    inside the box that should still feel theatrical.
+  - (c) Keep uppercase but bump contrast only (whisper → text). Rejected:
+    the chrome that bothered Fatima ("the text in the boxes can be
+    hard to read") is the combination of mono + uppercase + wide
+    tracking at 10px more than the colour alone.
+- Would change if: Fatima wants to preserve the all-caps mono eyebrow
+  treatment but only fix contrast, or wants sans applied to the entire
+  card body including the title.
+
+**A-A3.2 — Bump card body reading text from `text-muted` / `text-whisper` to `text-card-interior-text` (full opacity).**
+
+- Date: 2026-06-26 04:45 UTC
+- Decision: The card description, the "Latest" headline line, the
+  expanded-section list items (recent publications, open roles), and
+  the link colours inside the expanded reveal switch from the legacy
+  `text-muted` (0.8 alpha prose-soft) / `text-whisper` (0.6 alpha)
+  utilities to `text-card-interior-text` (full opacity on the
+  card-interior palette, `#E0DEF0`). Reserve
+  `text-card-interior-muted` (0.7) for genuinely secondary chrome
+  ("Overall" eyebrow, HQ pill, inactive Hiring states, empty-state
+  italics, "latest" eyebrow word) and `text-card-interior-whisper`
+  (0.45) for tertiary metadata (timestamps, counts in parens, the
+  `[M]/[S]/[C]` weight glyph).
+- Alternatives considered:
+  - (a) Use the global `text-ink` everywhere inside cards. Rejected:
+    `text-ink` resolves to `--fg-prose` (`#E0E0E0`) which is the prose
+    voice; the v0.7.2 §3.4 card-interior subset deliberately offsets
+    to `#E0DEF0` to read calmer against the warmer card interior bg.
+    Using the card-interior token keeps the design system intent.
+  - (b) Add a new `--card-interior-text-bright` step above
+    `text-card-interior-text`. Rejected: F1.1 says "go one step further
+    on contrast", and full opacity on the existing token already wins
+    a clear step over the previous `text-muted` usage; adding a fourth
+    tier overcomplicates the §3.4 subset.
+- Would change if: contrast still reads weak in Fatima's next pass, in
+  which case I'd consider stepping the card-interior text token toward
+  `#F0EEFF` or pure prose `#E0E0E0`.
+
+**A-A3.3 — Leave the active `● Hiring` magenta badge untouched.**
+
+- Date: 2026-06-26 04:45 UTC
+- Decision: The active hiring badge (border + magenta glow + magenta
+  text) keeps its full vaporwave treatment. Only the inactive states
+  ("Not hiring", "Hiring · unknown") get toned down.
+- Alternatives considered:
+  - (a) Tone down the active badge too (drop glow / uppercase / mono).
+    Rejected: F1.1 is about chrome that's loud-but-not-saying-anything.
+    "Hiring" is the one signal in the box that IS saying something
+    rare and important; the same magenta glow that's noise on a "Latest"
+    eyebrow is a meaningful flag when applied to a sparse "this company
+    is hiring" pill.
+  - (b) Move the hiring chip into the company-name line so it inherits
+    the title's theatrical treatment. Out of scope — that's an F3.x
+    layout question, not F1.1.
+- Would change if: Fatima wants the hiring active state quieter too, or
+  wants the signal moved out of the per-card chrome entirely.
+
+**A-A3.4 — Leave the per-frame ScoreBar visual (cyan label + magenta→cyan progress bar) alone except for the label typography.**
+
+- Date: 2026-06-26 04:45 UTC
+- Decision: The score bar's frame-name label drops mono-uppercase-tracking
+  for sans-small at the same `text-readout` (cyan) colour; the 80px bar
+  itself, the `--vw-accent-bar` magenta→cyan fill, the `tabular-nums`
+  score on the right, and the `[M]/[S]/[C]` weight glyph all stay.
+- Alternatives considered:
+  - (a) Also retire the cyan label colour for plain card-interior text.
+    Rejected: cyan is the "readout / data voice" role in vaporwave;
+    frame names ARE data labels. The colour is the right semantic. The
+    issue F1.1 flagged was the typographic treatment of small labels,
+    not the data-voice cyan.
+- Would change if: Fatima wants the data-voice cyan also softened inside
+  cards, in which case I'd switch to `text-readout-dim`.
+
+**A-A3.5 — F1.1 is the only F1.x item in this PR.**
+
+- Date: 2026-06-26 04:45 UTC
+- Decision: Ship F1.1 alone. F1.2 (filter chip contrast) is the next
+  scheduled Phase A item per §10 ordering and lands in its own PR on
+  top of this branch.
+- Alternatives considered:
+  - (a) Bundle F1.1 + F1.2 since both are "readability contrast" passes.
+    Rejected: PR collapse plan favours small, mergeable, per-feedback-id
+    PRs that Fatima can review one feedback ID at a time; bundling
+    erases the per-ID trail.
+- Would change if: Fatima asks for fewer/bigger Phase A PRs.

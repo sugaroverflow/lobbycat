@@ -127,11 +127,11 @@ function ScoreBar({
       title={`${frame.name} — weight ${weightGlyph === "M" ? "Must" : weightGlyph === "S" ? "Should" : "Could"}`}
     >
       <span
-        className="mono text-[10px] uppercase tracking-[0.12em] text-readout truncate"
+        className="font-sans text-xs text-readout truncate"
         style={{ flex: "1 1 0" }}
       >
         {frame.name}
-        <span className="ml-1 text-whisper">[{weightGlyph}]</span>
+        <span className="ml-1 text-card-interior-whisper">[{weightGlyph}]</span>
       </span>
       <span
         className="relative inline-block h-[6px] rounded-sm overflow-hidden"
@@ -179,13 +179,13 @@ function HiringBadge({ isHiring }: { isHiring: boolean | null }) {
   }
   if (isHiring === false) {
     return (
-      <span className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-[3px] text-whisper">
+      <span className="font-sans text-xs px-2 py-[3px] text-card-interior-muted">
         Not hiring
       </span>
     );
   }
   return (
-    <span className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-[3px] text-whisper">
+    <span className="font-sans text-xs px-2 py-[3px] text-card-interior-muted">
       Hiring · unknown
     </span>
   );
@@ -243,13 +243,13 @@ function CompanyCard({
               {c.name}
             </Link>
             {c.hq && (
-              <span className="mono text-[10px] uppercase tracking-[0.16em] text-whisper">
+              <span className="font-sans text-xs text-card-interior-muted">
                 {c.hq}
               </span>
             )}
           </div>
           {c.description && (
-            <p className="mono text-sm text-muted leading-relaxed mt-1.5 max-w-2xl">
+            <p className="font-sans text-sm text-card-interior-text leading-relaxed mt-1.5 max-w-2xl">
               {c.description}
             </p>
           )}
@@ -257,11 +257,11 @@ function CompanyCard({
         <div className="flex flex-col items-end gap-1.5 shrink-0">
           <HiringBadge isHiring={isHiring} />
           <span
-            className="mono text-[10px] uppercase tracking-[0.14em] text-whisper"
+            className="font-sans text-xs text-card-interior-muted"
             title="Weighted aggregate across frames"
           >
             Overall{" "}
-            <span className="text-readout text-xs tabular-nums">
+            <span className="text-readout text-sm tabular-nums">
               {fmtOverall(overall)}
             </span>
           </span>
@@ -291,9 +291,9 @@ function CompanyCard({
       <div className="px-5 py-3 flex items-center justify-between gap-4">
         <div className="min-w-0 flex-1">
           {latest ? (
-            <p className="mono text-xs text-muted truncate">
-              <span className="text-whisper uppercase tracking-[0.14em] mr-2">
-                Latest
+            <p className="font-sans text-sm text-card-interior-text truncate">
+              <span className="text-card-interior-muted mr-2">
+                latest
               </span>
               <span aria-hidden className="mr-1">
                 {latest.kind === "publication" ? pubIcon(null) : "🛠"}
@@ -302,14 +302,14 @@ function CompanyCard({
                 href={latest.url}
                 target="_blank"
                 rel="noreferrer"
-                className="text-ink hover:text-readout underline decoration-dotted underline-offset-4"
+                className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
               >
                 {latest.title}
               </a>
-              <span className="ml-2 text-whisper">{fmtAgo(latest.at)}</span>
+              <span className="ml-2 text-card-interior-whisper">{fmtAgo(latest.at)}</span>
             </p>
           ) : (
-            <p className="mono text-xs text-whisper italic">
+            <p className="font-sans text-sm text-card-interior-muted italic">
               No recent activity tracked.
             </p>
           )}
@@ -318,13 +318,13 @@ function CompanyCard({
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-1 rounded-sm transition-colors shrink-0"
+          className="font-sans text-xs px-2 py-1 rounded-sm transition-colors shrink-0"
           style={{
-            color: open ? "var(--readout-cyan)" : "var(--fg-prose-muted)",
+            color: open ? "var(--readout-cyan)" : "var(--card-interior-text)",
             border: "1px solid var(--rule)",
           }}
         >
-          {open ? "Show less ↑" : "Show more ↓"}
+          {open ? "show less ↑" : "show more ↓"}
         </button>
       </div>
 
@@ -335,12 +335,12 @@ function CompanyCard({
           style={{ borderTop: "1px solid var(--card-interior-rule)" }}
         >
           <section>
-            <h4 className="mono text-[10px] uppercase tracking-[0.18em] text-readout mb-2">
+            <h4 className="font-sans text-sm text-readout mb-2">
               Recent publications
-              <span className="text-whisper ml-2">(last 6mo)</span>
+              <span className="text-card-interior-whisper ml-2 text-xs">(last 6mo)</span>
             </h4>
             {detail.recentPublications.length === 0 ? (
-              <p className="mono text-xs text-whisper italic">
+              <p className="font-sans text-sm text-card-interior-muted italic">
                 None tracked in the last 6 months.
               </p>
             ) : (
@@ -348,7 +348,7 @@ function CompanyCard({
                 {detail.recentPublications.map((p) => (
                   <li
                     key={p.id}
-                    className="mono text-xs text-muted leading-relaxed"
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
                   >
                     <span aria-hidden className="mr-1">
                       {pubIcon(p.type)}
@@ -357,11 +357,11 @@ function CompanyCard({
                       href={p.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-ink hover:text-readout underline decoration-dotted underline-offset-4"
+                      className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
                     >
                       {p.title}
                     </a>
-                    <span className="ml-2 text-whisper">
+                    <span className="ml-2 text-card-interior-whisper text-xs">
                       {fmtAgo(p.publishedAt)}
                     </span>
                   </li>
@@ -371,16 +371,16 @@ function CompanyCard({
           </section>
 
           <section>
-            <h4 className="mono text-[10px] uppercase tracking-[0.18em] text-readout mb-2">
+            <h4 className="font-sans text-sm text-readout mb-2">
               Open roles
               {detail.openRoleCount > 0 && (
-                <span className="text-whisper ml-2">
+                <span className="text-card-interior-whisper ml-2 text-xs">
                   ({detail.openRoleCount})
                 </span>
               )}
             </h4>
             {detail.openRoles.length === 0 ? (
-              <p className="mono text-xs text-whisper italic">
+              <p className="font-sans text-sm text-card-interior-muted italic">
                 No open roles tracked.
               </p>
             ) : (
@@ -388,18 +388,18 @@ function CompanyCard({
                 {detail.openRoles.map((r) => (
                   <li
                     key={r.id}
-                    className="mono text-xs text-muted leading-relaxed"
+                    className="font-sans text-sm text-card-interior-text leading-relaxed"
                   >
                     <a
                       href={r.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-ink hover:text-readout underline decoration-dotted underline-offset-4"
+                      className="text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
                     >
                       {r.title}
                     </a>
                     {(r.department || r.location) && (
-                      <span className="ml-2 text-whisper">
+                      <span className="ml-2 text-card-interior-whisper text-xs">
                         {[r.department, r.location].filter(Boolean).join(" · ")}
                       </span>
                     )}
@@ -412,7 +412,7 @@ function CompanyCard({
           <section className="md:col-span-2 flex items-center gap-4 pt-1 flex-wrap">
             <Link
               href={`/companies/${c.slug}`}
-              className="mono text-xs uppercase tracking-[0.16em] px-3 py-1.5 rounded-sm"
+              className="font-sans text-sm px-3 py-1.5 rounded-sm"
               style={{
                 color: "var(--readout-cyan)",
                 border: "1px solid var(--readout-cyan)",
@@ -422,13 +422,13 @@ function CompanyCard({
               Fit-note + notes →
             </Link>
             {detail.hasFitNote && (
-              <span className="mono text-[10px] uppercase tracking-[0.16em] text-readout">
+              <span className="font-sans text-xs text-readout">
                 ✦ Fit-note ready
               </span>
             )}
             <Link
               href={`/companies/${c.slug}#notes`}
-              className="mono text-[10px] uppercase tracking-[0.16em] text-muted hover:text-readout underline decoration-dotted underline-offset-4"
+              className="font-sans text-xs text-card-interior-text hover:text-readout underline decoration-dotted underline-offset-4"
             >
               Leave a note
             </Link>
