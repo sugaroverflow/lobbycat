@@ -30,10 +30,10 @@ export default async function LoginPage({
     <main className="min-h-screen flex flex-col items-center justify-center px-6 bg-bg">
       <div className="max-w-sm w-full">
         <div className="eyebrow mb-6">Locked</div>
-        <div className="serif text-3xl text-ink tracking-tight flex items-center">
+        <div className="font-sans text-3xl text-ink tracking-tight flex items-center">
           <Wordmark size={40} />
         </div>
-        <p className="serif text-base text-muted mt-3">
+        <p className="font-sans text-base text-muted mt-3">
           A quiet dashboard. Password, please.
         </p>
         <form action={login} className="mt-8 space-y-3">
@@ -51,7 +51,7 @@ export default async function LoginPage({
           )}
           <button
             type="submit"
-            className="mono text-xs uppercase tracking-[0.14em] w-full py-3 bg-ink text-white rounded-sm hover:bg-accent transition"
+            className="mono text-xs uppercase tracking-[0.14em] w-full py-3 rounded-sm bg-accent text-surface hover:bg-accent/85 transition"
           >
             Enter
           </button>

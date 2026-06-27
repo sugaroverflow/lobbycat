@@ -59,7 +59,7 @@ export default async function CompanyDetail({
               for contrast. Larger size (24px) to match the visual
               weight of the 5xl/6xl serif title. */}
           <div className="flex items-start gap-4">
-            <h1 className="serif text-5xl sm:text-6xl font-medium leading-[1] tracking-tight text-ink flex-1 min-w-0">
+            <h1 className="font-sans text-5xl sm:text-6xl font-medium leading-[1] tracking-tight text-ink flex-1 min-w-0">
               {company.name}
             </h1>
             <div className="shrink-0 pt-2">

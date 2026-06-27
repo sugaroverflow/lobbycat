@@ -32,7 +32,7 @@ export default async function FramesPage() {
     <SiteShell>
       <section className="max-w-[64rem] mx-auto px-6 pt-12 pb-24">
         <div className="eyebrow mb-3">Frames</div>
-        <h1 className="serif text-4xl font-medium text-ink tracking-tight">
+        <h1 className="font-sans text-4xl font-medium text-ink tracking-tight">
           The axes you think on.
         </h1>
 

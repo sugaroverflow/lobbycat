@@ -179,6 +179,35 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* ----------------------------------------------------------------------------
+ * Dashboard card (v0.8.2 design pass)
+ *
+ * Per REFACTOR-v0.7 §4.1 + §4.4: card frame stays full-vaporwave (cyan top
+ * + magenta side borders, the inline styles in dashboard-cards.tsx); this
+ * adds the calm-cousin *containment* the spec called for but v0.7.2 didn't
+ * fully land:
+ *   - subtle outer shadow so cards feel anchored against the void bg
+ *   - hover state brightens the side borders + adds a soft cyan glow so
+ *     the card reads as "alive" without going full theatre
+ * ------------------------------------------------------------------------- */
+.dashboard-card {
+  box-shadow:
+    0 1px 0 rgb(0 255 255 / 0.04),
+    0 0 24px rgb(0 0 0 / 0.45);
+  transition:
+    border-color 180ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+.dashboard-card:hover {
+  border-top-color: color-mix(in oklch, var(--readout-cyan) 100%, white 20%) !important;
+  border-left-color: color-mix(in oklch, var(--accent-action) 100%, white 15%) !important;
+  box-shadow:
+    0 1px 0 rgb(0 255 255 / 0.18),
+    0 0 28px rgb(0 255 255 / 0.10),
+    0 0 36px rgb(0 0 0 / 0.5);
+}
+
 /* Variant pill (Surprise modal, §5.1). */
 .variant-pill {
   display: inline-flex;

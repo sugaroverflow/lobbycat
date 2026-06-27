@@ -47,7 +47,7 @@ export default async function FavoritesPage() {
     return (
       <SiteShell>
         <div className="max-w-[64rem] mx-auto px-6 py-8">
-          <h1 className="serif text-2xl text-ink tracking-tight">Favorites</h1>
+          <h1 className="font-sans text-2xl text-ink tracking-tight">Favorites</h1>
           <div
             className="mt-4 px-5 py-4"
             style={{
@@ -78,7 +78,7 @@ export default async function FavoritesPage() {
   return (
     <SiteShell>
       <div className="max-w-[64rem] mx-auto px-6 pt-8">
-        <h1 className="serif text-2xl text-ink tracking-tight">Favorites</h1>
+        <h1 className="font-sans text-2xl text-ink tracking-tight">Favorites</h1>
       </div>
       <DashboardCards
         companies={favCompanies}

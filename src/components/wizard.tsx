@@ -175,7 +175,7 @@ function Step1Welcome({ onNext, replay }: { onNext: () => void; replay: boolean 
       />
       <div className="relative">
         <div className="eyebrow mb-3">{replay ? "Replaying" : "Welcome"}</div>
-        <h1 className="serif text-4xl sm:text-5xl text-prose tracking-tight">
+        <h1 className="font-sans text-4xl sm:text-5xl text-prose tracking-tight">
           Hi. I&apos;m lobbycat.
         </h1>
         <p className="mt-6 max-w-xl text-prose-soft leading-relaxed">
@@ -784,7 +784,7 @@ function StepCard({
       <div className="flex items-start justify-between gap-4">
         <div>
           <div className="eyebrow mb-2">{eyebrow}</div>
-          <h1 className="serif text-3xl sm:text-4xl text-prose tracking-tight">
+          <h1 className="font-sans text-3xl sm:text-4xl text-prose tracking-tight">
             {title}
           </h1>
           {subtitle && (

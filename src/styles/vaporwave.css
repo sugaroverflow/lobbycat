@@ -70,8 +70,12 @@
      * frame) uses a calmer subset so 70 stacked cards stay readable. No
      * glow inside, muted magenta/cyan accents, softer foreground.
      * ----------------------------------------------------------------- */
-    --card-interior-bg: #14102A;             /* between void & panel */
-    --card-interior-bg-sunk: #100C22;        /* nested wells inside cards */
+    /* v0.8.2 design pass: bumped from #14102A → #1C1438 to give the
+     * card body more separation from the page void (#090014). The old
+     * 5-lightness gap made cards blend in; this gives them a real
+     * "contained surface" feel without going full neon. */
+    --card-interior-bg: #1C1438;             /* between void & panel */
+    --card-interior-bg-sunk: #14102A;        /* nested wells inside cards */
     --card-interior-text: #E0DEF0;           /* softer than #E0E0E0 */
     --card-interior-text-muted: rgb(224 222 240 / 0.7);
     --card-interior-text-whisper: rgb(224 222 240 / 0.45);
