@@ -125,7 +125,7 @@ export function OnboardingOverlay() {
         <div className="px-8 pt-2 pb-6">
           <h2
             id="onboarding-title"
-            className="serif text-2xl sm:text-3xl font-medium leading-[1.1] tracking-tight text-ink"
+            className="font-sans text-2xl sm:text-3xl font-medium leading-[1.1] tracking-tight text-ink"
           >
             {meta.title}
           </h2>

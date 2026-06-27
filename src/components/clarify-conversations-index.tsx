@@ -59,7 +59,7 @@ export function ClarifyConversationsIndex({
   return (
     <section className="max-w-[42rem] mx-auto px-6 pb-24 pt-12">
       <div className="eyebrow mb-2">Conversations</div>
-      <h2 className="serif text-2xl font-medium text-ink tracking-tight">
+      <h2 className="font-sans text-2xl font-medium text-ink tracking-tight">
         Your clarify sessions
       </h2>
       <p className="serif text-sm text-muted mt-2 max-w-2xl">

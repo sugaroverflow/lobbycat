@@ -9,7 +9,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="min-h-screen flex flex-col bg-bg text-body">
       <header className="border-b border-rule">
         <div className="max-w-[64rem] mx-auto px-6 py-4 flex items-baseline justify-between">
-          <Link href="/" className="serif text-xl text-ink tracking-tight">
+          <Link href="/" className="font-sans text-xl text-ink tracking-tight">
             <Wordmark size={26} />
           </Link>
           <nav className="flex items-center gap-6 mono text-xs uppercase tracking-[0.14em] text-muted">

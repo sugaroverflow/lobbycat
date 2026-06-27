@@ -245,7 +245,7 @@ function CompanyCard({
     // edges. The body BG retargets to --card-interior-bg so 70 stacked
     // cards are readable. No glow inside.
     <article
-      className="relative"
+      className="dashboard-card relative"
       style={{
         background: "var(--card-interior-bg)",
         color: "var(--card-interior-text)",

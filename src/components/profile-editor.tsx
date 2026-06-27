@@ -87,7 +87,7 @@ export function ProfileEditor(initial: ProfileEditorProps) {
               edit
             </button>
           </div>
-          <h1 className="serif text-5xl font-medium text-ink tracking-tight leading-[1.05]">
+          <h1 className="font-sans text-5xl font-medium text-ink tracking-tight leading-[1.05]">
             {data.displayName}
           </h1>
         </header>

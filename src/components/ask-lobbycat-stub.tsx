@@ -68,7 +68,7 @@ export function AskLobbycatStub() {
                 className="block mx-auto"
               />
             </div>
-            <p className="serif text-lg text-ink mb-2">
+            <p className="font-sans text-lg text-ink mb-2">
               coming soon in v0.8 🪷
             </p>
             <p className="serif text-sm text-muted leading-relaxed mb-4">
