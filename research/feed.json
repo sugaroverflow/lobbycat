@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T19:39:31Z",
+  "lastUpdated": "2026-06-27T20:09:08Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -42,6 +42,13 @@
       "event_type": "controversy",
       "summary": "Backfill: Cohere — sued by a news-publisher coalition (Condé Nast, The Atlantic, Forbes, Guardian News & Media, LA Times, Politico, Insider, Newsday, McClatchy, Vox et al.) in S.D.N.Y. (Advance Local Media LLC et al. v. Cohere Inc., 1:25-cv-01305, filed 13 Feb 2025) for copyright infringement (training-data copying + RAG producing verbatim/substitutive summaries) and trademark infringement / false designation of origin over hallucinated articles shown with publishers' marks. On 13 Nov 2025 Judge McMahon DENIED Cohere's motion to dismiss; case ongoing, no merits ruling. Cohere has a London office; Guardian News & Media is a UK plaintiff.",
       "source_url": "https://www.courtlistener.com/docket/69636122/advance-local-media-llc-v-cohere-inc/"
+    },
+    {
+      "date": "2026-06-27",
+      "company_slug": "helsing",
+      "event_type": "controversy",
+      "summary": "Backfill: Helsing HX-2 loitering-munition setbacks in Ukraine — Bloomberg (19 Jan 2026, citing anonymous Ukrainian/German sources) reported Ukraine held off new HX-2 orders after alleged takeoff failures, missing AI flight-control capabilities and Russian-EW-induced loss of control; an Apr 2025 Bloomberg piece alleged overpriced/glitchy drones. Helsing disputed the report as misleading, citing active demand from six units. LAWS/defence-procurement-assurance relevance; London office. Alleged/disputed — no regulatory finding.",
+      "source_url": "https://www.bloomberg.com/news/articles/2026-01-19/ukraine-holds-off-on-new-helsing-drone-orders-after-setbacks"
     },
     {
       "date": "2026-06-26",
