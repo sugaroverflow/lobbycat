@@ -1,31 +1,46 @@
 {
   "slug": "xai-london",
-  "lastUpdated": "2026-06-27T10:47:00Z",
+  "lastUpdated": "2026-06-27T12:45:00Z",
   "blurb": "xAI is Elon Musk's frontier AI company (Grok models, integrated into X). London-relevant via UK regulatory exposure; increasingly significant for its US government/defence contracts and a major nonconsensual-imagery controversy.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 0,
+    "londonPolicyRoles": 1,
+    "lastChecked": "2026-06-27"
+  },
   "publications": [
     {
       "date": "2025-12-22",
-      "title": "Supporting the DoW's mission with AI (xAI \u00d7 US Department of War / CDAO partnership)",
+      "title": "Supporting the DoW's mission with AI (xAI × US Department of War / CDAO partnership)",
       "url": "https://x.ai/news/us-gov-dept-of-war",
       "type": "blog",
       "byline": null,
       "summary": "xAI announces a partnership bringing its Grok-family frontier models to the US Department of War's Chief Digital and AI Office (CDAO) via the GenAI.mil platform at Impact Level 5 (secure CUI handling), with initial deployment targeted for early 2026 — part of xAI's push into government/defence alongside a $200M DoD ceiling contract and GSA-schedule availability."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Legal Counsel",
+      "location": "London, UK",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/5032210007",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [
     {
       "type": "regulatory_action",
-      "title": "Grok nonconsensual intimate imagery (NCII) \u2014 multi-jurisdiction investigations and bans; xAI restricts image editing",
+      "title": "Grok nonconsensual intimate imagery (NCII) — multi-jurisdiction investigations and bans; xAI restricts image editing",
       "url": "https://www.cnbc.com/2026/01/14/musk-xai-blocks-grok-chatbot-from-creating-sexualized-images-of-people.html",
       "occurredAt": "2026-01-14",
       "status": "ongoing",
       "severity": "high",
       "companyRole": "investigated entity",
-      "summary": "In January 2026, after weeks of backlash, xAI restricted Grok's ability to generate sexualized images of real people on X ('editing of images of real people in revealing clothing such as bikinis'), applying the limit to all users including paid subscribers. The restriction followed widespread criticism that Grok let users easily generate nonconsensual sexual and violent images from real photos. The California Attorney General (Rob Bonta) opened an investigation into xAI's 'large-scale production of deepfake nonconsensual intimate images', and Governor Newsom publicly condemned it (including images that digitally undress children). Regulatory probes were announced in the UK, EU (European Commission), India, Ireland, France and Australia; Indonesia and Malaysia issued temporary bans on Grok. US senators called on Apple and Google over app-store availability. Reported as alleged/ongoing \u2014 no final findings yet at time of logging.",
+      "summary": "In January 2026, after weeks of backlash, xAI restricted Grok's ability to generate sexualized images of real people on X ('editing of images of real people in revealing clothing such as bikinis'), applying the limit to all users including paid subscribers. The restriction followed widespread criticism that Grok let users easily generate nonconsensual sexual and violent images from real photos. The California Attorney General (Rob Bonta) opened an investigation into xAI's 'large-scale production of deepfake nonconsensual intimate images', and Governor Newsom publicly condemned it (including images that digitally undress children). Regulatory probes were announced in the UK, EU (European Commission), India, Ireland, France and Australia; Indonesia and Malaysia issued temporary bans on Grok. US senators called on Apple and Google over app-store availability. Reported as alleged/ongoing — no final findings yet at time of logging.",
       "topics": [
         "nonconsensual_intimate_imagery",
         "deepfakes",
@@ -33,7 +48,7 @@
         "online_safety",
         "content_moderation"
       ],
-      "rawExcerpt": "We have implemented technological measures to prevent the Grok account from allowing the editing of images of real people in revealing clothing such as bikinis. This restriction applies to all users, including paid subscribers. \u2014 xAI, via the X Safety account",
+      "rawExcerpt": "We have implemented technological measures to prevent the Grok account from allowing the editing of images of real people in revealing clothing such as bikinis. This restriction applies to all users, including paid subscribers. — xAI, via the X Safety account",
       "corroboration": [
         {
           "outlet": "CNBC",
@@ -56,5 +71,5 @@
     }
   ],
   "news": [],
-  "notes": "Harvested 2026-06-27 via web_search + web_fetch after x.ai hard-Cloudflare-blocked the headless browser ('Attention Required' firewall). x.ai/news itself is gated, but the company's news URLs and the controversy are well-documented by PRIMARY/named sources: the Grok NCII story is verified from CNBC (2026-01-14, full text fetched), with corroboration from the Canadian Privacy Commissioner's published PIPEDA findings and a US Senate letter \u2014 this is the same Ofcom-Grok lead I flagged this morning as single-source/NOT-logged, now cross-confirmed by multiple primaries and properly attribution-checked (xAI is the named subject). The DoW/government partnership date (2025-12-22) is from xAI's own news URL + corroborated by war.gov and DefenseScoop. xAI's GSA/$200M-DoD context dates to July 2025. Severity high (multiple regulator investigations + national bans landed); status ongoing (no final findings). Recommend swapping in live first-party x.ai deep-links once a Cloudflare-capable fetch path exists."
+  "notes": "Harvested 2026-06-27 via web_search + web_fetch after x.ai hard-Cloudflare-blocked the headless browser ('Attention Required' firewall). x.ai/news itself is gated, but the company's news URLs and the controversy are well-documented by PRIMARY/named sources: the Grok NCII story is verified from CNBC (2026-01-14, full text fetched), with corroboration from the Canadian Privacy Commissioner's published PIPEDA findings and a US Senate letter — this is the same Ofcom-Grok lead I flagged this morning as single-source/NOT-logged, now cross-confirmed by multiple primaries and properly attribution-checked (xAI is the named subject). The DoW/government partnership date (2025-12-22) is from xAI's own news URL + corroborated by war.gov and DefenseScoop. xAI's GSA/$200M-DoD context dates to July 2025. Severity high (multiple regulator investigations + national bans landed); status ongoing (no final findings). Recommend swapping in live first-party x.ai deep-links once a Cloudflare-capable fetch path exists. ROLES (2026-06-27 ATS): Legal Counsel (London) open. NB dropped a 'Legal & Compliance Tutor — Remote' result as a data-labelling/RLHF gig, not a policy role (runbook false-positive guard)."
 }

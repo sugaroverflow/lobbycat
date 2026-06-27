@@ -1,17 +1,17 @@
 {
-  "generated": "2026-06-27T09:07:23.778Z",
+  "generated": "2026-06-27T12:46:35.723Z",
   "date": "2026-06-27",
   "summary": {
-    "companies": 15,
-    "reachable": 15,
-    "totalPolicyRoles": 90,
-    "londonRoles": 27,
-    "newSincePrevious": 11
+    "companies": 13,
+    "reachable": 13,
+    "totalPolicyRoles": 89,
+    "londonRoles": 26,
+    "newSincePrevious": 10
   },
   "perCompany": {
     "anthropic-london": {
       "ats": "greenhouse",
-      "totalJobs": 399,
+      "totalJobs": 398,
       "policyRoles": 32,
       "londonRoles": 10
     },
@@ -51,13 +51,13 @@
       "policyRoles": 0,
       "londonRoles": 0
     },
-    "cohere-london": {
+    "cohere": {
       "ats": "ashby",
       "totalJobs": 131,
       "policyRoles": 2,
       "londonRoles": 0
     },
-    "faculty-ai": {
+    "faculty": {
       "ats": "ashby",
       "totalJobs": 74,
       "policyRoles": 3,
@@ -86,31 +86,9 @@
       "totalJobs": 222,
       "policyRoles": 9,
       "londonRoles": 2
-    },
-    "apollo-research": {
-      "ats": "lever",
-      "totalJobs": 13,
-      "policyRoles": 1,
-      "londonRoles": 1
-    },
-    "oliver-wyman-london": {
-      "ats": "lever",
-      "totalJobs": 2,
-      "policyRoles": 0,
-      "londonRoles": 0
     }
   },
   "roles": [
-    {
-      "slug": "anthropic-london",
-      "title": "Policy Counsel, EMEA",
-      "location": "Dublin, IE",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5233643008",
-      "matched": "policy",
-      "londonRelevant": true,
-      "geoHit": "dublin",
-      "isNew": true
-    },
     {
       "slug": "anthropic-london",
       "title": "Policy Counsel, EMEA",
@@ -122,17 +100,17 @@
       "isNew": true
     },
     {
-      "slug": "apollo-research",
-      "title": "Governance Researcher (Expression of Interest)",
-      "location": "London & San Francisco",
-      "url": "https://jobs.lever.co/apolloresearch/c7377abe-39ac-4712-8d2f-b048f363480a",
-      "matched": "governance",
+      "slug": "anthropic-london",
+      "title": "Policy Counsel, EMEA",
+      "location": "Dublin, IE",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5233643008",
+      "matched": "policy",
       "londonRelevant": true,
-      "geoHit": "london",
+      "geoHit": "dublin",
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
+      "slug": "faculty",
       "title": "Principal Research Scientist - AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/6ad13f20-8a65-454f-b7c7-4d5260f306bf",
@@ -142,7 +120,7 @@
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
+      "slug": "faculty",
       "title": "Technical Director of AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/7e726de6-6327-40cd-a00d-0e9be34e1cb4",
@@ -152,7 +130,7 @@
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
+      "slug": "faculty",
       "title": "Senior Research Scientist - AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/fd99c104-65b4-4fca-b68e-0ab9170da31f",
@@ -194,21 +172,21 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, EMEA",
-      "location": "Dublin, IE",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142971008",
-      "matched": "counsel",
-      "londonRelevant": true,
-      "geoHit": "dublin",
-      "isNew": false
-    },
-    {
-      "slug": "anthropic-london",
-      "title": "Commercial Counsel, EMEA",
       "location": "London, UK",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142966008",
       "matched": "counsel",
       "londonRelevant": true,
       "geoHit": "london",
+      "isNew": false
+    },
+    {
+      "slug": "anthropic-london",
+      "title": "Commercial Counsel, EMEA",
+      "location": "Dublin, IE",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142971008",
+      "matched": "counsel",
+      "londonRelevant": true,
+      "geoHit": "dublin",
       "isNew": false
     },
     {
@@ -402,7 +380,7 @@
       "isNew": true
     },
     {
-      "slug": "cohere-london",
+      "slug": "cohere",
       "title": "Senior Counsel, Product and Technology",
       "location": "United States",
       "url": "https://jobs.ashbyhq.com/cohere/af2d7052-176a-49f0-89d1-82cf608105e7",
@@ -412,7 +390,7 @@
       "isNew": true
     },
     {
-      "slug": "cohere-london",
+      "slug": "cohere",
       "title": "Counsel, Privacy and AI Regulation (EU)",
       "location": "Germany",
       "url": "https://jobs.ashbyhq.com/cohere/d81c28f5-2945-4c49-bc5b-86e345334cfb",
@@ -1006,16 +984,6 @@
     {
       "slug": "anthropic-london",
       "title": "Policy Counsel, EMEA",
-      "location": "Dublin, IE",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5233643008",
-      "matched": "policy",
-      "londonRelevant": true,
-      "geoHit": "dublin",
-      "isNew": true
-    },
-    {
-      "slug": "anthropic-london",
-      "title": "Policy Counsel, EMEA",
       "location": "London, UK",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5233645008",
       "matched": "policy",
@@ -1024,17 +992,17 @@
       "isNew": true
     },
     {
-      "slug": "apollo-research",
-      "title": "Governance Researcher (Expression of Interest)",
-      "location": "London & San Francisco",
-      "url": "https://jobs.lever.co/apolloresearch/c7377abe-39ac-4712-8d2f-b048f363480a",
-      "matched": "governance",
+      "slug": "anthropic-london",
+      "title": "Policy Counsel, EMEA",
+      "location": "Dublin, IE",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5233643008",
+      "matched": "policy",
       "londonRelevant": true,
-      "geoHit": "london",
+      "geoHit": "dublin",
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
+      "slug": "faculty",
       "title": "Principal Research Scientist - AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/6ad13f20-8a65-454f-b7c7-4d5260f306bf",
@@ -1044,7 +1012,7 @@
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
+      "slug": "faculty",
       "title": "Technical Director of AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/7e726de6-6327-40cd-a00d-0e9be34e1cb4",
@@ -1054,7 +1022,7 @@
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
+      "slug": "faculty",
       "title": "Senior Research Scientist - AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/fd99c104-65b4-4fca-b68e-0ab9170da31f",
@@ -1094,7 +1062,7 @@
       "isNew": true
     },
     {
-      "slug": "cohere-london",
+      "slug": "cohere",
       "title": "Senior Counsel, Product and Technology",
       "location": "United States",
       "url": "https://jobs.ashbyhq.com/cohere/af2d7052-176a-49f0-89d1-82cf608105e7",
@@ -1104,7 +1072,7 @@
       "isNew": true
     },
     {
-      "slug": "cohere-london",
+      "slug": "cohere",
       "title": "Counsel, Privacy and AI Regulation (EU)",
       "location": "Germany",
       "url": "https://jobs.ashbyhq.com/cohere/d81c28f5-2945-4c49-bc5b-86e345334cfb",

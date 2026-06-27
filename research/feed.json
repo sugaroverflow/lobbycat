@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T10:50:06Z",
+  "lastUpdated": "2026-06-27T12:45:00Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -7,6 +7,13 @@
       "event_type": "role",
       "summary": "New policy/governance opening: Governance Researcher (Expression of Interest), London & San Francisco. Apollo Research (AI-safety evals org) surfaced via the roles lens (public ATS feed); London-relevant. First feed entry for this org.",
       "source_url": "https://jobs.lever.co/apolloresearch/c7377abe-39ac-4712-8d2f-b048f363480a"
+    },
+    {
+      "date": "2026-06-27",
+      "company_slug": "faculty-ai",
+      "event_type": "role",
+      "summary": "Faculty building a London AI-Safety team: Technical Director of AI Safety + Principal & Senior AI-Safety Research Scientists open simultaneously (UK-London). Standing up dedicated AI-safety muscle at a major UK gov-AI vendor — a 'building muscle' signal.",
+      "source_url": "https://jobs.ashbyhq.com/faculty/7e726de6-6327-40cd-a00d-0e9be34e1cb4"
     },
     {
       "date": "2026-06-26",

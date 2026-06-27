@@ -1,10 +1,25 @@
 {
   "slug": "helsing",
-  "lastUpdated": "2026-06-27T10:12:00Z",
+  "lastUpdated": "2026-06-27T12:45:00Z",
   "blurb": "Helsing is a European defence-AI company building software and increasingly hardware (autonomous aircraft, strike drones, robotics) for military applications, with a strong 'European sovereignty' framing.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 0,
+    "londonPolicyRoles": 1,
+    "lastChecked": "2026-06-27"
+  },
   "publications": [],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Legal Counsel",
+      "location": "London",
+      "url": "https://helsing.ai/jobs/4842894101?gh_jid=4842894101",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
@@ -24,5 +39,5 @@
       "summary": "Partnership with EURENCO to build a 'sovereign European' strike-drone capability — ties autonomous-weapons development to European strategic-autonomy / defence-sovereignty policy."
     }
   ],
-  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (helsing.ai/newsroom passed cleanly; untested by web_fetch this morning). Dates confirmed from each article's own 'Press Release DD. Mon. YYYY' header. Selected the two items with the strongest AI-policy signal (autonomous combat aircraft; sovereign European strike drones) as defence-AI / LAWS / European-sovereignty signals. Other dated newsroom items exist (OHB/Helsing space JVs 'KIRK'/'Alliance for Europe's Space Sector', RX-1 robotics platform, Stockholm office, CCO/CFO appointments) but are corporate/personnel rather than policy — left as leads, not logged, to keep signal high. Newsroom listing links wrapped images with no inline text on re-query, so dates were read from individual article headers rather than the index."
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (helsing.ai/newsroom passed cleanly; untested by web_fetch this morning). Dates confirmed from each article's own 'Press Release DD. Mon. YYYY' header. Selected the two items with the strongest AI-policy signal (autonomous combat aircraft; sovereign European strike drones) as defence-AI / LAWS / European-sovereignty signals. Other dated newsroom items exist (OHB/Helsing space JVs 'KIRK'/'Alliance for Europe's Space Sector', RX-1 robotics platform, Stockholm office, CCO/CFO appointments) but are corporate/personnel rather than policy — left as leads, not logged, to keep signal high. Newsroom listing links wrapped images with no inline text on re-query, so dates were read from individual article headers rather than the index. ROLES (2026-06-27 ATS): Legal Counsel (London) open at the defence-AI firm."
 }

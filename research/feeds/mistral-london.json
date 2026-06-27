@@ -1,8 +1,13 @@
 {
   "slug": "mistral-london",
-  "lastUpdated": "2026-06-27T10:12:00Z",
+  "lastUpdated": "2026-06-27T12:45:00Z",
   "blurb": "Mistral AI is a European frontier AI lab (open-weight and commercial LLMs, assistants, agents) headquartered in Paris with UK/London commercial presence, often cited in European AI-sovereignty discussions.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 0,
+    "londonPolicyRoles": 2,
+    "lastChecked": "2026-06-27"
+  },
   "publications": [
     {
       "date": "2026-05-28",
@@ -13,10 +18,29 @@
       "summary": "Mistral's AI Now Summit 2026 — a company event framed around AI 'innovations for global enterprises'; relevant as a European-frontier-lab convening signal rather than a pure product launch."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Privacy Legal Counsel",
+      "location": "Paris (EMEA)",
+      "url": "https://jobs.lever.co/mistral/25e20280-bdd6-4dee-9857-9247aeac0067",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    },
+    {
+      "title": "Product Regulatory Legal Counsel (EU)",
+      "location": "Paris (EMEA)",
+      "url": "https://jobs.lever.co/mistral/6366e859-3a0f-44ed-9578-629a04c77e3c",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
   "news": [],
-  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (mistral.ai/news passed cleanly; untested by web_fetch this morning). Mistral's news feed is overwhelmingly product/model launches (OCR 4 'June 23 2026', connectors 'June 24 2026', Vibe agent, Search Toolkit) — low policy signal. Logged only the AI Now Summit (convening/positioning signal) with its inline date 'May 28, 2026'. Omitted the product launches per SOUL signal discipline. As a European frontier lab, Mistral is worth watching for sovereignty/EU-AI-Act positioning; will log policy submissions or named-author governance posts if/when they appear."
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (mistral.ai/news passed cleanly; untested by web_fetch this morning). Mistral's news feed is overwhelmingly product/model launches (OCR 4 'June 23 2026', connectors 'June 24 2026', Vibe agent, Search Toolkit) — low policy signal. Logged only the AI Now Summit (convening/positioning signal) with its inline date 'May 28, 2026'. Omitted the product launches per SOUL signal discipline. As a European frontier lab, Mistral is worth watching for sovereignty/EU-AI-Act positioning; will log policy submissions or named-author governance posts if/when they appear. ROLES (2026-06-27 ATS): Mistral is hiring a sizeable EMEA legal bench (8 counsel roles, Paris). Logged the two with the clearest policy/regulatory remit — Privacy Legal Counsel and Product Regulatory Legal Counsel (EU) — as EU-AI-Act/privacy signal; omitted the M&A/banking/compute commercial-counsel roles as non-policy."
 }
