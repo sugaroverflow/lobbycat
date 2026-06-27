@@ -1,6 +1,6 @@
 {
   "slug": "stability-ai",
-  "lastUpdated": "2026-06-24T21:05:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "London-based image-generation lab. Subject of the first major UK court ruling on copyright/trademark and generative AI — Getty Images v Stability AI (High Court, Nov 2025), a mixed result it largely prevailed in.",
   "hiring": {
     "isHiring": null,
@@ -44,5 +44,13 @@
     }
   ],
   "notes": "Worked example for controversy-scope.md (2026-06-24). Attribution checks passed: (1) named-party — Stability AI Ltd is the defendant, not a passing mention; (2) primary-source — official judiciary.uk judgment + PDF, neutral citation [2025] EWHC 2863 (Ch); (3) same-entity — Stability AI Ltd, the Stable Diffusion maker, matches seed slug stability-ai. Tone test: summary refuses to oversimplify 'who won' — it states the dropped training claim, the secondary-infringement win, AND the limited trademark loss, because the honest read is mixed. Related prior interlocutory rulings on BAILII if the table ever wants case history: [2025] EWHC 109 (Ch), [2025] EWCA Civ 749, [2023] EWHC 3090 (Ch).",
-  "news": []
+  "news": [
+    {
+      "date": "2025-03-01",
+      "title": "WPP strategic investment and partnership integrating Stability's visual-media models",
+      "url": "https://stability.ai/news",
+      "source": "news",
+      "summary": "WPP announced a strategic investment and partnership integrating Stability's visual-media models into WPP's creative platforms (March 2025) — a major ad-industry adoption of generative-image models, landing against the backdrop of Stability's Getty copyright litigation. First-party news index linked; corroborated via public records."
+    }
+  ]
 }

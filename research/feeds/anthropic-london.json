@@ -1,6 +1,6 @@
 {
   "slug": "anthropic-london",
-  "lastUpdated": "2026-06-26T16:59:46Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "One significant headline-level signal this run: a US government export-control directive reportedly suspending access to Anthropic's Fable 5 and Mythos 5 models (announced Jun 12). Full text not captured — Anthropic's RSS feeds 404'd, so this is title-only pending a clean read.",
   "hiring": {
     "isHiring": true,
@@ -113,6 +113,35 @@
   "filings": [],
   "leadership": [],
   "notes": "[source feed broken] Seed blogRssUrl https://www.anthropic.com/news/rss.xml returns 404; https://www.anthropic.com/rss.xml also 404. Only https://www.anthropic.com/news (HTML) resolves, and readability captured a single item. Needs a working feed URL or a direct article URL. Flag to Techie for the ingestion pipeline (src/lib/rss). Until fixed, Anthropic coverage is degraded to headline-scraping.",
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-12",
+      "title": "Statement on the US government directive to suspend access to Fable 5 and Mythos 5",
+      "url": "https://www.anthropic.com/news/fable-mythos-access",
+      "source": "company_press",
+      "summary": "Anthropic responds to a US government export-control directive suspending all access to its Fable 5 and Mythos 5 models — a notable instance of frontier-model export controls hitting a specific company, and the first-party counterpart to the headline-only item logged earlier today."
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Results from the first Anthropic Public Record",
+      "url": "https://www.anthropic.com/news/anthropic-public-record",
+      "source": "company_press",
+      "summary": "Anthropic publishes results from its first Public Record — a transparency/governance exercise worth watching as a model for how labs document their own conduct."
+    },
+    {
+      "date": "2026-06-11",
+      "title": "Introducing Claude Corps",
+      "url": "https://www.anthropic.com/news/claude-corps",
+      "source": "company_press",
+      "summary": "A national fellowship for people early in their careers — an AI-workforce/talent-pipeline move with public-policy framing."
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Anthropic opens Seoul office and announces new Korean AI partnerships",
+      "url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem",
+      "source": "company_press",
+      "summary": "Anthropic expands into South Korea — part of its international government/ecosystem footprint relevant to where frontier labs are placing policy bets."
+    }
+  ],
   "controversies": []
 }

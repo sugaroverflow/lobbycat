@@ -1,6 +1,6 @@
 {
   "slug": "ada-lovelace-institute",
-  "lastUpdated": "2026-06-26T17:00:49Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "Independent UK research institute on data & AI for people and society (part of the Nuffield Foundation). Strong named-author publication output across AI law/policy, public-sector AI, and public participation.",
   "hiring": {},
   "publications": [
@@ -41,6 +41,28 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-15",
+      "title": "Ada Lovelace Institute response to social media ban for under-16s",
+      "url": "https://www.adalovelaceinstitute.org/press-release/response-social-media-ban/",
+      "source": "org_news",
+      "summary": "Ada responds to the UK government's announced ban on social media for under-16s and restrictions on harmful features — part of the June 2026 cluster of cross-sector online-safety policy responses."
+    },
+    {
+      "date": "2026-05-21",
+      "title": "Young people urge government to establish age-specific protections for online spaces",
+      "url": "https://www.adalovelaceinstitute.org/press-release/young-people-peer-research/",
+      "source": "org_news",
+      "summary": "New peer-research (part of the Nuffield Foundation's 'Grown up?' programme) in which young people call for age-specific online protections to safeguard future generations."
+    },
+    {
+      "date": "2026-05-11",
+      "title": "Policymakers must apply higher standards of evidence to claims about AI and public sector productivity",
+      "url": "https://www.adalovelaceinstitute.org/press-release/ai-public-sector-productivity/",
+      "source": "org_news",
+      "summary": "Ada argues policymakers should demand higher evidentiary standards before accepting claims that AI boosts public-sector productivity — a characteristically evidence-first intervention into the gov-AI-efficiency narrative."
+    }
+  ],
   "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
 }

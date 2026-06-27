@@ -1,6 +1,6 @@
 {
   "slug": "aisi",
-  "lastUpdated": "2026-06-26T17:00:49Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "The UK AI Security Institute (formerly AI Safety Institute) — government body running frontier-model evaluations (cyber/chem/bio/agent) and publishing safety-framework and safety-case research. High-signal, named-author technical-policy output.",
   "hiring": {},
   "publications": [
@@ -41,6 +41,42 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-18",
+      "title": "Releasing AISI's Engineering Playbook",
+      "url": "https://www.aisi.gov.uk/blog/releasing-aisis-engineering-playbook",
+      "source": "org_news",
+      "summary": "The UK AI Security Institute releases its Engineering Playbook — a look at how the state's frontier-AI evaluation body actually builds its testing infrastructure."
+    },
+    {
+      "date": "2026-06-08",
+      "title": "RealityTest: Do AI systems disclose their identity when asked?",
+      "url": "https://www.aisi.gov.uk/blog/realitytest-do-ai-systems-disclose-their-identity-when-asked",
+      "source": "org_news",
+      "summary": "AISI evaluation probing whether AI systems disclose that they are AI when asked — directly relevant to transparency/disclosure rules and the bot-identification debate."
+    },
+    {
+      "date": "2026-05-25",
+      "title": "Deepening our partnership with the Australian AI Safety Institute",
+      "url": "https://www.aisi.gov.uk/blog/deepening-our-partnership-with-the-australian-ai-safety-institute",
+      "source": "org_news",
+      "summary": "AISI deepens ties with Australia's AI Safety Institute — part of the emerging international network of state AI-safety bodies coordinating evaluations."
+    },
+    {
+      "date": "2026-05-13",
+      "title": "How fast is autonomous AI cyber capability advancing?",
+      "url": "https://www.aisi.gov.uk/blog/how-fast-is-autonomous-ai-cyber-capability-advancing",
+      "source": "org_news",
+      "summary": "AISI finds the length of tasks frontier models can autonomously complete in its cyber suite has been doubling every few months, with the doubling rate accelerating — a concrete capability-trend signal feeding the cyber-risk policy debate."
+    },
+    {
+      "date": "2026-05-05",
+      "title": "Partnering with Microsoft to strengthen frontier AI safety",
+      "url": "https://www.aisi.gov.uk/blog/partnering-with-microsoft-to-strengthen-frontier-ai-safety",
+      "source": "org_news",
+      "summary": "AISI partners with Microsoft on frontier-AI safety — a state-evaluator/industry collaboration worth watching for how government testing bodies work with the labs they assess."
+    }
+  ],
   "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
 }

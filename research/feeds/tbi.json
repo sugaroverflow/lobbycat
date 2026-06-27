@@ -1,6 +1,6 @@
 {
   "slug": "tbi",
-  "lastUpdated": "2026-06-27T09:20:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "The Tony Blair Institute for Global Change is a UK-founded policy advisory organisation that publishes prolifically on AI in government, public services, and geopolitics, generally arguing for aggressive state adoption of AI.",
   "hiring": {},
   "publications": [
@@ -57,6 +57,14 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-10",
+      "title": "Technological Disruption Is Inevitable. British Prosperity Is Not.",
+      "url": "https://institute.global/insights/tech-and-digitalisation/technological-disruption-is-inevitable-british-prosperity-is-not",
+      "source": "org_news",
+      "summary": "TBI commentary arguing the UK must embrace risk and innovation to secure its future amid technological disruption or risk falling behind — characteristic TBI pro-tech-adoption framing on national AI/tech strategy."
+    }
+  ],
   "notes": "Harvested from institute.global sitemap.xml (200 OK, browser UA). Sitemap lastmod values are crawl timestamps (mostly 2026-06-23); used each page's JSON-LD datePublished as the true publication date instead. TBI is prolific on AI policy; selected six recent, high-signal, clearly AI-focused insights with confirmed datePublished + author. No controversies found where TBI is a named legal/regulatory party. No first-party press-release feed parsed."
 }

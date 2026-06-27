@@ -1,6 +1,6 @@
 {
   "slug": "xai-london",
-  "lastUpdated": "2026-06-27T12:45:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "xAI is Elon Musk's frontier AI company (Grok models, integrated into X). London-relevant via UK regulatory exposure; increasingly significant for its US government/defence contracts and a major nonconsensual-imagery controversy.",
   "hiring": {
     "isHiring": true,
@@ -70,6 +70,14 @@
       "attributionChecked": true
     }
   ],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-22",
+      "title": "Grok 4.3 available on Amazon Bedrock",
+      "url": "https://x.ai/news",
+      "source": "company_press",
+      "summary": "xAI brings Grok 4.3 to general availability on Amazon Bedrock (1M-token context, configurable reasoning) — an enterprise-distribution move that widens Grok's reach into regulated AWS environments, notable given the concurrent regulatory scrutiny of Grok. First-party news index linked."
+    }
+  ],
   "notes": "Harvested 2026-06-27 via web_search + web_fetch after x.ai hard-Cloudflare-blocked the headless browser ('Attention Required' firewall). x.ai/news itself is gated, but the company's news URLs and the controversy are well-documented by PRIMARY/named sources: the Grok NCII story is verified from CNBC (2026-01-14, full text fetched), with corroboration from the Canadian Privacy Commissioner's published PIPEDA findings and a US Senate letter — this is the same Ofcom-Grok lead I flagged this morning as single-source/NOT-logged, now cross-confirmed by multiple primaries and properly attribution-checked (xAI is the named subject). The DoW/government partnership date (2025-12-22) is from xAI's own news URL + corroborated by war.gov and DefenseScoop. xAI's GSA/$200M-DoD context dates to July 2025. Severity high (multiple regulator investigations + national bans landed); status ongoing (no final findings). Recommend swapping in live first-party x.ai deep-links once a Cloudflare-capable fetch path exists. ROLES (2026-06-27 ATS): Legal Counsel (London) open. NB dropped a 'Legal & Compliance Tutor — Remote' result as a data-labelling/RLHF gig, not a policy role (runbook false-positive guard)."
 }

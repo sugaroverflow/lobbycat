@@ -1,0 +1,42 @@
+{
+  "_comment": "Press/news harvest worklist 2026-06-27. Per-org candidate news/press/blog URLs. Worker tries them in order via the browser tool until one yields dated items.",
+  "batches": {
+    "b1-companies": [
+      {"slug": "anthropic-london", "urls": ["https://www.anthropic.com/news"]},
+      {"slug": "openai-london", "urls": ["https://openai.com/news/", "https://openai.com/blog"]},
+      {"slug": "cohere-london", "urls": ["https://cohere.com/blog", "https://cohere.com/blog/press"]},
+      {"slug": "mistral-london", "urls": ["https://mistral.ai/news"]},
+      {"slug": "stability-ai", "urls": ["https://stability.ai/news", "https://stability.ai/blog"]},
+      {"slug": "xai-london", "urls": ["https://x.ai/news"]}
+    ],
+    "b2-govregs": [
+      {"slug": "aisi", "urls": ["https://www.aisi.gov.uk/work", "https://www.aisi.gov.uk/blog"]},
+      {"slug": "i-dot-ai", "urls": ["https://ai.gov.uk/news", "https://ai.gov.uk"]},
+      {"slug": "ofcom-ai", "urls": ["https://www.ofcom.org.uk/news-centre/", "https://www.ofcom.org.uk/online-safety"]},
+      {"slug": "bank-of-england-ai", "urls": ["https://www.bankofengland.co.uk/news", "https://www.bankofengland.co.uk/news/speeches"]},
+      {"slug": "aria-safeguarded-ai", "urls": ["https://www.aria.org.uk/news/", "https://www.aria.org.uk/news-and-events/"]}
+    ],
+    "b3-thinktanks": [
+      {"slug": "tbi", "urls": ["https://www.institute.global/insights", "https://www.institute.global/press-releases"]},
+      {"slug": "odi", "urls": ["https://theodi.org/news-and-events/news/", "https://theodi.org/insights/"]},
+      {"slug": "govai", "urls": ["https://www.governance.ai/news", "https://www.governance.ai/research"]},
+      {"slug": "cltr", "urls": ["https://www.longtermresilience.org/news/", "https://www.longtermresilience.org/reports"]},
+      {"slug": "centre-for-future-generations", "urls": ["https://cfg.eu/news/", "https://cfg.eu/publications/"]}
+    ],
+    "b4-advocacy-academic": [
+      {"slug": "ada-lovelace-institute", "urls": ["https://www.adalovelaceinstitute.org/news/", "https://www.adalovelaceinstitute.org/blog/"]},
+      {"slug": "open-rights-group", "urls": ["https://www.openrightsgroup.org/press-releases/", "https://www.openrightsgroup.org/blog/"]},
+      {"slug": "connected-by-data", "urls": ["https://connectedbydata.org/news", "https://connectedbydata.org/updates"]},
+      {"slug": "public-law-project", "urls": ["https://publiclawproject.org.uk/latest/", "https://publiclawproject.org.uk/news/"]},
+      {"slug": "bbc-responsible-ai", "urls": ["https://www.bbc.co.uk/rd/blog", "https://www.bbc.co.uk/rd/articles"]}
+    ],
+    "b5-academic2": [
+      {"slug": "lse-ai-policy", "urls": ["https://www.lse.ac.uk/News/news-and-events", "https://blogs.lse.ac.uk/businessreview/"]},
+      {"slug": "oxford-internet-institute", "urls": ["https://www.oii.ox.ac.uk/news-events/news/", "https://www.oii.ox.ac.uk/news-events/"]},
+      {"slug": "bennett-cambridge", "urls": ["https://www.bennettinstitute.cam.ac.uk/blog/", "https://www.bennettinstitute.cam.ac.uk/news/"]},
+      {"slug": "royal-society-policy", "urls": ["https://royalsociety.org/news/", "https://royalsociety.org/blog/"]},
+      {"slug": "rusi-ai", "urls": ["https://www.rusi.org/news-and-comment/news", "https://www.rusi.org/explore-our-research/publications/commentary"]},
+      {"slug": "cetas", "urls": ["https://cetas.turing.ac.uk/cetas-news", "https://cetas.turing.ac.uk/publications"]}
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 {
   "slug": "ofcom-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "Ofcom is the UK regulator for communications services and the online safety regulator under the Online Safety Act.",
   "hiring": {},
   "publications": [
@@ -17,6 +17,14 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": null,
+      "title": "Online Safety Act: Ofcom moves into phased enforcement (illegal-harms and child-safety codes)",
+      "url": "https://www.ofcom.org.uk/online-safety/",
+      "source": "org_news",
+      "summary": "Ofcom, as Online Safety Act regulator, has moved into phased enforcement — illegal-harms codes (from March 2025) and child-safety codes (from July 2025) — and is preparing for new AI-relevant duties under the Crime and Policing Act and the Schools and Children's Wellbeing Act. Context for the Grok deepfake enforcement debate. Hub page; specific dates vary by code phase."
+    }
+  ],
   "notes": "Regulator/Online Safety Act site. Date 2024-12-16 from the page's og:published_time meta tag. The /online-safety/ index is a hub with no dated items; only the illegal harms statement carried a clear first-party publication date."
 }

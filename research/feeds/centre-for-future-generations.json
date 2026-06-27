@@ -1,6 +1,6 @@
 {
   "slug": "centre-for-future-generations",
-  "lastUpdated": "2026-06-27T09:16:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "The Centre for Future Generations (CFG), a European (EU-focused) think tank on the governance of emerging technologies including advanced AI, biotech and neurotech.",
   "hiring": {},
   "publications": [
@@ -33,6 +33,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2025-10-10",
+      "title": "Press Release: the RAISE trilemma",
+      "url": "https://cfg.eu/press-release-the-raise-trilemma/",
+      "source": "org_news",
+      "summary": "CFG critiques the EU's flagship 'CERN for AI' (RAISE) ambition, warning that without focus Europe's initiative could end up 'everything and nothing at once' — a sharp EU-AI-industrial-policy intervention."
+    },
+    {
+      "date": "2025-01-22",
+      "title": "CFG Board appoints Thomas Lingard as CEO",
+      "url": "https://cfg.eu/cfg-board-appoints-thomas-lingard-as-ceo/",
+      "source": "org_news",
+      "summary": "CFG names Thomas Lingard CEO (effective March 2025), bringing 25+ years in sustainability, innovation and policy — a leadership signal for the future-generations think tank."
+    }
+  ],
   "notes": "cfg.eu is Cloudflare-gated for direct curl page-body reads (Attention Required), and /publications/ 403s to curl. Sitemap XML (cfg.eu/post-sitemap.xml) fetched fine via curl; titles/dates/summaries confirmed via web_fetch of /publications/ which rendered the publications index. Dates are CFG's own publication dates (DD.MM.YYYY on the index). No first-party press-release feed distinct from publications; news empty. No legal/regulatory action against CFG found; controversies empty."
 }
