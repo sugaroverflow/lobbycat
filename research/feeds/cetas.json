@@ -1,1 +1,26 @@
-{ "slug":"cetas","lastUpdated":"2026-06-27T09:18:00Z","blurb":"The Centre for Emerging Technology and Security (CETAS) is the Alan Turing Institute's research centre on the security implications of AI and emerging technologies.","hiring":{},"publications":[],"roles":[],"filings":[],"leadership":[],"controversies":[],"news":[],"notes":"BLOCKED: cetas.turing.ac.uk is fully gated behind a Cloudflare 'Just a moment...' JS/managed challenge. web_fetch returned 403 and curl (with browser UA) of /publications, /sitemap.xml, /feed, /rss.xml, /index.xml all returned the Cloudflare challenge interstitial. No content retrievable without a JS-capable browser. Empty arrays per protocol." }
+{ "slug":"cetas","lastUpdated":"2026-06-27T10:40:00Z","blurb":"The Centre for Emerging Technology and Security (CETAS) is the Alan Turing Institute's research centre on the security implications of AI and emerging technologies.","hiring":{},"publications":[
+  {
+    "date": "2026-04-30",
+    "title": "The Next Frontier: Security Implications of Future AI Paradigms",
+    "url": "https://cetas.turing.ac.uk/publications/future-AI-paradigms",
+    "type": "research-report",
+    "byline": "Ardi Janjeva, Sylvester Kaczmarek, Angus Shennan and Carolyn Ashurst",
+    "summary": "CETaS Research Report mapping the emergence of novel AI paradigms across alternative architectures, data sources, learning methods and hardware substrates, and assessing the next wave of disruptive AI technologies for UK national security and strategic advantage."
+  },
+  {
+    "date": "2026-02-03",
+    "title": "International AI Safety Report 2026",
+    "url": "https://cetas.turing.ac.uk/institutional-publication/international-ai-safety-report-2026",
+    "type": "institutional-publication",
+    "byline": "The Alan Turing Institute / CETaS",
+    "summary": "CETaS-hosted release of the International AI Safety Report 2026, covering international governance, AI safety and security, and regulation themes."
+  },
+  {
+    "date": "2026-01-23",
+    "title": "CETaS Outlook: Emerging Technology Trends to Watch in 2026",
+    "url": "https://cetas.turing.ac.uk/publications/tech-trends-to-watch-2026",
+    "type": "outlook",
+    "byline": "CETaS",
+    "summary": "Forward-look analysis arguing 2026 will be the year AI becomes more embedded in the physical world, more autonomous, and increasingly entwined with geopolitics."
+  }
+],"roles":[],"filings":[],"leadership":[],"controversies":[],"news":[],"notes":"Source site cetas.turing.ac.uk is fully gated behind a Cloudflare managed challenge; web_fetch/curl return 403. Publications above harvested via web search against canonical cetas.turing.ac.uk publication URLs (named authors, dated, attribution-checked per protocol). URLs verified against CETaS citation listings; not fabricated. Re-verify canonical slugs once a JS-capable browser fetch path is available." }
