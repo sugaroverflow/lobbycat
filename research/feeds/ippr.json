@@ -6,7 +6,7 @@
   "publications": [
     {
       "date": "2024-03-27",
-      "title": "Transformed by AI: How generative artificial intelligence could affect work in the UK \u2013 and how to manage it",
+      "title": "Transformed by AI: How generative artificial intelligence could affect work in the UK – and how to manage it",
       "url": "https://www.ippr.org/articles/transformed-by-ai",
       "type": "paper",
       "byline": "Carsten Jung & Bhargav Srinivasa Desikan",
@@ -40,7 +40,7 @@
       "url": "https://www.ippr.org/media-office/up-to-8-million-uk-jobs-at-risk-from-ai-unless-government-acts-finds-ippr",
       "type": "press",
       "byline": null,
-      "summary": "IPPR press release accompanying the 'Transformed by AI' report. Describes a 'sliding doors' moment for the UK \u2013 huge job disruption or significant GDP gains depending on government policy \u2013 and outlines a first and second wave of generative AI adoption."
+      "summary": "IPPR press release accompanying the 'Transformed by AI' report. Describes a 'sliding doors' moment for the UK – huge job disruption or significant GDP gains depending on government policy – and outlines a first and second wave of generative AI adoption."
     }
   ],
   "notes": "Harvested from IPPR's own sitemap (https://www.ippr.org/sitemap.xml) and individual article pages. Dates taken from each page's visible meta date and JSON-LD datePublished (sitemap lastmod values were crawl times, e.g. 2026-06 for old pages, so they were ignored). Three AI/automation/future-of-work publications captured plus one first-party press release. IPPR publishes heavily on automation but most other AI-adjacent items are older blog/explainer/video content; only the most substantive, clearly AI-focused pieces were included. controversies, roles, filings, leadership left empty: no evidence IPPR is a named party in any legal/regulatory/named-investigation matter. No pages were blocked; all URLs fetched 200 with a browser UA."

@@ -1,0 +1,22 @@
+{
+  "slug": "i-dot-ai",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Incubator for AI (i.AI), a unit within DSIT building practical AI tools for the UK public sector such as Consult, Lex, Parlex, Redbox and Scout.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2025-10-23",
+      "title": "Redbox Reflections: 5 Key Lessons from Building (and Sunsetting) Our Government AI Chatbot",
+      "url": "https://ai.gov.uk/blogs/redbox-reflections-5-key-lessons-from-building-and-sunsetting-our-government-ai-chatbot/",
+      "type": "blog",
+      "byline": "Head of AI Engineering",
+      "summary": "i.AI reflects on lessons from Redbox, an AI chat/document tool used by 6,000+ civil servants, and its strategic decision to sunset it as enterprise tools like Copilot/Gemini matured."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "i.AI homepage and /our-work/government load via web_fetch; the /insights and /blogs index pages are JS-rendered (no extractable dated list via curl/readability). One dated blog post verified directly (23 Oct 2025). Project pages (Consult, Lex, Parlex, Redbox, Scout) describe work but carry no publication dates. CloudFront 403s on raw curl of some paths. No controversies where i.AI is a named legal party."
+}

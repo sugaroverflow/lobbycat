@@ -1,0 +1,38 @@
+{
+  "slug": "bbc-responsible-ai",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "BBC Research & Development, the BBC's technology research arm, including work on responsible AI, content provenance and trusted public-service media.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-03-20",
+      "title": "AI that the public can trust",
+      "url": "https://www.bbc.co.uk/rd/articles/2026-03-ai-public-trust",
+      "type": "blog",
+      "byline": null,
+      "summary": "BBC R&D argues trust, provenance and accountability must be built into AI-mediated media, framed around its '5Is' vision and the Responsible Innovation Centre."
+    },
+    {
+      "date": "2025-10-17",
+      "title": "Building a public interest approach to AI in the news",
+      "url": "https://www.bbc.co.uk/rd/articles/2025-10-journalism-ai-news-public-media",
+      "type": "blog",
+      "byline": null,
+      "summary": "BBC R&D's Responsible Innovation Centre sets out a five-area research agenda for AI and journalism, from evaluation to reaching young audiences."
+    },
+    {
+      "date": "2023-10-01",
+      "title": "Increasing trust in content: Media provenance and Project Origin",
+      "url": "https://www.bbc.co.uk/rd/articles/2023-10-media-provenance-watermarks-fingerprints-deepfake",
+      "type": "blog",
+      "byline": null,
+      "summary": "BBC R&D explains media provenance techniques (watermarks, fingerprints, C2PA-hashed metadata) and Project Origin work to help audiences assess content authenticity."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "BBC R&D site (bbc.co.uk/rd) is fully JS-rendered; no sitemap/RSS and curl returns no article links. Used web_search to find articles, then verified each by fetching the page. Pub dates: 2026-03 from URL slug + 'March 20, 2026' search date; 2025-10-17 and the 2023-10 piece confirmed via on-page 'Published' text/URL. No controversies where BBC R&D is a named legal party."
+}

@@ -4,9 +4,30 @@
   "blurb": "The Centre for Future Generations (CFG), a European (EU-focused) think tank on the governance of emerging technologies including advanced AI, biotech and neurotech.",
   "hiring": {},
   "publications": [
-    { "date": "2026-06-25", "title": "What Europeans think about solar radiation modification", "url": "https://cfg.eu/what-europeans-think-about-solar-radiation-modification/", "type": "paper", "byline": null, "summary": "Surveys European public awareness and attitudes toward solar radiation modification as the technology rises up the science and policy agenda." },
-    { "date": "2026-05-06", "title": "Enforcement spotlight \u2013 Spring 2026", "url": "https://cfg.eu/enforcement-spotlight-spring-2026/", "type": "paper", "byline": null, "summary": "Assesses where the EU's digital rulebook stands as AI stress-tests its limits, comparing four regulatory frameworks responding to the same technology." },
-    { "date": "2026-04-10", "title": "Towards an EU Neurotechnology Strategy", "url": "https://cfg.eu/towards-an-eu-neurotechnology-strategy/", "type": "paper", "byline": null, "summary": "White paper synthesising two years of CFG neurotech research into policy recommendations, calling for European action on neurotechnology governance." }
+    {
+      "date": "2026-06-25",
+      "title": "What Europeans think about solar radiation modification",
+      "url": "https://cfg.eu/what-europeans-think-about-solar-radiation-modification/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Surveys European public awareness and attitudes toward solar radiation modification as the technology rises up the science and policy agenda."
+    },
+    {
+      "date": "2026-05-06",
+      "title": "Enforcement spotlight – Spring 2026",
+      "url": "https://cfg.eu/enforcement-spotlight-spring-2026/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Assesses where the EU's digital rulebook stands as AI stress-tests its limits, comparing four regulatory frameworks responding to the same technology."
+    },
+    {
+      "date": "2026-04-10",
+      "title": "Towards an EU Neurotechnology Strategy",
+      "url": "https://cfg.eu/towards-an-eu-neurotechnology-strategy/",
+      "type": "paper",
+      "byline": null,
+      "summary": "White paper synthesising two years of CFG neurotech research into policy recommendations, calling for European action on neurotechnology governance."
+    }
   ],
   "roles": [],
   "filings": [],

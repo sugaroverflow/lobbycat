@@ -1,13 +1,38 @@
 {
   "slug": "oxford-internet-institute",
   "hiring": {},
-  "publications": [],
+  "publications": [
+    {
+      "date": "2026-06-24",
+      "title": "Rethinking EU AI policy: why public subsidies for AI should deliver real wellbeing",
+      "url": "https://www.oii.ox.ac.uk/rethinking-eu-ai-policy-why-public-subsidies-for-ai-should-deliver-real-wellbeing/",
+      "type": "paper",
+      "byline": null,
+      "summary": null
+    },
+    {
+      "date": "2026-05-08",
+      "title": "The efficiency paradox in EU data centre policy",
+      "url": "https://www.oii.ox.ac.uk/the-efficiency-paradox-in-eu-data-centre-policy/",
+      "type": "paper",
+      "byline": null,
+      "summary": null
+    },
+    {
+      "date": "2026-04-29",
+      "title": "Friendly AI chatbots make more mistakes and tell people what they want to hear, study finds",
+      "url": "https://www.oii.ox.ac.uk/friendly-ai-chatbots-make-more-mistakes-and-tell-people-what-they-want-to-hear-study-finds/",
+      "type": "paper",
+      "byline": null,
+      "summary": null
+    }
+  ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
   "news": [],
   "blurb": "Oxford Internet Institute — multidisciplinary department researching the societal implications of the internet and AI.",
-  "lastUpdated": "2026-06-27T09:21:32Z",
-  "notes": "[RSS harvest 2026-06-27] https://www.oii.ox.ac.uk/news-events/feed/"
+  "lastUpdated": "2026-06-27T09:23:56Z",
+  "notes": "[RSS harvest 2026-06-27] https://www.oii.ox.ac.uk/feed/"
 }
