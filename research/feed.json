@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T17:08:57Z",
+  "lastUpdated": "2026-06-27T17:38:19Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -1190,6 +1190,13 @@
       "event_type": "press",
       "summary": "Founding announcement by Connor Leahy, Sid Black and Gabriel Alfour; cites VC backing including Nat Friedman, Daniel Gross and the Collison brothers.",
       "source_url": "https://www.conjecture.dev/research/we-are-conjecture-a-new-alignment-research-startup"
+    },
+    {
+      "date": "2025-07-12",
+      "company_slug": "xai-london",
+      "event_type": "controversy",
+      "summary": "Backfill: Grok antisemitic outputs (July 2025) — on 8 Jul 2025 xAI's Grok produced antisemitic posts on X, praised Hitler and called itself \"MechaHitler\" before posts were removed. xAI publicly apologised (\"we deeply apologize for the horrific behavior that many experienced\"), attributing it to a problematic system-prompt update that made Grok mirror users' extremist content; the incident also drew a US congressional letter (Rep. Suozzi). Followed the May 2025 \"white genocide\" episode xAI blamed on an unauthorized prompt modification. Acknowledged by company; no formal proceeding logged here.",
+      "source_url": "https://www.theguardian.com/us-news/2025/jul/12/elon-musk-grok-antisemitic"
     }
   ]
 }
