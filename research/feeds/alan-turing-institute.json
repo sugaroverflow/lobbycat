@@ -1,0 +1,90 @@
+{
+  "slug": "alan-turing-institute",
+  "lastUpdated": "2026-06-27T10:47:00Z",
+  "blurb": "The Alan Turing Institute is the UK's national institute for data science and AI. In 2026 it is in the middle of a contested transformation — a critical UKRI review, leadership turnover, and a pivot toward national-security / 'sovereign capability' work.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": null,
+      "title": "New research will help UK prepare for next wave of frontier AI",
+      "url": "https://www.turing.ac.uk/news/new-research-will-help-uk-prepare-next-wave-frontier-ai",
+      "type": "news",
+      "byline": null,
+      "summary": "Turing announces research aimed at helping the UK prepare for the next wave of frontier AI capabilities — policy-relevant to UK frontier-AI readiness. Exact date not confirmed (article page Cloudflare-gated); date left null."
+    },
+    {
+      "date": null,
+      "title": "New project to build trust in AI for air traffic control",
+      "url": "https://www.turing.ac.uk/news/new-project-build-trust-ai-air-traffic-control",
+      "type": "news",
+      "byline": null,
+      "summary": "New Turing project on building trust in AI systems for air traffic control — applied AI-assurance work in a safety-critical domain. Exact date not confirmed; date left null."
+    },
+    {
+      "date": null,
+      "title": "Building and procuring sustainable Defence AI will boost force resilience",
+      "url": "https://www.turing.ac.uk/news/building-and-procuring-sustainable-defence-ai-will-boost-force-resilience",
+      "type": "news",
+      "byline": null,
+      "summary": "Turing analysis arguing sustainable procurement and building of Defence AI will improve force resilience — defence-AI policy signal consistent with the institute's 2026 national-security pivot. Exact date not confirmed; date left null."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [
+    {
+      "type": "regulatory_action",
+      "title": "UKRI review finds the Alan Turing Institute underperforming; demands 'significant' reform",
+      "url": "https://www.theguardian.com/technology/2026/apr/03/uk-alan-turing-institute-ai-research-underperforming-ukri",
+      "occurredAt": "2026-04-03",
+      "status": "ongoing",
+      "severity": "high",
+      "companyRole": "subject of review",
+      "summary": "UK Research and Innovation (UKRI), the Turing's principal funder, published a review (over the 2026 Easter weekend) concluding that the institute's 'overall strategic alignment and value for money are not yet satisfactory' and that it 'must articulate a clear strategic purpose and strengthen delivery'. The rebuke of its own flagship national AI institute follows a challenging year of criticism from ministers and staff (and earlier 2024 EPSRC-panel concerns about culture and reform), and lands alongside a transformation programme, the chair's departure, and a new security-focused CEO. Widely read as signalling the end of loosely-scoped national AI institutes.",
+      "topics": [
+        "governance",
+        "research_funding",
+        "value_for_money",
+        "institutional_reform"
+      ],
+      "rawExcerpt": "Overall strategic alignment and value for money are not yet satisfactory. \u2014 UKRI review of the Alan Turing Institute",
+      "corroboration": [
+        {
+          "outlet": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2026/apr/03/uk-alan-turing-institute-ai-research-underperforming-ukri",
+          "paywalled": false
+        },
+        {
+          "outlet": "Research Professional News",
+          "url": "https://www.researchprofessionalnews.com/rr-news-uk-research-councils-2026-4-alan-turing-institute-not-providing-value-for-money-says-ukri/",
+          "paywalled": false
+        },
+        {
+          "outlet": "Research Live",
+          "url": "https://www.research-live.com/article/news/value-for-money-at-the-alan-turing-institute-not-yet-satisfactory-finds-ukri-review/id/5148276",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
+  "news": [
+    {
+      "date": "2026-05-20",
+      "title": "George Williamson joins the Turing as new CEO",
+      "url": "https://www.turing.ac.uk/news/george-williamson-joins-turing-new-ceo",
+      "source": "company_press",
+      "summary": "Dr George Williamson CMG joins as CEO from HMGCC (His Majesty's Government Communications Centre) — a national-security technology figure whose appointment is widely read as pivoting the UK national AI institute toward 'sovereign capability' and national security. He succeeds Professor Mark Girolami."
+    },
+    {
+      "date": "2026-04-03",
+      "title": "Turing chair Doug Gurr to step down following appointment to permanent CMA role",
+      "url": "https://www.turing.ac.uk/news/turing-chair-doug-gurr-step-down-following-appointment-permanent-cma-role",
+      "source": "company_press",
+      "summary": "Dr Doug Gurr, Chair of the Alan Turing Institute, steps down to take up a five-year term as Chair of the Competition and Markets Authority (CMA) — a notable crossover putting a former Turing chair atop the UK's lead competition/AI-markets regulator. An interim successor was named."
+    }
+  ],
+  "notes": "Updated 2026-06-27. Titles/URLs originally captured via headless browser from turing.ac.uk/news (the landing passes intermittently; article pages + /news/publications re-trigger an interactive turnstile). DATES and the UKRI-review controversy backfilled via web_search against PRIMARY/named sources: CEO appointment 20 May 2026 (turing.ac.uk's own 'Wednesday 20 May 2026' stamp + Research Professional News); Gurr→CMA April 2026 (turing.ac.uk + Wikipedia, confirming a five-year CMA chair term); UKRI 'underperforming / value for money not satisfactory' review 3 Apr 2026, CROSS-CONFIRMED by The Guardian, Research Professional News and Research Live. Three /news items remain date=null because their article pages stayed Cloudflare-gated and I would not invent dates. The UKRI review is logged as a high-severity governance controversy (the institute is the named subject; status ongoing)."
+}

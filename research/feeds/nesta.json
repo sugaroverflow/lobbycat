@@ -1,0 +1,38 @@
+{
+  "slug": "nesta",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "Nesta is the UK's innovation agency for social good, running mission teams on early years, health/obesity and home decarbonisation.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-04-27",
+      "title": "How to respond to the energy crisis",
+      "url": "https://www.nesta.org.uk/report/how-to-respond-to-the-energy-crisis/",
+      "type": "paper",
+      "byline": "Andrew Sissons, Katy King, Madeleine Gabriel, Daniel Lewis, Marcus Shepheard and Juliette Caucheteux",
+      "summary": "Sets out a three-point plan for government to respond to an energy-price crisis by cutting oil and gas demand: a push on low-cost efficiency measures before winter, faster electrification over the summer, and locking in long-term energy-bill stability."
+    },
+    {
+      "date": "2026-05-05",
+      "title": "Report on the Boiler Upgrade Scheme (heat pump subsidy)",
+      "url": "https://www.nesta.org.uk/report/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Nesta report dated 05 May 2026 on the Boiler Upgrade Scheme, the UK government's flagship heat-pump subsidy, which since launching in April 2022 has supported almost 80,000 heat pump installations across England and Wales. (Direct report URL not isolated; listed on the reports index.)"
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-05-11",
+      "title": "The energy edit",
+      "url": "https://www.nesta.org.uk/blog/the-energy-edit-3/",
+      "source": "company_blog",
+      "summary": "Nesta blog round-up of recent energy work, referencing the 05 May 2026 Boiler Upgrade Scheme report and a 30 April 2026 blog."
+    }
+  ],
+  "notes": "nesta.org.uk/feed/ returns 404 (not WordPress) as flagged. The reports landing page (/reports/ and /report/) and sitemap.xml are JS/redirect-heavy; sitemap.xml lists ~1354 /report/ URLs but in arbitrary order without reliable per-item pub dates. The energy-crisis report page rendered fully via web_fetch with named authors and a real pub date corroborated by search (Apr 27 2026). Boiler Upgrade Scheme report date (05 May 2026) came from Nesta's own 'energy edit' blog listing; exact per-report URL not isolated, so the reports index URL is used. No legal/regulatory controversy with Nesta as a named party found."
+}

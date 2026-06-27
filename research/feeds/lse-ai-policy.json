@@ -1,0 +1,38 @@
+{
+  "slug": "lse-ai-policy",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The London School of Economics conducts social-science research on AI policy, health, labour markets and digital governance across multiple research units.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-03-19",
+      "title": "What impact is AI having on British firms and the jobs they offer?",
+      "url": "https://blogs.lse.ac.uk/businessreview/2026/03/19/what-impact-is-ai-having-on-british-firms-and-the-jobs-they-offer/",
+      "type": "blog",
+      "byline": "Erhan Kilincarslan and Jiafan Li",
+      "summary": "LSE Business Review analysis arguing AI is reshaping British employment through gradual restructuring rather than mass displacement, and that corporate governance choices will determine whether AI supports inclusive growth or deepens labour-market inequality."
+    },
+    {
+      "date": null,
+      "title": "Omission and hallucination prevalence of clinical guidelines in diagnostic large language model outputs",
+      "url": "http://dx.doi.org/10.1136/bmjhci-2025-101959",
+      "type": "paper",
+      "byline": "van Kessel, R., Anderson, M., McMillan, B., Matthews, M.R., Rust, P., Pearcy, P., Nasir, K., Mossialos, E.",
+      "summary": "LSE AI and Digital Health Unit study (BMJ Health & Care Informatics, 2026) measuring omission and hallucination rates when diagnostic large language models reproduce clinical guidelines."
+    },
+    {
+      "date": null,
+      "title": "Artificial Intelligence, Intellectual Property, and Human Rights: Mapping the Legal Landscape in European Health Systems",
+      "url": "https://doi.org/10.1038/s44401-025-00050-3",
+      "type": "paper",
+      "byline": "van Kessel, R., Schmidt, J., van Kolfschooten, H., Feudo, S., Young, K., Valtere, L., Minssen, T., Mossialos, E.",
+      "summary": "LSE-led paper in npj Health Systems (2025) mapping the intersection of AI, intellectual property and human rights across European health systems."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "lse.ac.uk reachable via web_fetch (readability) and curl. The /research index is a generic carousel with no dated items, so I used dated AI-relevant first-party content: an LSE Business Review blog (date in URL/byline confirmed) and two recent papers listed on the LSE Health AI & Digital Unit publications page (https://www.lse.ac.uk/lse-health/research/ai-and-digital-unit/publications). Paper exact day-level pub dates not shown on the listing (only year), so date=null with year stated in summary; DOIs are first-party-cited links. No first-party press releases or controversies found."
+}

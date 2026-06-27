@@ -1,0 +1,52 @@
+{
+  "slug": "foxglove",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "UK non-profit using legal action, investigations and campaigning to challenge tech harms and government use of technology.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-06-17",
+      "title": "How we revealed NHS England claims about Palantir's FDP delivering benefit for the NHS are dubious, cherry-picked and should come with a serious health warning",
+      "url": "https://www.foxglove.org.uk/2026/06/17/nhs-england-palantir-delivering-benefit-nhs/",
+      "type": "blog",
+      "byline": null,
+      "summary": "Foxglove analysis disputing NHS England's claims that Palantir's Federated Data Platform increased operations."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Our investigation shows a third of NHS trusts using Palantir's FDP tools are seeing fewer operations than before they started using it",
+      "url": "https://www.foxglove.org.uk/2026/06/16/nhs-trusts-palantir-fdp-tools-fewer-operations/",
+      "type": "blog",
+      "byline": null,
+      "summary": "Foxglove investigation into outcomes for NHS trusts using Palantir's FDP tools."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-06-26",
+      "title": "UK Government and Palantir must correct public record after NHS admits published data does not back up FDP benefit claims",
+      "url": "https://www.foxglove.org.uk/2026/06/26/uk-government-palantir-admit-data-fdp-claims/",
+      "source": "company_press",
+      "summary": "Press release calling on the UK Government and Palantir to correct the public record on FDP benefit claims."
+    },
+    {
+      "date": "2026-06-18",
+      "title": "More than 60 groups tell Home Office to stop using racist and faulty AI facial age estimation tech on asylum-seeking children",
+      "url": "https://www.foxglove.org.uk/2026/06/18/home-office-racist-ai-facial-age-estimation-children/",
+      "source": "company_press",
+      "summary": "Coalition statement against Home Office use of AI facial age estimation on asylum-seeking children."
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Press release: UK regulator says Google must give journalists opt-out from AI theft, following Foxglove complaint",
+      "url": "https://www.foxglove.org.uk/2026/06/03/press-release-uk-google-journalists-opt-out-ai-theft-foxglove-complaint/",
+      "source": "company_press",
+      "summary": "Press release on a UK regulator decision following a Foxglove complaint against Google AI."
+    }
+  ],
+  "notes": "News and posts from /feed/ RSS with real pubDates. Foxglove brings legal cases (e.g., Woodlands/Palantir) but as legal representatives/claimant supporters; no clearly named court case with Foxglove itself as the named party harvested into controversies."
+}

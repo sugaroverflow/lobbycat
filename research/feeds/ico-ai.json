@@ -1,0 +1,38 @@
+{
+  "slug": "ico-ai",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The UK's Information Commissioner's Office (ICO), the independent data protection and information rights regulator, including its work on AI and biometrics.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": null,
+      "title": "Information Commissioner's Office response to the consultation series on generative AI",
+      "url": "https://ico.org.uk/about-the-ico/what-we-do/our-work-on-artificial-intelligence/response-to-the-consultation-series-on-generative-ai/",
+      "type": "other",
+      "byline": null,
+      "summary": "The ICO sets out its policy positions following its consultation series on how UK data protection law applies to generative AI, covering issues such as lawful basis for web scraping and individual rights."
+    },
+    {
+      "date": null,
+      "title": "Generative AI fourth call for evidence: engineering individual rights into generative AI models",
+      "url": "https://ico.org.uk/about-the-ico/what-we-do/our-work-on-artificial-intelligence/generative-ai-fourth-call-for-evidence/",
+      "type": "other",
+      "byline": null,
+      "summary": "Chapter of the ICO generative AI consultation series focused on individual rights in relation to training and fine-tuning of generative AI models."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2024-01-15",
+      "title": "Information Commissioner's Office launches consultation series on generative AI",
+      "url": "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2024/01/information-commissioner-s-office-launches-consultation-series-on-generative-ai/",
+      "source": "company_press",
+      "summary": "ICO announces a consultation series on how aspects of data protection law should apply to generative AI development and use."
+    }
+  ],
+  "notes": "Regulator site. Consultation response page had no machine-readable first-party publication date (industry coverage places it December 2024) so date is null; fourth call for evidence page also had no machine-readable date so date is null. News launch date from ICO news URL path (2024/01)."
+}

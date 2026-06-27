@@ -1,0 +1,53 @@
+{
+  "slug": "big-brother-watch",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "UK civil liberties and privacy campaign group researching surveillance, facial recognition, and digital rights.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2025-09-01",
+      "title": "Checkpoint Britain",
+      "url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/09/Checkpoint-Britain.pdf",
+      "type": "paper",
+      "byline": null,
+      "summary": "Big Brother Watch report on the spread of identity and document checks in Britain."
+    },
+    {
+      "date": "2025-07-01",
+      "title": "Suspicion By Design",
+      "url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/07/Suspicion-By-Design-2.pdf",
+      "type": "paper",
+      "byline": null,
+      "summary": "Investigative report on automated suspicion and profiling systems."
+    },
+    {
+      "date": "2025-06-01",
+      "title": "Big Bank is Watching You: Preserving Privacy Amid the Rise of CBDCs",
+      "url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/06/Big-Bank-is-Watching-You-Preserving-Privacy-Amid-the-Rise-of-CBDCs.pdf",
+      "type": "paper",
+      "byline": null,
+      "summary": "Report on privacy risks of central bank digital currencies."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-06-23",
+      "title": "Big Brother Watch responds to the expansion of fixed facial recognition cameras in London",
+      "url": "https://bigbrotherwatch.org.uk/press-releases/big-brother-watch-responds-to-the-expansion-of-fixed-facial-recognition-cameras-in-london/",
+      "source": "company_press",
+      "summary": "Press release reacting to expanded fixed facial recognition cameras in London."
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Big Brother Watch responds to PM's Social Media Ban announcement",
+      "url": "https://bigbrotherwatch.org.uk/press-releases/big-brother-watch-responds-to-governments-social-media-ban/",
+      "source": "company_press",
+      "summary": "Press release responding to the government's proposed under-16s social media ban."
+    }
+  ],
+  "notes": "Reports page lists PDFs without inline dates; dates inferred from PDF upload path (year/month), which BBW uses as publication month. News from RSS feed (press-releases only). No controversies where the org itself is a named legal party found on first-party site."
+}

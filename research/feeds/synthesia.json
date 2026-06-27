@@ -1,28 +1,21 @@
 {
   "slug": "synthesia",
-  "lastUpdated": "2026-06-26T16:59:46Z",
-  "blurb": null,
-  "hiring": {
-    "isHiring": true,
-    "newSincePrevious": 0,
-    "londonPolicyRoles": 1,
-    "lastChecked": "2026-06-26"
-  },
+  "lastUpdated": "2026-06-27T10:12:00Z",
+  "blurb": "Synthesia is a London-founded AI-video / synthetic-media company (AI avatars), a notable voice in the deepfake, content-provenance and AI-safety-standards debate given the dual-use nature of its technology.",
+  "hiring": {},
   "publications": [],
-  "roles": [
-    {
-      "title": "Product Counsel",
-      "location": "London",
-      "url": "https://jobs.ashbyhq.com/synthesia/53cbc812-2d44-42db-94d8-32a86f66e00a",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    }
-  ],
+  "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "[roles-only feed] Created 2026-06-26 to carry the roles lens; publications/controversies not yet researched for this company.",
-  "news": []
+  "news": [
+    {
+      "date": "2026-06-17",
+      "title": "Victor Riparbelli attends G7 AI lunch in Évian",
+      "url": "https://www.synthesia.io/post/victor-riparbelli-attends-g7-ai-lunch-evian",
+      "source": "company_press",
+      "summary": "Synthesia CEO Victor Riparbelli attends a G7 AI lunch in Évian — a direct policy-engagement signal: a synthetic-media company at the G7 table is notable given the deepfake / content-authenticity questions Synthesia's technology raises."
+    }
+  ],
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser. Synthesia's /blog is pure SEO/marketing ('How to create training videos', 'best AI video tools') with zero policy signal — deliberately NOT logged per SOUL signal discipline. The policy signal lives in /newsroom: logged the CEO's G7 AI-lunch attendance (date 'June 17, 2026' confirmed from text adjacent to the article H1, not the cookie banner). Synthesia also advertises ISO 42001 (AI management system) + SOC 2 compliance on security.synthesia.io — noted as context, not a dated publication. Corporate items (Seattle expansion, Amazon-veteran hire) left as leads, not logged."
 }

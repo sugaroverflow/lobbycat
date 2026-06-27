@@ -1,0 +1,46 @@
+{
+  "slug": "faculty-ai",
+  "lastUpdated": "2026-06-27T10:12:00Z",
+  "blurb": "Faculty is a London-based applied-AI company with deep UK public-sector and government work (NHS, defence, central government 'decision intelligence'); a key node in the UK gov-AI delivery ecosystem.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-06-16",
+      "title": "How we're building AI to help fix the English planning system",
+      "url": "https://faculty.ai/en-gb/insights/articles/how-were-building-ai-to-help-fix-the-english-planning-system",
+      "type": "blog",
+      "byline": null,
+      "summary": "Faculty details applied AI work on the English planning system — directly relevant to the UK government's AI-for-planning agenda (parallels DeepMind's June planning-prototype announcement), and to how public-sector AI delivery actually lands."
+    },
+    {
+      "date": "2026-06-10",
+      "title": "You don't have an AI problem. You have a decision problem.",
+      "url": "https://faculty.ai/en-gb/insights/articles/you-dont-have-an-ai-problem-you-have-a-decision-problem",
+      "type": "blog",
+      "byline": null,
+      "summary": "Faculty's 'decision intelligence' framing — positioning argument about where AI value actually comes from in enterprise/government, useful as context on how a major UK gov-AI vendor pitches its work."
+    },
+    {
+      "date": null,
+      "title": "Beyond manual red teaming: Scaling model safety with an Automated Red-teaming Emulation System",
+      "url": "https://faculty.ai/en-gb/insights/articles/beyond-manual-red-teaming-scaling-model-safety-with-automated-red-teaming-emulation-system",
+      "type": "blog",
+      "byline": null,
+      "summary": "Faculty on automating red-teaming for model safety — an AI-assurance/evaluations capability, relevant given Faculty's safety work with UK bodies. Listing showed no inline date for this item; date left null."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-01-06",
+      "title": "Accenture to Acquire Faculty to Scale AI Capabilities",
+      "url": "https://faculty.ai/en-gb/insights/articles/accenture-to-acquire-faculty-to-scale-ai-capabilities",
+      "source": "company_press",
+      "summary": "Accenture to acquire Faculty — a material structural change for one of the UK government's most embedded AI vendors, with implications for who delivers (and owns) public-sector AI capability. Worth flagging for the conflict-of-interest / market-concentration lens."
+    }
+  ],
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser. faculty.ai/blog is a JS app — the article cards only render after a scroll-triggered lazy-load (initial DOM had just the section header), so this was missed by web_fetch this morning. Dates read from the inline date string on each card (e.g. '2026-06-16'); the red-teaming card had no inline date so date=null. Selected policy/public-sector-relevant items + the Accenture acquisition (high structural signal); omitted pure product launches (Frontier 3) and routine personnel posts. NB: the Accenture acquisition is a strong watch-item — a major UK gov-AI contractor changing ownership."
+}

@@ -1,0 +1,30 @@
+{
+  "slug": "public-law-project",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "UK legal charity using public law and research to improve access to justice and hold government to account, including on automation and algorithms.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-05-28",
+      "title": "Call for evidence: Independent Appeals Body (IAB)",
+      "url": "https://publiclawproject.org.uk/resources/call-for-evidence-independent-appeals-body/",
+      "type": "filing",
+      "byline": null,
+      "summary": "PLP submission raising concerns about the independence of a proposed new Independent Appeals Body for asylum appeals."
+    },
+    {
+      "date": "2026-03-17",
+      "title": "Collaborative legal approaches for systemic change report",
+      "url": "https://publiclawproject.org.uk/resources/collaborative-legal-approaches-for-systemic-change-report/",
+      "type": "paper",
+      "byline": "Professor Jacqueline Kinghan and Professor Lisa Vanhala",
+      "summary": "Report drawing on five years of PLP collaboration with community groups to advance shared legal approaches for social change."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Resources page; dates from each resource page's JSON-LD datePublished. No first-party dated press release feed harvested. No controversy where PLP itself is a named legal party on this page."
+}

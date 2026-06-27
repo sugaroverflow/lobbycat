@@ -1,0 +1,46 @@
+{
+  "slug": "cetas",
+  "lastUpdated": "2026-06-27T10:47:00Z",
+  "blurb": "The Centre for Emerging Technology and Security (CETaS) is a research centre at the Alan Turing Institute focused on UK national security and emerging technology, producing some of the sharpest UK-government-facing AI-security analysis.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-04-30",
+      "title": "The Next Frontier: Security Implications of Future AI Paradigms",
+      "url": "https://cetas.turing.ac.uk/publications/future-AI-paradigms",
+      "type": "report",
+      "byline": "Ardi Janjeva, Sylvester Kaczmarek, Angus Shennan and Carolyn Ashurst",
+      "summary": "CETaS Research Report mapping the emergence of novel AI paradigms (alternative architectures, data sources, learning methods, hardware substrates) and assessing the national-security implications of the next wave of disruptive AI for the UK."
+    },
+    {
+      "date": "2026-02-03",
+      "title": "International AI Safety Report 2026",
+      "url": "https://cetas.turing.ac.uk/institutional-publication/international-ai-safety-report-2026",
+      "type": "report",
+      "byline": "Chaired by Yoshua Bengio (100+ independent experts)",
+      "summary": "Second edition of the International AI Safety Report — the comprehensive expert review of the capabilities and risks of general-purpose AI, chaired from the Turing Institute. A flagship reference document for UK and international AI governance."
+    },
+    {
+      "date": "2026-01-23",
+      "title": "CETaS Outlook: Emerging Technology Trends to Watch in 2026",
+      "url": "https://cetas.turing.ac.uk/publications/tech-trends-to-watch-2026",
+      "type": "report",
+      "byline": "James Lloyd, Ardi Janjeva and Sam Stockwell",
+      "summary": "CETaS Expert Analysis forecasting 2026 as the year AI becomes more embedded in the physical world, more autonomous, and more entwined with geopolitics — a horizon-scan for UK security policy."
+    },
+    {
+      "date": null,
+      "title": "Asia-Pacific AI Governance: A Call for Middle-Power Partnerships",
+      "url": "https://cetas.turing.ac.uk/research-and-publications",
+      "type": "report",
+      "byline": "Seungjoo Lee and Hyunjin Lee",
+      "summary": "CETaS Expert Analysis (May 2026) arguing for middle-power partnerships in Asia-Pacific AI governance. Exact day-level date not confirmed from a primary page (CETaS site is Cloudflare-gated); month (May 2026) is from CETaS's own citation string. Direct publication URL not captured — links to the publications index."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Harvested 2026-06-27 via web_search after the live site (cetas.turing.ac.uk) hard-Cloudflare-blocked both the headless browser (interactive turnstile) AND web_fetch (403 'Just a moment'). Titles, authors and series are from CETaS's OWN citation strings as indexed by search; dates: 'The Next Frontier' (30 Apr 2026) and 'Tech Trends 2026' (23 Jan 2026) from search-result metadata; the International AI Safety Report's 3 Feb 2026 date is CROSS-CONFIRMED by three independent sources (internationalaisafetyreport.org, Lexology, Princeton CITP). The Asia-Pacific item has only a month-level date (May 2026) and no captured deep-link, so date=null and url points to the index — honest rather than invented. Recommend swapping these to live first-party deep-links + day-level dates once a turnstile-capable fetch path exists."
+}

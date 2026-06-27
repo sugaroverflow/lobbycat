@@ -1,0 +1,53 @@
+{
+  "slug": "demos",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "Demos is a cross-party UK think tank focused on democracy, public services, the economy and the information ecosystem.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-05-20",
+      "title": "Electoral Hallucinations: Safeguarding UK elections in the world of LLMs and AI chatbots",
+      "url": "https://demos.co.uk/research/electoral-hallucinations-safeguarding-uk-elections-in-the-world-of-llms-and-ai-chatbots/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Tests of ChatGPT, Gemini, Google AI Overviews, Grok and Replika during the 2026 Scottish pre-election window found 34.1% of responses contained factual errors; the report recommends closing the regulatory gap. Part of Demos Digital's Epistemic Security programme."
+    },
+    {
+      "date": null,
+      "title": "Citizens Economy: a New Deal to power economic growth and rebuild trust between state and citizen",
+      "url": "https://demos.co.uk/research/citizens-economy-a-new-deal-to-power-economic-growth-and-rebuild-trust-between-state-and-citizen/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Argues economic renewal depends on rebuilding the relationship between citizens, markets and the state, treating citizens as active contributors rather than passive recipients. PDF dated June 2026 (exact day not stated on page)."
+    },
+    {
+      "date": null,
+      "title": "Fairer Feeds: Public interest news, prominence rules, and the future of discoverability on platforms",
+      "url": "https://demos.co.uk/research/fairer-feeds-public-interest-news-prominence-rules-and-the-future-of-discoverability-on-platforms/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Recommends updating the UK's prominence rules for the platform era, including algorithmic prominence for public-interest news and a 5% levy on video-sharing platforms to fund a UK Public Interest Content Fund."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-05-20",
+      "title": "One third of information provided by chatbots during the election was incorrect, finds cross-party think tank Demos",
+      "url": "https://demos.co.uk/blogs/one-third-of-information-provided-by-chatbots-during-the-election-was-incorrect-finds-cross-party-think-tank-demos/",
+      "source": "company_blog",
+      "summary": "First-party press blog on the Electoral Hallucinations findings; polling fieldwork conducted 30 April - 6 May 2026."
+    },
+    {
+      "date": null,
+      "title": "One in three UK adults report seeing political deepfakes in the month before local elections",
+      "url": "https://demos.co.uk/blogs/one-in-three-uk-adults-report-seeing-political-deepfakes-in-the-month-before-local-elections/",
+      "source": "company_blog",
+      "summary": "Demos polling blog; fieldwork conducted 30 April - 6 May 2026."
+    }
+  ],
+  "notes": "demos.co.uk blocks curl with Cloudflare on most paths; sitemap.xml is reachable via curl and individual /research/ pages are reachable intermittently via web_fetch (readability). Exact publication dates are not printed on the article pages; dating relies on PDF upload paths (/wp-content/uploads/2026/05/ and /2026/06/) and corroborating Guardian coverage dated 2026-05-20. Citizens Economy and Fairer Feeds left date null (only month-level evidence). No legal/regulatory controversy with Demos as a named party found."
+}
