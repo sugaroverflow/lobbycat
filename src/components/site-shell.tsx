@@ -38,13 +38,13 @@ export function SiteShell({ children }: { children: ReactNode }) {
         <div className="max-w-[64rem] mx-auto px-6 py-6 mono text-xs uppercase tracking-[0.14em] flex flex-col gap-2">
           <div className="text-whisper flex items-center justify-between">
             <span>lobbycat · est. 2026</span>
-            <span>v0 · napping</span>
+            <span>v9 · napping</span>
           </div>
-          <div className="text-ink">made as a surprise &lt;3</div>
-          {/* v0.8.3: "made with ♥" coda — small white, separate line,
-              per Fatima 2026-06-27 09:35Z. Sits below the surprise line. */}
+          {/* v0.8.4 (2026-06-27 12:12Z): collapsed the 'made as a surprise
+              <3' + 'made with ♥' lines to a single heart glyph. Voice
+              cleanup — the lines were doing the same job twice. */}
           <div className="text-whisper text-[10px] normal-case tracking-normal">
-            made with <span aria-hidden>&hearts;</span>
+            <span aria-label="made with love">&hearts;</span>
           </div>
         </div>
       </footer>

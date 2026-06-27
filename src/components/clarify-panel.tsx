@@ -244,7 +244,7 @@ export function ClarifyPanel({
           ))}
           {thinking && <ClarifyingLine />}
           {error && (
-            <p className="font-sans text-sm text-coral">{error}</p>
+            <p className="text-sm text-coral">{error}</p>
           )}
           {ended && proposal && (
             <ProposalCard
@@ -255,7 +255,7 @@ export function ClarifyPanel({
             />
           )}
           {ended && !proposal && (
-            <p className="font-sans text-sm text-muted italic mt-2">
+            <p className="text-sm text-muted italic mt-2">
               <em>thread left open.</em>
             </p>
           )}
@@ -297,7 +297,10 @@ export function ClarifyPanel({
 function MessageBubble({ role, body }: { role: "user" | "cat"; body: string }) {
   if (role === "cat") {
     return (
-      <div className="font-sans text-base text-ink leading-relaxed whitespace-pre-wrap max-w-[34ch] cat-message-fade-in">
+      // v0.8.4: lobbycat's response text in mono (was font-sans /
+      // Orbitron). Mono is the more readable face for conversational
+      // body text, matching the user-bubble + the rest of the card body.
+      <div className="text-base text-ink leading-relaxed whitespace-pre-wrap max-w-[34ch] cat-message-fade-in">
         {body}
         <style jsx>{`
           .cat-message-fade-in {
@@ -374,7 +377,7 @@ function ChatInput({
         placeholder="say something to lobbycat…"
         rows={1}
         disabled={disabled}
-        className="flex-1 resize-none bg-bg border border-rule rounded-sm px-3 py-2 font-sans text-base text-ink focus:outline-none focus:border-readout placeholder:text-whisper disabled:opacity-50"
+        className="flex-1 resize-none bg-bg border border-rule rounded-sm px-3 py-2 text-base text-ink focus:outline-none focus:border-readout placeholder:text-whisper disabled:opacity-50"
       />
       <button
         type="button"
@@ -415,7 +418,7 @@ function ProposalCard({
       <div className="mono text-[10px] uppercase tracking-[0.18em] text-readout mb-2">
         lobbycat proposes — {labelForKind(proposal.kind)}
       </div>
-      <p className="font-sans text-base text-ink leading-snug">
+      <p className="text-base text-ink leading-snug">
         {proposal.summary}
       </p>
       {decided === null ? (

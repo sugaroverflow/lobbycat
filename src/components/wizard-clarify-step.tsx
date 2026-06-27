@@ -188,7 +188,7 @@ export function WizardClarifyStep({
           m.role === "cat" ? (
             <p
               key={i}
-              className="font-sans text-base text-ink leading-relaxed whitespace-pre-wrap cat-message-fade-in"
+              className="text-base text-ink leading-relaxed whitespace-pre-wrap cat-message-fade-in"
             >
               {m.body}
             </p>
@@ -209,12 +209,12 @@ export function WizardClarifyStep({
         )}
         {thinking && <ClarifyingLine />}
         {ended && (
-          <p className="font-sans text-sm text-muted italic">
+          <p className="text-sm text-muted italic">
             <em>thread closed. ready when you are.</em>
           </p>
         )}
         {error && (
-          <p className="font-sans text-sm text-coral">{error}</p>
+          <p className="text-sm text-coral">{error}</p>
         )}
         <style jsx>{`
           .cat-message-fade-in {
@@ -297,7 +297,7 @@ function ChatInput({
         placeholder="say something to lobbycat…"
         rows={1}
         disabled={disabled}
-        className="flex-1 resize-none bg-bg border border-rule rounded-sm px-3 py-2 font-sans text-base text-ink focus:outline-none focus:border-readout placeholder:text-whisper disabled:opacity-50"
+        className="flex-1 resize-none bg-bg border border-rule rounded-sm px-3 py-2 text-base text-ink focus:outline-none focus:border-readout placeholder:text-whisper disabled:opacity-50"
       />
       <button
         type="button"
