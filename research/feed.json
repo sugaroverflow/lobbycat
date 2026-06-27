@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T10:38:55Z",
+  "lastUpdated": "2026-06-27T10:50:06Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -359,6 +359,13 @@
       "source_url": "https://cohere.com/blog/command-a-plus"
     },
     {
+      "date": "2026-05-20",
+      "company_slug": "alan-turing-institute",
+      "event_type": "press",
+      "summary": "Dr George Williamson CMG joins as CEO from HMGCC (His Majesty's Government Communications Centre) — a national-security technology figure whose appointment is widely read as pivoting the UK national AI institute toward 'sovereign capability' and national security. He succeeds Professor Mark Girolami.",
+      "source_url": "https://www.turing.ac.uk/news/george-williamson-joins-turing-new-ceo"
+    },
+    {
       "date": "2026-05-13",
       "company_slug": "apollo-research",
       "event_type": "press",
@@ -441,6 +448,13 @@
       "event_type": "publication",
       "summary": "White paper synthesising two years of CFG neurotech research into policy recommendations, calling for European action on neurotechnology governance.",
       "source_url": "https://cfg.eu/towards-an-eu-neurotechnology-strategy/"
+    },
+    {
+      "date": "2026-04-03",
+      "company_slug": "alan-turing-institute",
+      "event_type": "press",
+      "summary": "Dr Doug Gurr, Chair of the Alan Turing Institute, steps down to take up a five-year term as Chair of the Competition and Markets Authority (CMA) — a notable crossover putting a former Turing chair atop the UK's lead competition/AI-markets regulator. An interim successor was named.",
+      "source_url": "https://www.turing.ac.uk/news/turing-chair-doug-gurr-step-down-following-appointment-permanent-cma-role"
     },
     {
       "date": "2026-03-20",
@@ -532,6 +546,13 @@
       "event_type": "publication",
       "summary": "Examines whether the UAE holds structural advantages (energy, capital, siting) for large-scale AI data-center buildout and what that means for compute geopolitics.",
       "source_url": "https://www.governance.ai/research-paper/does-the-uae-have-an-advantage-in-building-data-centers"
+    },
+    {
+      "date": "2025-12-22",
+      "company_slug": "xai-london",
+      "event_type": "publication",
+      "summary": "xAI announces a partnership bringing its Grok-family frontier models to the US Department of War's Chief Digital and AI Office (CDAO) via the GenAI.mil platform at Impact Level 5 (secure CUI handling), with initial deployment targeted for early 2026 — part of xAI's push into government/defence alongside a $200M DoD ceiling contract and GSA-schedule availability.",
+      "source_url": "https://x.ai/news/us-gov-dept-of-war"
     },
     {
       "date": "2025-12-12",
