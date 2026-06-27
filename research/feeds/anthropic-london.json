@@ -1,6 +1,6 @@
 {
   "slug": "anthropic-london",
-  "lastUpdated": "2026-06-26T01:23:12Z",
+  "lastUpdated": "2026-06-26T16:59:46Z",
   "blurb": "One significant headline-level signal this run: a US government export-control directive reportedly suspending access to Anthropic's Fable 5 and Mythos 5 models (announced Jun 12). Full text not captured — Anthropic's RSS feeds 404'd, so this is title-only pending a clean read.",
   "hiring": {
     "isHiring": true,
@@ -113,5 +113,6 @@
   "filings": [],
   "leadership": [],
   "notes": "[source feed broken] Seed blogRssUrl https://www.anthropic.com/news/rss.xml returns 404; https://www.anthropic.com/rss.xml also 404. Only https://www.anthropic.com/news (HTML) resolves, and readability captured a single item. Needs a working feed URL or a direct article URL. Flag to Techie for the ingestion pipeline (src/lib/rss). Until fixed, Anthropic coverage is degraded to headline-scraping.",
-  "news": []
+  "news": [],
+  "controversies": []
 }

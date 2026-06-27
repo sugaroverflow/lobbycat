@@ -1,6 +1,6 @@
 {
   "slug": "elevenlabs-london",
-  "lastUpdated": "2026-06-26T01:23:12Z",
+  "lastUpdated": "2026-06-26T16:59:46Z",
   "blurb": "London/US voice-AI company. Faces repeated US litigation over alleged unconsented voice cloning — a 2024 voice-actor suit and a 2026 suit by journalists and voice actors in Illinois.",
   "hiring": {
     "isHiring": true,
@@ -62,7 +62,7 @@
       "title": "Poland invests in ElevenLabs",
       "url": "https://elevenlabs.io/blog/blog/poland-invests-in-elevenlabs",
       "source": "company_blog",
-      "summary": "The Government of Poland took a stake in ElevenLabs via Vinci (BGK Group), joining the company's investor base."
+      "summary": "The Government of Poland took a stake in ElevenLabs via Vinci (BGK Group)."
     }
   ]
 }

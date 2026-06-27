@@ -1,0 +1,46 @@
+{
+  "slug": "ada-lovelace-institute",
+  "lastUpdated": "2026-06-26T17:00:49Z",
+  "blurb": "Independent UK research institute on data & AI for people and society (part of the Nuffield Foundation). Strong named-author publication output across AI law/policy, public-sector AI, and public participation.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": null,
+      "title": "'I love it, but I hate it': young people's experiences and expectations of growing up digital",
+      "url": "https://www.adalovelaceinstitute.org/report/i-love-it-but-i-hate-it/",
+      "type": "paper",
+      "byline": "Victoria Jupp Kina",
+      "summary": "Report on young people's lived experience of a digital childhood, feeding Ada's public-participation and AI-governance work."
+    },
+    {
+      "date": null,
+      "title": "Measuring up: evaluating claims about AI and productivity in the UK public sector",
+      "url": "https://www.adalovelaceinstitute.org/policy-briefing/measuring-up/",
+      "type": "paper",
+      "byline": "Sumedha Deshmukh, Matt Davies",
+      "summary": "Policy briefing interrogating productivity claims made for AI in UK public services — an AI-evaluation lens on government adoption hype."
+    },
+    {
+      "date": null,
+      "title": "Navigating the future: a landscape review of AI in career guidance for young people",
+      "url": "https://www.adalovelaceinstitute.org/report/navigating-the-future/",
+      "type": "paper",
+      "byline": "Emily Tanner, Renate Samson",
+      "summary": "Landscape review of AI tools in career guidance, examining public-sector deployment and equity implications."
+    },
+    {
+      "date": null,
+      "title": "Scribe and prejudice? Exploring the use of AI transcription tools in social care",
+      "url": "https://www.adalovelaceinstitute.org/report/scribe-and-prejudice/",
+      "type": "paper",
+      "byline": "Oliver Bruff, Lara Groves",
+      "summary": "Report on AI transcription tools in social care — bias and evaluation risks in a sensitive public-sector setting."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
+}

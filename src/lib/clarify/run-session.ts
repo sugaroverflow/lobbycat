@@ -203,7 +203,7 @@ async function readPriorSessionTail(
   return filtered.reverse(); // oldest-first
 }
 
-type GroundingContext = {
+export type GroundingContext = {
   profile: typeof userProfile.$inferSelect | null;
   seedCompany:
     | (typeof companies.$inferSelect & {
@@ -219,7 +219,7 @@ type GroundingContext = {
   clarifyingQuotes: string[];
 };
 
-async function loadGrounding(args: {
+export async function loadGrounding(args: {
   seedCompanyId: number | null;
   seedFrameId: number | null;
   excludeSessionId: number | null;
@@ -351,7 +351,7 @@ function renderGroundingBlock(ctx: GroundingContext): string {
   return blocks.join("\n\n---\n\n");
 }
 
-async function buildSystemPrompt(ctx: GroundingContext): Promise<string> {
+export async function buildSystemPrompt(ctx: GroundingContext): Promise<string> {
   const skillBody = await loadSkillBody();
   const grounding = renderGroundingBlock(ctx);
   return `${skillBody}\n\n---\n\n${grounding}`;
@@ -381,7 +381,7 @@ async function buildSystemPrompt(ctx: GroundingContext): Promise<string> {
 const PROPOSAL_FENCE_RE = /```proposal\s*\n([\s\S]*?)\n```/i;
 const MOVE_TAG_RE = /<!--\s*move:\s*([a-z0-9-]+)\s*-->/i;
 
-function extractProposal(raw: string): {
+export function extractProposal(raw: string): {
   body: string;
   moveType: string | null;
   proposal: ClarifyProposal | null;
@@ -427,7 +427,7 @@ function extractProposal(raw: string): {
 
 type ChatTurn = { role: "user" | "assistant"; content: string };
 
-async function callClarifyModel(args: {
+export async function callClarifyModel(args: {
   system: string;
   messages: ChatTurn[];
 }): Promise<string> {
@@ -517,7 +517,7 @@ export async function startClarifySession(
   };
 }
 
-function openerPrompt(
+export function openerPrompt(
   trigger: ClarifyTrigger,
   ctx: GroundingContext,
 ): string {

@@ -44,6 +44,7 @@
   "filings": [],
   "leadership": [],
   "notes": "blogRssUrl https://deepmind.google/blog/rss.xml confirmed working (note its <atom:link self> is a placeholder example.com URL, but item links are valid).",
+  "controversies": [],
   "news": [
     {
       "date": "2026-06-01",
