@@ -68,24 +68,21 @@
       "date": "2026-06-26",
       "title": "Inside One of Meta’s Data Centers",
       "url": "https://about.fb.com/news/2026/06/inside-meta-data-center/",
-      "type": "press",
-      "byline": null,
+      "source": "company_press",
       "summary": "See Tom Shaw's perspective on the infrastructure and technology inside one of Meta's data centers.\nThe post Inside One of Meta’s Data Centers appeared first on Meta Newsroom."
     },
     {
       "date": "2026-06-23",
       "title": "Launch of Meta’s Small Business Growth Academy Across Asia-Pacific to Boost AI Adoption and Digital Skills",
       "url": "https://about.fb.com/news/2026/06/launch-of-metas-small-business-growth-academy-across-asia-pacific/",
-      "type": "press",
-      "byline": null,
+      "source": "company_press",
       "summary": "Meta's Small Business Growth Academy will provide practical AI tools, advertising, and cross-border growth training to help small businesses scale across Asia-Pacific.\nThe post Launch of Meta’s Small"
     },
     {
       "date": "2026-06-15",
       "title": "New AI Tools to Help You Make Things Happen on Facebook",
       "url": "https://about.fb.com/news/2026/06/new-ai-tools-to-help-you-make-things-happen-on-facebook/",
-      "type": "press",
-      "byline": null,
+      "source": "company_press",
       "summary": "We’re introducing new AI-powered Facebook features to help you connect, create, and find what you’re looking for.\nThe post New AI Tools to Help You Make Things Happen on Facebook appeared first on Me"
     }
   ],
