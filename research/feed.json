@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T15:08:00Z",
+  "lastUpdated": "2026-06-27T16:08:52Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -14,6 +14,13 @@
       "event_type": "role",
       "summary": "Faculty building a London AI-Safety team: Technical Director of AI Safety + Principal & Senior AI-Safety Research Scientists open simultaneously (UK-London). Standing up dedicated AI-safety muscle at a major UK gov-AI vendor — a 'building muscle' signal.",
       "source_url": "https://jobs.ashbyhq.com/faculty/7e726de6-6327-40cd-a00d-0e9be34e1cb4"
+    },
+    {
+      "date": "2026-06-27",
+      "company_slug": "anthropic-london",
+      "event_type": "controversy",
+      "summary": "Backfill: Bartz, Graeber & Johnson v Anthropic (N.D. Cal.) — authors' copyright class action over books used to train Claude. June 2025: Alsup held training fair use but pirated-copy retention not; Sept 2025 settlement (prelim. approval) reported ~$1.5B over ~500k works, largest US copyright settlement. Settled.",
+      "source_url": "https://authorsguild.org/advocacy/artificial-intelligence/what-authors-need-to-know-about-the-anthropic-settlement/"
     },
     {
       "date": "2026-06-26",

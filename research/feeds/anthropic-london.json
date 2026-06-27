@@ -1,6 +1,6 @@
 {
   "slug": "anthropic-london",
-  "lastUpdated": "2026-06-27T13:42:00Z",
+  "lastUpdated": "2026-06-27",
   "blurb": "One significant headline-level signal this run: a US government export-control directive reportedly suspending access to Anthropic's Fable 5 and Mythos 5 models (announced Jun 12). Full text not captured — Anthropic's RSS feeds 404'd, so this is title-only pending a clean read.",
   "hiring": {
     "isHiring": true,
@@ -207,5 +207,38 @@
       "summary": "Anthropic expands into South Korea — part of its international government/ecosystem footprint relevant to where frontier labs are placing policy bets."
     }
   ],
-  "controversies": []
+  "controversies": [
+    {
+      "type": "legal_case",
+      "title": "Bartz, Graeber & Johnson v Anthropic — authors' copyright class action (N.D. Cal.); $1.5B settlement",
+      "url": "https://authorsguild.org/advocacy/artificial-intelligence/what-authors-need-to-know-about-the-anthropic-settlement/",
+      "occurredAt": "2025-09-25",
+      "status": "settled",
+      "severity": "high",
+      "companyRole": "defendant",
+      "summary": "Anthropic was the defendant in a copyright class action brought by authors Andrea Bartz, Charles Graeber and Kirk Wallace Johnson in the Northern District of California over the use of their books to train Claude. In June 2025 Judge William Alsup held that training on lawfully acquired books was transformative fair use, but that Anthropic's downloading and retention of pirated copies from shadow-library sites was not, leaving it exposed to statutory damages. Anthropic agreed to a settlement granted preliminary approval in September 2025 — reported at roughly $1.5 billion covering an estimated ~500,000 works (about $3,000 per work) — described as the largest copyright settlement in US history. The fair-use vs piracy distinction and the settlement are matters of public court record.",
+      "topics": [
+        "copyright",
+        "training_data",
+        "fair_use",
+        "pirated_books",
+        "class_action"
+      ],
+      "rawExcerpt": null,
+      "corroboration": [
+        {
+          "outlet": "Authors Guild",
+          "url": "https://authorsguild.org/advocacy/artificial-intelligence/what-authors-need-to-know-about-the-anthropic-settlement/",
+          "paywalled": false
+        },
+        {
+          "outlet": "Copyright Alliance",
+          "url": "https://copyrightalliance.org/participating-bartz-v-anthropic-settlement/",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ]
 }
