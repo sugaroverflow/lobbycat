@@ -258,6 +258,47 @@ export const safetyFrameworks = pgTable(
 );
 
 /* ------------------------------------------------------------------ */
+/* News — first-party company press / news-page items                 */
+/* ------------------------------------------------------------------ */
+
+/**
+ * First-party company announcements: press releases, funding, launches,
+ * partnerships, org news — what the *comms* team published, distinct from
+ * `publications` (the *policy* team's defended output).
+ *
+ * Deliberately the lowest-signal evidence kind (press releases are
+ * marketing artefacts; see research/policy-evidence-types.md). Surfaced
+ * as company *activity/stage* signal, not policy posture — the UI should
+ * rank it below publications/controversies accordingly.
+ *
+ * Mirrors the `publications` shape so the feeds-sync ingestion is a
+ * near-copy. Unique on (companyId, url) for idempotent upserts.
+ */
+export const news = pgTable(
+  "news",
+  {
+    id: serial("id").primaryKey(),
+    companyId: integer("company_id")
+      .references(() => companies.id, { onDelete: "cascade" })
+      .notNull(),
+    title: text("title").notNull(),
+    url: text("url").notNull(),
+    publishedAt: timestamp("published_at", { withTimezone: true }),
+    // company_press | company_blog (always first-party)
+    source: text("source").default("company_press").notNull(),
+    summary: text("summary"), // optional 1-line; press gets light treatment
+    seenAt: timestamp("seen_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("news_company_idx").on(t.companyId),
+    index("news_published_idx").on(t.publishedAt),
+    uniqueIndex("news_company_url_idx").on(t.companyId, t.url),
+  ],
+);
+
+/* ------------------------------------------------------------------ */
 /* Controversies — reputational / contested-signal evidence kind      */
 /* ------------------------------------------------------------------ */
 
@@ -708,6 +749,13 @@ export const controversiesRelations = relations(controversies, ({ one }) => ({
   }),
 }));
 
+export const newsRelations = relations(news, ({ one }) => ({
+  company: one(companies, {
+    fields: [news.companyId],
+    references: [companies.id],
+  }),
+}));
+
 export const tagsRelations = relations(tags, ({ many }) => ({
   companies: many(companyTags),
 }));
@@ -782,6 +830,8 @@ export type SafetyFramework = typeof safetyFrameworks.$inferSelect;
 export type NewSafetyFramework = typeof safetyFrameworks.$inferInsert;
 export type Controversy = typeof controversies.$inferSelect;
 export type NewControversy = typeof controversies.$inferInsert;
+export type News = typeof news.$inferSelect;
+export type NewNews = typeof news.$inferInsert;
 export type Tag = typeof tags.$inferSelect;
 export type Frame = typeof frames.$inferSelect;
 export type FrameScore = typeof frameScores.$inferSelect;

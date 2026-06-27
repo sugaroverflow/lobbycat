@@ -27,7 +27,13 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { eq, inArray } from "drizzle-orm";
 import { db } from "@/db";
-import { companies, publications, roles, controversies } from "@/db/schema";
+import {
+  companies,
+  publications,
+  roles,
+  controversies,
+  news,
+} from "@/db/schema";
 
 type GlyphiePublication = {
   date?: string | null;
@@ -64,12 +70,21 @@ type GlyphieControversy = {
   source?: string | null;
 };
 
+type GlyphieNews = {
+  date?: string | null;
+  title: string;
+  url: string;
+  source?: string | null; // company_press | company_blog
+  summary?: string | null;
+};
+
 type GlyphieFeed = {
   slug: string;
   lastUpdated?: string;
   publications?: GlyphiePublication[];
   roles?: GlyphieRole[];
   controversies?: GlyphieControversy[];
+  news?: GlyphieNews[];
 };
 
 export type FeedSyncKindResult = {
@@ -92,6 +107,7 @@ export type FeedSyncCompanyResult = {
   publications?: FeedSyncKindResult;
   roles?: FeedSyncKindResult;
   controversies?: FeedSyncKindResult;
+  news?: FeedSyncKindResult;
   error?: string;
 };
 
@@ -405,6 +421,68 @@ async function syncControversies(
   return { kind, error };
 }
 
+async function syncNews(
+  feed: GlyphieFeed,
+  companyId: number,
+  options: { dryRun: boolean },
+): Promise<{ kind: FeedSyncKindResult; error?: string }> {
+  const kind = EMPTY_KIND();
+  const items = (feed.news ?? []).filter(
+    (n): n is GlyphieNews =>
+      !!n && typeof n.title === "string" && typeof n.url === "string",
+  );
+  kind.found = items.length;
+  if (items.length === 0) return { kind };
+
+  const urls = Array.from(new Set(items.map((i) => i.url)));
+  const existingRows = await db
+    .select({ url: news.url })
+    .from(news)
+    .where(eq(news.companyId, companyId));
+  const existing = new Set(
+    existingRows.filter((r) => urls.includes(r.url)).map((r) => r.url),
+  );
+
+  if (options.dryRun) {
+    for (const item of items) {
+      if (existing.has(item.url)) kind.updated += 1;
+      else kind.inserted += 1;
+    }
+    return { kind };
+  }
+
+  let error: string | undefined;
+  for (const item of items) {
+    try {
+      await db
+        .insert(news)
+        .values({
+          companyId,
+          title: item.title,
+          url: item.url,
+          publishedAt: parseDate(item.date),
+          source: item.source ?? "company_press",
+          summary: item.summary ?? null,
+        })
+        .onConflictDoUpdate({
+          target: [news.companyId, news.url],
+          set: {
+            title: item.title,
+            publishedAt: parseDate(item.date),
+            source: item.source ?? "company_press",
+            summary: item.summary ?? null,
+          },
+        });
+      if (existing.has(item.url)) kind.updated += 1;
+      else kind.inserted += 1;
+    } catch (err) {
+      kind.skipped += 1;
+      error = err instanceof Error ? err.message : String(err);
+    }
+  }
+  return { kind, error };
+}
+
 async function syncOne(
   feed: GlyphieFeed,
   companyId: number,
@@ -415,18 +493,26 @@ async function syncOne(
   const pub = await syncPublications(feed, companyId, options);
   const rol = await syncRoles(feed, companyId, options);
   const con = await syncControversies(feed, companyId, options);
+  const nws = await syncNews(feed, companyId, options);
 
-  const errors = [pub.error, rol.error, con.error].filter(Boolean);
+  const errors = [pub.error, rol.error, con.error, nws.error].filter(Boolean);
   return {
     slug: feed.slug,
     companyId,
-    found: pub.kind.found + rol.kind.found + con.kind.found,
-    inserted: pub.kind.inserted + rol.kind.inserted + con.kind.inserted,
-    updated: pub.kind.updated + rol.kind.updated + con.kind.updated,
-    skipped: pub.kind.skipped + rol.kind.skipped + con.kind.skipped,
+    found: pub.kind.found + rol.kind.found + con.kind.found + nws.kind.found,
+    inserted:
+      pub.kind.inserted +
+      rol.kind.inserted +
+      con.kind.inserted +
+      nws.kind.inserted,
+    updated:
+      pub.kind.updated + rol.kind.updated + con.kind.updated + nws.kind.updated,
+    skipped:
+      pub.kind.skipped + rol.kind.skipped + con.kind.skipped + nws.kind.skipped,
     publications: pub.kind,
     roles: rol.kind,
     controversies: con.kind,
+    news: nws.kind,
     ...(errors.length ? { error: errors.join("; ") } : {}),
   };
 }
@@ -473,7 +559,8 @@ export async function runFeedsSync(options?: {
       const found =
         (feed.publications?.length ?? 0) +
         (feed.roles?.length ?? 0) +
-        (feed.controversies?.length ?? 0);
+        (feed.controversies?.length ?? 0) +
+        (feed.news?.length ?? 0);
       out.push({
         slug: feed.slug,
         found,
