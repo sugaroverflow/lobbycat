@@ -1,6 +1,6 @@
 {
   "slug": "open-rights-group",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "Leading UK-based digital campaigning organisation defending privacy, data protection and free expression online.",
   "hiring": {},
   "publications": [
@@ -33,6 +33,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-16",
+      "title": "MPs urged to vote for a Digital Sovereignty strategy",
+      "url": "https://www.openrightsgroup.org/press-releases/mps-urged-to-vote-for-a-digital-sovereignty-strategy/",
+      "source": "org_news",
+      "summary": "ORG urges MPs to back an amendment to the Cyber Security and Resilience Bill requiring a Digital Sovereignty strategy for the resilience and independence of UK critical infrastructure — a concrete legislative-advocacy signal."
+    },
+    {
+      "date": "2026-02-16",
+      "title": "Online harms: Millions could be forced to use unregulated age verification",
+      "url": "https://www.openrightsgroup.org/press-releases/online-harms-millions-could-be-forced-to-use-unregulated-age-verification/",
+      "source": "org_news",
+      "summary": "ORG responds to the government's online-safety proposals, warning of unregulated age-verification rollout; Big Tech Programme Manager James Baker argues the government is 'playing whack-a-mole' instead of confronting structural Big Tech power."
+    }
+  ],
   "notes": "Publications page provides clear inline dates per item; used those directly. News not harvested (separate press/blog section). No controversy where ORG is a named legal party found on this page (ORG files complaints/representative actions but no named court case party listed here)."
 }

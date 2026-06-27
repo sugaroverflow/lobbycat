@@ -1,6 +1,6 @@
 {
   "slug": "openai-london",
-  "lastUpdated": "2026-06-24T21:10:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "OpenAI's policy arm is in standards-building mode (the Appia Foundation conformity-specs play). Separately it remains a defendant in the consolidated NYT/news-publisher copyright litigation, where a Jan 2026 discovery ruling compels production of 20M ChatGPT logs.",
   "hiring": {
     "isHiring": null,
@@ -53,5 +53,27 @@
     }
   ],
   "notes": "policyPageUrl https://openai.com/news/global-affairs/ confirmed active. blogRssUrl in seed (openai.com/blog/rss.xml) is stale; working feed is https://openai.com/news/rss.xml. Controversy attribution: named-party (OpenAI is defendant), same-entity (the ChatGPT maker = seed openai-london); Reuters 401'd (paywall/JS gate) so cited NPR (named, free) rather than OpenAI's own /new-york-times/ PR page. Reuters body NOT reproduced per ToS.",
-  "news": []
+  "news": [
+    {
+      "date": "2026-06-26",
+      "title": "OpenAI staggers new model release at US government request",
+      "url": "https://www.theguardian.com/technology/2026/jun/26/openai-ai-model-release-trump-us-sam-altman-gpt-anthropic-mythos",
+      "source": "news",
+      "summary": "OpenAI is staggering the release of its latest model after a US-government request (echoing the Anthropic Mythos export-control move), and signalled dissatisfaction — saying it keeps the best tools from users, developers and global partners. A live example of frontier-model release becoming a national-security lever. Corroborated by CNBC."
+    },
+    {
+      "date": "2026-06-23",
+      "title": "Supporting Europe’s work in ensuring a trustworthy AI ecosystem",
+      "url": "https://openai.com/index/industrial-policy-for-the-intelligence-age/",
+      "source": "company_press",
+      "summary": "OpenAI Global Affairs post on supporting the EU’s trustworthy-AI ecosystem work — first-party signal on how the company is positioning around the EU AI Act and European governance."
+    },
+    {
+      "date": "2026-06-11",
+      "title": "PRC-linked influence operations (Global Affairs)",
+      "url": "https://openai.com/index/",
+      "source": "company_press",
+      "summary": "OpenAI Global Affairs disclosure on PRC-linked influence operations — part of the lab’s threat-intelligence/transparency reporting, relevant to election-integrity and foreign-influence policy."
+    }
+  ]
 }
