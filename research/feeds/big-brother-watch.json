@@ -1,38 +1,53 @@
 {
   "slug": "big-brother-watch",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "UK civil liberties and privacy campaign group researching surveillance, facial recognition, and digital rights.",
   "hiring": {},
   "publications": [
     {
-      "date": "2026-06-23",
-      "title": "Big Brother Watch responds to the expansion of fixed facial recognition cameras in London",
-      "url": "https://bigbrotherwatch.org.uk/press-releases/big-brother-watch-responds-to-the-expansion-of-fixed-facial-recognition-cameras-in-london/",
+      "date": "2025-09-01",
+      "title": "Checkpoint Britain",
+      "url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/09/Checkpoint-Britain.pdf",
       "type": "paper",
       "byline": null,
-      "summary": "Responding to news that the Metropolitan Police will expand the use of fixed live facial recognition cameras in London, Head of Advocacy for Big Brother Watch Jack Coulson said: &#8220;Tackling crime"
+      "summary": "Big Brother Watch report on the spread of identity and document checks in Britain."
     },
     {
-      "date": "2026-06-10",
-      "title": "Metro – Sports Direct facial recognition error wrongly flags innocent woman as a thief",
-      "url": "https://bigbrotherwatch.org.uk/facialrec/metro-sports-direct-facial-recognition-mistake-results-in-a-woman-being-wrongly-accused-as-stealing/",
+      "date": "2025-07-01",
+      "title": "Suspicion By Design",
+      "url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/07/Suspicion-By-Design-2.pdf",
       "type": "paper",
       "byline": null,
-      "summary": "A woman was wrongly accused by Sports Direct store managers of being a thief after her face was identified by the store’s Facewatch facial recognition system. The system’s record said that she had sto"
+      "summary": "Investigative report on automated suspicion and profiling systems."
     },
     {
-      "date": "2026-06-09",
-      "title": "The Telegraph – HMRC’s AI-powered surveillance plans spark Big Brother fears",
-      "url": "https://bigbrotherwatch.org.uk/press-coverage/the-telegraph-hmrcs-ai-powered-surveillance-plans-spark-big-brother-fears/",
+      "date": "2025-06-01",
+      "title": "Big Bank is Watching You: Preserving Privacy Amid the Rise of CBDCs",
+      "url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/06/Big-Bank-is-Watching-You-Preserving-Privacy-Amid-the-Rise-of-CBDCs.pdf",
       "type": "paper",
       "byline": null,
-      "summary": "HMRC is planning to use AI to snoop on taxpayers to send ‘automatic nudges’ and collect more data. This includes reintroducing voice recognition technology to identify taxpayers in real time. HMRC has"
+      "summary": "Report on privacy risks of central bank digital currencies."
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
-  "blurb": "UK civil-liberties campaign group; campaigns and reports on surveillance, facial recognition, and AI in policing/public services.",
-  "lastUpdated": "2026-06-27T09:21:32Z",
-  "notes": "[RSS harvest 2026-06-27] https://bigbrotherwatch.org.uk/feed/"
+  "news": [
+    {
+      "date": "2026-06-23",
+      "title": "Big Brother Watch responds to the expansion of fixed facial recognition cameras in London",
+      "url": "https://bigbrotherwatch.org.uk/press-releases/big-brother-watch-responds-to-the-expansion-of-fixed-facial-recognition-cameras-in-london/",
+      "source": "company_press",
+      "summary": "Press release reacting to expanded fixed facial recognition cameras in London."
+    },
+    {
+      "date": "2026-06-15",
+      "title": "Big Brother Watch responds to PM's Social Media Ban announcement",
+      "url": "https://bigbrotherwatch.org.uk/press-releases/big-brother-watch-responds-to-governments-social-media-ban/",
+      "source": "company_press",
+      "summary": "Press release responding to the government's proposed under-16s social media ban."
+    }
+  ],
+  "notes": "Reports page lists PDFs without inline dates; dates inferred from PDF upload path (year/month), which BBW uses as publication month. News from RSS feed (press-releases only). No controversies where the org itself is a named legal party found on first-party site."
 }
