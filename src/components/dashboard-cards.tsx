@@ -405,11 +405,11 @@ function CompanyCard({
           <section>
             <h4 className="font-sans text-sm text-readout mb-2">
               Recent publications
-              <span className="text-card-interior-whisper ml-2 text-xs">(last 6mo)</span>
+              <span className="text-card-interior-whisper ml-2 text-xs">(last 12mo)</span>
             </h4>
             {detail.recentPublications.length === 0 ? (
               <p className="text-sm text-card-interior-muted italic">
-                None tracked in the last 6 months.
+                None tracked in the last 12 months.
               </p>
             ) : (
               <ul className="space-y-1.5">
@@ -481,12 +481,12 @@ function CompanyCard({
             <h4 className="font-sans text-sm text-readout mb-2">
               Recent news
               <span className="text-card-interior-whisper ml-2 text-xs">
-                (last 6mo)
+                (last 12mo)
               </span>
             </h4>
             {detail.recentNews.length === 0 ? (
               <p className="text-sm text-card-interior-muted italic">
-                No recent news in the last 6 months.
+                No recent news in the last 12 months.
               </p>
             ) : (
               <ul className="space-y-1.5">
@@ -519,7 +519,7 @@ function CompanyCard({
             <h4 className="font-sans text-sm text-readout mb-2">
               Recent controversy
               <span className="text-card-interior-whisper ml-2 text-xs">
-                (last 6mo)
+                (last 12mo)
               </span>
             </h4>
             {detail.recentControversies.length === 0 ? (
