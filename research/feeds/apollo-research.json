@@ -1,0 +1,28 @@
+{
+  "slug": "apollo-research",
+  "lastUpdated": "2026-06-27T09:10:00Z",
+  "blurb": null,
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 1,
+    "londonPolicyRoles": 1,
+    "lastChecked": "2026-06-27"
+  },
+  "publications": [],
+  "roles": [
+    {
+      "title": "Governance Researcher (Expression of Interest)",
+      "location": "London & San Francisco",
+      "url": "https://jobs.lever.co/apolloresearch/c7377abe-39ac-4712-8d2f-b048f363480a",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    }
+  ],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "[roles-only feed] Created 2026-06-27 to carry the roles lens. Apollo Research is an AI-safety evals org; this Governance Researcher posting is an open expression-of-interest (London & SF). Publications/controversies not yet researched for this company.",
+  "news": []
+}

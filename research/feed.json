@@ -1,6 +1,13 @@
 {
-  "lastUpdated": "2026-06-26T01:23:30Z",
+  "lastUpdated": "2026-06-27T09:10:00Z",
   "events": [
+    {
+      "date": "2026-06-27",
+      "company_slug": "apollo-research",
+      "event_type": "role",
+      "summary": "New policy/governance opening: Governance Researcher (Expression of Interest), London & San Francisco. Apollo Research (AI-safety evals org) surfaced via the roles lens (public ATS feed); London-relevant. First feed entry for this org.",
+      "source_url": "https://jobs.lever.co/apolloresearch/c7377abe-39ac-4712-8d2f-b048f363480a"
+    },
     {
       "date": "2026-06-26",
       "company_slug": "anthropic-london",
