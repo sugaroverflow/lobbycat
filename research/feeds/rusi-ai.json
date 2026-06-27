@@ -1,1 +1,46 @@
-{ "slug":"rusi-ai","lastUpdated":"2026-06-27T09:18:00Z","blurb":"The Royal United Services Institute (RUSI) is an independent UK think tank producing evidence-based research on defence, security and international affairs, including AI policy.","hiring":{},"publications":[],"roles":[],"filings":[],"leadership":[],"controversies":[],"news":[],"notes":"BLOCKED: rusi.org is a Gatsby single-page app. web_fetch (readability) returned only the publications category index (Commentary, Insights Papers, Research Papers, etc.) with no datable article entries. curl of the listing and of /feed, /feed.xml, /sitemap.xml, /sitemap_index.xml returned the JS shell (only nav links and inline SVG world-map markup), no real RSS or article URLs with dates. No individual dated/attributed AI publications could be harvested without JS rendering. Empty arrays per protocol." }
+{
+  "slug": "rusi-ai",
+  "lastUpdated": "2026-06-27T10:12:00Z",
+  "blurb": "The Royal United Services Institute (RUSI) is the world's oldest defence and security think tank; its 'Open Source Intelligence, AI and Disruptive Technologies' research stream covers AI's national-security, governance and command implications.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-06-22",
+      "title": "Gatekeeping the Frontier: When AI Access Becomes a National Security Concern",
+      "url": "https://www.rusi.org/explore-our-research/publications/commentary/gatekeeping-frontier-when-ai-access-becomes-national-security-concern",
+      "type": "commentary",
+      "byline": "Dr Louise Marie Hurel",
+      "summary": "Long-read RUSI commentary on the export-controls directive limiting access to Anthropic's latest AI model, examining when restricting access to frontier models becomes a national-security question rather than a purely commercial one."
+    },
+    {
+      "date": "2026-06-17",
+      "title": "When the Algorithm Finds You First: A Case for Social Media Age Restrictions",
+      "url": "https://www.rusi.org/explore-our-research/publications/commentary/when-algorithm-finds-you-first-case-social-media-age-restrictions",
+      "type": "commentary",
+      "byline": "Claudia Wallner",
+      "summary": "Argues that recommender algorithms can funnel young people toward extreme and violent content, making the case for social-media age restrictions as a counter-radicalisation measure."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "The Hour That Worked: What Midnight Hammer Teaches About AI-Era Command",
+      "url": "https://www.rusi.org/explore-our-research/publications/commentary/hour-worked-what-midnight-hammer-teaches-about-ai-era-command",
+      "type": "commentary",
+      "byline": "Burak Oktenli (Guest Commentary)",
+      "summary": "Uses two US operations against Iran nine months apart to draw lessons for NATO on command-and-control in an AI-era military environment."
+    },
+    {
+      "date": "2026-06-15",
+      "title": "The Case for Banning Superintelligent AI, Before It's Too Late",
+      "url": "https://www.rusi.org/explore-our-research/publications/commentary/case-banning-superintelligent-ai-its-too-late",
+      "type": "commentary",
+      "byline": "Lord Des Browne (Guest Commentary)",
+      "summary": "Guest commentary arguing that Britain's AI sovereignty depends on prohibiting superintelligence, framing a ban on superintelligent AI as a national-security and governance imperative."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (Cloudflare-gated to web_fetch/curl). Source: RUSI 'Open Source Intelligence, AI and Disruptive Technologies' topic page → individual commentary pages. Dates taken from the visible byline date on each article (e.g. '22 June 2026'); the page <time> datetime attribute carried an unreliable ingestion timestamp and was NOT used. All four items are AI/national-security commentary; bylines first-party. RUSI's main /news/publications search index was reachable but its dated article cards render via JS pagination, so I used the topic page's surfaced commentary links instead."
+}

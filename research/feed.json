@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T09:32:08Z",
+  "lastUpdated": "2026-06-27T10:31:12Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -114,6 +114,13 @@
       "source_url": "https://www.bennettschool.cam.ac.uk/publications/the-manchester-model/"
     },
     {
+      "date": "2026-06-22",
+      "company_slug": "rusi-ai",
+      "event_type": "publication",
+      "summary": "Long-read RUSI commentary on the export-controls directive limiting access to Anthropic's latest AI model, examining when restricting access to frontier models becomes a national-security question rather than a purely commercial one.",
+      "source_url": "https://www.rusi.org/explore-our-research/publications/commentary/gatekeeping-frontier-when-ai-access-becomes-national-security-concern"
+    },
+    {
       "date": "2026-06-19",
       "company_slug": "dsit-ai-policy",
       "event_type": "press",
@@ -140,6 +147,27 @@
       "event_type": "publication",
       "summary": "Foxglove analysis disputing NHS England's claims that Palantir's Federated Data Platform increased operations.",
       "source_url": "https://www.foxglove.org.uk/2026/06/17/nhs-england-palantir-delivering-benefit-nhs/"
+    },
+    {
+      "date": "2026-06-17",
+      "company_slug": "helsing",
+      "event_type": "press",
+      "summary": "Partnership with EURENCO to build a 'sovereign European' strike-drone capability — ties autonomous-weapons development to European strategic-autonomy / defence-sovereignty policy.",
+      "source_url": "https://helsing.ai/newsroom/helsing-and-eurenco-sign-partnership-to-deliver-a-sovereign-european-strike-drone-capability"
+    },
+    {
+      "date": "2026-06-17",
+      "company_slug": "rusi-ai",
+      "event_type": "publication",
+      "summary": "Argues that recommender algorithms can funnel young people toward extreme and violent content, making the case for social-media age restrictions as a counter-radicalisation measure.",
+      "source_url": "https://www.rusi.org/explore-our-research/publications/commentary/when-algorithm-finds-you-first-case-social-media-age-restrictions"
+    },
+    {
+      "date": "2026-06-17",
+      "company_slug": "synthesia",
+      "event_type": "press",
+      "summary": "Synthesia CEO Victor Riparbelli attends a G7 AI lunch in Évian — a direct policy-engagement signal: a synthetic-media company at the G7 table is notable given the deepfake / content-authenticity questions Synthesia's technology raises.",
+      "source_url": "https://www.synthesia.io/post/victor-riparbelli-attends-g7-ai-lunch-evian"
     },
     {
       "date": "2026-06-16",
@@ -170,6 +198,20 @@
       "source_url": "https://www.foxglove.org.uk/2026/06/16/nhs-trusts-palantir-fdp-tools-fewer-operations/"
     },
     {
+      "date": "2026-06-16",
+      "company_slug": "faculty-ai",
+      "event_type": "publication",
+      "summary": "Faculty details applied AI work on the English planning system — directly relevant to the UK government's AI-for-planning agenda (parallels DeepMind's June planning-prototype announcement), and to how public-sector AI delivery actually lands.",
+      "source_url": "https://faculty.ai/en-gb/insights/articles/how-were-building-ai-to-help-fix-the-english-planning-system"
+    },
+    {
+      "date": "2026-06-16",
+      "company_slug": "rusi-ai",
+      "event_type": "publication",
+      "summary": "Uses two US operations against Iran nine months apart to draw lessons for NATO on command-and-control in an AI-era military environment.",
+      "source_url": "https://www.rusi.org/explore-our-research/publications/commentary/hour-worked-what-midnight-hammer-teaches-about-ai-era-command"
+    },
+    {
       "date": "2026-06-15",
       "company_slug": "big-brother-watch",
       "event_type": "press",
@@ -182,6 +224,13 @@
       "event_type": "press",
       "summary": "We’re introducing new AI-powered Facebook features to help you connect, create, and find what you’re looking for.\nThe post New AI Tools to Help You Make Things Happen on Facebook appeared first on Me",
       "source_url": "https://about.fb.com/news/2026/06/new-ai-tools-to-help-you-make-things-happen-on-facebook/"
+    },
+    {
+      "date": "2026-06-15",
+      "company_slug": "rusi-ai",
+      "event_type": "publication",
+      "summary": "Guest commentary arguing that Britain's AI sovereignty depends on prohibiting superintelligence, framing a ban on superintelligent AI as a national-security and governance imperative.",
+      "source_url": "https://www.rusi.org/explore-our-research/publications/commentary/case-banning-superintelligent-ai-its-too-late"
     },
     {
       "date": "2026-06-12",
@@ -210,6 +259,20 @@
       "event_type": "publication",
       "summary": "DeepMind and partners open a $10M funding call for multi-agent AI safety research.",
       "source_url": "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/"
+    },
+    {
+      "date": "2026-06-10",
+      "company_slug": "faculty-ai",
+      "event_type": "publication",
+      "summary": "Faculty's 'decision intelligence' framing — positioning argument about where AI value actually comes from in enterprise/government, useful as context on how a major UK gov-AI vendor pitches its work.",
+      "source_url": "https://faculty.ai/en-gb/insights/articles/you-dont-have-an-ai-problem-you-have-a-decision-problem"
+    },
+    {
+      "date": "2026-06-10",
+      "company_slug": "helsing",
+      "event_type": "press",
+      "summary": "Helsing (Munich) unveils the CA-1, an autonomous combat aircraft for electronic warfare — a notable escalation from defence software into autonomous lethal hardware, directly relevant to lethal-autonomous-weapons (LAWS) policy debates.",
+      "source_url": "https://helsing.ai/newsroom/helsing-introduces-the-ca-1-electronic-attack-an-autonomous-combat-aircraft-for-electronic-warfare"
     },
     {
       "date": "2026-06-08",
@@ -261,6 +324,13 @@
       "source_url": "https://institute.global/insights/tech-and-digitalisation/digital-embassies-and-ai-sovereignty-building-resilient-states-beyond-borders"
     },
     {
+      "date": "2026-05-28",
+      "company_slug": "mistral-london",
+      "event_type": "publication",
+      "summary": "Mistral's AI Now Summit 2026 — a company event framed around AI 'innovations for global enterprises'; relevant as a European-frontier-lab convening signal rather than a pure product launch.",
+      "source_url": "https://mistral.ai/news/ai-now-summit-2026/"
+    },
+    {
       "date": "2026-05-20",
       "company_slug": "demos",
       "event_type": "publication",
@@ -280,6 +350,13 @@
       "event_type": "publication",
       "summary": "ODI report on shared infrastructure to enable public-benefit access to platform data.",
       "source_url": "https://theodi.org/insights/reports/towards-shared-infrastructure-for-public-benefit-access-to-platform-data/"
+    },
+    {
+      "date": "2026-05-20",
+      "company_slug": "cohere-london",
+      "event_type": "publication",
+      "summary": "Launch of Command A+, framed around 'sovereign agentic capabilities' — relevant to the AI-sovereignty policy debate (national control over models/data) that Cohere positions itself within.",
+      "source_url": "https://cohere.com/blog/command-a-plus"
     },
     {
       "date": "2026-05-13",
@@ -413,6 +490,13 @@
       "event_type": "publication",
       "summary": "Identifies specific, safe knowledge gaps to fill for mirror-life preparedness without lowering barriers to creating it — biosecurity-meets-AI risk methodology.",
       "source_url": "https://www.longtermresilience.org/reports/gap-consolidation-of-the-mirror-life-evidence-base/"
+    },
+    {
+      "date": "2026-01-06",
+      "company_slug": "faculty-ai",
+      "event_type": "press",
+      "summary": "Accenture to acquire Faculty — a material structural change for one of the UK government's most embedded AI vendors, with implications for who delivers (and owns) public-sector AI capability. Worth flagging for the conflict-of-interest / market-concentration lens.",
+      "source_url": "https://faculty.ai/en-gb/insights/articles/accenture-to-acquire-faculty-to-scale-ai-capabilities"
     },
     {
       "date": "2026-01-01",
