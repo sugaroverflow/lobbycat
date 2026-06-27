@@ -693,7 +693,14 @@ export async function getRankedHomeData() {
           publishedAt: publications.publishedAt,
         })
         .from(publications)
-        .where(sql`${publications.publishedAt} >= ${sixMonthsAgo}`)
+        // v0.8.4 fix: include NULL publishedAt rows. Some of Glyphie's
+        // primary-source pubs (ICO consultation responses etc.) come
+        // without a precise date — the strict `>= sixMonthsAgo` filter
+        // was dropping them. Matches the controversies treatment (above)
+        // and the news read added in this PR.
+        .where(
+          sql`(${publications.publishedAt} IS NULL OR ${publications.publishedAt} >= ${sixMonthsAgo})`,
+        )
         .orderBy(desc(publications.publishedAt)),
       // All currently-open roles for the dashboard cards' expand reveal
       db
