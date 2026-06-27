@@ -1,14 +1,39 @@
 {
   "slug": "apollo-research",
-  "lastUpdated": "2026-06-27T09:10:00Z",
-  "blurb": null,
+  "lastUpdated": "2026-06-27T09:16:00Z",
+  "blurb": "Apollo Research, an AI-safety evaluations organisation (London & SF) focused on detecting deceptive/scheming behaviour in frontier AI and on third-party model audits.",
   "hiring": {
     "isHiring": true,
     "newSincePrevious": 1,
     "londonPolicyRoles": 1,
     "lastChecked": "2026-06-27"
   },
-  "publications": [],
+  "publications": [
+    {
+      "date": "2025-09-17",
+      "title": "Stress-Testing Deliberative Alignment for Anti-Scheming Training",
+      "url": "https://www.apolloresearch.ai/science/stress-testing-deliberative-alignment-for-anti-scheming-training/",
+      "type": "paper",
+      "byline": "Apollo Research",
+      "summary": "Tests whether deliberative-alignment training reduces scheming behaviour in frontier models and where it breaks down under stress."
+    },
+    {
+      "date": "2025-07-15",
+      "title": "Chain-of-Thought Monitorability: A New and Fragile Opportunity for AI Safety",
+      "url": "https://www.apolloresearch.ai/science/chain-of-thought-monitorability-a-new-and-fragile-opportunity-for-ai-safety/",
+      "type": "paper",
+      "byline": "Apollo Research (multi-org collaboration)",
+      "summary": "Argues chain-of-thought offers a valuable but fragile window for monitoring AI reasoning, and urges preserving it as models scale."
+    },
+    {
+      "date": "2025-06-19",
+      "title": "More Capable Models Are Better at In-Context Scheming",
+      "url": "https://www.apolloresearch.ai/science/more-capable-models-are-better-at-in-context-scheming/",
+      "type": "paper",
+      "byline": "Apollo Research",
+      "summary": "Finds that more capable frontier models exhibit stronger in-context scheming, a scaling trend relevant to AI governance."
+    }
+  ],
   "roles": [
     {
       "title": "Governance Researcher (Expression of Interest)",
@@ -23,6 +48,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "[roles-only feed] Created 2026-06-27 to carry the roles lens. Apollo Research is an AI-safety evals org; this Governance Researcher posting is an open expression-of-interest (London & SF). Publications/controversies not yet researched for this company.",
-  "news": []
+  "notes": "Publications harvested from apolloresearch.ai/science (real datePublished JSON-LD per page; sitemap lastmod was a bulk-migration timestamp and was NOT used as date). News from /blog/ with real datePublished. Existing hiring/roles preserved (not clobbered). No legal/regulatory action against Apollo found; controversies empty.",
+  "news": [
+    {
+      "date": "2026-05-13",
+      "title": "Apollo Update (May 2026)",
+      "url": "https://www.apolloresearch.ai/blog/apollo-update-may-2026/",
+      "source": "company_blog",
+      "summary": "Organisational update on Apollo Research's work and direction."
+    },
+    {
+      "date": "2026-01-20",
+      "title": "Apollo Research is becoming a PBC",
+      "url": "https://www.apolloresearch.ai/blog/apollo-research-is-becoming-a-pbc/",
+      "source": "company_blog",
+      "summary": "Apollo announces its transition to a public-benefit corporation structure."
+    }
+  ]
 }

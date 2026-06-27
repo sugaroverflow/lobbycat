@@ -1,0 +1,30 @@
+{
+  "slug": "bank-of-england-ai",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Bank of England is the UK's central bank; this covers its research and policy work on artificial intelligence in the financial system.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2025-04-09",
+      "title": "Financial Stability in Focus: Artificial intelligence in the financial system",
+      "url": "https://www.bankofengland.co.uk/financial-stability-in-focus/2025/april-2025",
+      "type": "other",
+      "byline": null,
+      "summary": "Financial Policy Committee analysis of the financial stability implications of growing AI adoption across the financial system."
+    },
+    {
+      "date": "2024-11-21",
+      "title": "Artificial intelligence in UK financial services - 2024",
+      "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+      "type": "other",
+      "byline": null,
+      "summary": "Joint Bank of England and FCA survey on the use of AI and machine learning in UK financial services and associated benefits and risks."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Regulator/central bank research site. Both dates taken from each page's first-party 'Published on' field (09 April 2025; 21 November 2024)."
+}

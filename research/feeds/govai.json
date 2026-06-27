@@ -1,0 +1,17 @@
+{
+  "slug": "govai",
+  "lastUpdated": "2026-06-27T09:16:00Z",
+  "blurb": "The Centre for the Governance of AI (GovAI), an Oxford-rooted research nonprofit producing policy research on how to govern advanced/frontier AI.",
+  "hiring": {},
+  "publications": [
+    { "date": "2025-12-22", "title": "Does the UAE Have an Advantage in Building Data Centers?", "url": "https://www.governance.ai/research-paper/does-the-uae-have-an-advantage-in-building-data-centers", "type": "paper", "byline": null, "summary": "Examines whether the UAE holds structural advantages (energy, capital, siting) for large-scale AI data-center buildout and what that means for compute geopolitics." },
+    { "date": "2025-12-12", "title": "Dual-Use AI Capabilities and the Risk of Bioterrorism: Converting Capability Evaluations to Risk Assessments", "url": "https://www.governance.ai/research-paper/dual-use-ai-capabilities-and-the-risk-of-bioterrorism-converting-capability-evaluations-to-risk-assessments", "type": "paper", "byline": null, "summary": "Proposes a method for translating model capability evaluations into actual bioterrorism risk assessments rather than treating capability as risk directly." },
+    { "date": "2026-01-01", "title": "How Adaptable Are American Workers to AI-Induced Job Displacement?", "url": "https://www.governance.ai/research-paper/how-adaptable-are-american-workers-to-ai-induced-job-displacement", "type": "paper", "byline": null, "summary": "Studies the adaptability of US workers to AI-driven displacement and the labour-market implications for policy." }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Harvested from governance.ai/research index (JS/Webflow site; /sitemap.xml 404s but /research lists research-paper/ slugs). Dates taken from each paper page's own date line. Many more papers exist; took 3 most-recent-dated. No first-party press feed found; news empty. No regulatory/legal action against GovAI; controversies empty."
+}

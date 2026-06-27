@@ -1,0 +1,62 @@
+{
+  "slug": "tbi",
+  "lastUpdated": "2026-06-27T09:20:00Z",
+  "blurb": "The Tony Blair Institute for Global Change is a UK-founded policy advisory organisation that publishes prolifically on AI in government, public services, and geopolitics, generally arguing for aggressive state adoption of AI.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2025-11-17",
+      "title": "Europe in the Age of AI: How Technology Leadership Can Boost Competitiveness and Security",
+      "url": "https://institute.global/insights/tech-and-digitalisation/europe-in-the-age-of-ai-how-technology-leadership-can-boost-competitiveness-and-security",
+      "type": "paper",
+      "byline": "Keegan McBride",
+      "summary": "Argues Europe can strengthen its economy and strategic autonomy by scaling digital infrastructure, embracing AI, and reforming tech regulation rather than defaulting to a precautionary regulatory posture."
+    },
+    {
+      "date": "2025-11-18",
+      "title": "AI-Native Biotech Is an Opportunity for UK Leadership and Growth",
+      "url": "https://institute.global/insights/public-services/AI-native-biotech-opportunity-uk-leadership-growth",
+      "type": "paper",
+      "byline": "Charlotte Refsum, Lena Afeyan",
+      "summary": "Contends a new era of AI-native biotech is emerging and the UK's sovereign assets make it well placed to host these wealth-generating companies if it acts to attract them."
+    },
+    {
+      "date": "2025-09-22",
+      "title": "What the UK Thinks About AI: Building Public Trust to Accelerate Adoption",
+      "url": "https://institute.global/insights/tech-and-digitalisation/what-the-uk-thinks-about-ai-building-public-trust-to-accelerate-adoption",
+      "type": "paper",
+      "byline": "Jakob Mökander",
+      "summary": "Presents new polling arguing that AI can transform public services but that public trust and understanding must first be improved to unlock faster adoption."
+    },
+    {
+      "date": "2026-05-28",
+      "title": "Digital Embassies and AI Sovereignty: Building Resilient States Beyond Borders",
+      "url": "https://institute.global/insights/tech-and-digitalisation/digital-embassies-and-ai-sovereignty-building-resilient-states-beyond-borders",
+      "type": "paper",
+      "byline": "Jared Wright, Ott Velsberg, Alexander Iosad",
+      "summary": "Proposes 'digital embassies' as a strategic mechanism for states to maintain resilience, security, sovereignty and operational continuity in the age of AI."
+    },
+    {
+      "date": "2025-04-02",
+      "title": "Rebooting Copyright: How the UK Can Be a Global Leader in the Arts and AI",
+      "url": "https://institute.global/insights/tech-and-digitalisation/rebooting-copyright-how-the-uk-can-be-a-global-leader-in-the-arts-and-ai",
+      "type": "paper",
+      "byline": "Jakob Mökander, Amanda Brock, Mick Grierson",
+      "summary": "Argues the UK can support artists, encourage responsible AI use and unlock economic growth by modernising its copyright law for the AI era."
+    },
+    {
+      "date": "2025-05-07",
+      "title": "Governing in the Age of AI: Reimagining Local Government",
+      "url": "https://institute.global/insights/politics-and-governance/governing-in-the-age-of-ai-reimagining-local-government",
+      "type": "paper",
+      "byline": "Oliver Large",
+      "summary": "Argues local authorities can harness AI to support staff, improve citizens' access to services and streamline decision-making to improve efficiency and outcomes."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Harvested from institute.global sitemap.xml (200 OK, browser UA). Sitemap lastmod values are crawl timestamps (mostly 2026-06-23); used each page's JSON-LD datePublished as the true publication date instead. TBI is prolific on AI policy; selected six recent, high-signal, clearly AI-focused insights with confirmed datePublished + author. No controversies found where TBI is a named legal/regulatory party. No first-party press-release feed parsed."
+}
