@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T21:39:33Z",
+  "lastUpdated": "2026-06-27T22:39:14Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -527,6 +527,20 @@
       "source_url": "https://www.foxglove.org.uk/2026/06/03/press-release-uk-google-journalists-opt-out-ai-theft-foxglove-complaint/"
     },
     {
+      "date": "2026-06-03",
+      "company_slug": "stability-ai",
+      "event_type": "publication",
+      "summary": "A reinforcement-learning framework that fine-tunes a pretrained image layer-decomposition model using only feedback from a vision-language model (VLM), removing the need for paired supervision.",
+      "source_url": "https://stability.ai/research/stable-layers-fine-tuning-image-layer-decomposition-models-with-vlm-scored-reinforcement-learning"
+    },
+    {
+      "date": "2026-06-03",
+      "company_slug": "stability-ai",
+      "event_type": "publication",
+      "summary": "A KV-cache quantization codec for transformers that, across text, video and audio, matches or beats prior rotation codecs at every reported bit width, with the lead growing at extreme compression.",
+      "source_url": "https://stability.ai/research/octopus-optimized-kv-cache-for-transformers-via-octahedral-parametrization-under-optimal-squared-error-quantization"
+    },
+    {
       "date": "2026-06-01",
       "company_slug": "google-deepmind",
       "event_type": "press",
@@ -623,6 +637,13 @@
       "event_type": "publication",
       "summary": "GPT-Rosalind — OpenAI's life-sciences model. The companion piece to Rosalind Biodefense and LifeSciBench; together they're OpenAI's biology bet.",
       "source_url": "https://openai.com/"
+    },
+    {
+      "date": "2026-05-20",
+      "company_slug": "stability-ai",
+      "event_type": "publication",
+      "summary": "A family of fast latent-diffusion models (small, medium, large) for variable-length audio generation and editing, alongside SAME, a semantically-aligned music autoencoder.",
+      "source_url": "https://stability.ai/research/stable-audio-3"
     },
     {
       "date": "2026-05-13",
@@ -912,6 +933,13 @@
       "source_url": "https://www.chathamhouse.org/2025/10/chatham-house-fellow-provides-evidence-uk-parliament-joint-select-committee-national"
     },
     {
+      "date": "2025-10-27",
+      "company_slug": "stability-ai",
+      "event_type": "publication",
+      "summary": "A lightweight approach to video-guided Foley that keeps pretrained single-modality models frozen and learns only a small cross-attention bridge between a text-to-audio model and video.",
+      "source_url": "https://stability.ai/research/foley-control-aligning-a-frozen-latent-text-to-audio-model-to-video"
+    },
+    {
       "date": "2025-10-23",
       "company_slug": "i-dot-ai",
       "event_type": "publication",
@@ -938,6 +966,13 @@
       "event_type": "press",
       "summary": "CFG critiques the EU's flagship 'CERN for AI' (RAISE) ambition, warning that without focus Europe's initiative could end up 'everything and nothing at once' — a sharp EU-AI-industrial-policy intervention.",
       "source_url": "https://cfg.eu/press-release-the-raise-trilemma/"
+    },
+    {
+      "date": "2025-10-10",
+      "company_slug": "stability-ai",
+      "event_type": "publication",
+      "summary": "A framework that predicts multi-view-consistent physically-based-rendering (PBR) materials from a single image by repurposing video-diffusion models for efficient 3D reconstruction.",
+      "source_url": "https://stability.ai/research/svim3d-stable-video-material-diffusion-for-single-image-3d-generation"
     },
     {
       "date": "2025-09-30",
