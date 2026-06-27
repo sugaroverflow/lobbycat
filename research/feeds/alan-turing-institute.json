@@ -1,6 +1,6 @@
 {
   "slug": "alan-turing-institute",
-  "lastUpdated": "2026-06-27T10:47:00Z",
+  "lastUpdated": "2026-06-27T21:39:00Z",
   "blurb": "The Alan Turing Institute is the UK's national institute for data science and AI. In 2026 it is in the middle of a contested transformation — a critical UKRI review, leadership turnover, and a pivot toward national-security / 'sovereign capability' work.",
   "hiring": {},
   "publications": [
@@ -48,7 +48,7 @@
         "value_for_money",
         "institutional_reform"
       ],
-      "rawExcerpt": "Overall strategic alignment and value for money are not yet satisfactory. \u2014 UKRI review of the Alan Turing Institute",
+      "rawExcerpt": "Overall strategic alignment and value for money are not yet satisfactory. — UKRI review of the Alan Turing Institute",
       "corroboration": [
         {
           "outlet": "The Guardian",
@@ -63,6 +63,48 @@
         {
           "outlet": "Research Live",
           "url": "https://www.research-live.com/article/news/value-for-money-at-the-alan-turing-institute-not-yet-satisfactory-finds-ukri-review/id/5148276",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    },
+    {
+      "type": "governance_accountability",
+      "title": "Staff revolt and ministerial pressure at the Alan Turing Institute; CEO Jean Innes resigns amid no-confidence letters and a government-demanded strategic overhaul",
+      "url": "https://www.theguardian.com/technology/2025/sep/04/head-of-alan-turing-institute-jean-innes-resigns",
+      "occurredAt": "2025-09-04",
+      "status": "ongoing",
+      "severity": "high",
+      "companyRole": "subject_of_reporting",
+      "summary": "The UK's national AI institute was beset by internal strife and governance scrutiny through 2024-25. At the end of 2024, 93 staff signed a letter expressing no confidence in the leadership team (following an earlier 2024 letter, co-signed by around 180 staff, criticising the appointment of four men to senior roles and the institute's diversity commitment), and staff filed a whistleblowing complaint alleging a lack of transparency in spending and decision-making. A 2024 UK Research and Innovation review found 'a clear need for the governance and leadership structure of the Institute to evolve'. On 4 July 2025 Technology Secretary Peter Kyle wrote to the chair demanding a strategic overhaul, urging the institute to refocus on defence and national security with the remaining ~GBP100m of public funding at stake. On 4 September 2025 chief executive Dr Jean Innes (appointed July 2023) announced her resignation, saying it was time for 'new leadership'; staff who filed the complaint called it a 'first step' toward a broader board-and-executive overhaul. UK relevance: a publicly funded, British Library-headquartered national institute at the centre of UK AI-policy capacity, whose governance, value-for-money and defence-pivot are live questions for ministers, funders and regulators.",
+      "topics": [
+        "governance",
+        "leadership",
+        "accountability",
+        "public_funding",
+        "defence_pivot"
+      ],
+      "rawExcerpt": "At the end of 2024, 93 members of staff signed a letter expressing a lack of confidence in its leadership team. — BBC News, 4 September 2025",
+      "corroboration": [
+        {
+          "outlet": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2025/sep/04/head-of-alan-turing-institute-jean-innes-resigns",
+          "paywalled": false
+        },
+        {
+          "outlet": "BBC News",
+          "url": "https://www.bbc.com/news/articles/c8rvx85z3z7o",
+          "paywalled": false
+        },
+        {
+          "outlet": "The Guardian (Kyle letter)",
+          "url": "https://www.theguardian.com/technology/2025/jul/04/minister-demands-overhaul-of-uks-leading-ai-institute-alan-turing",
+          "paywalled": false
+        },
+        {
+          "outlet": "Personnel Today",
+          "url": "https://www.personneltoday.com/hr/alan-turing-institute-culture/",
           "paywalled": false
         }
       ],

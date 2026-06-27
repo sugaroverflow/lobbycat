@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T20:41:00Z",
+  "lastUpdated": "2026-06-27T21:39:33Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -973,6 +973,13 @@
       "event_type": "publication",
       "summary": "Policy briefing (published 4 September 2025) analysing England's mandatory nature-offset markets (Biodiversity Net Gain and Nutrient Neutrality) and warning current habitat valuation risks delivering smaller, less diverse habitats.",
       "source_url": "https://royalsociety.org/news-resources/publications/2025/nature-offset-markets/"
+    },
+    {
+      "date": "2025-09-04",
+      "company_slug": "alan-turing-institute",
+      "event_type": "controversy",
+      "summary": "Backfill: Alan Turing Institute governance crisis — CEO Dr Jean Innes resigned (4 Sep 2025) after sustained staff revolt and ministerial pressure. End of 2024: 93 staff signed a no-confidence letter in leadership (after an earlier ~180-staff letter over senior-appointment diversity concerns) and filed a whistleblowing complaint; a 2024 UKRI review found governance needed to evolve. On 4 Jul 2025 Tech Secretary Peter Kyle demanded a strategic overhaul and a defence/national-security refocus, with ~£100m of public funding at stake. Governance/accountability scrutiny of the UK's publicly funded national AI institute (Guardian + BBC). Type=governance_accountability/status=ongoing/severity=high.",
+      "source_url": "https://www.theguardian.com/technology/2025/sep/04/head-of-alan-turing-institute-jean-innes-resigns"
     },
     {
       "date": "2025-09-01",
