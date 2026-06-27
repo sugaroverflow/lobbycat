@@ -82,7 +82,7 @@ export default async function HomePage() {
   // ambient rotation later if we want it back.
   void quotes;
   const welcomeLine =
-    "Here are your matches, based on your answers \u2014 London's AI-policy companies, ranked by what you said you care about.";
+    "LobbyCat is a dashboard that ranks London's AI policy companies and roles, ranked by the things it infers you care about. You can filter, favorite, adjust the frames and adjust your profile information to re-rank the data.";
 
   const ageDays =
     home.oldestScoreAt === null

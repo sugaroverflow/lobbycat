@@ -1,13 +1,22 @@
 "use client";
 
-import { useRef, useState, useTransition } from "react";
-import { generateFitNote, sendFitNoteMessage } from "@/app/actions";
+import { useTransition } from "react";
+import { generateFitNote } from "@/app/actions";
 import { CatMark } from "@/components/wordmark";
 import { ClarifyLauncher } from "@/components/clarify-launcher";
 import { LoadingCat } from "@/components/loading-cat";
 import quotes from "@/db/lobbycat-quotes.json";
 
 type QuotePools = { fitNoting?: string[] };
+
+// v0.8.4: follow-up Q&A on the fit-note has been removed. Fatima asked
+// for the feature to be cut entirely (2026-06-27 12:00 UTC) — it kept
+// being flaky and the clarify panel covers the same need more cleanly.
+// The DB table (fit_note_messages) + the sendFitNoteMessage server
+// action stay in tree for now in case we want to revive the feature
+// later or surface conversation history in /profile; only the UI is
+// gone. `thread` is still accepted as a prop so the upstream page
+// component doesn't need a same-day type change — it's just unused.
 
 type FitNote = {
   headline: string | null;
@@ -48,49 +57,17 @@ function parseFitNote(body: string): { bullets: string[]; caveat: string | null 
 export function FitNotePanel({
   companyId,
   fitNote,
-  thread,
 }: {
   companyId: number;
   fitNote: FitNote;
-  thread: ThreadMessage[];
+  // `thread` was previously the in-panel chat history. Removed in v0.8.4
+  // along with the follow-up form. Keep the prop in the upstream
+  // component for now (zero-cost) and ignore it here.
+  thread?: ThreadMessage[];
 }) {
   const [pending, start] = useTransition();
-  const [sending, startSend] = useTransition();
-  const [draft, setDraft] = useState("");
-  // Optimistic copy of the just-sent user message so the thread updates
-  // instantly. revalidatePath round-trips through an Anthropic call that
-  // can take several seconds; without this the UI looks frozen and the
-  // feature reads as "broken" (see F4.2).
-  const [pendingUserMessage, setPendingUserMessage] = useState<string | null>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const parsed = fitNote ? parseFitNote(fitNote.body) : null;
   const fitNotingPool = (quotes as unknown as QuotePools).fitNoting ?? [];
-
-  function submitDraft() {
-    const content = draft.trim();
-    if (!content || sending) return;
-    setDraft("");
-    setPendingUserMessage(content);
-    startSend(async () => {
-      try {
-        await sendFitNoteMessage({ companyId, content });
-      } catch (err) {
-        // Restore the draft so the user doesn't lose what they typed.
-        setDraft(content);
-        console.error(err);
-      } finally {
-        // Once the server action returns, the persisted thread row will
-        // appear via revalidatePath; clear the optimistic copy so we
-        // don't double-render it.
-        setPendingUserMessage(null);
-      }
-    });
-  }
-
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    submitDraft();
-  }
 
   return (
     <aside className="border border-rule rounded-sm p-6 bg-surface">
@@ -151,88 +128,9 @@ export function FitNotePanel({
         </div>
       )}
 
-      {/* Conversation thread — only shows once there's a fit-note to ask about */}
-      {fitNote && (
-        <div className="mt-6 pt-5 border-t border-rule">
-          <div className="eyebrow mb-3">follow up</div>
-          {(thread.length > 0 || pendingUserMessage || sending) && (
-            <ul className="space-y-3 mb-4 list-none pl-0">
-              {thread.map((m) => {
-                const isCat = m.role === "cat";
-                return (
-                  <li key={m.id} className="flex flex-col gap-1">
-                    <span className="mono text-[10px] uppercase tracking-[0.12em] text-muted">
-                      {isCat ? "lobbycat" : "you"}
-                    </span>
-                    <p
-                      className={
-                        isCat
-                          ? "serif text-sm text-body leading-relaxed"
-                          : "serif text-sm text-ink leading-relaxed pl-3 border-l-2 border-sage-soft"
-                      }
-                    >
-                      {m.content}
-                    </p>
-                  </li>
-                );
-              })}
-              {pendingUserMessage && (
-                <li key="pending-user" className="flex flex-col gap-1">
-                  <span className="mono text-[10px] uppercase tracking-[0.12em] text-muted">
-                    you
-                  </span>
-                  <p className="serif text-sm text-ink leading-relaxed pl-3 border-l-2 border-sage-soft opacity-80">
-                    {pendingUserMessage}
-                  </p>
-                </li>
-              )}
-              {sending && (
-                <li className="flex flex-col gap-1">
-                  <span className="mono text-[10px] uppercase tracking-[0.12em] text-muted">
-                    lobbycat
-                  </span>
-                  <LoadingCat
-                    quotes={fitNotingPool}
-                    label="following up"
-                    size={32}
-                    align="row"
-                  />
-                </li>
-              )}
-            </ul>
-          )}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-            <textarea
-              ref={textareaRef}
-              value={draft}
-              onChange={(e) => setDraft(e.target.value)}
-              onKeyDown={(e) => {
-                // Plain Enter sends; Shift+Enter inserts a newline. ⌘/Ctrl+Enter
-                // still works for muscle-memory parity with the old behaviour.
-                if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) {
-                  e.preventDefault();
-                  submitDraft();
-                }
-              }}
-              placeholder="Ask lobbycat a follow-up… (Enter to send, Shift+Enter for newline)"
-              rows={2}
-              disabled={sending}
-              className="w-full resize-none rounded-sm border border-rule bg-bg p-2 serif text-sm text-ink placeholder:text-whisper focus:outline-none focus:border-moss disabled:opacity-60"
-              maxLength={2000}
-            />
-            <div className="flex items-center justify-end">
-              <button
-                type="submit"
-                disabled={sending || !draft.trim()}
-                aria-label="Send message to lobbycat"
-                className="mono text-[10px] uppercase tracking-[0.14em] px-3 py-2 bg-action text-canvas rounded-sm hover:bg-action-hover transition disabled:opacity-60 disabled:cursor-not-allowed"
-              >
-                {sending ? "sending…" : "send"}
-              </button>
-            </div>
-          </form>
-        </div>
-      )}
+      {/* v0.8.4: fit-note follow-up was removed per Fatima 2026-06-27
+       * 12:00 UTC. The clarify panel (bottom-right pill) is the
+       * supported way to take a conversation further with lobbycat. */}
     </aside>
   );
 }
