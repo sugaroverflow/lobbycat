@@ -1,6 +1,6 @@
 {
   "slug": "bank-of-england-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "The Bank of England is the UK's central bank; this covers its research and policy work on artificial intelligence in the financial system.",
   "hiring": {},
   "publications": [
@@ -25,6 +25,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-05-11",
+      "title": "Bank of England regulator expects 'quite significant disruption' from latest AI models",
+      "url": "https://www.reuters.com/sustainability/boards-policy-regulation/britains-bank-regulator-expects-quite-significant-disruption-latest-ai-models-2026-05-11/",
+      "source": "news",
+      "summary": "The head of the Bank of England's regulatory arm (PRA) said it is 'reasonable to expect quite significant disruption' to financial services from the latest AI models such as Anthropic's Mythos and ChatGPT 5.5 Instant — a notable financial-stability framing of frontier-model risk. Reuters; ties to the BoE's macroprudential AI programme."
+    },
+    {
+      "date": "2026-04-01",
+      "title": "Bank of England response to TSC inquiry report on AI in financial services",
+      "url": "https://www.bankofengland.co.uk/-/media/boe/files/letter/2026/response-to-tsc-inquiry-report-on-ai-in-financial-services",
+      "source": "org_news",
+      "summary": "The Bank's formal response to the Treasury Select Committee's inquiry on AI in financial services; the PRA has highlighted AI adoption in its 2026 supervisory priorities and is running a macroprudential programme on AI's system-level impact. First-party BoE document."
+    }
+  ],
   "notes": "Regulator/central bank research site. Both dates taken from each page's first-party 'Published on' field (09 April 2025; 21 November 2024)."
 }

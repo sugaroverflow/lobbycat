@@ -1,6 +1,6 @@
 {
   "slug": "mistral-london",
-  "lastUpdated": "2026-06-27T12:45:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "Mistral AI is a European frontier AI lab (open-weight and commercial LLMs, assistants, agents) headquartered in Paris with UK/London commercial presence, often cited in European AI-sovereignty discussions.",
   "hiring": {
     "isHiring": true,
@@ -41,6 +41,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-24",
+      "title": "Bringing more control over your connectors",
+      "url": "https://mistral.ai/news/more-control-over-connectors/",
+      "source": "company_press",
+      "summary": "Mistral engineering update on connector controls — product news, included for newsroom completeness."
+    },
+    {
+      "date": "2026-06-23",
+      "title": "Introducing Mistral OCR 4",
+      "url": "https://mistral.ai/news/ocr-4/",
+      "source": "company_press",
+      "summary": "Mistral ships OCR 4, a document-intelligence model. Notable that Mistral pairs product cadence with a 'sovereign European frontier lab' positioning relevant to EU AI-Act and compute-sovereignty debates."
+    }
+  ],
   "notes": "Harvested 2026-06-27 via OpenClaw headless browser (mistral.ai/news passed cleanly; untested by web_fetch this morning). Mistral's news feed is overwhelmingly product/model launches (OCR 4 'June 23 2026', connectors 'June 24 2026', Vibe agent, Search Toolkit) — low policy signal. Logged only the AI Now Summit (convening/positioning signal) with its inline date 'May 28, 2026'. Omitted the product launches per SOUL signal discipline. As a European frontier lab, Mistral is worth watching for sovereignty/EU-AI-Act positioning; will log policy submissions or named-author governance posts if/when they appear. ROLES (2026-06-27 ATS): Mistral is hiring a sizeable EMEA legal bench (8 counsel roles, Paris). Logged the two with the clearest policy/regulatory remit — Privacy Legal Counsel and Product Regulatory Legal Counsel (EU) — as EU-AI-Act/privacy signal; omitted the M&A/banking/compute commercial-counsel roles as non-policy."
 }

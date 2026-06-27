@@ -1,8 +1,13 @@
 {
   "slug": "govai",
-  "lastUpdated": "2026-06-27T09:16:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "The Centre for the Governance of AI (GovAI), an Oxford-rooted research nonprofit producing policy research on how to govern advanced/frontier AI.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 0,
+    "londonPolicyRoles": 1,
+    "lastChecked": "2026-06-27"
+  },
   "publications": [
     {
       "date": "2025-12-22",
@@ -29,10 +34,20 @@
       "summary": "Studies the adaptability of US workers to AI-driven displacement and the labour-market implications for policy."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Summer/Winter Fellowship (AI governance & public policy, Research Track)",
+      "location": "London",
+      "url": "https://www.governance.ai/opportunities",
+      "londonRelevant": true,
+      "isNew": false,
+      "source": "org_careers",
+      "seenAt": "2026-06-27"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
   "news": [],
-  "notes": "Harvested from governance.ai/research index (JS/Webflow site; /sitemap.xml 404s but /research lists research-paper/ slugs). Dates taken from each paper page's own date line. Many more papers exist; took 3 most-recent-dated. No first-party press feed found; news empty. No regulatory/legal action against GovAI; controversies empty."
+  "notes": "Harvested from governance.ai/research index (JS/Webflow site; /sitemap.xml 404s but /research lists research-paper/ slugs). Dates taken from each paper page's own date line. Many more papers exist; took 3 most-recent-dated. No first-party press feed found; news empty. No regulatory/legal action against GovAI; controversies empty. ROLES (2026-06-27): GovAI runs seasonal Fellowships in AI governance & public policy (London; next deadline 12 July 2026) — logged from its own opportunities page. GovAI is a research centre; its substantive output is logged under publications, so news[] is intentionally empty."
 }

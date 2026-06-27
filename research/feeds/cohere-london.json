@@ -1,6 +1,6 @@
 {
   "slug": "cohere-london",
-  "lastUpdated": "2026-06-27T10:12:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "Cohere is an enterprise-focused frontier AI company (LLMs, retrieval, agents) with a London presence, positioning around 'sovereign' and secure enterprise AI deployment.",
   "hiring": {},
   "publications": [
@@ -25,6 +25,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-23",
+      "title": "Why Cultural Awareness is Essential for Global AI",
+      "url": "https://cohere.com/blog/why-cultural-awareness-is-essential-for-global-ai",
+      "source": "company_press",
+      "summary": "Cohere on how users worldwide are affected by AI's cultural gaps — a values/representation angle adjacent to global AI governance and the sovereignty positioning Cohere leans into."
+    },
+    {
+      "date": "2026-06-09",
+      "title": "Introducing North Mini Code: Cohere's first model for developers",
+      "url": "https://cohere.com/blog/north-mini-code",
+      "source": "company_press",
+      "summary": "Cohere ships North Mini Code, an agentic coding model — a product launch, included for newsroom completeness; Cohere's enterprise/sovereign-AI positioning is the policy-relevant throughline."
+    }
+  ],
   "notes": "Harvested 2026-06-27 via OpenClaw headless browser (cohere.com/blog passed cleanly; was untested by web_fetch this morning). Cohere's blog is mostly product/model launches (low policy signal) — I selected only the two items with a sovereignty/governance angle to keep signal high per SOUL ('skim everything, summarise what matters'). Dates taken from the date string shown inline on the blog listing (e.g. 'MAY 20, 2026'); the cultural-awareness post had no inline date so date=null. Omitted pure product launches (North Mini Code, Transcribe, Model Vault, Rerank 4, serving-fairness) as not policy-relevant."
 }

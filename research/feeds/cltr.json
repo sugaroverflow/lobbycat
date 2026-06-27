@@ -1,8 +1,13 @@
 {
   "slug": "cltr",
-  "lastUpdated": "2026-06-26T17:00:49Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "Centre for Long-Term Resilience — UK think tank on extreme risk (AI, bio, risk management), advising government with named-author reports and consultation submissions.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 1,
+    "londonPolicyRoles": 1,
+    "lastChecked": "2026-06-27"
+  },
   "publications": [
     {
       "date": "2026-02-12",
@@ -37,10 +42,20 @@
       "summary": "CLTR's detailed recommendations to the MoD Strategic Defence Review on CBRN threats — a named consultation submission (high-signal, defended-in-public evidence)."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Operations Associate (AI or Biosecurity unit)",
+      "location": "Westminster, London",
+      "url": "https://www.longtermresilience.org/were-hiring-operations-associate-ai-or-biosecurity-unit/",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "org_careers",
+      "seenAt": "2026-06-27"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
   "news": [],
-  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass. ROLES (2026-06-27): CLTR is hiring an Operations Associate for its AI or Biosecurity unit (London, ~£55k, posted Jun 19) — logged via its own careers/news page. CLTR's /news page is hiring-led; its substantive output is logged under publications, so news[] is intentionally empty."
 }
