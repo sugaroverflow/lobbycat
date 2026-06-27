@@ -16,6 +16,7 @@ import {
   clarifyMessages,
   companyFavorites,
   controversies,
+  news,
 } from "@/db/schema";
 import { eq, desc, sql, inArray, and, asc } from "drizzle-orm";
 
@@ -639,6 +640,7 @@ export async function getRankedHomeData() {
     fitNoteCompanyIds,
     favoritedRows,
     recentControversiesRows,
+    recentNewsRows,
   ] = await Promise.all([
       db
         .select({
@@ -691,7 +693,14 @@ export async function getRankedHomeData() {
           publishedAt: publications.publishedAt,
         })
         .from(publications)
-        .where(sql`${publications.publishedAt} >= ${sixMonthsAgo}`)
+        // v0.8.4 fix: include NULL publishedAt rows. Some of Glyphie's
+        // primary-source pubs (ICO consultation responses etc.) come
+        // without a precise date — the strict `>= sixMonthsAgo` filter
+        // was dropping them. Matches the controversies treatment (above)
+        // and the news read added in this PR.
+        .where(
+          sql`(${publications.publishedAt} IS NULL OR ${publications.publishedAt} >= ${sixMonthsAgo})`,
+        )
         .orderBy(desc(publications.publishedAt)),
       // All currently-open roles for the dashboard cards' expand reveal
       db
@@ -737,6 +746,24 @@ export async function getRankedHomeData() {
           sql`(${controversies.occurredAt} IS NULL OR ${controversies.occurredAt} >= ${sixMonthsAgo})`,
         )
         .orderBy(desc(controversies.occurredAt), desc(controversies.seenAt)),
+      // v0.8.4 fix: wire the news table read. Migration 0015 (PR #69)
+      // added the table + the feeds-sync write path; this is the matching
+      // read for the show-more reveal's "Recent news" section. Mirrors
+      // the controversies shape — last 6mo by publishedAt, with NULL
+      // publishedAt preserved so Glyphie's date-less rows still surface.
+      db
+        .select({
+          id: news.id,
+          companyId: news.companyId,
+          title: news.title,
+          url: news.url,
+          publishedAt: news.publishedAt,
+        })
+        .from(news)
+        .where(
+          sql`(${news.publishedAt} IS NULL OR ${news.publishedAt} >= ${sixMonthsAgo})`,
+        )
+        .orderBy(desc(news.publishedAt), desc(news.seenAt)),
     ]);
 
   // Flatten scores; coerce score numeric -> number
@@ -895,6 +922,32 @@ export async function getRankedHomeData() {
     controversiesByCompany.set(c.companyId, list);
   }
 
+  // v0.8.4 fix: per-company news map (mirrors controversies shape).
+  // Capped at 5 per company for the card show-more reveal — news is
+  // first-party press, lower-signal than publications/controversies
+  // (see policy-evidence-types.md), so we surface a few more.
+  const NEWS_LIMIT = 5;
+  const newsByCompany = new Map<
+    number,
+    Array<{
+      id: string;
+      title: string;
+      url: string;
+      publishedAt: string | null;
+    }>
+  >();
+  for (const n of recentNewsRows) {
+    const list = newsByCompany.get(n.companyId) ?? [];
+    if (list.length >= NEWS_LIMIT) continue;
+    list.push({
+      id: String(n.id),
+      title: n.title,
+      url: n.url,
+      publishedAt: n.publishedAt ? new Date(n.publishedAt).toISOString() : null,
+    });
+    newsByCompany.set(n.companyId, list);
+  }
+
   const details = allCompanies.map((c) => {
     const pubs = pubsByCompany.get(c.id) ?? [];
     const roleList = rolesByCompany.get(c.id) ?? [];
@@ -947,15 +1000,11 @@ export async function getRankedHomeData() {
       isHiring: openRoles > 0 ? true : null, // null = UNKNOWN (no source)
       hasFitNote: hasFitNoteSet.has(c.id),
       // v0.8.1 F3.4 — render plumbing for the restructured "Show more"
-      // reveal. F8.1/F8.2 will fill these arrays once Glyphie's news[]
-      // feed + controversies migration 0013 land. Until then the UI
-      // renders friendly empty states.
-      recentNews: [] as Array<{
-        id: string;
-        title: string;
-        url: string;
-        publishedAt: string | null;
-      }>,
+      // reveal. v0.8.4: now wired to newsByCompany (was hardcoded []).
+      // Empty array when there's nothing in the 6-month window —
+      // renderer shows the "No recent news in the last 6 months."
+      // empty state.
+      recentNews: newsByCompany.get(c.id) ?? [],
       // v0.8.1 §F8.2: populated from controversiesByCompany (Glyphie's
       // migration 0013). Empty array when there's nothing in the
       // 6-month window — renderer shows the "No recent controversy
