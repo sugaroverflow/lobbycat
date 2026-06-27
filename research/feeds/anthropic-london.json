@@ -1,6 +1,6 @@
 {
   "slug": "anthropic-london",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-06-27T13:42:00Z",
   "blurb": "One significant headline-level signal this run: a US government export-control directive reportedly suspending access to Anthropic's Fable 5 and Mythos 5 models (announced Jun 12). Full text not captured — Anthropic's RSS feeds 404'd, so this is title-only pending a clean read.",
   "hiring": {
     "isHiring": true,
@@ -16,6 +16,70 @@
       "type": "press",
       "byline": null,
       "summary": "[Headline only — body not captured this run.] Anthropic's news page surfaces an announcement that the US government issued an export-control directive suspending all access to Fable 5 and Mythos 5. If accurate, this is a material frontier-policy event (export controls reaching specific frontier models). Needs a full read before summarising substance; not fabricating detail beyond the headline."
+    },
+    {
+      "date": "2026-06-26",
+      "title": "Anthropic Economic Index report: Cadences",
+      "url": "https://www.anthropic.com/research/economic-index-june-2026-report",
+      "type": "report",
+      "byline": "Anthropic Economic Research",
+      "summary": "Latest Anthropic Economic Index — the lab's regular publication tracking how Claude is being used across the economy. Directly relevant to the AI-and-labour, productivity and adoption-evidence debates Ada Lovelace and others are pushing back on."
+    },
+    {
+      "date": "2026-06-18",
+      "title": "Project Fetch: Phase two",
+      "url": "https://www.anthropic.com/research/project-fetch-phase-two",
+      "type": "research_paper",
+      "byline": "Anthropic Frontier Red Team",
+      "summary": "Frontier Red Team update — Anthropic's safety-evaluations arm. The Red Team's output is some of the most directly policy-relevant work a frontier lab publishes, feeding evaluation methodologies that AISI and others draw on."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Agentic coding and persistent returns to expertise",
+      "url": "https://www.anthropic.com/research/claude-code-expertise",
+      "type": "report",
+      "byline": "Anthropic Economic Research",
+      "summary": "Evidence on how Claude Code is changing returns to coding expertise — an empirical addition to the displacement-vs-augmentation debate that's animating UK and EU labour-market policy."
+    },
+    {
+      "date": "2026-06-08",
+      "title": "Paving the way for agents in biology",
+      "url": "https://www.anthropic.com/research/agents-in-biology",
+      "type": "research_paper",
+      "byline": "Anthropic Science",
+      "summary": "Anthropic's work on biology agents — biosecurity policy material. Sits in the same debate as AISI's biorisk evaluations and CETAS's biosecurity work."
+    },
+    {
+      "date": "2026-06-08",
+      "title": "Measuring LLMs' impact on N-day exploits",
+      "url": "https://www.anthropic.com/research/n-days",
+      "type": "research_paper",
+      "byline": "Anthropic Frontier Red Team",
+      "summary": "Frontier Red Team measurement of how LLMs change the economics of N-day vulnerability exploitation — feeds directly into NCSC/AISI cyber-policy thinking."
+    },
+    {
+      "date": "2026-06-03",
+      "title": "Mapping AI-enabled cyber threats: Insights from the LLM ATT&CK Navigator",
+      "url": "https://www.anthropic.com/research/attack-navigator",
+      "type": "research_paper",
+      "byline": "Anthropic Frontier Red Team",
+      "summary": "Frontier Red Team release of an LLM ATT&CK Navigator — methodology for systematically mapping AI-enabled cyber threats. Cyber-policy infrastructure."
+    },
+    {
+      "date": "2026-05-08",
+      "title": "Teaching Claude why",
+      "url": "https://www.anthropic.com/research/teaching-claude-why",
+      "type": "research_paper",
+      "byline": "Anthropic Alignment",
+      "summary": "Alignment research on reducing agentic misalignment — methodology relevant to the broader AI-safety policy debate about what 'aligned' actually looks like."
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Natural Language Autoencoders: Turning Claude's thoughts into text",
+      "url": "https://www.anthropic.com/research/natural-language-autoencoders",
+      "type": "research_paper",
+      "byline": "Anthropic Interpretability",
+      "summary": "Interpretability research — turning model internals into natural-language explanations. Interpretability is the technical underpinning of any transparency policy that requires explaining model behaviour."
     }
   ],
   "roles": [
