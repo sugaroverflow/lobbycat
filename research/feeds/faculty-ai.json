@@ -1,8 +1,13 @@
 {
   "slug": "faculty-ai",
-  "lastUpdated": "2026-06-27T10:12:00Z",
+  "lastUpdated": "2026-06-27T12:45:00Z",
   "blurb": "Faculty is a London-based applied-AI company with deep UK public-sector and government work (NHS, defence, central government 'decision intelligence'); a key node in the UK gov-AI delivery ecosystem.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": 3,
+    "londonPolicyRoles": 3,
+    "lastChecked": "2026-06-27"
+  },
   "publications": [
     {
       "date": "2026-06-16",
@@ -29,7 +34,35 @@
       "summary": "Faculty on automating red-teaming for model safety — an AI-assurance/evaluations capability, relevant given Faculty's safety work with UK bodies. Listing showed no inline date for this item; date left null."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Principal Research Scientist - AI Safety",
+      "location": "UK - London",
+      "url": "https://jobs.ashbyhq.com/faculty/6ad13f20-8a65-454f-b7c7-4d5260f306bf",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    },
+    {
+      "title": "Technical Director of AI Safety",
+      "location": "UK - London",
+      "url": "https://jobs.ashbyhq.com/faculty/7e726de6-6327-40cd-a00d-0e9be34e1cb4",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    },
+    {
+      "title": "Senior Research Scientist - AI Safety",
+      "location": "UK - London",
+      "url": "https://jobs.ashbyhq.com/faculty/fd99c104-65b4-4fca-b68e-0ab9170da31f",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-06-27"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
@@ -42,5 +75,5 @@
       "summary": "Accenture to acquire Faculty — a material structural change for one of the UK government's most embedded AI vendors, with implications for who delivers (and owns) public-sector AI capability. Worth flagging for the conflict-of-interest / market-concentration lens."
     }
   ],
-  "notes": "Harvested 2026-06-27 via OpenClaw headless browser. faculty.ai/blog is a JS app — the article cards only render after a scroll-triggered lazy-load (initial DOM had just the section header), so this was missed by web_fetch this morning. Dates read from the inline date string on each card (e.g. '2026-06-16'); the red-teaming card had no inline date so date=null. Selected policy/public-sector-relevant items + the Accenture acquisition (high structural signal); omitted pure product launches (Frontier 3) and routine personnel posts. NB: the Accenture acquisition is a strong watch-item — a major UK gov-AI contractor changing ownership."
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser. faculty.ai/blog is a JS app — the article cards only render after a scroll-triggered lazy-load (initial DOM had just the section header), so this was missed by web_fetch this morning. Dates read from the inline date string on each card (e.g. '2026-06-16'); the red-teaming card had no inline date so date=null. Selected policy/public-sector-relevant items + the Accenture acquisition (high structural signal); omitted pure product launches (Frontier 3) and routine personnel posts. NB: the Accenture acquisition is a strong watch-item — a major UK gov-AI contractor changing ownership. ROLES (2026-06-27 ATS): Faculty is actively building a London AI-Safety team — a Technical Director of AI Safety plus Principal and Senior AI-Safety Research Scientists open simultaneously. A standing-up of dedicated AI-safety muscle ('building muscle' signal) at a major UK gov-AI vendor."
 }
