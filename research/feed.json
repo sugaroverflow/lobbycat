@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T19:09:15Z",
+  "lastUpdated": "2026-06-27T19:39:31Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -35,6 +35,13 @@
       "event_type": "controversy",
       "summary": "Backfill: Synthesia AI avatars used in state-aligned deepfake disinformation. Feb 2023 (Graphika/AFP): two Synthesia avatars ('Anna'/'Jason') fronted fake 'Wolf News' pro-China clips; 2023 Synthesia confirmed to VICE its software made pro-junta Burkina Faso 'Pan-Africanist' videos; Oct 2023 Freedom House cited misuse tied to Venezuela/China/Burkina Faso/Russia; 2024 Guardian: actor Dan Dewhirst's licensed likeness used in Venezuelan propaganda. Synthesia (subject/platform) bans such use and said Feb/Apr 2024 it tightened screening. Reported.",
       "source_url": "https://www.theguardian.com/technology/2024/oct/16/its-not-me-its-just-my-face-the-models-who-found-their-likenesses-had-been-used-in-ai-propaganda"
+    },
+    {
+      "date": "2026-06-27",
+      "company_slug": "cohere-london",
+      "event_type": "controversy",
+      "summary": "Backfill: Cohere — sued by a news-publisher coalition (Condé Nast, The Atlantic, Forbes, Guardian News & Media, LA Times, Politico, Insider, Newsday, McClatchy, Vox et al.) in S.D.N.Y. (Advance Local Media LLC et al. v. Cohere Inc., 1:25-cv-01305, filed 13 Feb 2025) for copyright infringement (training-data copying + RAG producing verbatim/substitutive summaries) and trademark infringement / false designation of origin over hallucinated articles shown with publishers' marks. On 13 Nov 2025 Judge McMahon DENIED Cohere's motion to dismiss; case ongoing, no merits ruling. Cohere has a London office; Guardian News & Media is a UK plaintiff.",
+      "source_url": "https://www.courtlistener.com/docket/69636122/advance-local-media-llc-v-cohere-inc/"
     },
     {
       "date": "2026-06-26",
