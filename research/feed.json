@@ -1,6 +1,13 @@
 {
-  "lastUpdated": "2026-06-27T16:08:52Z",
+  "lastUpdated": "2026-06-27T16:38:49Z",
   "events": [
+    {
+      "date": "2026-06-27",
+      "company_slug": "google-deepmind",
+      "event_type": "controversy",
+      "summary": "Backfill: ICO ruling (3 Jul 2017) — Royal Free London NHS Trust breached the Data Protection Act by sharing ~1.6m patients' records with Google DeepMind (Streams AKI app) without knowledge, consent or opt-out. Landmark health-data 'cautionary tale'; later spawned a representative claim. Decided.",
+      "source_url": "https://ico.org.uk/for-the-public/ico-40/google-deepmind-and-class-action-lawsuit/"
+    },
     {
       "date": "2026-06-27",
       "company_slug": "apollo-research",

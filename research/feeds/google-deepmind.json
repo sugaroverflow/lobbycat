@@ -1,6 +1,6 @@
 {
   "slug": "google-deepmind",
-  "lastUpdated": "2026-06-24T21:10:00Z",
+  "lastUpdated": "2026-06-27",
   "blurb": "DeepMind's recent output straddles UK government partnership and frontier-safety research: an AI planning-decisions prototype built with UK government, plus an 'AI Control Roadmap' for securing AI agents and a $10M multi-agent-safety funding call.",
   "hiring": {
     "isHiring": null,
@@ -44,7 +44,45 @@
   "filings": [],
   "leadership": [],
   "notes": "blogRssUrl https://deepmind.google/blog/rss.xml confirmed working (note its <atom:link self> is a placeholder example.com URL, but item links are valid).",
-  "controversies": [],
+  "controversies": [
+    {
+      "type": "regulatory_action",
+      "title": "ICO ruling: Royal Free–DeepMind 1.6m-patient data deal breached the Data Protection Act",
+      "url": "https://ico.org.uk/for-the-public/ico-40/google-deepmind-and-class-action-lawsuit/",
+      "occurredAt": "2017-07-03",
+      "status": "decided",
+      "severity": "high",
+      "companyRole": "subject of review",
+      "summary": "In 2015 the Royal Free London NHS Foundation Trust gave Google DeepMind access to the health records of around 1.6 million patients to build Streams, an app to flag acute kidney injury. Following a year-long investigation, in July 2017 the Information Commissioner's Office (ICO) concluded the Trust had failed to comply with the Data Protection Act: sensitive health data was shared without patients' knowledge or consent and with no opt-out, and the Trust should have been far more transparent about how the information was used. The case became a landmark 'cautionary tale' on health-data partnerships in the algorithmic age and later spawned a representative (class-action style) claim over the data use. Facts are drawn from the ICO's own public record.",
+      "topics": [
+        "data_protection",
+        "nhs_patient_data",
+        "consent",
+        "transparency",
+        "health_ai"
+      ],
+      "rawExcerpt": null,
+      "corroboration": [
+        {
+          "outlet": "Information Commissioner's Office (ICO)",
+          "url": "https://ico.org.uk/for-the-public/ico-40/google-deepmind-and-class-action-lawsuit/",
+          "paywalled": false
+        },
+        {
+          "outlet": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2017/jul/03/google-deepmind-16m-patient-royal-free-deal-data-protection-act",
+          "paywalled": false
+        },
+        {
+          "outlet": "WIRED",
+          "url": "https://www.wired.com/story/google-deepmind-nhs-royal-free-ico-ruling/",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
   "news": [
     {
       "date": "2026-06-01",
