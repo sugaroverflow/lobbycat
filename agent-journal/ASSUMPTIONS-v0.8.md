@@ -1178,3 +1178,137 @@ gate the existing diff-based signal).
   "good enough for v0.8" and wants Step 12 closed without a
   live pass. Then the second pass folds into v0.8.1 work
   proper as conversation-quality fixes on demand.
+### A12.4 — Step 12 pass 2/2 — live seeded sessions, harness-mediated.
+
+- **Assumed:** Per A12.3 the live pass runs against the deployed
+  skill once #47 is on main (it is, as of 2026-06-26 13:23 UTC).
+  Built a tuning harness at `scripts/clarify-tune-live-sessions.ts`
+  that exports `loadGrounding`, `buildSystemPrompt`,
+  `callClarifyModel`, `extractProposal`, and `openerPrompt` from
+  `src/lib/clarify/run-session.ts` and reassembles the exact same
+  Anthropic call the deployed UI makes — minus the DB persistence
+  path. 7 scenarios cover each trigger + a no-data path. Transcripts
+  to `agent-journal/clarify-tuning/2026-06-26-live-sessions/`.
+- **Alternatives:** Click through the deployed UI manually. Rejected
+  — not repeatable, polluted Aadi's /profile Conversations tab with
+  test rows. Use a separate test DB. Rejected — would need fresh
+  fixtures, doesn't exercise the real grounding pipeline (real
+  frames, real notes, real scores). Adding a `proposal_kind = 'test'`
+  filter column was overkill for one tuning pass.
+- **Would change if:** Future tuning passes need to exercise the
+  full persistence path (proposal application, accept/reject UI
+  signal). Then promote the harness to a real eval framework.
+
+### A12.5 — Two-pair script export (4 internals made public, +1 type).
+
+- **Assumed:** The harness needs `loadGrounding` (real prod data),
+  `buildSystemPrompt` (the exact concat the action uses),
+  `callClarifyModel` (so the call site is the same), `extractProposal`
+  (so the same parser sees the cat's output), `openerPrompt` (per-
+  trigger system message), and the `GroundingContext` type for the
+  function signatures. Exporting these is a public-surface widening,
+  but each was already conceptually scoped to the clarify module —
+  they were `internal-only` only because there was no caller. The
+  caller now exists.
+- **Alternatives:** Duplicate the assembly logic in the harness.
+  Rejected — drift between the harness and the deployed pipeline
+  defeats the purpose of measuring against live. Use a barrel re-
+  export at `src/lib/clarify/test-internals.ts`. Rejected — same
+  surface, more files.
+- **Would change if:** Public API ergonomics ever need an
+  internal/public split. Then the harness moves to a
+  `__test-only/` namespace.
+
+### A12.6 — Findings from the live pass — voice + opener + proposal-kind.
+
+- **Assumed:** 7 sessions revealed seven concrete patterns worth
+  tuning (F-tune-1 … F-tune-7, full text at
+  `agent-journal/clarify-tuning/2026-06-26-live-sessions/FINDINGS.md`):
+  1. **F-tune-1 — Contradiction opener repeats across sessions.**
+     5 of 7 sessions opened with the same Policy-posture
+     contradiction. Cat keeps picking the loudest static signal.
+     Fix: moves.md §1 (the contradiction) gains a "Vary the signal
+     across sessions" paragraph that explicitly walks the priority
+     order — recent scores → seed company/frame → recent notes →
+     glyphie feed → fallback to longstanding weights.
+  2. **F-tune-2 — Wizard trigger opens identically to manual.**
+     Cat treats `wizard` as a normal opener. Fix: added a
+     "Trigger-specific opener notes" section to moves.md that
+     names what wizard / welcome-back / company-detail / manual
+     openers should sound like, with a worked wizard opener
+     example. Also added Session D — Wizard opener to examples.md
+     showing the calibrating shape.
+  3. **F-tune-3 — `cold-open` mislabelled mid-session.** Cat
+     tagged a non-committal user reply as a re-cold-open. Fix:
+     moves.md §6 (the cold open) gains a clarifying paragraph
+     pinning the move to *session start*, not mid-session user
+     disengagement.
+  4. **F-tune-4 — `new-frame` over-used in proposals.** 4 of 7
+     sessions ended on `new-frame`. The lighter `frame-weight` /
+     `company-note` shapes were absent. Fix: SKILL.md "End-of-
+     session proposal" section gains a "Prefer the lighter
+     proposal kind" paragraph that explicitly walks the
+     hierarchy: frame-weight → company-note → new-frame.
+  5. **F-tune-5 — Third-person "the cat" self-reference
+     overuse.** Cat slipped into "the cat will leave it there"
+     style multiple times per session. Fix: voice.md gets a new
+     "Self-reference — once per session, max" section with
+     before/after examples.
+  6. **F-tune-6 — Italic thinking-out-loud beats overused.**
+     "*the cat is sitting with that*" appeared in 6 of 7 sessions.
+     Folded into the F-tune-5 fix.
+  7. **F-tune-7 — Proposal IDs are invented (low severity).**
+     Cat sometimes proposed `new-frame` with no real frameId.
+     Flagged for `applyClarifyProposal` hardening — out of scope
+     for skill tuning.
+- **Alternatives:** Ship only F-tune-1/3/5/6 (voice and move-tag),
+  leave F-tune-2/4 (wizard opener, proposal-kind) for v0.8.1
+  tuning. Rejected — the wizard opener fix lands a worked example
+  which is the cheapest way to teach the model the right shape,
+  and the proposal-kind fix is one SKILL.md paragraph addition.
+  Both are low-risk and high-leverage.
+- **Would change if:** A future tuning pass shows the model
+  over-corrected on any of these — e.g. the "vary the signal"
+  instruction turns up sessions that lead with weak signals
+  instead of strong ones. Cheap to dial back per-finding.
+
+### A12.7 — Verification — three after-tuning re-runs.
+
+- **Assumed:** After landing the edits, re-ran 3 of the 7 scenarios
+  (manual-cold, wizard-seeded, company-detail-anthropic) to verify
+  the tuning landed. Mixed results — F-tune-1 (vary the signal)
+  partially landed in manual-cold; F-tune-5/6 partially landed in
+  manual-cold and company-detail-anthropic; F-tune-2 (wizard
+  opener) did NOT land in the wizard re-run — the cat still opened
+  with the same Policy-posture contradiction. The wizard fix is the
+  one most likely to need Session D in examples.md to actually
+  teach the model the right shape rather than meta-instruction.
+- **What this means:** Tuning is incremental. The cold-read pass
+  (Step 12.1) landed contract drift fixes that were unambiguous.
+  The live pass (Step 12.2) lands prompt-level guidance that the
+  model honours sometimes and not others. Future tuning passes
+  will likely re-run the same harness and diff the cat's behaviour;
+  the agent-journal/clarify-tuning/ directory is structured for
+  that (a `before-tuning/` and `after-tuning/` subdirectory pair).
+- **Would change if:** A specific tuning fix proves unreliable
+  across multiple seeds. Then promote it from voice/moves
+  guidance to a structural SKILL.md "Refuse to" bullet.
+
+### A12.8 — F-tune-7 deferred to applyClarifyProposal hardening.
+
+- **Assumed:** When the cat proposes `new-frame` it sometimes
+  emits a summary like "add a new frame: 'location constraint'"
+  with a JSON data payload that has `name`/`description`/`scale`
+  but no real frameId (because the frame doesn't exist yet).
+  The Step 5/6 `applyClarifyProposal` action needs to handle this
+  cleanly: validate the proposal payload kind against the schema,
+  reject malformed ones with a user-visible error rather than
+  silently writing a half-row. This is not skill tuning — the cat
+  is behaving correctly per SKILL.md. The fix is a defensive
+  layer in `src/lib/clarify/apply-proposal.ts`.
+- **Alternatives:** Constrain the skill to only propose new-frame
+  payloads that look exactly like the schema row. Rejected — the
+  skill should be free to propose ideas the human accepts, and
+  the apply layer is the right place to bind to real DB IDs.
+- **Would change if:** apply-proposal.ts is touched in v0.8.1
+  for unrelated reasons; bundle the validation in.
