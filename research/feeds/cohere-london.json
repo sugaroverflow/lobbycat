@@ -1,13 +1,30 @@
 {
   "slug": "cohere-london",
+  "lastUpdated": "2026-06-27T10:12:00Z",
+  "blurb": "Cohere is an enterprise-focused frontier AI company (LLMs, retrieval, agents) with a London presence, positioning around 'sovereign' and secure enterprise AI deployment.",
   "hiring": {},
-  "publications": [],
+  "publications": [
+    {
+      "date": "2026-05-20",
+      "title": "Introducing Command A+: Making sovereign agentic capabilities available to all",
+      "url": "https://cohere.com/blog/command-a-plus",
+      "type": "blog",
+      "byline": null,
+      "summary": "Launch of Command A+, framed around 'sovereign agentic capabilities' — relevant to the AI-sovereignty policy debate (national control over models/data) that Cohere positions itself within."
+    },
+    {
+      "date": null,
+      "title": "Why Cultural Awareness is Essential for Global AI",
+      "url": "https://cohere.com/blog/why-cultural-awareness-is-essential-for-global-ai",
+      "type": "blog",
+      "byline": null,
+      "summary": "Cohere argument on how users worldwide are affected by AI's cultural gaps — a values/representation angle adjacent to global AI governance. Listing showed no explicit date for this item; date left null."
+    }
+  ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
   "news": [],
-  "blurb": "Cohere — enterprise LLM company with a London presence; blog covers product, research and some policy.",
-  "lastUpdated": "2026-06-27T09:23:56Z",
-  "notes": "[RSS harvest 2026-06-27] https://cohere.com/blog/rss.xml"
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (cohere.com/blog passed cleanly; was untested by web_fetch this morning). Cohere's blog is mostly product/model launches (low policy signal) — I selected only the two items with a sovereignty/governance angle to keep signal high per SOUL ('skim everything, summarise what matters'). Dates taken from the date string shown inline on the blog listing (e.g. 'MAY 20, 2026'); the cultural-awareness post had no inline date so date=null. Omitted pure product launches (North Mini Code, Transcribe, Model Vault, Rerank 4, serving-fairness) as not policy-relevant."
 }

@@ -1,91 +1,22 @@
 {
   "slug": "mistral-london",
-  "lastUpdated": "2026-06-26T16:59:46Z",
-  "blurb": null,
-  "hiring": {
-    "isHiring": true,
-    "newSincePrevious": 0,
-    "londonPolicyRoles": 8,
-    "lastChecked": "2026-06-26"
-  },
-  "publications": [],
-  "roles": [
+  "lastUpdated": "2026-06-27T10:12:00Z",
+  "blurb": "Mistral AI is a European frontier AI lab (open-weight and commercial LLMs, assistants, agents) headquartered in Paris with UK/London commercial presence, often cited in European AI-sovereignty discussions.",
+  "hiring": {},
+  "publications": [
     {
-      "title": "Commercial Legal Counsel, EMEA",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/0048593b-1ca4-4c35-855e-be944c2cb655",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    },
-    {
-      "title": "Legal Counsel, Banking / Financing",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/d027b953-5c6a-4145-8697-9472efba873f",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    },
-    {
-      "title": "Legal Counsel, Banking / Financing (Project finance)",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/bc2e44fe-4397-4b3b-b1a5-3eab2a80658f",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    },
-    {
-      "title": "Legal Counsel, M&A",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/518120c6-c4af-4246-bc8b-1b6965b82652",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    },
-    {
-      "title": "Privacy Legal Counsel",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/25e20280-bdd6-4dee-9857-9247aeac0067",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    },
-    {
-      "title": "Product Regulatory Legal Counsel (EU)",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/6366e859-3a0f-44ed-9578-629a04c77e3c",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    },
-    {
-      "title": "Senior Commercial Legal Counsel, EMEA",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/0df74906-5b6a-45bc-ace1-67474778f45b",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
-    },
-    {
-      "title": "Senior Compute Legal Counsel",
-      "location": "Paris",
-      "url": "https://jobs.lever.co/mistral/0d94546e-a15a-4644-8115-0b960f79d973",
-      "londonRelevant": true,
-      "isNew": false,
-      "source": "ats",
-      "seenAt": "2026-06-26"
+      "date": "2026-05-28",
+      "title": "AI Now Summit 2026",
+      "url": "https://mistral.ai/news/ai-now-summit-2026/",
+      "type": "blog",
+      "byline": "Mistral AI",
+      "summary": "Mistral's AI Now Summit 2026 — a company event framed around AI 'innovations for global enterprises'; relevant as a European-frontier-lab convening signal rather than a pure product launch."
     }
   ],
+  "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "[roles-only feed] Created 2026-06-26 to carry the roles lens; publications/controversies not yet researched for this company.",
-  "news": []
+  "news": [],
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (mistral.ai/news passed cleanly; untested by web_fetch this morning). Mistral's news feed is overwhelmingly product/model launches (OCR 4 'June 23 2026', connectors 'June 24 2026', Vibe agent, Search Toolkit) — low policy signal. Logged only the AI Now Summit (convening/positioning signal) with its inline date 'May 28, 2026'. Omitted the product launches per SOUL signal discipline. As a European frontier lab, Mistral is worth watching for sovereignty/EU-AI-Act positioning; will log policy submissions or named-author governance posts if/when they appear."
 }

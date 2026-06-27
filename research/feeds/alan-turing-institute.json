@@ -1,13 +1,54 @@
 {
   "slug": "alan-turing-institute",
-  "lastUpdated": "2026-06-27T09:18:00Z",
-  "blurb": "The Alan Turing Institute is the UK's national institute for data science and artificial intelligence.",
+  "lastUpdated": "2026-06-27T10:12:00Z",
+  "blurb": "The Alan Turing Institute is the UK's national institute for data science and AI, conducting research and informing policy across AI safety, defence, public services and frontier-AI readiness.",
   "hiring": {},
-  "publications": [],
+  "publications": [
+    {
+      "date": null,
+      "title": "New research will help UK prepare for next wave of frontier AI",
+      "url": "https://www.turing.ac.uk/news/new-research-will-help-uk-prepare-next-wave-frontier-ai",
+      "type": "news",
+      "byline": null,
+      "summary": "Turing announces research aimed at helping the UK prepare for the next wave of frontier AI capabilities — directly policy-relevant to UK frontier-AI readiness."
+    },
+    {
+      "date": null,
+      "title": "George Williamson joins the Turing as new CEO",
+      "url": "https://www.turing.ac.uk/news/george-williamson-joins-turing-new-ceo",
+      "type": "news",
+      "byline": null,
+      "summary": "Leadership change: George Williamson appointed as the Alan Turing Institute's new CEO."
+    },
+    {
+      "date": null,
+      "title": "Turing chair Doug Gurr to step down following appointment to permanent CMA role",
+      "url": "https://www.turing.ac.uk/news/turing-chair-doug-gurr-step-down-following-appointment-permanent-cma-role",
+      "type": "news",
+      "byline": null,
+      "summary": "Turing chair Doug Gurr steps down after his appointment to a permanent role at the Competition and Markets Authority (CMA) — a notable AI-governance/regulator crossover."
+    },
+    {
+      "date": null,
+      "title": "New project to build trust in AI for air traffic control",
+      "url": "https://www.turing.ac.uk/news/new-project-build-trust-ai-air-traffic-control",
+      "type": "news",
+      "byline": null,
+      "summary": "New Turing project focused on building trust in AI systems for air traffic control — applied AI-assurance work in a safety-critical domain."
+    },
+    {
+      "date": null,
+      "title": "Building and procuring sustainable Defence AI will boost force resilience",
+      "url": "https://www.turing.ac.uk/news/building-and-procuring-sustainable-defence-ai-will-boost-force-resilience",
+      "type": "news",
+      "byline": null,
+      "summary": "Turing analysis arguing that sustainable procurement and building of Defence AI will improve force resilience — defence-AI policy signal."
+    }
+  ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
   "news": [],
-  "notes": "BLOCKER: turing.ac.uk is fully Cloudflare-gated ('Just a moment...' JS challenge) on every path tried via both web_fetch and curl with a browser UA: /research/publications, /sitemap.xml, /feed, /rss, /news/rss.xml, /blog/feed. No first-party dated/attributed items could be extracted without a JS-capable browser. Per harvest rules, returning empty rather than fabricating. Retry needed via a headless-browser fetch."
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser. turing.ac.uk is hard-Cloudflare-gated (interactive turnstile): the /news landing page passes intermittently but individual article pages and the /news/publications policy-submissions index re-trigger the 'Just a moment...' managed challenge that headless cannot auto-solve. Titles + URLs are first-party verified from the /news listing; per-article publication DATES could not be read (articles blocked), so date=null rather than invented — same convention as the ICO undated items. The /news/publications index (RUSI-style policy submissions) remains gated; recommend a date backfill once a turnstile-capable fetch path exists. Selected the 5 most AI/policy-relevant of ~10 listed items; omitted non-policy items (Google Summer of Code, maritime gender diversity, Wooldridge honorary fellow, AI-for-Science showcase)."
 }
