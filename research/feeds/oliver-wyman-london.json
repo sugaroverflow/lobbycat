@@ -1,0 +1,26 @@
+{
+  "slug": "oliver-wyman-london",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Consultancy with public-sector AI thought leadership. Launch coverage uses first-party government-roadmap AI insight.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-01",
+      "title": "A Government Roadmap On How To Navigate The AI Revolution",
+      "url": "https://www.oliverwyman.com/our-expertise/insights/2025/jan/government-roadmap-how-to-navigate-ai-revolution.html",
+      "type": "paper",
+      "byline": "Oliver Wyman",
+      "source": "first_party",
+      "summary": "Oliver Wyman sets out how governments can harness generative AI operationally and strategically, part of its Quotient AI practice and public-sector AI advisory positioning."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "news": []
+}

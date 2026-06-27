@@ -1,0 +1,26 @@
+{
+  "slug": "polyai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "London-founded voice-agent company. Launch coverage uses verified compliance documentation and checked-empty role status.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2026-04-20",
+      "title": "Compliance — PolyAI Platform",
+      "url": "https://docs.poly.ai/legal/compliance",
+      "type": "other",
+      "byline": "PolyAI",
+      "source": "first_party",
+      "summary": "PolyAI documentation states its platform compliance posture, including GDPR-relevant controls for enterprise voice agents. It is lower-cost evidence than a policy paper, but it is first-party and directly relevant to regulated AI deployment."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: PolyAI Greenhouse board polyai verified reachable with 10 jobs; status=checked_empty for policy/compliance/legal roles at fetch time.",
+  "news": []
+}

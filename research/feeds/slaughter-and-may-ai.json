@@ -1,0 +1,26 @@
+{
+  "slug": "slaughter-and-may-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party EU AI Act publication.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2024-08-01",
+      "title": "EU AI Act to Enter into Force",
+      "url": "https://www.slaughterandmay.com/insights/new-insights/eu-ai-act-to-enter-into-force/",
+      "type": "blog",
+      "byline": "Slaughter and May",
+      "source": "first_party",
+      "summary": "Slaughter and May summarises the EU AI Act entering into force, highlighting responsible innovation, extraterritorial reach, fines and prohibited/high-risk AI obligations."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "news": []
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "cma-broader-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "CMA foundation-models and broader AI competition-policy work. Launch coverage uses primary GOV.UK CMA case material.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2024-04-11",
+      "title": "AI Foundation Models: Update Paper",
+      "url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review",
+      "type": "filing",
+      "byline": "Competition and Markets Authority",
+      "source": "regulator",
+      "summary": "CMA’s foundation-models case page hosts the initial review and April 2024 Update Paper, setting out its evolving competition-policy view of foundation-model markets, partnerships and possible regulation."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on GOV.UK CMA case page.",
+  "news": []
+}

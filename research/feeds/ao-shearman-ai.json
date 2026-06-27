@@ -1,0 +1,26 @@
+{
+  "slug": "ao-shearman-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party European AI Continent Action Plan analysis.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-05-19",
+      "title": "The European Commission publishes its AI Continent Action Plan",
+      "url": "https://www.aoshearman.com/en/insights/ao-shearman-on-data/the-european-commission-publishes-its-ai-continent-action-plan",
+      "type": "blog",
+      "byline": "A&O Shearman",
+      "source": "first_party",
+      "summary": "A&O Shearman analyses the European Commission’s AI Continent Action Plan, including the AI Office service desk and policy measures intended to support AI development and compliance."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "news": []
+}

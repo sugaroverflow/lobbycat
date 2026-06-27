@@ -1,0 +1,26 @@
+{
+  "slug": "wayve",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "UK embodied-AI/self-driving scale-up. Launch coverage is anchored on parliamentary written evidence plus a checked-empty ATS status for policy roles.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2024-12-06",
+      "title": "Wayve — written evidence (ACT0047)",
+      "url": "https://committees.parliament.uk/writtenevidence/131148/html/",
+      "type": "filing",
+      "byline": "Wayve Technologies Ltd",
+      "source": "parliament",
+      "summary": "Wayve's written submission to the House of Lords Communications and Digital Committee inquiry 'Scaling up: AI and creative tech' positions it as a UK embodied-AI scale-up and argues for compute access, AV regulatory clarity and AI talent retention."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: Parliament URL is primary/named source but HTTP fetch returned 403/Cloudflare; status=needs_browser for full-body recapture. Roles ATS Greenhouse board wayve verified reachable with 119 jobs; status=checked_empty for relevant London policy/legal/governance roles.",
+  "news": []
+}

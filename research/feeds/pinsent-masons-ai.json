@@ -1,0 +1,26 @@
+{
+  "slug": "pinsent-masons-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Law-firm AI/regulatory practice. Launch coverage uses Out-Law AI-regulatory reporting from Pinsent Masons.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2026-04-27",
+      "title": "EU AI simplification package reaches critical milestone",
+      "url": "https://www.pinsentmasons.com/out-law/news/eu-ai-simplification-package-reaches-critical-milestone",
+      "type": "blog",
+      "byline": "Pinsent Masons Out-Law",
+      "source": "first_party",
+      "summary": "Pinsent Masons reports on the EU AI simplification package reaching a critical legislative milestone, a live signal for AI Act implementation and compliance advice."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "news": []
+}

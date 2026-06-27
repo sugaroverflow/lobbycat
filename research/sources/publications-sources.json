@@ -1,0 +1,510 @@
+{
+  "_comment": "Curated 'where to look' map for the publications lens. Maintained by Glyphie 🌀. Source-led: known company policy/safety/publications URLs first, then feeds/sitemaps/browser, then public portals/search leads with primary-source verification. Search snippets are never final evidence.",
+  "_updated": "2026-06-27",
+  "_schema": {
+    "status": [
+      "found",
+      "checked_empty",
+      "blocked",
+      "needs_browser",
+      "needs_manual_review"
+    ],
+    "publicationTypes": [
+      "policy_report",
+      "consultation_response",
+      "model_card",
+      "system_card",
+      "safety_framework",
+      "gov_submission",
+      "research_paper",
+      "blog",
+      "announcement",
+      "other"
+    ],
+    "sourceTypes": [
+      "first_party",
+      "regulator",
+      "parliament",
+      "consultation_portal",
+      "academic",
+      "newsroom",
+      "third_party_verified"
+    ]
+  },
+  "sources": [
+    {
+      "slug": "openai-london",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "rss",
+          "url": "https://openai.com/news/rss.xml",
+          "status": "found"
+        },
+        {
+          "kind": "policy_index",
+          "url": "https://openai.com/news/global-affairs/",
+          "status": "needs_browser",
+          "note": "HTTP fetch returned 403; RSS works."
+        },
+        {
+          "kind": "safety_framework",
+          "url": "https://cdn.openai.com/openai-preparedness-framework-beta.pdf",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "anthropic-london",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "news_index",
+          "url": "https://www.anthropic.com/news",
+          "status": "found"
+        },
+        {
+          "kind": "safety_framework",
+          "url": "https://www.anthropic.com/responsible-scaling-policy",
+          "status": "found"
+        },
+        {
+          "kind": "acceptable_use_policy",
+          "url": "https://www.anthropic.com/legal/aup",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "google-deepmind",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "blog_index",
+          "url": "https://deepmind.google/blog/",
+          "status": "found"
+        },
+        {
+          "kind": "responsibility_index",
+          "url": "https://deepmind.google/responsibility-and-safety/",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "meta-london-policy",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "safety_framework",
+          "url": "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2",
+          "status": "found"
+        },
+        {
+          "kind": "safety_blog",
+          "url": "https://ai.meta.com/blog/scaling-how-we-build-test-advanced-ai/",
+          "status": "needs_browser",
+          "note": "HTTP 200 but JS-heavy body; PDF is clean."
+        },
+        {
+          "kind": "model_card",
+          "url": "https://ai.meta.com/static-resource/muse-spark-safety-and-preparedness-report/",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "microsoft-ai-london",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "rss",
+          "url": "https://blogs.microsoft.com/on-the-issues/feed/",
+          "status": "found"
+        },
+        {
+          "kind": "rss",
+          "url": "https://blogs.microsoft.com/eupolicy/feed/",
+          "status": "found"
+        },
+        {
+          "kind": "policy_article",
+          "url": "https://blogs.microsoft.com/on-the-issues/2026/05/05/advancing-ai-evaluation-with-the-center-for-ai-standards-us-and-innovation-and-the-ai-security-institute-uk/",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "mistral-london",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "news_index",
+          "url": "https://mistral.ai/news/",
+          "status": "found"
+        },
+        {
+          "kind": "policies",
+          "url": "https://mistral.ai/terms/",
+          "status": "needs_manual_review"
+        }
+      ]
+    },
+    {
+      "slug": "cohere-london",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "blog_index",
+          "url": "https://cohere.com/blog",
+          "status": "found"
+        },
+        {
+          "kind": "responsible_use",
+          "url": "https://docs.cohere.com/docs/responsible-use",
+          "status": "found"
+        },
+        {
+          "kind": "usage_policy",
+          "url": "https://docs.cohere.com/docs/usage-policy",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "xai-london",
+      "sourceType": "first_party",
+      "status": "needs_browser",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "news_index",
+          "url": "https://x.ai/news",
+          "status": "needs_browser",
+          "note": "HTTP fetch returned 403; browser required."
+        }
+      ]
+    },
+    {
+      "slug": "stability-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "research_index",
+          "url": "https://stability.ai/research",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "wayve",
+      "sourceType": "parliament",
+      "status": "needs_browser",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "portal_or_filing",
+          "url": "https://committees.parliament.uk/writtenevidence/131148/html/",
+          "status": "needs_browser"
+        }
+      ]
+    },
+    {
+      "slug": "frontier-economics",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i21218-out-of-the-clouds-the-downstream-focus-for-ai-in-2025/",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "polyai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://docs.poly.ai/legal/compliance",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "benevolentai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.benevolent.com/about-us/publications/artificial-intelligence-drug-discovery/",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "improbable",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.improbable.io/news/improbable-leverages-ai-web3-venture-building",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "oliver-wyman-london",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.oliverwyman.com/our-expertise/insights/2025/jan/government-roadmap-how-to-navigate-ai-revolution.html",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "sourceType": "first_party",
+      "status": "needs_browser",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.hoganlovells.com/en/publications/the-eu-ai-act-prohibited-practices-and-ai-literacy-requirements-take-effect",
+          "status": "needs_browser"
+        }
+      ]
+    },
+    {
+      "slug": "linklaters-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://techinsights.linklaters.com/post/102kplg/tech-legal-outlook-2025-mid-year-update-round-up-of-developments-in-ai-regulat",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "bain-london-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.bain.com/insights/state-of-the-art-of-agentic-ai-transformation-technology-report-2025/",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "techuk",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.techuk.org/resource/eu-releases-final-version-of-ai-code-of-practice.html",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "cma-broader-ai",
+      "sourceType": "regulator",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "portal_or_filing",
+          "url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "dsit-ai-opportunity",
+      "sourceType": "regulator",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "portal_or_filing",
+          "url": "https://www.gov.uk/government/publications/ai-opportunities-action-plan-government-response/ai-opportunities-action-plan-government-response",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "bird-and-bird-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.twobirds.com/en/insights/2026/the-commission's-draft-high-risk-ai-guidelines-under-the-eu-ai-act-a-first-read",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "quantumblack-london",
+      "sourceType": "first_party",
+      "status": "needs_browser",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
+          "status": "needs_browser"
+        }
+      ]
+    },
+    {
+      "slug": "slaughter-and-may-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.slaughterandmay.com/insights/new-insights/eu-ai-act-to-enter-into-force/",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "ao-shearman-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.aoshearman.com/en/insights/ao-shearman-on-data/the-european-commission-publishes-its-ai-continent-action-plan",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "pinsent-masons-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.pinsentmasons.com/out-law/news/eu-ai-simplification-package-reaches-critical-milestone",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "deloitte-uk-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.deloitte.com/uk/en/Industries/financial-services/research/regulatory-outlook/artificial-intelligence-and-data.html",
+          "status": "found"
+        }
+      ]
+    },
+    {
+      "slug": "pa-consulting-ai",
+      "sourceType": "first_party",
+      "status": "found",
+      "verified": "2026-06-27",
+      "urls": [
+        {
+          "kind": "publication_or_news",
+          "url": "https://www.paconsulting.com/services/reimagine-ai-digital-and-data/responsible-ai",
+          "status": "found"
+        }
+      ]
+    }
+  ],
+  "portalSources": [
+    {
+      "name": "EU AI Office / GPAI Code",
+      "sourceType": "regulator",
+      "url": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+      "status": "needs_manual_review"
+    },
+    {
+      "name": "European Commission Have Your Say",
+      "sourceType": "consultation_portal",
+      "url": "https://ec.europa.eu/info/law/better-regulation/have-your-say/",
+      "status": "needs_manual_review"
+    },
+    {
+      "name": "Regulations.gov",
+      "sourceType": "consultation_portal",
+      "url": "https://www.regulations.gov/",
+      "status": "needs_manual_review"
+    },
+    {
+      "name": "UK Parliament written evidence",
+      "sourceType": "parliament",
+      "url": "https://committees.parliament.uk/",
+      "status": "needs_manual_review"
+    },
+    {
+      "name": "Targeted GOV.UK consultations",
+      "sourceType": "consultation_portal",
+      "url": "https://www.gov.uk/search/policy-papers-and-consultations",
+      "status": "needs_manual_review",
+      "note": "Use targeted consultation pages only; avoid broad department feeds."
+    },
+    {
+      "name": "arXiv",
+      "sourceType": "academic",
+      "url": "https://arxiv.org/",
+      "status": "needs_manual_review",
+      "note": "Only with verified company affiliation/author attribution."
+    },
+    {
+      "name": "Semantic Scholar",
+      "sourceType": "academic",
+      "url": "https://www.semanticscholar.org/",
+      "status": "needs_manual_review",
+      "note": "Only with verified company affiliation/author attribution."
+    }
+  ]
+}

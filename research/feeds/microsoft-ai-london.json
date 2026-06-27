@@ -1,0 +1,88 @@
+{
+  "slug": "microsoft-ai-london",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Microsoft’s policy footprint is unusually legible through On the Issues, EU Policy Blog and formal AI-safety testing arrangements with CAISI/AISI. It is also a named defendant in the consolidated publisher copyright litigation alongside OpenAI.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2026-05-05",
+      "title": "Advancing AI evaluation with the Center for AI Standards (US) and Innovation and the AI Security Institute (UK)",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/05/05/advancing-ai-evaluation-with-the-center-for-ai-standards-us-and-innovation-and-the-ai-security-institute-uk/",
+      "type": "blog",
+      "byline": "Natasha Crampton",
+      "source": "first_party",
+      "summary": "Microsoft announces agreements with US CAISI and the UK AI Security Institute to test Microsoft frontier models, assess safeguards and mitigate national-security and large-scale public-safety risks."
+    },
+    {
+      "date": "2026-06-10",
+      "title": "AI, jobs, and the next generation",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/06/10/ai-jobs-and-the-next-generation/",
+      "type": "blog",
+      "byline": "Brad Smith",
+      "source": "first_party",
+      "summary": "Brad Smith sets out Microsoft’s view on AI, labour-market impact, skills and workforce policy — a named-principal contribution to the displacement/augmentation debate."
+    },
+    {
+      "date": "2026-06-04",
+      "title": "Strengthening biosecurity in the era of AI",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/06/04/strengthening-biosecurity-in-the-era-of-ai/",
+      "type": "blog",
+      "byline": "Eric Horvitz",
+      "source": "first_party",
+      "summary": "Eric Horvitz discusses AI biosecurity safeguards, connecting Microsoft’s safety work to the frontier-lab biosecurity-policy conversation."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "AI for Europe, in Europe’s own languages",
+      "url": "https://blogs.microsoft.com/eupolicy/2026/06/16/ai-for-europe-in-europes-own-languages/",
+      "type": "blog",
+      "byline": "Burton Davis",
+      "source": "first_party",
+      "summary": "Microsoft EU Policy Blog post on European-language AI access and infrastructure, a regional policy-positioning signal for Microsoft’s European AI work."
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Powering Europe’s AI future: The fusion of compute and power",
+      "url": "https://blogs.microsoft.com/eupolicy/2026/06/17/powering-europes-ai-future-the-fusion-of-compute-and-power/",
+      "type": "blog",
+      "byline": "Microsoft Corporate Blogs",
+      "source": "first_party",
+      "summary": "Microsoft EU Policy Blog post tying AI expansion to compute and power infrastructure — directly relevant to European AI-capacity policy."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [
+    {
+      "type": "legal_case",
+      "title": "New York Times & news publishers v OpenAI/Microsoft — copyright infringement (SDNY)",
+      "url": "https://www.npr.org/2025/03/26/nx-s1-5288157/new-york-times-openai-copyright-case-goes-forward",
+      "occurredAt": "2025-03-26",
+      "status": "ongoing",
+      "severity": "high",
+      "companyRole": "defendant",
+      "summary": "Microsoft is named alongside OpenAI as a defendant in the consolidated New York Times/news-publisher copyright litigation over AI training and outputs. NPR reported in March 2025 that Judge Sidney Stein allowed core copyright claims to proceed while narrowing some claims; the case remained unresolved.",
+      "topics": [
+        "copyright",
+        "training_data",
+        "publisher_litigation"
+      ],
+      "rawExcerpt": null,
+      "corroboration": [
+        {
+          "outlet": "NPR",
+          "url": "https://www.npr.org/2025/03/26/nx-s1-5288157/new-york-times-openai-copyright-case-goes-forward",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
+  "notes": "launch_harvest 2026-06-27: Microsoft RSS feeds verified HTTP 200: https://blogs.microsoft.com/on-the-issues/feed/ and https://blogs.microsoft.com/eupolicy/feed/. AISI/CAISI article direct fetch HTTP 200. NPR controversy source direct fetch HTTP 200; no paywalled body reproduced.",
+  "news": []
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "linklaters-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Law-firm AI/regulatory practice. Launch coverage uses named-author AI regulation analysis from Linklaters Tech Insights.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-06-23",
+      "title": "Tech Legal Outlook 2025 – Mid-Year Update: Round-up of developments in AI regulations in key regions",
+      "url": "https://techinsights.linklaters.com/post/102kplg/tech-legal-outlook-2025-mid-year-update-round-up-of-developments-in-ai-regulat",
+      "type": "blog",
+      "byline": "Ieuan Jolly, Joshua Ashley Klayman, Caitlin Potratz Metcalf, Alex Roberts, Sonia Cissé, Julian Cunningham-Day, Jennifer Calver, Elton Qemali",
+      "source": "first_party",
+      "summary": "Linklaters tracks AI regulatory developments across key jurisdictions in a bylined mid-year update, useful evidence of the firm’s AI-regulatory coverage and team style."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party Linklaters Tech Insights URL.",
+  "news": []
+}

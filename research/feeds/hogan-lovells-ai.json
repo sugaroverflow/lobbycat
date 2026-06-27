@@ -1,0 +1,26 @@
+{
+  "slug": "hogan-lovells-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Law-firm AI/regulatory practice. Launch coverage uses a named first-party EU AI Act publication; body recapture needs browser due 403.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-02-03",
+      "title": "The EU AI Act: Prohibited practices and AI literacy requirements take effect",
+      "url": "https://www.hoganlovells.com/en/publications/the-eu-ai-act-prohibited-practices-and-ai-literacy-requirements-take-effect",
+      "type": "blog",
+      "byline": "Hogan Lovells",
+      "source": "first_party",
+      "summary": "Hogan Lovells explains the first EU AI Act obligations taking effect in February 2025: prohibited AI practices and AI-literacy requirements for companies."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: first-party URL discovered on official domain; direct fetch returned HTTP 403, so status=needs_browser for full-body recapture.",
+  "news": []
+}

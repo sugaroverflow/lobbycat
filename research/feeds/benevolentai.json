@@ -1,0 +1,26 @@
+{
+  "slug": "benevolentai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "AI-enabled drug-discovery company. Launch coverage uses first-party scientific/publication material as verified evidence; no controversy invented.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": null,
+      "title": "Artificial intelligence in drug discovery",
+      "url": "https://www.benevolent.com/about-us/publications/artificial-intelligence-drug-discovery/",
+      "type": "paper",
+      "byline": "BenevolentAI",
+      "source": "first_party",
+      "summary": "BenevolentAI hosts a publication/commentary on artificial intelligence in drug discovery, reflecting on AI/ML methods, their relevance across drug discovery and the need to manage expectations."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party publication URL; no policy controversy added.",
+  "news": []
+}

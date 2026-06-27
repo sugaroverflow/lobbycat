@@ -1,7 +1,26 @@
 {
   "slug": "meta-london-policy",
   "hiring": {},
-  "publications": [],
+  "publications": [
+    {
+      "date": "2026-04-07",
+      "title": "Advanced AI Scaling Framework Version 2",
+      "url": "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2",
+      "type": "paper",
+      "byline": "Meta",
+      "source": "first_party",
+      "summary": "Meta’s Advanced AI Scaling Framework v2 sets out governance, transparency and risk-management practices for advanced AI systems, structured around catastrophic-outcome risk domains including cyber, chemical/biological and loss-of-control risks."
+    },
+    {
+      "date": "2026-04-08",
+      "title": "Scaling How We Build and Test Our Most Advanced AI",
+      "url": "https://ai.meta.com/blog/scaling-how-we-build-test-advanced-ai/",
+      "type": "blog",
+      "byline": "Meta AI",
+      "source": "first_party",
+      "summary": "Meta announces its updated Advanced AI Scaling Framework and related safety/preparedness reporting, framing the work as a scaled approach to testing and governing its most advanced AI systems."
+    }
+  ],
   "roles": [],
   "filings": [],
   "leadership": [],
@@ -71,6 +90,6 @@
     }
   ],
   "blurb": "Meta — newsroom for company announcements, including AI products and policy positions.",
-  "lastUpdated": "2026-06-27T18:10:00Z",
-  "notes": "[RSS harvest 2026-06-27] https://about.fb.com/news/feed/"
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "notes": "[RSS harvest 2026-06-27] https://about.fb.com/news/feed/ launch_harvest 2026-06-27: Meta framework PDF direct fetch HTTP 200. Blog URL direct fetch HTTP 200 but body is JS-heavy; status=needs_browser for full body if richer summary is needed."
 }

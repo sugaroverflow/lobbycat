@@ -1,0 +1,26 @@
+{
+  "slug": "quantumblack-london",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "McKinsey QuantumBlack AI practice. Launch coverage uses first-party State of AI report; body recapture needs browser because direct fetch returned 403.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-11-05",
+      "title": "The state of AI in 2025: Agents, innovation, and transformation",
+      "url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai",
+      "type": "paper",
+      "byline": "McKinsey QuantumBlack",
+      "source": "first_party",
+      "summary": "McKinsey QuantumBlack’s annual State of AI report surveys AI adoption, agents, innovation and organizational transformation, providing the consultancy’s evidence base for enterprise AI strategy."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: official first-party URL discovered; direct fetch returned HTTP 403, so status=needs_browser for body recapture.",
+  "news": []
+}
