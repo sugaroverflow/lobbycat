@@ -192,6 +192,8 @@ export async function getCompanyBySlug(slug: string) {
     companyFitNoteMessages,
     companyNoteRows,
     companyFavoriteRows,
+    companyNewsList,
+    companyControversiesList,
   ] = await Promise.all([
     db
       .select()
@@ -246,6 +248,37 @@ export async function getCompanyBySlug(slug: string) {
       .from(companyFavorites)
       .where(eq(companyFavorites.companyId, company.id))
       .limit(1),
+    // v0.8.5: detail page reads same evidence kinds as the dashboard
+    // card show-more reveal — news + controversies. No date filter
+    // (the detail page is the deep-dive surface; surface everything).
+    // Cap at 20 each so an outlier doesn't blow the page.
+    db
+      .select({
+        id: news.id,
+        title: news.title,
+        url: news.url,
+        publishedAt: news.publishedAt,
+        source: news.source,
+        summary: news.summary,
+      })
+      .from(news)
+      .where(eq(news.companyId, company.id))
+      .orderBy(desc(news.publishedAt), desc(news.seenAt))
+      .limit(20),
+    db
+      .select({
+        id: controversies.id,
+        title: controversies.title,
+        url: controversies.url,
+        severity: controversies.severity,
+        status: controversies.status,
+        summary: controversies.summary,
+        occurredAt: controversies.occurredAt,
+      })
+      .from(controversies)
+      .where(eq(controversies.companyId, company.id))
+      .orderBy(desc(controversies.occurredAt), desc(controversies.seenAt))
+      .limit(20),
   ]);
 
   const allFrames = await db
@@ -261,6 +294,14 @@ export async function getCompanyBySlug(slug: string) {
     roles: companyRolesList,
     people: companyPeopleList,
     publications: companyPublicationsList,
+    news: companyNewsList.map((n) => ({
+      ...n,
+      publishedAt: n.publishedAt ? new Date(n.publishedAt).toISOString() : null,
+    })),
+    controversies: companyControversiesList.map((c) => ({
+      ...c,
+      occurredAt: c.occurredAt ? new Date(c.occurredAt).toISOString() : null,
+    })),
     tags: companyTagList,
     frames: allFrames.map((f) => ({
       ...f,
