@@ -27,6 +27,8 @@ export default async function CompanyDetail({
     roles,
     people,
     publications,
+    news,
+    controversies,
     frames,
     fitNote,
     fitNoteThread,
@@ -169,6 +171,61 @@ export default async function CompanyDetail({
                         {p.type}
                         {p.publishedAt &&
                           ` · ${new Date(p.publishedAt).toLocaleDateString("en-GB")}`}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* v0.8.5: news + controversies on the detail page so it
+             * matches the dashboard card show-more reveal. The detail
+             * page is the deep-dive surface; surface everything we have,
+             * not just the last-6mo window. */}
+            {news.length > 0 && (
+              <section>
+                <h2 className="eyebrow mb-4 pb-2 border-b border-rule">Recent news</h2>
+                <ul className="divide-y divide-rule">
+                  {news.map((n) => (
+                    <li key={n.id} className="py-3">
+                      <a href={n.url} target="_blank" rel="noopener" className="serif text-base text-ink hover:underline">
+                        {n.title}
+                      </a>
+                      {n.summary && (
+                        <p className="serif text-sm text-muted mt-1 leading-relaxed">
+                          {n.summary}
+                        </p>
+                      )}
+                      <div className="mono text-xs text-whisper mt-1">
+                        {n.source === "company_blog" ? "company blog" : "press"}
+                        {n.publishedAt &&
+                          ` · ${new Date(n.publishedAt).toLocaleDateString("en-GB")}`}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {controversies.length > 0 && (
+              <section>
+                <h2 className="eyebrow mb-4 pb-2 border-b border-rule">Controversies</h2>
+                <ul className="divide-y divide-rule">
+                  {controversies.map((c) => (
+                    <li key={c.id} className="py-3">
+                      <a href={c.url} target="_blank" rel="noopener" className="serif text-base text-ink hover:underline">
+                        {c.title}
+                      </a>
+                      {c.summary && (
+                        <p className="serif text-sm text-muted mt-1 leading-relaxed">
+                          {c.summary}
+                        </p>
+                      )}
+                      <div className="mono text-xs text-whisper mt-1">
+                        {c.status}
+                        {c.severity && ` · ${c.severity}`}
+                        {c.occurredAt &&
+                          ` · ${new Date(c.occurredAt).toLocaleDateString("en-GB")}`}
                       </div>
                     </li>
                   ))}

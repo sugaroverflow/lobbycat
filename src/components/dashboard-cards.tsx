@@ -613,14 +613,23 @@ export function DashboardCards({
 
   const detailMapForSort = detailMap;
 
-  // ---- Toolbar state (v0.7 step 7) ---------------------------------
+  // ---- Toolbar state (v0.8.5 filter overhaul) ---------------------
   // Sort key: "overall" | "recent" | "alpha" | `frame:<id>`.
-  // Filters are independent toggles + a multi-select HQ + tier set.
+  // v0.8.5: replaced the v0.7-era chip set (Hiring + Open role +
+  // Recent pub + Fit-note) per Fatima 2026-06-27 12:54Z. Hiring and
+  // Open role were the same condition under different copy; Recent pub
+  // was a single-table check; Fit-note was a saved-state filter most
+  // users won't reach. New set: Hiring, High score (>=4), Has
+  // controversy, Recent activity (any pub/role/news in last 30d),
+  // Favorited.
   const [sortKey, setSortKey] = useState<string>("overall");
   const [filterHiring, setFilterHiring] = useState(false);
-  const [filterOpenRole, setFilterOpenRole] = useState(false);
-  const [filterRecentPub, setFilterRecentPub] = useState(false);
-  const [filterFitNote, setFilterFitNote] = useState(false);
+  const [filterHighScore, setFilterHighScore] = useState(false);
+  const [filterControversy, setFilterControversy] = useState(false);
+  const [filterRecentActivity, setFilterRecentActivity] = useState(false);
+  const [filterFavorited, setFilterFavorited] = useState(false);
+  // Kept for state-shape backward compat — hidden in the toolbar UI
+  // since v0.8.3 (tier is an internal coverage signal, not a user lens).
   const [tierSet, setTierSet] = useState<Set<number>>(new Set());
   const [hq, setHq] = useState<string>("");
 
@@ -630,14 +639,36 @@ export function DashboardCards({
     return Array.from(s).sort();
   }, [companies]);
 
+  // v0.8.5: 30-day window for the "Recent activity" chip. ORs across
+  // publications + roles + news so any signal counts as "active".
+  const thirtyDaysAgo = useMemo(
+    () => Date.now() - 30 * 24 * 60 * 60 * 1000,
+    [],
+  );
+  const isRecentISO = (iso?: string | null) =>
+    !!iso && Date.parse(iso) >= thirtyDaysAgo;
+
   const visible = useMemo(() => {
     const filtered = companies.filter((c) => {
       const d = detailMapForSort.get(c.id);
       if (filterHiring && d?.isHiring !== true) return false;
-      if (filterOpenRole && (d?.openRoleCount ?? 0) <= 0) return false;
-      if (filterRecentPub && (d?.recentPublications.length ?? 0) <= 0)
+      if (filterHighScore) {
+        const overall = aggMap.get(c.id)?.overall ?? null;
+        if (overall === null || overall < 4) return false;
+      }
+      if (filterControversy && (d?.recentControversies.length ?? 0) <= 0)
         return false;
-      if (filterFitNote && !d?.hasFitNote) return false;
+      if (filterRecentActivity) {
+        const anyPub = (d?.recentPublications ?? []).some((p) =>
+          isRecentISO(p.publishedAt),
+        );
+        const anyRole = (d?.openRoles ?? []).some((r) => isRecentISO(r.seenAt));
+        const anyNews = (d?.recentNews ?? []).some((n) =>
+          isRecentISO(n.publishedAt),
+        );
+        if (!anyPub && !anyRole && !anyNews) return false;
+      }
+      if (filterFavorited && !favoritedSet.has(c.id)) return false;
       if (tierSet.size > 0 && !tierSet.has(c.tier)) return false;
       if (hq && c.hq !== hq) return false;
       return true;
@@ -686,18 +717,22 @@ export function DashboardCards({
     scoreLookup,
     sortKey,
     filterHiring,
-    filterOpenRole,
-    filterRecentPub,
-    filterFitNote,
+    filterHighScore,
+    filterControversy,
+    filterRecentActivity,
+    filterFavorited,
+    favoritedSet,
+    isRecentISO,
     tierSet,
     hq,
   ]);
 
   const anyFilterActive =
     filterHiring ||
-    filterOpenRole ||
-    filterRecentPub ||
-    filterFitNote ||
+    filterHighScore ||
+    filterControversy ||
+    filterRecentActivity ||
+    filterFavorited ||
     tierSet.size > 0 ||
     hq !== "";
 
@@ -711,9 +746,10 @@ export function DashboardCards({
 
   const clearFilters = () => {
     setFilterHiring(false);
-    setFilterOpenRole(false);
-    setFilterRecentPub(false);
-    setFilterFitNote(false);
+    setFilterHighScore(false);
+    setFilterControversy(false);
+    setFilterRecentActivity(false);
+    setFilterFavorited(false);
     setTierSet(new Set());
     setHq("");
   };
@@ -730,12 +766,14 @@ export function DashboardCards({
         onSortKey={setSortKey}
         filterHiring={filterHiring}
         onFilterHiring={() => setFilterHiring((v) => !v)}
-        filterOpenRole={filterOpenRole}
-        onFilterOpenRole={() => setFilterOpenRole((v) => !v)}
-        filterRecentPub={filterRecentPub}
-        onFilterRecentPub={() => setFilterRecentPub((v) => !v)}
-        filterFitNote={filterFitNote}
-        onFilterFitNote={() => setFilterFitNote((v) => !v)}
+        filterHighScore={filterHighScore}
+        onFilterHighScore={() => setFilterHighScore((v) => !v)}
+        filterControversy={filterControversy}
+        onFilterControversy={() => setFilterControversy((v) => !v)}
+        filterRecentActivity={filterRecentActivity}
+        onFilterRecentActivity={() => setFilterRecentActivity((v) => !v)}
+        filterFavorited={filterFavorited}
+        onFilterFavorited={() => setFilterFavorited((v) => !v)}
         tierSet={tierSet}
         onToggleTier={toggleTier}
         hq={hq}
@@ -794,14 +832,14 @@ function DashboardToolbar({
   onSortKey,
   filterHiring,
   onFilterHiring,
-  filterOpenRole,
-  onFilterOpenRole,
-  filterRecentPub,
-  onFilterRecentPub,
-  filterFitNote,
-  onFilterFitNote,
-  tierSet,
-  onToggleTier,
+  filterHighScore,
+  onFilterHighScore,
+  filterControversy,
+  onFilterControversy,
+  filterRecentActivity,
+  onFilterRecentActivity,
+  filterFavorited,
+  onFilterFavorited,
   hq,
   onHq,
   anyFilterActive,
@@ -815,12 +853,14 @@ function DashboardToolbar({
   onSortKey: (v: string) => void;
   filterHiring: boolean;
   onFilterHiring: () => void;
-  filterOpenRole: boolean;
-  onFilterOpenRole: () => void;
-  filterRecentPub: boolean;
-  onFilterRecentPub: () => void;
-  filterFitNote: boolean;
-  onFilterFitNote: () => void;
+  filterHighScore: boolean;
+  onFilterHighScore: () => void;
+  filterControversy: boolean;
+  onFilterControversy: () => void;
+  filterRecentActivity: boolean;
+  onFilterRecentActivity: () => void;
+  filterFavorited: boolean;
+  onFilterFavorited: () => void;
   tierSet: Set<number>;
   onToggleTier: (t: number) => void;
   hq: string;
@@ -888,16 +928,30 @@ function DashboardToolbar({
          * signal, not a user lens. The state hook + props stay wired so
          * we can bring it back later without a refactor. */}
 
-        {/* Boolean filter chips */}
+        {/* v0.8.5: Boolean filter chips. Set defined with Fatima
+         * 2026-06-27 12:54Z. "Hiring" replaces both old hiring + open-
+         * role chips (they were the same condition). High score → quick
+         * top-of-list lens. Has controversy → counter-signal. Recent
+         * activity → 30-day OR across pub/role/news. Favorited → the
+         * star set. */}
         <div className="flex flex-wrap items-center gap-1">
           <ToolbarChip active={filterHiring} onClick={onFilterHiring}>
             ● Hiring
           </ToolbarChip>
-          <ToolbarChip active={filterOpenRole} onClick={onFilterOpenRole}>
-            Open role
+          <ToolbarChip active={filterHighScore} onClick={onFilterHighScore}>
+            High score
           </ToolbarChip>
-          <ToolbarChip active={filterRecentPub} onClick={onFilterRecentPub}>
-            Recent pub
+          <ToolbarChip active={filterControversy} onClick={onFilterControversy}>
+            Has controversy
+          </ToolbarChip>
+          <ToolbarChip
+            active={filterRecentActivity}
+            onClick={onFilterRecentActivity}
+          >
+            Recent activity
+          </ToolbarChip>
+          <ToolbarChip active={filterFavorited} onClick={onFilterFavorited}>
+            ★ Favorited
           </ToolbarChip>
         </div>
 
