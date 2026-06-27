@@ -50,7 +50,7 @@ export function WelcomeCard({
     setProgress(
       pool.length > 0
         ? pool[Math.floor(Math.random() * pool.length)]
-        : "the cat is re-reading",
+        : "lobbycat is re-reading",
     );
     startTransition(async () => {
       // Sequential to keep the LLM bill polite. The /api/cron/rescore
@@ -175,7 +175,7 @@ function WelcomeBackDiff({
           {heading}
         </p>
         <p className="prose-face text-sm text-card-interior-muted">
-          nothing new since your last visit — the cat will let you know.
+          nothing new since your last visit — lobbycat will let you know.
         </p>
       </div>
     );

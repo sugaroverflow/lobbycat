@@ -225,9 +225,11 @@ function FrameCard({
             );
           })}
         </div>
-        {/* v0.8.1 F5.3: bump pole-label font from text-[10px] to text-xs for
-            readability. Tracking/colour unchanged. See A-A9.3. */}
-        <span className="mono text-xs text-whisper ml-auto">
+        {/* v0.8.1 F5.3 → v0.8.3: bumped pole-label font text-[10px] →
+           text-xs → text-sm. Also bump the foreground from --whisper
+           (~0.45 alpha) to muted body color so it's actually readable
+           at a glance. */}
+        <span className="mono text-sm text-muted ml-auto">
           {frame.lowLabel || "—"} → {frame.highLabel || "—"} · 1–{frame.scale}
         </span>
       </footer>
@@ -440,13 +442,13 @@ function CatSuggestions() {
         setSuggestions(scaleOnly);
         setAdded(new Set());
         if (scaleOnly.length === 0) {
-          setError("the cat didn't come back with anything useful. try again?");
+          setError("lobbycat didn't come back with anything useful. try again?");
         }
       } catch (e) {
         setError(
           e instanceof Error
             ? e.message
-            : "the cat napped through it. try again?",
+            : "lobbycat napped through it. try again?",
         );
       }
     });

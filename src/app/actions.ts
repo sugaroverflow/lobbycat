@@ -294,7 +294,7 @@ Return STRICT JSON in this exact shape — an object with a "frames" array. No o
   try {
     parsed = JSON.parse(stripped) as { frames?: unknown };
   } catch {
-    throw new Error("the cat returned malformed JSON; try again");
+    throw new Error("lobbycat returned malformed JSON; try again");
   }
 
   const rawFrames = Array.isArray(parsed.frames) ? parsed.frames : [];
@@ -681,7 +681,12 @@ export async function sendFitNoteMessage({
       .values({ companyId, role: "cat", content: reply });
   }
 
-  revalidatePath(`/companies/[slug]`, "page");
+  // v0.8.3 F4.2: the previous `revalidatePath("/companies/[slug]", "page")`
+  // call was unreliable in Next 16 — the route-template form didn't
+  // always invalidate the specific instance, so lobbycat's follow-up
+  // reply persisted to the DB but the UI never re-rendered. Resolve the
+  // actual slug and revalidate the concrete path instead.
+  revalidatePath(`/companies/${company.slug}`);
 }
 
 /* ------------------------------------------------------------------ */

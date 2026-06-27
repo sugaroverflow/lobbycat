@@ -192,7 +192,7 @@ export function ProfileEditor(initial: ProfileEditorProps) {
 
       <p className="serif text-sm text-whisper mt-12 italic">
         Used by the lobbycat agent to ground every fit-note. Read it critically;
-        tell the cat where it&apos;s wrong. Frames + weights live on{" "}
+        tell lobbycat where it&apos;s wrong. Frames + weights live on{" "}
         <Link href="/frames" className="underline hover:text-ink">
           /frames
         </Link>

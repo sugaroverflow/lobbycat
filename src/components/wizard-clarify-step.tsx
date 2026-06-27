@@ -68,7 +68,7 @@ export function WizardClarifyStep({
         setError(
           e instanceof Error
             ? e.message
-            : "the cat couldn't open the session. skip ahead and come back to her later?",
+            : "lobbycat couldn't open the session. skip ahead and come back to her later?",
         );
       }
     });
@@ -101,7 +101,7 @@ export function WizardClarifyStep({
         setError(
           e instanceof Error
             ? e.message
-            : "the cat hit a snag. try again, or skip ahead?",
+            : "lobbycat hit a snag. try again, or skip ahead?",
         );
         // Roll back the optimistic user turn so the input can be re-sent.
         setMessages((prev) =>
@@ -294,7 +294,7 @@ function ChatInput({
             onSend();
           }
         }}
-        placeholder="say something to the cat…"
+        placeholder="say something to lobbycat…"
         rows={1}
         disabled={disabled}
         className="flex-1 resize-none bg-bg border border-rule rounded-sm px-3 py-2 font-sans text-base text-ink focus:outline-none focus:border-readout placeholder:text-whisper disabled:opacity-50"

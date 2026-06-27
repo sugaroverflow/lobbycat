@@ -52,7 +52,7 @@ export function SurpriseModal({
     }, 1500);
     return () => clearInterval(id);
   }, [pending, loadingPool.length]);
-  const loadingQuote = loadingPool[loadingIdx] ?? "the cat is pawing through…";
+  const loadingQuote = loadingPool[loadingIdx] ?? "lobbycat is pawing through…";
 
   const randomPreamble = useCallback(() => {
     const pool = q.surprisePreamble ?? [];
@@ -333,7 +333,7 @@ export function SurpriseModal({
               className="mono text-[10px] uppercase tracking-[0.18em] italic"
               style={{ color: "rgba(255,153,0,0.85)" }}
             >
-              the cat is tired.
+              lobbycat is tired.
             </span>
           ) : null}
         </div>

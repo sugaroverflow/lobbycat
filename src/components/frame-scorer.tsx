@@ -73,13 +73,15 @@ export function FrameScorer({
           {frame.highLabel}
         </span>
       </div>
+      {/* v0.8.3: bumped rows 2 → 5 + min-h floor so this feels like a
+         real note field, not a one-liner. Fatima asked for it taller. */}
       <textarea
         value={rationale}
         onChange={(e) => setRationale(e.target.value)}
         onBlur={submitRationale}
         placeholder="why this score? (optional)"
-        rows={2}
-        className="serif text-sm text-body w-full mt-3 px-3 py-2 bg-surface border border-rule rounded-sm placeholder:text-whisper focus:outline-none focus:border-accent"
+        rows={5}
+        className="serif text-sm text-body w-full mt-3 px-3 py-2 bg-surface border border-rule rounded-sm placeholder:text-whisper focus:outline-none focus:border-accent leading-relaxed min-h-[7rem] resize-y"
       />
     </div>
   );

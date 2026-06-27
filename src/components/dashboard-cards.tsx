@@ -144,24 +144,31 @@ function ScoreBar({
 }) {
   const pct = score === null || score === undefined ? 0 : (score / 5) * 100;
   const dim = score === null || score === undefined;
-  const weightGlyph =
-    weight === "high" ? "M" : weight === "medium" ? "S" : "C";
+  // v0.8.3: removed the [M]/[S]/[C] weight glyph inline on each frame
+  // label. It was opaque to users ("what is C?") and the dealbreaker/
+  // important/nice-to-have vocab lives on /frames now. Weight still
+  // influences the overall aggregate, just not surfaced per-bar.
+  const weightLabel =
+    weight === "high"
+      ? "dealbreaker"
+      : weight === "medium"
+      ? "important"
+      : "nice to have";
   return (
     <div
-      className="flex items-center gap-2 min-w-0"
-      title={`${frame.name} — weight ${weightGlyph === "M" ? "Must" : weightGlyph === "S" ? "Should" : "Could"}`}
+      className="flex items-center gap-1.5 min-w-0"
+      title={`${frame.name} — ${weightLabel}`}
     >
       <span
-        className="font-sans text-xs text-readout truncate"
+        className="text-xs text-readout truncate"
         style={{ flex: "1 1 0" }}
       >
         {frame.name}
-        <span className="ml-1 text-card-interior-whisper">[{weightGlyph}]</span>
       </span>
       <span
         className="relative inline-block h-[6px] rounded-sm overflow-hidden"
         style={{
-          width: "80px",
+          width: "72px",
           background: "var(--bg-panel-sunk)",
           boxShadow: "inset 0 0 0 1px var(--rule)",
         }}
@@ -204,13 +211,13 @@ function HiringBadge({ isHiring }: { isHiring: boolean | null }) {
   }
   if (isHiring === false) {
     return (
-      <span className="font-sans text-xs px-2 py-[3px] text-card-interior-muted">
+      <span className="text-xs px-2 py-[3px] text-card-interior-muted">
         Not hiring
       </span>
     );
   }
   return (
-    <span className="font-sans text-xs px-2 py-[3px] text-card-interior-muted">
+    <span className="text-xs px-2 py-[3px] text-card-interior-muted">
       Hiring · unknown
     </span>
   );
@@ -266,10 +273,15 @@ function CompanyCard({
           card. */}
       <header className="px-5 pt-4 pb-2 flex items-start gap-4">
         <div className="flex-1 min-w-0">
-          <div className="flex items-baseline gap-2 flex-wrap font-sans">
+          {/* v0.8.3 F1.1 (take 2): Orbitron ONLY on the company name.
+             Everything else inside the card body (hq, overall, blurb,
+             frame labels, fit-note text, role/pub titles) inherits mono
+             from globals.css — mono is the more readable face at small
+             sizes, per Fatima's company-detail-page reaction. */}
+          <div className="flex items-baseline gap-2 flex-wrap">
             <Link
               href={`/companies/${c.slug}`}
-              className="text-xl tracking-tight text-ink hover:text-readout transition-colors"
+              className="font-sans text-xl tracking-tight text-ink hover:text-readout transition-colors"
               style={{ fontWeight: 500 }}
             >
               {c.name}
@@ -304,7 +316,7 @@ function CompanyCard({
             </span>
           </div>
           {c.description && (
-            <p className="font-sans text-sm text-card-interior-muted leading-relaxed mt-1 max-w-2xl">
+            <p className="text-sm text-card-interior-text leading-relaxed mt-1 max-w-2xl">
               {c.description}
             </p>
           )}
@@ -326,7 +338,7 @@ function CompanyCard({
 
       {/* scores — 6 frame bars, 2 columns */}
       <div
-        className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 px-5 pt-2 pb-3"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1.5 px-5 pt-2 pb-3"
         style={{
           borderTop: "1px solid var(--card-interior-rule)",
           borderBottom: "1px solid var(--card-interior-rule)",
@@ -347,7 +359,7 @@ function CompanyCard({
       <div className="px-5 py-3 flex items-center justify-between gap-4">
         <div className="min-w-0 flex-1">
           {latest ? (
-            <p className="font-sans text-sm text-card-interior-text truncate">
+            <p className="text-sm text-card-interior-text truncate">
               <span className="text-card-interior-muted mr-2">
                 latest
               </span>
@@ -365,7 +377,7 @@ function CompanyCard({
               <span className="ml-2 text-card-interior-whisper">{fmtAgo(latest.at)}</span>
             </p>
           ) : (
-            <p className="font-sans text-sm text-card-interior-muted italic">
+            <p className="text-sm text-card-interior-muted italic">
               No recent activity tracked.
             </p>
           )}
@@ -396,7 +408,7 @@ function CompanyCard({
               <span className="text-card-interior-whisper ml-2 text-xs">(last 6mo)</span>
             </h4>
             {detail.recentPublications.length === 0 ? (
-              <p className="font-sans text-sm text-card-interior-muted italic">
+              <p className="text-sm text-card-interior-muted italic">
                 None tracked in the last 6 months.
               </p>
             ) : (
@@ -404,7 +416,7 @@ function CompanyCard({
                 {detail.recentPublications.map((p) => (
                   <li
                     key={p.id}
-                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                    className="text-sm text-card-interior-text leading-relaxed"
                   >
                     <span aria-hidden className="mr-1">
                       {pubIcon(p.type)}
@@ -436,7 +448,7 @@ function CompanyCard({
               )}
             </h4>
             {detail.openRoles.length === 0 ? (
-              <p className="font-sans text-sm text-card-interior-muted italic">
+              <p className="text-sm text-card-interior-muted italic">
                 No open roles tracked.
               </p>
             ) : (
@@ -444,7 +456,7 @@ function CompanyCard({
                 {detail.openRoles.map((r) => (
                   <li
                     key={r.id}
-                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                    className="text-sm text-card-interior-text leading-relaxed"
                   >
                     <a
                       href={r.url}
@@ -473,7 +485,7 @@ function CompanyCard({
               </span>
             </h4>
             {detail.recentNews.length === 0 ? (
-              <p className="font-sans text-sm text-card-interior-muted italic">
+              <p className="text-sm text-card-interior-muted italic">
                 No recent news in the last 6 months.
               </p>
             ) : (
@@ -481,7 +493,7 @@ function CompanyCard({
                 {detail.recentNews.map((n) => (
                   <li
                     key={n.id}
-                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                    className="text-sm text-card-interior-text leading-relaxed"
                   >
                     <span aria-hidden className="mr-1">
                       📰
@@ -511,7 +523,7 @@ function CompanyCard({
               </span>
             </h4>
             {detail.recentControversies.length === 0 ? (
-              <p className="font-sans text-sm text-card-interior-muted italic">
+              <p className="text-sm text-card-interior-muted italic">
                 No recent controversy surfaced.
               </p>
             ) : (
@@ -519,7 +531,7 @@ function CompanyCard({
                 {detail.recentControversies.map((x) => (
                   <li
                     key={x.id}
-                    className="font-sans text-sm text-card-interior-text leading-relaxed"
+                    className="text-sm text-card-interior-text leading-relaxed"
                   >
                     <span aria-hidden className="mr-1">
                       ⚠️
@@ -559,11 +571,6 @@ function CompanyCard({
             >
               Explore in detail →
             </Link>
-            {detail.hasFitNote && (
-              <span className="font-sans text-xs text-readout">
-                ✦ Fit-note ready
-              </span>
-            )}
           </section>
         </div>
       )}
@@ -876,21 +883,10 @@ function DashboardToolbar({
           </label>
         )}
 
-        {/* Tier */}
-        <div className="mono text-[10px] uppercase tracking-[0.16em] text-readout flex items-center gap-2">
-          Tier
-          <div className="flex gap-1">
-            {[1, 2, 3].map((t) => (
-              <ToolbarChip
-                key={t}
-                active={tierSet.has(t)}
-                onClick={() => onToggleTier(t)}
-              >
-                {t}
-              </ToolbarChip>
-            ))}
-          </div>
-        </div>
+        {/* Tier filter intentionally hidden in v0.8.3 (Fatima feedback
+         * 2026-06-27 09:35Z): tier is an internal coverage-completeness
+         * signal, not a user lens. The state hook + props stay wired so
+         * we can bring it back later without a refactor. */}
 
         {/* Boolean filter chips */}
         <div className="flex flex-wrap items-center gap-1">
@@ -902,9 +898,6 @@ function DashboardToolbar({
           </ToolbarChip>
           <ToolbarChip active={filterRecentPub} onClick={onFilterRecentPub}>
             Recent pub
-          </ToolbarChip>
-          <ToolbarChip active={filterFitNote} onClick={onFilterFitNote}>
-            ✦ Fit-note
           </ToolbarChip>
         </div>
 
@@ -936,18 +929,24 @@ function ToolbarChip({
   onClick: () => void;
   children: React.ReactNode;
 }) {
+  // v0.8.3 F1.2: filter-chip contrast bump. Inactive chips were
+  // `--readout-cyan` text on transparent with a 65%-alpha border ("gray
+  // on black, hard to see"). Now: full-alpha cyan border + cyan text
+  // with a thin wash background; active stays magenta with the glow.
   return (
     <button
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className="mono text-[10px] uppercase tracking-[0.16em] px-2 py-1 rounded-sm transition-colors"
+      className="mono text-xs uppercase tracking-[0.14em] px-2.5 py-1 rounded-sm transition-colors"
       style={{
         border: active
           ? "1px solid var(--accent-action)"
-          : "1px solid var(--readout-cyan-dim)",
+          : "1px solid var(--readout-cyan)",
         color: active ? "var(--accent-action)" : "var(--readout-cyan)",
-        background: active ? "rgb(255 0 255 / 0.12)" : "transparent",
+        background: active
+          ? "rgb(255 0 255 / 0.12)"
+          : "rgb(0 255 255 / 0.04)",
         boxShadow: active ? "var(--vw-glow-magenta)" : "none",
       }}
     >

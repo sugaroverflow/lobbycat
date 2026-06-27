@@ -37,22 +37,22 @@ const STEPS: Array<{
   {
     eyebrow: "Step 1 of 4 — the engine",
     title: "Lobbycat is a live scoring engine.",
-    body: "Tell it what you care about and it ranks London's AI policy companies for you. Six frames, a weighted aggregate per company, the cat's reasoning attached to every cell. The home table is the field; click a row to dive deep, click a cell to see why.",
+    body: "Tell it what you care about and it ranks London's AI policy companies for you. Six frames, a weighted aggregate per company, lobbycat's reasoning attached to every cell. The home table is the field; click a row to dive deep, click a cell to see why.",
   },
   {
     eyebrow: "Step 2 of 4 — frames + weights",
     title: "Six lenses, three weight settings.",
-    body: "Each frame is a 1–5 axis the cat scores every company on. You weight them low · medium · high in /frames — changes the sort instantly. Edit a frame definition and the cat re-reads the field in the background; the animated cat in the corner means it's working.",
+    body: "Each frame is a 1–5 axis lobbycat scores every company on. You weight them low · medium · high in /frames — changes the sort instantly. Edit a frame definition and lobbycat re-reads the field in the background; the animated cat in the corner means it's working.",
   },
   {
     eyebrow: "Step 3 of 4 — explore, dive deep, decide",
     title: "Three modes on top of the ranking.",
-    body: "Scan the ranked table to explore. Open a company for the deep-dive fit-note, evidence, and your own notes. Use Compare to pit 2–5 companies with sandbox weights that don't touch your saved ones — and Surprise for adjacent / recent / underrated picks when you want the cat to push you.",
+    body: "Scan the ranked table to explore. Open a company for the deep-dive fit-note, evidence, and your own notes. Use Compare to pit 2–5 companies with sandbox weights that don't touch your saved ones — and Surprise for adjacent / recent / underrated picks when you want lobbycat to push you.",
   },
   {
     eyebrow: "Step 4 of 4 — three to get you started",
-    title: "Some opening questions from the cat.",
-    body: "Beyond the six scored frames, you can keep question-kind frames for free-text answers per company. Here are three the cat suggests — add them now and you'll find them ready in /frames, or skip and invent your own.",
+    title: "Some opening questions from lobbycat.",
+    body: "Beyond the six scored frames, you can keep question-kind frames for free-text answers per company. Here are three lobbycat suggests — add them now and you'll find them ready in /frames, or skip and invent your own.",
   },
 ];
 
