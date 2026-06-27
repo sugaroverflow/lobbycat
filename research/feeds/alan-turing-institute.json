@@ -1,0 +1,13 @@
+{
+  "slug": "alan-turing-institute",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Alan Turing Institute is the UK's national institute for data science and artificial intelligence.",
+  "hiring": {},
+  "publications": [],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "BLOCKER: turing.ac.uk is fully Cloudflare-gated ('Just a moment...' JS challenge) on every path tried via both web_fetch and curl with a browser UA: /research/publications, /sitemap.xml, /feed, /rss, /news/rss.xml, /blog/feed. No first-party dated/attributed items could be extracted without a JS-capable browser. Per harvest rules, returning empty rather than fabricating. Retry needed via a headless-browser fetch."
+}

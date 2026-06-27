@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T09:10:00Z",
+  "lastUpdated": "2026-06-27T09:32:08Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -21,6 +21,34 @@
       "event_type": "role",
       "summary": "New policy/legal opening: Policy Counsel, EMEA (London, UK). Surfaced via the roles lens (public ATS feed); London/EMEA-relevant.",
       "source_url": "https://job-boards.greenhouse.io/anthropic/jobs/5233645008"
+    },
+    {
+      "date": "2026-06-26",
+      "company_slug": "foxglove",
+      "event_type": "press",
+      "summary": "Press release calling on the UK Government and Palantir to correct the public record on FDP benefit claims.",
+      "source_url": "https://www.foxglove.org.uk/2026/06/26/uk-government-palantir-admit-data-fdp-claims/"
+    },
+    {
+      "date": "2026-06-26",
+      "company_slug": "meta-london-policy",
+      "event_type": "press",
+      "summary": "See Tom Shaw's perspective on the infrastructure and technology inside one of Meta's data centers.\nThe post Inside One of Meta’s Data Centers appeared first on Meta Newsroom.",
+      "source_url": "https://about.fb.com/news/2026/06/inside-meta-data-center/"
+    },
+    {
+      "date": "2026-06-25",
+      "company_slug": "centre-for-future-generations",
+      "event_type": "publication",
+      "summary": "Surveys European public awareness and attitudes toward solar radiation modification as the technology rises up the science and policy agenda.",
+      "source_url": "https://cfg.eu/what-europeans-think-about-solar-radiation-modification/"
+    },
+    {
+      "date": "2026-06-25",
+      "company_slug": "odi",
+      "event_type": "publication",
+      "summary": "ODI report presenting a framework for making enterprise data AI-ready.",
+      "source_url": "https://theodi.org/insights/reports/a-framework-for-ai-ready-enterprise-data/"
     },
     {
       "date": "2026-06-24",
@@ -65,6 +93,55 @@
       "source_url": "https://openai.com/index/helping-build-shared-standards-for-advanced-ai/"
     },
     {
+      "date": "2026-06-23",
+      "company_slug": "big-brother-watch",
+      "event_type": "press",
+      "summary": "Press release reacting to expanded fixed facial recognition cameras in London.",
+      "source_url": "https://bigbrotherwatch.org.uk/press-releases/big-brother-watch-responds-to-the-expansion-of-fixed-facial-recognition-cameras-in-london/"
+    },
+    {
+      "date": "2026-06-23",
+      "company_slug": "meta-london-policy",
+      "event_type": "press",
+      "summary": "Meta's Small Business Growth Academy will provide practical AI tools, advertising, and cross-border growth training to help small businesses scale across Asia-Pacific.\nThe post Launch of Meta’s Small",
+      "source_url": "https://about.fb.com/news/2026/06/launch-of-metas-small-business-growth-academy-across-asia-pacific/"
+    },
+    {
+      "date": "2026-06-22",
+      "company_slug": "bennett-cambridge",
+      "event_type": "publication",
+      "summary": "Analysis of foreign inward investment patterns in Manchester, the UK's most productive city outside London.",
+      "source_url": "https://www.bennettschool.cam.ac.uk/publications/the-manchester-model/"
+    },
+    {
+      "date": "2026-06-19",
+      "company_slug": "dsit-ai-policy",
+      "event_type": "press",
+      "summary": "DSIT press notice announcing government backing for new AI research labs aimed at making the technology cheaper and more reliable.",
+      "source_url": "https://www.gov.uk/government/news/uk-backs-new-ai-labs-to-make-technology-cheaper-more-reliable-and-easier-to-use"
+    },
+    {
+      "date": "2026-06-18",
+      "company_slug": "elevenlabs-london",
+      "event_type": "press",
+      "summary": "The Government of Poland took a stake in ElevenLabs via Vinci (BGK Group).",
+      "source_url": "https://elevenlabs.io/blog/blog/poland-invests-in-elevenlabs"
+    },
+    {
+      "date": "2026-06-18",
+      "company_slug": "foxglove",
+      "event_type": "press",
+      "summary": "Coalition statement against Home Office use of AI facial age estimation on asylum-seeking children.",
+      "source_url": "https://www.foxglove.org.uk/2026/06/18/home-office-racist-ai-facial-age-estimation-children/"
+    },
+    {
+      "date": "2026-06-17",
+      "company_slug": "foxglove",
+      "event_type": "publication",
+      "summary": "Foxglove analysis disputing NHS England's claims that Palantir's Federated Data Platform increased operations.",
+      "source_url": "https://www.foxglove.org.uk/2026/06/17/nhs-england-palantir-delivering-benefit-nhs/"
+    },
+    {
       "date": "2026-06-16",
       "company_slug": "google-deepmind",
       "event_type": "publication",
@@ -79,6 +156,34 @@
       "source_url": "https://deepmind.google/blog/securing-the-future-of-ai-agents/"
     },
     {
+      "date": "2026-06-16",
+      "company_slug": "dsit-ai-policy",
+      "event_type": "press",
+      "summary": "DSIT announces an AI planning tool to speed up planning decisions in support of the housebuilding target.",
+      "source_url": "https://www.gov.uk/government/news/ai-tool-to-slash-planning-decision-times-as-government-accelerates-push-to-build-15-million-homes"
+    },
+    {
+      "date": "2026-06-16",
+      "company_slug": "foxglove",
+      "event_type": "publication",
+      "summary": "Foxglove investigation into outcomes for NHS trusts using Palantir's FDP tools.",
+      "source_url": "https://www.foxglove.org.uk/2026/06/16/nhs-trusts-palantir-fdp-tools-fewer-operations/"
+    },
+    {
+      "date": "2026-06-15",
+      "company_slug": "big-brother-watch",
+      "event_type": "press",
+      "summary": "Press release responding to the government's proposed under-16s social media ban.",
+      "source_url": "https://bigbrotherwatch.org.uk/press-releases/big-brother-watch-responds-to-governments-social-media-ban/"
+    },
+    {
+      "date": "2026-06-15",
+      "company_slug": "meta-london-policy",
+      "event_type": "press",
+      "summary": "We’re introducing new AI-powered Facebook features to help you connect, create, and find what you’re looking for.\nThe post New AI Tools to Help You Make Things Happen on Facebook appeared first on Me",
+      "source_url": "https://about.fb.com/news/2026/06/new-ai-tools-to-help-you-make-things-happen-on-facebook/"
+    },
+    {
       "date": "2026-06-12",
       "company_slug": "anthropic-london",
       "event_type": "press",
@@ -86,11 +191,550 @@
       "source_url": "https://www.anthropic.com/news"
     },
     {
+      "date": "2026-06-12",
+      "company_slug": "chatham-house-ai",
+      "event_type": "press",
+      "summary": "First-party press: Olivia O'Sullivan gave evidence at Parliament on 9 June 2026 on UK security planning, defence priorities vs conflict prevention, and the Integrated Security Fund. (Date approximate from search 'about 2 weeks ago' on 2026-06-27.)",
+      "source_url": "https://www.chathamhouse.org/2026/06/director-chatham-house-uk-world-programme-gives-evidence-parliament-foreign-affairs"
+    },
+    {
+      "date": "2026-06-11",
+      "company_slug": "dsit-ai-policy",
+      "event_type": "press",
+      "summary": "DSIT summarises AI investment and jobs announcements made during London Tech Week 2026.",
+      "source_url": "https://www.gov.uk/government/news/britain-powers-ahead-on-ai-with-billions-of-pounds-of-new-investment-and-thousands-of-jobs-secured-as-london-tech-week-wraps-up"
+    },
+    {
       "date": "2026-06-10",
       "company_slug": "google-deepmind",
       "event_type": "publication",
       "summary": "DeepMind and partners open a $10M funding call for multi-agent AI safety research.",
       "source_url": "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/"
+    },
+    {
+      "date": "2026-06-08",
+      "company_slug": "nhs-ai-transformation",
+      "event_type": "press",
+      "summary": "NHS England press release announcing a national rollout of AI tools to half a million NHS staff to reduce admin and free up time for patient care.",
+      "source_url": "https://www.england.nhs.uk/2026/06/500000-nhs-staff-to-get-new-artificial-intelligence-tools-to-help-free-up-more-time-for-patients/"
+    },
+    {
+      "date": "2026-06-03",
+      "company_slug": "bennett-cambridge",
+      "event_type": "publication",
+      "summary": "Examines the political economy of private space actors through historical comparison with the East India Company.",
+      "source_url": "https://www.bennettschool.cam.ac.uk/publications/outsourcing-the-final-frontier/"
+    },
+    {
+      "date": "2026-06-03",
+      "company_slug": "foxglove",
+      "event_type": "press",
+      "summary": "Press release on a UK regulator decision following a Foxglove complaint against Google AI.",
+      "source_url": "https://www.foxglove.org.uk/2026/06/03/press-release-uk-google-journalists-opt-out-ai-theft-foxglove-complaint/"
+    },
+    {
+      "date": "2026-06-01",
+      "company_slug": "google-deepmind",
+      "event_type": "press",
+      "summary": "DeepMind 'Company'-category announcement on its European robotics push. Activity/stage signal; low policy content.",
+      "source_url": "https://deepmind.google/blog/"
+    },
+    {
+      "date": "2026-05-30",
+      "company_slug": "connected-by-data",
+      "event_type": "publication",
+      "summary": "Connected by Data's consultation response on the UN Global Dialogue on AI Governance.",
+      "source_url": "https://connectedbydata.org/resources/2026-05-30-un-global-dialogue-ai-consultation"
+    },
+    {
+      "date": "2026-05-28",
+      "company_slug": "public-law-project",
+      "event_type": "publication",
+      "summary": "PLP submission raising concerns about the independence of a proposed new Independent Appeals Body for asylum appeals.",
+      "source_url": "https://publiclawproject.org.uk/resources/call-for-evidence-independent-appeals-body/"
+    },
+    {
+      "date": "2026-05-28",
+      "company_slug": "tbi",
+      "event_type": "publication",
+      "summary": "Proposes 'digital embassies' as a strategic mechanism for states to maintain resilience, security, sovereignty and operational continuity in the age of AI.",
+      "source_url": "https://institute.global/insights/tech-and-digitalisation/digital-embassies-and-ai-sovereignty-building-resilient-states-beyond-borders"
+    },
+    {
+      "date": "2026-05-20",
+      "company_slug": "demos",
+      "event_type": "publication",
+      "summary": "Tests of ChatGPT, Gemini, Google AI Overviews, Grok and Replika during the 2026 Scottish pre-election window found 34.1% of responses contained factual errors; the report recommends closing the regulatory gap. Part of Demos Digital's Epistemic Security programme.",
+      "source_url": "https://demos.co.uk/research/electoral-hallucinations-safeguarding-uk-elections-in-the-world-of-llms-and-ai-chatbots/"
+    },
+    {
+      "date": "2026-05-20",
+      "company_slug": "demos",
+      "event_type": "press",
+      "summary": "First-party press blog on the Electoral Hallucinations findings; polling fieldwork conducted 30 April - 6 May 2026.",
+      "source_url": "https://demos.co.uk/blogs/one-third-of-information-provided-by-chatbots-during-the-election-was-incorrect-finds-cross-party-think-tank-demos/"
+    },
+    {
+      "date": "2026-05-20",
+      "company_slug": "odi",
+      "event_type": "publication",
+      "summary": "ODI report on shared infrastructure to enable public-benefit access to platform data.",
+      "source_url": "https://theodi.org/insights/reports/towards-shared-infrastructure-for-public-benefit-access-to-platform-data/"
+    },
+    {
+      "date": "2026-05-13",
+      "company_slug": "apollo-research",
+      "event_type": "press",
+      "summary": "Organisational update on Apollo Research's work and direction.",
+      "source_url": "https://www.apolloresearch.ai/blog/apollo-update-may-2026/"
+    },
+    {
+      "date": "2026-05-13",
+      "company_slug": "chatham-house-ai",
+      "event_type": "press",
+      "summary": "Chatham House item noting Dr Marion Messmer (International Security Programme) provided arms-control evidence; flags limited prospects for formal arms control after New START's expiry in early 2026.",
+      "source_url": "https://www.chathamhouse.org/2026/05/avoiding-new-nuclear-arms-race"
+    },
+    {
+      "date": "2026-05-11",
+      "company_slug": "nesta",
+      "event_type": "press",
+      "summary": "Nesta blog round-up of recent energy work, referencing the 05 May 2026 Boiler Upgrade Scheme report and a 30 April 2026 blog.",
+      "source_url": "https://www.nesta.org.uk/blog/the-energy-edit-3/"
+    },
+    {
+      "date": "2026-05-06",
+      "company_slug": "bennett-cambridge",
+      "event_type": "publication",
+      "summary": "Early evidence on the role of organisational capital in firms' adoption of AI.",
+      "source_url": "https://www.bennettschool.cam.ac.uk/publications/more-than-just-plug-and-play/"
+    },
+    {
+      "date": "2026-05-06",
+      "company_slug": "centre-for-future-generations",
+      "event_type": "publication",
+      "summary": "Assesses where the EU's digital rulebook stands as AI stress-tests its limits, comparing four regulatory frameworks responding to the same technology.",
+      "source_url": "https://cfg.eu/enforcement-spotlight-spring-2026/"
+    },
+    {
+      "date": "2026-05-05",
+      "company_slug": "nesta",
+      "event_type": "publication",
+      "summary": "Nesta report dated 05 May 2026 on the Boiler Upgrade Scheme, the UK government's flagship heat-pump subsidy, which since launching in April 2022 has supported almost 80,000 heat pump installations across England and Wales. (Direct report URL not isolated; listed on the reports index.)",
+      "source_url": "https://www.nesta.org.uk/report/"
+    },
+    {
+      "date": "2026-04-27",
+      "company_slug": "nesta",
+      "event_type": "publication",
+      "summary": "Sets out a three-point plan for government to respond to an energy-price crisis by cutting oil and gas demand: a push on low-cost efficiency measures before winter, faster electrification over the summer, and locking in long-term energy-bill stability.",
+      "source_url": "https://www.nesta.org.uk/report/how-to-respond-to-the-energy-crisis/"
+    },
+    {
+      "date": "2026-04-27",
+      "company_slug": "odi",
+      "event_type": "publication",
+      "summary": "ODI report on semantic data infrastructure needed for effective scrutiny of online platforms.",
+      "source_url": "https://theodi.org/insights/reports/missing-infrastructure-semantic-data-for-effective-scrutiny-of-online-platforms/"
+    },
+    {
+      "date": "2026-04-22",
+      "company_slug": "connected-by-data",
+      "event_type": "publication",
+      "summary": "Independent evaluation report of the Generative AI in Education workshop toolkit.",
+      "source_url": "https://connectedbydata.org/resources/2026-04-22-generative-ai-in-education-evaluation"
+    },
+    {
+      "date": "2026-04-21",
+      "company_slug": "fca-ai",
+      "event_type": "press",
+      "summary": "FCA press release announcing the second cohort of participants in its AI Live Testing programme.",
+      "source_url": "https://www.fca.org.uk/news/press-releases/fca-announces-second-cohort-ai-live-testing"
+    },
+    {
+      "date": "2026-04-10",
+      "company_slug": "centre-for-future-generations",
+      "event_type": "publication",
+      "summary": "White paper synthesising two years of CFG neurotech research into policy recommendations, calling for European action on neurotechnology governance.",
+      "source_url": "https://cfg.eu/towards-an-eu-neurotechnology-strategy/"
+    },
+    {
+      "date": "2026-03-20",
+      "company_slug": "bbc-responsible-ai",
+      "event_type": "publication",
+      "summary": "BBC R&D argues trust, provenance and accountability must be built into AI-mediated media, framed around its '5Is' vision and the Responsible Innovation Centre.",
+      "source_url": "https://www.bbc.co.uk/rd/articles/2026-03-ai-public-trust"
+    },
+    {
+      "date": "2026-03-19",
+      "company_slug": "lse-ai-policy",
+      "event_type": "publication",
+      "summary": "LSE Business Review analysis arguing AI is reshaping British employment through gradual restructuring rather than mass displacement, and that corporate governance choices will determine whether AI supports inclusive growth or deepens labour-market inequality.",
+      "source_url": "https://blogs.lse.ac.uk/businessreview/2026/03/19/what-impact-is-ai-having-on-british-firms-and-the-jobs-they-offer/"
+    },
+    {
+      "date": "2026-03-17",
+      "company_slug": "public-law-project",
+      "event_type": "publication",
+      "summary": "Report drawing on five years of PLP collaboration with community groups to advance shared legal approaches for social change.",
+      "source_url": "https://publiclawproject.org.uk/resources/collaborative-legal-approaches-for-systemic-change-report/"
+    },
+    {
+      "date": "2026-03-01",
+      "company_slug": "royal-society-policy",
+      "event_type": "publication",
+      "summary": "Joint statement from a March 2026 dialogue convened by the Royal Society and the Chinese Academy of Sciences on reducing the food system's impact on biodiversity through crop, livestock and soil science.",
+      "source_url": "https://royalsociety.org/news-resources/publications/2026/2026-china-uk-dialogue/"
+    },
+    {
+      "date": "2026-02-12",
+      "company_slug": "cltr",
+      "event_type": "publication",
+      "summary": "CLTR's ten benchmarks for best-in-class national risk-preparedness exercising, set ahead of the UK's Exercise Pegasus.",
+      "source_url": "https://www.longtermresilience.org/reports/ten-things-we-want-to-see-from-exercise-pegasus/"
+    },
+    {
+      "date": "2026-01-20",
+      "company_slug": "apollo-research",
+      "event_type": "press",
+      "summary": "Apollo announces its transition to a public-benefit corporation structure.",
+      "source_url": "https://www.apolloresearch.ai/blog/apollo-research-is-becoming-a-pbc/"
+    },
+    {
+      "date": "2026-01-18",
+      "company_slug": "connected-by-data",
+      "event_type": "publication",
+      "summary": "Report on public deliberation about generative AI in education.",
+      "source_url": "https://connectedbydata.org/resources/generative-ai-in-education-report"
+    },
+    {
+      "date": "2026-01-16",
+      "company_slug": "cltr",
+      "event_type": "publication",
+      "summary": "Identifies specific, safe knowledge gaps to fill for mirror-life preparedness without lowering barriers to creating it — biosecurity-meets-AI risk methodology.",
+      "source_url": "https://www.longtermresilience.org/reports/gap-consolidation-of-the-mirror-life-evidence-base/"
+    },
+    {
+      "date": "2026-01-01",
+      "company_slug": "govai",
+      "event_type": "publication",
+      "summary": "Studies the adaptability of US workers to AI-driven displacement and the labour-market implications for policy.",
+      "source_url": "https://www.governance.ai/research-paper/how-adaptable-are-american-workers-to-ai-induced-job-displacement"
+    },
+    {
+      "date": "2025-12-22",
+      "company_slug": "govai",
+      "event_type": "publication",
+      "summary": "Examines whether the UAE holds structural advantages (energy, capital, siting) for large-scale AI data-center buildout and what that means for compute geopolitics.",
+      "source_url": "https://www.governance.ai/research-paper/does-the-uae-have-an-advantage-in-building-data-centers"
+    },
+    {
+      "date": "2025-12-12",
+      "company_slug": "govai",
+      "event_type": "publication",
+      "summary": "Proposes a method for translating model capability evaluations into actual bioterrorism risk assessments rather than treating capability as risk directly.",
+      "source_url": "https://www.governance.ai/research-paper/dual-use-ai-capabilities-and-the-risk-of-bioterrorism-converting-capability-evaluations-to-risk-assessments"
+    },
+    {
+      "date": "2025-12-03",
+      "company_slug": "fca-ai",
+      "event_type": "press",
+      "summary": "FCA press release on supporting firms to test AI, following its September 2025 feedback statement on AI Live Testing.",
+      "source_url": "https://www.fca.org.uk/news/press-releases/fca-helps-firms-test-ai-safely"
+    },
+    {
+      "date": "2025-11-18",
+      "company_slug": "tbi",
+      "event_type": "publication",
+      "summary": "Contends a new era of AI-native biotech is emerging and the UK's sovereign assets make it well placed to host these wealth-generating companies if it acts to attract them.",
+      "source_url": "https://institute.global/insights/public-services/AI-native-biotech-opportunity-uk-leadership-growth"
+    },
+    {
+      "date": "2025-11-17",
+      "company_slug": "tbi",
+      "event_type": "publication",
+      "summary": "Argues Europe can strengthen its economy and strategic autonomy by scaling digital infrastructure, embracing AI, and reforming tech regulation rather than defaulting to a precautionary regulatory posture.",
+      "source_url": "https://institute.global/insights/tech-and-digitalisation/europe-in-the-age-of-ai-how-technology-leadership-can-boost-competitiveness-and-security"
+    },
+    {
+      "date": "2025-10-27",
+      "company_slug": "chatham-house-ai",
+      "event_type": "press",
+      "summary": "First-party press: Senior Research Fellow Dr Marion Messmer (International Security Programme) provided evidence to the UK Parliament's Joint Select Committee on the National Security Strategy on 22 October 2025.",
+      "source_url": "https://www.chathamhouse.org/2025/10/chatham-house-fellow-provides-evidence-uk-parliament-joint-select-committee-national"
+    },
+    {
+      "date": "2025-10-23",
+      "company_slug": "i-dot-ai",
+      "event_type": "publication",
+      "summary": "i.AI reflects on lessons from Redbox, an AI chat/document tool used by 6,000+ civil servants, and its strategic decision to sunset it as enterprise tools like Copilot/Gemini matured.",
+      "source_url": "https://ai.gov.uk/blogs/redbox-reflections-5-key-lessons-from-building-and-sunsetting-our-government-ai-chatbot/"
+    },
+    {
+      "date": "2025-10-22",
+      "company_slug": "cma-dmu",
+      "event_type": "press",
+      "summary": "CMA designates both Apple and Google with strategic market status (SMS) in their respective mobile platforms under the Digital Markets, Competition and Consumers Act 2024, for a five-year period.",
+      "source_url": "https://www.gov.uk/government/news/cma-confirms-apple-and-google-have-strategic-market-status-in-mobile-platforms"
+    },
+    {
+      "date": "2025-10-17",
+      "company_slug": "bbc-responsible-ai",
+      "event_type": "publication",
+      "summary": "BBC R&D's Responsible Innovation Centre sets out a five-area research agenda for AI and journalism, from evaluation to reaching young audiences.",
+      "source_url": "https://www.bbc.co.uk/rd/articles/2025-10-journalism-ai-news-public-media"
+    },
+    {
+      "date": "2025-09-30",
+      "company_slug": "open-rights-group",
+      "event_type": "publication",
+      "summary": "ORG analysis of the European Commission's draft UK adequacy renewal under EU GDPR and LED.",
+      "source_url": "https://www.openrightsgroup.org/publications/draft-uk-adequacy-decision-summary-of-findings/"
+    },
+    {
+      "date": "2025-09-22",
+      "company_slug": "tbi",
+      "event_type": "publication",
+      "summary": "Presents new polling arguing that AI can transform public services but that public trust and understanding must first be improved to unlock faster adoption.",
+      "source_url": "https://institute.global/insights/tech-and-digitalisation/what-the-uk-thinks-about-ai-building-public-trust-to-accelerate-adoption"
+    },
+    {
+      "date": "2025-09-17",
+      "company_slug": "apollo-research",
+      "event_type": "publication",
+      "summary": "Tests whether deliberative-alignment training reduces scheming behaviour in frontier models and where it breaks down under stress.",
+      "source_url": "https://www.apolloresearch.ai/science/stress-testing-deliberative-alignment-for-anti-scheming-training/"
+    },
+    {
+      "date": "2025-09-09",
+      "company_slug": "fca-ai",
+      "event_type": "publication",
+      "summary": "FCA feedback statement summarising responses to its April 2025 engagement paper proposing an AI Live Testing service to help firms safely deploy AI.",
+      "source_url": "https://www.fca.org.uk/publications/feedback-statements/fs25-5-ai-live-testing"
+    },
+    {
+      "date": "2025-09-04",
+      "company_slug": "royal-society-policy",
+      "event_type": "publication",
+      "summary": "Policy briefing (published 4 September 2025) analysing England's mandatory nature-offset markets (Biodiversity Net Gain and Nutrient Neutrality) and warning current habitat valuation risks delivering smaller, less diverse habitats.",
+      "source_url": "https://royalsociety.org/news-resources/publications/2025/nature-offset-markets/"
+    },
+    {
+      "date": "2025-09-01",
+      "company_slug": "big-brother-watch",
+      "event_type": "publication",
+      "summary": "Big Brother Watch report on the spread of identity and document checks in Britain.",
+      "source_url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/09/Checkpoint-Britain.pdf"
+    },
+    {
+      "date": "2025-07-15",
+      "company_slug": "apollo-research",
+      "event_type": "publication",
+      "summary": "Argues chain-of-thought offers a valuable but fragile window for monitoring AI reasoning, and urges preserving it as models scale.",
+      "source_url": "https://www.apolloresearch.ai/science/chain-of-thought-monitorability-a-new-and-fragile-opportunity-for-ai-safety/"
+    },
+    {
+      "date": "2025-07-04",
+      "company_slug": "aria-safeguarded-ai",
+      "event_type": "publication",
+      "summary": "ARIA insight on the Encode Fellowship (run with Pillar VC) placing top AI researchers into UK academic labs to accelerate science.",
+      "source_url": "https://www.aria.org.uk/insights/empowering-the-next-wave-of-ai-powered-science"
+    },
+    {
+      "date": "2025-07-01",
+      "company_slug": "big-brother-watch",
+      "event_type": "publication",
+      "summary": "Investigative report on automated suspicion and profiling systems.",
+      "source_url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/07/Suspicion-By-Design-2.pdf"
+    },
+    {
+      "date": "2025-06-24",
+      "company_slug": "mhra-ai",
+      "event_type": "press",
+      "summary": "MHRA becomes the first 'pioneer' country in the HealthAI Global Regulatory Network and references its AI Airlock regulatory sandbox for AI medical devices.",
+      "source_url": "https://www.gov.uk/government/news/uk-mhra-leads-safe-use-of-ai-in-healthcare-as-first-country-in-new-global-network"
+    },
+    {
+      "date": "2025-06-19",
+      "company_slug": "apollo-research",
+      "event_type": "publication",
+      "summary": "Finds that more capable frontier models exhibit stronger in-context scheming, a scaling trend relevant to AI governance.",
+      "source_url": "https://www.apolloresearch.ai/science/more-capable-models-are-better-at-in-context-scheming/"
+    },
+    {
+      "date": "2025-06-01",
+      "company_slug": "big-brother-watch",
+      "event_type": "publication",
+      "summary": "Report on privacy risks of central bank digital currencies.",
+      "source_url": "https://bigbrotherwatch.org.uk/wp-content/uploads/2025/06/Big-Bank-is-Watching-You-Preserving-Privacy-Amid-the-Rise-of-CBDCs.pdf"
+    },
+    {
+      "date": "2025-05-30",
+      "company_slug": "ippr",
+      "event_type": "publication",
+      "summary": "Argues new technologies are radically transforming worker surveillance and that meaningful worker voice over surveillance practices is needed to address risks to workers' rights and wellbeing.",
+      "source_url": "https://www.ippr.org/articles/negotiating-the-future-of-work-surveillance"
+    },
+    {
+      "date": "2025-05-12",
+      "company_slug": "open-rights-group",
+      "event_type": "publication",
+      "summary": "ORG statements of support for amendments to the Data Use and Access Bill at House of Commons Report Stage.",
+      "source_url": "https://www.openrightsgroup.org/publications/dua-bill-amendments-hoc-report-stage-org-statements-of-support-and-rationale/"
+    },
+    {
+      "date": "2025-05-07",
+      "company_slug": "tbi",
+      "event_type": "publication",
+      "summary": "Argues local authorities can harness AI to support staff, improve citizens' access to services and streamline decision-making to improve efficiency and outcomes.",
+      "source_url": "https://institute.global/insights/politics-and-governance/governing-in-the-age-of-ai-reimagining-local-government"
+    },
+    {
+      "date": "2025-04-09",
+      "company_slug": "bank-of-england-ai",
+      "event_type": "publication",
+      "summary": "Financial Policy Committee analysis of the financial stability implications of growing AI adoption across the financial system.",
+      "source_url": "https://www.bankofengland.co.uk/financial-stability-in-focus/2025/april-2025"
+    },
+    {
+      "date": "2025-04-02",
+      "company_slug": "tbi",
+      "event_type": "publication",
+      "summary": "Argues the UK can support artists, encourage responsible AI use and unlock economic growth by modernising its copyright law for the AI era.",
+      "source_url": "https://institute.global/insights/tech-and-digitalisation/rebooting-copyright-how-the-uk-can-be-a-global-leader-in-the-arts-and-ai"
+    },
+    {
+      "date": "2025-02-16",
+      "company_slug": "aria-safeguarded-ai",
+      "event_type": "publication",
+      "summary": "Programme Director reflects on evolving benchmarks within ARIA's Scaling Compute programme and a new AI hardware benchmarking funding call.",
+      "source_url": "https://www.aria.org.uk/insights/moving-targets-in-ai"
+    },
+    {
+      "date": "2025-02-03",
+      "company_slug": "mhra-ai",
+      "event_type": "publication",
+      "summary": "MHRA guidance and change programme on regulating software and AI as a medical device, covering qualification, classification and pre- and post-market requirements.",
+      "source_url": "https://www.gov.uk/government/publications/software-and-artificial-intelligence-ai-as-a-medical-device/software-and-artificial-intelligence-ai-as-a-medical-device"
+    },
+    {
+      "date": "2024-12-16",
+      "company_slug": "ofcom-ai",
+      "event_type": "publication",
+      "summary": "Ofcom's first-edition illegal harms policy statement, codes of practice and risk assessment guidance setting out online services' duties under the Online Safety Act.",
+      "source_url": "https://www.ofcom.org.uk/online-safety/illegal-and-harmful-content/statement-protecting-people-from-illegal-harms-online"
+    },
+    {
+      "date": "2024-12-12",
+      "company_slug": "nhs-ai-transformation",
+      "event_type": "press",
+      "summary": "NHS England news on how AI deployments are improving patient care and support across services.",
+      "source_url": "https://www.england.nhs.uk/2024/12/nhs-ai-giving-patients-better-care-and-support/"
+    },
+    {
+      "date": "2024-12-02",
+      "company_slug": "conjecture",
+      "event_type": "publication",
+      "summary": "Overview of Conjecture's approach to 'Cognitive Software' and its build path towards a beneficial AI future.",
+      "source_url": "https://www.conjecture.dev/research/conjecture-a-roadmap-for-cognitive-software-and-a-humanist-future-of-ai"
+    },
+    {
+      "date": "2024-11-21",
+      "company_slug": "bank-of-england-ai",
+      "event_type": "publication",
+      "summary": "Joint Bank of England and FCA survey on the use of AI and machine learning in UK financial services and associated benefits and risks.",
+      "source_url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024"
+    },
+    {
+      "date": "2024-11-14",
+      "company_slug": "open-rights-group",
+      "event_type": "publication",
+      "summary": "ORG's critical perspective on the Information Commissioner's Office annual report and enforcement record.",
+      "source_url": "https://www.openrightsgroup.org/publications/ico-alternative-annual-report-2023-24/"
+    },
+    {
+      "date": "2024-10-21",
+      "company_slug": "onward",
+      "event_type": "press",
+      "summary": "Onward press item arguing the UK should build a national 'British data library' to compete in AI.",
+      "source_url": "https://ukonward.com/press/the-uk-needs-to-build-a-british-data-library-to-become-an-ai-leader/"
+    },
+    {
+      "date": "2024-03-27",
+      "company_slug": "ippr",
+      "event_type": "publication",
+      "summary": "Analyses how generative AI could disrupt the UK labour market, warning of job displacement plus wage and wealth inequality. Argues there will be winners and losers and that policy should shape AI deployment before it becomes widespread.",
+      "source_url": "https://www.ippr.org/articles/transformed-by-ai"
+    },
+    {
+      "date": "2024-03-27",
+      "company_slug": "ippr",
+      "event_type": "press",
+      "summary": "IPPR press release accompanying the 'Transformed by AI' report. Describes a 'sliding doors' moment for the UK – huge job disruption or significant GDP gains depending on government policy – and outlines a first and second wave of generative AI adoption.",
+      "source_url": "https://www.ippr.org/media-office/up-to-8-million-uk-jobs-at-risk-from-ai-unless-government-acts-finds-ippr"
+    },
+    {
+      "date": "2024-01-15",
+      "company_slug": "ico-ai",
+      "event_type": "press",
+      "summary": "ICO announces a consultation series on how aspects of data protection law should apply to generative AI development and use.",
+      "source_url": "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2024/01/information-commissioner-s-office-launches-consultation-series-on-generative-ai/"
+    },
+    {
+      "date": "2024-01-01",
+      "company_slug": "royal-society-policy",
+      "event_type": "publication",
+      "summary": "Royal Society report (published 2024; exact day not stated on page) examining how AI technologies such as deep learning and large language models are transforming the methods and nature of scientific research, with recommendations on AI infrastructure access, tool usability, open science and oversight.",
+      "source_url": "https://royalsociety.org/news-resources/projects/science-in-the-age-of-ai/"
+    },
+    {
+      "date": "2023-10-25",
+      "company_slug": "ippr",
+      "event_type": "publication",
+      "summary": "Sets out three policy pillars for the UK AI summit, framing how AI should be governed and directed toward public value creation rather than left to the market alone.",
+      "source_url": "https://www.ippr.org/articles/ai-for-public-value-creation"
+    },
+    {
+      "date": "2023-10-13",
+      "company_slug": "conjecture",
+      "event_type": "publication",
+      "summary": "Proposes a single multinational institution permitted to develop advanced AI, enforced via a global moratorium on other advanced AI development.",
+      "source_url": "https://www.conjecture.dev/research/multinational-agi-consortium-magic-a-proposal-for-international-coordination-on-ai"
+    },
+    {
+      "date": "2023-10-01",
+      "company_slug": "bbc-responsible-ai",
+      "event_type": "publication",
+      "summary": "BBC R&D explains media provenance techniques (watermarks, fingerprints, C2PA-hashed metadata) and Project Origin work to help audiences assess content authenticity.",
+      "source_url": "https://www.bbc.co.uk/rd/articles/2023-10-media-provenance-watermarks-fingerprints-deepfake"
+    },
+    {
+      "date": "2023-05-05",
+      "company_slug": "onward",
+      "event_type": "press",
+      "summary": "Onward press item proposing a sovereign 'Great British GPT' large language model to keep the UK competitive in AI.",
+      "source_url": "https://ukonward.com/press/think-tank-calls-for-great-british-gpt-to-keep-uk-ahead-in-ai-race/"
+    },
+    {
+      "date": "2023-05-03",
+      "company_slug": "onward",
+      "event_type": "publication",
+      "summary": "An Onward report mapping the opportunities, economic shocks and risks of generative AI for the UK and arguing for a proactive policy response.",
+      "source_url": "https://ukonward.com/reports/the-generative-ai-revolution/"
+    },
+    {
+      "date": "2023-02-25",
+      "company_slug": "conjecture",
+      "event_type": "publication",
+      "summary": "Signpost for Conjecture's primary safety direction, CoEm, aiming to build predictably boundable systems rather than directly aligned AGIs.",
+      "source_url": "https://www.conjecture.dev/research/cognitive-emulation-a-naive-ai-safety-proposal"
+    },
+    {
+      "date": "2022-04-08",
+      "company_slug": "conjecture",
+      "event_type": "press",
+      "summary": "Founding announcement by Connor Leahy, Sid Black and Gabriel Alfour; cites VC backing including Nat Friedman, Daniel Gross and the Collison brothers.",
+      "source_url": "https://www.conjecture.dev/research/we-are-conjecture-a-new-alignment-research-startup"
     }
   ]
 }

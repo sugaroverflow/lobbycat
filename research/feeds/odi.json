@@ -1,0 +1,38 @@
+{
+  "slug": "odi",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Open Data Institute, a UK non-profit researching and advocating for trustworthy data and AI infrastructure.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-06-25",
+      "title": "A framework for AI-ready enterprise data",
+      "url": "https://theodi.org/insights/reports/a-framework-for-ai-ready-enterprise-data/",
+      "type": "paper",
+      "byline": null,
+      "summary": "ODI report presenting a framework for making enterprise data AI-ready."
+    },
+    {
+      "date": "2026-05-20",
+      "title": "Towards shared infrastructure for public benefit access to platform data",
+      "url": "https://theodi.org/insights/reports/towards-shared-infrastructure-for-public-benefit-access-to-platform-data/",
+      "type": "paper",
+      "byline": null,
+      "summary": "ODI report on shared infrastructure to enable public-benefit access to platform data."
+    },
+    {
+      "date": "2026-04-27",
+      "title": "Missing Infrastructure: Semantic Data for Effective Scrutiny of Online Platforms",
+      "url": "https://theodi.org/insights/reports/missing-infrastructure-semantic-data-for-effective-scrutiny-of-online-platforms/",
+      "type": "paper",
+      "byline": null,
+      "summary": "ODI report on semantic data infrastructure needed for effective scrutiny of online platforms."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Insights page lists reports; dates from each report page's <time datetime>. No first-party dated press release feed harvested. No controversy where ODI is a named legal party."
+}

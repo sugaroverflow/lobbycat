@@ -1,0 +1,38 @@
+{
+  "slug": "royal-society-policy",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Royal Society is the UK's national academy of sciences, producing policy reports and evidence including a programme on AI and data.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2024-01-01",
+      "title": "Science in the age of AI",
+      "url": "https://royalsociety.org/news-resources/projects/science-in-the-age-of-ai/",
+      "type": "other",
+      "byline": "Royal Society Working Group, chaired by Professor Alison Noble CBE FREng FRS",
+      "summary": "Royal Society report (published 2024; exact day not stated on page) examining how AI technologies such as deep learning and large language models are transforming the methods and nature of scientific research, with recommendations on AI infrastructure access, tool usability, open science and oversight."
+    },
+    {
+      "date": "2025-09-04",
+      "title": "Ecological implications of nature offset markets in England",
+      "url": "https://royalsociety.org/news-resources/publications/2025/nature-offset-markets/",
+      "type": "other",
+      "byline": "Review Group incl. Prof David Baulcombe FRS, Sir Ian Boyd FRS, Dr Sophus zu Ermgassen, Prof Yadvinder Malhi CBE FRS, Prof Pete Smith FRS, Dr Jonathan Wentworth",
+      "summary": "Policy briefing (published 4 September 2025) analysing England's mandatory nature-offset markets (Biodiversity Net Gain and Nutrient Neutrality) and warning current habitat valuation risks delivering smaller, less diverse habitats."
+    },
+    {
+      "date": "2026-03-01",
+      "title": "2026 China-UK Science Policy Dialogue on food systems and biodiversity loss",
+      "url": "https://royalsociety.org/news-resources/publications/2026/2026-china-uk-dialogue/",
+      "type": "other",
+      "byline": "co-Chairs Professor Dale Sanders FRS and Professor Yong-Guan Zhu (Chinese Academy of Sciences)",
+      "summary": "Joint statement from a March 2026 dialogue convened by the Royal Society and the Chinese Academy of Sciences on reducing the food system's impact on biodiversity through crop, livestock and soil science."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "royalsociety.org reachable via web_fetch (readability) and curl; publications index parsed for URLs and each page fetched for real text. Dates: nature-offset page states 'published on the 4 September 2025'; China-UK page states 'In March 2026' (day not given, used month-01); Science in the age of AI page states 'published in 2024' (day not given, used year-01). The publications listing surfaces mostly biodiversity/education/STEM items; the most relevant recent AI item is the 'Science in the age of AI' project report. No org-named legal/regulatory controversies found."
+}

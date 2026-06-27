@@ -1,13 +1,35 @@
 {
   "slug": "chatham-house-ai",
-  "lastUpdated": "2026-06-27T09:31:00Z",
-  "blurb": "Chatham House (the Royal Institute of International Affairs) is a London foreign-affairs think-tank whose AI work sits within its international-security and digital-society research.",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Royal Institute of International Affairs (Chatham House); this feed tracks its International Security Programme, led by Dr Marion Messmer, covering arms control, nuclear policy and emerging-tech security.",
   "hiring": {},
   "publications": [],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
-  "notes": "BLOCKED: chathamhouse.org is fully behind Cloudflare — direct curl, /sitemap.xml, /rss/*, /topics/artificial-intelligence and web_fetch all returned 403 / 'Attention Required' challenge pages. The one accessible stream (feeds.feedburner.com/chathamhouse, their Expert Comment/commentary feed, 50 most recent items as of 2026-06-27) contained no AI/technology items — it is currently dominated by Middle East, Ukraine, energy and geopolitics commentary. Chatham House's dedicated AI/digital research index could not be reached without triggering the Cloudflare challenge. Left all arrays empty per no-fabrication rule. Retry suggestion: a JS-capable/browser-automation fetch of chathamhouse.org/about-us/our-departments or the artificial-intelligence topic page, or an authenticated/allowlisted fetch path."
+  "news": [
+    {
+      "date": "2026-05-13",
+      "title": "Avoiding a new nuclear arms race",
+      "url": "https://www.chathamhouse.org/2026/05/avoiding-new-nuclear-arms-race",
+      "source": "company_press",
+      "summary": "Chatham House item noting Dr Marion Messmer (International Security Programme) provided arms-control evidence; flags limited prospects for formal arms control after New START's expiry in early 2026."
+    },
+    {
+      "date": "2026-06-12",
+      "title": "Director of Chatham House UK in the World Programme gives evidence at Parliament Foreign Affairs Committee",
+      "url": "https://www.chathamhouse.org/2026/06/director-chatham-house-uk-world-programme-gives-evidence-parliament-foreign-affairs",
+      "source": "company_press",
+      "summary": "First-party press: Olivia O'Sullivan gave evidence at Parliament on 9 June 2026 on UK security planning, defence priorities vs conflict prevention, and the Integrated Security Fund. (Date approximate from search 'about 2 weeks ago' on 2026-06-27.)"
+    },
+    {
+      "date": "2025-10-27",
+      "title": "Chatham House fellow provides evidence to UK Parliament Joint Select Committee on the National Security Strategy",
+      "url": "https://www.chathamhouse.org/2025/10/chatham-house-fellow-provides-evidence-uk-parliament-joint-select-committee-national",
+      "source": "company_press",
+      "summary": "First-party press: Senior Research Fellow Dr Marion Messmer (International Security Programme) provided evidence to the UK Parliament's Joint Select Committee on the National Security Strategy on 22 October 2025."
+    }
+  ],
+  "notes": "[harvest 2026-06-27] Chatham House is Cloudflare-gated; the general feed surfaced no clearly AI-specific items this pass. Left empty rather than logging off-topic foreign-policy pieces. Needs a targeted AI-programme page (browser fetch)."
 }
