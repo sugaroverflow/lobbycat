@@ -1,6 +1,6 @@
 {
   "slug": "elevenlabs-london",
-  "lastUpdated": "2026-06-26T16:59:46Z",
+  "lastUpdated": "2026-06-27T19:08:00Z",
   "blurb": "London/US voice-AI company. Faces repeated US litigation over alleged unconsented voice cloning — a 2024 voice-actor suit and a 2026 suit by journalists and voice actors in Illinois.",
   "hiring": {
     "isHiring": true,
@@ -25,28 +25,51 @@
   "controversies": [
     {
       "type": "legal_case",
-      "title": "Journalists & voice actors v ElevenLabs — alleged unconsented voice-model training (Illinois)",
-      "url": "https://sifted.eu/articles/elevenlabs-lawsuit-2026",
-      "occurredAt": "2026-05-13",
+      "title": "Amer et al v. Eleven Labs Inc. — BIPA proposed class action over alleged unconsented voiceprint training (N.D. Ill., 1:26-cv-05437)",
+      "url": "https://www.law360.com/cases/6a02fc2a45e79a2af5c9674f",
+      "caseNumber": "1:26-cv-05437",
+      "court": "U.S. District Court, Northern District of Illinois",
+      "occurredAt": "2026-05-12",
       "status": "ongoing",
       "severity": "medium",
       "companyRole": "defendant",
-      "summary": "ElevenLabs is a defendant in a US lawsuit filed in an Illinois court (reported May 2026) by a group of journalists and voice actors who allege the company built its voice models using recordings of their voices without consent. Reporting frames it as the second legal action against ElevenLabs over voice use, following an earlier 2024 suit by voice actors alleging misappropriation of their voices for its text-to-speech software. Both are alleged claims at an early/ongoing stage — no merits ruling reported. Logged conservatively: the fullest free account (Sifted) returned only partially legible; detail beyond the core allegation is not reproduced here pending a cleaner primary read.",
+      "summary": "ElevenLabs is a named defendant in Amer et al v. Eleven Labs Inc., case no. 1:26-cv-05437, a proposed class action filed ~12 May 2026 in the U.S. District Court for the Northern District of Illinois. Seven plaintiffs — Illinois-resident broadcast journalists, podcasters, audio storytellers and voice actors (incl. Robin Amer; Carol Marin named among the wider group; Lindsay Dorcus, Victoria Nassif, Yohance Lacour, Alison Flowers) — allege the company harvested their voiceprints from the internet and fed them into AI training pipelines without the written notice, consent or retention policy that Illinois' Biometric Information Privacy Act (BIPA, 2008) requires. Plaintiffs' counsel is civil-rights firm Loevy + Loevy (Ross Kimbarovsky). The ElevenLabs suit is one of a coordinated wave of BIPA voice-AI class actions filed the same week against Adobe, Amazon, Apple, Google/Alphabet, Meta, Microsoft, NVIDIA and Samsung. It is the second suit against ElevenLabs over voice use, following the earlier 2024 voice-actor misappropriation case Vacker v. ElevenLabs, Inc. (1:24-cv-00987) — which was filed in the District of Delaware, not Illinois (an earlier note in this feed imprecisely placed the prior suit; corrected here). All claims are alleged and at an early/pre-merits stage; no ruling reported.",
       "topics": [
         "voice_cloning",
         "consent",
         "biometric",
-        "training_data"
+        "training_data",
+        "BIPA"
       ],
       "rawExcerpt": null,
       "corroboration": [
+        {
+          "outlet": "Law360 (case docket page — Amer et al v. Eleven Labs Inc., 1:26-cv-05437)",
+          "url": "https://www.law360.com/cases/6a02fc2a45e79a2af5c9674f",
+          "paywalled": true
+        },
+        {
+          "outlet": "Loevy + Loevy (plaintiffs' counsel — filing announcement)",
+          "url": "https://www.loevy.com/illinois-vocal-artists-sue-big-tech-companies-over-voice-ai/",
+          "paywalled": false
+        },
+        {
+          "outlet": "Capitol News Illinois (named plaintiffs)",
+          "url": "https://capitolnewsillinois.com/news/tech-giants-sued-over-stealing-voices-of-well-known-journalists-voice-actors-to-train-ai/",
+          "paywalled": false
+        },
+        {
+          "outlet": "CBS Chicago",
+          "url": "https://www.cbsnews.com/chicago/news/illinois-class-action-lawsuits-voices-stolen-train-ai-bipa/",
+          "paywalled": false
+        },
         {
           "outlet": "Sifted",
           "url": "https://sifted.eu/articles/elevenlabs-lawsuit-2026",
           "paywalled": false
         },
         {
-          "outlet": "Bloomberg Law (2024 actors' suit)",
+          "outlet": "Bloomberg Law (2024 Vacker actors' suit, D. Del.)",
           "url": "https://news.bloomberglaw.com/ip-law/actors-say-ai-voice-over-generator-elevenlabs-cloned-likenesses",
           "paywalled": true
         }
@@ -55,7 +78,7 @@
       "attributionChecked": true
     }
   ],
-  "notes": "Controversy attribution: named-party (ElevenLabs Inc. is the named defendant), same-entity (the text-to-speech voice-AI firm = seed elevenlabs-london), source = named reporting (Sifted, Bloomberg Law). NOT yet traced to a court docket number — flagged as a follow-up to find the Illinois case number/PACER record before upgrading detail or severity. Held at status=ongoing, severity=medium accordingly. Sifted body was partly garbled on fetch; only the clearly-legible core allegation was used, nothing inferred.",
+  "notes": "Controversy attribution: named-party (ElevenLabs Inc. is the named defendant), same-entity (the text-to-speech voice-AI firm = seed elevenlabs-london). 2026-06-27 follow-up RESOLVED: traced to court docket. Case = Amer et al v. Eleven Labs Inc., no. 1:26-cv-05437, N.D. Ill., filed ~12 May 2026; counsel Loevy + Loevy; BIPA voiceprint claim; part of a same-week coordinated wave vs Adobe/Amazon/Apple/Google/Meta/Microsoft/NVIDIA/Samsung. Docket no., court, plaintiffs and counsel cross-confirmed across Law360 case page, Loevy + Loevy (plaintiffs' counsel), Capitol News Illinois, CBS Chicago and Sifted. Also corrected the prior-suit reference: the 2024 ElevenLabs voice-actor case is Vacker v. ElevenLabs, Inc. (1:24-cv-00987), filed in D. Del. (NOT Illinois). Severity held at medium: real BIPA exposure but all claims alleged and pre-merits; no ruling. Search snippets treated as untrusted leads and verified against named/primary-adjacent sources before logging.",
   "news": [
     {
       "date": "2026-06-18",
