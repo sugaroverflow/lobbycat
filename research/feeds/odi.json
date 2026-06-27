@@ -1,6 +1,6 @@
 {
   "slug": "odi",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "The Open Data Institute, a UK non-profit researching and advocating for trustworthy data and AI infrastructure.",
   "hiring": {},
   "publications": [
@@ -33,6 +33,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": null,
+      "title": "New research questions the trustworthiness of AI chatbots for government information",
+      "url": "https://theodi.org/news-and-events/news/new-research-questions-the-trustworthiness-of-ai-chatbots-for-government-information/",
+      "source": "org_news",
+      "summary": "ODI research questioning how trustworthy AI chatbots are as a channel for government information — directly relevant to the gov-AI-services debate. Date not exposed in the page DOM; left null rather than guessed."
+    },
+    {
+      "date": null,
+      "title": "ODI and SAP announce partnership to help organisations build trustworthy, AI-ready data infrastructure",
+      "url": "https://theodi.org/news-and-events/news/odi-and-sap-announce-partnership-to-help-organisations-build-trustworthy-ai-ready-data-infrastructure/",
+      "source": "org_news",
+      "summary": "ODI partners with SAP on trustworthy, AI-ready data infrastructure — a data-governance/industry collaboration. Date not exposed in the page DOM; left null."
+    }
+  ],
   "notes": "Insights page lists reports; dates from each report page's <time datetime>. No first-party dated press release feed harvested. No controversy where ODI is a named legal party."
 }

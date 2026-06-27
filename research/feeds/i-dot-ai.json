@@ -1,6 +1,6 @@
 {
   "slug": "i-dot-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-06-27T12:51:00Z",
   "blurb": "The Incubator for AI (i.AI), a unit within DSIT building practical AI tools for the UK public sector such as Consult, Lex, Parlex, Redbox and Scout.",
   "hiring": {},
   "publications": [
@@ -17,6 +17,21 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "news": [],
+  "news": [
+    {
+      "date": "2026-06-10",
+      "title": "New backing for open-source AI builders, data centre design challenge and robotics partnership",
+      "url": "https://www.gov.uk/government/news/new-backing-for-open-source-ai-builders-data-centre-design-challenge-and-robotics-partnership",
+      "source": "org_news",
+      "summary": "DSIT/gov announcement (AI Minister Kanishka Narayan, keynote at London Tech Week's AI Summit): £500k+ compute for innovators turning prototypes into public-service AI tools (libraries to NHS), a data-centre redesign challenge, and workplace-robotics safety guidance — the gov-AI-delivery ecosystem i.AI/GDS sits within."
+    },
+    {
+      "date": null,
+      "title": "i.AI merges into the new Government Digital Service (GDS)",
+      "url": "https://www.gov.uk/government/organisations/incubator-for-artificial-intelligence",
+      "source": "org_news",
+      "summary": "The Incubator for AI (i.AI), CDDO, the Geospatial Commission and GDS have merged to form the new Government Digital Service — the consolidated 'digital centre' of UK government. A structural reorganisation of where state AI-delivery capability sits. Exact date not pinned to a primary dated page; left null."
+    }
+  ],
   "notes": "i.AI homepage and /our-work/government load via web_fetch; the /insights and /blogs index pages are JS-rendered (no extractable dated list via curl/readability). One dated blog post verified directly (23 Oct 2025). Project pages (Consult, Lex, Parlex, Redbox, Scout) describe work but carry no publication dates. CloudFront 403s on raw curl of some paths. No controversies where i.AI is a named legal party."
 }
