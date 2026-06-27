@@ -1,6 +1,6 @@
 {
   "slug": "mistral-london",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-06-27T20:40:00Z",
   "blurb": "Mistral AI is a European frontier AI lab (open-weight and commercial LLMs, assistants, agents) headquartered in Paris with UK/London commercial presence, often cited in European AI-sovereignty discussions.",
   "hiring": {
     "isHiring": true,
@@ -40,7 +40,35 @@
   ],
   "filings": [],
   "leadership": [],
-  "controversies": [],
+  "controversies": [
+    {
+      "type": "lobbying_influence",
+      "title": "Lobbying to exempt foundation models from the EU AI Act — Mistral (with French government backing and ex-minister Cédric O) led the push to strip tiered rules for general-purpose AI",
+      "url": "https://techcrunch.com/2023/11/16/mistral-eu-ai-act/",
+      "occurredAt": "2023-11-16",
+      "status": "resolved",
+      "severity": "medium",
+      "companyRole": "lobbyist",
+      "summary": "During the final 2023 negotiations on the EU AI Act, Mistral AI was reported to be leading a lobbying charge — alongside Germany's Aleph Alpha and with the backing of the French (and German) governments — to roll back the European Parliament's proposed tiered approach to regulating foundation / general-purpose AI models, arguing rules should fall on downstream applications rather than model makers (TechCrunch, 16 Nov 2023). Mistral had opened a Brussels lobbying office in summer 2023 with former French secretary of state for digital transition Cédric O — a revolving-door figure said to have Macron's ear — leading EU relations (Corporate Europe Observatory; Bloomberg, 13 Dec 2023). Activists targeted Cédric O directly, with billboard vans reading 'EU AI Act Without Foundation Models = Climate Act That Excludes Big Oil.' POLITICO framed it as Mistral and the French government pushing for concessions for open-source foundation models to protect European competitiveness. The campaign largely succeeded: the final AI Act exempted most general-purpose AI from the strictest obligations, leaving lighter transparency duties — a result lobby watchdogs (Corporate Europe Observatory, 12 Mar 2024) characterised as 'gutting' the Act. UK/London relevance: Mistral positions itself as Europe's sovereign-frontier-lab and carries UK/London commercial presence; the episode is a defining data point for AI-sovereignty-vs-safety and revolving-door/lobbying-transparency debates that UK and EU policy actors track. Reported as a lobbying/influence controversy, not a legal or regulatory finding against Mistral.",
+      "topics": [
+        "eu_ai_act",
+        "foundation_models",
+        "lobbying",
+        "revolving_door",
+        "ai_sovereignty",
+        "regulatory_capture"
+      ],
+      "corroboration": [
+        "https://techcrunch.com/2023/11/16/mistral-eu-ai-act/",
+        "https://www.bloomberg.com/news/articles/2023-12-13/mistral-ai-s-cedric-o-pushed-to-loosen-eu-s-ai-rules",
+        "https://www.politico.com/newsletters/digital-future-daily/2024/02/27/a-mistral-chills-european-regulators-00143639",
+        "https://corporateeurope.org/en/2024/03/trojan-horses-how-european-startups-teamed-big-tech-gut-ai-act",
+        "https://corporateeurope.org/en/2023/11/big-tech-lobbying-derailing-ai-act"
+      ],
+      "rawExcerpt": "French startup Mistral AI has found itself at the center of this debate after it was reported to be leading a lobbying charge to row back on a European Parliament's proposal pushing for a tiered approach to regulating generative AI.",
+      "source": "press"
+    }
+  ],
   "news": [
     {
       "date": "2026-06-24",
@@ -57,5 +85,5 @@
       "summary": "Mistral ships OCR 4, a document-intelligence model. Notable that Mistral pairs product cadence with a 'sovereign European frontier lab' positioning relevant to EU AI-Act and compute-sovereignty debates."
     }
   ],
-  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (mistral.ai/news passed cleanly; untested by web_fetch this morning). Mistral's news feed is overwhelmingly product/model launches (OCR 4 'June 23 2026', connectors 'June 24 2026', Vibe agent, Search Toolkit) — low policy signal. Logged only the AI Now Summit (convening/positioning signal) with its inline date 'May 28, 2026'. Omitted the product launches per SOUL signal discipline. As a European frontier lab, Mistral is worth watching for sovereignty/EU-AI-Act positioning; will log policy submissions or named-author governance posts if/when they appear. ROLES (2026-06-27 ATS): Mistral is hiring a sizeable EMEA legal bench (8 counsel roles, Paris). Logged the two with the clearest policy/regulatory remit — Privacy Legal Counsel and Product Regulatory Legal Counsel (EU) — as EU-AI-Act/privacy signal; omitted the M&A/banking/compute commercial-counsel roles as non-policy."
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (mistral.ai/news passed cleanly; untested by web_fetch this morning). Mistral's news feed is overwhelmingly product/model launches (OCR 4 'June 23 2026', connectors 'June 24 2026', Vibe agent, Search Toolkit) — low policy signal. Logged only the AI Now Summit (convening/positioning signal) with its inline date 'May 28, 2026'. Omitted the product launches per SOUL signal discipline. As a European frontier lab, Mistral is worth watching for sovereignty/EU-AI-Act positioning; will log policy submissions or named-author governance posts if/when they appear. ROLES (2026-06-27 ATS): Mistral is hiring a sizeable EMEA legal bench (8 counsel roles, Paris). Logged the two with the clearest policy/regulatory remit — Privacy Legal Counsel and Product Regulatory Legal Counsel (EU) — as EU-AI-Act/privacy signal; omitted the M&A/banking/compute commercial-counsel roles as non-policy. CONTROVERSY (2026-06-27 heartbeat): backfilled the empty controversies[] with Mistral's lead role in lobbying to exempt foundation models from the EU AI Act (Nov 2023 final negotiations; Brussels office under ex-French sec-of-state Cedric O). Web-search snippets treated as UNTRUSTED leads; facts cross-confirmed across TechCrunch (16 Nov 2023), Bloomberg (13 Dec 2023), POLITICO and Corporate Europe Observatory (Nov 2023 + 12 Mar 2024). status=resolved (Act passed, GPAI largely exempted), severity=medium, type=lobbying_influence — a policy/influence controversy, not a legal/regulatory finding. No invented figures; quotes worded as the record states."
 }
