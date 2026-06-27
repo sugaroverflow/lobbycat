@@ -1,0 +1,13 @@
+{
+  "slug": "chatham-house-ai",
+  "lastUpdated": "2026-06-27T09:31:00Z",
+  "blurb": "Chatham House (the Royal Institute of International Affairs) is a London foreign-affairs think-tank whose AI work sits within its international-security and digital-society research.",
+  "hiring": {},
+  "publications": [],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "BLOCKED: chathamhouse.org is fully behind Cloudflare — direct curl, /sitemap.xml, /rss/*, /topics/artificial-intelligence and web_fetch all returned 403 / 'Attention Required' challenge pages. The one accessible stream (feeds.feedburner.com/chathamhouse, their Expert Comment/commentary feed, 50 most recent items as of 2026-06-27) contained no AI/technology items — it is currently dominated by Middle East, Ukraine, energy and geopolitics commentary. Chatham House's dedicated AI/digital research index could not be reached without triggering the Cloudflare challenge. Left all arrays empty per no-fabrication rule. Retry suggestion: a JS-capable/browser-automation fetch of chathamhouse.org/about-us/our-departments or the artificial-intelligence topic page, or an authenticated/allowlisted fetch path."
+}

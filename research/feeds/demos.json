@@ -1,0 +1,46 @@
+{
+  "slug": "demos",
+  "lastUpdated": "2026-06-27T09:30:00Z",
+  "blurb": "Demos is a cross-party British think-tank with an active AI-policy strand focused on AI openness, public-service AI, and safeguarding elections from AI-generated misinformation.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2025-09-03",
+      "title": "AI Openness and the UK AI Bill",
+      "url": "https://demos.co.uk/research/ai-openness-and-the-uk-ai-bill/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Argues the UK's forthcoming AI Bill should embed openness as a principle, setting out how transparency and open approaches can shape better AI governance."
+    },
+    {
+      "date": "2025-06-04",
+      "title": "The Open Dividend: Building an AI openness strategy to unlock the UK's AI potential",
+      "url": "https://demos.co.uk/research/the-open-dividend-building-an-ai-openness-strategy-to-unlock-the-uks-ai-potential/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Contends that the UK's AI-led growth agenda depends on an explicit 'AI openness' strategy, arguing openness can deliver an economic dividend rather than a risk."
+    },
+    {
+      "date": "2025-01-14",
+      "title": "'The Frontier AI Bill and…?': Briefing Paper",
+      "url": "https://demos.co.uk/research/the-frontier-ai-bill-and-briefing-paper/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Briefing arising from an Oct 2024 workshop convened by Demos with the Ada Lovelace Institute and Connected by Data on the scope of the UK's forthcoming AI Bill and what is happening around it."
+    },
+    {
+      "date": "2024-11-27",
+      "title": "Tech that Liberates: A new vision for embedding AI in public service reform",
+      "url": "https://demos.co.uk/research/tech-that-liberates-a-new-vision-for-embedding-ai-in-public-service-reform/",
+      "type": "paper",
+      "byline": null,
+      "summary": "Argues public services are near breaking point and sets out a vision for embedding AI in public-service reform to predict and prevent rather than react to crises."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "demos.co.uk hard-blocks direct curl/web_fetch (nginx 403) and the site RSS feed (demos.co.uk/feed/) returned 200 but was empty (no items). Reached content via a reader proxy (r.jina.ai) which returned genuine demos.co.uk pages; titles, ISO dates and summaries confirmed from each page's body. Author bylines were not cleanly exposed by the proxy so byline left null rather than guessed. Several further AI items exist on Demos (electoral-hallucinations, the-deepfake-gap, free-and-fair-election-law-in-the-age-of-ai) but dates were not confirmed and were omitted. No controversies where Demos is a named legal/regulatory party."
+}

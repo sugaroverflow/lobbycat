@@ -1,0 +1,62 @@
+{
+  "slug": "nesta",
+  "lastUpdated": "2026-06-27T09:17:51Z",
+  "blurb": "Nesta is the UK's innovation foundation, running mission-driven research and programmes across health, sustainability and early years, increasingly applying data and AI tools to public-policy problems.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-06-23",
+      "title": "Failing fast with AI: lessons from building Nesta's agentic Signal Scout",
+      "url": "https://www.nesta.org.uk/project-updates/failing-fast-with-ai-lessons-from-building-nestas-agentic-signal-scout/",
+      "type": "blog",
+      "byline": "William Woodward",
+      "summary": "A Nesta project update on building an internal agentic AI tool (Signal Scout), arguing teams should validate user problems before building complex AI, use iterative experiments to set scalable architecture, and ensure reliability by hardcoding evaluation rubrics in secure code."
+    },
+    {
+      "date": "2025-08-16",
+      "title": "The AI Social Readiness process",
+      "url": "https://www.nesta.org.uk/project-updates/the-ai-social-readiness-process/",
+      "type": "blog",
+      "byline": "Aleks Berditchevskaia",
+      "summary": "Sets out a process for involving the public in decisions about AI tools for the public sector, with recommendations for trustworthy development by AI tool developers."
+    },
+    {
+      "date": "2026-06-17",
+      "title": "Six reasons why human-led qualitative research is safe from AI… for now",
+      "url": "https://www.nesta.org.uk/blog/six-reasons-why-human-led-qualitative-research-is-safe-from-ai-for-now/",
+      "type": "blog",
+      "byline": "Max Woollard",
+      "summary": "Argues that while tools like NotebookLM can support qualitative data analysis, their value lies in speed and exploratory sense-checking rather than producing rigorous findings from scratch, so human-led research remains essential."
+    },
+    {
+      "date": null,
+      "title": "How to make the UK a world leader in public sector AI",
+      "url": "https://www.nesta.org.uk/feature/policy-fix-podcast/how-to-make-the-uk-a-world-leader-in-public-sector-ai/",
+      "type": "other",
+      "byline": null,
+      "summary": "A Nesta Policy Fix podcast episode arguing that turning the UK's AI policy ambitions into public-sector reality requires fixing legacy data systems, boosting skills, and implementing practical operational changes."
+    },
+    {
+      "date": null,
+      "title": "Liberating the tenant state: why digital public infrastructure is critical for growth",
+      "url": "https://www.nesta.org.uk/feature/liberating-the-tenant-state-why-digital-public-infrastructure-is-critical-for-growth/",
+      "type": "other",
+      "byline": null,
+      "summary": "The first paper in a Nesta series on digital public infrastructure, examining what the UK stands to gain from owning the digital 'rails' on which public services and private innovation (including AI) run."
+    },
+    {
+      "date": null,
+      "title": "How generative AI will affect Nesta's missions and work",
+      "url": "https://www.nesta.org.uk/project/how-generative-ai-will-affect-nestas-missions-and-work/",
+      "type": "other",
+      "byline": null,
+      "summary": "A Nesta project page describing its investigation into the potential for generative AI to be harnessed for social good across its missions."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Source: Nesta sitemap (https://www.nesta.org.uk/sitemap.xml, HTTP 200, ~8521 URLs). Nesta is primarily an innovation foundation (health, sustainability, early years); AI-specific content is limited but a recent cluster on AI/data in public services exists. Pages have no JSON-LD datePublished or article:published_time meta; dates were taken from the visible 'DD Month YYYY' byline on each page (preferred over unreliable sitemap lastmod, which differed e.g. lastmod 2026-06-18 vs page date 2025-08-16 for the AI Social Readiness item). Confident date+author for items 1-3. Items 4-6 (podcast episode, DPI feature paper, generative-AI project landing page) are genuinely AI/digital-policy-relevant Nesta first-party content but showed no visible publication date or author byline in fetched HTML, so date and byline left null. No controversies found (Nesta not a named party in any legal/regulatory/named-investigation matter). roles[] intentionally empty per instructions. news[] left empty: no distinct first-party AI announcements beyond the publications above."
+}

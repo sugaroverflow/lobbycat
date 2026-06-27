@@ -1,0 +1,37 @@
+{
+  "slug": "onward",
+  "lastUpdated": "2026-06-27T09:24:00Z",
+  "blurb": "Onward is a UK centre-right think-tank focused on economic opportunity, national resilience and communities; AI/tech is an occasional theme rather than a core specialism.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2023-05-03",
+      "title": "The Generative AI Revolution: opportunities, shocks, and risks",
+      "url": "https://ukonward.com/reports/the-generative-ai-revolution/",
+      "type": "paper",
+      "byline": null,
+      "summary": "An Onward report mapping the opportunities, economic shocks and risks of generative AI for the UK and arguing for a proactive policy response."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2024-10-21",
+      "title": "The UK needs to build a British data library to become an AI leader",
+      "url": "https://ukonward.com/press/the-uk-needs-to-build-a-british-data-library-to-become-an-ai-leader/",
+      "source": "company_press",
+      "summary": "Onward press item arguing the UK should build a national 'British data library' to compete in AI."
+    },
+    {
+      "date": "2023-05-05",
+      "title": "Think tank calls for 'Great British GPT' to keep UK ahead in AI race",
+      "url": "https://ukonward.com/press/think-tank-calls-for-great-british-gpt-to-keep-uk-ahead-in-ai-race/",
+      "source": "company_press",
+      "summary": "Onward press item proposing a sovereign 'Great British GPT' large language model to keep the UK competitive in AI."
+    }
+  ],
+  "notes": "Harvested from ukonward.com sitemaps (200 OK, browser UA). The site RSS feed (ukonward.com/feed/) returned no items. Sitemap lastmod values are a bulk migration timestamp (2025-06-11) and unreliable; fetched individual pages and used each page's JSON-LD datePublished as the true date. Onward is a general centre-right think-tank, not an AI specialist — only a small, older set of genuinely AI-focused items exists (2023-2024). No author bylines were exposed in page JSON-LD. No controversies where Onward is a named legal/regulatory party. Most-recent reports (Building Consent 2026-03, Question of Degree 2026-05) are non-AI and excluded."
+}

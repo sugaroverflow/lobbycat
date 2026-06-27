@@ -1,0 +1,30 @@
+{
+  "slug": "mhra-ai",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Medicines and Healthcare products Regulatory Agency (MHRA) regulates medicines and medical devices in the UK, including software and artificial intelligence as a medical device.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2025-02-03",
+      "title": "Software and artificial intelligence (AI) as a medical device",
+      "url": "https://www.gov.uk/government/publications/software-and-artificial-intelligence-ai-as-a-medical-device/software-and-artificial-intelligence-ai-as-a-medical-device",
+      "type": "other",
+      "byline": null,
+      "summary": "MHRA guidance and change programme on regulating software and AI as a medical device, covering qualification, classification and pre- and post-market requirements."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2025-06-24",
+      "title": "UK MHRA leads safe use of AI in healthcare as first country in new global network",
+      "url": "https://www.gov.uk/government/news/uk-mhra-leads-safe-use-of-ai-in-healthcare-as-first-country-in-new-global-network",
+      "source": "company_press",
+      "summary": "MHRA becomes the first 'pioneer' country in the HealthAI Global Regulatory Network and references its AI Airlock regulatory sandbox for AI medical devices."
+    }
+  ],
+  "notes": "Gov.uk/MHRA collection. Guidance date 2025-02-03 from web_search published metadata for the gov.uk publication page. News date 2025-06-24 confirmed from the article body ('today (24 June)'). Collection content API path returned 404, so items sourced via search + first-party page fetch."
+}

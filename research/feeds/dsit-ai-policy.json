@@ -1,0 +1,35 @@
+{
+  "slug": "dsit-ai-policy",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "UK Department for Science, Innovation and Technology, the government department leading AI policy, investment and digital regulation.",
+  "hiring": {},
+  "publications": [],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-06-19",
+      "title": "UK backs new AI labs to make technology cheaper, more reliable and easier to use",
+      "url": "https://www.gov.uk/government/news/uk-backs-new-ai-labs-to-make-technology-cheaper-more-reliable-and-easier-to-use",
+      "source": "company_press",
+      "summary": "DSIT press notice announcing government backing for new AI research labs aimed at making the technology cheaper and more reliable."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "AI tool to slash planning decision times as government accelerates push to build 1.5 million homes",
+      "url": "https://www.gov.uk/government/news/ai-tool-to-slash-planning-decision-times-as-government-accelerates-push-to-build-15-million-homes",
+      "source": "company_press",
+      "summary": "DSIT announces an AI planning tool to speed up planning decisions in support of the housebuilding target."
+    },
+    {
+      "date": "2026-06-11",
+      "title": "Britain powers ahead on AI with billions of pounds of new investment and thousands of jobs secured as London Tech Week wraps up",
+      "url": "https://www.gov.uk/government/news/britain-powers-ahead-on-ai-with-billions-of-pounds-of-new-investment-and-thousands-of-jobs-secured-as-london-tech-week-wraps-up",
+      "source": "company_press",
+      "summary": "DSIT summarises AI investment and jobs announcements made during London Tech Week 2026."
+    }
+  ],
+  "notes": "Sourced from DSIT's official gov.uk news atom feed (news-and-communications.atom filtered to DSIT). Real per-item URLs and pub dates from <updated>. No filings/controversies where DSIT is a named legal party found in this window."
+}

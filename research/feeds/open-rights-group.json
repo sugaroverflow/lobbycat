@@ -1,0 +1,38 @@
+{
+  "slug": "open-rights-group",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "Leading UK-based digital campaigning organisation defending privacy, data protection and free expression online.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2025-09-30",
+      "title": "Draft UK Adequacy Decision: Summary of Findings",
+      "url": "https://www.openrightsgroup.org/publications/draft-uk-adequacy-decision-summary-of-findings/",
+      "type": "paper",
+      "byline": null,
+      "summary": "ORG analysis of the European Commission's draft UK adequacy renewal under EU GDPR and LED."
+    },
+    {
+      "date": "2025-05-12",
+      "title": "DUA Bill Amendments HoC Report Stage: ORG Statements of Support and Rationale",
+      "url": "https://www.openrightsgroup.org/publications/dua-bill-amendments-hoc-report-stage-org-statements-of-support-and-rationale/",
+      "type": "paper",
+      "byline": null,
+      "summary": "ORG statements of support for amendments to the Data Use and Access Bill at House of Commons Report Stage."
+    },
+    {
+      "date": "2024-11-14",
+      "title": "ICO Alternative Annual Report 2023-24",
+      "url": "https://www.openrightsgroup.org/publications/ico-alternative-annual-report-2023-24/",
+      "type": "paper",
+      "byline": null,
+      "summary": "ORG's critical perspective on the Information Commissioner's Office annual report and enforcement record."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Publications page provides clear inline dates per item; used those directly. News not harvested (separate press/blog section). No controversy where ORG is a named legal party found on this page (ORG files complaints/representative actions but no named court case party listed here)."
+}

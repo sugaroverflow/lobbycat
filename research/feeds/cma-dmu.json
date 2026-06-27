@@ -1,0 +1,21 @@
+{
+  "slug": "cma-dmu",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "The Competition and Markets Authority (CMA) is the UK competition regulator; its Digital Markets Unit oversees the strategic market status (SMS) regime under the Digital Markets, Competition and Consumers Act 2024.",
+  "hiring": {},
+  "publications": [],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2025-10-22",
+      "title": "CMA confirms Apple and Google have strategic market status in mobile platforms",
+      "url": "https://www.gov.uk/government/news/cma-confirms-apple-and-google-have-strategic-market-status-in-mobile-platforms",
+      "source": "company_press",
+      "summary": "CMA designates both Apple and Google with strategic market status (SMS) in their respective mobile platforms under the Digital Markets, Competition and Consumers Act 2024, for a five-year period."
+    }
+  ],
+  "notes": "Regulator site (CMA cases index is a JS-filtered case list with no inline dated items). News date 2025-10-22 from the gov.uk page's datePublished JSON-LD. Controversies left empty: the CMA is the regulator/decision-maker here, not a named party defending an action, so this is regulatory activity rather than a controversy about the CMA itself."
+}

@@ -1,0 +1,38 @@
+{
+  "slug": "connected-by-data",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "UK campaign organisation working to give communities a powerful say in how data and AI are governed.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2026-05-30",
+      "title": "Consultation Response on UN Global Dialogue on AI Governance",
+      "url": "https://connectedbydata.org/resources/2026-05-30-un-global-dialogue-ai-consultation",
+      "type": "filing",
+      "byline": null,
+      "summary": "Connected by Data's consultation response on the UN Global Dialogue on AI Governance."
+    },
+    {
+      "date": "2026-04-22",
+      "title": "Generative AI in Education - Workshop in a Box: Independent Evaluation Report",
+      "url": "https://connectedbydata.org/resources/2026-04-22-generative-ai-in-education-evaluation",
+      "type": "paper",
+      "byline": null,
+      "summary": "Independent evaluation report of the Generative AI in Education workshop toolkit."
+    },
+    {
+      "date": "2026-01-18",
+      "title": "Generative AI in Education - Have Your Say Report",
+      "url": "https://connectedbydata.org/resources/generative-ai-in-education-report",
+      "type": "paper",
+      "byline": null,
+      "summary": "Report on public deliberation about generative AI in education."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [],
+  "notes": "Resources page lists projects/resources; dates taken from each resource page's own <time datetime>. No first-party press/news feed of dated press releases found distinct from resources. No controversies where org is a named legal party."
+}

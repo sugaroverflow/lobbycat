@@ -1,0 +1,28 @@
+{
+  "slug": "nhs-ai-transformation",
+  "lastUpdated": "2026-06-27T09:18:00Z",
+  "blurb": "NHS England, the body overseeing the NHS in England, including national rollout of AI tools across health and care services.",
+  "hiring": {},
+  "publications": [],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2026-06-08",
+      "title": "500,000 NHS staff to get new artificial intelligence tools to help free up more time for patients",
+      "url": "https://www.england.nhs.uk/2026/06/500000-nhs-staff-to-get-new-artificial-intelligence-tools-to-help-free-up-more-time-for-patients/",
+      "source": "company_press",
+      "summary": "NHS England press release announcing a national rollout of AI tools to half a million NHS staff to reduce admin and free up time for patient care."
+    },
+    {
+      "date": "2024-12-12",
+      "title": "NHS AI giving patients better care and support",
+      "url": "https://www.england.nhs.uk/2024/12/nhs-ai-giving-patients-better-care-and-support/",
+      "source": "company_press",
+      "summary": "NHS England news on how AI deployments are improving patient care and support across services."
+    }
+  ],
+  "notes": "Sourced from NHS England's own /news/feed/ RSS and on-site search; per-item pub dates confirmed from each page's <time datetime> attribute (2026-06-08 and 2024-12-12). NHS England press items are first-party press. No controversies where NHS England is a named legal party found in this window."
+}

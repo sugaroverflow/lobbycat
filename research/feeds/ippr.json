@@ -1,0 +1,47 @@
+{
+  "slug": "ippr",
+  "lastUpdated": "2026-06-27T09:14:52Z",
+  "blurb": "IPPR (Institute for Public Policy Research) is a UK progressive think tank producing public-policy research, including work on AI, automation and the future of work.",
+  "hiring": {},
+  "publications": [
+    {
+      "date": "2024-03-27",
+      "title": "Transformed by AI: How generative artificial intelligence could affect work in the UK – and how to manage it",
+      "url": "https://www.ippr.org/articles/transformed-by-ai",
+      "type": "paper",
+      "byline": "Carsten Jung & Bhargav Srinivasa Desikan",
+      "summary": "Analyses how generative AI could disrupt the UK labour market, warning of job displacement plus wage and wealth inequality. Argues there will be winners and losers and that policy should shape AI deployment before it becomes widespread."
+    },
+    {
+      "date": "2025-05-30",
+      "title": "Negotiating the future of work: Legislating to protect workers from surveillance",
+      "url": "https://www.ippr.org/articles/negotiating-the-future-of-work-surveillance",
+      "type": "paper",
+      "byline": "Joe Atkinson & Joseph Evans",
+      "summary": "Argues new technologies are radically transforming worker surveillance and that meaningful worker voice over surveillance practices is needed to address risks to workers' rights and wellbeing."
+    },
+    {
+      "date": "2023-10-25",
+      "title": "Artificial intelligence for public value creation: Introducing three policy pillars for the UK AI summit",
+      "url": "https://www.ippr.org/articles/ai-for-public-value-creation",
+      "type": "paper",
+      "byline": "Carsten Jung & Bhargav Srinivasa Desikan",
+      "summary": "Sets out three policy pillars for the UK AI summit, framing how AI should be governed and directed toward public value creation rather than left to the market alone."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "news": [
+    {
+      "date": "2024-03-27",
+      "title": "Up to 8 million UK jobs at risk from AI unless government acts, finds IPPR",
+      "url": "https://www.ippr.org/media-office/up-to-8-million-uk-jobs-at-risk-from-ai-unless-government-acts-finds-ippr",
+      "type": "press",
+      "byline": null,
+      "summary": "IPPR press release accompanying the 'Transformed by AI' report. Describes a 'sliding doors' moment for the UK – huge job disruption or significant GDP gains depending on government policy – and outlines a first and second wave of generative AI adoption."
+    }
+  ],
+  "notes": "Harvested from IPPR's own sitemap (https://www.ippr.org/sitemap.xml) and individual article pages. Dates taken from each page's visible meta date and JSON-LD datePublished (sitemap lastmod values were crawl times, e.g. 2026-06 for old pages, so they were ignored). Three AI/automation/future-of-work publications captured plus one first-party press release. IPPR publishes heavily on automation but most other AI-adjacent items are older blog/explainer/video content; only the most substantive, clearly AI-focused pieces were included. controversies, roles, filings, leadership left empty: no evidence IPPR is a named party in any legal/regulatory/named-investigation matter. No pages were blocked; all URLs fetched 200 with a browser UA."
+}
