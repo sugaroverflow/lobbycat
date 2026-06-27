@@ -63,7 +63,7 @@ export function ClarifyConversationsIndex({
         Your clarify sessions
       </h2>
       <p className="serif text-sm text-muted mt-2 max-w-2xl">
-        every time the cat sat down with you. yours to read or delete.
+        every time lobbycat sat down with you. yours to read or delete.
       </p>
 
       <ul className="mt-6 space-y-3">
@@ -72,7 +72,7 @@ export function ClarifyConversationsIndex({
             className="rounded border border-dashed border-rule px-4 py-6 text-center"
           >
             <p className="serif text-sm text-whisper italic">
-              no sessions yet. say hi to the cat from the dashboard.
+              no sessions yet. say hi to lobbycat from the dashboard.
             </p>
           </li>
         )}

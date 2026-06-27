@@ -99,7 +99,7 @@ export function ClarifyPanel({
         setError(
           e instanceof Error
             ? e.message
-            : "the cat couldn't open the session. try again?",
+            : "lobbycat couldn't open the session. try again?",
         );
       }
     });
@@ -136,7 +136,7 @@ export function ClarifyPanel({
         setError(
           e instanceof Error
             ? e.message
-            : "the cat hit a snag. give it a sec and try again?",
+            : "lobbycat hit a snag. give it a sec and try again?",
         );
         // Roll back the optimistic user-turn add so they can edit + resend.
         setMessages((prev) =>
@@ -371,7 +371,7 @@ function ChatInput({
             onSend();
           }
         }}
-        placeholder="say something to the cat…"
+        placeholder="say something to lobbycat…"
         rows={1}
         disabled={disabled}
         className="flex-1 resize-none bg-bg border border-rule rounded-sm px-3 py-2 font-sans text-base text-ink focus:outline-none focus:border-readout placeholder:text-whisper disabled:opacity-50"
@@ -413,7 +413,7 @@ function ProposalCard({
       }}
     >
       <div className="mono text-[10px] uppercase tracking-[0.18em] text-readout mb-2">
-        the cat proposes — {labelForKind(proposal.kind)}
+        lobbycat proposes — {labelForKind(proposal.kind)}
       </div>
       <p className="font-sans text-base text-ink leading-snug">
         {proposal.summary}

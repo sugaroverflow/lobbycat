@@ -13,6 +13,10 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <Wordmark size={26} />
           </Link>
           <nav className="flex items-center gap-6 mono text-xs uppercase tracking-[0.14em] text-muted">
+            {/* v0.8.3: explicit Dashboard nav entry per Fatima
+                2026-06-27 09:35Z — was implicit (clicking the wordmark),
+                now both surfaces route to /. */}
+            <Link href="/" className="hover:text-ink transition">Dashboard</Link>
             <Link href="/frames" className="hover:text-ink transition">Frames</Link>
             {/* v0.8.1 Phase B F3.5 part 3/N — Favorites lens. Sits between
                 Frames and Surprise to keep the dashboard-adjacent items grouped
@@ -37,6 +41,11 @@ export function SiteShell({ children }: { children: ReactNode }) {
             <span>v0 · napping</span>
           </div>
           <div className="text-ink">made as a surprise &lt;3</div>
+          {/* v0.8.3: "made with ♥" coda — small white, separate line,
+              per Fatima 2026-06-27 09:35Z. Sits below the surprise line. */}
+          <div className="text-whisper text-[10px] normal-case tracking-normal">
+            made with <span aria-hidden>&hearts;</span>
+          </div>
         </div>
       </footer>
       {/*

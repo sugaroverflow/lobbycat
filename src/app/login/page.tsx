@@ -31,7 +31,10 @@ export default async function LoginPage({
       <div className="max-w-sm w-full">
         <div className="eyebrow mb-6">Locked</div>
         <div className="font-sans text-3xl text-ink tracking-tight flex items-center">
-          <Wordmark size={40} />
+          {/* v0.8.3: textOnly mode on the login page because `/cat/*`
+             static assets are middleware-walled pre-auth. Once Techie's
+             middleware fix lands we can drop the prop. */}
+          <Wordmark size={40} textOnly />
         </div>
         <p className="font-sans text-base text-muted mt-3">
           A quiet dashboard. Password, please.

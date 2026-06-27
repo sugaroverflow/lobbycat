@@ -63,9 +63,13 @@ const STEP_LABELS = [
 
 const WEIGHT_LEVELS: FrameWeightLevel[] = ["low", "medium", "high"];
 const WEIGHT_COPY: Record<FrameWeightLevel, { glyph: string; label: string }> = {
-  high: { glyph: "M", label: "Must" },
-  medium: { glyph: "S", label: "Should" },
-  low: { glyph: "C", label: "Could" },
+  // v0.8.3 F5.4: vocab swap matches /frames (frames-editor.tsx).
+  // dealbreaker = Must (will walk away over it),
+  // important   = Should (heavy weight),
+  // nice to have = Could (gentle nudge).
+  high: { glyph: "D", label: "dealbreaker" },
+  medium: { glyph: "I", label: "important" },
+  low: { glyph: "N", label: "nice to have" },
 };
 
 // v0.7's DEFAULT_OPEN_PROMPTS for the step-5 textareas was removed in
@@ -445,7 +449,7 @@ function Step4Weighing({
     <StepCard
       eyebrow="Step 4 — Weighing"
       title="What matters how much?"
-      subtitle="Must / Should / Could. Picture three companies you&rsquo;d look at. Which of these would you actually walk away over?"
+      subtitle="Dealbreaker / important / nice to have. Picture three companies you&rsquo;d look at. Which of these would you actually walk away over?"
       saved={saved}
       onBack={onBack}
       onNext={onNext}
@@ -491,9 +495,9 @@ function Step4Weighing({
         })}
       </ul>
       <div className="mt-3 text-xs text-prose-muted">
-        <span className="font-mono">M</span> Must · {" "}
-        <span className="font-mono">S</span> Should ·{" "}
-        <span className="font-mono">C</span> Could
+        <span className="font-mono">D</span> dealbreaker ·{" "}
+        <span className="font-mono">I</span> important ·{" "}
+        <span className="font-mono">N</span> nice to have
       </div>
     </StepCard>
   );

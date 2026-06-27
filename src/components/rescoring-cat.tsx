@@ -73,7 +73,7 @@ export function RescoringCat() {
   }, [status.pending, pool.length]);
 
   const visible = status.pending > 0;
-  const quote = pool[quoteIdx] ?? "the cat is re-reading…";
+  const quote = pool[quoteIdx] ?? "lobbycat is re-reading…";
 
   return (
     <div

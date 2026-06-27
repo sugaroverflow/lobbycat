@@ -74,9 +74,15 @@ export default async function HomePage() {
 
   const firstName = profile?.displayName?.split(" ")[0] || null;
 
-  const pool = (quotes as unknown as Quotes).welcomeBack ?? [];
+  // v0.8.3 F2.1: dashboard intro is the answer, not the question.
+  // Was a random welcomeBack quote pick; Fatima asked for a deterministic
+  // "what this is + how it helps" summary line. The cat-voice quotes still
+  // ship in the JSON for other surfaces (rescoring, surprise, etc.). The
+  // unused import + Quotes type stay to keep the door open for restoring
+  // ambient rotation later if we want it back.
+  void quotes;
   const welcomeLine =
-    pool.length > 0 ? pool[Math.floor(Math.random() * pool.length)] : "";
+    "Here are your matches, based on your answers \u2014 London's AI-policy companies, ranked by what you said you care about.";
 
   const ageDays =
     home.oldestScoreAt === null

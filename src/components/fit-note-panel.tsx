@@ -146,7 +146,7 @@ export function FitNotePanel({
         <div className="flex items-start gap-3">
           <CatMark size={32} className="shrink-0 mt-0.5 opacity-80" />
           <p className="serif text-base text-muted leading-relaxed">
-            No fit note yet. Click <span className="mono text-xs">generate</span> and the cat will think it over.
+            No fit note yet. Click <span className="mono text-xs">generate</span> and lobbycat will think it over.
           </p>
         </div>
       )}
@@ -214,7 +214,7 @@ export function FitNotePanel({
                   submitDraft();
                 }
               }}
-              placeholder="Ask the cat a follow-up… (Enter to send, Shift+Enter for newline)"
+              placeholder="Ask lobbycat a follow-up… (Enter to send, Shift+Enter for newline)"
               rows={2}
               disabled={sending}
               className="w-full resize-none rounded-sm border border-rule bg-bg p-2 serif text-sm text-ink placeholder:text-whisper focus:outline-none focus:border-moss disabled:opacity-60"
