@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T13:10:25Z",
+  "lastUpdated": "2026-06-27T15:08:00Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -49,6 +49,13 @@
       "event_type": "press",
       "summary": "OpenAI is staggering the release of its latest model after a US-government request (echoing the Anthropic Mythos export-control move), and signalled dissatisfaction — saying it keeps the best tools from users, developers and global partners. A live example of frontier-model release becoming a national-security lever. Corroborated by CNBC.",
       "source_url": "https://www.theguardian.com/technology/2026/jun/26/openai-ai-model-release-trump-us-sam-altman-gpt-anthropic-mythos"
+    },
+    {
+      "date": "2026-06-26",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Latest Anthropic Economic Index — the lab's regular publication tracking how Claude is being used across the economy. Directly relevant to the AI-and-labour, productivity and adoption-evidence debates Ada Lovelace and others are pushing back on.",
+      "source_url": "https://www.anthropic.com/research/economic-index-june-2026-report"
     },
     {
       "date": "2026-06-25",
@@ -205,6 +212,13 @@
       "source_url": "https://www.aisi.gov.uk/blog/releasing-aisis-engineering-playbook"
     },
     {
+      "date": "2026-06-18",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Frontier Red Team update — Anthropic's safety-evaluations arm. The Red Team's output is some of the most directly policy-relevant work a frontier lab publishes, feeding evaluation methodologies that AISI and others draw on.",
+      "source_url": "https://www.anthropic.com/research/project-fetch-phase-two"
+    },
+    {
       "date": "2026-06-17",
       "company_slug": "foxglove",
       "event_type": "publication",
@@ -238,6 +252,13 @@
       "event_type": "press",
       "summary": "Anthropic expands into South Korea — part of its international government/ecosystem footprint relevant to where frontier labs are placing policy bets.",
       "source_url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem"
+    },
+    {
+      "date": "2026-06-17",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "Expert-written, expert-reviewed benchmark for life-sciences AI agents — increasingly capable agentic systems in biology raise both opportunity and biosecurity-policy questions. Sits in the same arc as Anthropic's biology-agents work and AISI's biorisk evals.",
+      "source_url": "https://openai.com/index/introducing-life-sci-bench/"
     },
     {
       "date": "2026-06-16",
@@ -294,6 +315,13 @@
       "event_type": "press",
       "summary": "OII's Dr Vicki Nash warns a social-media ban risks leaving teenagers 'protected' but disempowered — cut off from news, learning and support just as the UK prepares to give 16-year-olds the vote.",
       "source_url": "https://www.oii.ox.ac.uk/expert-expert-comment-is-banning-under-16s-from-social-media-protection-or-exclusion/"
+    },
+    {
+      "date": "2026-06-16",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Evidence on how Claude Code is changing returns to coding expertise — an empirical addition to the displacement-vs-augmentation debate that's animating UK and EU labour-market policy.",
+      "source_url": "https://www.anthropic.com/research/claude-code-expertise"
     },
     {
       "date": "2026-06-15",
@@ -429,6 +457,20 @@
       "source_url": "https://www.aisi.gov.uk/blog/realitytest-do-ai-systems-disclose-their-identity-when-asked"
     },
     {
+      "date": "2026-06-08",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Anthropic's work on biology agents — biosecurity policy material. Sits in the same debate as AISI's biorisk evaluations and CETAS's biosecurity work.",
+      "source_url": "https://www.anthropic.com/research/agents-in-biology"
+    },
+    {
+      "date": "2026-06-08",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Frontier Red Team measurement of how LLMs change the economics of N-day vulnerability exploitation — feeds directly into NCSC/AISI cyber-policy thinking.",
+      "source_url": "https://www.anthropic.com/research/n-days"
+    },
+    {
       "date": "2026-06-03",
       "company_slug": "bennett-cambridge",
       "event_type": "publication",
@@ -443,6 +485,13 @@
       "source_url": "https://www.foxglove.org.uk/2026/06/03/press-release-uk-google-journalists-opt-out-ai-theft-foxglove-complaint/"
     },
     {
+      "date": "2026-06-03",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Frontier Red Team release of an LLM ATT&CK Navigator — methodology for systematically mapping AI-enabled cyber threats. Cyber-policy infrastructure.",
+      "source_url": "https://www.anthropic.com/research/attack-navigator"
+    },
+    {
       "date": "2026-06-01",
       "company_slug": "google-deepmind",
       "event_type": "press",
@@ -455,6 +504,13 @@
       "event_type": "publication",
       "summary": "Connected by Data's consultation response on the UN Global Dialogue on AI Governance.",
       "source_url": "https://connectedbydata.org/resources/2026-05-30-un-global-dialogue-ai-consultation"
+    },
+    {
+      "date": "2026-05-29",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "OpenAI launches Rosalind Biodefense, expanding trusted access to GPT-Rosalind for vetted developers and US government partners advancing biodefense and public health. Frontier-lab/government partnership pattern continues.",
+      "source_url": "https://openai.com/research/index/release/"
     },
     {
       "date": "2026-05-28",
@@ -527,6 +583,13 @@
       "source_url": "https://www.turing.ac.uk/news/george-williamson-joins-turing-new-ceo"
     },
     {
+      "date": "2026-05-20",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "GPT-Rosalind — OpenAI's life-sciences model. The companion piece to Rosalind Biodefense and LifeSciBench; together they're OpenAI's biology bet.",
+      "source_url": "https://openai.com/"
+    },
+    {
       "date": "2026-05-13",
       "company_slug": "apollo-research",
       "event_type": "press",
@@ -567,6 +630,20 @@
       "event_type": "press",
       "summary": "The head of the Bank of England's regulatory arm (PRA) said it is 'reasonable to expect quite significant disruption' to financial services from the latest AI models such as Anthropic's Mythos and ChatGPT 5.5 Instant — a notable financial-stability framing of frontier-model risk. Reuters; ties to the BoE's macroprudential AI programme.",
       "source_url": "https://www.reuters.com/sustainability/boards-policy-regulation/britains-bank-regulator-expects-quite-significant-disruption-latest-ai-models-2026-05-11/"
+    },
+    {
+      "date": "2026-05-08",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Alignment research on reducing agentic misalignment — methodology relevant to the broader AI-safety policy debate about what 'aligned' actually looks like.",
+      "source_url": "https://www.anthropic.com/research/teaching-claude-why"
+    },
+    {
+      "date": "2026-05-07",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Interpretability research — turning model internals into natural-language explanations. Interpretability is the technical underpinning of any transparency policy that requires explaining model behaviour.",
+      "source_url": "https://www.anthropic.com/research/natural-language-autoencoders"
     },
     {
       "date": "2026-05-06",
