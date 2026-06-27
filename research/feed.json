@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T16:38:49Z",
+  "lastUpdated": "2026-06-27T17:08:57Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -28,6 +28,13 @@
       "event_type": "controversy",
       "summary": "Backfill: Bartz, Graeber & Johnson v Anthropic (N.D. Cal.) — authors' copyright class action over books used to train Claude. June 2025: Alsup held training fair use but pirated-copy retention not; Sept 2025 settlement (prelim. approval) reported ~$1.5B over ~500k works, largest US copyright settlement. Settled.",
       "source_url": "https://authorsguild.org/advocacy/artificial-intelligence/what-authors-need-to-know-about-the-anthropic-settlement/"
+    },
+    {
+      "date": "2026-06-27",
+      "company_slug": "synthesia",
+      "event_type": "controversy",
+      "summary": "Backfill: Synthesia AI avatars used in state-aligned deepfake disinformation. Feb 2023 (Graphika/AFP): two Synthesia avatars ('Anna'/'Jason') fronted fake 'Wolf News' pro-China clips; 2023 Synthesia confirmed to VICE its software made pro-junta Burkina Faso 'Pan-Africanist' videos; Oct 2023 Freedom House cited misuse tied to Venezuela/China/Burkina Faso/Russia; 2024 Guardian: actor Dan Dewhirst's licensed likeness used in Venezuelan propaganda. Synthesia (subject/platform) bans such use and said Feb/Apr 2024 it tightened screening. Reported.",
+      "source_url": "https://www.theguardian.com/technology/2024/oct/16/its-not-me-its-just-my-face-the-models-who-found-their-likenesses-had-been-used-in-ai-propaganda"
     },
     {
       "date": "2026-06-26",

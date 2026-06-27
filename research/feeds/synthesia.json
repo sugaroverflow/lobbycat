@@ -1,6 +1,6 @@
 {
   "slug": "synthesia",
-  "lastUpdated": "2026-06-27T12:45:00Z",
+  "lastUpdated": "2026-06-27",
   "blurb": "Synthesia is a London-founded AI-video / synthetic-media company (AI avatars), a notable voice in the deepfake, content-provenance and AI-safety-standards debate given the dual-use nature of its technology.",
   "hiring": {
     "isHiring": true,
@@ -22,7 +22,51 @@
   ],
   "filings": [],
   "leadership": [],
-  "controversies": [],
+  "controversies": [
+    {
+      "type": "misuse_of_product",
+      "title": "Synthesia AI avatars used in state-aligned deepfake disinformation (Venezuela, China, Burkina Faso, Russia)",
+      "url": "https://www.theguardian.com/technology/2024/oct/16/its-not-me-its-just-my-face-the-models-who-found-their-likenesses-had-been-used-in-ai-propaganda",
+      "occurredAt": "2023-02-08",
+      "status": "reported",
+      "severity": "high",
+      "companyRole": "subject",
+      "summary": "From late 2022 onward, Synthesia's AI-avatar / synthetic-video technology was repeatedly used by third parties to produce deepfake 'news anchor' propaganda. In February 2023, research firm Graphika identified clips from a fictitious outlet 'Wolf News' featuring two Synthesia avatars (listed on its site as 'Anna' and 'Jason') pushing pro-China narratives. Separately, AI-generated 'Pan-Africanist' videos of supposed Americans backing Burkina Faso's military junta were confirmed by Synthesia to VICE World News (2023) to have been made with its software. An October 2023 Freedom House report stated Synthesia tools had been used by actors aligned with Venezuela, China, Burkina Faso and Russia to create fake-TV-news propaganda. A 2024 Guardian investigation surfaced the human cost: British actor Dan Dewhirst, who licensed his likeness in 2021, found his face used in the Venezuelan disinformation videos. Synthesia is the subject/platform here rather than the originator: it prohibits misinformation and 'news-like' content in its terms, and publicly stated in February 2024 that it had improved misuse-detection systems and in April 2024 that new users and their content are screened/vetted by moderators. Facts are drawn from the named outlets and reports; figures and attributions are worded as those sources state.",
+      "topics": [
+        "deepfakes",
+        "synthetic_media",
+        "disinformation",
+        "content_provenance",
+        "likeness_rights",
+        "dual_use"
+      ],
+      "rawExcerpt": null,
+      "corroboration": [
+        {
+          "outlet": "The Guardian",
+          "url": "https://www.theguardian.com/technology/2024/oct/16/its-not-me-its-just-my-face-the-models-who-found-their-likenesses-had-been-used-in-ai-propaganda",
+          "paywalled": false
+        },
+        {
+          "outlet": "VICE World News",
+          "url": "https://www.vice.com/en/article/v7vw3a/ai-generated-video-burkino-faso-coup",
+          "paywalled": false
+        },
+        {
+          "outlet": "Hong Kong Free Press / AFP",
+          "url": "https://hongkongfp.com/2023/02/08/ai-deepfake-news-anchors-found-in-pro-china-footage-on-social-media-research-firm-says/",
+          "paywalled": false
+        },
+        {
+          "outlet": "The Record (Recorded Future News)",
+          "url": "https://therecord.media/deepfake-news-anchors-spread-chinese-propaganda-on-social-media",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
   "news": [
     {
       "date": "2026-06-17",
