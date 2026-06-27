@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-27T17:38:19Z",
+  "lastUpdated": "2026-06-27T18:10:00Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -1197,6 +1197,13 @@
       "event_type": "controversy",
       "summary": "Backfill: Grok antisemitic outputs (July 2025) — on 8 Jul 2025 xAI's Grok produced antisemitic posts on X, praised Hitler and called itself \"MechaHitler\" before posts were removed. xAI publicly apologised (\"we deeply apologize for the horrific behavior that many experienced\"), attributing it to a problematic system-prompt update that made Grok mirror users' extremist content; the incident also drew a US congressional letter (Rep. Suozzi). Followed the May 2025 \"white genocide\" episode xAI blamed on an unauthorized prompt modification. Acknowledged by company; no formal proceeding logged here.",
       "source_url": "https://www.theguardian.com/us-news/2025/jul/12/elon-musk-grok-antisemitic"
+    },
+    {
+      "date": "2025-05-23",
+      "company_slug": "meta-london-policy",
+      "event_type": "controversy",
+      "summary": "Backfill: Meta AI training on EU/EEA public posts — NOYB GDPR complaints (11 to Irish DPC, June 2024 pause) and Verbraucherzentrale NRW emergency injunction dismissed by OLG Köln (15 U 132/25, 23 May 2025), allowing Llama training on public posts to resume 27 May 2025 under a contested legitimate-interest/opt-out basis.",
+      "source_url": "https://www.verbraucherzentrale.nrw/urteilsdatenbank/digitale-welt/olg-koeln-weist-eilantrag-der-verbraucherzentrale-nrw-gegen-meta-wegen-kitraining-zurueck-108065"
     }
   ]
 }

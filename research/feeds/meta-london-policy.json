@@ -5,7 +5,45 @@
   "roles": [],
   "filings": [],
   "leadership": [],
-  "controversies": [],
+  "controversies": [
+    {
+      "type": "legal_case",
+      "title": "Meta AI training on EU/EEA public posts — NOYB GDPR complaints (2024) and Verbraucherzentrale NRW injunction dismissed by OLG Köln (23 May 2025)",
+      "url": "https://www.verbraucherzentrale.nrw/urteilsdatenbank/digitale-welt/olg-koeln-weist-eilantrag-der-verbraucherzentrale-nrw-gegen-meta-wegen-kitraining-zurueck-108065",
+      "occurredAt": "2025-05-23",
+      "status": "decided",
+      "severity": "medium",
+      "companyRole": "defendant",
+      "summary": "Meta's plan to train its Llama AI models on public posts of adult EU/EEA Facebook and Instagram users (relying on a GDPR legitimate-interest basis, with an opt-out rather than opt-in) drew sustained privacy objections. In June 2024 Meta paused the EU/EEA rollout after 11 complaints by privacy group NOYB (Max Schrems) to the Irish Data Protection Commission and other supervisory authorities. Meta announced a resumption in 2025; consumer body Verbraucherzentrale NRW sought an emergency injunction to stop it. On 23 May 2025 the Higher Regional Court of Cologne (OLG Köln, case 15 U 132/25) dismissed that injunction application, allowing training to proceed from 27 May 2025. The legitimate-interest basis and opt-out model remain contested and subject to ongoing regulatory scrutiny; reported as a decided injunction matter, not a final ruling on GDPR lawfulness.",
+      "topics": [
+        "data_protection",
+        "gdpr",
+        "ai_training_data",
+        "privacy",
+        "legitimate_interest"
+      ],
+      "rawExcerpt": "Das OLG Köln hat den Antrag der Verbraucherzentrale NRW auf Erlass einer einstweiligen Verfügung gegen das KI-Training mit Nutzerdaten von Facebook und Instagram zurückgewiesen.",
+      "corroboration": [
+        {
+          "outlet": "Verbraucherzentrale NRW (Urteilsdatenbank — litigant primary record)",
+          "url": "https://www.verbraucherzentrale.nrw/urteilsdatenbank/digitale-welt/olg-koeln-weist-eilantrag-der-verbraucherzentrale-nrw-gegen-meta-wegen-kitraining-zurueck-108065",
+          "paywalled": false
+        },
+        {
+          "outlet": "Taylor Wessing (legal analysis, OLG Köln 23 May 2025)",
+          "url": "https://www.taylorwessing.com/en/insights-and-events/insights/2025/05/meta-vs-verbraucherzentrale-nrw",
+          "paywalled": false
+        },
+        {
+          "outlet": "The Register",
+          "url": "https://www.theregister.com/2025/05/22/irish_data_protection_commission_gives/",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
   "news": [
     {
       "date": "2026-06-26",
@@ -33,6 +71,6 @@
     }
   ],
   "blurb": "Meta — newsroom for company announcements, including AI products and policy positions.",
-  "lastUpdated": "2026-06-27T09:23:56Z",
+  "lastUpdated": "2026-06-27T18:10:00Z",
   "notes": "[RSS harvest 2026-06-27] https://about.fb.com/news/feed/"
 }
