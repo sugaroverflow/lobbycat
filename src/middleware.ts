@@ -1,11 +1,14 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-const PUBLIC_PATHS = ["/login", "/_next", "/favicon", "/api/health"];
+const PUBLIC_PATHS = ["/login", "/_next", "/favicon", "/api/health", "/cat"];
+const PUBLIC_FILE = /\.(?:png|jpg|jpeg|gif|svg|webp|ico)$/i;
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;
-  if (PUBLIC_PATHS.some((p) => pathname.startsWith(p))) return NextResponse.next();
+  if (PUBLIC_PATHS.some((p) => pathname.startsWith(p)) || PUBLIC_FILE.test(pathname)) {
+    return NextResponse.next();
+  }
 
   const expected = process.env.LOBBYCAT_PASSWORD;
   if (!expected) return NextResponse.next(); // no gate configured = open
@@ -20,5 +23,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|cat/|.*\\.(?:png|jpg|jpeg|gif|svg|webp|ico)$).*)"],
 };
