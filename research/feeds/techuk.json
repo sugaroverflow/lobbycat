@@ -1,6 +1,6 @@
 {
   "slug": "techuk",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-06-28T14:30:00Z",
   "blurb": "UK technology trade association with regular AI-policy analysis. Launch coverage uses first-party EU/UK AI regulation briefings.",
   "hiring": {
     "isHiring": null,
@@ -24,12 +24,92 @@
       "byline": "techUK policy team",
       "source": "first_party",
       "summary": "techUK briefs members on the UK Government response to the AI White Paper consultation and the pro-innovation/context-based regulatory approach."
+    },
+    {
+      "date": "2026-06-08",
+      "title": "UK industries unite to accelerate AI adoption",
+      "url": "https://www.techuk.org/resource/uk-industries-unite-to-accelerate-ai-adoption.html",
+      "type": "press",
+      "byline": "techUK",
+      "source": "first_party",
+      "summary": "techUK announces an AI Adoption Coalition across Industrial Strategy sectors to share responsible-adoption practice, surface common barriers and engage government on delivery of sectoral AI Adoption Plans."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "If generative AI changed how we produce content, agentic AI will change how we work",
+      "url": "https://www.techuk.org/resource/if-generative-ai-changed-how-we-produce-content-agentic-ai-will-change-how-we-work.html",
+      "type": "blog",
+      "byline": "Chris Hayward",
+      "source": "first_party",
+      "summary": "A techUK-hosted City of London policy essay argues that responsible agentic-AI deployment depends on governance, auditability, workforce capability and clear accountability, especially in regulated financial and professional services."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Agentic AI needs privacy-preserving infrastructure for real-world success",
+      "url": "https://www.techuk.org/resource/agentic-ai-needs-privacy-preserving-infrastructure-for-real-world-success.html",
+      "type": "blog",
+      "byline": "Jiahao Sun",
+      "source": "first_party",
+      "summary": "techUK-hosted industry view on agentic-AI governance argues that privacy-preserving infrastructure, federated learning and strong controls are needed for production deployment in sensitive sectors."
+    },
+    {
+      "date": "2026-06-16",
+      "title": "Agentic AI: The Shift from Task Automation to Service Orchestration",
+      "url": "https://www.techuk.org/resource/agentic-ai-the-shift-from-task-automation-to-service-orchestration.html",
+      "type": "blog",
+      "byline": "Erica Livermore",
+      "source": "first_party",
+      "summary": "techUK-hosted industry view frames agentic AI as a public-sector and regulated-services governance problem, stressing identity, data controls, observability, accountability and human intervention."
+    },
+    {
+      "date": "2026-02-03",
+      "title": "The release of the international AI safety report 2026: navigating rapid AI advancement and emerging risks",
+      "url": "https://www.techuk.org/resource/the-release-of-the-international-ai-safety-report-2026-navigating-rapid-ai-advancement-and-emerging-risks.html",
+      "type": "blog",
+      "byline": "Usman Ikhlaq, Tess Buckley",
+      "source": "first_party",
+      "summary": "techUK summarises the International AI Safety Report 2026, highlighting frontier capability advances, bio/cyber misuse risks and governance challenges ahead of India’s AI Impact Summit."
+    },
+    {
+      "date": "2026-06-09",
+      "title": "DSIT's AI Assurance Roadmap Takes its Next Step: techUK to Lead the Industry Advisory Group of AI Assurance Consortium",
+      "url": "https://www.techuk.org/resource/dsit-s-ai-assurance-roadmap-takes-its-next-step-techuk-to-lead-the-industry-advisory-group-of-ai-assurance-consortium.html",
+      "type": "blog",
+      "byline": "techUK",
+      "source": "first_party",
+      "summary": "techUK to lead the Industry Advisory Group of the new DSIT-backed, BCS-chaired AI Assurance Consortium — a direct AI assurance/governance role."
+    },
+    {
+      "date": "2026-06-25",
+      "title": "DCMS published its long-awaited Media Green Paper",
+      "url": "https://www.techuk.org/resource/dcms-published-its-long-awaited-media-green-paper.html",
+      "type": "blog",
+      "byline": "Ian Corden (guest)",
+      "source": "first_party",
+      "summary": "Summarises the DCMS Media Green Paper and flags its open consultation (responses due 31 Aug 2026)."
+    },
+    {
+      "date": "2026-06-26",
+      "title": "Northern Growth Strategy: call for consultation responses",
+      "url": "https://www.techuk.org/resource/northern-growth-strategy-call-for-consultation-responses.html",
+      "type": "other",
+      "byline": "techUK",
+      "source": "first_party",
+      "summary": "techUK call for member input into the Government's North of England Growth Strategy consultation."
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on EU Code first-party resource.",
-  "news": []
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on EU Code first-party resource. followup_harvest 2026-06-28: direct techUK/GOV.UK fetches verified 2026-06 recent AI-adoption and agentic-AI governance items; suggested newsletters treated as discovery only. followup_harvest 2026-06-28: added three more verified June 2026 techUK items (AI Assurance Consortium role, DCMS Media Green Paper consultation, Northern Growth Strategy call).",
+  "news": [
+    {
+      "date": "2026-06-08",
+      "title": "Government to partner with tech companies, trade unions and industry leaders to boost AI adoption and equip workers with AI skills",
+      "url": "https://www.gov.uk/government/news/government-to-partner-with-tech-companies-trade-unions-and-industry-leaders-to-boost-ai-adoption-and-equip-workers-with-ai-skills",
+      "source": "gov.uk",
+      "summary": "GOV.UK names techUK as convening UK trade associations for an AI Adoption Coalition alongside the government’s AI Adoption Summit package and sectoral AI Adoption Plans."
+    }
+  ]
 }

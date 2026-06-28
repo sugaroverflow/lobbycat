@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T13:38:50Z",
+  "lastUpdated": "2026-06-28T14:08:26Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -107,6 +107,13 @@
       "source_url": "https://faculty.ai/en-gb/insights/articles/beyond-manual-red-teaming-scaling-model-safety-with-automated-red-teaming-emulation-system"
     },
     {
+      "date": "2026-06-26",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "techUK call for member input into the Government's North of England Growth Strategy consultation.",
+      "source_url": "https://www.techuk.org/resource/northern-growth-strategy-call-for-consultation-responses.html"
+    },
+    {
       "date": "2026-06-25",
       "company_slug": "centre-for-future-generations",
       "event_type": "publication",
@@ -119,6 +126,13 @@
       "event_type": "publication",
       "summary": "ODI report presenting a framework for making enterprise data AI-ready.",
       "source_url": "https://theodi.org/insights/reports/a-framework-for-ai-ready-enterprise-data/"
+    },
+    {
+      "date": "2026-06-25",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "Summarises the DCMS Media Green Paper and flags its open consultation (responses due 31 Aug 2026).",
+      "source_url": "https://www.techuk.org/resource/dcms-published-its-long-awaited-media-green-paper.html"
     },
     {
       "date": "2026-06-24",
@@ -168,6 +182,20 @@
       "event_type": "controversy",
       "summary": "Backfill: Getty Images v Stability AI, UK High Court [2025] EWHC 2863 (Ch), 4 Nov 2025 — first major UK copyright/genAI ruling; mixed result (Stability won secondary-infringement, Getty won a limited watermark trademark point).",
       "source_url": "https://www.judiciary.uk/judgments/getty-images-v-stability-ai/"
+    },
+    {
+      "date": "2026-06-24",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Microsoft describes an AI-assisted Digital Crimes Unit action against Amadey and StealC infrastructure, including Europol/industry coordination and expanded RICO legal strategy for cybercrime disruption.",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/24/scaling-cybercrime-disruption-through-innovation-and-ai/"
+    },
+    {
+      "date": "2026-06-24",
+      "company_slug": "fca-ai",
+      "event_type": "publication",
+      "summary": "FCA chief executive Nikhil Rathi argues that agentic AI, tokenisation, frontier-model dependencies and cyber resilience require a more collaborative, system-wide regulatory posture for UK financial services.",
+      "source_url": "https://www.fca.org.uk/news/speeches/rethinking-regulation-age-ai"
     },
     {
       "date": "2026-06-23",
@@ -387,6 +415,27 @@
       "source_url": "https://blogs.microsoft.com/eupolicy/2026/06/16/ai-for-europe-in-europes-own-languages/"
     },
     {
+      "date": "2026-06-16",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "A techUK-hosted City of London policy essay argues that responsible agentic-AI deployment depends on governance, auditability, workforce capability and clear accountability, especially in regulated financial and professional services.",
+      "source_url": "https://www.techuk.org/resource/if-generative-ai-changed-how-we-produce-content-agentic-ai-will-change-how-we-work.html"
+    },
+    {
+      "date": "2026-06-16",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "techUK-hosted industry view on agentic-AI governance argues that privacy-preserving infrastructure, federated learning and strong controls are needed for production deployment in sensitive sectors.",
+      "source_url": "https://www.techuk.org/resource/agentic-ai-needs-privacy-preserving-infrastructure-for-real-world-success.html"
+    },
+    {
+      "date": "2026-06-16",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "techUK-hosted industry view frames agentic AI as a public-sector and regulated-services governance problem, stressing identity, data controls, observability, accountability and human intervention.",
+      "source_url": "https://www.techuk.org/resource/agentic-ai-the-shift-from-task-automation-to-service-orchestration.html"
+    },
+    {
       "date": "2026-06-15",
       "company_slug": "ada-lovelace-institute",
       "event_type": "press",
@@ -520,6 +569,13 @@
       "source_url": "https://cohere.com/blog/north-mini-code"
     },
     {
+      "date": "2026-06-09",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "techUK to lead the Industry Advisory Group of the new DSIT-backed, BCS-chaired AI Assurance Consortium — a direct AI assurance/governance role.",
+      "source_url": "https://www.techuk.org/resource/dsit-s-ai-assurance-roadmap-takes-its-next-step-techuk-to-lead-the-industry-advisory-group-of-ai-assurance-consortium.html"
+    },
+    {
       "date": "2026-06-08",
       "company_slug": "aisi",
       "event_type": "press",
@@ -546,6 +602,27 @@
       "event_type": "press",
       "summary": "NHS England press release announcing a national rollout of AI tools to half a million NHS staff to reduce admin and free up time for patient care.",
       "source_url": "https://www.england.nhs.uk/2026/06/500000-nhs-staff-to-get-new-artificial-intelligence-tools-to-help-free-up-more-time-for-patients/"
+    },
+    {
+      "date": "2026-06-08",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "techUK announces an AI Adoption Coalition across Industrial Strategy sectors to share responsible-adoption practice, surface common barriers and engage government on delivery of sectoral AI Adoption Plans.",
+      "source_url": "https://www.techuk.org/resource/uk-industries-unite-to-accelerate-ai-adoption.html"
+    },
+    {
+      "date": "2026-06-08",
+      "company_slug": "techuk",
+      "event_type": "press",
+      "summary": "GOV.UK names techUK as convening UK trade associations for an AI Adoption Coalition alongside the government’s AI Adoption Summit package and sectoral AI Adoption Plans.",
+      "source_url": "https://www.gov.uk/government/news/government-to-partner-with-tech-companies-trade-unions-and-industry-leaders-to-boost-ai-adoption-and-equip-workers-with-ai-skills"
+    },
+    {
+      "date": "2026-06-08",
+      "company_slug": "fca-ai",
+      "event_type": "publication",
+      "summary": "The FCA says it will not introduce new AI-specific rules for financial services, instead using existing frameworks while gathering evidence through its AI Input Zone, AI Lab, Supercharged Sandbox and AI Live Testing.",
+      "source_url": "https://www.fca.org.uk/news/blogs/ai-financial-services-approach"
     },
     {
       "date": "2026-06-04",
@@ -637,6 +714,13 @@
       "event_type": "publication",
       "summary": "Proposes 'digital embassies' as a strategic mechanism for states to maintain resilience, security, sovereignty and operational continuity in the age of AI.",
       "source_url": "https://institute.global/insights/tech-and-digitalisation/digital-embassies-and-ai-sovereignty-building-resilient-states-beyond-borders"
+    },
+    {
+      "date": "2026-05-27",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Digital-safety policy update on detecting and removing non-consensual intimate imagery.",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/05/27/strengthening-our-approach-to-tackling-non-consensual-intimate-imagery/"
     },
     {
       "date": "2026-05-25",
@@ -807,6 +891,13 @@
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/05/05/advancing-ai-evaluation-with-the-center-for-ai-standards-us-and-innovation-and-the-ai-security-institute-uk/"
     },
     {
+      "date": "2026-05-01",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Security and governance framing for deploying next-generation AI across the digital ecosystem.",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/05/01/from-capability-to-responsibility-securing-our-global-digital-ecosystem-with-next-generation-ai/"
+    },
+    {
       "date": "2026-04-30",
       "company_slug": "cetas",
       "event_type": "publication",
@@ -826,6 +917,13 @@
       "event_type": "publication",
       "summary": "Nature paper (vol 652, 2026) finding that optimising LLMs for warmth can trade off against accuracy and increase sycophancy.",
       "source_url": "http://dx.doi.org/10.1038/s41586-026-10410-0"
+    },
+    {
+      "date": "2026-04-29",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Anniversary review of Microsoft’s European Digital Commitments on sovereignty, data and AI governance.",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/04/29/one-year-on-progress-on-our-european-digital-commitments/"
     },
     {
       "date": "2026-04-28",
@@ -926,11 +1024,25 @@
       "source_url": "https://www.turing.ac.uk/news/turing-chair-doug-gurr-step-down-following-appointment-permanent-cma-role"
     },
     {
+      "date": "2026-04-03",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Microsoft criticises EU legislative inaction on CSAM detection and restates its voluntary child-safety measures.",
+      "source_url": "https://blogs.microsoft.com/eupolicy/2026/04/03/reaffirming-our-commitment-to-child-safety-in-the-face-of-european-union-inaction/"
+    },
+    {
       "date": "2026-04-01",
       "company_slug": "bank-of-england-ai",
       "event_type": "press",
       "summary": "The Bank's formal response to the Treasury Select Committee's inquiry on AI in financial services; the PRA has highlighted AI adoption in its 2026 supervisory priorities and is running a macroprudential programme on AI's system-level impact. First-party BoE document.",
       "source_url": "https://www.bankofengland.co.uk/-/media/boe/files/letter/2026/response-to-tsc-inquiry-report-on-ai-in-financial-services"
+    },
+    {
+      "date": "2026-03-31",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Microsoft announces UK Azure changes on data egress, switching and interoperability in response to the CMA Cloud Market Investigation — a directly UK-relevant competition/regulatory move.",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/03/31/working-constructively-with-the-uk-cma-to-support-customer-choice-and-cloud-competition/"
     },
     {
       "date": "2026-03-25",
@@ -1015,6 +1127,13 @@
       "event_type": "publication",
       "summary": "CETaS-hosted release of the International AI Safety Report 2026, covering international governance, AI safety and security, and regulation themes.",
       "source_url": "https://cetas.turing.ac.uk/institutional-publication/international-ai-safety-report-2026"
+    },
+    {
+      "date": "2026-02-03",
+      "company_slug": "techuk",
+      "event_type": "publication",
+      "summary": "techUK summarises the International AI Safety Report 2026, highlighting frontier capability advances, bio/cyber misuse risks and governance challenges ahead of India’s AI Impact Summit.",
+      "source_url": "https://www.techuk.org/resource/the-release-of-the-international-ai-safety-report-2026-navigating-rapid-ai-advancement-and-emerging-risks.html"
     },
     {
       "date": "2026-02-01",
