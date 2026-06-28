@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T12:38:33Z",
+  "lastUpdated": "2026-06-28T13:38:50Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -595,6 +595,13 @@
       "event_type": "press",
       "summary": "DeepMind 'Company'-category announcement on its European robotics push. Activity/stage signal; low policy content.",
       "source_url": "https://deepmind.google/blog/"
+    },
+    {
+      "date": "2026-06-01",
+      "company_slug": "demos",
+      "event_type": "press",
+      "summary": "Demos polling blog; fieldwork conducted 30 April - 6 May 2026.",
+      "source_url": "https://demos.co.uk/blogs/one-in-three-uk-adults-report-seeing-political-deepfakes-in-the-month-before-local-elections/"
     },
     {
       "date": "2026-05-30",
