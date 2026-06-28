@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T09:39:05Z",
+  "lastUpdated": "2026-06-28T10:09:47Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -723,6 +723,13 @@
       "source_url": "https://www.nesta.org.uk/blog/the-energy-edit-3/"
     },
     {
+      "date": "2026-05-11",
+      "company_slug": "ada-lovelace-institute",
+      "event_type": "publication",
+      "summary": "Policy briefing interrogating productivity claims made for AI in UK public services — an AI-evaluation lens on government adoption hype.",
+      "source_url": "https://www.adalovelaceinstitute.org/policy-briefing/measuring-up/"
+    },
+    {
       "date": "2026-05-08",
       "company_slug": "anthropic-london",
       "event_type": "publication",
@@ -849,6 +856,13 @@
       "source_url": "https://docs.poly.ai/legal/compliance"
     },
     {
+      "date": "2026-04-13",
+      "company_slug": "ada-lovelace-institute",
+      "event_type": "publication",
+      "summary": "Landscape review of AI tools in career guidance, examining public-sector deployment and equity implications.",
+      "source_url": "https://www.adalovelaceinstitute.org/report/navigating-the-future/"
+    },
+    {
       "date": "2026-04-10",
       "company_slug": "centre-for-future-generations",
       "event_type": "publication",
@@ -938,6 +952,13 @@
       "event_type": "publication",
       "summary": "CLTR's ten benchmarks for best-in-class national risk-preparedness exercising, set ahead of the UK's Exercise Pegasus.",
       "source_url": "https://www.longtermresilience.org/reports/ten-things-we-want-to-see-from-exercise-pegasus/"
+    },
+    {
+      "date": "2026-02-11",
+      "company_slug": "ada-lovelace-institute",
+      "event_type": "publication",
+      "summary": "Report on AI transcription tools in social care — bias and evaluation risks in a sensitive public-sector setting.",
+      "source_url": "https://www.adalovelaceinstitute.org/report/scribe-and-prejudice/"
     },
     {
       "date": "2026-02-09",
