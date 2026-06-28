@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T09:08:21Z",
+  "lastUpdated": "2026-06-28T09:39:05Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -891,6 +891,13 @@
       "source_url": "https://www.bankofengland.co.uk/-/media/boe/files/letter/2026/response-to-tsc-inquiry-report-on-ai-in-financial-services"
     },
     {
+      "date": "2026-03-25",
+      "company_slug": "public-io",
+      "event_type": "publication",
+      "summary": "PUBLIC article on how AI could reshape the evaluation of government policy and digital projects.",
+      "source_url": "https://www.public.io/blog-post/ai-and-the-future-of-policy-evaluation"
+    },
+    {
       "date": "2026-03-20",
       "company_slug": "bbc-responsible-ai",
       "event_type": "publication",
@@ -1029,6 +1036,13 @@
       "event_type": "publication",
       "summary": "Proposes a method for translating model capability evaluations into actual bioterrorism risk assessments rather than treating capability as risk directly.",
       "source_url": "https://www.governance.ai/research-paper/dual-use-ai-capabilities-and-the-risk-of-bioterrorism-converting-capability-evaluations-to-risk-assessments"
+    },
+    {
+      "date": "2025-12-10",
+      "company_slug": "public-io",
+      "event_type": "publication",
+      "summary": "Report commissioned by Paladin Capital Group, delivered with Perspective Economics and Prof. Mary Aiken, presenting a global analysis of the Safety Tech sector.",
+      "source_url": "https://www.public.io/report-post/the-international-state-of-safety-tech-2025"
     },
     {
       "date": "2025-12-03",
