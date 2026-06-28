@@ -5,7 +5,7 @@
   "hiring": {},
   "publications": [
     {
-      "date": null,
+      "date": "2025-05-06",
       "title": "Research Agenda",
       "url": "https://www.aisi.gov.uk/blog/research-agenda",
       "type": "paper",
@@ -13,7 +13,7 @@
       "summary": "AISI sets out its research priorities and approach to technical solutions for the most pressing AI risks as capabilities advance — the closest thing to a UK government statement of frontier-AI-risk posture."
     },
     {
-      "date": null,
+      "date": "2026-04-30",
       "title": "Our evaluation of OpenAI's GPT-5.5 cyber capabilities",
       "url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
       "type": "paper",
@@ -21,7 +21,7 @@
       "summary": "AISI cyber evaluation finding GPT-5.5 among the strongest models tested, and the second to solve a multi-step cyber-attack simulation end-to-end — a concrete capability-evaluation data point feeding deployment policy."
     },
     {
-      "date": null,
+      "date": "2024-09-19",
       "title": "Conference on frontier AI safety frameworks",
       "url": "https://www.aisi.gov.uk/blog/conference-on-frontier-ai-safety-frameworks",
       "type": "paper",
@@ -29,7 +29,7 @@
       "summary": "AISI convenes AI companies and researchers to accelerate the design and implementation of frontier AI safety frameworks — government-led coordination on RSP-style commitments."
     },
     {
-      "date": null,
+      "date": "2024-08-23",
       "title": "Safety cases at AISI",
       "url": "https://www.aisi.gov.uk/blog/safety-cases-at-aisi",
       "type": "paper",
@@ -78,5 +78,5 @@
       "summary": "AISI partners with Microsoft on frontier-AI safety — a state-evaluator/industry collaboration worth watching for how government testing bodies work with the labs they assess."
     }
   ],
-  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. [date refine 2026-06-28] The 4 previously-null publications now carry per-page byline-verified dates (each blog page's own '— <author> — <date>' lede text, HTTP 200): Research Agenda 2025-05-06, GPT-5.5 cyber eval 2026-04-30, frontier-AI-safety-frameworks conference 2024-09-19, Safety cases 2024-08-23. Distinguished the real byline from the shared 'we changed our name to the AI Security Institute on 14 February 2025' footer note, which is NOT a post date."
 }

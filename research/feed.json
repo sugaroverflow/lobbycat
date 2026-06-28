@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T07:38:52Z",
+  "lastUpdated": "2026-06-28T08:09:10Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -779,6 +779,13 @@
       "source_url": "https://cetas.turing.ac.uk/publications/future-AI-paradigms"
     },
     {
+      "date": "2026-04-30",
+      "company_slug": "aisi",
+      "event_type": "publication",
+      "summary": "AISI cyber evaluation finding GPT-5.5 among the strongest models tested, and the second to solve a multi-step cyber-attack simulation end-to-end — a concrete capability-evaluation data point feeding deployment policy.",
+      "source_url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities"
+    },
+    {
       "date": "2026-04-28",
       "company_slug": "chatham-house-ai",
       "event_type": "publication",
@@ -1241,6 +1248,13 @@
       "source_url": "https://institute.global/insights/politics-and-governance/governing-in-the-age-of-ai-reimagining-local-government"
     },
     {
+      "date": "2025-05-06",
+      "company_slug": "aisi",
+      "event_type": "publication",
+      "summary": "AISI sets out its research priorities and approach to technical solutions for the most pressing AI risks as capabilities advance — the closest thing to a UK government statement of frontier-AI-risk posture.",
+      "source_url": "https://www.aisi.gov.uk/blog/research-agenda"
+    },
+    {
       "date": "2025-04-27",
       "company_slug": "nhs-ai-transformation",
       "event_type": "publication",
@@ -1386,6 +1400,20 @@
       "event_type": "press",
       "summary": "Onward press item arguing the UK should build a national 'British data library' to compete in AI.",
       "source_url": "https://ukonward.com/press/the-uk-needs-to-build-a-british-data-library-to-become-an-ai-leader/"
+    },
+    {
+      "date": "2024-09-19",
+      "company_slug": "aisi",
+      "event_type": "publication",
+      "summary": "AISI convenes AI companies and researchers to accelerate the design and implementation of frontier AI safety frameworks — government-led coordination on RSP-style commitments.",
+      "source_url": "https://www.aisi.gov.uk/blog/conference-on-frontier-ai-safety-frameworks"
+    },
+    {
+      "date": "2024-08-23",
+      "company_slug": "aisi",
+      "event_type": "publication",
+      "summary": "AISI sketches structured 'safety case' arguments for more advanced models than exist today, focused on loss-of-control and autonomy risk — a methodological bet on how frontier safety should be evidenced.",
+      "source_url": "https://www.aisi.gov.uk/blog/safety-cases-at-aisi"
     },
     {
       "date": "2024-08-01",
