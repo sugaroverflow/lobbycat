@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T08:09:10Z",
+  "lastUpdated": "2026-06-28T08:38:20Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -786,6 +786,13 @@
       "source_url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities"
     },
     {
+      "date": "2026-04-29",
+      "company_slug": "oxford-internet-institute",
+      "event_type": "publication",
+      "summary": "Nature paper (vol 652, 2026) finding that optimising LLMs for warmth can trade off against accuracy and increase sycophancy.",
+      "source_url": "http://dx.doi.org/10.1038/s41586-026-10410-0"
+    },
+    {
       "date": "2026-04-28",
       "company_slug": "chatham-house-ai",
       "event_type": "publication",
@@ -856,6 +863,13 @@
       "source_url": "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2"
     },
     {
+      "date": "2026-04-07",
+      "company_slug": "oxford-internet-institute",
+      "event_type": "publication",
+      "summary": "Global Policy article (2026) proposing a framework to assess and compare international AI governance initiatives.",
+      "source_url": "http://dx.doi.org/10.1111/1758-5899.70164"
+    },
+    {
       "date": "2026-04-03",
       "company_slug": "alan-turing-institute",
       "event_type": "press",
@@ -910,6 +924,13 @@
       "event_type": "publication",
       "summary": "CLTR's ten benchmarks for best-in-class national risk-preparedness exercising, set ahead of the UK's Exercise Pegasus.",
       "source_url": "https://www.longtermresilience.org/reports/ten-things-we-want-to-see-from-exercise-pegasus/"
+    },
+    {
+      "date": "2026-02-09",
+      "company_slug": "oxford-internet-institute",
+      "event_type": "publication",
+      "summary": "Nature Medicine (vol 32, 2026) randomized preregistered study assessing reliability of large language models as medical assistants for general public use.",
+      "source_url": "http://dx.doi.org/10.1038/s41591-025-04074-y"
     },
     {
       "date": "2026-02-03",

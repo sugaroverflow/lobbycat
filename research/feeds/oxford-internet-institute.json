@@ -5,7 +5,7 @@
   "hiring": {},
   "publications": [
     {
-      "date": null,
+      "date": "2026-04-29",
       "title": "Training language models to be warm can reduce accuracy and increase sycophancy",
       "url": "http://dx.doi.org/10.1038/s41586-026-10410-0",
       "type": "paper",
@@ -13,7 +13,7 @@
       "summary": "Nature paper (vol 652, 2026) finding that optimising LLMs for warmth can trade off against accuracy and increase sycophancy."
     },
     {
-      "date": null,
+      "date": "2026-02-09",
       "title": "Reliability of LLMs as medical assistants for the general public: a randomized preregistered study",
       "url": "http://dx.doi.org/10.1038/s41591-025-04074-y",
       "type": "paper",
@@ -21,7 +21,7 @@
       "summary": "Nature Medicine (vol 32, 2026) randomized preregistered study assessing reliability of large language models as medical assistants for general public use."
     },
     {
-      "date": null,
+      "date": "2026-04-07",
       "title": "A Framework for Evaluating Global AI Governance Initiatives",
       "url": "http://dx.doi.org/10.1111/1758-5899.70164",
       "type": "paper",
