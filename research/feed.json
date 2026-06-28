@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T11:08:37Z",
+  "lastUpdated": "2026-06-28T12:08:59Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -98,6 +98,13 @@
       "event_type": "publication",
       "summary": "Argues economic renewal depends on rebuilding the relationship between citizens, markets and the state, treating citizens as active contributors rather than passive recipients. PDF dated June 2026 (exact day not stated on page).",
       "source_url": "https://demos.co.uk/research/citizens-economy-a-new-deal-to-power-economic-growth-and-rebuild-trust-between-state-and-citizen/"
+    },
+    {
+      "date": "2026-06-26",
+      "company_slug": "faculty-ai",
+      "event_type": "publication",
+      "summary": "Faculty on automating red-teaming for model safety — an AI-assurance/evaluations capability, relevant given Faculty's safety work with UK bodies. Listing showed no inline date for this item; date left null.",
+      "source_url": "https://faculty.ai/en-gb/insights/articles/beyond-manual-red-teaming-scaling-model-safety-with-automated-red-teaming-emulation-system"
     },
     {
       "date": "2026-06-25",
@@ -1645,6 +1652,13 @@
       "event_type": "controversy",
       "summary": "Backfill: Faculty (formerly ASI Data Science) — Vote Leave AI firm with ties to Dominic Cummings/senior Tory figures won ≥7 government contracts (~£1m) in 18 months (Guardian, 4 May 2020); Cabinet Office minister Theodore Agnew's £90k Faculty shareholding flagged as a conflict of interest; later FOI'd over NHSX contact-tracing app and Palantir-adjacent NHS COVID datastore work. Procurement/conflict-of-interest scrutiny; no formal sanction reported.",
       "source_url": "https://www.theguardian.com/world/2020/may/04/vote-leave-ai-firm-wins-seven-government-contracts-in-18-months"
+    },
+    {
+      "date": "2018-08-13",
+      "company_slug": "benevolentai",
+      "event_type": "publication",
+      "summary": "BenevolentAI hosts a publication/commentary on artificial intelligence in drug discovery, reflecting on AI/ML methods, their relevance across drug discovery and the need to manage expectations.",
+      "source_url": "https://www.benevolent.com/about-us/publications/artificial-intelligence-drug-discovery/"
     }
   ]
 }
