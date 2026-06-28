@@ -8,7 +8,16 @@
     "londonPolicyRoles": 1,
     "lastChecked": "2026-06-27"
   },
-  "publications": [],
+  "publications": [
+    {
+      "date": "2023-05-10",
+      "title": "HumanRF: High-Fidelity Neural Radiance Fields for Humans in Motion (introduces the ActorsHQ dataset)",
+      "url": "https://arxiv.org/abs/2305.06356",
+      "type": "paper",
+      "byline": "Synthesia (Mustafa Işık, Martin Rünz, Jonathan Starck, Lourdes Agapito, Matthias Nießner et al.)",
+      "summary": "Synthesia research team's flagship academic output: HumanRF, a 4D dynamic neural scene representation that reconstructs full-body human appearance in motion at 12MP from multi-view video and enables novel-view playback. The same paper introduces ActorsHQ, a 160-camera, 12MP multi-view dataset of 16 sequences with per-frame mesh reconstructions. arXiv 2305.06356 (cs.CV/cs.GR/cs.LG); submission date verified from the arXiv abs page, not the /research listing. Authored by Synthesia's research group incl. Chief Scientist Jonathan Starck with Prof. Matthias Nießner and Prof. Lourdes Agapito."
+    }
+  ],
   "roles": [
     {
       "title": "Product Counsel",
