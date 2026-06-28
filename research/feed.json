@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T06:38:56Z",
+  "lastUpdated": "2026-06-28T07:09:07Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -1388,6 +1388,13 @@
       "source_url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review"
     },
     {
+      "date": "2024-04-11",
+      "company_slug": "cma-dmu",
+      "event_type": "publication",
+      "summary": "Update paper in the CMA's AI Foundation Models review, setting out evolving concerns about potential competition risks (including concentration of compute, data and expertise, and the role of large incumbents) and proposing principles to guide competitive FM markets.",
+      "source_url": "https://www.gov.uk/government/publications/ai-foundation-models-update-paper"
+    },
+    {
       "date": "2024-03-27",
       "company_slug": "ippr",
       "event_type": "press",
@@ -1449,6 +1456,13 @@
       "event_type": "publication",
       "summary": "BBC R&D explains media provenance techniques (watermarks, fingerprints, C2PA-hashed metadata) and Project Origin work to help audiences assess content authenticity.",
       "source_url": "https://www.bbc.co.uk/rd/articles/2023-10-media-provenance-watermarks-fingerprints-deepfake"
+    },
+    {
+      "date": "2023-09-18",
+      "company_slug": "cma-dmu",
+      "event_type": "publication",
+      "summary": "CMA's initial review of AI foundation models, mapping the technical landscape, identifying competition and consumer-protection risks, and proposing guiding principles (accountability, access, diversity, choice, flexibility, fair dealing, transparency).",
+      "source_url": "https://www.gov.uk/government/publications/ai-foundation-models-initial-report"
     },
     {
       "date": "2023-05-10",
