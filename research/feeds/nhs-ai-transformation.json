@@ -3,7 +3,24 @@
   "lastUpdated": "2026-06-27T09:18:00Z",
   "blurb": "NHS England, the body overseeing the NHS in England, including national rollout of AI tools across health and care services.",
   "hiring": {},
-  "publications": [],
+  "publications": [
+    {
+      "date": "2025-04-27",
+      "title": "Guidance on the use of AI-enabled ambient scribing products in health and care settings",
+      "url": "https://www.england.nhs.uk/long-read/guidance-on-the-use-of-ai-enabled-ambient-scribing-products-in-health-and-care-settings/",
+      "type": "policy_report",
+      "byline": "NHS England (Transformation Directorate)",
+      "summary": "First-party NHS England / Transformation Directorate guidance (information-governance focus, Publication reference PRN01734) for health and care organisations adopting AI-enabled ambient scribing (AVT) products, covering DCB0160/DPIA documentation, supplier/AVT register checks, clinical safety and lawful data use."
+    },
+    {
+      "date": "2025-03-28",
+      "title": "Artificial intelligence (AI) and machine learning (good practice guidelines for GP electronic patient records)",
+      "url": "https://www.england.nhs.uk/long-read/artificial-intelligence-ai-and-machine-learning/",
+      "type": "policy_report",
+      "byline": "NHS England",
+      "summary": "NHS England guidance (Version 1.2) within the 'Working in a digitally transformed NHS' good-practice guidelines for GP electronic patient records, setting expectations for the safe and appropriate use of AI and machine-learning tools in primary care."
+    }
+  ],
   "roles": [],
   "filings": [],
   "leadership": [],
@@ -24,5 +41,5 @@
       "summary": "NHS England news on how AI deployments are improving patient care and support across services."
     }
   ],
-  "notes": "Sourced from NHS England's own /news/feed/ RSS and on-site search; per-item pub dates confirmed from each page's <time datetime> attribute (2026-06-08 and 2024-12-12). NHS England press items are first-party press. No controversies where NHS England is a named legal party found in this window."
+  "notes": "Sourced from NHS England's own /news/feed/ RSS and on-site search; per-item pub dates confirmed from each page's <time datetime> attribute (2026-06-08 and 2024-12-12). NHS England press items are first-party press. No controversies where NHS England is a named legal party found in this window. publications[] backfilled 2026-06-28 with two first-party NHS England / Transformation Directorate AI guidance documents, each date-verified from the page's own rendered text (ambient scribing: 'published: 27 April, 2025', Publication reference PRN01734_i, HTTP 200; AI & machine learning GP-records guidance: 'Version 1.2 28 March 2025', HTTP 200). Both are distinct from the press items in news[]. type=policy_report (guidance/policy output, not academic research)."
 }

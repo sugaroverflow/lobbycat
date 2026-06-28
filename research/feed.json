@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T07:09:07Z",
+  "lastUpdated": "2026-06-28T07:38:52Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -1241,6 +1241,13 @@
       "source_url": "https://institute.global/insights/politics-and-governance/governing-in-the-age-of-ai-reimagining-local-government"
     },
     {
+      "date": "2025-04-27",
+      "company_slug": "nhs-ai-transformation",
+      "event_type": "publication",
+      "summary": "First-party NHS England / Transformation Directorate guidance (information-governance focus, Publication reference PRN01734) for health and care organisations adopting AI-enabled ambient scribing (AVT) products, covering DCB0160/DPIA documentation, supplier/AVT register checks, clinical safety and lawful data use.",
+      "source_url": "https://www.england.nhs.uk/long-read/guidance-on-the-use-of-ai-enabled-ambient-scribing-products-in-health-and-care-settings/"
+    },
+    {
       "date": "2025-04-09",
       "company_slug": "bank-of-england-ai",
       "event_type": "publication",
@@ -1253,6 +1260,13 @@
       "event_type": "publication",
       "summary": "Argues the UK can support artists, encourage responsible AI use and unlock economic growth by modernising its copyright law for the AI era.",
       "source_url": "https://institute.global/insights/tech-and-digitalisation/rebooting-copyright-how-the-uk-can-be-a-global-leader-in-the-arts-and-ai"
+    },
+    {
+      "date": "2025-03-28",
+      "company_slug": "nhs-ai-transformation",
+      "event_type": "publication",
+      "summary": "NHS England guidance (Version 1.2) within the 'Working in a digitally transformed NHS' good-practice guidelines for GP electronic patient records, setting expectations for the safe and appropriate use of AI and machine-learning tools in primary care.",
+      "source_url": "https://www.england.nhs.uk/long-read/artificial-intelligence-ai-and-machine-learning/"
     },
     {
       "date": "2025-03-01",
