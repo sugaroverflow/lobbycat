@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T10:38:38Z",
+  "lastUpdated": "2026-06-28T11:08:37Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -1213,6 +1213,13 @@
       "source_url": "https://www.fca.org.uk/publications/feedback-statements/fs25-5-ai-live-testing"
     },
     {
+      "date": "2025-09-09",
+      "company_slug": "cltr",
+      "event_type": "publication",
+      "summary": "CLTR-RAND introduce the first Global Risk Index for AI-enabled biological tools — a framework to assess the AI-bio risk frontier.",
+      "source_url": "https://www.longtermresilience.org/reports/global-risk-index-for-ai-enabled-biological-tools/"
+    },
+    {
       "date": "2025-09-04",
       "company_slug": "royal-society-policy",
       "event_type": "publication",
@@ -1484,6 +1491,13 @@
       "event_type": "press",
       "summary": "Onward press item arguing the UK should build a national 'British data library' to compete in AI.",
       "source_url": "https://ukonward.com/press/the-uk-needs-to-build-a-british-data-library-to-become-an-ai-leader/"
+    },
+    {
+      "date": "2024-09-30",
+      "company_slug": "cltr",
+      "event_type": "publication",
+      "summary": "CLTR's detailed recommendations to the MoD Strategic Defence Review on CBRN threats — a named consultation submission (high-signal, defended-in-public evidence).",
+      "source_url": "https://www.longtermresilience.org/reports/strategic-defence-review-2024-call-for-evidence/"
     },
     {
       "date": "2024-09-19",

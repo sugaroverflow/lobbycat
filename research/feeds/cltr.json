@@ -26,7 +26,7 @@
       "summary": "Identifies specific, safe knowledge gaps to fill for mirror-life preparedness without lowering barriers to creating it — biosecurity-meets-AI risk methodology."
     },
     {
-      "date": null,
+      "date": "2025-09-09",
       "title": "Global Risk Index for AI-enabled Biological Tools",
       "url": "https://www.longtermresilience.org/reports/global-risk-index-for-ai-enabled-biological-tools/",
       "type": "paper",
@@ -34,7 +34,7 @@
       "summary": "CLTR-RAND introduce the first Global Risk Index for AI-enabled biological tools — a framework to assess the AI-bio risk frontier."
     },
     {
-      "date": null,
+      "date": "2024-09-30",
       "title": "Strategic Defence Review 2024: Call for Evidence (CLTR submission)",
       "url": "https://www.longtermresilience.org/reports/strategic-defence-review-2024-call-for-evidence/",
       "type": "filing",
@@ -57,5 +57,5 @@
   "leadership": [],
   "controversies": [],
   "news": [],
-  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass. ROLES (2026-06-27): CLTR is hiring an Operations Associate for its AI or Biosecurity unit (London, ~£55k, posted Jun 19) — logged via its own careers/news page. CLTR's /news page is hiring-led; its substantive output is logged under publications, so news[] is intentionally empty."
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass. ROLES (2026-06-27): CLTR is hiring an Operations Associate for its AI or Biosecurity unit (London, ~£55k, posted Jun 19) — logged via its own careers/news page. CLTR's /news page is hiring-led; its substantive output is logged under publications, so news[] is intentionally empty. [date-refine 2026-06-28] Filled 2 null-dated pubs via first-party metadata: Global Risk Index for AI-enabled Biological Tools → 2025-09-09 (JSON-LD datePublished == visible 'Date: September 09th 2025'). Strategic Defence Review 2024 submission → 2024-09-30 — used the page's own body text 'submitted on Sept 30th, 2024' + citation year 2024, NOT the CMS 'Date: September 10th 2025' report-page republication date (that would mis-date a 2024 consultation filing). cltr pubs nulls 2→0."
 }
