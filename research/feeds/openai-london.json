@@ -19,7 +19,7 @@
       "date": "2026-06-17",
       "title": "Introducing LifeSciBench",
       "url": "https://openai.com/index/introducing-life-sci-bench/",
-      "type": "research_paper",
+      "type": "paper",
       "byline": "OpenAI Research",
       "summary": "Expert-written, expert-reviewed benchmark for life-sciences AI agents — increasingly capable agentic systems in biology raise both opportunity and biosecurity-policy questions. Sits in the same arc as Anthropic's biology-agents work and AISI's biorisk evals."
     },
@@ -27,7 +27,7 @@
       "date": "2026-06-09",
       "title": "Industrial policy for the Intelligence Age",
       "url": "https://openai.com/index/industrial-policy-for-the-intelligence-age/",
-      "type": "policy_paper",
+      "type": "paper",
       "byline": "OpenAI Global Affairs",
       "summary": "OpenAI Global Affairs piece advancing an 'industrial policy for the Intelligence Age' — the most explicitly policy-positioning document OpenAI has put out this cycle. How a frontier lab thinks the state should structure AI investment, jobs, and compute."
     },
@@ -35,7 +35,7 @@
       "date": "2026-05-29",
       "title": "Strengthening societal resilience with Rosalind Biodefense",
       "url": "https://openai.com/research/index/release/",
-      "type": "announcement",
+      "type": "press",
       "byline": "OpenAI",
       "summary": "OpenAI launches Rosalind Biodefense, expanding trusted access to GPT-Rosalind for vetted developers and US government partners advancing biodefense and public health. Frontier-lab/government partnership pattern continues."
     },
@@ -43,7 +43,7 @@
       "date": "2026-05-20",
       "title": "Introducing GPT-Rosalind for life sciences research",
       "url": "https://openai.com/",
-      "type": "announcement",
+      "type": "press",
       "byline": "OpenAI Research",
       "summary": "GPT-Rosalind — OpenAI's life-sciences model. The companion piece to Rosalind Biodefense and LifeSciBench; together they're OpenAI's biology bet."
     },
@@ -51,7 +51,7 @@
       "date": "2026-04-16",
       "title": "How we monitor internal coding agents",
       "url": "https://openai.com/",
-      "type": "research_paper",
+      "type": "paper",
       "byline": "OpenAI Research",
       "summary": "OpenAI on monitoring its own internal coding agents — methodology relevant to AI-evaluations and the auditability discussions that AISI and frontier-AI auditing groups care about."
     }

@@ -27,7 +27,7 @@
       "date": "2026-05-20",
       "title": "Introducing Stable Audio 3 & SAME (Semantically-Aligned Music Autoencoder)",
       "url": "https://stability.ai/research/stable-audio-3",
-      "type": "model_release",
+      "type": "press",
       "byline": "Stability AI",
       "summary": "A family of fast latent-diffusion models (small, medium, large) for variable-length audio generation and editing, alongside SAME, a semantically-aligned music autoencoder."
     },

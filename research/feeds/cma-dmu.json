@@ -8,7 +8,7 @@
       "date": "2024-04-11",
       "title": "AI Foundation Models: Update paper",
       "url": "https://www.gov.uk/government/publications/ai-foundation-models-update-paper",
-      "type": "policy_report",
+      "type": "paper",
       "byline": "Competition and Markets Authority",
       "summary": "Update paper in the CMA's AI Foundation Models review, setting out evolving concerns about potential competition risks (including concentration of compute, data and expertise, and the role of large incumbents) and proposing principles to guide competitive FM markets."
     },
@@ -16,7 +16,7 @@
       "date": "2023-09-18",
       "title": "AI Foundation Models: Initial report",
       "url": "https://www.gov.uk/government/publications/ai-foundation-models-initial-report",
-      "type": "policy_report",
+      "type": "paper",
       "byline": "Competition and Markets Authority",
       "summary": "CMA's initial review of AI foundation models, mapping the technical landscape, identifying competition and consumer-protection risks, and proposing guiding principles (accountability, access, diversity, choice, flexibility, fair dealing, transparency)."
     }

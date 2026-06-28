@@ -12,12 +12,27 @@ import { test, expect, request as pwRequest } from "@playwright/test";
 // the string `next-error` into the HTML when something blew up).
 
 const PASSWORD = process.env.TEST_LOBBYCAT_PASSWORD || "";
+const HAS_VERCEL_BYPASS = !!process.env.VERCEL_AUTOMATION_BYPASS_SECRET;
+const IS_VERCEL_PREVIEW = (process.env.PREVIEW_URL || "").includes("vercel.app");
+
+function isVercelProtectionPage(body: string): boolean {
+  const lower = body.toLowerCase();
+  return (
+    lower.includes("sso-api") &&
+    lower.includes("vercel") &&
+    (lower.includes("continue with passkey") || lower.includes("deployment"))
+  );
+}
 
 test.describe("smoke", () => {
   test("login page renders and prompts for a password", async ({ request }) => {
     const res = await request.get("/login");
     expect(res.status()).toBe(200);
     const body = await res.text();
+    test.skip(
+      isVercelProtectionPage(body) && !HAS_VERCEL_BYPASS,
+      "Vercel deployment protection is enabled; set VERCEL_AUTOMATION_BYPASS_SECRET to run preview smoke tests.",
+    );
     expect(body.toLowerCase()).toContain("password");
   });
 
@@ -25,6 +40,10 @@ test.describe("smoke", () => {
     browser,
   }) => {
     test.skip(!PASSWORD, "TEST_LOBBYCAT_PASSWORD not set");
+    test.skip(
+      IS_VERCEL_PREVIEW && !HAS_VERCEL_BYPASS,
+      "Vercel deployment protection is enabled; set VERCEL_AUTOMATION_BYPASS_SECRET to run preview smoke tests.",
+    );
     const ctx = await browser.newContext();
     const page = await ctx.newPage();
     await page.goto("/login");
@@ -47,6 +66,10 @@ test.describe("smoke", () => {
     baseURL,
   }) => {
     test.skip(!PASSWORD, "TEST_LOBBYCAT_PASSWORD not set");
+    test.skip(
+      IS_VERCEL_PREVIEW && !HAS_VERCEL_BYPASS,
+      "Vercel deployment protection is enabled; set VERCEL_AUTOMATION_BYPASS_SECRET to run preview smoke tests.",
+    );
     if (!baseURL) throw new Error("baseURL required");
 
     // Get an auth cookie via a real browser submit (handles server action).
@@ -88,7 +111,12 @@ test.describe("smoke", () => {
   test("GET /api/health returns 200 with status: ok", async ({ request }) => {
     const res = await request.get("/api/health");
     expect(res.status()).toBe(200);
-    const json = await res.json();
+    const body = await res.text();
+    test.skip(
+      isVercelProtectionPage(body) && !HAS_VERCEL_BYPASS,
+      "Vercel deployment protection is enabled; set VERCEL_AUTOMATION_BYPASS_SECRET to run preview smoke tests.",
+    );
+    const json = JSON.parse(body) as { status?: string };
     expect(json.status).toBe("ok");
   });
 });
