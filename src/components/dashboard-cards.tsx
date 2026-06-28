@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import {
   useLiveAggregates,
   type FrameScoreSnapshot,
@@ -641,12 +641,13 @@ export function DashboardCards({
 
   // v0.8.5: 30-day window for the "Recent activity" chip. ORs across
   // publications + roles + news so any signal counts as "active".
-  const thirtyDaysAgo = useMemo(
+  const [thirtyDaysAgo] = useState(
     () => Date.now() - 30 * 24 * 60 * 60 * 1000,
-    [],
   );
-  const isRecentISO = (iso?: string | null) =>
-    !!iso && Date.parse(iso) >= thirtyDaysAgo;
+  const isRecentISO = useCallback(
+    (iso?: string | null) => !!iso && Date.parse(iso) >= thirtyDaysAgo,
+    [thirtyDaysAgo],
+  );
 
   const visible = useMemo(() => {
     const filtered = companies.filter((c) => {
