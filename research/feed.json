@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T10:09:47Z",
+  "lastUpdated": "2026-06-28T10:38:38Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -91,6 +91,13 @@
       "event_type": "press",
       "summary": "OpenAI is staggering the release of its latest model after a US-government request (echoing the Anthropic Mythos export-control move), and signalled dissatisfaction — saying it keeps the best tools from users, developers and global partners. A live example of frontier-model release becoming a national-security lever. Corroborated by CNBC.",
       "source_url": "https://www.theguardian.com/technology/2026/jun/26/openai-ai-model-release-trump-us-sam-altman-gpt-anthropic-mythos"
+    },
+    {
+      "date": "2026-06-26",
+      "company_slug": "demos",
+      "event_type": "publication",
+      "summary": "Argues economic renewal depends on rebuilding the relationship between citizens, markets and the state, treating citizens as active contributors rather than passive recipients. PDF dated June 2026 (exact day not stated on page).",
+      "source_url": "https://demos.co.uk/research/citizens-economy-a-new-deal-to-power-economic-growth-and-rebuild-trust-between-state-and-citizen/"
     },
     {
       "date": "2026-06-25",
@@ -427,6 +434,13 @@
       "event_type": "press",
       "summary": "First-party press: Olivia O'Sullivan gave evidence at Parliament on 9 June 2026 on UK security planning, defence priorities vs conflict prevention, and the Integrated Security Fund. (Date approximate from search 'about 2 weeks ago' on 2026-06-27.)",
       "source_url": "https://www.chathamhouse.org/2026/06/director-chatham-house-uk-world-programme-gives-evidence-parliament-foreign-affairs"
+    },
+    {
+      "date": "2026-06-12",
+      "company_slug": "demos",
+      "event_type": "publication",
+      "summary": "Recommends updating the UK's prominence rules for the platform era, including algorithmic prominence for public-interest news and a 5% levy on video-sharing platforms to fund a UK Public Interest Content Fund.",
+      "source_url": "https://demos.co.uk/research/fairer-feeds-public-interest-news-prominence-rules-and-the-future-of-discoverability-on-platforms/"
     },
     {
       "date": "2026-06-11",
