@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T14:08:26Z",
+  "lastUpdated": "2026-06-28T14:10:48Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -185,17 +185,17 @@
     },
     {
       "date": "2026-06-24",
-      "company_slug": "microsoft-ai-london",
-      "event_type": "publication",
-      "summary": "Microsoft describes an AI-assisted Digital Crimes Unit action against Amadey and StealC infrastructure, including Europol/industry coordination and expanded RICO legal strategy for cybercrime disruption.",
-      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/24/scaling-cybercrime-disruption-through-innovation-and-ai/"
-    },
-    {
-      "date": "2026-06-24",
       "company_slug": "fca-ai",
       "event_type": "publication",
       "summary": "FCA chief executive Nikhil Rathi argues that agentic AI, tokenisation, frontier-model dependencies and cyber resilience require a more collaborative, system-wide regulatory posture for UK financial services.",
       "source_url": "https://www.fca.org.uk/news/speeches/rethinking-regulation-age-ai"
+    },
+    {
+      "date": "2026-06-24",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Microsoft describes an AI-assisted Digital Crimes Unit action against Amadey and StealC infrastructure, including Europol/industry coordination and expanded RICO legal strategy for cybercrime disruption.",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/24/scaling-cybercrime-disruption-through-innovation-and-ai/"
     },
     {
       "date": "2026-06-23",
@@ -605,6 +605,13 @@
     },
     {
       "date": "2026-06-08",
+      "company_slug": "fca-ai",
+      "event_type": "publication",
+      "summary": "The FCA says it will not introduce new AI-specific rules for financial services, instead using existing frameworks while gathering evidence through its AI Input Zone, AI Lab, Supercharged Sandbox and AI Live Testing.",
+      "source_url": "https://www.fca.org.uk/news/blogs/ai-financial-services-approach"
+    },
+    {
+      "date": "2026-06-08",
       "company_slug": "techuk",
       "event_type": "publication",
       "summary": "techUK announces an AI Adoption Coalition across Industrial Strategy sectors to share responsible-adoption practice, surface common barriers and engage government on delivery of sectoral AI Adoption Plans.",
@@ -616,13 +623,6 @@
       "event_type": "press",
       "summary": "GOV.UK names techUK as convening UK trade associations for an AI Adoption Coalition alongside the government’s AI Adoption Summit package and sectoral AI Adoption Plans.",
       "source_url": "https://www.gov.uk/government/news/government-to-partner-with-tech-companies-trade-unions-and-industry-leaders-to-boost-ai-adoption-and-equip-workers-with-ai-skills"
-    },
-    {
-      "date": "2026-06-08",
-      "company_slug": "fca-ai",
-      "event_type": "publication",
-      "summary": "The FCA says it will not introduce new AI-specific rules for financial services, instead using existing frameworks while gathering evidence through its AI Input Zone, AI Lab, Supercharged Sandbox and AI Live Testing.",
-      "source_url": "https://www.fca.org.uk/news/blogs/ai-financial-services-approach"
     },
     {
       "date": "2026-06-04",

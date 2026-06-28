@@ -666,7 +666,13 @@ export async function getRankedHomeData() {
   // postgres.js which serialises strings, not Date instances.
   const since = sinceDate.toISOString();
 
-  const SIX_MONTHS_MS = 6 * 30 * 24 * 60 * 60 * 1000;
+  // v0.8.5 fix (2026-06-27 13:16Z): bumped 6mo → 12mo. The old window
+  // was filtering out highly relevant events that aged out by a few
+  // weeks (e.g. Getty v Stability AI at 8mo) — the show-more reveal
+  // is supposed to surface the company's recent shape, not the last
+  // half-year only. Variable name kept for diff clarity; the var still
+  // controls the same three sections (pubs, news, controversies).
+  const SIX_MONTHS_MS = 12 * 30 * 24 * 60 * 60 * 1000;
   const sixMonthsAgo = new Date(Date.now() - SIX_MONTHS_MS).toISOString();
 
   const [
