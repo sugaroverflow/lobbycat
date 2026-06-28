@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-06-28T08:38:20Z",
+  "lastUpdated": "2026-06-28T09:08:21Z",
   "events": [
     {
       "date": "2026-06-27",
@@ -821,6 +821,13 @@
       "source_url": "https://www.pinsentmasons.com/out-law/news/eu-ai-simplification-package-reaches-critical-milestone"
     },
     {
+      "date": "2026-04-24",
+      "company_slug": "lse-ai-policy",
+      "event_type": "publication",
+      "summary": "LSE AI and Digital Health Unit study (BMJ Health & Care Informatics, 2026) measuring omission and hallucination rates when diagnostic large language models reproduce clinical guidelines.",
+      "source_url": "http://dx.doi.org/10.1136/bmjhci-2025-101959"
+    },
+    {
       "date": "2026-04-22",
       "company_slug": "connected-by-data",
       "event_type": "publication",
@@ -1029,6 +1036,13 @@
       "event_type": "press",
       "summary": "FCA press release on supporting firms to test AI, following its September 2025 feedback statement on AI Live Testing.",
       "source_url": "https://www.fca.org.uk/news/press-releases/fca-helps-firms-test-ai-safely"
+    },
+    {
+      "date": "2025-11-25",
+      "company_slug": "lse-ai-policy",
+      "event_type": "publication",
+      "summary": "LSE-led paper in npj Health Systems (2025) mapping the intersection of AI, intellectual property and human rights across European health systems.",
+      "source_url": "https://doi.org/10.1038/s44401-025-00050-3"
     },
     {
       "date": "2025-11-18",
