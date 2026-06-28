@@ -35,14 +35,14 @@
   "controversies": [],
   "news": [
     {
-      "date": null,
+      "date": "2026-02-05",
       "title": "New research questions the trustworthiness of AI chatbots for government information",
       "url": "https://theodi.org/news-and-events/news/new-research-questions-the-trustworthiness-of-ai-chatbots-for-government-information/",
       "source": "org_news",
       "summary": "ODI research questioning how trustworthy AI chatbots are as a channel for government information — directly relevant to the gov-AI-services debate. Date not exposed in the page DOM; left null rather than guessed."
     },
     {
-      "date": null,
+      "date": "2026-03-24",
       "title": "ODI and SAP announce partnership to help organisations build trustworthy, AI-ready data infrastructure",
       "url": "https://theodi.org/news-and-events/news/odi-and-sap-announce-partnership-to-help-organisations-build-trustworthy-ai-ready-data-infrastructure/",
       "source": "org_news",
