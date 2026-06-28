@@ -38,8 +38,7 @@
       "date": "2024-03-27",
       "title": "Up to 8 million UK jobs at risk from AI unless government acts, finds IPPR",
       "url": "https://www.ippr.org/media-office/up-to-8-million-uk-jobs-at-risk-from-ai-unless-government-acts-finds-ippr",
-      "type": "press",
-      "byline": null,
+      "source": "company_press",
       "summary": "IPPR press release accompanying the 'Transformed by AI' report. Describes a 'sliding doors' moment for the UK – huge job disruption or significant GDP gains depending on government policy – and outlines a first and second wave of generative AI adoption."
     }
   ],

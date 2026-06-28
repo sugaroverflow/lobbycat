@@ -1,6 +1,6 @@
 {
   "slug": "helsing",
-  "lastUpdated": "2026-06-27T12:45:00Z",
+  "lastUpdated": "2026-06-27T20:08:00Z",
   "blurb": "Helsing is a European defence-AI company building software and increasingly hardware (autonomous aircraft, strike drones, robotics) for military applications, with a strong 'European sovereignty' framing.",
   "hiring": {
     "isHiring": true,
@@ -22,7 +22,32 @@
   ],
   "filings": [],
   "leadership": [],
-  "controversies": [],
+  "controversies": [
+    {
+      "type": "product_safety_quality",
+      "title": "HX-2 loitering-munition setbacks in Ukraine \u2014 alleged takeoff failures, missing AI capabilities and EW vulnerability; Ukraine paused further orders (company disputes)",
+      "url": "https://www.bloomberg.com/news/articles/2026-01-19/ukraine-holds-off-on-new-helsing-drone-orders-after-setbacks",
+      "occurredAt": "2026-01-19",
+      "status": "disputed",
+      "severity": "medium",
+      "companyRole": "manufacturer",
+      "summary": "In January 2026 Bloomberg reported (citing anonymous Ukrainian and German sources, and a presentation by a German military unit under Gen. G\u00fcnter Schneider) that Ukraine held off on new orders of Helsing's HX-2 loitering munition after battlefield setbacks: alleged takeoff failures during trials by the 14th Separate Regiment of the Unmanned Systems Forces, AI-driven flight-control features that reportedly did not work as advertised, and HX-2 units compromised by Russian electronic-warfare (EW) systems causing loss of data link and control. The report followed an earlier April 2025 Bloomberg piece in which soldiers alleged overpriced drones and glitchy software. Helsing issued a rebuttal disputing the report as misleading, said it had active requests from six Ukrainian units and that the trial unit had requested ~1,000 more units, and stood by the HX-2's battlefield testing. UK relevance: Helsing has a London office (and an open London Legal Counsel role); the episode bears directly on lethal-autonomous-weapons (LAWS) effectiveness/accountability and defence-procurement-assurance debates that UK/European AI-in-defence policy is grappling with. Reported as alleged/disputed \u2014 no regulatory finding.",
+      "topics": [
+        "autonomous_weapons",
+        "LAWS",
+        "defence_procurement",
+        "electronic_warfare",
+        "product_reliability"
+      ],
+      "corroboration": [
+        "https://www.bloomberg.com/news/articles/2026-01-19/ukraine-holds-off-on-new-helsing-drone-orders-after-setbacks",
+        "https://en.defence-ua.com/weapon_and_tech/the_controversy_surrounding_the_supply_of_german_hx_2_loitering_munitions_to_ukraine_stakeholder_positions-17224.html",
+        "https://www.bloomberg.com/news/articles/2025-04-08/helsing-europe-s-most-valuable-defense-tech-company-is-facing-allegations-from"
+      ],
+      "rawExcerpt": "On January 19, 2026, Bloomberg published a report stating that further orders of these UAVs for the Ukrainian military had been suspended due to critical flaws ... Helsing issued a rebuttal the following day, stating that the Bloomberg report was misleading.",
+      "source": "press"
+    }
+  ],
   "news": [
     {
       "date": "2026-06-10",
@@ -39,5 +64,5 @@
       "summary": "Partnership with EURENCO to build a 'sovereign European' strike-drone capability — ties autonomous-weapons development to European strategic-autonomy / defence-sovereignty policy."
     }
   ],
-  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (helsing.ai/newsroom passed cleanly; untested by web_fetch this morning). Dates confirmed from each article's own 'Press Release DD. Mon. YYYY' header. Selected the two items with the strongest AI-policy signal (autonomous combat aircraft; sovereign European strike drones) as defence-AI / LAWS / European-sovereignty signals. Other dated newsroom items exist (OHB/Helsing space JVs 'KIRK'/'Alliance for Europe's Space Sector', RX-1 robotics platform, Stockholm office, CCO/CFO appointments) but are corporate/personnel rather than policy — left as leads, not logged, to keep signal high. Newsroom listing links wrapped images with no inline text on re-query, so dates were read from individual article headers rather than the index. ROLES (2026-06-27 ATS): Legal Counsel (London) open at the defence-AI firm."
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (helsing.ai/newsroom passed cleanly; untested by web_fetch this morning). Dates confirmed from each article's own 'Press Release DD. Mon. YYYY' header. Selected the two items with the strongest AI-policy signal (autonomous combat aircraft; sovereign European strike drones) as defence-AI / LAWS / European-sovereignty signals. Other dated newsroom items exist (OHB/Helsing space JVs 'KIRK'/'Alliance for Europe's Space Sector', RX-1 robotics platform, Stockholm office, CCO/CFO appointments) but are corporate/personnel rather than policy — left as leads, not logged, to keep signal high. Newsroom listing links wrapped images with no inline text on re-query, so dates were read from individual article headers rather than the index. ROLES (2026-06-27 ATS): Legal Counsel (London) open at the defence-AI firm. CONTROVERSY (2026-06-27 20:08 UTC): logged the HX-2 Ukraine-procurement setbacks (Bloomberg 19 Jan 2026 + Apr 2025 allegations; Helsing rebuttal). Treated Defense Express as an untrusted lead and traced its citation back to the dated Bloomberg reports + company response; status=disputed, severity=medium (alleged, no regulatory finding). LAWS/defence-procurement-assurance signal with a London nexus."
 }

@@ -108,6 +108,7 @@ jobs:
         env:
           PREVIEW_URL: ${{ needs.preview.outputs.preview_url }}
           TEST_LOBBYCAT_PASSWORD: ${{ secrets.TEST_LOBBYCAT_PASSWORD }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
         run: npx playwright test
       - name: Upload Playwright report
         if: always()

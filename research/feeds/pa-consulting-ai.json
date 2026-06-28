@@ -1,0 +1,26 @@
+{
+  "slug": "pa-consulting-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "PA Consulting responsible-AI advisory. Launch coverage uses first-party responsible-AI service material.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-11-18",
+      "title": "Responsible AI consulting",
+      "url": "https://www.paconsulting.com/services/reimagine-ai-digital-and-data/responsible-ai",
+      "type": "other",
+      "byline": "PA Consulting",
+      "source": "first_party",
+      "summary": "PA Consulting describes its responsible-AI practice, including helping public-service, pharmaceutical and consumer-manufacturing organisations put responsible-AI principles into practice."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL; lower-cost service-page evidence, retained as launch backstop.",
+  "news": []
+}

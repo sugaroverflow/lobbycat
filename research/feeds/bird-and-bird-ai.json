@@ -1,0 +1,26 @@
+{
+  "slug": "bird-and-bird-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party EU AI Act analysis.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2026-05-20",
+      "title": "The Commission's Draft High-Risk AI Guidelines under the EU AI Act: A First Read",
+      "url": "https://www.twobirds.com/en/insights/2026/the-commission's-draft-high-risk-ai-guidelines-under-the-eu-ai-act-a-first-read",
+      "type": "blog",
+      "byline": "Bird & Bird",
+      "source": "first_party",
+      "summary": "Bird & Bird analyses the European Commission’s draft high-risk AI guidelines under the EU AI Act, including the threshold question of what qualifies as an AI system and how high-risk obligations are expected to operate."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "news": []
+}

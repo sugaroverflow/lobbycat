@@ -1,0 +1,35 @@
+{
+  "slug": "dsit-ai-opportunity",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "DSIT AI Opportunities Action Plan implementation. Launch coverage uses primary GOV.UK publications.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-01-13",
+      "title": "AI Opportunities Action Plan: government response",
+      "url": "https://www.gov.uk/government/publications/ai-opportunities-action-plan-government-response/ai-opportunities-action-plan-government-response",
+      "type": "filing",
+      "byline": "Department for Science, Innovation and Technology; Matt Clifford CBE",
+      "source": "regulator",
+      "summary": "DSIT’s government response accepts the 50 AI Opportunities Action Plan recommendations, including AI Growth Zones, compute expansion and a National Data Library."
+    },
+    {
+      "date": "2026-01-29",
+      "title": "AI Opportunities Action Plan: One Year On",
+      "url": "https://www.gov.uk/government/publications/ai-opportunities-action-plan-one-year-on/ai-opportunities-action-plan-one-year-on",
+      "type": "filing",
+      "byline": "Department for Science, Innovation and Technology",
+      "source": "regulator",
+      "summary": "DSIT’s one-year update reports delivery against the AI Opportunities Action Plan and announces a Future of Work Unit to build evidence on AI’s labour-market impacts."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on GOV.UK government-response page; one-year-on page supplied by portal batch.",
+  "news": []
+}

@@ -1,9 +1,26 @@
 {
   "slug": "cma-dmu",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-06-28T07:10:00Z",
   "blurb": "The Competition and Markets Authority (CMA) is the UK competition regulator; its Digital Markets Unit oversees the strategic market status (SMS) regime under the Digital Markets, Competition and Consumers Act 2024.",
   "hiring": {},
-  "publications": [],
+  "publications": [
+    {
+      "date": "2024-04-11",
+      "title": "AI Foundation Models: Update paper",
+      "url": "https://www.gov.uk/government/publications/ai-foundation-models-update-paper",
+      "type": "paper",
+      "byline": "Competition and Markets Authority",
+      "summary": "Update paper in the CMA's AI Foundation Models review, setting out evolving concerns about potential competition risks (including concentration of compute, data and expertise, and the role of large incumbents) and proposing principles to guide competitive FM markets."
+    },
+    {
+      "date": "2023-09-18",
+      "title": "AI Foundation Models: Initial report",
+      "url": "https://www.gov.uk/government/publications/ai-foundation-models-initial-report",
+      "type": "paper",
+      "byline": "Competition and Markets Authority",
+      "summary": "CMA's initial review of AI foundation models, mapping the technical landscape, identifying competition and consumer-protection risks, and proposing guiding principles (accountability, access, diversity, choice, flexibility, fair dealing, transparency)."
+    }
+  ],
   "roles": [],
   "filings": [],
   "leadership": [],
@@ -17,5 +34,5 @@
       "summary": "CMA designates both Apple and Google with strategic market status (SMS) in their respective mobile platforms under the Digital Markets, Competition and Consumers Act 2024, for a five-year period."
     }
   ],
-  "notes": "Regulator site (CMA cases index is a JS-filtered case list with no inline dated items). News date 2025-10-22 from the gov.uk page's datePublished JSON-LD. Controversies left empty: the CMA is the regulator/decision-maker here, not a named party defending an action, so this is regulatory activity rather than a controversy about the CMA itself."
+  "notes": "Regulator site (CMA cases index is a JS-filtered case list with no inline dated items). News date 2025-10-22 from the gov.uk page's datePublished JSON-LD. Controversies left empty: the CMA is the regulator/decision-maker here, not a named party defending an action, so this is regulatory activity rather than a controversy about the CMA itself. Publications backfill (2026-06-28): added the CMA's flagship AI Foundation Models programme outputs — Initial report (2023-09-18) and Update paper (2024-04-11). Both dates are primary gov.uk JSON-LD datePublished / govuk:first-published-at verified per-page (HTTP 200); titles from each page's og:title. These are first-party CMA policy reports (type=policy_report). The September 2023 'technical update report' exists as a follow-on but was left out pending a per-page date-verified canonical gov.uk URL (no padding from search-snippet dates)."
 }

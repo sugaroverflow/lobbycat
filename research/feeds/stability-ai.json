@@ -1,12 +1,53 @@
 {
   "slug": "stability-ai",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-06-27T22:39:00Z",
   "blurb": "London-based image-generation lab. Subject of the first major UK court ruling on copyright/trademark and generative AI — Getty Images v Stability AI (High Court, Nov 2025), a mixed result it largely prevailed in.",
   "hiring": {
     "isHiring": null,
     "newSincePrevious": null
   },
-  "publications": [],
+  "publications": [
+    {
+      "date": "2026-06-03",
+      "title": "Stable-Layers: Fine-Tuning Image Layer Decomposition Models with VLM-Scored Reinforcement Learning",
+      "url": "https://stability.ai/research/stable-layers-fine-tuning-image-layer-decomposition-models-with-vlm-scored-reinforcement-learning",
+      "type": "paper",
+      "byline": "Stability AI",
+      "summary": "A reinforcement-learning framework that fine-tunes a pretrained image layer-decomposition model using only feedback from a vision-language model (VLM), removing the need for paired supervision."
+    },
+    {
+      "date": "2026-06-03",
+      "title": "OCTOPUS: Optimized KV Cache for Transformers via Octahedral Parametrization Under Optimal Squared Error Quantization",
+      "url": "https://stability.ai/research/octopus-optimized-kv-cache-for-transformers-via-octahedral-parametrization-under-optimal-squared-error-quantization",
+      "type": "paper",
+      "byline": "Stability AI",
+      "summary": "A KV-cache quantization codec for transformers that, across text, video and audio, matches or beats prior rotation codecs at every reported bit width, with the lead growing at extreme compression."
+    },
+    {
+      "date": "2026-05-20",
+      "title": "Introducing Stable Audio 3 & SAME (Semantically-Aligned Music Autoencoder)",
+      "url": "https://stability.ai/research/stable-audio-3",
+      "type": "press",
+      "byline": "Stability AI",
+      "summary": "A family of fast latent-diffusion models (small, medium, large) for variable-length audio generation and editing, alongside SAME, a semantically-aligned music autoencoder."
+    },
+    {
+      "date": "2025-10-27",
+      "title": "Foley Control: Aligning a Frozen Latent Text-to-Audio Model to Video",
+      "url": "https://stability.ai/research/foley-control-aligning-a-frozen-latent-text-to-audio-model-to-video",
+      "type": "paper",
+      "byline": "Stability AI",
+      "summary": "A lightweight approach to video-guided Foley that keeps pretrained single-modality models frozen and learns only a small cross-attention bridge between a text-to-audio model and video."
+    },
+    {
+      "date": "2025-10-10",
+      "title": "SViM3D: Stable Video Material Diffusion for Single Image 3D Generation",
+      "url": "https://stability.ai/research/svim3d-stable-video-material-diffusion-for-single-image-3d-generation",
+      "type": "paper",
+      "byline": "Stability AI",
+      "summary": "A framework that predicts multi-view-consistent physically-based-rendering (PBR) materials from a single image by repurposing video-diffusion models for efficient 3D reconstruction."
+    }
+  ],
   "roles": [],
   "filings": [],
   "leadership": [],
@@ -43,7 +84,7 @@
       "attributionChecked": true
     }
   ],
-  "notes": "Worked example for controversy-scope.md (2026-06-24). Attribution checks passed: (1) named-party — Stability AI Ltd is the defendant, not a passing mention; (2) primary-source — official judiciary.uk judgment + PDF, neutral citation [2025] EWHC 2863 (Ch); (3) same-entity — Stability AI Ltd, the Stable Diffusion maker, matches seed slug stability-ai. Tone test: summary refuses to oversimplify 'who won' — it states the dropped training claim, the secondary-infringement win, AND the limited trademark loss, because the honest read is mixed. Related prior interlocutory rulings on BAILII if the table ever wants case history: [2025] EWHC 109 (Ch), [2025] EWCA Civ 749, [2023] EWHC 3090 (Ch).",
+  "notes": "Worked example for controversy-scope.md (2026-06-24). Attribution checks passed: (1) named-party — Stability AI Ltd is the defendant, not a passing mention; (2) primary-source — official judiciary.uk judgment + PDF, neutral citation [2025] EWHC 2863 (Ch); (3) same-entity — Stability AI Ltd, the Stable Diffusion maker, matches seed slug stability-ai. Tone test: summary refuses to oversimplify 'who won' — it states the dropped training claim, the secondary-infringement win, AND the limited trademark loss, because the honest read is mixed. Related prior interlocutory rulings on BAILII if the table ever wants case history: [2025] EWHC 109 (Ch), [2025] EWCA Civ 749, [2023] EWHC 3090 (Ch). 2026-06-27: filled the previously-empty publications[] (the only feeds-sync-ingested array) with 5 real research outputs harvested from stability.ai/research; each date is the page's real JSON-LD datePublished (verified per-page via curl, not the listing card), not a sitemap/bulk-migration timestamp. Existing controversies/news preserved.",
   "news": [
     {
       "date": "2025-03-01",

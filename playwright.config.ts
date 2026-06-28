@@ -4,6 +4,7 @@ import { defineConfig, devices } from "@playwright/test";
 // PREVIEW_URL) or localhost (when developing locally). Keep this tiny:
 // chromium only, single retry, 30s test timeout.
 const baseURL = process.env.PREVIEW_URL || "http://localhost:3000";
+const vercelBypass = process.env.VERCEL_AUTOMATION_BYPASS_SECRET || "";
 
 export default defineConfig({
   testDir: "./tests",
@@ -15,6 +16,9 @@ export default defineConfig({
     baseURL,
     trace: "retain-on-failure",
     ignoreHTTPSErrors: false,
+    extraHTTPHeaders: vercelBypass
+      ? { "x-vercel-protection-bypass": vercelBypass }
+      : {},
   },
   projects: [
     {

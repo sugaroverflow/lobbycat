@@ -1,0 +1,26 @@
+{
+  "slug": "bain-london-ai",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Consultancy AI practice. Launch coverage uses first-party Bain technology report on agentic AI transformation.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-09-23",
+      "title": "State of the Art of Agentic AI Transformation",
+      "url": "https://www.bain.com/insights/state-of-the-art-of-agentic-ai-transformation-technology-report-2025/",
+      "type": "paper",
+      "byline": "Bain & Company",
+      "source": "first_party",
+      "summary": "Bain’s technology report surveys agentic-AI transformation, adoption patterns and operating-model implications for enterprises."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "news": []
+}

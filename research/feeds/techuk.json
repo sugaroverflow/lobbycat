@@ -1,0 +1,35 @@
+{
+  "slug": "techuk",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "UK technology trade association with regular AI-policy analysis. Launch coverage uses first-party EU/UK AI regulation briefings.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025-07-10",
+      "title": "EU releases final version of AI Code of Practice",
+      "url": "https://www.techuk.org/resource/eu-releases-final-version-of-ai-code-of-practice.html",
+      "type": "blog",
+      "byline": "techUK",
+      "source": "first_party",
+      "summary": "techUK summarises the EU GPAI Code of Practice and says it will continue analysing how to support members under the Code."
+    },
+    {
+      "date": "2024-02-06",
+      "title": "UK Government puts forward plans to regulate AI",
+      "url": "https://www.techuk.org/resource/uk-government-puts-forward-its-plans-to-regulate-ai.html",
+      "type": "blog",
+      "byline": "techUK policy team",
+      "source": "first_party",
+      "summary": "techUK briefs members on the UK Government response to the AI White Paper consultation and the pro-innovation/context-based regulatory approach."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on EU Code first-party resource.",
+  "news": []
+}

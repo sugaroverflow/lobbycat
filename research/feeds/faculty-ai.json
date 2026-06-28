@@ -1,6 +1,6 @@
 {
   "slug": "faculty-ai",
-  "lastUpdated": "2026-06-27T12:45:00Z",
+  "lastUpdated": "2026-06-27T18:40:00Z",
   "blurb": "Faculty is a London-based applied-AI company with deep UK public-sector and government work (NHS, defence, central government 'decision intelligence'); a key node in the UK gov-AI delivery ecosystem.",
   "hiring": {
     "isHiring": true,
@@ -26,7 +26,7 @@
       "summary": "Faculty's 'decision intelligence' framing — positioning argument about where AI value actually comes from in enterprise/government, useful as context on how a major UK gov-AI vendor pitches its work."
     },
     {
-      "date": null,
+      "date": "2026-06-26",
       "title": "Beyond manual red teaming: Scaling model safety with an Automated Red-teaming Emulation System",
       "url": "https://faculty.ai/en-gb/insights/articles/beyond-manual-red-teaming-scaling-model-safety-with-automated-red-teaming-emulation-system",
       "type": "blog",
@@ -65,7 +65,51 @@
   ],
   "filings": [],
   "leadership": [],
-  "controversies": [],
+  "controversies": [
+    {
+      "type": "procurement_conflict_of_interest",
+      "title": "Faculty (ex-ASI Data Science): Vote Leave/Cummings-linked AI firm, run of Whitehall contracts & ministerial conflict-of-interest claims (2020)",
+      "url": "https://www.theguardian.com/world/2020/may/04/vote-leave-ai-firm-wins-seven-government-contracts-in-18-months",
+      "occurredAt": "2020-05-04",
+      "status": "reported",
+      "severity": "medium",
+      "companyRole": "subject",
+      "summary": "Faculty (formerly ASI Data Science), whose CEO Marc Warner worked with Dominic Cummings on the 2016 Vote Leave campaign, drew sustained scrutiny over its rapid expansion into UK government work. The Guardian reported (4 May 2020) that the firm had won at least seven government contracts worth almost £1m in 18 months, and that Cabinet Office minister Theodore Agnew was resisting calls to divest a £90,000 Faculty shareholding amid conflict-of-interest claims; Warner had also attended a SAGE meeting. Faculty was separately reported (Byline Times, 2020) to have been lined up to help configure the NHSX contact-tracing app, and was repeatedly named alongside Palantir in FOI'd, opaque NHS COVID-19 'datastore' work (openDemocracy, The Register). The cluster concerns procurement transparency, political connections and conflicts of interest rather than any adjudicated wrongdoing; no formal sanction or finding against Faculty has been reported.",
+      "topics": [
+        "public_procurement",
+        "conflict_of_interest",
+        "government_contracts",
+        "nhs_data",
+        "political_connections",
+        "transparency"
+      ],
+      "rawExcerpt": "An artificial intelligence startup that was hired to work with Dominic Cummings on the Vote Leave campaign has been awarded at least seven government contracts worth almost £1m in the space of 18 months.",
+      "corroboration": [
+        {
+          "outlet": "The Guardian",
+          "url": "https://www.theguardian.com/world/2020/may/04/vote-leave-ai-firm-wins-seven-government-contracts-in-18-months",
+          "paywalled": false
+        },
+        {
+          "outlet": "Byline Times (NHSX contact-tracing app)",
+          "url": "https://bylinetimes.com/2020/05/06/whitehall-analytica-vote-leave-firm-tied-to-cambridge-analytica-will-configure-nhsx-contact-tracing-app/",
+          "paywalled": false
+        },
+        {
+          "outlet": "openDemocracy (Cummings/Palantir/NHS data)",
+          "url": "https://www.opendemocracy.net/en/ournhs/we-must-be-told-what-cummings-and-palantir-are-doing-nhs-data/",
+          "paywalled": false
+        },
+        {
+          "outlet": "The Register (Palantir/Faculty, UK Sci&Tech Committee)",
+          "url": "https://www.theregister.com/2021/06/15/palantir_uk_sci_tech_committee/",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
   "news": [
     {
       "date": "2026-01-06",

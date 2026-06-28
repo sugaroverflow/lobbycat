@@ -1,0 +1,26 @@
+{
+  "slug": "frontier-economics",
+  "lastUpdated": "2026-06-27T23:07:28Z",
+  "blurb": "Economics consultancy with an AI practice; launch coverage uses first-party AI competition-policy analysis.",
+  "hiring": {
+    "isHiring": null,
+    "newSincePrevious": null
+  },
+  "publications": [
+    {
+      "date": "2025",
+      "title": "Out of the clouds: the downstream focus for AI in 2025",
+      "url": "https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i21218-out-of-the-clouds-the-downstream-focus-for-ai-in-2025/",
+      "type": "blog",
+      "byline": "Frontier Economics",
+      "source": "first_party",
+      "summary": "Frontier Economics argues the competitive focus in AI is shifting downstream, from building the most capable models to deployment, distribution and regulator-facing market structure questions."
+    }
+  ],
+  "roles": [],
+  "filings": [],
+  "leadership": [],
+  "controversies": [],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "news": []
+}
