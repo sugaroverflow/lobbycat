@@ -1,6 +1,6 @@
 {
   "slug": "dsit-ai-policy",
-  "lastUpdated": "2026-06-28T06:38:00Z",
+  "lastUpdated": "2026-06-28T14:20:00Z",
   "blurb": "UK Department for Science, Innovation and Technology, the government department leading AI policy, investment and digital regulation.",
   "hiring": {},
   "publications": [
@@ -8,15 +8,17 @@
       "date": "2025-02-10",
       "title": "Artificial Intelligence Playbook for the UK Government",
       "url": "https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government",
-      "source": "company_press",
-      "summary": "DSIT-led guidance on using AI safely, effectively and securely across government. Sets out 10 principles for civil servants and explains how to select, buy and deploy AI; expands and retitles the January 2024 Generative AI Framework for HMG."
+      "source": "first_party",
+      "summary": "DSIT-led guidance on using AI safely, effectively and securely across government. Sets out 10 principles for civil servants and explains how to select, buy and deploy AI; expands and retitles the January 2024 Generative AI Framework for HMG.",
+      "type": "other"
     },
     {
       "date": "2025-01-31",
       "title": "AI Cyber Security Code of Practice",
       "url": "https://www.gov.uk/government/publications/ai-cyber-security-code-of-practice",
-      "source": "company_press",
-      "summary": "DSIT (in collaboration with NCSC) voluntary Code of Practice setting baseline cyber security principles for AI systems, with an implementation guide. Updated after the summer 2024 call for views; to be submitted to ETSI as the basis for global standard TS 104 223."
+      "source": "first_party",
+      "summary": "DSIT (in collaboration with NCSC) voluntary Code of Practice setting baseline cyber security principles for AI systems, with an implementation guide. Updated after the summer 2024 call for views; to be submitted to ETSI as the basis for global standard TS 104 223.",
+      "type": "other"
     }
   ],
   "roles": [],
@@ -46,5 +48,5 @@
       "summary": "DSIT summarises AI investment and jobs announcements made during London Tech Week 2026."
     }
   ],
-  "notes": "News sourced from DSIT's official gov.uk news atom feed (news-and-communications.atom filtered to DSIT). publications[] backfilled 2026-06-28 with two first-party DSIT AI policy publications verified directly on gov.uk publication pages: AI Playbook (pub 2025-02-10) and AI Cyber Security Code of Practice (pub 2025-01-31, with NCSC). These are department-authored policy outputs, distinct from the dated press notices in news[]. No filings/controversies where DSIT is a named legal party found in this window."
+  "notes": "News sourced from DSIT's official gov.uk news atom feed (news-and-communications.atom filtered to DSIT). publications[] backfilled 2026-06-28 with two first-party DSIT AI policy publications verified directly on gov.uk publication pages: AI Playbook (pub 2025-02-10) and AI Cyber Security Code of Practice (pub 2025-01-31, with NCSC). These are department-authored policy outputs, distinct from the dated press notices in news[]. No filings/controversies where DSIT is a named legal party found in this window. schema_cleanup 2026-06-28: added feed-sync-safe publication type values to DSIT policy publications."
 }

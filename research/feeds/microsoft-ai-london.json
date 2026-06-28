@@ -1,6 +1,6 @@
 {
   "slug": "microsoft-ai-london",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-06-28T14:30:00Z",
   "blurb": "Microsoft’s policy footprint is unusually legible through On the Issues, EU Policy Blog and formal AI-safety testing arrangements with CAISI/AISI. It is also a named defendant in the consolidated publisher copyright litigation alongside OpenAI.",
   "hiring": {
     "isHiring": null,
@@ -51,6 +51,60 @@
       "byline": "Microsoft Corporate Blogs",
       "source": "first_party",
       "summary": "Microsoft EU Policy Blog post tying AI expansion to compute and power infrastructure — directly relevant to European AI-capacity policy."
+    },
+    {
+      "date": "2026-06-24",
+      "title": "Scaling cybercrime disruption through innovation and AI",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/06/24/scaling-cybercrime-disruption-through-innovation-and-ai/",
+      "type": "blog",
+      "byline": "Steven Masada",
+      "source": "first_party",
+      "summary": "Microsoft describes an AI-assisted Digital Crimes Unit action against Amadey and StealC infrastructure, including Europol/industry coordination and expanded RICO legal strategy for cybercrime disruption."
+    },
+    {
+      "date": "2026-03-31",
+      "title": "Working constructively with the UK CMA to support customer choice and cloud competition",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/03/31/working-constructively-with-the-uk-cma-to-support-customer-choice-and-cloud-competition/",
+      "type": "blog",
+      "byline": "Brad Smith",
+      "source": "first_party",
+      "summary": "Microsoft announces UK Azure changes on data egress, switching and interoperability in response to the CMA Cloud Market Investigation — a directly UK-relevant competition/regulatory move."
+    },
+    {
+      "date": "2026-04-03",
+      "title": "Reaffirming our commitment to child safety in the face of European Union inaction",
+      "url": "https://blogs.microsoft.com/eupolicy/2026/04/03/reaffirming-our-commitment-to-child-safety-in-the-face-of-european-union-inaction/",
+      "type": "blog",
+      "byline": "Microsoft EU Government Affairs",
+      "source": "first_party",
+      "summary": "Microsoft criticises EU legislative inaction on CSAM detection and restates its voluntary child-safety measures."
+    },
+    {
+      "date": "2026-04-29",
+      "title": "One year on: Progress on our European digital commitments",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/04/29/one-year-on-progress-on-our-european-digital-commitments/",
+      "type": "blog",
+      "byline": "Samer Abu-Ltaif & Jeff Bullwinkel",
+      "source": "first_party",
+      "summary": "Anniversary review of Microsoft’s European Digital Commitments on sovereignty, data and AI governance."
+    },
+    {
+      "date": "2026-05-01",
+      "title": "From capability to responsibility: Securing our global digital ecosystem with next-generation AI",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/05/01/from-capability-to-responsibility-securing-our-global-digital-ecosystem-with-next-generation-ai/",
+      "type": "blog",
+      "byline": "Amy Hogan-Burney",
+      "source": "first_party",
+      "summary": "Security and governance framing for deploying next-generation AI across the digital ecosystem."
+    },
+    {
+      "date": "2026-05-27",
+      "title": "Strengthening our approach to tackling non-consensual intimate imagery",
+      "url": "https://blogs.microsoft.com/on-the-issues/2026/05/27/strengthening-our-approach-to-tackling-non-consensual-intimate-imagery/",
+      "type": "blog",
+      "byline": "Jenny Lay-Flurrie",
+      "source": "first_party",
+      "summary": "Digital-safety policy update on detecting and removing non-consensual intimate imagery."
     }
   ],
   "roles": [],
@@ -83,6 +137,6 @@
       "attributionChecked": true
     }
   ],
-  "notes": "launch_harvest 2026-06-27: Microsoft RSS feeds verified HTTP 200: https://blogs.microsoft.com/on-the-issues/feed/ and https://blogs.microsoft.com/eupolicy/feed/. AISI/CAISI article direct fetch HTTP 200. NPR controversy source direct fetch HTTP 200; no paywalled body reproduced.",
+  "notes": "launch_harvest 2026-06-27: Microsoft RSS feeds verified HTTP 200: https://blogs.microsoft.com/on-the-issues/feed/ and https://blogs.microsoft.com/eupolicy/feed/. AISI/CAISI article direct fetch HTTP 200. NPR controversy source direct fetch HTTP 200; no paywalled body reproduced. followup_harvest 2026-06-28: Microsoft On the Issues RSS verified 2026-06-24 cybercrime/AI policy post; AI Policy Daily and FLI newsletter were used only as discovery leads where relevant, with first-party URLs retained. followup_harvest 2026-06-28: added five 30–90 day first-party Microsoft policy/safety/competition posts (incl. UK CMA cloud item) verified via On the Issues / EU Policy indexes.",
   "news": []
 }
