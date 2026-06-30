@@ -246,6 +246,7 @@ function CompanyCard({
 
   const latest = detail?.latestEvent ?? null;
   const isHiring = detail?.isHiring ?? null;
+  const hasOpenRoles = (detail?.openRoles.length ?? 0) > 0;
 
   return (
     // v0.7.2 §3.4: the FRAME keeps the cyan-top / magenta-left vaporwave
@@ -377,8 +378,8 @@ function CompanyCard({
               <span className="ml-2 text-card-interior-whisper">{fmtAgo(latest.at)}</span>
             </p>
           ) : (
-            <p className="text-sm text-card-interior-muted italic">
-              No recent activity tracked.
+            <p className="prose-face text-sm text-card-interior-muted italic">
+              No recent policy signal tracked.
             </p>
           )}
         </div>
@@ -402,7 +403,7 @@ function CompanyCard({
           className="px-5 pb-5 pt-3 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5"
           style={{ borderTop: "1px solid var(--card-interior-rule)" }}
         >
-          <section>
+          <section className={hasOpenRoles ? undefined : "md:col-span-2"}>
             <h4 className="font-sans text-sm text-readout mb-2">
               Recent publications
               <span className="text-card-interior-whisper ml-2 text-xs">(last 12mo)</span>
@@ -438,20 +439,14 @@ function CompanyCard({
             )}
           </section>
 
-          <section>
-            <h4 className="font-sans text-sm text-readout mb-2">
-              Recent roles
-              {detail.openRoleCount > 0 && (
+          {hasOpenRoles ? (
+            <section>
+              <h4 className="font-sans text-sm text-readout mb-2">
+                Open roles
                 <span className="text-card-interior-whisper ml-2 text-xs">
                   ({detail.openRoleCount})
                 </span>
-              )}
-            </h4>
-            {detail.openRoles.length === 0 ? (
-              <p className="text-sm text-card-interior-muted italic">
-                No open roles tracked.
-              </p>
-            ) : (
+              </h4>
               <ul className="space-y-1.5">
                 {detail.openRoles.map((r) => (
                   <li
@@ -474,8 +469,8 @@ function CompanyCard({
                   </li>
                 ))}
               </ul>
-            )}
-          </section>
+            </section>
+          ) : null}
 
           <section className="md:col-span-2">
             <h4 className="font-sans text-sm text-readout mb-2">

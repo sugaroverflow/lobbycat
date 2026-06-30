@@ -175,7 +175,7 @@ function WelcomeBackDiff({
           {heading}
         </p>
         <p className="prose-face text-sm text-card-interior-muted">
-          nothing new since your last visit — lobbycat will let you know.
+          nothing new since your last visit. lobbycat will let you know.
         </p>
       </div>
     );

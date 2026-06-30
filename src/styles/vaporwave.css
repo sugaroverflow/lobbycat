@@ -96,7 +96,8 @@
 
     /* --------------------------------------------------------------------
      * Typography — Orbitron (geometric futuristic) for headings,
-     * Share Tech Mono (terminal) for body / UI / labels.
+     * Share Tech Mono (terminal) for body / UI / labels, and a plain
+     * system sans for paragraph-length prose.
      *
      * `--font-sans-loaded` and `--font-mono-loaded` are wired from
      * next/font in src/app/layout.tsx so the actual Google Font face
@@ -106,6 +107,8 @@
       "SF Mono", ui-monospace, "Menlo", monospace;
     --font-sans: var(--font-sans-loaded), "Orbitron", "Inter", system-ui,
       sans-serif;
+    --font-prose: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      system-ui, sans-serif;
     /* No serif. Italic = "the cat is speaking." */
 
     /* Fixed rem scale — tight ratio, same as v0.5. Vaporwave reserves

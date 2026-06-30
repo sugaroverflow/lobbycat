@@ -138,10 +138,10 @@ body {
   font-feature-settings: "ss03" on, "cv11" on;
 }
 
-/* `.prose-face` opts a region into the sans for reading-length copy
+/* `.prose-face` opts a region into the paragraph face for reading-length copy
  * (frame descriptions, fit-notes, comic captions over ~12 words). */
 .prose-face {
-  font-family: var(--font-sans);
+  font-family: var(--font-prose);
   line-height: 1.55;
   max-width: 70ch;
 }
