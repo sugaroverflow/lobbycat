@@ -382,11 +382,11 @@
     },
     {
       "slug": "govai",
-      "roleSourceStatus": "needs_manual_review",
-      "sourceType": "unknown",
-      "url": null,
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.governance.ai/opportunities",
       "verified": "2026-07-02",
-      "note": "No confirmed first-party roles source yet; do not fabricate roles."
+      "note": "Official GovAI opportunities page verified; current London/DC fellowships and EOI roles are listed directly on first-party site."
     },
     {
       "slug": "aria-safeguarded-ai",
