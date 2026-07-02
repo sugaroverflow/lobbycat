@@ -13,7 +13,8 @@
   "_endpoints": {
     "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{id}/jobs?content=true",
     "lever": "https://api.lever.co/v0/postings/{id}?mode=json",
-    "ashby": "https://api.ashbyhq.com/posting-api/job-board/{id}?includeCompensation=false"
+    "ashby": "https://api.ashbyhq.com/posting-api/job-board/{id}?includeCompensation=false",
+    "workday": "POST https://{tenant}.wd3.myworkdayjobs.com/wday/cxs/{tenant}/{board}/jobs (body: {limit,offset,searchText,appliedFacets}); id encoded as \"tenant/board\""
   },
   "sources": [
     {
@@ -215,11 +216,10 @@
     },
     {
       "slug": "ofcom-ai",
-      "roleSourceStatus": "needs_browser",
-      "sourceType": "official_careers_page",
-      "url": "https://ofcom.wd3.myworkdayjobs.com/Ofcom_Careers",
+      "ats": "workday",
+      "id": "ofcom/Ofcom_Careers",
       "verified": "2026-07-02",
-      "note": "Official Ofcom Workday careers portal; source verified but current vacancies require Workday/browser extraction."
+      "note": "Workday endpoint verified. 2 roles at check time. Central regulator for Online Safety Act — worth polling even at low volume. Discovered via careers-page HTML sweep 2026-07-02."
     },
     {
       "slug": "xai-london",
@@ -290,19 +290,17 @@
     },
     {
       "slug": "hogan-lovells-ai",
-      "roleSourceStatus": "careers_page_found",
-      "sourceType": "official_careers_page",
-      "url": "https://www.hlc.com/en/global-careers",
+      "ats": "workday",
+      "id": "hoganlovells/Search",
       "verified": "2026-07-02",
-      "note": "Official Hogan Lovells global careers page (hoganlovells.com redirects to hlc.com); no ATS endpoint found."
+      "note": "Workday endpoint verified. 185 roles at check time (global — needs policy-keyword filter). Includes data/privacy/cybersecurity practice roles relevant to AI policy work. Discovered via careers-page HTML sweep 2026-07-02."
     },
     {
       "slug": "linklaters-ai",
-      "roleSourceStatus": "careers_page_found",
-      "sourceType": "official_careers_page",
-      "url": "https://www.linklaters.com/en/careers",
+      "ats": "workday",
+      "id": "linklaters/Linklaters",
       "verified": "2026-07-02",
-      "note": "Official Linklaters careers page; no ATS endpoint found."
+      "note": "Workday endpoint verified. 167 roles at check time (global — needs policy-keyword filter to avoid firehose). Discovered via careers-page HTML sweep 2026-07-02."
     },
     {
       "slug": "bain-london-ai",
@@ -422,11 +420,10 @@
     },
     {
       "slug": "fca-ai",
-      "roleSourceStatus": "needs_browser",
-      "sourceType": "official_careers_page",
-      "url": "https://www.fca.org.uk/careers",
+      "ats": "workday",
+      "id": "fca/FCA_Careers",
       "verified": "2026-07-02",
-      "note": "Official FCA careers page verified but /vacancies route changed/404; needs browser/manual search for current vacancies."
+      "note": "Workday endpoint verified. 17 roles at check time incl. \"AI Benefits & Value Technical Specialist\" (direct AI policy signal). Discovered via careers-page HTML sweep 2026-07-02."
     },
     {
       "slug": "quantumblack-london",
@@ -601,6 +598,7 @@
   ],
   "_unmapped": {
     "_note": "Slugs with no confirmed first-party role source after the 2026-07-02 roles credibility pass. Mapped/checked slugs must not appear here.",
-    "slugs": []
+    "slugs": [],
+    "_probe_2026_07_02_workday": "Careers-page HTML sweep found Workday embed strings for fca-ai/ofcom-ai/linklaters-ai/hogan-lovells-ai. Each verified via POST /wday/cxs/{tenant}/{board}/jobs and returns real jobs. Also found but not converted: aria-safeguarded-ai (Pinpoint), chatham-house-ai (Teamtailor), techuk (Pinpoint), cma-broader-ai/cma-dmu (Civil Service Jobs). TBI Workday probe returned total=null — HTML-only for now. Benevolentai Workable public JSON 404s — HTML-only."
   }
 }
