@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T08:39:21Z",
+  "lastUpdated": "2026-07-02T10:38:45Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -2065,6 +2065,13 @@
       "event_type": "publication",
       "summary": "BenevolentAI hosts a publication/commentary on artificial intelligence in drug discovery, reflecting on AI/ML methods, their relevance across drug discovery and the need to manage expectations.",
       "source_url": "https://www.benevolent.com/about-us/publications/artificial-intelligence-drug-discovery/"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Expanding Project Glasswing: Anthropic extends its cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity (capability gain, breadth, ease of weaponisation, discoverability). A multi-lab AI-governance/standard-setting signal. Corroborated by Ars Technica and The Record (1 Jul 2026).",
+      "source_url": "https://www.anthropic.com/news/expanding-project-glasswing"
     }
   ]
 }
