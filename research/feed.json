@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T10:38:45Z",
+  "lastUpdated": "2026-07-02T12:08:56Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -7,6 +7,13 @@
       "event_type": "publication",
       "summary": "PA Consulting says public-sector AI delivery should align with AI governance frameworks, blueprints and responsible practices; date reflects verified page update metadata.",
       "source_url": "https://www.paconsulting.com/industries/government-and-public-sector"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Expanding Project Glasswing: Anthropic extends its cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity (capability gain, breadth, ease of weaponisation, discoverability). A multi-lab AI-governance/standard-setting signal. Corroborated by Ars Technica and The Record (1 Jul 2026).",
+      "source_url": "https://www.anthropic.com/news/expanding-project-glasswing"
     },
     {
       "date": "2026-06-27",
@@ -700,6 +707,13 @@
       "event_type": "publication",
       "summary": "Deloitte UK analyses which EU AI Act simplifications are settled or still in play under the Digital Omnibus and what they mean for AI strategy.",
       "source_url": "https://www.deloitte.com/uk/en/blogs/ecrs/the-ai-omnibus-what-is-settled-and-what-is-still-in-play.html"
+    },
+    {
+      "date": "2026-06-01",
+      "company_slug": "helsing",
+      "event_type": "publication",
+      "summary": "Helsing established Area 9, an advanced research division focused on AI and autonomous systems, and launched RX-1 — a robotics research platform designed and manufactured entirely in Europe, positioned as a sovereign alternative to non-European platforms and to be made available to universities and research institutions across Europe. Relevant to defence-AI research infrastructure, autonomy R&D and European technological-sovereignty policy.",
+      "source_url": "https://helsing.ai/newsroom/helsing-unveils-area-9-and-launches-rx-1-its-first-european-robotics-research-platform"
     },
     {
       "date": "2026-05-30",
@@ -2065,13 +2079,6 @@
       "event_type": "publication",
       "summary": "BenevolentAI hosts a publication/commentary on artificial intelligence in drug discovery, reflecting on AI/ML methods, their relevance across drug discovery and the need to manage expectations.",
       "source_url": "https://www.benevolent.com/about-us/publications/artificial-intelligence-drug-discovery/"
-    },
-    {
-      "date": "2026-06-30",
-      "company_slug": "anthropic-london",
-      "event_type": "publication",
-      "summary": "Expanding Project Glasswing: Anthropic extends its cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity (capability gain, breadth, ease of weaponisation, discoverability). A multi-lab AI-governance/standard-setting signal. Corroborated by Ars Technica and The Record (1 Jul 2026).",
-      "source_url": "https://www.anthropic.com/news/expanding-project-glasswing"
     }
   ]
 }
