@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T17:38:26Z",
+  "lastUpdated": "2026-07-02T18:09:10Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -1372,6 +1372,13 @@
       "event_type": "publication",
       "summary": "Identifies specific, safe knowledge gaps to fill for mirror-life preparedness without lowering barriers to creating it — biosecurity-meets-AI risk methodology.",
       "source_url": "https://www.longtermresilience.org/reports/gap-consolidation-of-the-mirror-life-evidence-base/"
+    },
+    {
+      "date": "2026-01-16",
+      "company_slug": "govai",
+      "event_type": "publication",
+      "summary": "Outlines a vision for frontier AI auditing as rigorous third-party verification of developers' safety and security claims based on deep, secure access to non-public information (not just deployed products). Proposes four AI Assurance Levels (AALs), recommending AAL-1 as a baseline for frontier AI and AAL-2 as a near-term goal for the most advanced developers. arXiv:2601.11699.",
+      "source_url": "https://www.governance.ai/research-paper/frontier-ai-auditing-toward-rigorous-third-party-assessment-of-safety-and-security-practices-at-leading-ai-companies"
     },
     {
       "date": "2026-01-14",
