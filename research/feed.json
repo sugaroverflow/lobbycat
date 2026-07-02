@@ -1,6 +1,13 @@
 {
-  "lastUpdated": "2026-07-02T19:08:00Z",
+  "lastUpdated": "2026-07-02T19:38:44Z",
   "events": [
+    {
+      "date": "2026-07-02",
+      "company_slug": "bank-of-england-ai",
+      "event_type": "publication",
+      "summary": "First-party Bank of England publication setting out its strategic approach to enabling responsible innovation across AI, distributed ledger technology (DLT) and quantum computing in the financial system — framing the Bank's role as shaping (not slowing) innovation while remaining vigilant to risks across monetary stability, financial stability and safe-and-sound firms.",
+      "source_url": "https://www.bankofengland.co.uk/report/2025/the-boes-approach-to-innovation-in-ai-dlt-quantum-computing"
+    },
     {
       "date": "2026-07-01",
       "company_slug": "pa-consulting-ai",
