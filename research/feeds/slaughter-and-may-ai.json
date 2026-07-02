@@ -1,10 +1,15 @@
 {
   "slug": "slaughter-and-may-ai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party EU AI Act publication.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://careers.slaughterandmay.com/V2/Vacancy",
+    "lastChecked": "2026-07-02",
+    "note": "Official Slaughter and May vacancy portal verified.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

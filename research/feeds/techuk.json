@@ -1,10 +1,15 @@
 {
   "slug": "techuk",
-  "lastUpdated": "2026-06-28T14:30:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "UK technology trade association with regular AI-policy analysis. Launch coverage uses first-party EU/UK AI regulation briefings.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://careers.techuk.org/",
+    "lastChecked": "2026-07-02",
+    "note": "Official techUK careers page verified; readable page exposed only register-interest/experienced/early-careers links, no current policy role to add.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

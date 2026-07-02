@@ -1,8 +1,15 @@
 {
   "slug": "foxglove",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "UK non-profit using legal action, investigations and campaigning to challenge tech harms and government use of technology.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://www.foxglove.org.uk/news/jobs/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Foxglove jobs route verified; page contained no current vacancy content at fetch time.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-06-17",

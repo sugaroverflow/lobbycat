@@ -1,8 +1,15 @@
 {
   "slug": "nhs-ai-transformation",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "NHS England, the body overseeing the NHS in England, including national rollout of AI tools across health and care services.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "not_relevant_public_sector",
+    "sourceUrl": "https://www.jobs.nhs.uk/candidate/search",
+    "lastChecked": "2026-07-02",
+    "note": "NHS AI/transformation roles are advertised through NHS Jobs or NHS England parent recruitment, not a programme-specific board.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-04-27",

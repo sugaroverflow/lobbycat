@@ -1,8 +1,14 @@
 {
   "slug": "chatham-house-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Royal Institute of International Affairs (Chatham House); this feed tracks its International Security Programme, led by Dr Marion Messmer, covering arms control, nuclear policy and emerging-tech security.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://careers.chathamhouse.org/jobs",
+    "lastChecked": "2026-07-02",
+    "note": "Official Chatham House Teamtailor careers page verified; cookie/JS page needs browser/API extraction for current roles.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-04-28",

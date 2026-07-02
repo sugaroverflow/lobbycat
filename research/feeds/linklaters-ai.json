@@ -1,10 +1,15 @@
 {
   "slug": "linklaters-ai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses named-author AI regulation analysis from Linklaters Tech Insights.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.linklaters.com/en/careers",
+    "lastChecked": "2026-07-02",
+    "note": "Official Linklaters careers page; no ATS endpoint found.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

@@ -1,10 +1,15 @@
 {
   "slug": "bain-london-ai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Consultancy AI practice. Launch coverage uses first-party Bain technology report on agentic AI transformation.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.bain.com/careers/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Bain careers page; needs manual/site search for AI-policy-adjacent legal/governance roles.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

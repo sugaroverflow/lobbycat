@@ -1,10 +1,15 @@
 {
   "slug": "openai-london",
-  "lastUpdated": "2026-06-27T13:42:00Z",
+  "lastUpdated": "2026-07-02T02:02:00Z",
   "blurb": "OpenAI's policy arm is in standards-building mode (the Appia Foundation conformity-specs play). Separately it remains a defendant in the consolidated NYT/news-publisher copyright litigation, where a Jan 2026 discovery ruling compels production of 20M ChatGPT logs.",
   "hiring": {
-    "isHiring": null,
-    "newSincePrevious": null
+    "isHiring": true,
+    "newSincePrevious": null,
+    "londonPolicyRoles": 2,
+    "lastChecked": "2026-07-02",
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=false",
+    "note": "Ashby board checked directly 2026-07-02; many US safety/legal roles omitted, added only UK/EMEA-relevant safety/regulatory roles."
   },
   "publications": [
     {
@@ -56,7 +61,26 @@
       "summary": "OpenAI on monitoring its own internal coding agents — methodology relevant to AI-evaluations and the auditability discussions that AISI and frontier-AI auditing groups care about."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Data Scientist, Safety",
+      "location": "London, UK",
+      "url": "https://jobs.ashbyhq.com/openai/666119c9-ff97-4e81-9805-94d7525bd633",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    },
+    {
+      "title": "Regulatory Operations Analyst",
+      "location": "Dublin, Ireland",
+      "url": "https://jobs.ashbyhq.com/openai/a03cd69e-8384-48aa-9c5e-fb50975b5164",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [

@@ -1,6 +1,15 @@
 {
-  "_comment": "Curated 'where to look' map for the roles lens. Maintained by Glyphie 🌀. Mirrors how publication sources are curated — each entry says which machine-readable ATS endpoint to hit per company. ATS public JSON APIs (greenhouse/lever/ashby) are used; no LinkedIn, no HTML scraping where an API exists. Verified reachable 2026-06-24.",
+  "_comment": "Curated 'where to look' map for the roles lens. Backward-compatible: ATS entries still carry {slug, ats, id}; non-ATS sources carry roleSourceStatus/sourceType/url/verified/note and are skipped by the ATS fetcher. No LinkedIn scraping.",
   "_updated": "2026-07-02",
+  "_status_values": [
+    "ats_found",
+    "careers_page_found",
+    "checked_empty",
+    "blocked",
+    "needs_browser",
+    "needs_manual_review",
+    "not_relevant_public_sector"
+  ],
   "_endpoints": {
     "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{id}/jobs?content=true",
     "lever": "https://api.lever.co/v0/postings/{id}?mode=json",
@@ -8,137 +17,590 @@
   },
   "sources": [
     {
+      "slug": "google-deepmind",
+      "ats": "greenhouse",
+      "id": "deepmind",
+      "verified": "2026-07-02",
+      "note": "Greenhouse board is a curated subset (~18 roles), not the full Google careers site. London frontier-safety roles do appear. Treat as partial.",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/deepmind/jobs?content=true"
+    },
+    {
       "slug": "anthropic-london",
       "ats": "greenhouse",
       "id": "anthropic",
-      "verified": "2026-06-24"
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/anthropic/jobs?content=true"
     },
     {
       "slug": "openai-london",
       "ats": "ashby",
       "id": "openai",
-      "verified": "2026-06-24"
-    },
-    {
-      "slug": "google-deepmind",
-      "ats": "greenhouse",
-      "id": "deepmind",
-      "verified": "2026-06-24",
-      "note": "Greenhouse board is a curated subset (~18 roles), not the full Google careers site. London frontier-safety roles do appear. Treat as partial."
-    },
-    {
-      "slug": "mistral-london",
-      "ats": "lever",
-      "id": "mistral",
-      "verified": "2026-06-24"
-    },
-    {
-      "slug": "elevenlabs-london",
-      "ats": "ashby",
-      "id": "elevenlabs",
-      "verified": "2026-06-24"
-    },
-    {
-      "slug": "synthesia",
-      "ats": "ashby",
-      "id": "synthesia",
-      "verified": "2026-06-24"
-    },
-    {
-      "slug": "improbable",
-      "ats": "ashby",
-      "id": "improbable",
-      "verified": "2026-06-24"
-    },
-    {
-      "slug": "cohere-london",
-      "ats": "ashby",
-      "id": "cohere",
-      "verified": "2026-06-24"
-    },
-    {
-      "slug": "faculty-ai",
-      "ats": "ashby",
-      "id": "faculty",
-      "verified": "2026-06-24"
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=false"
     },
     {
       "slug": "wayve",
       "ats": "greenhouse",
       "id": "wayve",
-      "verified": "2026-06-24"
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/wayve/jobs?content=true"
     },
     {
-      "slug": "helsing",
-      "ats": "greenhouse",
-      "id": "helsing",
-      "verified": "2026-06-24"
+      "slug": "alan-turing-institute",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://portal.careers.turing.ac.uk/vacancies/vacancy-search-results.aspx",
+      "verified": "2026-07-02",
+      "note": "Official Turing careers portal is HTML and currently lists 7 roles; several AI/security research roles need manual policy-relevance review before feed insertion."
     },
     {
-      "slug": "polyai",
-      "ats": "greenhouse",
-      "id": "polyai",
-      "verified": "2026-06-24"
+      "slug": "ada-lovelace-institute",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.adalovelaceinstitute.org/event/working-at-ada/",
+      "verified": "2026-07-02",
+      "note": "Official working-at-Ada page resolved; no machine-readable ATS found. Use as careers source and manually check role pages."
     },
     {
-      "slug": "xai-london",
-      "ats": "greenhouse",
-      "id": "xai",
-      "verified": "2026-06-24"
-    },
-    {
-      "slug": "stability-ai",
-      "ats": "greenhouse",
-      "id": "stabilityai",
-      "verified": "2026-06-27",
-      "note": "Launch gap batch verified HTTP 200; 3 jobs at check time, no relevant policy/legal/governance role."
+      "slug": "cltr",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.longtermresilience.org/jobs",
+      "verified": "2026-07-02",
+      "note": "Official jobs page; existing feed has a manually verified Operations Associate role."
     },
     {
       "slug": "aisi",
       "ats": "greenhouse",
       "id": "aisi",
       "verified": "2026-07-02",
-      "note": "UK AI Safety Institute — 6 London roles at check time (Frontier Research Engineer Security, Chem-Bio engineering leads, Red Team EoI). Discovered via parallel ATS probe sweep."
+      "note": "UK AI Safety Institute — 6 London roles at check time (Frontier Research Engineer Security, Chem-Bio engineering leads, Red Team EoI). Discovered via parallel ATS probe sweep.",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/aisi/jobs?content=true"
+    },
+    {
+      "slug": "dsit-ai-policy",
+      "roleSourceStatus": "not_relevant_public_sector",
+      "sourceType": "official_parent_portal",
+      "url": "https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?search=1&department=Department%20for%20Science%2C%20Innovation%20and%20Technology",
+      "verified": "2026-07-02",
+      "note": "DSIT policy roles are advertised through Civil Service Jobs, not a directorate-specific board. Treat as parent-department source."
+    },
+    {
+      "slug": "tbi",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://institute.global/who-we-are/careers",
+      "verified": "2026-07-02",
+      "note": "Official TBI careers page; no ATS endpoint found in Greenhouse/Lever/Ashby sweep."
+    },
+    {
+      "slug": "mistral-london",
+      "ats": "lever",
+      "id": "mistral",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.lever.co/v0/postings/mistral?mode=json"
+    },
+    {
+      "slug": "stability-ai",
+      "ats": "greenhouse",
+      "id": "stabilityai",
+      "verified": "2026-07-02",
+      "note": "Launch gap batch verified HTTP 200; 3 jobs at check time, no relevant policy/legal/governance role.",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/stabilityai/jobs?content=true"
+    },
+    {
+      "slug": "synthesia",
+      "ats": "ashby",
+      "id": "synthesia",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/synthesia?includeCompensation=false"
+    },
+    {
+      "slug": "helsing",
+      "ats": "greenhouse",
+      "id": "helsing",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/helsing/jobs?content=true"
+    },
+    {
+      "slug": "demos",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://demos.co.uk/jobs/",
+      "verified": "2026-07-02",
+      "note": "Official jobs page; bespoke HTML/manual check required."
+    },
+    {
+      "slug": "nesta",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.nesta.org.uk/jobs/",
+      "verified": "2026-07-02",
+      "note": "Official Nesta jobs page (seed URL redirected/changed); bespoke HTML/manual check required."
+    },
+    {
+      "slug": "royal-society-policy",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://royalsociety.occupop-careers.com/",
+      "verified": "2026-07-02",
+      "note": "Official Royal Society portal is JS-backed via Occupop/Cezanne; source verified but current vacancies need browser/API extraction."
+    },
+    {
+      "slug": "cetas",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.turing.ac.uk/opportunities-turing/jobs",
+      "verified": "2026-07-02",
+      "note": "CETaS roles appear via the parent Alan Turing Institute opportunities portal, not a separate CETaS board."
+    },
+    {
+      "slug": "odi",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://theodi.org/about-the-odi/work-with-us/",
+      "verified": "2026-07-02",
+      "note": "Official ODI work-with-us page (seed URL redirected); bespoke HTML/manual check required."
+    },
+    {
+      "slug": "frontier-economics",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.frontier-economics.com/uk/en/careers/working-with-us/",
+      "verified": "2026-07-02",
+      "note": "Official Frontier Economics careers page; bespoke/manual search required for policy-relevant roles."
+    },
+    {
+      "slug": "cma-dmu",
+      "roleSourceStatus": "not_relevant_public_sector",
+      "sourceType": "official_parent_portal",
+      "url": "https://www.gov.uk/government/organisations/competition-and-markets-authority/about/recruitment",
+      "verified": "2026-07-02",
+      "note": "CMA DMU roles are advertised through parent CMA/Civil Service recruitment, not a DMU-specific board."
+    },
+    {
+      "slug": "elevenlabs-london",
+      "ats": "ashby",
+      "id": "elevenlabs",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/elevenlabs?includeCompensation=false"
+    },
+    {
+      "slug": "ico-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://ico.org.uk/about-the-ico/jobs/",
+      "verified": "2026-07-02",
+      "note": "Official ICO jobs page; bespoke/manual check required."
+    },
+    {
+      "slug": "ofcom-ai",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://ofcom.wd3.myworkdayjobs.com/Ofcom_Careers",
+      "verified": "2026-07-02",
+      "note": "Official Ofcom Workday careers portal; source verified but current vacancies require Workday/browser extraction."
+    },
+    {
+      "slug": "xai-london",
+      "ats": "greenhouse",
+      "id": "xai",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/xai/jobs?content=true"
+    },
+    {
+      "slug": "polyai",
+      "ats": "greenhouse",
+      "id": "polyai",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/polyai/jobs?content=true"
+    },
+    {
+      "slug": "benevolentai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.benevolent.com/careers/",
+      "verified": "2026-07-02",
+      "note": "Official careers page; no Greenhouse/Lever/Ashby endpoint found."
+    },
+    {
+      "slug": "improbable",
+      "ats": "ashby",
+      "id": "improbable",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/improbable?includeCompensation=false"
+    },
+    {
+      "slug": "big-brother-watch",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://bigbrotherwatch.org.uk/vacancies/",
+      "verified": "2026-07-02",
+      "note": "Official vacancies route currently resolves to the main site; keep as manual-check source."
+    },
+    {
+      "slug": "connected-by-data",
+      "roleSourceStatus": "needs_manual_review",
+      "sourceType": "official_careers_page",
+      "url": "https://connectedbydata.org/",
+      "verified": "2026-07-02",
+      "note": "No stable first-party jobs URL found in search/fetch; use main site/news/manual review only."
+    },
+    {
+      "slug": "public-law-project",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://publiclawproject.org.uk/join-in/latest-opportunities/",
+      "verified": "2026-07-02",
+      "note": "Official latest opportunities page verified; current Executive Officer listing is not AI/policy-specific enough for feed insertion."
+    },
+    {
+      "slug": "oliver-wyman-london",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.oliverwyman.com/careers.html",
+      "verified": "2026-07-02",
+      "note": "Official Oliver Wyman careers page; rejected unrelated Lever namespace collision."
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.hlc.com/en/global-careers",
+      "verified": "2026-07-02",
+      "note": "Official Hogan Lovells global careers page (hoganlovells.com redirects to hlc.com); no ATS endpoint found."
+    },
+    {
+      "slug": "linklaters-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.linklaters.com/en/careers",
+      "verified": "2026-07-02",
+      "note": "Official Linklaters careers page; no ATS endpoint found."
+    },
+    {
+      "slug": "bain-london-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.bain.com/careers/",
+      "verified": "2026-07-02",
+      "note": "Official Bain careers page; needs manual/site search for AI-policy-adjacent legal/governance roles."
+    },
+    {
+      "slug": "techuk",
+      "roleSourceStatus": "checked_empty",
+      "sourceType": "official_careers_page",
+      "url": "https://careers.techuk.org/",
+      "verified": "2026-07-02",
+      "note": "Official techUK careers page verified; readable page exposed only register-interest/experienced/early-careers links, no current policy role to add."
+    },
+    {
+      "slug": "cma-broader-ai",
+      "roleSourceStatus": "not_relevant_public_sector",
+      "sourceType": "official_parent_portal",
+      "url": "https://www.gov.uk/government/organisations/competition-and-markets-authority/about/recruitment",
+      "verified": "2026-07-02",
+      "note": "Broader CMA AI work is not a separate hiring entity; use parent CMA/Civil Service recruitment source."
+    },
+    {
+      "slug": "dsit-ai-opportunity",
+      "roleSourceStatus": "not_relevant_public_sector",
+      "sourceType": "official_parent_portal",
+      "url": "https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?search=1&department=Department%20for%20Science%2C%20Innovation%20and%20Technology",
+      "verified": "2026-07-02",
+      "note": "AI Opportunity Unit roles are advertised through DSIT/Civil Service Jobs, not a unit-specific board."
+    },
+    {
+      "slug": "rusi-ai",
+      "roleSourceStatus": "checked_empty",
+      "sourceType": "official_careers_page",
+      "url": "https://www.rusi.org/about/our-people/job-opportunities",
+      "verified": "2026-07-02",
+      "note": "Official RUSI job opportunities page verified; page says current opportunities appear below and none were listed at fetch time."
+    },
+    {
+      "slug": "lse-ai-policy",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://info.lse.ac.uk/lse-jobs",
+      "verified": "2026-07-02",
+      "note": "Official LSE Jobs page; seed careers URL was wrong (Cohere). Use LSE jobs plus department pages for manual checks."
+    },
+    {
+      "slug": "cohere-london",
+      "ats": "ashby",
+      "id": "cohere",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false"
     },
     {
       "slug": "apollo-research",
       "ats": "lever",
       "id": "apolloresearch",
       "verified": "2026-07-02",
-      "note": "14 roles at check time incl. Senior AI Governance Researcher (direct policy signal) and AI Security & Control Engineer. Discovered via parallel ATS probe sweep."
+      "note": "14 roles at check time incl. Senior AI Governance Researcher (direct policy signal) and AI Security & Control Engineer. Discovered via parallel ATS probe sweep.",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.lever.co/v0/postings/apolloresearch?mode=json"
+    },
+    {
+      "slug": "faculty-ai",
+      "ats": "ashby",
+      "id": "faculty",
+      "verified": "2026-07-02",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://api.ashbyhq.com/posting-api/job-board/faculty?includeCompensation=false"
+    },
+    {
+      "slug": "govai",
+      "roleSourceStatus": "needs_manual_review",
+      "sourceType": "unknown",
+      "url": null,
+      "verified": "2026-07-02",
+      "note": "No confirmed first-party roles source yet; do not fabricate roles."
+    },
+    {
+      "slug": "aria-safeguarded-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://aria.pinpointhq.com/",
+      "verified": "2026-07-02",
+      "note": "Official ARIA Pinpoint careers portal verified; no Safeguarded-AI-specific role added without role-page verification."
+    },
+    {
+      "slug": "microsoft-ai-london",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://jobs.careers.microsoft.com/global/en/search?lc=London%2C%20United%20Kingdom",
+      "verified": "2026-07-02",
+      "note": "Official Microsoft careers search redirects to JS app; needs browser/API extraction for current London policy/legal roles."
+    },
+    {
+      "slug": "meta-london-policy",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://www.metacareers.com/jobs/?offices[0]=London%2C%20United%20Kingdom",
+      "verified": "2026-07-02",
+      "note": "Official Meta careers search verified; JS/search state needs browser/API extraction before adding roles."
+    },
+    {
+      "slug": "bird-and-bird-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.twobirds.com/en/careers",
+      "verified": "2026-07-02",
+      "note": "Official Bird & Bird careers page; no ATS endpoint found."
+    },
+    {
+      "slug": "fca-ai",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://www.fca.org.uk/careers",
+      "verified": "2026-07-02",
+      "note": "Official FCA careers page verified but /vacancies route changed/404; needs browser/manual search for current vacancies."
+    },
+    {
+      "slug": "quantumblack-london",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://www.mckinsey.com/careers/search-jobs?locations=London&query=QuantumBlack",
+      "verified": "2026-07-02",
+      "note": "Official McKinsey/QuantumBlack careers search verified; dynamic search needs browser/API extraction."
+    },
+    {
+      "slug": "bank-of-england-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.bankofengland.co.uk/careers",
+      "verified": "2026-07-02",
+      "note": "Official Bank of England careers page; no ATS endpoint found."
+    },
+    {
+      "slug": "nhs-ai-transformation",
+      "roleSourceStatus": "not_relevant_public_sector",
+      "sourceType": "official_parent_portal",
+      "url": "https://www.jobs.nhs.uk/candidate/search",
+      "verified": "2026-07-02",
+      "note": "NHS AI/transformation roles are advertised through NHS Jobs or NHS England parent recruitment, not a programme-specific board."
+    },
+    {
+      "slug": "bbc-responsible-ai",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://careers.bbc.co.uk/",
+      "verified": "2026-07-02",
+      "note": "Official BBC careers site verified; dynamic search/browser check needed for responsible-AI/R&D roles."
+    },
+    {
+      "slug": "bennett-cambridge",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://www.jobs.cam.ac.uk/job/?unit=u00601",
+      "verified": "2026-07-02",
+      "note": "Official Cambridge jobs source for Bennett School/Public Policy; portal returned 503 to scripted fetch but search shows Bennett listings. Needs browser/manual check."
+    },
+    {
+      "slug": "oxford-internet-institute",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://www.oii.ox.ac.uk/people/vacancies/",
+      "verified": "2026-07-02",
+      "note": "Official OII vacancies page verified but fetch surfaced cookie text; use browser/manual page read."
+    },
+    {
+      "slug": "i-dot-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://ai.gov.uk/opportunities/",
+      "verified": "2026-07-02",
+      "note": "Official i.AI careers page verified; live roles are Greenhouse links, but current roles are product/engineering/EOI rather than policy/legal/governance."
+    },
+    {
+      "slug": "mhra-ai",
+      "roleSourceStatus": "not_relevant_public_sector",
+      "sourceType": "official_parent_portal",
+      "url": "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency/about/recruitment",
+      "verified": "2026-07-02",
+      "note": "MHRA AI-relevant roles are advertised through parent MHRA/Civil Service Jobs, not an AI-specific board."
+    },
+    {
+      "slug": "chatham-house-ai",
+      "roleSourceStatus": "needs_browser",
+      "sourceType": "official_careers_page",
+      "url": "https://careers.chathamhouse.org/jobs",
+      "verified": "2026-07-02",
+      "note": "Official Chatham House Teamtailor careers page verified; cookie/JS page needs browser/API extraction for current roles."
+    },
+    {
+      "slug": "ippr",
+      "roleSourceStatus": "checked_empty",
+      "sourceType": "official_careers_page",
+      "url": "https://www.ippr.org/jobs",
+      "verified": "2026-07-02",
+      "note": "Official IPPR jobs page verified; page only describes internships/no advertised current role at fetch time."
+    },
+    {
+      "slug": "onward",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://ukonward.com/job-opportunities/",
+      "verified": "2026-07-02",
+      "note": "Official Onward job-opportunities page verified; current indexed Head of Energy role is not AI-policy relevant."
     },
     {
       "slug": "public-io",
       "ats": "greenhouse",
       "id": "public-io",
       "verified": "2026-07-02",
-      "note": "Westminster-based govtech consultancy. 1 role at check time (Bid Associate). Discovered via parallel ATS probe sweep."
+      "note": "Westminster-based govtech consultancy. 1 role at check time (Bid Associate). Discovered via parallel ATS probe sweep.",
+      "roleSourceStatus": "ats_found",
+      "sourceType": "ats_api",
+      "url": "https://boards-api.greenhouse.io/v1/boards/public-io/jobs?content=true"
+    },
+    {
+      "slug": "conjecture",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.conjecture.dev/career",
+      "verified": "2026-07-02",
+      "note": "Official Conjecture careers page verified; no ATS endpoint found."
+    },
+    {
+      "slug": "open-rights-group",
+      "roleSourceStatus": "checked_empty",
+      "sourceType": "official_careers_page",
+      "url": "https://www.openrightsgroup.org/jobs/",
+      "verified": "2026-07-02",
+      "note": "Official Open Rights Group jobs page verified; no current role text surfaced at fetch time."
+    },
+    {
+      "slug": "foxglove",
+      "roleSourceStatus": "checked_empty",
+      "sourceType": "official_careers_page",
+      "url": "https://www.foxglove.org.uk/news/jobs/",
+      "verified": "2026-07-02",
+      "note": "Official Foxglove jobs route verified; page contained no current vacancy content at fetch time."
+    },
+    {
+      "slug": "slaughter-and-may-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://careers.slaughterandmay.com/V2/Vacancy",
+      "verified": "2026-07-02",
+      "note": "Official Slaughter and May vacancy portal verified."
+    },
+    {
+      "slug": "ao-shearman-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.aoshearman.com/en/careers/united-kingdom",
+      "verified": "2026-07-02",
+      "note": "Official A&O Shearman UK careers page verified."
+    },
+    {
+      "slug": "pinsent-masons-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.pinsentmasons.com/careers",
+      "verified": "2026-07-02",
+      "note": "Official Pinsent Masons careers page verified."
+    },
+    {
+      "slug": "deloitte-uk-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.deloitte.com/uk/en/careers.html",
+      "verified": "2026-07-02",
+      "note": "Official Deloitte UK careers page verified."
+    },
+    {
+      "slug": "pa-consulting-ai",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://www.paconsulting.com/careers",
+      "verified": "2026-07-02",
+      "note": "Official PA Consulting careers page verified."
+    },
+    {
+      "slug": "centre-for-future-generations",
+      "roleSourceStatus": "careers_page_found",
+      "sourceType": "official_careers_page",
+      "url": "https://cfg.eu/about-us/careers/",
+      "verified": "2026-07-02",
+      "note": "Official CFG careers page verified (seed /jobs URL 404); no current role added without role-page evidence."
     }
   ],
   "_unmapped": {
-    "_note": "Seeded companies WITHOUT a confirmed ATS JSON endpoint as of 2026-06-24. Most are think tanks / regulators / consultancies whose careers pages are bespoke HTML (no clean API). Candidates for a future careful-HTML-read or manual check. Do NOT fabricate roles for these.",
-    "slugs": [
-      "benevolentai",
-      "alan-turing-institute",
-      "ada-lovelace-institute",
-      "cltr",
-      "aisi",
-      "dsit-ai-policy",
-      "tbi",
-      "demos",
-      "nesta",
-      "royal-society-policy",
-      "cetas",
-      "odi",
-      "frontier-economics",
-      "cma-dmu",
-      "ico-ai",
-      "ofcom-ai",
-      "big-brother-watch",
-      "connected-by-data",
-      "public-law-project",
-      "oliver-wyman-london"
-    ],
-    "_probe_2026_07_02": "Parallel ATS probe sweep across the unmapped 58 orgs (up to 3 slug variants × greenhouse/lever/ashby). Genuine hits: aisi, apollo-research, public-io (added above). Rejected namespace collisions: cma-dmu→greenhouse/cma (Florida accounting firm), foxglove→ashby/foxglove (SF robotics observability co, not UK Foxglove Legal charity), oliver-wyman-london→lever/oliverwyman (2 generic roles = squatted account, not real Oliver Wyman). Also caught existing slug bug: cohere→cohere-london, faculty→faculty-ai (feed filenames didn't match mapping keys, silently broken since 2026-06-24). Remaining 55 unmapped orgs = confirmed no public ATS on greenhouse/lever/ashby; need bespoke-HTML or browser-tool tier."
+    "_note": "Slugs with no confirmed first-party role source after the 2026-07-02 roles credibility pass. Mapped/checked slugs must not appear here.",
+    "slugs": []
   }
 }

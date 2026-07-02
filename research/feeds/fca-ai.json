@@ -1,8 +1,14 @@
 {
   "slug": "fca-ai",
-  "lastUpdated": "2026-06-28T14:25:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Financial Conduct Authority (FCA) regulates financial services firms and markets in the UK, including its work on the use of artificial intelligence in financial services.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://www.fca.org.uk/careers",
+    "lastChecked": "2026-07-02",
+    "note": "Official FCA careers page verified but /vacancies route changed/404; needs browser/manual search for current vacancies.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-09-09",

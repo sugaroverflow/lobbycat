@@ -121,7 +121,11 @@ async function loadPrevSnapshot() {
 }
 
 async function main() {
-  const sources = JSON.parse(await readFile(SOURCES, "utf8"));
+  const sourceMap = JSON.parse(await readFile(SOURCES, "utf8"));
+  // Backward-compatible with the 2026-07-02 roles credibility pass: entries
+  // without {ats,id} document official careers pages/statuses for manual checks
+  // and must not be handed to the ATS API fetcher.
+  const sources = (sourceMap.sources || []).filter((src) => src.ats && src.id);
   const kw = JSON.parse(await readFile(KEYWORDS, "utf8"));
   const prev = await loadPrevSnapshot();
   const prevKeys = new Set();
@@ -131,7 +135,7 @@ async function main() {
   const allRoles = [];
   const errors = [];
 
-  for (const src of sources.sources) {
+  for (const src of sources) {
     const url = urlFor(src.ats, src.id);
     try {
       const payload = await fetchJson(url);
@@ -185,8 +189,8 @@ async function main() {
     generated: new Date().toISOString(),
     date: today,
     summary: {
-      companies: sources.sources.length,
-      reachable: sources.sources.length - errors.length,
+      companies: sources.length,
+      reachable: sources.length - errors.length,
       totalPolicyRoles: allRoles.length,
       londonRoles: allRoles.filter((r) => r.londonRelevant).length,
       newSincePrevious: prev ? newRoles.length : null,

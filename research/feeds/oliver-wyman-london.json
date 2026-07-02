@@ -1,10 +1,15 @@
 {
   "slug": "oliver-wyman-london",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Consultancy with public-sector AI thought leadership. Launch coverage uses first-party government-roadmap AI insight.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.oliverwyman.com/careers.html",
+    "lastChecked": "2026-07-02",
+    "note": "Official Oliver Wyman careers page; rejected unrelated Lever namespace collision.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

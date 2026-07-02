@@ -1,10 +1,15 @@
 {
   "slug": "pinsent-masons-ai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses Out-Law AI-regulatory reporting from Pinsent Masons.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.pinsentmasons.com/careers",
+    "lastChecked": "2026-07-02",
+    "note": "Official Pinsent Masons careers page verified.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

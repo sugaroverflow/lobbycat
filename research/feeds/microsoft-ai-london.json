@@ -1,10 +1,15 @@
 {
   "slug": "microsoft-ai-london",
-  "lastUpdated": "2026-06-28T14:30:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Microsoft’s policy footprint is unusually legible through On the Issues, EU Policy Blog and formal AI-safety testing arrangements with CAISI/AISI. It is also a named defendant in the consolidated publisher copyright litigation alongside OpenAI.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://jobs.careers.microsoft.com/global/en/search?lc=London%2C%20United%20Kingdom",
+    "lastChecked": "2026-07-02",
+    "note": "Official Microsoft careers search redirects to JS app; needs browser/API extraction for current London policy/legal roles.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

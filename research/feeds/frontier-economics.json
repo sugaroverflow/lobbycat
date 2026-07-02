@@ -1,10 +1,15 @@
 {
   "slug": "frontier-economics",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Economics consultancy with an AI practice; launch coverage uses first-party AI competition-policy analysis.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.frontier-economics.com/uk/en/careers/working-with-us/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Frontier Economics careers page; bespoke/manual search required for policy-relevant roles.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

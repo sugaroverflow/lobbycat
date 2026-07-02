@@ -1,10 +1,15 @@
 {
   "slug": "cma-broader-ai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "CMA foundation-models and broader AI competition-policy work. Launch coverage uses primary GOV.UK CMA case material.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "not_relevant_public_sector",
+    "sourceUrl": "https://www.gov.uk/government/organisations/competition-and-markets-authority/about/recruitment",
+    "lastChecked": "2026-07-02",
+    "note": "Broader CMA AI work is not a separate hiring entity; use parent CMA/Civil Service recruitment source.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

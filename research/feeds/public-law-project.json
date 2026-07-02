@@ -1,8 +1,14 @@
 {
   "slug": "public-law-project",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "UK legal charity using public law and research to improve access to justice and hold government to account, including on automation and algorithms.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://publiclawproject.org.uk/join-in/latest-opportunities/",
+    "lastChecked": "2026-07-02",
+    "note": "Official latest opportunities page verified; current Executive Officer listing is not AI/policy-specific enough for feed insertion.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-05-28",

@@ -1,8 +1,14 @@
 {
   "slug": "odi",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Open Data Institute, a UK non-profit researching and advocating for trustworthy data and AI infrastructure.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://theodi.org/about-the-odi/work-with-us/",
+    "lastChecked": "2026-07-02",
+    "note": "Official ODI work-with-us page (seed URL redirected); bespoke HTML/manual check required.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-06-25",

@@ -1,8 +1,14 @@
 {
   "slug": "centre-for-future-generations",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Centre for Future Generations (CFG), a European (EU-focused) think tank on the governance of emerging technologies including advanced AI, biotech and neurotech.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://cfg.eu/about-us/careers/",
+    "lastChecked": "2026-07-02",
+    "note": "Official CFG careers page verified (seed /jobs URL 404); no current role added without role-page evidence.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-06-25",

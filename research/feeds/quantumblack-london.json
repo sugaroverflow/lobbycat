@@ -1,10 +1,15 @@
 {
   "slug": "quantumblack-london",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "McKinsey QuantumBlack AI practice. Launch coverage uses first-party State of AI report; body recapture needs browser because direct fetch returned 403.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://www.mckinsey.com/careers/search-jobs?locations=London&query=QuantumBlack",
+    "lastChecked": "2026-07-02",
+    "note": "Official McKinsey/QuantumBlack careers search verified; dynamic search needs browser/API extraction.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

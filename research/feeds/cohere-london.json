@@ -1,8 +1,16 @@
 {
   "slug": "cohere-london",
-  "lastUpdated": "2026-06-27T19:38:00Z",
+  "lastUpdated": "2026-07-02T02:02:00Z",
   "blurb": "Cohere is an enterprise-focused frontier AI company (LLMs, retrieval, agents) with a London presence, positioning around 'sovereign' and secure enterprise AI deployment.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": null,
+    "londonPolicyRoles": 2,
+    "lastChecked": "2026-07-02",
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://api.ashbyhq.com/posting-api/job-board/cohere?includeCompensation=false",
+    "note": "Ashby board checked directly 2026-07-02; added only London/Europe safety/legal roles backed by first-party ATS."
+  },
   "publications": [
     {
       "date": "2026-05-20",
@@ -21,7 +29,26 @@
       "summary": "Cohere argument on how users worldwide are affected by AI's cultural gaps — a values/representation angle adjacent to global AI governance. Listing showed no explicit date for this item; date left null."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Senior Member of Technical Staff, Safety and Security for Agents",
+      "location": "London",
+      "url": "https://jobs.ashbyhq.com/cohere/1f7cc5e6-5f31-40d8-ad49-fe22c98a3ea4",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    },
+    {
+      "title": "Counsel, Privacy and AI Regulation (EU)",
+      "location": "Europe",
+      "url": "https://jobs.ashbyhq.com/cohere/d81c28f5-2945-4c49-bc5b-86e345334cfb",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [

@@ -1,10 +1,15 @@
 {
   "slug": "deloitte-uk-ai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Deloitte UK AI/regulatory advisory. Launch coverage uses first-party regulatory-outlook material on AI and data.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.deloitte.com/uk/en/careers.html",
+    "lastChecked": "2026-07-02",
+    "note": "Official Deloitte UK careers page verified.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

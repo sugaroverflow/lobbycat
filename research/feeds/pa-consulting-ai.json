@@ -1,10 +1,15 @@
 {
   "slug": "pa-consulting-ai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "PA Consulting responsible-AI advisory. Launch coverage uses first-party responsible-AI service material.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.paconsulting.com/careers",
+    "lastChecked": "2026-07-02",
+    "note": "Official PA Consulting careers page verified.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

@@ -1,6 +1,12 @@
 {
   "slug": "meta-london-policy",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://www.metacareers.com/jobs/?offices[0]=London%2C%20United%20Kingdom",
+    "lastChecked": "2026-07-02",
+    "note": "Official Meta careers search verified; JS/search state needs browser/API extraction before adding roles.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-04-07",
@@ -87,6 +93,6 @@
     }
   ],
   "blurb": "Meta — newsroom for company announcements, including AI products and policy positions.",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "notes": "[RSS harvest 2026-06-27] https://about.fb.com/news/feed/ launch_harvest 2026-06-27: Meta framework PDF direct fetch HTTP 200. Blog URL direct fetch HTTP 200 but body is JS-heavy; status=needs_browser for full body if richer summary is needed."
 }

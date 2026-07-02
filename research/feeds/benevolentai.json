@@ -1,10 +1,15 @@
 {
   "slug": "benevolentai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "AI-enabled drug-discovery company. Launch coverage uses first-party scientific/publication material as verified evidence; no controversy invented.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.benevolent.com/careers/",
+    "lastChecked": "2026-07-02",
+    "note": "Official careers page; no Greenhouse/Lever/Ashby endpoint found.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

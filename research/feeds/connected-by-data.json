@@ -1,8 +1,14 @@
 {
   "slug": "connected-by-data",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "UK campaign organisation working to give communities a powerful say in how data and AI are governed.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_manual_review",
+    "sourceUrl": "https://connectedbydata.org/",
+    "lastChecked": "2026-07-02",
+    "note": "No stable first-party jobs URL found in search/fetch; use main site/news/manual review only.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-05-30",

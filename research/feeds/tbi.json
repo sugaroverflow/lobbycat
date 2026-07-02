@@ -1,8 +1,14 @@
 {
   "slug": "tbi",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Tony Blair Institute for Global Change is a UK-founded policy advisory organisation that publishes prolifically on AI in government, public services, and geopolitics, generally arguing for aggressive state adoption of AI.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://institute.global/who-we-are/careers",
+    "lastChecked": "2026-07-02",
+    "note": "Official TBI careers page; no ATS endpoint found in Greenhouse/Lever/Ashby sweep.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-11-17",

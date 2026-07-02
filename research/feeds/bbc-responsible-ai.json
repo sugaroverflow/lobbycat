@@ -1,8 +1,14 @@
 {
   "slug": "bbc-responsible-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "BBC Research & Development, the BBC's technology research arm, including work on responsible AI, content provenance and trusted public-service media.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://careers.bbc.co.uk/",
+    "lastChecked": "2026-07-02",
+    "note": "Official BBC careers site verified; dynamic search/browser check needed for responsible-AI/R&D roles.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-03-20",

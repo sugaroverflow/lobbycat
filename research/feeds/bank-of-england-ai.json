@@ -1,8 +1,14 @@
 {
   "slug": "bank-of-england-ai",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Bank of England is the UK's central bank; this covers its research and policy work on artificial intelligence in the financial system.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.bankofengland.co.uk/careers",
+    "lastChecked": "2026-07-02",
+    "note": "Official Bank of England careers page; no ATS endpoint found.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-04-09",

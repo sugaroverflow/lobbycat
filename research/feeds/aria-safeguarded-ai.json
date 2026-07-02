@@ -1,8 +1,14 @@
 {
   "slug": "aria-safeguarded-ai",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "ARIA's Safeguarded AI programme (within Mathematics for Safe AI), building an open-source assurance toolkit so AI agents can produce formally verified, fail-safe artefacts.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://aria.pinpointhq.com/",
+    "lastChecked": "2026-07-02",
+    "note": "Official ARIA Pinpoint careers portal verified; no Safeguarded-AI-specific role added without role-page verification.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-07-04",
