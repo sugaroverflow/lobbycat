@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T12:08:56Z",
+  "lastUpdated": "2026-07-02T12:39:04Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -686,6 +686,13 @@
       "event_type": "publication",
       "summary": "A KV-cache quantization codec for transformers that, across text, video and audio, matches or beats prior rotation codecs at every reported bit width, with the lead growing at extreme compression.",
       "source_url": "https://stability.ai/research/octopus-optimized-kv-cache-for-transformers-via-octahedral-parametrization-under-optimal-squared-error-quantization"
+    },
+    {
+      "date": "2026-06-02",
+      "company_slug": "alan-turing-institute",
+      "event_type": "publication",
+      "summary": "Turing (via its Centre for Emerging Technology and Security, CETaS) published an AI Disinformation Incident Repository plus related analysis of how AI information threats have affected crisis events over the last few years, offering strategic policy recommendations and operational insights to strengthen societal resilience to AI-driven crises. Underpinned by the CETaS research report 'Adding Fuel to the Fire: AI Information Threats and Crisis Events' on AI threats to democratic stability. First-party dateline 'Tuesday 02 Jun 2026' confirmed on turing.ac.uk homepage listing (blog article page itself Cloudflare-gated).",
+      "source_url": "https://www.turing.ac.uk/blog/ai-disinformation-incident-repository-how-ai-transforming-crisis-events"
     },
     {
       "date": "2026-06-01",
