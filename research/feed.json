@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T16:38:50Z",
+  "lastUpdated": "2026-07-02T17:38:26Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -1414,6 +1414,13 @@
       "event_type": "publication",
       "summary": "Bain frames responsible AI as governance, lifecycle oversight, evaluation and monitoring across AI systems, including generative and agentic AI.",
       "source_url": "https://www.bain.com/insights/what-is-responsible-ai/"
+    },
+    {
+      "date": "2025-12-15",
+      "company_slug": "dsit-ai-policy",
+      "event_type": "publication",
+      "summary": "DSIT policy paper: a progress statement on the government's work on copyright and AI, and the steps being taken to prepare a report on the use of copyright works in developing AI systems plus an economic impact assessment, as required by sections 135-137 of the Data (Use and Access) Act.",
+      "source_url": "https://www.gov.uk/government/publications/copyright-and-artificial-intelligence-progress-report"
     },
     {
       "date": "2025-12-12",
