@@ -77,6 +77,9 @@ src/app/favorites/             starred-companies view
 src/app/api/cron/              Vercel cron handlers for each pipeline
 src/app/api/rescore-status/    "is the cat busy?" endpoint
 src/components/loading-cat.tsx shared calm-cousin loading animation
+src/lib/feeds-sync/            Glyphie research feed sync
+src/lib/surprise/              surprise / discovery module
+src/lib/welcome-back.ts        welcome-back card logic (reads from research/feed.json)
 skills/clarify/SKILL.md        the clarify skill (cat's interview move set)
 skills/clarify/reference/      moves, voice, and worked examples for the skill
 research/feed.json             Glyphie's research feed (diff source for welcome-back)
@@ -92,11 +95,13 @@ research/feed.json             Glyphie's research feed (diff source for welcome-
 Pipelines run on Vercel cron, populating evidence *under* the curated
 company list without expanding the list itself:
 
-- **ATS feeds** — pulls each company's `rolesSource` (Greenhouse / Lever / Ashby) and refreshes the `roles` table; closes any role that disappears from the feed.
-- **RSS ingestion** — pulls each company's blog/press feeds, summarises new items, upserts into `publications`.
-- **EU Transparency Register** — pulls the EU lobbying CSV, matches against the seed company set, upserts into `lobbying_records`.
-- **Consultation submissions** — pulls curated UK/EU consultation responses and matches them to companies.
-- **Safety frameworks** — pulls hand-curated safety / responsible scaling / RAI policy frameworks per company.
+- **ATS feeds** (6am daily) — pulls each company's `rolesSource` (Greenhouse / Lever / Ashby) and refreshes the `roles` table; closes any role that disappears from the feed.
+- **RSS ingestion** (6:30am daily) — pulls each company's blog/press feeds, summarises new items, upserts into `publications`.
+- **EU Transparency Register** (7am daily) — pulls the EU lobbying CSV, matches against the seed company set, upserts into `lobbying_records`.
+- **Consultation submissions** (7:15am Mondays) — pulls curated UK/EU consultation responses and matches them to companies.
+- **Safety frameworks** (7:30am Mondays) — pulls hand-curated safety / responsible scaling / RAI policy frameworks per company.
+- **Feeds sync** (9am daily) — syncs Glyphie's research feed into `research/feed.json` for the welcome-back card.
+- **Rescore** (8am daily) — batch re-scores all (company × frame) cells and regenerates fit-notes.
 
 Each pipeline is idempotent and per-source failure-tolerant. When new evidence lands, the scoring engine re-scores affected cells in the background and any grounded fit-note re-generates.
 
@@ -106,11 +111,20 @@ Each pipeline is idempotent and per-source failure-tolerant. When new evidence l
 
 ```bash
 npm install
-cp .env.example .env.local        # fill in DATABASE_URL, ANTHROPIC_API_KEY
 npm run db:push                   # apply schema
 npm run db:seed                   # seed the London set + frames
 npm run dev                       # http://localhost:3000
 ```
+
+**Required environment variables** (create `.env.local`):
+
+| Variable | Description |
+|---|---|
+| `DATABASE_URL` | Neon Postgres connection string (serverless HTTP) |
+| `ANTHROPIC_API_KEY` | Claude API key for scoring, fit-notes, and clarify sessions |
+| `LOBBYCAT_PASSWORD` | Login gate password (omit to leave the site open) |
+| `CRON_SECRET` | Vercel cron auth header (production only) |
+| `LOBBYCAT_SCORING_MODEL` | Override scoring model (default: `claude-sonnet-4-6`) |
 
 The gate password lives in a private handoff document. The unlock cookie
 keeps the surface unindexed behind a low-stakes ritual gate.
