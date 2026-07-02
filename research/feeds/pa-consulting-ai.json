@@ -1,10 +1,15 @@
 {
   "slug": "pa-consulting-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T02:35:00Z",
   "blurb": "PA Consulting responsible-AI advisory. Launch coverage uses first-party responsible-AI service material.",
   "hiring": {
-    "isHiring": null,
-    "newSincePrevious": null
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.paconsulting.com/jobs",
+    "lastChecked": "2026-07-02",
+    "note": "Official PA Consulting jobs surface checked 2026-07-02; added risk/regulation role that explicitly mentions shaping regulatory policy and AI risk-management strategy.",
+    "londonPolicyRoles": 1
   },
   "publications": [
     {
@@ -15,12 +20,48 @@
       "byline": "PA Consulting",
       "source": "first_party",
       "summary": "PA Consulting describes its responsible-AI practice, including helping public-service, pharmaceutical and consumer-manufacturing organisations put responsible-AI principles into practice."
+    },
+    {
+      "date": "2026-05-01",
+      "title": "Data privacy and ethics consulting",
+      "url": "https://www.paconsulting.com/services/reimagine-ai-digital-and-data/data-privacy-and-ethics",
+      "type": "blog",
+      "summary": "PA Consulting describes privacy, ethics and bias-audit work for AI-driven workforce-management tools and other regulated uses; date reflects verified page update metadata.",
+      "source": "first_party",
+      "topics": [
+        "AI ethics",
+        "privacy",
+        "bias audit"
+      ]
+    },
+    {
+      "date": "2026-07-01",
+      "title": "Government and public sector consulting",
+      "url": "https://www.paconsulting.com/industries/government-and-public-sector",
+      "type": "blog",
+      "summary": "PA Consulting says public-sector AI delivery should align with AI governance frameworks, blueprints and responsible practices; date reflects verified page update metadata.",
+      "source": "first_party",
+      "topics": [
+        "public sector",
+        "AI governance",
+        "responsible AI"
+      ]
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Risk & Regulation - Consultant Analyst",
+      "location": "UK",
+      "url": "https://www.paconsulting.com/jobs/risk-regulation-consultant-analyst",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "manual",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL; lower-cost service-page evidence, retained as launch backstop.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL; lower-cost service-page evidence, retained as launch backstop.\n\n2026-07-02 urgent data-quality pass: added two first-party PA pages as service-page evidence where dated policy publications were thin; dates are verified dateModified metadata and labelled in summaries. No controversy logged.\n\n2026-07-02 roles follow-up: official PA Consulting jobs surface checked; added Risk & Regulation - Consultant Analyst because the role description ties regulatory policy work to AI risk-management strategy. Rejected generic internship roles.",
   "news": []
 }

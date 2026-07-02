@@ -1,10 +1,15 @@
 {
   "slug": "frontier-economics",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Economics consultancy with an AI practice; launch coverage uses first-party AI competition-policy analysis.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.frontier-economics.com/uk/en/careers/working-with-us/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Frontier Economics careers page; bespoke/manual search required for policy-relevant roles.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {
@@ -15,12 +20,38 @@
       "byline": "Frontier Economics",
       "source": "first_party",
       "summary": "Frontier Economics argues the competitive focus in AI is shifting downstream, from building the most capable models to deployment, distribution and regulator-facing market structure questions."
+    },
+    {
+      "date": "2023-04-03",
+      "title": "AI regulation: harnessing the benefits and mitigating the risks",
+      "url": "https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i10205-ai-regulation-harnessing-the-benefits-and-mitigating-the-risks/",
+      "type": "blog",
+      "summary": "Frontier Economics discusses economic trade-offs in AI regulation, including high-risk AI restrictions and market-value effects.",
+      "source": "first_party",
+      "topics": [
+        "AI regulation",
+        "economics",
+        "high-risk AI"
+      ]
+    },
+    {
+      "date": null,
+      "title": "AI adoption: healthcare or health scare?",
+      "url": "https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i21056-ai-adoption-healthcare-or-health-scare/",
+      "type": "blog",
+      "summary": "Frontier Economics argues clear regulatory frameworks can support AI adoption in healthcare by clarifying standards, liability and trust.",
+      "source": "first_party",
+      "topics": [
+        "healthcare AI",
+        "regulation",
+        "liability"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Frontier Economics AI/regulation items. One healthcare article had no reliable visible date in fetch, so date left null rather than guessed; no named-party controversy found.",
   "news": []
 }

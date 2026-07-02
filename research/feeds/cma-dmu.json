@@ -1,8 +1,15 @@
 {
   "slug": "cma-dmu",
-  "lastUpdated": "2026-06-28T07:10:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Competition and Markets Authority (CMA) is the UK competition regulator; its Digital Markets Unit oversees the strategic market status (SMS) regime under the Digital Markets, Competition and Consumers Act 2024.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "not_relevant_public_sector",
+    "sourceUrl": "https://www.gov.uk/government/organisations/competition-and-markets-authority/about/recruitment",
+    "lastChecked": "2026-07-02",
+    "note": "CMA DMU roles are advertised through parent CMA/Civil Service recruitment, not a DMU-specific board.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2024-04-11",

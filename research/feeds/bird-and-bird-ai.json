@@ -1,10 +1,15 @@
 {
   "slug": "bird-and-bird-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T02:35:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party EU AI Act analysis.",
   "hiring": {
-    "isHiring": null,
-    "newSincePrevious": null
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://fsr.cvmailuk.com/twobirds/main.cfm?srxksl=1",
+    "lastChecked": "2026-07-02",
+    "note": "Official Bird & Bird CVMail jobs board checked 2026-07-02; added London AI contracting/governance and legaltech/AI adoption roles.",
+    "londonPolicyRoles": 2
   },
   "publications": [
     {
@@ -15,12 +20,57 @@
       "byline": "Bird & Bird",
       "source": "first_party",
       "summary": "Bird & Bird analyses the European Commission’s draft high-risk AI guidelines under the EU AI Act, including the threshold question of what qualifies as an AI system and how high-risk obligations are expected to operate."
+    },
+    {
+      "date": "2026-02-26",
+      "title": "European Union Artificial Intelligence (EU AI Act) Guide",
+      "url": "https://www.twobirds.com/en/insights/2026/global/european-union-artificial-intelligence-act-guide",
+      "type": "blog",
+      "summary": "Bird & Bird publishes a guide to the AI Act covering scope, high-risk systems, GPAI, transparency, sandboxes, governance and enforcement.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "governance",
+        "enforcement"
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "title": "Taking the EU AI Act to Practice: Reading the Commission’s Draft Article 50 Guidelines",
+      "url": "https://www.twobirds.com/en/insights/2026/taking-the-eu-ai-act-to-practice-reading-the-commissions-draft-article-50-guidelines",
+      "type": "blog",
+      "summary": "Bird & Bird analyses the Commission draft Article 50 transparency guidelines for AI systems under Regulation (EU) 2024/1689.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "Article 50",
+        "transparency"
+      ]
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Senior Associate - Tech Transactions (including AI Contracting & Governance)",
+      "location": "London",
+      "url": "https://fsr.cvmailuk.com/twobirds/main.cfm?page=jobSpecific&jobId=77561&rcd=57867&queryString=srxksl%3D1",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "manual",
+      "seenAt": "2026-07-02"
+    },
+    {
+      "title": "Senior LegalTech & Innovation Executive (12 month FTC)",
+      "location": "London",
+      "url": "https://fsr.cvmailuk.com/twobirds/main.cfm?page=jobSpecific&jobId=78439&rcd=57867&queryString=srxksl%3D1",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "manual",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Bird & Bird EU AI Act resources verified HTTP 200; controversy search checked-empty.\n\n2026-07-02 roles follow-up: official Bird & Bird CVMail jobs board checked; added two London roles explicitly tied to AI contracting/governance and legaltech/GenAI adoption. Rejected business-acceptance roles as not AI/regulatory-policy specific.",
   "news": []
 }

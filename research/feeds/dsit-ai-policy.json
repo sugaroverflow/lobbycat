@@ -1,8 +1,15 @@
 {
   "slug": "dsit-ai-policy",
-  "lastUpdated": "2026-06-28T14:20:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "UK Department for Science, Innovation and Technology, the government department leading AI policy, investment and digital regulation.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "not_relevant_public_sector",
+    "sourceUrl": "https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?search=1&department=Department%20for%20Science%2C%20Innovation%20and%20Technology",
+    "lastChecked": "2026-07-02",
+    "note": "DSIT policy roles are advertised through Civil Service Jobs, not a directorate-specific board. Treat as parent-department source.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-02-10",

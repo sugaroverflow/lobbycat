@@ -1,6 +1,6 @@
 {
   "slug": "elevenlabs-london",
-  "lastUpdated": "2026-06-27T19:08:00Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "London/US voice-AI company. Faces repeated US litigation over alleged unconsented voice cloning — a 2024 voice-actor suit and a 2026 suit by journalists and voice actors in Illinois.",
   "hiring": {
     "isHiring": true,
@@ -8,7 +8,47 @@
     "londonPolicyRoles": 1,
     "lastChecked": "2026-06-26"
   },
-  "publications": [],
+  "publications": [
+    {
+      "date": "2026-02-18",
+      "title": "Advancing AI voice security with ElevenLabs",
+      "url": "https://www.aisi.gov.uk/blog/advancing-voice-ai-security-with-elevenlabs",
+      "type": "other",
+      "summary": "The UK AI Security Institute announced research with ElevenLabs on whether people can distinguish AI from human voices and how that affects trust.",
+      "source": "official_record",
+      "topics": [
+        "voice AI",
+        "AI safety",
+        "UK AISI"
+      ]
+    },
+    {
+      "date": "2026-02-18",
+      "title": "ElevenLabs and UK Government partner on voice AI safety research",
+      "url": "https://elevenlabs.io/blog/elevenlabs-partners-with-uk-aisi",
+      "type": "blog",
+      "summary": "ElevenLabs announced a three-year UK Government partnership on voice-AI safety research, public-sector uses and talent collaboration.",
+      "source": "first_party",
+      "topics": [
+        "voice AI",
+        "AI safety",
+        "UK government"
+      ]
+    },
+    {
+      "date": "2026-03-24",
+      "title": "Guardrails 2.0: A redesigned control layer in ElevenAgents",
+      "url": "https://elevenlabs.io/blog/guardrails",
+      "type": "blog",
+      "summary": "ElevenLabs describes policy-violation controls and execution modes for guardrails in voice-agent deployments.",
+      "source": "first_party",
+      "topics": [
+        "guardrails",
+        "voice agents",
+        "policy controls"
+      ]
+    }
+  ],
   "roles": [
     {
       "title": "Compliance Engineer - EU",
@@ -78,7 +118,7 @@
       "attributionChecked": true
     }
   ],
-  "notes": "Controversy attribution: named-party (ElevenLabs Inc. is the named defendant), same-entity (the text-to-speech voice-AI firm = seed elevenlabs-london). 2026-06-27 follow-up RESOLVED: traced to court docket. Case = Amer et al v. Eleven Labs Inc., no. 1:26-cv-05437, N.D. Ill., filed ~12 May 2026; counsel Loevy + Loevy; BIPA voiceprint claim; part of a same-week coordinated wave vs Adobe/Amazon/Apple/Google/Meta/Microsoft/NVIDIA/Samsung. Docket no., court, plaintiffs and counsel cross-confirmed across Law360 case page, Loevy + Loevy (plaintiffs' counsel), Capitol News Illinois, CBS Chicago and Sifted. Also corrected the prior-suit reference: the 2024 ElevenLabs voice-actor case is Vacker v. ElevenLabs, Inc. (1:24-cv-00987), filed in D. Del. (NOT Illinois). Severity held at medium: real BIPA exposure but all claims alleged and pre-merits; no ruling. Search snippets treated as untrusted leads and verified against named/primary-adjacent sources before logging.",
+  "notes": "Controversy attribution: named-party (ElevenLabs Inc. is the named defendant), same-entity (the text-to-speech voice-AI firm = seed elevenlabs-london). 2026-06-27 follow-up RESOLVED: traced to court docket. Case = Amer et al v. Eleven Labs Inc., no. 1:26-cv-05437, N.D. Ill., filed ~12 May 2026; counsel Loevy + Loevy; BIPA voiceprint claim; part of a same-week coordinated wave vs Adobe/Amazon/Apple/Google/Meta/Microsoft/NVIDIA/Samsung. Docket no., court, plaintiffs and counsel cross-confirmed across Law360 case page, Loevy + Loevy (plaintiffs' counsel), Capitol News Illinois, CBS Chicago and Sifted. Also corrected the prior-suit reference: the 2024 ElevenLabs voice-actor case is Vacker v. ElevenLabs, Inc. (1:24-cv-00987), filed in D. Del. (NOT Illinois). Severity held at medium: real BIPA exposure but all claims alleged and pre-merits; no ruling. Search snippets treated as untrusted leads and verified against named/primary-adjacent sources before logging.\n\n2026-07-02 urgent data-quality pass: added official AISI partnership record plus first-party safety/guardrails publications; existing BIPA controversy retained and no new controversy invented.",
   "news": [
     {
       "date": "2026-06-18",

@@ -1,10 +1,15 @@
 {
   "slug": "techuk",
-  "lastUpdated": "2026-06-28T14:30:00Z",
+  "lastUpdated": "2026-07-02T02:48:00Z",
   "blurb": "UK technology trade association with regular AI-policy analysis. Launch coverage uses first-party EU/UK AI regulation briefings.",
   "hiring": {
-    "isHiring": null,
-    "newSincePrevious": null
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://techuk.pinpointhq.com/",
+    "lastChecked": "2026-07-02",
+    "note": "Official techUK Pinpoint board verified; added London Programme Assistant roles for Tech and Innovation/Policy and Policy/Public Affairs. Rejected health-social-care and CEO-office admin roles as not AI-policy specific.",
+    "londonPolicyRoles": 2
   },
   "publications": [
     {
@@ -98,11 +103,30 @@
       "summary": "techUK call for member input into the Government's North of England Growth Strategy consultation."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Programme Assistant for Tech and Innovation and Policy",
+      "location": "London",
+      "url": "https://techuk.pinpointhq.com/en/jobs/504591",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    },
+    {
+      "title": "Programme Assistant for Policy and Public Affairs",
+      "location": "London",
+      "url": "https://techuk.pinpointhq.com/en/jobs/539820",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on EU Code first-party resource. followup_harvest 2026-06-28: direct techUK/GOV.UK fetches verified 2026-06 recent AI-adoption and agentic-AI governance items; suggested newsletters treated as discovery only. followup_harvest 2026-06-28: added three more verified June 2026 techUK items (AI Assurance Consortium role, DCMS Media Green Paper consultation, Northern Growth Strategy call).",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on EU Code first-party resource. followup_harvest 2026-06-28: direct techUK/GOV.UK fetches verified 2026-06 recent AI-adoption and agentic-AI governance items; suggested newsletters treated as discovery only. followup_harvest 2026-06-28: added three more verified June 2026 techUK items (AI Assurance Consortium role, DCMS Media Green Paper consultation, Northern Growth Strategy call). role_harvest 2026-07-02: Pinpoint JSON verified two London policy roles; health/social-care and CEO admin roles intentionally excluded.",
   "news": [
     {
       "date": "2026-06-08",

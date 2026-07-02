@@ -1,12 +1,15 @@
 {
   "slug": "govai",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T02:03:00Z",
   "blurb": "The Centre for the Governance of AI (GovAI), an Oxford-rooted research nonprofit producing policy research on how to govern advanced/frontier AI.",
   "hiring": {
     "isHiring": true,
     "newSincePrevious": 0,
     "londonPolicyRoles": 1,
-    "lastChecked": "2026-06-27"
+    "lastChecked": "2026-07-02",
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.governance.ai/opportunities",
+    "note": "Official GovAI opportunities page checked 2026-07-02; current London AI-governance fellowships are first-party verified."
   },
   "publications": [
     {
@@ -41,8 +44,8 @@
       "url": "https://www.governance.ai/opportunities",
       "londonRelevant": true,
       "isNew": false,
-      "source": "org_careers",
-      "seenAt": "2026-06-27"
+      "source": "official_careers_page",
+      "seenAt": "2026-07-02"
     }
   ],
   "filings": [],

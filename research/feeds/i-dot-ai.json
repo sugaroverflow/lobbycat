@@ -1,8 +1,14 @@
 {
   "slug": "i-dot-ai",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Incubator for AI (i.AI), a unit within DSIT building practical AI tools for the UK public sector such as Consult, Lex, Parlex, Redbox and Scout.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://ai.gov.uk/opportunities/",
+    "lastChecked": "2026-07-02",
+    "note": "Official i.AI careers page verified; live roles are Greenhouse links, but current roles are product/engineering/EOI rather than policy/legal/governance.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-10-23",

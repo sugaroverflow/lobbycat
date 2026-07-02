@@ -1,8 +1,14 @@
 {
   "slug": "nesta",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Nesta is the UK's innovation agency for social good, running mission teams on early years, health/obesity and home decarbonisation.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.nesta.org.uk/jobs/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Nesta jobs page (seed URL redirected/changed); bespoke HTML/manual check required.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-04-27",

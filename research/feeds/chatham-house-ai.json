@@ -1,8 +1,16 @@
 {
   "slug": "chatham-house-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T02:48:00Z",
   "blurb": "The Royal Institute of International Affairs (Chatham House); this feed tracks its International Security Programme, led by Dr Marion Messmer, covering arms control, nuclear policy and emerging-tech security.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://careers.chathamhouse.org/jobs",
+    "lastChecked": "2026-07-02",
+    "note": "Official Chatham House Teamtailor JSON verified; added London Senior Research Fellow role because the posting covers modern conflict, disruptive technologies and security-policy debate. Rejected leadership masterclass item as not a role.",
+    "londonPolicyRoles": 1
+  },
   "publications": [
     {
       "date": "2026-04-28",
@@ -13,7 +21,17 @@
       "summary": "First-party Chatham House Research Paper arguing that deteriorating global security and tech-sovereignty concerns are shifting the AI race away from a simple US–China binary toward a more fragmented, multipolar market driven by a surge in defence and dual-use technology investment. Author Katja Bego (Senior Research Fellow). Date from Chatham House's own publication-date convention in the source PDF filename (2026-04-28); the PDF returned HTTP 200 (primary source verified), while the HTML landing page is Cloudflare-gated. Canonical landing URL logged; PDF at /sites/default/files/2026-04/2026-04-28-how-surge-defence-dual-use-investment-could-reconfigure-global-AI-race-bego.pdf."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Senior Research Fellow - International Security",
+      "location": "London",
+      "url": "https://careers.chathamhouse.org/jobs/7988892-senior-research-fellow-international-security",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
@@ -40,5 +58,5 @@
       "summary": "First-party press: Senior Research Fellow Dr Marion Messmer (International Security Programme) provided evidence to the UK Parliament's Joint Select Committee on the National Security Strategy on 22 October 2025."
     }
   ],
-  "notes": "[harvest 2026-06-27] Chatham House is Cloudflare-gated; the general feed surfaced no clearly AI-specific items this pass. Left empty rather than logging off-topic foreign-policy pieces. Needs a targeted AI-programme page (browser fetch).\n[backfill 2026-06-28] Resolved the prior 'needs targeted AI-programme page' gap: logged Katja Bego's Research Paper 'How a surge in defence and dual-use technology investment could reconfigure the global AI race' (PDF HTTP 200; HTML landing Cloudflare-gated). publications[] 0→1."
+  "notes": "[harvest 2026-06-27] Chatham House is Cloudflare-gated; the general feed surfaced no clearly AI-specific items this pass. Left empty rather than logging off-topic foreign-policy pieces. Needs a targeted AI-programme page (browser fetch).\n[backfill 2026-06-28] Resolved the prior 'needs targeted AI-programme page' gap: logged Katja Bego's Research Paper 'How a surge in defence and dual-use technology investment could reconfigure the global AI race' (PDF HTTP 200; HTML landing Cloudflare-gated). publications[] 0→1.\n[role_harvest 2026-07-02] Teamtailor jobs.json verified Senior Research Fellow - International Security, London, with explicit disruptive-technologies/security-policy remit."
 }

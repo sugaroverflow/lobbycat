@@ -1,8 +1,14 @@
 {
   "slug": "ada-lovelace-institute",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Independent UK research institute on data & AI for people and society (part of the Nuffield Foundation). Strong named-author publication output across AI law/policy, public-sector AI, and public participation.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.adalovelaceinstitute.org/event/working-at-ada/",
+    "lastChecked": "2026-07-02",
+    "note": "Official working-at-Ada page resolved; no machine-readable ATS found. Use as careers source and manually check role pages.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": null,

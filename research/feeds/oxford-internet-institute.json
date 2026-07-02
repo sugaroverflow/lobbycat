@@ -1,8 +1,14 @@
 {
   "slug": "oxford-internet-institute",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Multidisciplinary research department at the University of Oxford studying the social, economic and political implications of the internet and AI.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://www.oii.ox.ac.uk/people/vacancies/",
+    "lastChecked": "2026-07-02",
+    "note": "Official OII vacancies page verified but fetch surfaced cookie text; use browser/manual page read.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-04-29",

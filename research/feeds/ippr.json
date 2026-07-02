@@ -1,8 +1,15 @@
 {
   "slug": "ippr",
-  "lastUpdated": "2026-06-27T09:14:52Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "IPPR (Institute for Public Policy Research) is a UK progressive think tank producing public-policy research, including work on AI, automation and the future of work.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://www.ippr.org/jobs",
+    "lastChecked": "2026-07-02",
+    "note": "Official IPPR jobs page verified; page only describes internships/no advertised current role at fetch time.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2024-03-27",

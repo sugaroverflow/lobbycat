@@ -1,8 +1,14 @@
 {
   "slug": "royal-society-policy",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Royal Society is the UK's national academy of sciences, producing policy reports and evidence including a programme on AI and data.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://royalsociety.occupop-careers.com/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Royal Society portal is JS-backed via Occupop/Cezanne; source verified but current vacancies need browser/API extraction.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2024-01-01",

@@ -1,8 +1,16 @@
 {
   "slug": "alan-turing-institute",
-  "lastUpdated": "2026-06-27T21:39:00Z",
+  "lastUpdated": "2026-07-02T02:02:00Z",
   "blurb": "The Alan Turing Institute is the UK's national institute for data science and AI. In 2026 it is in the middle of a contested transformation — a critical UKRI review, leadership turnover, and a pivot toward national-security / 'sovereign capability' work.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://portal.careers.turing.ac.uk/vacancies/vacancy-search-results.aspx",
+    "lastChecked": "2026-07-02",
+    "note": "Official Turing careers portal checked 2026-07-02; added only the Laboratory for AI Security Research/offensive-security roles, not general data-science vacancies.",
+    "londonPolicyRoles": 2,
+    "isHiring": true,
+    "newSincePrevious": null
+  },
   "publications": [
     {
       "date": null,
@@ -29,7 +37,26 @@
       "summary": "Turing analysis arguing sustainable procurement and building of Defence AI will improve force resilience — defence-AI policy signal consistent with the institute's 2026 national-security pivot. Exact date not confirmed; date left null."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Senior Offensive Security Engineer",
+      "location": "The Alan Turing Institute, London, NW1 2DB, United Kingdom",
+      "url": "https://portal.careers.turing.ac.uk/vacancies/44/senior-offensive-security-engineer.html",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "official_portal",
+      "seenAt": "2026-07-02"
+    },
+    {
+      "title": "Senior Offensive Security Researcher",
+      "location": "The Alan Turing Institute, London, NW1 2DB, United Kingdom",
+      "url": "https://portal.careers.turing.ac.uk/vacancies/33/senior-offensive-security-researcher.html",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "official_portal",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [

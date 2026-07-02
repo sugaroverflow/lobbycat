@@ -1,8 +1,14 @@
 {
   "slug": "cetas",
-  "lastUpdated": "2026-06-27T10:47:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Centre for Emerging Technology and Security (CETaS) is a research centre at the Alan Turing Institute focused on UK national security and emerging technology, producing some of the sharpest UK-government-facing AI-security analysis.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.turing.ac.uk/opportunities-turing/jobs",
+    "lastChecked": "2026-07-02",
+    "note": "CETaS roles appear via the parent Alan Turing Institute opportunities portal, not a separate CETaS board.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-04-30",

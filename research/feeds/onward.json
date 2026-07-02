@@ -1,8 +1,14 @@
 {
   "slug": "onward",
-  "lastUpdated": "2026-06-27T09:24:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Onward is a UK centre-right think-tank focused on economic opportunity, national resilience and communities; AI/tech is an occasional theme rather than a core specialism.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://ukonward.com/job-opportunities/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Onward job-opportunities page verified; current indexed Head of Energy role is not AI-policy relevant.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2023-05-03",

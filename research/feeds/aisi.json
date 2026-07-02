@@ -1,8 +1,16 @@
 {
   "slug": "aisi",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T02:02:00Z",
   "blurb": "The UK AI Security Institute (formerly AI Safety Institute) — government body running frontier-model evaluations (cyber/chem/bio/agent) and publishing safety-framework and safety-case research. High-signal, named-author technical-policy output.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": null,
+    "londonPolicyRoles": 1,
+    "lastChecked": "2026-07-02",
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://boards-api.greenhouse.io/v1/boards/aisi/jobs?content=true",
+    "note": "Greenhouse board checked directly 2026-07-02; added the London frontier-security role as AI-safety/security relevant, left other technical roles out."
+  },
   "publications": [
     {
       "date": "2025-05-06",
@@ -37,7 +45,17 @@
       "summary": "AISI sketches structured 'safety case' arguments for more advanced models than exist today, focused on loss-of-control and autonomy risk — a methodological bet on how frontier safety should be evidenced."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Frontier Research Engineer, Security",
+      "location": "London, UK",
+      "url": "https://job-boards.eu.greenhouse.io/aisi/jobs/4911480101",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],

@@ -1,10 +1,15 @@
 {
   "slug": "benevolentai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "AI-enabled drug-discovery company. Launch coverage uses first-party scientific/publication material as verified evidence; no controversy invented.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.benevolent.com/careers/",
+    "lastChecked": "2026-07-02",
+    "note": "Official careers page; no Greenhouse/Lever/Ashby endpoint found.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {
@@ -21,6 +26,28 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party publication URL; no policy controversy added.",
-  "news": []
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party publication URL; no policy controversy added.\n\n2026-07-02 urgent data-quality pass: added first-party corporate/delisting signals where direct policy material was thin; checked-empty for current policy roles and named-party controversies.",
+  "news": [
+    {
+      "date": "2024-12-11",
+      "title": "BenevolentAI unveils major strategic overhaul with return to original mission",
+      "url": "https://www.benevolent.com/news-and-media/press-releases-and-in-media/benevolentai-unveils-major-strategic-overhaul-return-original-mission/",
+      "source": "company_press",
+      "summary": "BenevolentAI announced a restructuring back to its core AI-enabled drug-discovery mission, a durable corporate signal for its London AI footprint."
+    },
+    {
+      "date": "2025-02-06",
+      "title": "Proposed Delisting via Merger of BenevolentAI into Osaka Holdings S.à r.l. and Publication of Notice of Extraordinary General Meeting",
+      "url": "https://www.benevolent.com/news-and-media/press-releases-and-in-media/proposed-delisting-merger-benevolentai-osaka-holdings-s-rl-and-publication-notice-extraordinary-general-meeting/",
+      "source": "company_press",
+      "summary": "BenevolentAI proposed delisting from Euronext Amsterdam via merger into Osaka Holdings, an official filing-style corporate action."
+    },
+    {
+      "date": "2025-03-12",
+      "title": "EGM Results announcement",
+      "url": "https://www.benevolent.com/news-and-media/press-releases-and-in-media/egm-results-announcement/",
+      "source": "company_press",
+      "summary": "BenevolentAI reported shareholder approval of the delisting and restructuring resolutions at its extraordinary general meeting."
+    }
+  ]
 }

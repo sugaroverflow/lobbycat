@@ -1,8 +1,15 @@
 {
   "slug": "open-rights-group",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Leading UK-based digital campaigning organisation defending privacy, data protection and free expression online.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://www.openrightsgroup.org/jobs/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Open Rights Group jobs page verified; no current role text surfaced at fetch time.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-09-30",

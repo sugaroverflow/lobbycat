@@ -1,10 +1,15 @@
 {
   "slug": "bain-london-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Consultancy AI practice. Launch coverage uses first-party Bain technology report on agentic AI transformation.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.bain.com/careers/",
+    "lastChecked": "2026-07-02",
+    "note": "Official Bain careers page; needs manual/site search for AI-policy-adjacent legal/governance roles.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {
@@ -15,12 +20,38 @@
       "byline": "Bain & Company",
       "source": "first_party",
       "summary": "Bain’s technology report surveys agentic-AI transformation, adoption patterns and operating-model implications for enterprises."
+    },
+    {
+      "date": "2025-12-16",
+      "title": "What is Responsible AI?",
+      "url": "https://www.bain.com/insights/what-is-responsible-ai/",
+      "type": "blog",
+      "summary": "Bain frames responsible AI as governance, lifecycle oversight, evaluation and monitoring across AI systems, including generative and agentic AI.",
+      "source": "first_party",
+      "topics": [
+        "responsible AI",
+        "governance",
+        "risk management"
+      ]
+    },
+    {
+      "date": "2026-04-14",
+      "title": "Governance, Trust, and the Data Foundation",
+      "url": "https://www.bain.com/insights/governance-trust-and-the-data-foundation/",
+      "type": "blog",
+      "summary": "Bain argues governance is a prerequisite for scaling agentic AI, including runtime policy enforcement, least privilege and agent evaluation.",
+      "source": "first_party",
+      "topics": [
+        "agentic AI",
+        "governance",
+        "regulated industries"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Bain governance/responsible-AI publications; dates verified from page metadata; no named-party controversy logged.",
   "news": []
 }

@@ -1,11 +1,19 @@
 {
   "slug": "public-io",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T03:08:00Z",
   "blurb": "PUBLIC (public.io) is a London-based GovTech consultancy helping governments and startups digitally transform public services across health, defence, procurement and online safety.",
-  "hiring": {},
+  "hiring": {
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://boards-api.greenhouse.io/v1/boards/public-io/jobs?content=true",
+    "lastChecked": "2026-07-02",
+    "note": "PUBLIC Greenhouse board checked live; 1 Bid Associate role returned and it was not AI-policy relevant.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
-      "date": null,
+      "date": "2026-06-23",
       "title": "Phase One Complete: A Milestone for Thames Freeport Innovation and Impact",
       "url": "https://www.public.io/blog-post/phase-one-complete-a-milestone-for-thames-freeport-innovation-and-impact",
       "type": "blog",
@@ -42,5 +50,5 @@
       "summary": "Press post announcing former Google executive Rona Harvey as COO and Ryan Shea as UK Managing Director, reporting to CEO Daniel Korski."
     }
   ],
-  "notes": "Insights listing (web_fetch) shows blog/report/press items with day+month labels (e.g. 23/24 June, 25 March) but NO year, and individual post bodies do not expose a clean publication date. Dates set to null to avoid guessing the year. Items confirmed real via web_fetch of the post pages (Thames Freeport, GovTech Lookbook, leadership press). Could not retrieve datable per-post timestamps. | 2026-06-28 date-refine: filled 2 null publication dates from each post's own first-party visible date element (HTTP 200). policy-evaluation → 2026-03-25 (blog-meta-wrapper '25 March 2026'). safety-tech-2025 report → 2025-12-10 (publicate-date-w VISIBLE date; the '11 December 2025' sibling is a Webflow w-condition-invisible field, NOT the publish date). Thames-Freeport + leadership press still null (no clean per-post year-bearing date element)."
+  "notes": "Insights listing (web_fetch) shows blog/report/press items with day+month labels (e.g. 23/24 June, 25 March) but NO year, and individual post bodies do not expose a clean publication date. Dates set to null to avoid guessing the year. Items confirmed real via web_fetch of the post pages (Thames Freeport, GovTech Lookbook, leadership press). Could not retrieve datable per-post timestamps. | 2026-06-28 date-refine: filled 2 null publication dates from each post's own first-party visible date element (HTTP 200). policy-evaluation -> 2026-03-25 (blog-meta-wrapper '25 March 2026'). safety-tech-2025 report -> 2025-12-10 (publicate-date-w VISIBLE date; the '11 December 2025' sibling is a Webflow w-condition-invisible field, NOT the publish date). Thames-Freeport + leadership press still null (no clean per-post year-bearing date element). role_harvest 2026-07-02: PUBLIC Greenhouse board checked live; only Bid Associate was returned and was not AI-policy relevant."
 }

@@ -1,8 +1,14 @@
 {
   "slug": "ico-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The UK's Information Commissioner's Office (ICO), the independent data protection and information rights regulator, including its work on AI and biometrics.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://ico.org.uk/about-the-ico/jobs/",
+    "lastChecked": "2026-07-02",
+    "note": "Official ICO jobs page; bespoke/manual check required.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": null,

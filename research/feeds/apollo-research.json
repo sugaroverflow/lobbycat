@@ -1,12 +1,15 @@
 {
   "slug": "apollo-research",
-  "lastUpdated": "2026-06-27T09:16:00Z",
+  "lastUpdated": "2026-07-02T02:02:00Z",
   "blurb": "Apollo Research, an AI-safety evaluations organisation (London & SF) focused on detecting deceptive/scheming behaviour in frontier AI and on third-party model audits.",
   "hiring": {
     "isHiring": true,
-    "newSincePrevious": 1,
+    "newSincePrevious": null,
     "londonPolicyRoles": 1,
-    "lastChecked": "2026-06-27"
+    "lastChecked": "2026-07-02",
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://api.lever.co/v0/postings/apolloresearch?mode=json",
+    "note": "Lever board checked 2026-07-02; existing governance EOI entry retitled to current first-party posting title."
   },
   "publications": [
     {
@@ -36,13 +39,13 @@
   ],
   "roles": [
     {
-      "title": "Governance Researcher (Expression of Interest)",
+      "title": "(Senior) AI Governance Researcher",
       "location": "London & San Francisco",
       "url": "https://jobs.lever.co/apolloresearch/c7377abe-39ac-4712-8d2f-b048f363480a",
       "londonRelevant": true,
       "isNew": true,
       "source": "ats",
-      "seenAt": "2026-06-27"
+      "seenAt": "2026-07-02"
     }
   ],
   "filings": [],

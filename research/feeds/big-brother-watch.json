@@ -1,8 +1,14 @@
 {
   "slug": "big-brother-watch",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "UK civil liberties and privacy campaign group researching surveillance, facial recognition, and digital rights.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://bigbrotherwatch.org.uk/vacancies/",
+    "lastChecked": "2026-07-02",
+    "note": "Official vacancies route currently resolves to the main site; keep as manual-check source.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-09-01",
