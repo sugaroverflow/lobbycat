@@ -1,10 +1,15 @@
 {
   "slug": "slaughter-and-may-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party EU AI Act publication.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://careers.slaughterandmay.com/V2/Vacancy",
+    "lastChecked": "2026-07-02",
+    "note": "Official Slaughter and May vacancy portal verified.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {
@@ -15,12 +20,38 @@
       "byline": "Slaughter and May",
       "source": "first_party",
       "summary": "Slaughter and May summarises the EU AI Act entering into force, highlighting responsible innovation, extraterritorial reach, fines and prohibited/high-risk AI obligations."
+    },
+    {
+      "date": null,
+      "title": "Regulating AI",
+      "url": "https://www.slaughterandmay.com/insights/importedcontent/regulating-ai/",
+      "type": "blog",
+      "summary": "Slaughter and May’s AI regulation hub covers governance, data, IP, contracts and regulatory issues for organisations developing or deploying AI.",
+      "source": "first_party",
+      "topics": [
+        "AI regulation",
+        "governance",
+        "legal risk"
+      ]
+    },
+    {
+      "date": "2026-05-05",
+      "title": "Digital Markets Act: Cloud services and AI in focus",
+      "url": "https://www.slaughterandmay.com/insights/new-insights/digital-markets-act-cloud-services-and-ai-in-focus/",
+      "type": "blog",
+      "summary": "Slaughter and May analyses the European Commission review making cloud services and AI a focus for digital regulation under the DMA.",
+      "source": "first_party",
+      "topics": [
+        "digital regulation",
+        "AI",
+        "cloud"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added first-party AI regulation hub and 2026 DMA/cloud/AI article; hub has no reliable date so left null. No named-party controversy found.",
   "news": []
 }

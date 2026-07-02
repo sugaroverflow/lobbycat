@@ -1,10 +1,15 @@
 {
   "slug": "wayve",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T03:08:00Z",
   "blurb": "UK embodied-AI/self-driving scale-up. Launch coverage is anchored on parliamentary written evidence plus a checked-empty ATS status for policy roles.",
   "hiring": {
-    "isHiring": null,
-    "newSincePrevious": null
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://boards-api.greenhouse.io/v1/boards/wayve/jobs?content=true",
+    "lastChecked": "2026-07-02",
+    "note": "Wayve Greenhouse board checked live; 109 jobs returned. The only legal/policy keyword match was a Sunnyvale Commercial Legal Counsel role, so no London policy role was added.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {
@@ -15,12 +20,59 @@
       "byline": "Wayve Technologies Ltd",
       "source": "parliament",
       "summary": "Wayve's written submission to the House of Lords Communications and Digital Committee inquiry 'Scaling up: AI and creative tech' positions it as a UK embodied-AI scale-up and argues for compute access, AV regulatory clarity and AI talent retention."
+    },
+    {
+      "date": "2026-02-10",
+      "title": "A Global Regulatory Breakthrough for Assisted and Automated Driving",
+      "url": "https://wayve.ai/thinking/a-global-regulatory-breakthrough-for-assisted-and-automated-driving/",
+      "type": "blog",
+      "summary": "Wayve says it helped shape UNECE globally aligned regulatory pathways and safety standards for assisted and automated driving systems.",
+      "source": "first_party",
+      "topics": [
+        "automated vehicles",
+        "UNECE",
+        "safety regulation"
+      ]
+    },
+    {
+      "date": "2025-06-10",
+      "title": "Driving innovation – 38,000 jobs on the horizon as pilots of self-driving vehicles fast-tracked",
+      "url": "https://www.gov.uk/government/news/driving-innovation-38000-jobs-on-the-horizon-as-pilots-of-self-driving-vehicles-fast-tracked",
+      "type": "press",
+      "summary": "DfT announced accelerated UK self-driving pilots under the Automated Vehicles Act 2024 and quoted Wayve’s L4 trial plans with Uber.",
+      "source": "official_record",
+      "topics": [
+        "Automated Vehicles Act",
+        "UK transport",
+        "self-driving pilots"
+      ]
+    },
+    {
+      "date": "2026-05-12",
+      "title": "Government and Wayve sign partnership to accelerate Britain’s self driving future",
+      "url": "https://www.gov.uk/government/news/government-and-wayve-sign-partnership-to-accelerate-britains-self-driving-future",
+      "type": "press",
+      "summary": "DBT announced a memorandum of understanding with Wayve to support autonomous-vehicle research and UK commercial deployment.",
+      "source": "official_record",
+      "topics": [
+        "UK government",
+        "autonomous vehicles",
+        "MoU"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: Parliament URL is primary/named source but HTTP fetch returned 403/Cloudflare; status=needs_browser for full-body recapture. Roles ATS Greenhouse board wayve verified reachable with 119 jobs; status=checked_empty for relevant London policy/legal/governance roles.",
-  "news": []
+  "notes": "launch_harvest 2026-06-27: Parliament URL is primary/named source but HTTP fetch returned 403/Cloudflare; status=needs_browser for full-body recapture. Roles ATS Greenhouse board wayve verified reachable with 119 jobs; status=checked_empty for relevant London policy/legal/governance roles.\n\n2026-07-02 urgent data-quality pass: added Wayve first-party UNECE policy post plus GOV.UK DfT/DBT records and company L4 trials press release; dates verified from page metadata. Roles remain checked-empty for London policy/legal/governance.",
+  "news": [
+    {
+      "date": "2025-06-10",
+      "title": "Wayve and Uber Partner to Launch L4 Autonomy Trials in the UK",
+      "url": "https://wayve.ai/press/wayve-uber-l4-autonomy-trials/",
+      "source": "company_press",
+      "summary": "Wayve and Uber announced UK public-road L4 autonomy trials working with the UK Government and Transport for London on permitting."
+    }
+  ]
 }

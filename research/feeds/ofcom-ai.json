@@ -1,8 +1,14 @@
 {
   "slug": "ofcom-ai",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Ofcom is the UK regulator for communications services and the online safety regulator under the Online Safety Act.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://ofcom.wd3.myworkdayjobs.com/Ofcom_Careers",
+    "lastChecked": "2026-07-02",
+    "note": "Official Ofcom Workday careers portal; source verified but current vacancies require Workday/browser extraction.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2024-12-16",

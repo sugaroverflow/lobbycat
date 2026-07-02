@@ -1,6 +1,13 @@
 {
-  "lastUpdated": "2026-06-28T14:10:48Z",
+  "lastUpdated": "2026-07-02T01:48:15Z",
   "events": [
+    {
+      "date": "2026-07-01",
+      "company_slug": "pa-consulting-ai",
+      "event_type": "publication",
+      "summary": "PA Consulting says public-sector AI delivery should align with AI governance frameworks, blueprints and responsible practices; date reflects verified page update metadata.",
+      "source_url": "https://www.paconsulting.com/industries/government-and-public-sector"
+    },
     {
       "date": "2026-06-27",
       "company_slug": "anthropic-london",
@@ -238,6 +245,13 @@
       "event_type": "publication",
       "summary": "OpenAI helped found the Appia Foundation (Linux Foundation-hosted) to build modular third-party conformity specs for advanced-AI standards.",
       "source_url": "https://openai.com/index/helping-build-shared-standards-for-advanced-ai/"
+    },
+    {
+      "date": "2026-06-23",
+      "company_slug": "public-io",
+      "event_type": "publication",
+      "summary": "Reports completion of Phase One of PUBLIC's work with Thames Freeport, deploying AI-enabled mobile health clinics and a Health AI Mobilisation Centre across Barking, Dagenham, Havering and Thurrock.",
+      "source_url": "https://www.public.io/blog-post/phase-one-complete-a-milestone-for-thames-freeport-innovation-and-impact"
     },
     {
       "date": "2026-06-22",
@@ -681,6 +695,13 @@
       "source_url": "https://demos.co.uk/blogs/one-in-three-uk-adults-report-seeing-political-deepfakes-in-the-month-before-local-elections/"
     },
     {
+      "date": "2026-06-01",
+      "company_slug": "deloitte-uk-ai",
+      "event_type": "publication",
+      "summary": "Deloitte UK analyses which EU AI Act simplifications are settled or still in play under the Digital Omnibus and what they mean for AI strategy.",
+      "source_url": "https://www.deloitte.com/uk/en/blogs/ecrs/the-ai-omnibus-what-is-settled-and-what-is-still-in-play.html"
+    },
+    {
       "date": "2026-05-30",
       "company_slug": "connected-by-data",
       "event_type": "publication",
@@ -723,11 +744,39 @@
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/05/27/strengthening-our-approach-to-tackling-non-consensual-intimate-imagery/"
     },
     {
+      "date": "2026-05-27",
+      "company_slug": "hogan-lovells-ai",
+      "event_type": "publication",
+      "summary": "Hogan Lovells analyses the Commission draft guidelines on classification of high-risk AI systems under the AI Act.",
+      "source_url": "https://www.hoganlovells.com/en/publications/european-commission-publishes-long-awaited-guidelines-on-high-risk-ai-systems"
+    },
+    {
+      "date": "2026-05-27",
+      "company_slug": "linklaters-ai",
+      "event_type": "publication",
+      "summary": "Linklaters analyses Spain’s draft AI governance law and its interaction with EU AI Act compliance and sandboxing.",
+      "source_url": "https://techinsights.linklaters.com/post/102mwzx/spain-approves-draft-ai-governance-law-what-you-need-to-know"
+    },
+    {
+      "date": "2026-05-26",
+      "company_slug": "improbable",
+      "event_type": "press",
+      "summary": "Improbable describes shared legal, compliance, AI-development and go-to-market support for an AI/DeFi portfolio company.",
+      "source_url": "https://www.improbable.io/news/improbable-invests-2m-in-otomato-to-scale-the-first-portfolio-aware-intelligence-layer-for-defi"
+    },
+    {
       "date": "2026-05-25",
       "company_slug": "aisi",
       "event_type": "press",
       "summary": "AISI deepens ties with Australia's AI Safety Institute — part of the emerging international network of state AI-safety bodies coordinating evaluations.",
       "source_url": "https://www.aisi.gov.uk/blog/deepening-our-partnership-with-the-australian-ai-safety-institute"
+    },
+    {
+      "date": "2026-05-22",
+      "company_slug": "pinsent-masons-ai",
+      "event_type": "publication",
+      "summary": "Pinsent Masons Out-Law reports on Commission high-risk AI classification guidelines and self-assessment duties under the AI Act.",
+      "source_url": "https://www.pinsentmasons.com/out-law/news/guidelines-support-providers-high-risk-ai-self-assessments"
     },
     {
       "date": "2026-05-21",
@@ -793,6 +842,20 @@
       "source_url": "https://www.twobirds.com/en/insights/2026/the-commission's-draft-high-risk-ai-guidelines-under-the-eu-ai-act-a-first-read"
     },
     {
+      "date": "2026-05-20",
+      "company_slug": "oliver-wyman-london",
+      "event_type": "publication",
+      "summary": "Oliver Wyman argues AI agents need explicit governance, delegation, guardrails and controls when used to manage legacy IT systems at scale.",
+      "source_url": "https://www.oliverwyman.com/our-expertise/insights/2026/may/ai-for-legacy-it.html"
+    },
+    {
+      "date": "2026-05-15",
+      "company_slug": "bird-and-bird-ai",
+      "event_type": "publication",
+      "summary": "Bird & Bird analyses the Commission draft Article 50 transparency guidelines for AI systems under Regulation (EU) 2024/1689.",
+      "source_url": "https://www.twobirds.com/en/insights/2026/taking-the-eu-ai-act-to-practice-reading-the-commissions-draft-article-50-guidelines"
+    },
+    {
       "date": "2026-05-13",
       "company_slug": "aisi",
       "event_type": "press",
@@ -812,6 +875,13 @@
       "event_type": "press",
       "summary": "Chatham House item noting Dr Marion Messmer (International Security Programme) provided arms-control evidence; flags limited prospects for formal arms control after New START's expiry in early 2026.",
       "source_url": "https://www.chathamhouse.org/2026/05/avoiding-new-nuclear-arms-race"
+    },
+    {
+      "date": "2026-05-12",
+      "company_slug": "wayve",
+      "event_type": "publication",
+      "summary": "DBT announced a memorandum of understanding with Wayve to support autonomous-vehicle research and UK commercial deployment.",
+      "source_url": "https://www.gov.uk/government/news/government-and-wayve-sign-partnership-to-accelerate-britains-self-driving-future"
     },
     {
       "date": "2026-05-11",
@@ -856,6 +926,20 @@
       "source_url": "https://www.anthropic.com/research/natural-language-autoencoders"
     },
     {
+      "date": "2026-05-07",
+      "company_slug": "hogan-lovells-ai",
+      "event_type": "publication",
+      "summary": "Hogan Lovells reports the Council/Parliament provisional agreement to delay high-risk AI Act obligations under the Digital Omnibus.",
+      "source_url": "https://www.hoganlovells.com/en/publications/eu-legislators-agree-to-delay-for-highrisk-ai-rules"
+    },
+    {
+      "date": "2026-05-07",
+      "company_slug": "linklaters-ai",
+      "event_type": "publication",
+      "summary": "Linklaters explains how the 7 May 2026 Omnibus agreement amends and simplifies the EU AI Act.",
+      "source_url": "https://techinsights.linklaters.com/post/102ms10/omnibus-agreement-how-the-eu-ai-act-changes"
+    },
+    {
       "date": "2026-05-06",
       "company_slug": "bennett-cambridge",
       "event_type": "publication",
@@ -891,11 +975,25 @@
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/05/05/advancing-ai-evaluation-with-the-center-for-ai-standards-us-and-innovation-and-the-ai-security-institute-uk/"
     },
     {
+      "date": "2026-05-05",
+      "company_slug": "slaughter-and-may-ai",
+      "event_type": "publication",
+      "summary": "Slaughter and May analyses the European Commission review making cloud services and AI a focus for digital regulation under the DMA.",
+      "source_url": "https://www.slaughterandmay.com/insights/new-insights/digital-markets-act-cloud-services-and-ai-in-focus/"
+    },
+    {
       "date": "2026-05-01",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
       "summary": "Security and governance framing for deploying next-generation AI across the digital ecosystem.",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/05/01/from-capability-to-responsibility-securing-our-global-digital-ecosystem-with-next-generation-ai/"
+    },
+    {
+      "date": "2026-05-01",
+      "company_slug": "pa-consulting-ai",
+      "event_type": "publication",
+      "summary": "PA Consulting describes privacy, ethics and bias-audit work for AI-driven workforce-management tools and other regulated uses; date reflects verified page update metadata.",
+      "source_url": "https://www.paconsulting.com/services/reimagine-ai-digital-and-data/data-privacy-and-ethics"
     },
     {
       "date": "2026-04-30",
@@ -982,6 +1080,13 @@
       "source_url": "https://docs.poly.ai/legal/compliance"
     },
     {
+      "date": "2026-04-14",
+      "company_slug": "bain-london-ai",
+      "event_type": "publication",
+      "summary": "Bain argues governance is a prerequisite for scaling agentic AI, including runtime policy enforcement, least privilege and agent evaluation.",
+      "source_url": "https://www.bain.com/insights/governance-trust-and-the-data-foundation/"
+    },
+    {
       "date": "2026-04-13",
       "company_slug": "ada-lovelace-institute",
       "event_type": "publication",
@@ -1059,6 +1164,13 @@
       "source_url": "https://theodi.org/news-and-events/news/odi-and-sap-announce-partnership-to-help-organisations-build-trustworthy-ai-ready-data-infrastructure/"
     },
     {
+      "date": "2026-03-24",
+      "company_slug": "elevenlabs-london",
+      "event_type": "publication",
+      "summary": "ElevenLabs describes policy-violation controls and execution modes for guardrails in voice-agent deployments.",
+      "source_url": "https://elevenlabs.io/blog/guardrails"
+    },
+    {
       "date": "2026-03-20",
       "company_slug": "bbc-responsible-ai",
       "event_type": "publication",
@@ -1087,6 +1199,27 @@
       "source_url": "https://royalsociety.org/news-resources/publications/2026/2026-china-uk-dialogue/"
     },
     {
+      "date": "2026-02-26",
+      "company_slug": "bird-and-bird-ai",
+      "event_type": "publication",
+      "summary": "Bird & Bird publishes a guide to the AI Act covering scope, high-risk systems, GPAI, transparency, sandboxes, governance and enforcement.",
+      "source_url": "https://www.twobirds.com/en/insights/2026/global/european-union-artificial-intelligence-act-guide"
+    },
+    {
+      "date": "2026-02-18",
+      "company_slug": "elevenlabs-london",
+      "event_type": "publication",
+      "summary": "The UK AI Security Institute announced research with ElevenLabs on whether people can distinguish AI from human voices and how that affects trust.",
+      "source_url": "https://www.aisi.gov.uk/blog/advancing-voice-ai-security-with-elevenlabs"
+    },
+    {
+      "date": "2026-02-18",
+      "company_slug": "elevenlabs-london",
+      "event_type": "publication",
+      "summary": "ElevenLabs announced a three-year UK Government partnership on voice-AI safety research, public-sector uses and talent collaboration.",
+      "source_url": "https://elevenlabs.io/blog/elevenlabs-partners-with-uk-aisi"
+    },
+    {
       "date": "2026-02-16",
       "company_slug": "open-rights-group",
       "event_type": "press",
@@ -1101,11 +1234,25 @@
       "source_url": "https://www.longtermresilience.org/reports/ten-things-we-want-to-see-from-exercise-pegasus/"
     },
     {
+      "date": "2026-02-12",
+      "company_slug": "improbable",
+      "event_type": "press",
+      "summary": "Improbable says it is deepening its AI and web3 venture-builder focus, a useful signal for the company’s current policy-adjacent positioning.",
+      "source_url": "https://www.improbable.io/news/improbable-deepens-focus-on-ai-web3-appoints-former-revolut-bitpanda-executive-as-chief-marketing-officer"
+    },
+    {
       "date": "2026-02-11",
       "company_slug": "ada-lovelace-institute",
       "event_type": "publication",
       "summary": "Report on AI transcription tools in social care — bias and evaluation risks in a sensitive public-sector setting.",
       "source_url": "https://www.adalovelaceinstitute.org/report/scribe-and-prejudice/"
+    },
+    {
+      "date": "2026-02-10",
+      "company_slug": "wayve",
+      "event_type": "publication",
+      "summary": "Wayve says it helped shape UNECE globally aligned regulatory pathways and safety standards for assisted and automated driving systems.",
+      "source_url": "https://wayve.ai/thinking/a-global-regulatory-breakthrough-for-assisted-and-automated-driving/"
     },
     {
       "date": "2026-02-09",
@@ -1185,6 +1332,13 @@
       "source_url": "https://www.longtermresilience.org/reports/gap-consolidation-of-the-mirror-life-evidence-base/"
     },
     {
+      "date": "2026-01-14",
+      "company_slug": "oliver-wyman-london",
+      "event_type": "publication",
+      "summary": "Oliver Wyman frames AI, regulation and geopolitics as linked debates shaping the future of financial institutions.",
+      "source_url": "https://www.oliverwyman.com/our-expertise/insights/2026/jan/key-debates-future-of-financial-institutions-in-age-of-ai.html"
+    },
+    {
       "date": "2026-01-06",
       "company_slug": "faculty-ai",
       "event_type": "press",
@@ -1211,6 +1365,13 @@
       "event_type": "publication",
       "summary": "xAI announces a partnership bringing its Grok-family frontier models to the US Department of War's Chief Digital and AI Office (CDAO) via the GenAI.mil platform at Impact Level 5 (secure CUI handling), with initial deployment targeted for early 2026 — part of xAI's push into government/defence alongside a $200M DoD ceiling contract and GSA-schedule availability.",
       "source_url": "https://x.ai/news/us-gov-dept-of-war"
+    },
+    {
+      "date": "2025-12-16",
+      "company_slug": "bain-london-ai",
+      "event_type": "publication",
+      "summary": "Bain frames responsible AI as governance, lifecycle oversight, evaluation and monitoring across AI systems, including generative and agentic AI.",
+      "source_url": "https://www.bain.com/insights/what-is-responsible-ai/"
     },
     {
       "date": "2025-12-12",
@@ -1444,6 +1605,20 @@
       "source_url": "https://www.apolloresearch.ai/science/more-capable-models-are-better-at-in-context-scheming/"
     },
     {
+      "date": "2025-06-10",
+      "company_slug": "wayve",
+      "event_type": "publication",
+      "summary": "DfT announced accelerated UK self-driving pilots under the Automated Vehicles Act 2024 and quoted Wayve’s L4 trial plans with Uber.",
+      "source_url": "https://www.gov.uk/government/news/driving-innovation-38000-jobs-on-the-horizon-as-pilots-of-self-driving-vehicles-fast-tracked"
+    },
+    {
+      "date": "2025-06-10",
+      "company_slug": "wayve",
+      "event_type": "press",
+      "summary": "Wayve and Uber announced UK public-road L4 autonomy trials working with the UK Government and Transport for London on permitting.",
+      "source_url": "https://wayve.ai/press/wayve-uber-l4-autonomy-trials/"
+    },
+    {
       "date": "2025-06-01",
       "company_slug": "big-brother-watch",
       "event_type": "publication",
@@ -1500,6 +1675,13 @@
       "source_url": "https://www.england.nhs.uk/long-read/guidance-on-the-use-of-ai-enabled-ambient-scribing-products-in-health-and-care-settings/"
     },
     {
+      "date": "2025-04-15",
+      "company_slug": "polyai",
+      "event_type": "publication",
+      "summary": "PolyAI launched Agent Studio with enterprise controls for voice AI agents, including transparency and governance-oriented deployment features.",
+      "source_url": "https://poly.ai/blog/introducing-agent-studio"
+    },
+    {
       "date": "2025-04-09",
       "company_slug": "bank-of-england-ai",
       "event_type": "publication",
@@ -1521,6 +1703,20 @@
       "source_url": "https://www.england.nhs.uk/long-read/artificial-intelligence-ai-and-machine-learning/"
     },
     {
+      "date": "2025-03-12",
+      "company_slug": "benevolentai",
+      "event_type": "press",
+      "summary": "BenevolentAI reported shareholder approval of the delisting and restructuring resolutions at its extraordinary general meeting.",
+      "source_url": "https://www.benevolent.com/news-and-media/press-releases-and-in-media/egm-results-announcement/"
+    },
+    {
+      "date": "2025-03-12",
+      "company_slug": "quantumblack-london",
+      "event_type": "publication",
+      "summary": "McKinsey/QuantumBlack’s State of AI report links CEO oversight of AI governance with higher reported bottom-line impact.",
+      "source_url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf"
+    },
+    {
       "date": "2025-03-01",
       "company_slug": "stability-ai",
       "event_type": "press",
@@ -1540,6 +1736,13 @@
       "event_type": "publication",
       "summary": "DSIT-led guidance on using AI safely, effectively and securely across government. Sets out 10 principles for civil servants and explains how to select, buy and deploy AI; expands and retitles the January 2024 Generative AI Framework for HMG.",
       "source_url": "https://www.gov.uk/government/publications/ai-playbook-for-the-uk-government"
+    },
+    {
+      "date": "2025-02-06",
+      "company_slug": "benevolentai",
+      "event_type": "press",
+      "summary": "BenevolentAI proposed delisting from Euronext Amsterdam via merger into Osaka Holdings, an official filing-style corporate action.",
+      "source_url": "https://www.benevolent.com/news-and-media/press-releases-and-in-media/proposed-delisting-merger-benevolentai-osaka-holdings-s-rl-and-publication-notice-extraordinary-general-meeting/"
     },
     {
       "date": "2025-02-03",
@@ -1591,6 +1794,13 @@
       "source_url": "https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i21218-out-of-the-clouds-the-downstream-focus-for-ai-in-2025/"
     },
     {
+      "date": "2025",
+      "company_slug": "quantumblack-london",
+      "event_type": "publication",
+      "summary": "McKinsey/QuantumBlack argues agentic AI requires new architectures and governance mechanisms to manage autonomous workflows at enterprise scale.",
+      "source_url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/seizing%20the%20agentic%20ai%20advantage/seizing-the-agentic-ai-advantage.pdf"
+    },
+    {
       "date": "2024-12-16",
       "company_slug": "ofcom-ai",
       "event_type": "publication",
@@ -1603,6 +1813,13 @@
       "event_type": "press",
       "summary": "NHS England news on how AI deployments are improving patient care and support across services.",
       "source_url": "https://www.england.nhs.uk/2024/12/nhs-ai-giving-patients-better-care-and-support/"
+    },
+    {
+      "date": "2024-12-11",
+      "company_slug": "benevolentai",
+      "event_type": "press",
+      "summary": "BenevolentAI announced a restructuring back to its core AI-enabled drug-discovery mission, a durable corporate signal for its London AI footprint.",
+      "source_url": "https://www.benevolent.com/news-and-media/press-releases-and-in-media/benevolentai-unveils-major-strategic-overhaul-return-original-mission/"
     },
     {
       "date": "2024-12-06",
@@ -1631,6 +1848,20 @@
       "event_type": "publication",
       "summary": "ORG's critical perspective on the Information Commissioner's Office annual report and enforcement record.",
       "source_url": "https://www.openrightsgroup.org/publications/ico-alternative-annual-report-2023-24/"
+    },
+    {
+      "date": "2024-11-11",
+      "company_slug": "ao-shearman-ai",
+      "event_type": "publication",
+      "summary": "A&O Shearman maps Article 50 transparency duties for chatbots, synthetic content and deepfakes under the EU AI Act.",
+      "source_url": "https://www.aoshearman.com/en/insights/ao-shearman-on-tech/zooming-in-on-ai-11-eu-ai-act-what-are-the-obligations-for-the-limited-risk-ai-systems"
+    },
+    {
+      "date": "2024-10-29",
+      "company_slug": "ao-shearman-ai",
+      "event_type": "publication",
+      "summary": "A&O Shearman explains provider and deployer obligations for high-risk AI systems under the EU AI Act ahead of the 2 August 2026 application date.",
+      "source_url": "https://www.aoshearman.com/en/insights/ao-shearman-on-tech/zooming-in-on-ai-10-eu-ai-act-what-are-the-obligations-for-high-risk-ai-systems"
     },
     {
       "date": "2024-10-21",
@@ -1682,6 +1913,13 @@
       "source_url": "https://www.gov.uk/government/publications/ai-foundation-models-update-paper"
     },
     {
+      "date": "2024-04-11",
+      "company_slug": "cma-broader-ai",
+      "event_type": "publication",
+      "summary": "CMA press notice says the regulator has moved from curiosity to “real concerns” about foundation-model market concentration and access points.",
+      "source_url": "https://www.gov.uk/government/news/cma-outlines-growing-concerns-in-markets-for-ai-foundation-models"
+    },
+    {
       "date": "2024-03-27",
       "company_slug": "ippr",
       "event_type": "press",
@@ -1696,11 +1934,25 @@
       "source_url": "https://www.ippr.org/articles/transformed-by-ai"
     },
     {
+      "date": "2024-02-21",
+      "company_slug": "deloitte-uk-ai",
+      "event_type": "publication",
+      "summary": "Deloitte UK summarises the UK pro-innovation AI regulatory framework, including safety, transparency, fairness, accountability and redress principles.",
+      "source_url": "https://www.deloitte.com/uk/en/blogs/ecrs/the-uks-framework-for-ai-regulation.html"
+    },
+    {
       "date": "2024-02-06",
       "company_slug": "techuk",
       "event_type": "publication",
       "summary": "techUK briefs members on the UK Government response to the AI White Paper consultation and the pro-innovation/context-based regulatory approach.",
       "source_url": "https://www.techuk.org/resource/uk-government-puts-forward-its-plans-to-regulate-ai.html"
+    },
+    {
+      "date": "2024-01-24",
+      "company_slug": "polyai",
+      "event_type": "publication",
+      "summary": "PolyAI explains guardrails for generative AI bots, including data-protection compliance, human oversight, policy frameworks and continuous monitoring.",
+      "source_url": "https://poly.ai/blog/why-are-enterprises-failing-to-deploy-decent-generative-ai-bots"
     },
     {
       "date": "2024-01-15",
@@ -1771,6 +2023,13 @@
       "event_type": "publication",
       "summary": "An Onward report mapping the opportunities, economic shocks and risks of generative AI for the UK and arguing for a proactive policy response.",
       "source_url": "https://ukonward.com/reports/the-generative-ai-revolution/"
+    },
+    {
+      "date": "2023-04-03",
+      "company_slug": "frontier-economics",
+      "event_type": "publication",
+      "summary": "Frontier Economics discusses economic trade-offs in AI regulation, including high-risk AI restrictions and market-value effects.",
+      "source_url": "https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i10205-ai-regulation-harnessing-the-benefits-and-mitigating-the-risks/"
     },
     {
       "date": "2023-02-25",

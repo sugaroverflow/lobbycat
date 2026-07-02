@@ -1,10 +1,15 @@
 {
   "slug": "oliver-wyman-london",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Consultancy with public-sector AI thought leadership. Launch coverage uses first-party government-roadmap AI insight.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.oliverwyman.com/careers.html",
+    "lastChecked": "2026-07-02",
+    "note": "Official Oliver Wyman careers page; rejected unrelated Lever namespace collision.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {
@@ -15,12 +20,38 @@
       "byline": "Oliver Wyman",
       "source": "first_party",
       "summary": "Oliver Wyman sets out how governments can harness generative AI operationally and strategically, part of its Quotient AI practice and public-sector AI advisory positioning."
+    },
+    {
+      "date": "2026-05-20",
+      "title": "How AI for enterprise legacy IT runs operations at scale",
+      "url": "https://www.oliverwyman.com/our-expertise/insights/2026/may/ai-for-legacy-it.html",
+      "type": "blog",
+      "summary": "Oliver Wyman argues AI agents need explicit governance, delegation, guardrails and controls when used to manage legacy IT systems at scale.",
+      "source": "first_party",
+      "topics": [
+        "agentic AI",
+        "governance",
+        "enterprise risk"
+      ]
+    },
+    {
+      "date": "2026-01-14",
+      "title": "Financial Services’ Future in AI Age: Known Unknown Debates",
+      "url": "https://www.oliverwyman.com/our-expertise/insights/2026/jan/key-debates-future-of-financial-institutions-in-age-of-ai.html",
+      "type": "blog",
+      "summary": "Oliver Wyman frames AI, regulation and geopolitics as linked debates shaping the future of financial institutions.",
+      "source": "first_party",
+      "topics": [
+        "financial services",
+        "AI regulation",
+        "governance"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Oliver Wyman AI/governance publications with dates verified from page source; no controversy logged.",
   "news": []
 }

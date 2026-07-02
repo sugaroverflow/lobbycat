@@ -1,10 +1,15 @@
 {
   "slug": "dsit-ai-opportunity",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "DSIT AI Opportunities Action Plan implementation. Launch coverage uses primary GOV.UK publications.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "not_relevant_public_sector",
+    "sourceUrl": "https://www.civilservicejobs.service.gov.uk/csr/jobs.cgi?search=1&department=Department%20for%20Science%2C%20Innovation%20and%20Technology",
+    "lastChecked": "2026-07-02",
+    "note": "AI Opportunity Unit roles are advertised through DSIT/Civil Service Jobs, not a unit-specific board.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

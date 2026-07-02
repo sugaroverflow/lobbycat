@@ -1,10 +1,15 @@
 {
   "slug": "quantumblack-london",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "McKinsey QuantumBlack AI practice. Launch coverage uses first-party State of AI report; body recapture needs browser because direct fetch returned 403.",
   "hiring": {
     "isHiring": null,
-    "newSincePrevious": null
+    "newSincePrevious": null,
+    "roleSourceStatus": "needs_browser",
+    "sourceUrl": "https://www.mckinsey.com/careers/search-jobs?locations=London&query=QuantumBlack",
+    "lastChecked": "2026-07-02",
+    "note": "Official McKinsey/QuantumBlack careers search verified; dynamic search needs browser/API extraction.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {
@@ -15,12 +20,38 @@
       "byline": "McKinsey QuantumBlack",
       "source": "first_party",
       "summary": "McKinsey QuantumBlack’s annual State of AI report surveys AI adoption, agents, innovation and organizational transformation, providing the consultancy’s evidence base for enterprise AI strategy."
+    },
+    {
+      "date": "2025-03-12",
+      "title": "The state of AI: How organizations are rewiring to capture value (PDF)",
+      "url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf",
+      "type": "paper",
+      "summary": "McKinsey/QuantumBlack’s State of AI report links CEO oversight of AI governance with higher reported bottom-line impact.",
+      "source": "first_party_pdf",
+      "topics": [
+        "AI governance",
+        "state of AI",
+        "responsible AI"
+      ]
+    },
+    {
+      "date": "2025",
+      "title": "Seizing the agentic AI advantage (PDF)",
+      "url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/seizing%20the%20agentic%20ai%20advantage/seizing-the-agentic-ai-advantage.pdf",
+      "type": "paper",
+      "summary": "McKinsey/QuantumBlack argues agentic AI requires new architectures and governance mechanisms to manage autonomous workflows at enterprise scale.",
+      "source": "first_party_pdf",
+      "topics": [
+        "agentic AI",
+        "governance",
+        "enterprise AI"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: official first-party URL discovered; direct fetch returned HTTP 403, so status=needs_browser for body recapture.",
+  "notes": "launch_harvest 2026-06-27: official first-party URL discovered; direct fetch returned HTTP 403, so status=needs_browser for body recapture.\n\n2026-07-02 urgent data-quality pass: McKinsey HTML pages were slow/timeouts from text fetch, so additions use first-party PDF URLs verified HTTP 200 via web_fetch. No named-party controversy logged.",
   "news": []
 }

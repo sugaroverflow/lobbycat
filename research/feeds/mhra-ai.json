@@ -1,8 +1,15 @@
 {
   "slug": "mhra-ai",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Medicines and Healthcare products Regulatory Agency (MHRA) regulates medicines and medical devices in the UK, including software and artificial intelligence as a medical device.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "not_relevant_public_sector",
+    "sourceUrl": "https://www.gov.uk/government/organisations/medicines-and-healthcare-products-regulatory-agency/about/recruitment",
+    "lastChecked": "2026-07-02",
+    "note": "MHRA AI-relevant roles are advertised through parent MHRA/Civil Service Jobs, not an AI-specific board.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2025-02-03",

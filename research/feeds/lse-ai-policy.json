@@ -1,8 +1,14 @@
 {
   "slug": "lse-ai-policy",
-  "lastUpdated": "2026-06-27T09:18:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The London School of Economics conducts social-science research on AI policy, health, labour markets and digital governance across multiple research units.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://info.lse.ac.uk/lse-jobs",
+    "lastChecked": "2026-07-02",
+    "note": "Official LSE Jobs page; seed careers URL was wrong (Cohere). Use LSE jobs plus department pages for manual checks.",
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-03-19",

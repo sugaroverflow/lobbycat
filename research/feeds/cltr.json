@@ -1,12 +1,15 @@
 {
   "slug": "cltr",
-  "lastUpdated": "2026-06-27T12:51:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "Centre for Long-Term Resilience — UK think tank on extreme risk (AI, bio, risk management), advising government with named-author reports and consultation submissions.",
   "hiring": {
     "isHiring": true,
     "newSincePrevious": 1,
     "londonPolicyRoles": 1,
-    "lastChecked": "2026-06-27"
+    "lastChecked": "2026-07-02",
+    "roleSourceStatus": "careers_page_found",
+    "sourceUrl": "https://www.longtermresilience.org/jobs",
+    "note": "Official jobs page; existing feed has a manually verified Operations Associate role."
   },
   "publications": [
     {

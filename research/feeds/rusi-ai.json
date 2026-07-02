@@ -1,8 +1,15 @@
 {
   "slug": "rusi-ai",
-  "lastUpdated": "2026-06-27T10:12:00Z",
+  "lastUpdated": "2026-07-02T01:58:00Z",
   "blurb": "The Royal United Services Institute (RUSI) is the world's oldest defence and security think tank; its 'Open Source Intelligence, AI and Disruptive Technologies' research stream covers AI's national-security, governance and command implications.",
-  "hiring": {},
+  "hiring": {
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://www.rusi.org/about/our-people/job-opportunities",
+    "lastChecked": "2026-07-02",
+    "note": "Official RUSI job opportunities page verified; page says current opportunities appear below and none were listed at fetch time.",
+    "isHiring": false,
+    "londonPolicyRoles": 0
+  },
   "publications": [
     {
       "date": "2026-06-22",
