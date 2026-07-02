@@ -1,7 +1,7 @@
 {
   "slug": "anthropic-london",
-  "lastUpdated": "2026-06-27",
-  "blurb": "One significant headline-level signal this run: a US government export-control directive reportedly suspending access to Anthropic's Fable 5 and Mythos 5 models (announced Jun 12). Full text not captured — Anthropic's RSS feeds 404'd, so this is title-only pending a clean read.",
+  "lastUpdated": "2026-07-02",
+  "blurb": "Headline governance signal: 'Expanding Project Glasswing' (Jun 30) extends Anthropic's cyber-defence partnership to ~150 new orgs across 15+ countries and — with Amazon, Microsoft and Google — proposes an industry-wide consensus framework for scoring AI jailbreak severity (four criteria: capability gain, breadth, ease of weaponisation, discoverability). Follows the Jun 12 US export-control directive on Fable 5 / Mythos 5; Fable 5 returned globally Jul 1.",
   "hiring": {
     "isHiring": true,
     "newSincePrevious": 2,
@@ -9,6 +9,14 @@
     "lastChecked": "2026-06-26"
   },
   "publications": [
+    {
+      "date": "2026-06-30",
+      "title": "Expanding Project Glasswing",
+      "url": "https://www.anthropic.com/news/expanding-project-glasswing",
+      "type": "press",
+      "byline": "Anthropic",
+      "summary": "Anthropic extends its Project Glasswing cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity across four criteria (capability gain, breadth of capability gain, ease of weaponisation, discoverability), described in coverage as a 'CVSS for AI'. A multi-lab AI-governance / standard-setting signal directly on-remit. Date pinned to 2026-06-30 (announced alongside 'Fable 5 returns globally July 1'); first-party byline not cleanly datable from the JS-rendered page, corroborated by Ars Technica, The Record and Cybersecurity Dive (dated 1 Jul 2026)."
+    },
     {
       "date": "2026-06-12",
       "title": "The US government has issued an export control directive to suspend all access to Fable 5 and Mythos 5.",
