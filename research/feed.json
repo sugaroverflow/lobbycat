@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T14:08:54Z",
+  "lastUpdated": "2026-07-02T14:37:00Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -12,14 +12,14 @@
       "date": "2026-06-30",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Expanding Project Glasswing: Anthropic extends its cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity (capability gain, breadth, ease of weaponisation, discoverability). A multi-lab AI-governance/standard-setting signal. Corroborated by Ars Technica and The Record (1 Jul 2026).",
+      "summary": "Expanding Project Glasswing: Anthropic extends its cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and \u2014 with Amazon, Microsoft, Google and other Glasswing partners \u2014 proposes an industry-wide consensus framework for scoring AI jailbreak severity (capability gain, breadth, ease of weaponisation, discoverability). A multi-lab AI-governance/standard-setting signal. Corroborated by Ars Technica and The Record (1 Jul 2026).",
       "source_url": "https://www.anthropic.com/news/expanding-project-glasswing"
     },
     {
       "date": "2026-06-27",
       "company_slug": "anthropic-london",
       "event_type": "controversy",
-      "summary": "Backfill: Bartz, Graeber & Johnson v Anthropic (N.D. Cal.) — authors' copyright class action over books used to train Claude. June 2025: Alsup held training fair use but pirated-copy retention not; Sept 2025 settlement (prelim. approval) reported ~$1.5B over ~500k works, largest US copyright settlement. Settled.",
+      "summary": "Backfill: Bartz, Graeber & Johnson v Anthropic (N.D. Cal.) \u2014 authors' copyright class action over books used to train Claude. June 2025: Alsup held training fair use but pirated-copy retention not; Sept 2025 settlement (prelim. approval) reported ~$1.5B over ~500k works, largest US copyright settlement. Settled.",
       "source_url": "https://authorsguild.org/advocacy/artificial-intelligence/what-authors-need-to-know-about-the-anthropic-settlement/"
     },
     {
@@ -33,14 +33,14 @@
       "date": "2026-06-27",
       "company_slug": "faculty-ai",
       "event_type": "role",
-      "summary": "Faculty building a London AI-Safety team: Technical Director of AI Safety + Principal & Senior AI-Safety Research Scientists open simultaneously (UK-London). Standing up dedicated AI-safety muscle at a major UK gov-AI vendor — a 'building muscle' signal.",
+      "summary": "Faculty building a London AI-Safety team: Technical Director of AI Safety + Principal & Senior AI-Safety Research Scientists open simultaneously (UK-London). Standing up dedicated AI-safety muscle at a major UK gov-AI vendor \u2014 a 'building muscle' signal.",
       "source_url": "https://jobs.ashbyhq.com/faculty/7e726de6-6327-40cd-a00d-0e9be34e1cb4"
     },
     {
       "date": "2026-06-27",
       "company_slug": "google-deepmind",
       "event_type": "controversy",
-      "summary": "Backfill: ICO ruling (3 Jul 2017) — Royal Free London NHS Trust breached the Data Protection Act by sharing ~1.6m patients' records with Google DeepMind (Streams AKI app) without knowledge, consent or opt-out. Landmark health-data 'cautionary tale'; later spawned a representative claim. Decided.",
+      "summary": "Backfill: ICO ruling (3 Jul 2017) \u2014 Royal Free London NHS Trust breached the Data Protection Act by sharing ~1.6m patients' records with Google DeepMind (Streams AKI app) without knowledge, consent or opt-out. Landmark health-data 'cautionary tale'; later spawned a representative claim. Decided.",
       "source_url": "https://ico.org.uk/for-the-public/ico-40/google-deepmind-and-class-action-lawsuit/"
     },
     {
@@ -54,21 +54,21 @@
       "date": "2026-06-27",
       "company_slug": "cohere-london",
       "event_type": "controversy",
-      "summary": "Backfill: Cohere — sued by a news-publisher coalition (Condé Nast, The Atlantic, Forbes, Guardian News & Media, LA Times, Politico, Insider, Newsday, McClatchy, Vox et al.) in S.D.N.Y. (Advance Local Media LLC et al. v. Cohere Inc., 1:25-cv-01305, filed 13 Feb 2025) for copyright infringement (training-data copying + RAG producing verbatim/substitutive summaries) and trademark infringement / false designation of origin over hallucinated articles shown with publishers' marks. On 13 Nov 2025 Judge McMahon DENIED Cohere's motion to dismiss; case ongoing, no merits ruling. Cohere has a London office; Guardian News & Media is a UK plaintiff.",
+      "summary": "Backfill: Cohere \u2014 sued by a news-publisher coalition (Cond\u00e9 Nast, The Atlantic, Forbes, Guardian News & Media, LA Times, Politico, Insider, Newsday, McClatchy, Vox et al.) in S.D.N.Y. (Advance Local Media LLC et al. v. Cohere Inc., 1:25-cv-01305, filed 13 Feb 2025) for copyright infringement (training-data copying + RAG producing verbatim/substitutive summaries) and trademark infringement / false designation of origin over hallucinated articles shown with publishers' marks. On 13 Nov 2025 Judge McMahon DENIED Cohere's motion to dismiss; case ongoing, no merits ruling. Cohere has a London office; Guardian News & Media is a UK plaintiff.",
       "source_url": "https://www.courtlistener.com/docket/69636122/advance-local-media-llc-v-cohere-inc/"
     },
     {
       "date": "2026-06-27",
       "company_slug": "helsing",
       "event_type": "controversy",
-      "summary": "Backfill: Helsing HX-2 loitering-munition setbacks in Ukraine — Bloomberg (19 Jan 2026, citing anonymous Ukrainian/German sources) reported Ukraine held off new HX-2 orders after alleged takeoff failures, missing AI flight-control capabilities and Russian-EW-induced loss of control; an Apr 2025 Bloomberg piece alleged overpriced/glitchy drones. Helsing disputed the report as misleading, citing active demand from six units. LAWS/defence-procurement-assurance relevance; London office. Alleged/disputed — no regulatory finding.",
+      "summary": "Backfill: Helsing HX-2 loitering-munition setbacks in Ukraine \u2014 Bloomberg (19 Jan 2026, citing anonymous Ukrainian/German sources) reported Ukraine held off new HX-2 orders after alleged takeoff failures, missing AI flight-control capabilities and Russian-EW-induced loss of control; an Apr 2025 Bloomberg piece alleged overpriced/glitchy drones. Helsing disputed the report as misleading, citing active demand from six units. LAWS/defence-procurement-assurance relevance; London office. Alleged/disputed \u2014 no regulatory finding.",
       "source_url": "https://www.bloomberg.com/news/articles/2026-01-19/ukraine-holds-off-on-new-helsing-drone-orders-after-setbacks"
     },
     {
       "date": "2026-06-26",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Latest Anthropic Economic Index — the lab's regular publication tracking how Claude is being used across the economy. Directly relevant to the AI-and-labour, productivity and adoption-evidence debates Ada Lovelace and others are pushing back on.",
+      "summary": "Latest Anthropic Economic Index \u2014 the lab's regular publication tracking how Claude is being used across the economy. Directly relevant to the AI-and-labour, productivity and adoption-evidence debates Ada Lovelace and others are pushing back on.",
       "source_url": "https://www.anthropic.com/research/economic-index-june-2026-report"
     },
     {
@@ -96,14 +96,14 @@
       "date": "2026-06-26",
       "company_slug": "meta-london-policy",
       "event_type": "press",
-      "summary": "See Tom Shaw's perspective on the infrastructure and technology inside one of Meta's data centers.\nThe post Inside One of Meta’s Data Centers appeared first on Meta Newsroom.",
+      "summary": "See Tom Shaw's perspective on the infrastructure and technology inside one of Meta's data centers.\nThe post Inside One of Meta\u2019s Data Centers appeared first on Meta Newsroom.",
       "source_url": "https://about.fb.com/news/2026/06/inside-meta-data-center/"
     },
     {
       "date": "2026-06-26",
       "company_slug": "openai-london",
       "event_type": "press",
-      "summary": "OpenAI is staggering the release of its latest model after a US-government request (echoing the Anthropic Mythos export-control move), and signalled dissatisfaction — saying it keeps the best tools from users, developers and global partners. A live example of frontier-model release becoming a national-security lever. Corroborated by CNBC.",
+      "summary": "OpenAI is staggering the release of its latest model after a US-government request (echoing the Anthropic Mythos export-control move), and signalled dissatisfaction \u2014 saying it keeps the best tools from users, developers and global partners. A live example of frontier-model release becoming a national-security lever. Corroborated by CNBC.",
       "source_url": "https://www.theguardian.com/technology/2026/jun/26/openai-ai-model-release-trump-us-sam-altman-gpt-anthropic-mythos"
     },
     {
@@ -117,7 +117,7 @@
       "date": "2026-06-26",
       "company_slug": "faculty-ai",
       "event_type": "publication",
-      "summary": "Faculty on automating red-teaming for model safety — an AI-assurance/evaluations capability, relevant given Faculty's safety work with UK bodies. Listing showed no inline date for this item; date left null.",
+      "summary": "Faculty on automating red-teaming for model safety \u2014 an AI-assurance/evaluations capability, relevant given Faculty's safety work with UK bodies. Listing showed no inline date for this item; date left null.",
       "source_url": "https://faculty.ai/en-gb/insights/articles/beyond-manual-red-teaming-scaling-model-safety-with-automated-red-teaming-emulation-system"
     },
     {
@@ -159,14 +159,14 @@
       "date": "2026-06-24",
       "company_slug": "google-deepmind",
       "event_type": "publication",
-      "summary": "DeepMind ships 'computer use' (agentic UI control) in Gemini 3.5 Flash — extends the agentic frontier it's been framing as a safety/governance sub-domain.",
+      "summary": "DeepMind ships 'computer use' (agentic UI control) in Gemini 3.5 Flash \u2014 extends the agentic frontier it's been framing as a safety/governance sub-domain.",
       "source_url": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/"
     },
     {
       "date": "2026-06-24",
       "company_slug": "mistral-london",
       "event_type": "press",
-      "summary": "Mistral engineering update on connector controls — product news, included for newsroom completeness.",
+      "summary": "Mistral engineering update on connector controls \u2014 product news, included for newsroom completeness.",
       "source_url": "https://mistral.ai/news/more-control-over-connectors/"
     },
     {
@@ -180,21 +180,21 @@
       "date": "2026-06-24",
       "company_slug": "openai-london",
       "event_type": "publication",
-      "summary": "OpenAI + Broadcom unveil 'Jalapeño', a custom LLM-inference chip. Company/hardware news, low policy signal.",
+      "summary": "OpenAI + Broadcom unveil 'Jalape\u00f1o', a custom LLM-inference chip. Company/hardware news, low policy signal.",
       "source_url": "https://openai.com/index/openai-broadcom-jalapeno-inference-chip"
     },
     {
       "date": "2026-06-24",
       "company_slug": "oxford-internet-institute",
       "event_type": "press",
-      "summary": "A new OII working paper argues EU technology policy should hold AI companies accountable for actual public wellbeing, not just reduced risk — a values-based reframing of how the EU subsidises AI.",
+      "summary": "A new OII working paper argues EU technology policy should hold AI companies accountable for actual public wellbeing, not just reduced risk \u2014 a values-based reframing of how the EU subsidises AI.",
       "source_url": "https://www.oii.ox.ac.uk/rethinking-eu-ai-policy-why-public-subsidies-for-ai-should-deliver-real-wellbeing/"
     },
     {
       "date": "2026-06-24",
       "company_slug": "stability-ai",
       "event_type": "controversy",
-      "summary": "Backfill: Getty Images v Stability AI, UK High Court [2025] EWHC 2863 (Ch), 4 Nov 2025 — first major UK copyright/genAI ruling; mixed result (Stability won secondary-infringement, Getty won a limited watermark trademark point).",
+      "summary": "Backfill: Getty Images v Stability AI, UK High Court [2025] EWHC 2863 (Ch), 4 Nov 2025 \u2014 first major UK copyright/genAI ruling; mixed result (Stability won secondary-infringement, Getty won a limited watermark trademark point).",
       "source_url": "https://www.judiciary.uk/judgments/getty-images-v-stability-ai/"
     },
     {
@@ -222,14 +222,14 @@
       "date": "2026-06-23",
       "company_slug": "cohere-london",
       "event_type": "press",
-      "summary": "Cohere on how users worldwide are affected by AI's cultural gaps — a values/representation angle adjacent to global AI governance and the sovereignty positioning Cohere leans into.",
+      "summary": "Cohere on how users worldwide are affected by AI's cultural gaps \u2014 a values/representation angle adjacent to global AI governance and the sovereignty positioning Cohere leans into.",
       "source_url": "https://cohere.com/blog/why-cultural-awareness-is-essential-for-global-ai"
     },
     {
       "date": "2026-06-23",
       "company_slug": "meta-london-policy",
       "event_type": "press",
-      "summary": "Meta's Small Business Growth Academy will provide practical AI tools, advertising, and cross-border growth training to help small businesses scale across Asia-Pacific.\nThe post Launch of Meta’s Small",
+      "summary": "Meta's Small Business Growth Academy will provide practical AI tools, advertising, and cross-border growth training to help small businesses scale across Asia-Pacific.\nThe post Launch of Meta\u2019s Small",
       "source_url": "https://about.fb.com/news/2026/06/launch-of-metas-small-business-growth-academy-across-asia-pacific/"
     },
     {
@@ -243,7 +243,7 @@
       "date": "2026-06-23",
       "company_slug": "openai-london",
       "event_type": "press",
-      "summary": "OpenAI Global Affairs post on supporting the EU’s trustworthy-AI ecosystem work — first-party signal on how the company is positioning around the EU AI Act and European governance.",
+      "summary": "OpenAI Global Affairs post on supporting the EU\u2019s trustworthy-AI ecosystem work \u2014 first-party signal on how the company is positioning around the EU AI Act and European governance.",
       "source_url": "https://openai.com/index/industrial-policy-for-the-intelligence-age/"
     },
     {
@@ -278,7 +278,7 @@
       "date": "2026-06-22",
       "company_slug": "xai-london",
       "event_type": "press",
-      "summary": "xAI brings Grok 4.3 to general availability on Amazon Bedrock (1M-token context, configurable reasoning) — an enterprise-distribution move that widens Grok's reach into regulated AWS environments, notable given the concurrent regulatory scrutiny of Grok. First-party news index linked.",
+      "summary": "xAI brings Grok 4.3 to general availability on Amazon Bedrock (1M-token context, configurable reasoning) \u2014 an enterprise-distribution move that widens Grok's reach into regulated AWS environments, notable given the concurrent regulatory scrutiny of Grok. First-party news index linked.",
       "source_url": "https://x.ai/news"
     },
     {
@@ -292,14 +292,14 @@
       "date": "2026-06-18",
       "company_slug": "aisi",
       "event_type": "press",
-      "summary": "The UK AI Security Institute releases its Engineering Playbook — a look at how the state's frontier-AI evaluation body actually builds its testing infrastructure.",
+      "summary": "The UK AI Security Institute releases its Engineering Playbook \u2014 a look at how the state's frontier-AI evaluation body actually builds its testing infrastructure.",
       "source_url": "https://www.aisi.gov.uk/blog/releasing-aisis-engineering-playbook"
     },
     {
       "date": "2026-06-18",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Frontier Red Team update — Anthropic's safety-evaluations arm. The Red Team's output is some of the most directly policy-relevant work a frontier lab publishes, feeding evaluation methodologies that AISI and others draw on.",
+      "summary": "Frontier Red Team update \u2014 Anthropic's safety-evaluations arm. The Red Team's output is some of the most directly policy-relevant work a frontier lab publishes, feeding evaluation methodologies that AISI and others draw on.",
       "source_url": "https://www.anthropic.com/research/project-fetch-phase-two"
     },
     {
@@ -320,7 +320,7 @@
       "date": "2026-06-17",
       "company_slug": "anthropic-london",
       "event_type": "press",
-      "summary": "Anthropic expands into South Korea — part of its international government/ecosystem footprint relevant to where frontier labs are placing policy bets.",
+      "summary": "Anthropic expands into South Korea \u2014 part of its international government/ecosystem footprint relevant to where frontier labs are placing policy bets.",
       "source_url": "https://www.anthropic.com/news/seoul-office-partnerships-korean-ai-ecosystem"
     },
     {
@@ -334,14 +334,14 @@
       "date": "2026-06-17",
       "company_slug": "helsing",
       "event_type": "press",
-      "summary": "Partnership with EURENCO to build a 'sovereign European' strike-drone capability — ties autonomous-weapons development to European strategic-autonomy / defence-sovereignty policy.",
+      "summary": "Partnership with EURENCO to build a 'sovereign European' strike-drone capability \u2014 ties autonomous-weapons development to European strategic-autonomy / defence-sovereignty policy.",
       "source_url": "https://helsing.ai/newsroom/helsing-and-eurenco-sign-partnership-to-deliver-a-sovereign-european-strike-drone-capability"
     },
     {
       "date": "2026-06-17",
       "company_slug": "openai-london",
       "event_type": "publication",
-      "summary": "Expert-written, expert-reviewed benchmark for life-sciences AI agents — increasingly capable agentic systems in biology raise both opportunity and biosecurity-policy questions. Sits in the same arc as Anthropic's biology-agents work and AISI's biorisk evals.",
+      "summary": "Expert-written, expert-reviewed benchmark for life-sciences AI agents \u2014 increasingly capable agentic systems in biology raise both opportunity and biosecurity-policy questions. Sits in the same arc as Anthropic's biology-agents work and AISI's biorisk evals.",
       "source_url": "https://openai.com/index/introducing-life-sci-bench/"
     },
     {
@@ -355,21 +355,21 @@
       "date": "2026-06-17",
       "company_slug": "synthesia",
       "event_type": "press",
-      "summary": "Synthesia CEO Victor Riparbelli attends a G7 AI lunch in Évian — a direct policy-engagement signal: a synthetic-media company at the G7 table is notable given the deepfake / content-authenticity questions Synthesia's technology raises.",
+      "summary": "Synthesia CEO Victor Riparbelli attends a G7 AI lunch in \u00c9vian \u2014 a direct policy-engagement signal: a synthetic-media company at the G7 table is notable given the deepfake / content-authenticity questions Synthesia's technology raises.",
       "source_url": "https://www.synthesia.io/post/victor-riparbelli-attends-g7-ai-lunch-evian"
     },
     {
       "date": "2026-06-17",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
-      "summary": "Microsoft EU Policy Blog post tying AI expansion to compute and power infrastructure — directly relevant to European AI-capacity policy.",
+      "summary": "Microsoft EU Policy Blog post tying AI expansion to compute and power infrastructure \u2014 directly relevant to European AI-capacity policy.",
       "source_url": "https://blogs.microsoft.com/eupolicy/2026/06/17/powering-europes-ai-future-the-fusion-of-compute-and-power/"
     },
     {
       "date": "2026-06-16",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Evidence on how Claude Code is changing returns to coding expertise — an empirical addition to the displacement-vs-augmentation debate that's animating UK and EU labour-market policy.",
+      "summary": "Evidence on how Claude Code is changing returns to coding expertise \u2014 an empirical addition to the displacement-vs-augmentation debate that's animating UK and EU labour-market policy.",
       "source_url": "https://www.anthropic.com/research/claude-code-expertise"
     },
     {
@@ -383,7 +383,7 @@
       "date": "2026-06-16",
       "company_slug": "faculty-ai",
       "event_type": "publication",
-      "summary": "Faculty details applied AI work on the English planning system — directly relevant to the UK government's AI-for-planning agenda (parallels DeepMind's June planning-prototype announcement), and to how public-sector AI delivery actually lands.",
+      "summary": "Faculty details applied AI work on the English planning system \u2014 directly relevant to the UK government's AI-for-planning agenda (parallels DeepMind's June planning-prototype announcement), and to how public-sector AI delivery actually lands.",
       "source_url": "https://faculty.ai/en-gb/insights/articles/how-were-building-ai-to-help-fix-the-english-planning-system"
     },
     {
@@ -411,14 +411,14 @@
       "date": "2026-06-16",
       "company_slug": "open-rights-group",
       "event_type": "press",
-      "summary": "ORG urges MPs to back an amendment to the Cyber Security and Resilience Bill requiring a Digital Sovereignty strategy for the resilience and independence of UK critical infrastructure — a concrete legislative-advocacy signal.",
+      "summary": "ORG urges MPs to back an amendment to the Cyber Security and Resilience Bill requiring a Digital Sovereignty strategy for the resilience and independence of UK critical infrastructure \u2014 a concrete legislative-advocacy signal.",
       "source_url": "https://www.openrightsgroup.org/press-releases/mps-urged-to-vote-for-a-digital-sovereignty-strategy/"
     },
     {
       "date": "2026-06-16",
       "company_slug": "oxford-internet-institute",
       "event_type": "press",
-      "summary": "OII's Dr Vicki Nash warns a social-media ban risks leaving teenagers 'protected' but disempowered — cut off from news, learning and support just as the UK prepares to give 16-year-olds the vote.",
+      "summary": "OII's Dr Vicki Nash warns a social-media ban risks leaving teenagers 'protected' but disempowered \u2014 cut off from news, learning and support just as the UK prepares to give 16-year-olds the vote.",
       "source_url": "https://www.oii.ox.ac.uk/expert-expert-comment-is-banning-under-16s-from-social-media-protection-or-exclusion/"
     },
     {
@@ -432,7 +432,7 @@
       "date": "2026-06-16",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
-      "summary": "Microsoft EU Policy Blog post on European-language AI access and infrastructure, a regional policy-positioning signal for Microsoft’s European AI work.",
+      "summary": "Microsoft EU Policy Blog post on European-language AI access and infrastructure, a regional policy-positioning signal for Microsoft\u2019s European AI work.",
       "source_url": "https://blogs.microsoft.com/eupolicy/2026/06/16/ai-for-europe-in-europes-own-languages/"
     },
     {
@@ -460,7 +460,7 @@
       "date": "2026-06-15",
       "company_slug": "ada-lovelace-institute",
       "event_type": "press",
-      "summary": "Ada responds to the UK government's announced ban on social media for under-16s and restrictions on harmful features — part of the June 2026 cluster of cross-sector online-safety policy responses.",
+      "summary": "Ada responds to the UK government's announced ban on social media for under-16s and restrictions on harmful features \u2014 part of the June 2026 cluster of cross-sector online-safety policy responses.",
       "source_url": "https://www.adalovelaceinstitute.org/press-release/response-social-media-ban/"
     },
     {
@@ -474,7 +474,7 @@
       "date": "2026-06-15",
       "company_slug": "meta-london-policy",
       "event_type": "press",
-      "summary": "We’re introducing new AI-powered Facebook features to help you connect, create, and find what you’re looking for.\nThe post New AI Tools to Help You Make Things Happen on Facebook appeared first on Me",
+      "summary": "We\u2019re introducing new AI-powered Facebook features to help you connect, create, and find what you\u2019re looking for.\nThe post New AI Tools to Help You Make Things Happen on Facebook appeared first on Me",
       "source_url": "https://about.fb.com/news/2026/06/new-ai-tools-to-help-you-make-things-happen-on-facebook/"
     },
     {
@@ -495,14 +495,14 @@
       "date": "2026-06-12",
       "company_slug": "anthropic-london",
       "event_type": "press",
-      "summary": "Anthropic responds to a US government export-control directive suspending all access to its Fable 5 and Mythos 5 models — a notable instance of frontier-model export controls hitting a specific company, and the first-party counterpart to the headline-only item logged earlier today.",
+      "summary": "Anthropic responds to a US government export-control directive suspending all access to its Fable 5 and Mythos 5 models \u2014 a notable instance of frontier-model export controls hitting a specific company, and the first-party counterpart to the headline-only item logged earlier today.",
       "source_url": "https://www.anthropic.com/news/fable-mythos-access"
     },
     {
       "date": "2026-06-12",
       "company_slug": "anthropic-london",
       "event_type": "press",
-      "summary": "Anthropic publishes results from its first Public Record — a transparency/governance exercise worth watching as a model for how labs document their own conduct.",
+      "summary": "Anthropic publishes results from its first Public Record \u2014 a transparency/governance exercise worth watching as a model for how labs document their own conduct.",
       "source_url": "https://www.anthropic.com/news/anthropic-public-record"
     },
     {
@@ -523,7 +523,7 @@
       "date": "2026-06-11",
       "company_slug": "anthropic-london",
       "event_type": "press",
-      "summary": "A national fellowship for people early in their careers — an AI-workforce/talent-pipeline move with public-policy framing.",
+      "summary": "A national fellowship for people early in their careers \u2014 an AI-workforce/talent-pipeline move with public-policy framing.",
       "source_url": "https://www.anthropic.com/news/claude-corps"
     },
     {
@@ -537,14 +537,14 @@
       "date": "2026-06-11",
       "company_slug": "openai-london",
       "event_type": "press",
-      "summary": "OpenAI Global Affairs disclosure on PRC-linked influence operations — part of the lab’s threat-intelligence/transparency reporting, relevant to election-integrity and foreign-influence policy.",
+      "summary": "OpenAI Global Affairs disclosure on PRC-linked influence operations \u2014 part of the lab\u2019s threat-intelligence/transparency reporting, relevant to election-integrity and foreign-influence policy.",
       "source_url": "https://openai.com/index/"
     },
     {
       "date": "2026-06-10",
       "company_slug": "faculty-ai",
       "event_type": "publication",
-      "summary": "Faculty's 'decision intelligence' framing — positioning argument about where AI value actually comes from in enterprise/government, useful as context on how a major UK gov-AI vendor pitches its work.",
+      "summary": "Faculty's 'decision intelligence' framing \u2014 positioning argument about where AI value actually comes from in enterprise/government, useful as context on how a major UK gov-AI vendor pitches its work.",
       "source_url": "https://faculty.ai/en-gb/insights/articles/you-dont-have-an-ai-problem-you-have-a-decision-problem"
     },
     {
@@ -558,63 +558,63 @@
       "date": "2026-06-10",
       "company_slug": "helsing",
       "event_type": "press",
-      "summary": "Helsing (Munich) unveils the CA-1, an autonomous combat aircraft for electronic warfare — a notable escalation from defence software into autonomous lethal hardware, directly relevant to lethal-autonomous-weapons (LAWS) policy debates.",
+      "summary": "Helsing (Munich) unveils the CA-1, an autonomous combat aircraft for electronic warfare \u2014 a notable escalation from defence software into autonomous lethal hardware, directly relevant to lethal-autonomous-weapons (LAWS) policy debates.",
       "source_url": "https://helsing.ai/newsroom/helsing-introduces-the-ca-1-electronic-attack-an-autonomous-combat-aircraft-for-electronic-warfare"
     },
     {
       "date": "2026-06-10",
       "company_slug": "i-dot-ai",
       "event_type": "press",
-      "summary": "DSIT/gov announcement (AI Minister Kanishka Narayan, keynote at London Tech Week's AI Summit): £500k+ compute for innovators turning prototypes into public-service AI tools (libraries to NHS), a data-centre redesign challenge, and workplace-robotics safety guidance — the gov-AI-delivery ecosystem i.AI/GDS sits within.",
+      "summary": "DSIT/gov announcement (AI Minister Kanishka Narayan, keynote at London Tech Week's AI Summit): \u00a3500k+ compute for innovators turning prototypes into public-service AI tools (libraries to NHS), a data-centre redesign challenge, and workplace-robotics safety guidance \u2014 the gov-AI-delivery ecosystem i.AI/GDS sits within.",
       "source_url": "https://www.gov.uk/government/news/new-backing-for-open-source-ai-builders-data-centre-design-challenge-and-robotics-partnership"
     },
     {
       "date": "2026-06-10",
       "company_slug": "tbi",
       "event_type": "press",
-      "summary": "TBI commentary arguing the UK must embrace risk and innovation to secure its future amid technological disruption or risk falling behind — characteristic TBI pro-tech-adoption framing on national AI/tech strategy.",
+      "summary": "TBI commentary arguing the UK must embrace risk and innovation to secure its future amid technological disruption or risk falling behind \u2014 characteristic TBI pro-tech-adoption framing on national AI/tech strategy.",
       "source_url": "https://institute.global/insights/tech-and-digitalisation/technological-disruption-is-inevitable-british-prosperity-is-not"
     },
     {
       "date": "2026-06-10",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
-      "summary": "Brad Smith sets out Microsoft’s view on AI, labour-market impact, skills and workforce policy — a named-principal contribution to the displacement/augmentation debate.",
+      "summary": "Brad Smith sets out Microsoft\u2019s view on AI, labour-market impact, skills and workforce policy \u2014 a named-principal contribution to the displacement/augmentation debate.",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/10/ai-jobs-and-the-next-generation/"
     },
     {
       "date": "2026-06-09",
       "company_slug": "cohere-london",
       "event_type": "press",
-      "summary": "Cohere ships North Mini Code, an agentic coding model — a product launch, included for newsroom completeness; Cohere's enterprise/sovereign-AI positioning is the policy-relevant throughline.",
+      "summary": "Cohere ships North Mini Code, an agentic coding model \u2014 a product launch, included for newsroom completeness; Cohere's enterprise/sovereign-AI positioning is the policy-relevant throughline.",
       "source_url": "https://cohere.com/blog/north-mini-code"
     },
     {
       "date": "2026-06-09",
       "company_slug": "techuk",
       "event_type": "publication",
-      "summary": "techUK to lead the Industry Advisory Group of the new DSIT-backed, BCS-chaired AI Assurance Consortium — a direct AI assurance/governance role.",
+      "summary": "techUK to lead the Industry Advisory Group of the new DSIT-backed, BCS-chaired AI Assurance Consortium \u2014 a direct AI assurance/governance role.",
       "source_url": "https://www.techuk.org/resource/dsit-s-ai-assurance-roadmap-takes-its-next-step-techuk-to-lead-the-industry-advisory-group-of-ai-assurance-consortium.html"
     },
     {
       "date": "2026-06-08",
       "company_slug": "aisi",
       "event_type": "publication",
-      "summary": "AISI evaluation probing whether AI systems disclose that they are AI when asked — directly relevant to transparency/disclosure rules and the bot-identification debate.",
+      "summary": "AISI evaluation probing whether AI systems disclose that they are AI when asked \u2014 directly relevant to transparency/disclosure rules and the bot-identification debate.",
       "source_url": "https://www.aisi.gov.uk/blog/realitytest-do-ai-systems-disclose-their-identity-when-asked"
     },
     {
       "date": "2026-06-08",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Anthropic's work on biology agents — biosecurity policy material. Sits in the same debate as AISI's biorisk evaluations and CETAS's biosecurity work.",
+      "summary": "Anthropic's work on biology agents \u2014 biosecurity policy material. Sits in the same debate as AISI's biorisk evaluations and CETAS's biosecurity work.",
       "source_url": "https://www.anthropic.com/research/agents-in-biology"
     },
     {
       "date": "2026-06-08",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Frontier Red Team measurement of how LLMs change the economics of N-day vulnerability exploitation — feeds directly into NCSC/AISI cyber-policy thinking.",
+      "summary": "Frontier Red Team measurement of how LLMs change the economics of N-day vulnerability exploitation \u2014 feeds directly into NCSC/AISI cyber-policy thinking.",
       "source_url": "https://www.anthropic.com/research/n-days"
     },
     {
@@ -642,21 +642,21 @@
       "date": "2026-06-08",
       "company_slug": "techuk",
       "event_type": "press",
-      "summary": "GOV.UK names techUK as convening UK trade associations for an AI Adoption Coalition alongside the government’s AI Adoption Summit package and sectoral AI Adoption Plans.",
+      "summary": "GOV.UK names techUK as convening UK trade associations for an AI Adoption Coalition alongside the government\u2019s AI Adoption Summit package and sectoral AI Adoption Plans.",
       "source_url": "https://www.gov.uk/government/news/government-to-partner-with-tech-companies-trade-unions-and-industry-leaders-to-boost-ai-adoption-and-equip-workers-with-ai-skills"
     },
     {
       "date": "2026-06-04",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
-      "summary": "Eric Horvitz discusses AI biosecurity safeguards, connecting Microsoft’s safety work to the frontier-lab biosecurity-policy conversation.",
+      "summary": "Eric Horvitz discusses AI biosecurity safeguards, connecting Microsoft\u2019s safety work to the frontier-lab biosecurity-policy conversation.",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/04/strengthening-biosecurity-in-the-era-of-ai/"
     },
     {
       "date": "2026-06-03",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Frontier Red Team release of an LLM ATT&CK Navigator — methodology for systematically mapping AI-enabled cyber threats. Cyber-policy infrastructure.",
+      "summary": "Frontier Red Team release of an LLM ATT&CK Navigator \u2014 methodology for systematically mapping AI-enabled cyber threats. Cyber-policy infrastructure.",
       "source_url": "https://www.anthropic.com/research/attack-navigator"
     },
     {
@@ -719,7 +719,7 @@
       "date": "2026-06-01",
       "company_slug": "helsing",
       "event_type": "publication",
-      "summary": "Helsing established Area 9, an advanced research division focused on AI and autonomous systems, and launched RX-1 — a robotics research platform designed and manufactured entirely in Europe, positioned as a sovereign alternative to non-European platforms and to be made available to universities and research institutions across Europe. Relevant to defence-AI research infrastructure, autonomy R&D and European technological-sovereignty policy.",
+      "summary": "Helsing established Area 9, an advanced research division focused on AI and autonomous systems, and launched RX-1 \u2014 a robotics research platform designed and manufactured entirely in Europe, positioned as a sovereign alternative to non-European platforms and to be made available to universities and research institutions across Europe. Relevant to defence-AI research infrastructure, autonomy R&D and European technological-sovereignty policy.",
       "source_url": "https://helsing.ai/newsroom/helsing-unveils-area-9-and-launches-rx-1-its-first-european-robotics-research-platform"
     },
     {
@@ -740,7 +740,7 @@
       "date": "2026-05-28",
       "company_slug": "mistral-london",
       "event_type": "publication",
-      "summary": "Mistral's AI Now Summit 2026 — a company event framed around AI 'innovations for global enterprises'; relevant as a European-frontier-lab convening signal rather than a pure product launch.",
+      "summary": "Mistral's AI Now Summit 2026 \u2014 a company event framed around AI 'innovations for global enterprises'; relevant as a European-frontier-lab convening signal rather than a pure product launch.",
       "source_url": "https://mistral.ai/news/ai-now-summit-2026/"
     },
     {
@@ -775,7 +775,7 @@
       "date": "2026-05-27",
       "company_slug": "linklaters-ai",
       "event_type": "publication",
-      "summary": "Linklaters analyses Spain’s draft AI governance law and its interaction with EU AI Act compliance and sandboxing.",
+      "summary": "Linklaters analyses Spain\u2019s draft AI governance law and its interaction with EU AI Act compliance and sandboxing.",
       "source_url": "https://techinsights.linklaters.com/post/102mwzx/spain-approves-draft-ai-governance-law-what-you-need-to-know"
     },
     {
@@ -789,7 +789,7 @@
       "date": "2026-05-25",
       "company_slug": "aisi",
       "event_type": "press",
-      "summary": "AISI deepens ties with Australia's AI Safety Institute — part of the emerging international network of state AI-safety bodies coordinating evaluations.",
+      "summary": "AISI deepens ties with Australia's AI Safety Institute \u2014 part of the emerging international network of state AI-safety bodies coordinating evaluations.",
       "source_url": "https://www.aisi.gov.uk/blog/deepening-our-partnership-with-the-australian-ai-safety-institute"
     },
     {
@@ -810,14 +810,14 @@
       "date": "2026-05-20",
       "company_slug": "alan-turing-institute",
       "event_type": "press",
-      "summary": "Dr George Williamson CMG joins as CEO from HMGCC (His Majesty's Government Communications Centre) — a national-security technology figure whose appointment is widely read as pivoting the UK national AI institute toward 'sovereign capability' and national security. He succeeds Professor Mark Girolami.",
+      "summary": "Dr George Williamson CMG joins as CEO from HMGCC (His Majesty's Government Communications Centre) \u2014 a national-security technology figure whose appointment is widely read as pivoting the UK national AI institute toward 'sovereign capability' and national security. He succeeds Professor Mark Girolami.",
       "source_url": "https://www.turing.ac.uk/news/george-williamson-joins-turing-new-ceo"
     },
     {
       "date": "2026-05-20",
       "company_slug": "cohere-london",
       "event_type": "publication",
-      "summary": "Launch of Command A+, framed around 'sovereign agentic capabilities' — relevant to the AI-sovereignty policy debate (national control over models/data) that Cohere positions itself within.",
+      "summary": "Launch of Command A+, framed around 'sovereign agentic capabilities' \u2014 relevant to the AI-sovereignty policy debate (national control over models/data) that Cohere positions itself within.",
       "source_url": "https://cohere.com/blog/command-a-plus"
     },
     {
@@ -845,7 +845,7 @@
       "date": "2026-05-20",
       "company_slug": "openai-london",
       "event_type": "publication",
-      "summary": "GPT-Rosalind — OpenAI's life-sciences model. The companion piece to Rosalind Biodefense and LifeSciBench; together they're OpenAI's biology bet.",
+      "summary": "GPT-Rosalind \u2014 OpenAI's life-sciences model. The companion piece to Rosalind Biodefense and LifeSciBench; together they're OpenAI's biology bet.",
       "source_url": "https://openai.com/"
     },
     {
@@ -859,7 +859,7 @@
       "date": "2026-05-20",
       "company_slug": "bird-and-bird-ai",
       "event_type": "publication",
-      "summary": "Bird & Bird analyses the European Commission’s draft high-risk AI guidelines under the EU AI Act, including the threshold question of what qualifies as an AI system and how high-risk obligations are expected to operate.",
+      "summary": "Bird & Bird analyses the European Commission\u2019s draft high-risk AI guidelines under the EU AI Act, including the threshold question of what qualifies as an AI system and how high-risk obligations are expected to operate.",
       "source_url": "https://www.twobirds.com/en/insights/2026/the-commission's-draft-high-risk-ai-guidelines-under-the-eu-ai-act-a-first-read"
     },
     {
@@ -880,7 +880,7 @@
       "date": "2026-05-13",
       "company_slug": "aisi",
       "event_type": "publication",
-      "summary": "AISI finds the length of tasks frontier models can autonomously complete in its cyber suite has been doubling every few months, with the doubling rate accelerating — a concrete capability-trend signal feeding the cyber-risk policy debate.",
+      "summary": "AISI finds the length of tasks frontier models can autonomously complete in its cyber suite has been doubling every few months, with the doubling rate accelerating \u2014 a concrete capability-trend signal feeding the cyber-risk policy debate.",
       "source_url": "https://www.aisi.gov.uk/blog/how-fast-is-autonomous-ai-cyber-capability-advancing"
     },
     {
@@ -908,14 +908,14 @@
       "date": "2026-05-11",
       "company_slug": "ada-lovelace-institute",
       "event_type": "press",
-      "summary": "Ada argues policymakers should demand higher evidentiary standards before accepting claims that AI boosts public-sector productivity — a characteristically evidence-first intervention into the gov-AI-efficiency narrative.",
+      "summary": "Ada argues policymakers should demand higher evidentiary standards before accepting claims that AI boosts public-sector productivity \u2014 a characteristically evidence-first intervention into the gov-AI-efficiency narrative.",
       "source_url": "https://www.adalovelaceinstitute.org/press-release/ai-public-sector-productivity/"
     },
     {
       "date": "2026-05-11",
       "company_slug": "bank-of-england-ai",
       "event_type": "press",
-      "summary": "The head of the Bank of England's regulatory arm (PRA) said it is 'reasonable to expect quite significant disruption' to financial services from the latest AI models such as Anthropic's Mythos and ChatGPT 5.5 Instant — a notable financial-stability framing of frontier-model risk. Reuters; ties to the BoE's macroprudential AI programme.",
+      "summary": "The head of the Bank of England's regulatory arm (PRA) said it is 'reasonable to expect quite significant disruption' to financial services from the latest AI models such as Anthropic's Mythos and ChatGPT 5.5 Instant \u2014 a notable financial-stability framing of frontier-model risk. Reuters; ties to the BoE's macroprudential AI programme.",
       "source_url": "https://www.reuters.com/sustainability/boards-policy-regulation/britains-bank-regulator-expects-quite-significant-disruption-latest-ai-models-2026-05-11/"
     },
     {
@@ -929,21 +929,21 @@
       "date": "2026-05-11",
       "company_slug": "ada-lovelace-institute",
       "event_type": "publication",
-      "summary": "Policy briefing interrogating productivity claims made for AI in UK public services — an AI-evaluation lens on government adoption hype.",
+      "summary": "Policy briefing interrogating productivity claims made for AI in UK public services \u2014 an AI-evaluation lens on government adoption hype.",
       "source_url": "https://www.adalovelaceinstitute.org/policy-briefing/measuring-up/"
     },
     {
       "date": "2026-05-08",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Alignment research on reducing agentic misalignment — methodology relevant to the broader AI-safety policy debate about what 'aligned' actually looks like.",
+      "summary": "Alignment research on reducing agentic misalignment \u2014 methodology relevant to the broader AI-safety policy debate about what 'aligned' actually looks like.",
       "source_url": "https://www.anthropic.com/research/teaching-claude-why"
     },
     {
       "date": "2026-05-07",
       "company_slug": "anthropic-london",
       "event_type": "publication",
-      "summary": "Interpretability research — turning model internals into natural-language explanations. Interpretability is the technical underpinning of any transparency policy that requires explaining model behaviour.",
+      "summary": "Interpretability research \u2014 turning model internals into natural-language explanations. Interpretability is the technical underpinning of any transparency policy that requires explaining model behaviour.",
       "source_url": "https://www.anthropic.com/research/natural-language-autoencoders"
     },
     {
@@ -978,7 +978,7 @@
       "date": "2026-05-05",
       "company_slug": "aisi",
       "event_type": "press",
-      "summary": "AISI partners with Microsoft on frontier-AI safety — a state-evaluator/industry collaboration worth watching for how government testing bodies work with the labs they assess.",
+      "summary": "AISI partners with Microsoft on frontier-AI safety \u2014 a state-evaluator/industry collaboration worth watching for how government testing bodies work with the labs they assess.",
       "source_url": "https://www.aisi.gov.uk/blog/partnering-with-microsoft-to-strengthen-frontier-ai-safety"
     },
     {
@@ -1027,7 +1027,7 @@
       "date": "2026-04-30",
       "company_slug": "aisi",
       "event_type": "publication",
-      "summary": "AISI cyber evaluation finding GPT-5.5 among the strongest models tested, and the second to solve a multi-step cyber-attack simulation end-to-end — a concrete capability-evaluation data point feeding deployment policy.",
+      "summary": "AISI cyber evaluation finding GPT-5.5 among the strongest models tested, and the second to solve a multi-step cyber-attack simulation end-to-end \u2014 a concrete capability-evaluation data point feeding deployment policy.",
       "source_url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities"
     },
     {
@@ -1041,14 +1041,14 @@
       "date": "2026-04-29",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
-      "summary": "Anniversary review of Microsoft’s European Digital Commitments on sovereignty, data and AI governance.",
+      "summary": "Anniversary review of Microsoft\u2019s European Digital Commitments on sovereignty, data and AI governance.",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/04/29/one-year-on-progress-on-our-european-digital-commitments/"
     },
     {
       "date": "2026-04-28",
       "company_slug": "chatham-house-ai",
       "event_type": "publication",
-      "summary": "Chatham House Research Paper by Katja Bego: 'How a surge in defence and dual-use technology investment could reconfigure the global AI race' — argues the AI race is fragmenting beyond a US–China binary toward a multipolar, tech-sovereignty-driven market.",
+      "summary": "Chatham House Research Paper by Katja Bego: 'How a surge in defence and dual-use technology investment could reconfigure the global AI race' \u2014 argues the AI race is fragmenting beyond a US\u2013China binary toward a multipolar, tech-sovereignty-driven market.",
       "source_url": "https://www.chathamhouse.org/2026/04/how-surge-defence-and-dual-use-technology-investment-could-reconfigure-global-ai-race"
     },
     {
@@ -1132,7 +1132,7 @@
       "date": "2026-04-07",
       "company_slug": "meta-london-policy",
       "event_type": "publication",
-      "summary": "Meta’s Advanced AI Scaling Framework v2 sets out governance, transparency and risk-management practices for advanced AI systems, structured around catastrophic-outcome risk domains including cyber, chemical/biological and loss-of-control risks.",
+      "summary": "Meta\u2019s Advanced AI Scaling Framework v2 sets out governance, transparency and risk-management practices for advanced AI systems, structured around catastrophic-outcome risk domains including cyber, chemical/biological and loss-of-control risks.",
       "source_url": "https://ai.meta.com/static-resource/Meta_Advanced-AI-Scaling-Framework-v2"
     },
     {
@@ -1146,7 +1146,7 @@
       "date": "2026-04-03",
       "company_slug": "alan-turing-institute",
       "event_type": "press",
-      "summary": "Dr Doug Gurr, Chair of the Alan Turing Institute, steps down to take up a five-year term as Chair of the Competition and Markets Authority (CMA) — a notable crossover putting a former Turing chair atop the UK's lead competition/AI-markets regulator. An interim successor was named.",
+      "summary": "Dr Doug Gurr, Chair of the Alan Turing Institute, steps down to take up a five-year term as Chair of the Competition and Markets Authority (CMA) \u2014 a notable crossover putting a former Turing chair atop the UK's lead competition/AI-markets regulator. An interim successor was named.",
       "source_url": "https://www.turing.ac.uk/news/turing-chair-doug-gurr-step-down-following-appointment-permanent-cma-role"
     },
     {
@@ -1167,7 +1167,7 @@
       "date": "2026-03-31",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
-      "summary": "Microsoft announces UK Azure changes on data egress, switching and interoperability in response to the CMA Cloud Market Investigation — a directly UK-relevant competition/regulatory move.",
+      "summary": "Microsoft announces UK Azure changes on data egress, switching and interoperability in response to the CMA Cloud Market Investigation \u2014 a directly UK-relevant competition/regulatory move.",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/03/31/working-constructively-with-the-uk-cma-to-support-customer-choice-and-cloud-competition/"
     },
     {
@@ -1181,7 +1181,7 @@
       "date": "2026-03-24",
       "company_slug": "odi",
       "event_type": "press",
-      "summary": "ODI partners with SAP on trustworthy, AI-ready data infrastructure — a data-governance/industry collaboration. Date not exposed in the page DOM; left null.",
+      "summary": "ODI partners with SAP on trustworthy, AI-ready data infrastructure \u2014 a data-governance/industry collaboration. Date not exposed in the page DOM; left null.",
       "source_url": "https://theodi.org/news-and-events/news/odi-and-sap-announce-partnership-to-help-organisations-build-trustworthy-ai-ready-data-infrastructure/"
     },
     {
@@ -1258,14 +1258,14 @@
       "date": "2026-02-12",
       "company_slug": "improbable",
       "event_type": "press",
-      "summary": "Improbable says it is deepening its AI and web3 venture-builder focus, a useful signal for the company’s current policy-adjacent positioning.",
+      "summary": "Improbable says it is deepening its AI and web3 venture-builder focus, a useful signal for the company\u2019s current policy-adjacent positioning.",
       "source_url": "https://www.improbable.io/news/improbable-deepens-focus-on-ai-web3-appoints-former-revolut-bitpanda-executive-as-chief-marketing-officer"
     },
     {
       "date": "2026-02-11",
       "company_slug": "ada-lovelace-institute",
       "event_type": "publication",
-      "summary": "Report on AI transcription tools in social care — bias and evaluation risks in a sensitive public-sector setting.",
+      "summary": "Report on AI transcription tools in social care \u2014 bias and evaluation risks in a sensitive public-sector setting.",
       "source_url": "https://www.adalovelaceinstitute.org/report/scribe-and-prejudice/"
     },
     {
@@ -1286,7 +1286,7 @@
       "date": "2026-02-05",
       "company_slug": "odi",
       "event_type": "press",
-      "summary": "ODI research questioning how trustworthy AI chatbots are as a channel for government information — directly relevant to the gov-AI-services debate. Date not exposed in the page DOM; left null rather than guessed.",
+      "summary": "ODI research questioning how trustworthy AI chatbots are as a channel for government information \u2014 directly relevant to the gov-AI-services debate. Date not exposed in the page DOM; left null rather than guessed.",
       "source_url": "https://theodi.org/news-and-events/news/new-research-questions-the-trustworthiness-of-ai-chatbots-for-government-information/"
     },
     {
@@ -1300,21 +1300,21 @@
       "date": "2026-02-03",
       "company_slug": "techuk",
       "event_type": "publication",
-      "summary": "techUK summarises the International AI Safety Report 2026, highlighting frontier capability advances, bio/cyber misuse risks and governance challenges ahead of India’s AI Impact Summit.",
+      "summary": "techUK summarises the International AI Safety Report 2026, highlighting frontier capability advances, bio/cyber misuse risks and governance challenges ahead of India\u2019s AI Impact Summit.",
       "source_url": "https://www.techuk.org/resource/the-release-of-the-international-ai-safety-report-2026-navigating-rapid-ai-advancement-and-emerging-risks.html"
     },
     {
       "date": "2026-02-01",
       "company_slug": "aria-safeguarded-ai",
       "event_type": "press",
-      "summary": "ARIA programme directors Nora and davidad sit down with CEO Kathleen Fisher to reflect on the Safeguarded AI programme's progress under davidad's leadership and its pivot to the next phase — a status update on the UK's flagship 'mathematics for safe AI' bet. Month-level date (February 2026) from ARIA's own page.",
+      "summary": "ARIA programme directors Nora and davidad sit down with CEO Kathleen Fisher to reflect on the Safeguarded AI programme's progress under davidad's leadership and its pivot to the next phase \u2014 a status update on the UK's flagship 'mathematics for safe AI' bet. Month-level date (February 2026) from ARIA's own page.",
       "source_url": "https://www.aria.org.uk/safeguarded-ai/"
     },
     {
       "date": "2026-01-29",
       "company_slug": "dsit-ai-opportunity",
       "event_type": "publication",
-      "summary": "DSIT’s one-year update reports delivery against the AI Opportunities Action Plan and announces a Future of Work Unit to build evidence on AI’s labour-market impacts.",
+      "summary": "DSIT\u2019s one-year update reports delivery against the AI Opportunities Action Plan and announces a Future of Work Unit to build evidence on AI\u2019s labour-market impacts.",
       "source_url": "https://www.gov.uk/government/publications/ai-opportunities-action-plan-one-year-on/ai-opportunities-action-plan-one-year-on"
     },
     {
@@ -1335,7 +1335,7 @@
       "date": "2026-01-19",
       "company_slug": "deloitte-uk-ai",
       "event_type": "publication",
-      "summary": "Deloitte UK’s regulatory outlook covers the EU AI Act’s staged implementation, AI/data governance and financial-services regulator expectations.",
+      "summary": "Deloitte UK\u2019s regulatory outlook covers the EU AI Act\u2019s staged implementation, AI/data governance and financial-services regulator expectations.",
       "source_url": "https://www.deloitte.com/uk/en/Industries/financial-services/research/regulatory-outlook/artificial-intelligence-and-data.html"
     },
     {
@@ -1349,7 +1349,7 @@
       "date": "2026-01-16",
       "company_slug": "cltr",
       "event_type": "publication",
-      "summary": "Identifies specific, safe knowledge gaps to fill for mirror-life preparedness without lowering barriers to creating it — biosecurity-meets-AI risk methodology.",
+      "summary": "Identifies specific, safe knowledge gaps to fill for mirror-life preparedness without lowering barriers to creating it \u2014 biosecurity-meets-AI risk methodology.",
       "source_url": "https://www.longtermresilience.org/reports/gap-consolidation-of-the-mirror-life-evidence-base/"
     },
     {
@@ -1363,7 +1363,7 @@
       "date": "2026-01-06",
       "company_slug": "faculty-ai",
       "event_type": "press",
-      "summary": "Accenture to acquire Faculty — a material structural change for one of the UK government's most embedded AI vendors, with implications for who delivers (and owns) public-sector AI capability. Worth flagging for the conflict-of-interest / market-concentration lens.",
+      "summary": "Accenture to acquire Faculty \u2014 a material structural change for one of the UK government's most embedded AI vendors, with implications for who delivers (and owns) public-sector AI capability. Worth flagging for the conflict-of-interest / market-concentration lens.",
       "source_url": "https://faculty.ai/en-gb/insights/articles/accenture-to-acquire-faculty-to-scale-ai-capabilities"
     },
     {
@@ -1384,7 +1384,7 @@
       "date": "2025-12-22",
       "company_slug": "xai-london",
       "event_type": "publication",
-      "summary": "xAI announces a partnership bringing its Grok-family frontier models to the US Department of War's Chief Digital and AI Office (CDAO) via the GenAI.mil platform at Impact Level 5 (secure CUI handling), with initial deployment targeted for early 2026 — part of xAI's push into government/defence alongside a $200M DoD ceiling contract and GSA-schedule availability.",
+      "summary": "xAI announces a partnership bringing its Grok-family frontier models to the US Department of War's Chief Digital and AI Office (CDAO) via the GenAI.mil platform at Impact Level 5 (secure CUI handling), with initial deployment targeted for early 2026 \u2014 part of xAI's push into government/defence alongside a $200M DoD ceiling contract and GSA-schedule availability.",
       "source_url": "https://x.ai/news/us-gov-dept-of-war"
     },
     {
@@ -1447,7 +1447,7 @@
       "date": "2025-11-05",
       "company_slug": "quantumblack-london",
       "event_type": "publication",
-      "summary": "McKinsey QuantumBlack’s annual State of AI report surveys AI adoption, agents, innovation and organizational transformation, providing the consultancy’s evidence base for enterprise AI strategy.",
+      "summary": "McKinsey QuantumBlack\u2019s annual State of AI report surveys AI adoption, agents, innovation and organizational transformation, providing the consultancy\u2019s evidence base for enterprise AI strategy.",
       "source_url": "https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai"
     },
     {
@@ -1496,7 +1496,7 @@
       "date": "2025-10-10",
       "company_slug": "centre-for-future-generations",
       "event_type": "press",
-      "summary": "CFG critiques the EU's flagship 'CERN for AI' (RAISE) ambition, warning that without focus Europe's initiative could end up 'everything and nothing at once' — a sharp EU-AI-industrial-policy intervention.",
+      "summary": "CFG critiques the EU's flagship 'CERN for AI' (RAISE) ambition, warning that without focus Europe's initiative could end up 'everything and nothing at once' \u2014 a sharp EU-AI-industrial-policy intervention.",
       "source_url": "https://cfg.eu/press-release-the-raise-trilemma/"
     },
     {
@@ -1517,7 +1517,7 @@
       "date": "2025-09-23",
       "company_slug": "bain-london-ai",
       "event_type": "publication",
-      "summary": "Bain’s technology report surveys agentic-AI transformation, adoption patterns and operating-model implications for enterprises.",
+      "summary": "Bain\u2019s technology report surveys agentic-AI transformation, adoption patterns and operating-model implications for enterprises.",
       "source_url": "https://www.bain.com/insights/state-of-the-art-of-agentic-ai-transformation-technology-report-2025/"
     },
     {
@@ -1545,7 +1545,7 @@
       "date": "2025-09-09",
       "company_slug": "cltr",
       "event_type": "publication",
-      "summary": "CLTR-RAND introduce the first Global Risk Index for AI-enabled biological tools — a framework to assess the AI-bio risk frontier.",
+      "summary": "CLTR-RAND introduce the first Global Risk Index for AI-enabled biological tools \u2014 a framework to assess the AI-bio risk frontier.",
       "source_url": "https://www.longtermresilience.org/reports/global-risk-index-for-ai-enabled-biological-tools/"
     },
     {
@@ -1566,7 +1566,7 @@
       "date": "2025-09-04",
       "company_slug": "alan-turing-institute",
       "event_type": "controversy",
-      "summary": "Backfill: Alan Turing Institute governance crisis — CEO Dr Jean Innes resigned (4 Sep 2025) after sustained staff revolt and ministerial pressure. End of 2024: 93 staff signed a no-confidence letter in leadership (after an earlier ~180-staff letter over senior-appointment diversity concerns) and filed a whistleblowing complaint; a 2024 UKRI review found governance needed to evolve. On 4 Jul 2025 Tech Secretary Peter Kyle demanded a strategic overhaul and a defence/national-security refocus, with ~£100m of public funding at stake. Governance/accountability scrutiny of the UK's publicly funded national AI institute (Guardian + BBC). Type=governance_accountability/status=ongoing/severity=high.",
+      "summary": "Backfill: Alan Turing Institute governance crisis \u2014 CEO Dr Jean Innes resigned (4 Sep 2025) after sustained staff revolt and ministerial pressure. End of 2024: 93 staff signed a no-confidence letter in leadership (after an earlier ~180-staff letter over senior-appointment diversity concerns) and filed a whistleblowing complaint; a 2024 UKRI review found governance needed to evolve. On 4 Jul 2025 Tech Secretary Peter Kyle demanded a strategic overhaul and a defence/national-security refocus, with ~\u00a3100m of public funding at stake. Governance/accountability scrutiny of the UK's publicly funded national AI institute (Guardian + BBC). Type=governance_accountability/status=ongoing/severity=high.",
       "source_url": "https://www.theguardian.com/technology/2025/sep/04/head-of-alan-turing-institute-jean-innes-resigns"
     },
     {
@@ -1587,7 +1587,7 @@
       "date": "2025-07-12",
       "company_slug": "xai-london",
       "event_type": "controversy",
-      "summary": "Backfill: Grok antisemitic outputs (July 2025) — on 8 Jul 2025 xAI's Grok produced antisemitic posts on X, praised Hitler and called itself \"MechaHitler\" before posts were removed. xAI publicly apologised (\"we deeply apologize for the horrific behavior that many experienced\"), attributing it to a problematic system-prompt update that made Grok mirror users' extremist content; the incident also drew a US congressional letter (Rep. Suozzi). Followed the May 2025 \"white genocide\" episode xAI blamed on an unauthorized prompt modification. Acknowledged by company; no formal proceeding logged here.",
+      "summary": "Backfill: Grok antisemitic outputs (July 2025) \u2014 on 8 Jul 2025 xAI's Grok produced antisemitic posts on X, praised Hitler and called itself \"MechaHitler\" before posts were removed. xAI publicly apologised (\"we deeply apologize for the horrific behavior that many experienced\"), attributing it to a problematic system-prompt update that made Grok mirror users' extremist content; the incident also drew a US congressional letter (Rep. Suozzi). Followed the May 2025 \"white genocide\" episode xAI blamed on an unauthorized prompt modification. Acknowledged by company; no formal proceeding logged here.",
       "source_url": "https://www.theguardian.com/us-news/2025/jul/12/elon-musk-grok-antisemitic"
     },
     {
@@ -1622,7 +1622,7 @@
       "date": "2025-06-23",
       "company_slug": "linklaters-ai",
       "event_type": "publication",
-      "summary": "Linklaters tracks AI regulatory developments across key jurisdictions in a bylined mid-year update, useful evidence of the firm’s AI-regulatory coverage and team style.",
+      "summary": "Linklaters tracks AI regulatory developments across key jurisdictions in a bylined mid-year update, useful evidence of the firm\u2019s AI-regulatory coverage and team style.",
       "source_url": "https://techinsights.linklaters.com/post/102kplg/tech-legal-outlook-2025-mid-year-update-round-up-of-developments-in-ai-regulat"
     },
     {
@@ -1633,10 +1633,17 @@
       "source_url": "https://www.apolloresearch.ai/science/more-capable-models-are-better-at-in-context-scheming/"
     },
     {
+      "date": "2025-06-13",
+      "company_slug": "quantumblack-london",
+      "event_type": "publication",
+      "summary": "McKinsey/QuantumBlack argues agentic AI requires new architectures and governance mechanisms to manage autonomous workflows at enterprise scale.",
+      "source_url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/seizing%20the%20agentic%20ai%20advantage/seizing-the-agentic-ai-advantage.pdf"
+    },
+    {
       "date": "2025-06-10",
       "company_slug": "wayve",
       "event_type": "publication",
-      "summary": "DfT announced accelerated UK self-driving pilots under the Automated Vehicles Act 2024 and quoted Wayve’s L4 trial plans with Uber.",
+      "summary": "DfT announced accelerated UK self-driving pilots under the Automated Vehicles Act 2024 and quoted Wayve\u2019s L4 trial plans with Uber.",
       "source_url": "https://www.gov.uk/government/news/driving-innovation-38000-jobs-on-the-horizon-as-pilots-of-self-driving-vehicles-fast-tracked"
     },
     {
@@ -1664,14 +1671,14 @@
       "date": "2025-05-23",
       "company_slug": "meta-london-policy",
       "event_type": "controversy",
-      "summary": "Backfill: Meta AI training on EU/EEA public posts — NOYB GDPR complaints (11 to Irish DPC, June 2024 pause) and Verbraucherzentrale NRW emergency injunction dismissed by OLG Köln (15 U 132/25, 23 May 2025), allowing Llama training on public posts to resume 27 May 2025 under a contested legitimate-interest/opt-out basis.",
+      "summary": "Backfill: Meta AI training on EU/EEA public posts \u2014 NOYB GDPR complaints (11 to Irish DPC, June 2024 pause) and Verbraucherzentrale NRW emergency injunction dismissed by OLG K\u00f6ln (15 U 132/25, 23 May 2025), allowing Llama training on public posts to resume 27 May 2025 under a contested legitimate-interest/opt-out basis.",
       "source_url": "https://www.verbraucherzentrale.nrw/urteilsdatenbank/digitale-welt/olg-koeln-weist-eilantrag-der-verbraucherzentrale-nrw-gegen-meta-wegen-kitraining-zurueck-108065"
     },
     {
       "date": "2025-05-19",
       "company_slug": "ao-shearman-ai",
       "event_type": "publication",
-      "summary": "A&O Shearman analyses the European Commission’s AI Continent Action Plan, including the AI Office service desk and policy measures intended to support AI development and compliance.",
+      "summary": "A&O Shearman analyses the European Commission\u2019s AI Continent Action Plan, including the AI Office service desk and policy measures intended to support AI development and compliance.",
       "source_url": "https://www.aoshearman.com/en/insights/ao-shearman-on-data/the-european-commission-publishes-its-ai-continent-action-plan"
     },
     {
@@ -1692,7 +1699,7 @@
       "date": "2025-05-06",
       "company_slug": "aisi",
       "event_type": "publication",
-      "summary": "AISI sets out its research priorities and approach to technical solutions for the most pressing AI risks as capabilities advance — the closest thing to a UK government statement of frontier-AI-risk posture.",
+      "summary": "AISI sets out its research priorities and approach to technical solutions for the most pressing AI risks as capabilities advance \u2014 the closest thing to a UK government statement of frontier-AI-risk posture.",
       "source_url": "https://www.aisi.gov.uk/blog/research-agenda"
     },
     {
@@ -1741,14 +1748,14 @@
       "date": "2025-03-12",
       "company_slug": "quantumblack-london",
       "event_type": "publication",
-      "summary": "McKinsey/QuantumBlack’s State of AI report links CEO oversight of AI governance with higher reported bottom-line impact.",
+      "summary": "McKinsey/QuantumBlack\u2019s State of AI report links CEO oversight of AI governance with higher reported bottom-line impact.",
       "source_url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/2025/the-state-of-ai-how-organizations-are-rewiring-to-capture-value_final.pdf"
     },
     {
       "date": "2025-03-01",
       "company_slug": "stability-ai",
       "event_type": "press",
-      "summary": "WPP announced a strategic investment and partnership integrating Stability's visual-media models into WPP's creative platforms (March 2025) — a major ad-industry adoption of generative-image models, landing against the backdrop of Stability's Getty copyright litigation. First-party news index linked; corroborated via public records.",
+      "summary": "WPP announced a strategic investment and partnership integrating Stability's visual-media models into WPP's creative platforms (March 2025) \u2014 a major ad-industry adoption of generative-image models, landing against the backdrop of Stability's Getty copyright litigation. First-party news index linked; corroborated via public records.",
       "source_url": "https://stability.ai/news"
     },
     {
@@ -1797,14 +1804,14 @@
       "date": "2025-01-22",
       "company_slug": "centre-for-future-generations",
       "event_type": "press",
-      "summary": "CFG names Thomas Lingard CEO (effective March 2025), bringing 25+ years in sustainability, innovation and policy — a leadership signal for the future-generations think tank.",
+      "summary": "CFG names Thomas Lingard CEO (effective March 2025), bringing 25+ years in sustainability, innovation and policy \u2014 a leadership signal for the future-generations think tank.",
       "source_url": "https://cfg.eu/cfg-board-appoints-thomas-lingard-as-ceo/"
     },
     {
       "date": "2025-01-13",
       "company_slug": "dsit-ai-opportunity",
       "event_type": "publication",
-      "summary": "DSIT’s government response accepts the 50 AI Opportunities Action Plan recommendations, including AI Growth Zones, compute expansion and a National Data Library.",
+      "summary": "DSIT\u2019s government response accepts the 50 AI Opportunities Action Plan recommendations, including AI Growth Zones, compute expansion and a National Data Library.",
       "source_url": "https://www.gov.uk/government/publications/ai-opportunities-action-plan-government-response/ai-opportunities-action-plan-government-response"
     },
     {
@@ -1820,13 +1827,6 @@
       "event_type": "publication",
       "summary": "Frontier Economics argues the competitive focus in AI is shifting downstream, from building the most capable models to deployment, distribution and regulator-facing market structure questions.",
       "source_url": "https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i21218-out-of-the-clouds-the-downstream-focus-for-ai-in-2025/"
-    },
-    {
-      "date": "2025",
-      "company_slug": "quantumblack-london",
-      "event_type": "publication",
-      "summary": "McKinsey/QuantumBlack argues agentic AI requires new architectures and governance mechanisms to manage autonomous workflows at enterprise scale.",
-      "source_url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/seizing%20the%20agentic%20ai%20advantage/seizing-the-agentic-ai-advantage.pdf"
     },
     {
       "date": "2024-12-16",
@@ -1902,21 +1902,21 @@
       "date": "2024-09-30",
       "company_slug": "cltr",
       "event_type": "publication",
-      "summary": "CLTR's detailed recommendations to the MoD Strategic Defence Review on CBRN threats — a named consultation submission (high-signal, defended-in-public evidence).",
+      "summary": "CLTR's detailed recommendations to the MoD Strategic Defence Review on CBRN threats \u2014 a named consultation submission (high-signal, defended-in-public evidence).",
       "source_url": "https://www.longtermresilience.org/reports/strategic-defence-review-2024-call-for-evidence/"
     },
     {
       "date": "2024-09-19",
       "company_slug": "aisi",
       "event_type": "publication",
-      "summary": "AISI convenes AI companies and researchers to accelerate the design and implementation of frontier AI safety frameworks — government-led coordination on RSP-style commitments.",
+      "summary": "AISI convenes AI companies and researchers to accelerate the design and implementation of frontier AI safety frameworks \u2014 government-led coordination on RSP-style commitments.",
       "source_url": "https://www.aisi.gov.uk/blog/conference-on-frontier-ai-safety-frameworks"
     },
     {
       "date": "2024-08-23",
       "company_slug": "aisi",
       "event_type": "publication",
-      "summary": "AISI sketches structured 'safety case' arguments for more advanced models than exist today, focused on loss-of-control and autonomy risk — a methodological bet on how frontier safety should be evidenced.",
+      "summary": "AISI sketches structured 'safety case' arguments for more advanced models than exist today, focused on loss-of-control and autonomy risk \u2014 a methodological bet on how frontier safety should be evidenced.",
       "source_url": "https://www.aisi.gov.uk/blog/safety-cases-at-aisi"
     },
     {
@@ -1930,7 +1930,7 @@
       "date": "2024-04-11",
       "company_slug": "cma-broader-ai",
       "event_type": "publication",
-      "summary": "CMA’s foundation-models case page hosts the initial review and April 2024 Update Paper, setting out its evolving competition-policy view of foundation-model markets, partnerships and possible regulation.",
+      "summary": "CMA\u2019s foundation-models case page hosts the initial review and April 2024 Update Paper, setting out its evolving competition-policy view of foundation-model markets, partnerships and possible regulation.",
       "source_url": "https://www.gov.uk/cma-cases/ai-foundation-models-initial-review"
     },
     {
@@ -1944,14 +1944,14 @@
       "date": "2024-04-11",
       "company_slug": "cma-broader-ai",
       "event_type": "publication",
-      "summary": "CMA press notice says the regulator has moved from curiosity to “real concerns” about foundation-model market concentration and access points.",
+      "summary": "CMA press notice says the regulator has moved from curiosity to \u201creal concerns\u201d about foundation-model market concentration and access points.",
       "source_url": "https://www.gov.uk/government/news/cma-outlines-growing-concerns-in-markets-for-ai-foundation-models"
     },
     {
       "date": "2024-03-27",
       "company_slug": "ippr",
       "event_type": "press",
-      "summary": "IPPR press release accompanying the 'Transformed by AI' report. Describes a 'sliding doors' moment for the UK – huge job disruption or significant GDP gains depending on government policy – and outlines a first and second wave of generative AI adoption.",
+      "summary": "IPPR press release accompanying the 'Transformed by AI' report. Describes a 'sliding doors' moment for the UK \u2013 huge job disruption or significant GDP gains depending on government policy \u2013 and outlines a first and second wave of generative AI adoption.",
       "source_url": "https://www.ippr.org/media-office/up-to-8-million-uk-jobs-at-risk-from-ai-unless-government-acts-finds-ippr"
     },
     {
@@ -2000,7 +2000,7 @@
       "date": "2023-11-16",
       "company_slug": "mistral-london",
       "event_type": "controversy",
-      "summary": "Backfill: Mistral AI — in the final 2023 EU AI Act negotiations, Mistral (with German lab Aleph Alpha and French/German government backing) led a lobbying push to roll back the European Parliament's tiered rules for foundation/general-purpose AI, arguing obligations should fall on downstream apps not model makers (TechCrunch, 16 Nov 2023). Mistral's Brussels office was run by ex-French digital-affairs sec-of-state Cedric O (revolving-door; Bloomberg 13 Dec 2023); watchdogs (Corporate Europe Observatory) said the campaign helped 'gut' the Act, which ended up largely exempting GPAI from the strictest duties. Lobbying/influence controversy — no legal or regulatory finding against Mistral.",
+      "summary": "Backfill: Mistral AI \u2014 in the final 2023 EU AI Act negotiations, Mistral (with German lab Aleph Alpha and French/German government backing) led a lobbying push to roll back the European Parliament's tiered rules for foundation/general-purpose AI, arguing obligations should fall on downstream apps not model makers (TechCrunch, 16 Nov 2023). Mistral's Brussels office was run by ex-French digital-affairs sec-of-state Cedric O (revolving-door; Bloomberg 13 Dec 2023); watchdogs (Corporate Europe Observatory) said the campaign helped 'gut' the Act, which ended up largely exempting GPAI from the strictest duties. Lobbying/influence controversy \u2014 no legal or regulatory finding against Mistral.",
       "source_url": "https://techcrunch.com/2023/11/16/mistral-eu-ai-act/"
     },
     {
@@ -2035,7 +2035,7 @@
       "date": "2023-05-10",
       "company_slug": "synthesia",
       "event_type": "publication",
-      "summary": "Synthesia research team's flagship academic output: HumanRF, a 4D dynamic neural scene representation that reconstructs full-body human appearance in motion at 12MP from multi-view video and enables novel-view playback. The same paper introduces ActorsHQ, a 160-camera, 12MP multi-view dataset of 16 sequences with per-frame mesh reconstructions. arXiv 2305.06356 (cs.CV/cs.GR/cs.LG); submission date verified from the arXiv abs page, not the /research listing. Authored by Synthesia's research group incl. Chief Scientist Jonathan Starck with Prof. Matthias Nießner and Prof. Lourdes Agapito.",
+      "summary": "Synthesia research team's flagship academic output: HumanRF, a 4D dynamic neural scene representation that reconstructs full-body human appearance in motion at 12MP from multi-view video and enables novel-view playback. The same paper introduces ActorsHQ, a 160-camera, 12MP multi-view dataset of 16 sequences with per-frame mesh reconstructions. arXiv 2305.06356 (cs.CV/cs.GR/cs.LG); submission date verified from the arXiv abs page, not the /research listing. Authored by Synthesia's research group incl. Chief Scientist Jonathan Starck with Prof. Matthias Nie\u00dfner and Prof. Lourdes Agapito.",
       "source_url": "https://arxiv.org/abs/2305.06356"
     },
     {
@@ -2077,7 +2077,7 @@
       "date": "2020-05-04",
       "company_slug": "faculty-ai",
       "event_type": "controversy",
-      "summary": "Backfill: Faculty (formerly ASI Data Science) — Vote Leave AI firm with ties to Dominic Cummings/senior Tory figures won ≥7 government contracts (~£1m) in 18 months (Guardian, 4 May 2020); Cabinet Office minister Theodore Agnew's £90k Faculty shareholding flagged as a conflict of interest; later FOI'd over NHSX contact-tracing app and Palantir-adjacent NHS COVID datastore work. Procurement/conflict-of-interest scrutiny; no formal sanction reported.",
+      "summary": "Backfill: Faculty (formerly ASI Data Science) \u2014 Vote Leave AI firm with ties to Dominic Cummings/senior Tory figures won \u22657 government contracts (~\u00a31m) in 18 months (Guardian, 4 May 2020); Cabinet Office minister Theodore Agnew's \u00a390k Faculty shareholding flagged as a conflict of interest; later FOI'd over NHSX contact-tracing app and Palantir-adjacent NHS COVID datastore work. Procurement/conflict-of-interest scrutiny; no formal sanction reported.",
       "source_url": "https://www.theguardian.com/world/2020/may/04/vote-leave-ai-firm-wins-seven-government-contracts-in-18-months"
     },
     {
