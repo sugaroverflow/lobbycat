@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T16:10:21Z",
+  "lastUpdated": "2026-07-02T16:38:50Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -651,6 +651,13 @@
       "event_type": "publication",
       "summary": "Eric Horvitz discusses AI biosecurity safeguards, connecting Microsoft’s safety work to the frontier-lab biosecurity-policy conversation.",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/04/strengthening-biosecurity-in-the-era-of-ai/"
+    },
+    {
+      "date": "2026-06-04",
+      "company_slug": "ofcom-ai",
+      "event_type": "publication",
+      "summary": "Ofcom's updated strategic approach to AI, applying its broadly technology-neutral, outcomes-based regulatory principles to AI adoption across the sectors it regulates. Includes eight case studies (spectrum/online-safety data lake, deepfake mitigation, trust in AI chatbots, telecoms customer-experience impact, AI in broadcasting, AI in telecoms cyber-security, network management) and flags a further findings publication in H2 2026.",
+      "source_url": "https://www.ofcom.org.uk/about-ofcom/annual-reports-and-plans/ofcoms-strategic-approach-to-ai"
     },
     {
       "date": "2026-06-03",

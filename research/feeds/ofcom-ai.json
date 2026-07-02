@@ -1,7 +1,7 @@
 {
   "slug": "ofcom-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
-  "blurb": "Ofcom is the UK regulator for communications services and the online safety regulator under the Online Safety Act.",
+  "lastUpdated": "2026-07-02T16:38:00Z",
+  "blurb": "Ofcom is the UK regulator for communications services and the online safety regulator under the Online Safety Act. Its 2026/27 strategic approach to AI sets out a broadly technology-neutral, outcomes-based stance on enabling safe AI adoption across telecoms, broadcasting and online platforms.",
   "hiring": {
     "roleSourceStatus": "needs_browser",
     "sourceUrl": "https://ofcom.wd3.myworkdayjobs.com/Ofcom_Careers",
@@ -10,6 +10,14 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-06-04",
+      "title": "Ofcom's strategic approach to AI, 2026/27: Enabling safe and secure AI adoption",
+      "url": "https://www.ofcom.org.uk/about-ofcom/annual-reports-and-plans/ofcoms-strategic-approach-to-ai",
+      "type": "other",
+      "byline": null,
+      "summary": "Ofcom's updated strategic approach to AI, applying its broadly technology-neutral, outcomes-based regulatory principles to AI adoption across the sectors it regulates. Includes eight case studies (spectrum/online-safety data lake, deepfake mitigation, trust in AI chatbots, telecoms customer-experience impact, AI in broadcasting, AI in telecoms cyber-security, network management) and flags a further findings publication in H2 2026."
+    },
     {
       "date": "2024-12-16",
       "title": "Statement: Protecting people from illegal harms online",
