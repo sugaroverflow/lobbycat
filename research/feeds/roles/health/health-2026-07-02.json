@@ -10,7 +10,7 @@
   "_review_flags": [
     "cltr: RESOLVED -> title 'Page not found - CLTR' with 2 candidates was real URL rot; /jobs now 404s. Confirmed by curl. Corrected role-sources.json url to /work-with-us (HTTP 200, 'Career Opportunities | CLTR Think Tank Jobs'). First rot caught by the automated health baseline.",
     "cetas: title 'Just a moment...' -> Cloudflare interstitial, page not actually rendered; classified unknown, not genuinely reachable.",
-    "oxford-internet-institute: 23 candidates but emptyHints include 'no vacancies'/'check back' -> mixed signal, candidate selector likely over-broad; verify before ingesting.",
+    "oxford-internet-institute: RESOLVED -> false positives confirmed. Live curl 2026-07-02: HTTP 200, title 'OII | Vacancies', explicit 'no current vacancies / check back' text, and ZERO real role markers (no 'closing date' / 'job description' / 'apply for this role') across 198 page anchors. The scout's 23 'candidates' are generic anchors, not vacancy cards -> over-broad selector. Do NOT trust OII candidate count for ingestion; treat as empty until real vacancy markers appear.",
     "quantumblack-london: ERR_HTTP2_PROTOCOL_ERROR (mckinsey) -> known needs_browser/HTTP2 issue, not new rot.",
     "workday API endpoints (ofcom-ai, hogan-lovells-ai, linklaters-ai) -> expected 'unknown' for the HTML scout (JSON POST APIs, no rendered cards); not regressions."
   ],
@@ -39,7 +39,7 @@
     {"slug": "quantumblack-london", "url": "https://www.mckinsey.com/careers/search-jobs?locations=London&query=QuantumBlack", "health": "error", "error": "page.goto: net::ERR_HTTP2_PROTOCOL_ERROR"},
     {"slug": "bank-of-england-ai", "url": "https://www.bankofengland.co.uk/careers", "title": "Careers | Bank of England", "health": "candidates_found", "candidates": 18, "emptyHints": []},
     {"slug": "bennett-cambridge", "url": "https://www.jobs.cam.ac.uk/job/?unit=u00601", "title": "Something went wrong - Job Opportunities - University of Cambridge", "health": "unknown", "candidates": 0, "emptyHints": []},
-    {"slug": "oxford-internet-institute", "url": "https://www.oii.ox.ac.uk/people/vacancies/", "title": "OII | Vacancies", "health": "candidates_found", "candidates": 23, "emptyHints": ["no vacancies", "check back"]},
+    {"slug": "oxford-internet-institute", "url": "https://www.oii.ox.ac.uk/people/vacancies/", "title": "OII | Vacancies", "health": "candidates_found", "candidates": 23, "emptyHints": ["no vacancies", "check back"], "_falsePositive": "Verified 2026-07-02 curl: HTTP 200 but genuinely empty (no current vacancies). 0 role markers across 198 anchors; 23 candidates are over-broad selector noise. Treat as empty for ingestion."},
     {"slug": "i-dot-ai", "url": "https://ai.gov.uk/opportunities/", "title": "Careers - Incubator for AI", "health": "candidates_found", "candidates": 13, "emptyHints": []},
     {"slug": "onward", "url": "https://ukonward.com/job-opportunities/", "title": "Job opportunities | Onward", "health": "candidates_found", "candidates": 2, "emptyHints": ["no vacancies"]},
     {"slug": "conjecture", "url": "https://www.conjecture.dev/career", "title": "Conjecture", "health": "candidates_found", "candidates": 1, "emptyHints": []},

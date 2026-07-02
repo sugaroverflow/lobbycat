@@ -492,7 +492,7 @@
       "sourceType": "official_careers_page",
       "url": "https://www.oii.ox.ac.uk/people/vacancies/",
       "verified": "2026-07-02",
-      "note": "Official OII vacancies page verified but fetch surfaced cookie text; use browser/manual page read."
+      "note": "Official OII vacancies page verified but fetch surfaced cookie text; use browser/manual page read. 2026-07-02: page is HTTP 200 but genuinely EMPTY ('no current vacancies / check back'); automated scout reported 23 candidates = false positives (over-broad selector on 198 generic anchors, 0 real role markers). Treat as empty for ingestion until real vacancy cards appear."
     },
     {
       "slug": "i-dot-ai",
