@@ -8,7 +8,12 @@ import { readFileSync } from "node:fs";
 // Optional CLI filter: `node pw-scout.mjs slug1 slug2` limits to those slugs.
 const SOURCE_MAP = "research/sources/role-sources.json";
 const BROWSER_STATUSES = new Set(["careers_page_found", "needs_browser"]);
-const cliSlugs = new Set(process.argv.slice(2));
+// `--json` emits a machine-readable health diff (one record per slug) so
+// heartbeats can flag URL rot automatically instead of eyeballing prose.
+const rawArgs = process.argv.slice(2);
+const emitJson = rawArgs.includes("--json");
+const cliSlugs = new Set(rawArgs.filter((a) => !a.startsWith("--")));
+const report = [];
 const sourceMap = JSON.parse(readFileSync(new URL(SOURCE_MAP, import.meta.url), "utf8"));
 const targets = (sourceMap.sources || [])
   .filter((e) => e && e.url && BROWSER_STATUSES.has(e.roleSourceStatus))
@@ -66,19 +71,48 @@ for (const [slug, url] of targets) {
       }
       return { rows, emptyHints, urlFinal: location.href, title: document.title };
     });
-    console.log(`\n## ${slug}`);
-    console.log(`URL ${items.urlFinal}`);
-    console.log(`TITLE ${items.title}`);
-    if (items.emptyHints.length) console.log(`EMPTY_HINTS: ${items.emptyHints.join(" | ")}`);
-    for (const r of items.rows.slice(0, 20)) {
-      console.log(`- ${r.text.slice(0, 180)}`);
-      if (r.href) console.log(`  ${r.href}`);
+    // Health classification: error already handled in catch; here we split
+    // reachable pages into candidates_found / empty / unknown.
+    const health = items.rows.length
+      ? "candidates_found"
+      : items.emptyHints.length
+      ? "empty"
+      : "unknown";
+    report.push({
+      slug,
+      url,
+      urlFinal: items.urlFinal,
+      title: items.title,
+      health,
+      candidates: items.rows.length,
+      emptyHints: items.emptyHints,
+    });
+    if (!emitJson) {
+      console.log(`\n## ${slug}`);
+      console.log(`URL ${items.urlFinal}`);
+      console.log(`TITLE ${items.title}`);
+      if (items.emptyHints.length) console.log(`EMPTY_HINTS: ${items.emptyHints.join(" | ")}`);
+      for (const r of items.rows.slice(0, 20)) {
+        console.log(`- ${r.text.slice(0, 180)}`);
+        if (r.href) console.log(`  ${r.href}`);
+      }
+      if (!items.rows.length && !items.emptyHints.length) console.log("(no candidates, no empty hint)");
     }
-    if (!items.rows.length && !items.emptyHints.length) console.log("(no candidates, no empty hint)");
   } catch (e) {
-    console.log(`\n## ${slug}\nERROR ${e.message}`);
+    report.push({ slug, url, health: "error", error: e.message });
+    if (!emitJson) console.log(`\n## ${slug}\nERROR ${e.message}`);
   } finally {
     await page.close();
   }
 }
 await browser.close();
+
+if (emitJson) {
+  const summary = report.reduce((acc, r) => {
+    acc[r.health] = (acc[r.health] || 0) + 1;
+    return acc;
+  }, {});
+  process.stdout.write(
+    JSON.stringify({ _scouted: new Date().toISOString(), summary, results: report }, null, 2) + "\n",
+  );
+}
