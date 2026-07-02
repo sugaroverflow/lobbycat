@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T01:48:15Z",
+  "lastUpdated": "2026-07-02T08:39:21Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -1526,6 +1526,13 @@
       "event_type": "publication",
       "summary": "CLTR-RAND introduce the first Global Risk Index for AI-enabled biological tools — a framework to assess the AI-bio risk frontier.",
       "source_url": "https://www.longtermresilience.org/reports/global-risk-index-for-ai-enabled-biological-tools/"
+    },
+    {
+      "date": "2025-09-08",
+      "company_slug": "ico-ai",
+      "event_type": "publication",
+      "summary": "Chapter of the ICO generative AI consultation series focused on individual rights in relation to training and fine-tuning of generative AI models.",
+      "source_url": "https://ico.org.uk/about-the-ico/what-we-do/our-work-on-artificial-intelligence/generative-ai-fourth-call-for-evidence/"
     },
     {
       "date": "2025-09-04",
