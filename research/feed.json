@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T19:38:44Z",
+  "lastUpdated": "2026-07-02T21:08:00Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -1246,6 +1246,13 @@
       "event_type": "publication",
       "summary": "Report drawing on five years of PLP collaboration with community groups to advance shared legal approaches for social change.",
       "source_url": "https://publiclawproject.org.uk/resources/collaborative-legal-approaches-for-systemic-change-report/"
+    },
+    {
+      "date": "2026-03-17",
+      "company_slug": "ico-ai",
+      "event_type": "publication",
+      "summary": "ICO publishes its AI and biometrics strategy update (March 2026): confirms draft ADM/profiling guidance coming for consultation to feed a statutory AI and ADM code of practice, ongoing central-government engagement (incl. DWP) on responsible ADM scaling, a forthcoming ADM-in-recruitment report, and active data-protection scrutiny of 11 major foundation-model developers.",
+      "source_url": "https://ico.org.uk/about-the-ico/our-information/our-strategies-and-plans/artificial-intelligence-and-biometrics-strategy/ai-and-biometrics-strategy-update-march-2026/"
     },
     {
       "date": "2026-03-01",

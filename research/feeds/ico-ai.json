@@ -1,6 +1,6 @@
 {
   "slug": "ico-ai",
-  "lastUpdated": "2026-07-02T08:40:00Z",
+  "lastUpdated": "2026-07-02T21:08:00Z",
   "blurb": "The UK's Information Commissioner's Office (ICO), the independent data protection and information rights regulator, including its work on AI and biometrics.",
   "hiring": {
     "roleSourceStatus": "careers_page_found",
@@ -10,6 +10,14 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-03-17",
+      "title": "AI and biometrics strategy update - March 2026",
+      "url": "https://ico.org.uk/about-the-ico/our-information/our-strategies-and-plans/artificial-intelligence-and-biometrics-strategy/ai-and-biometrics-strategy-update-march-2026/",
+      "type": "other",
+      "byline": null,
+      "summary": "First-party progress update on the ICO's AI and biometrics strategy: confirms draft ADM/profiling guidance for consultation 'in the coming months' that will feed the statutory AI and ADM code of practice (committed under the Data (Use and Access) Act 2025); ongoing engagement with central government (incl. DWP) on responsible ADM scaling; a forthcoming report on ADM in recruitment; and active scrutiny of 11 major foundation-model developers on data-protection compliance."
+    },
     {
       "date": null,
       "title": "Information Commissioner's Office response to the consultation series on generative AI",
@@ -40,5 +48,5 @@
       "summary": "ICO announces a consultation series on how aspects of data protection law should apply to generative AI development and use."
     }
   ],
-  "notes": "Regulator site. Consultation RESPONSE page: DC.Date meta = 'Friday, May 22, 2026' but that is a republish/last-modified signal (industry coverage + this page being a series hub place the substantive response ~December 2024), so date left null — DC.Date-as-modified trap, same discipline as ada-lovelace article:modified_time no-op. FOURTH CALL FOR EVIDENCE page: DC.Date meta = 'Monday, September 08, 2025' -> 2025-09-08; this is a discrete single-purpose launch page (not a hub), chronologically consistent with the series launched 2024-01, so promoted. The '17/12/2024' token on both pages is the cookies-page 'updated' field (boilerplate), not a publication date — excluded. News launch date from ICO news URL path (2024/01)."
+  "notes": "Regulator site. Consultation RESPONSE page: DC.Date meta = 'Friday, May 22, 2026' but that is a republish/last-modified signal (industry coverage + this page being a series hub place the substantive response ~December 2024), so date left null — DC.Date-as-modified trap, same discipline as ada-lovelace article:modified_time no-op. FOURTH CALL FOR EVIDENCE page: DC.Date meta = 'Monday, September 08, 2025' -> 2025-09-08; this is a discrete single-purpose launch page (not a hub), chronologically consistent with the series launched 2024-01, so promoted. The '17/12/2024' token on both pages is the cookies-page 'updated' field (boilerplate), not a publication date — excluded. News launch date from ICO news URL path (2024/01). STRATEGY UPDATE (2026-03-17): added the 'AI and biometrics strategy update - March 2026' page — publications[] was ~10mo stale at 2025-09-08 despite a live ICO AI programme (statutory AI/ADM code of practice mandated by SI 2026/425, ADM consultation, foundation-model scrutiny of 11 developers). Date verified first-party from the page's own DC.Date meta = 'Tuesday, March 17, 2026' -> 2026-03-17; this is a discrete single-purpose strategy-update page (not a hub), chronologically consistent with the March-2026 title + URL path, so DC.Date promoted here (contrast the RESPONSE hub page above where DC.Date is a republish signal -> left null). URL absent from feeds/ + feed.json before add."
 }
