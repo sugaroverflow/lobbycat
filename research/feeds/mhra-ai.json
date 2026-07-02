@@ -1,6 +1,6 @@
 {
   "slug": "mhra-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T19:08:00Z",
   "blurb": "The Medicines and Healthcare products Regulatory Agency (MHRA) regulates medicines and medical devices in the UK, including software and artificial intelligence as a medical device.",
   "hiring": {
     "roleSourceStatus": "not_relevant_public_sector",
@@ -11,6 +11,14 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-06-09",
+      "title": "AI Airlock Sandbox Phase 2 Programme Report",
+      "url": "https://www.gov.uk/government/publications/ai-airlock-sandbox-phase-2-programme-report",
+      "type": "other",
+      "byline": null,
+      "summary": "MHRA report on the second phase of its AI Airlock regulatory sandbox for AI as a medical device (ran April 2025 to May 2026): methodology for the sandbox, seven case studies, independent-evaluation lessons, and key technical/regulatory insights and recommendations for changes to the AIaMD regulatory and support framework. Not formal MHRA guidance."
+    },
     {
       "date": "2025-02-03",
       "title": "Software and artificial intelligence (AI) as a medical device",

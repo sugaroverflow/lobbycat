@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T18:39:02Z",
+  "lastUpdated": "2026-07-02T19:08:00Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -595,6 +595,13 @@
       "event_type": "publication",
       "summary": "techUK to lead the Industry Advisory Group of the new DSIT-backed, BCS-chaired AI Assurance Consortium — a direct AI assurance/governance role.",
       "source_url": "https://www.techuk.org/resource/dsit-s-ai-assurance-roadmap-takes-its-next-step-techuk-to-lead-the-industry-advisory-group-of-ai-assurance-consortium.html"
+    },
+    {
+      "date": "2026-06-09",
+      "company_slug": "mhra-ai",
+      "event_type": "publication",
+      "summary": "MHRA report on the second phase of its AI Airlock regulatory sandbox for AI as a medical device (ran April 2025 to May 2026): sandbox methodology, seven case studies, independent-evaluation lessons, and recommendations for changes to the AIaMD regulatory framework. Not formal MHRA guidance.",
+      "source_url": "https://www.gov.uk/government/publications/ai-airlock-sandbox-phase-2-programme-report"
     },
     {
       "date": "2026-06-08",
