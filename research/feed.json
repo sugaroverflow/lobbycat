@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T18:09:10Z",
+  "lastUpdated": "2026-07-02T18:39:02Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -1771,6 +1771,13 @@
       "event_type": "publication",
       "summary": "NHS England guidance (Version 1.2) within the 'Working in a digitally transformed NHS' good-practice guidelines for GP electronic patient records, setting expectations for the safe and appropriate use of AI and machine-learning tools in primary care.",
       "source_url": "https://www.england.nhs.uk/long-read/artificial-intelligence-ai-and-machine-learning/"
+    },
+    {
+      "date": "2025-03-27",
+      "company_slug": "cma-broader-ai",
+      "event_type": "publication",
+      "summary": "The CMA's 2025/26 Annual Plan sets its programme of work, now where its ongoing AI/foundation-models oversight lives after the initial review was embedded into general monitoring: horizon-scanning of emerging markets including foundation models, and use of new Digital Markets, Competition and Consumers (DMCC) Act powers over the digital economy. Reaffirms the CMA's published foundation-model principles as the guide for these markets.",
+      "source_url": "https://www.gov.uk/government/publications/cma-annual-plan-2025-to-2026"
     },
     {
       "date": "2025-03-12",
