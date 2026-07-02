@@ -1,6 +1,6 @@
 {
   "slug": "aisi",
-  "lastUpdated": "2026-07-02T02:02:00Z",
+  "lastUpdated": "2026-07-02T14:08:54Z",
   "blurb": "The UK AI Security Institute (formerly AI Safety Institute) — government body running frontier-model evaluations (cyber/chem/bio/agent) and publishing safety-framework and safety-case research. High-signal, named-author technical-policy output.",
   "hiring": {
     "isHiring": true,
@@ -43,6 +43,23 @@
       "type": "paper",
       "byline": "UK AI Security Institute",
       "summary": "AISI sketches structured 'safety case' arguments for more advanced models than exist today, focused on loss-of-control and autonomy risk — a methodological bet on how frontier safety should be evidenced."
+    },
+    {
+      "date": "2026-06-08",
+      "title": "RealityTest: Do AI systems disclose their identity when asked?",
+      "url": "https://www.aisi.gov.uk/blog/realitytest-do-ai-systems-disclose-their-identity-when-asked",
+      "type": "paper",
+      "byline": "UK AI Security Institute",
+      "summary": "AISI research introducing the RealityTest benchmark (paper: arXiv:2606.00168) that comprehensively tests whether AI systems honestly disclose they are AI when asked — grounded in human data on real-world AI-identity uncertainty; directly relevant to transparency/disclosure rules and the bot-identification debate.",
+      "paper": "https://arxiv.org/abs/2606.00168"
+    },
+    {
+      "date": "2026-05-13",
+      "title": "How fast is autonomous AI cyber capability advancing?",
+      "url": "https://www.aisi.gov.uk/blog/how-fast-is-autonomous-ai-cyber-capability-advancing",
+      "type": "paper",
+      "byline": "UK AI Security Institute",
+      "summary": "AISI cyber time-horizons research: estimates the length of cyber tasks frontier models can autonomously complete doubled every ~4.7 months since late 2024, with GPT-5.5 and Claude Mythos Preview exceeding prior doubling-rate trends. Results shared with NCSC to inform UK preparedness — same evaluation category as AISI's model-specific cyber-eval papers."
     }
   ],
   "roles": [
@@ -68,25 +85,11 @@
       "summary": "The UK AI Security Institute releases its Engineering Playbook — a look at how the state's frontier-AI evaluation body actually builds its testing infrastructure."
     },
     {
-      "date": "2026-06-08",
-      "title": "RealityTest: Do AI systems disclose their identity when asked?",
-      "url": "https://www.aisi.gov.uk/blog/realitytest-do-ai-systems-disclose-their-identity-when-asked",
-      "source": "org_news",
-      "summary": "AISI evaluation probing whether AI systems disclose that they are AI when asked — directly relevant to transparency/disclosure rules and the bot-identification debate."
-    },
-    {
       "date": "2026-05-25",
       "title": "Deepening our partnership with the Australian AI Safety Institute",
       "url": "https://www.aisi.gov.uk/blog/deepening-our-partnership-with-the-australian-ai-safety-institute",
       "source": "org_news",
       "summary": "AISI deepens ties with Australia's AI Safety Institute — part of the emerging international network of state AI-safety bodies coordinating evaluations."
-    },
-    {
-      "date": "2026-05-13",
-      "title": "How fast is autonomous AI cyber capability advancing?",
-      "url": "https://www.aisi.gov.uk/blog/how-fast-is-autonomous-ai-cyber-capability-advancing",
-      "source": "org_news",
-      "summary": "AISI finds the length of tasks frontier models can autonomously complete in its cyber suite has been doubling every few months, with the doubling rate accelerating — a concrete capability-trend signal feeding the cyber-risk policy debate."
     },
     {
       "date": "2026-05-05",
@@ -96,5 +99,5 @@
       "summary": "AISI partners with Microsoft on frontier-AI safety — a state-evaluator/industry collaboration worth watching for how government testing bodies work with the labs they assess."
     }
   ],
-  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. [date refine 2026-06-28] The 4 previously-null publications now carry per-page byline-verified dates (each blog page's own '— <author> — <date>' lede text, HTTP 200): Research Agenda 2025-05-06, GPT-5.5 cyber eval 2026-04-30, frontier-AI-safety-frameworks conference 2024-09-19, Safety cases 2024-08-23. Distinguished the real byline from the shared 'we changed our name to the AI Security Institute on 14 February 2025' footer note, which is NOT a post date."
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. [date refine 2026-06-28] The 4 previously-null publications now carry per-page byline-verified dates (each blog page's own '— <author> — <date>' lede text, HTTP 200): Research Agenda 2025-05-06, GPT-5.5 cyber eval 2026-04-30, frontier-AI-safety-frameworks conference 2024-09-19, Safety cases 2024-08-23. Distinguished the real byline from the shared 'we changed our name to the AI Security Institute on 14 February 2025' footer note, which is NOT a post date.\n2026-07-02: Reclassified two research-grade blog items (RealityTest benchmark [arXiv:2606.00168], 2026-06-08; cyber time-horizons eval, 2026-05-13) from news[] to publications[] — both verified first-party as AISI research output (RealityTest links a formal paper; cyber-horizons is the same eval category as the existing GPT-5.5 cyber-capabilities publication). Corrects a pubs undercount; partnership/comms posts (Microsoft, Australia AISI, Engineering Playbook) intentionally left as news."
 }

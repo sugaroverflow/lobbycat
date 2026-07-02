@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T12:39:04Z",
+  "lastUpdated": "2026-07-02T14:08:54Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -599,7 +599,7 @@
     {
       "date": "2026-06-08",
       "company_slug": "aisi",
-      "event_type": "press",
+      "event_type": "publication",
       "summary": "AISI evaluation probing whether AI systems disclose that they are AI when asked — directly relevant to transparency/disclosure rules and the bot-identification debate.",
       "source_url": "https://www.aisi.gov.uk/blog/realitytest-do-ai-systems-disclose-their-identity-when-asked"
     },
@@ -879,7 +879,7 @@
     {
       "date": "2026-05-13",
       "company_slug": "aisi",
-      "event_type": "press",
+      "event_type": "publication",
       "summary": "AISI finds the length of tasks frontier models can autonomously complete in its cyber suite has been doubling every few months, with the doubling rate accelerating — a concrete capability-trend signal feeding the cyber-risk policy debate.",
       "source_url": "https://www.aisi.gov.uk/blog/how-fast-is-autonomous-ai-cyber-capability-advancing"
     },
