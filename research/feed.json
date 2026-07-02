@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T01:44:43Z",
+  "lastUpdated": "2026-07-02T01:48:15Z",
   "events": [
     {
       "date": "2026-07-01",
@@ -245,6 +245,13 @@
       "event_type": "publication",
       "summary": "OpenAI helped found the Appia Foundation (Linux Foundation-hosted) to build modular third-party conformity specs for advanced-AI standards.",
       "source_url": "https://openai.com/index/helping-build-shared-standards-for-advanced-ai/"
+    },
+    {
+      "date": "2026-06-23",
+      "company_slug": "public-io",
+      "event_type": "publication",
+      "summary": "Reports completion of Phase One of PUBLIC's work with Thames Freeport, deploying AI-enabled mobile health clinics and a Health AI Mobilisation Centre across Barking, Dagenham, Havering and Thurrock.",
+      "source_url": "https://www.public.io/blog-post/phase-one-complete-a-milestone-for-thames-freeport-innovation-and-impact"
     },
     {
       "date": "2026-06-22",

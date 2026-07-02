@@ -1,6 +1,6 @@
 {
   "_comment": "Curated 'where to look' map for the roles lens. Maintained by Glyphie 🌀. Mirrors how publication sources are curated — each entry says which machine-readable ATS endpoint to hit per company. ATS public JSON APIs (greenhouse/lever/ashby) are used; no LinkedIn, no HTML scraping where an API exists. Verified reachable 2026-06-24.",
-  "_updated": "2026-06-27",
+  "_updated": "2026-07-02",
   "_endpoints": {
     "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{id}/jobs?content=true",
     "lever": "https://api.lever.co/v0/postings/{id}?mode=json",
@@ -51,13 +51,13 @@
       "verified": "2026-06-24"
     },
     {
-      "slug": "cohere",
+      "slug": "cohere-london",
       "ats": "ashby",
       "id": "cohere",
       "verified": "2026-06-24"
     },
     {
-      "slug": "faculty",
+      "slug": "faculty-ai",
       "ats": "ashby",
       "id": "faculty",
       "verified": "2026-06-24"
@@ -92,6 +92,27 @@
       "id": "stabilityai",
       "verified": "2026-06-27",
       "note": "Launch gap batch verified HTTP 200; 3 jobs at check time, no relevant policy/legal/governance role."
+    },
+    {
+      "slug": "aisi",
+      "ats": "greenhouse",
+      "id": "aisi",
+      "verified": "2026-07-02",
+      "note": "UK AI Safety Institute — 6 London roles at check time (Frontier Research Engineer Security, Chem-Bio engineering leads, Red Team EoI). Discovered via parallel ATS probe sweep."
+    },
+    {
+      "slug": "apollo-research",
+      "ats": "lever",
+      "id": "apolloresearch",
+      "verified": "2026-07-02",
+      "note": "14 roles at check time incl. Senior AI Governance Researcher (direct policy signal) and AI Security & Control Engineer. Discovered via parallel ATS probe sweep."
+    },
+    {
+      "slug": "public-io",
+      "ats": "greenhouse",
+      "id": "public-io",
+      "verified": "2026-07-02",
+      "note": "Westminster-based govtech consultancy. 1 role at check time (Bid Associate). Discovered via parallel ATS probe sweep."
     }
   ],
   "_unmapped": {
@@ -117,6 +138,7 @@
       "connected-by-data",
       "public-law-project",
       "oliver-wyman-london"
-    ]
+    ],
+    "_probe_2026_07_02": "Parallel ATS probe sweep across the unmapped 58 orgs (up to 3 slug variants × greenhouse/lever/ashby). Genuine hits: aisi, apollo-research, public-io (added above). Rejected namespace collisions: cma-dmu→greenhouse/cma (Florida accounting firm), foxglove→ashby/foxglove (SF robotics observability co, not UK Foxglove Legal charity), oliver-wyman-london→lever/oliverwyman (2 generic roles = squatted account, not real Oliver Wyman). Also caught existing slug bug: cohere→cohere-london, faculty→faculty-ai (feed filenames didn't match mapping keys, silently broken since 2026-06-24). Remaining 55 unmapped orgs = confirmed no public ATS on greenhouse/lever/ashby; need bespoke-HTML or browser-tool tier."
   }
 }
