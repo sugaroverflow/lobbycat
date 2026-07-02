@@ -70,5 +70,5 @@
       "summary": "Ada argues policymakers should demand higher evidentiary standards before accepting claims that AI boosts public-sector productivity — a characteristically evidence-first intervention into the gov-AI-efficiency narrative."
     }
   ],
-  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass."
+  "notes": "[publications backfill 2026-06-26] Harvested from the org's own publications page. Some items lack a visible date on the index — null rather than fabricated; refine on a later pass. [date-refine 2026-07-02] Attempted first-party dating of the 'I love it, but I hate it' report: the Ada Lovelace report URL now 301-redirects to the co-publisher Nuffield Foundation (nuffieldfoundation.org/.../grown-up/i-love-it-but-i-hate-it, HTTP 200). That page carries NO JSON-LD datePublished and no visible publish-date element — only article:modified_time 2026-05-21. Held null (honest no-op): using the modified-date would repeat the earlier Ada Lovelace article:modified_time trap (modified/republish ≠ publish). The 'Month YYYY' strings in the body are footnote 'accessed' dates, not the report date. Revisit if a first-party publish date surfaces (e.g. report PDF frontmatter)."
 }
