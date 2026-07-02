@@ -14,7 +14,9 @@
     "greenhouse": "https://boards-api.greenhouse.io/v1/boards/{id}/jobs?content=true",
     "lever": "https://api.lever.co/v0/postings/{id}?mode=json",
     "ashby": "https://api.ashbyhq.com/posting-api/job-board/{id}?includeCompensation=false",
-    "workday": "POST https://{tenant}.wd3.myworkdayjobs.com/wday/cxs/{tenant}/{board}/jobs (body: {limit,offset,searchText,appliedFacets}); id encoded as \"tenant/board\""
+    "workday": "POST https://{tenant}.wd3.myworkdayjobs.com/wday/cxs/{tenant}/{board}/jobs (body: {limit,offset,searchText,appliedFacets}); id encoded as \"tenant/board\"",
+    "pinpoint": "https://{id}.pinpointhq.com/jobs.json (JSON:API-style {data:[...]})",
+    "teamtailor": "https://{id}/jobs.json (JSON Feed 1.1 spec; {id} is the full custom-domain host, e.g. careers.chathamhouse.org)"
   },
   "sources": [
     {
@@ -312,11 +314,10 @@
     },
     {
       "slug": "techuk",
-      "roleSourceStatus": "checked_empty",
-      "sourceType": "official_careers_page",
-      "url": "https://careers.techuk.org/",
+      "ats": "pinpoint",
+      "id": "techuk",
       "verified": "2026-07-02",
-      "note": "Official techUK careers page verified; readable page exposed only register-interest/experienced/early-careers links, no current policy role to add."
+      "note": "Pinpoint endpoint verified. 4 roles at check time incl. \"Programme Assistant for Policy and Public Affairs\" and \"Programme Assistant for Tech and Innovation and Policy\" — direct policy signal. Discovered via careers-page HTML sweep 2026-07-02."
     },
     {
       "slug": "cma-broader-ai",
@@ -388,11 +389,10 @@
     },
     {
       "slug": "aria-safeguarded-ai",
-      "roleSourceStatus": "careers_page_found",
-      "sourceType": "official_careers_page",
-      "url": "https://aria.pinpointhq.com/",
+      "ats": "pinpoint",
+      "id": "aria",
       "verified": "2026-07-02",
-      "note": "Official ARIA Pinpoint careers portal verified; no Safeguarded-AI-specific role added without role-page verification."
+      "note": "Pinpoint endpoint verified. 4 roles at check time — ALL London, all directly relevant: Science & Technology Leads (Next-Gen Compute Architectures, Multi-Agent Security, AI for Chemistry), Technical & Translational Lead for Safeguarded AI (Cybersecurity). Discovered via careers-page HTML sweep 2026-07-02."
     },
     {
       "slug": "microsoft-ai-london",
@@ -491,11 +491,10 @@
     },
     {
       "slug": "chatham-house-ai",
-      "roleSourceStatus": "needs_browser",
-      "sourceType": "official_careers_page",
-      "url": "https://careers.chathamhouse.org/jobs",
+      "ats": "teamtailor",
+      "id": "careers.chathamhouse.org",
       "verified": "2026-07-02",
-      "note": "Official Chatham House Teamtailor careers page verified; cookie/JS page needs browser/API extraction for current roles."
+      "note": "Teamtailor endpoint verified via custom domain (careers.chathamhouse.org/jobs.json, JSON Feed 1.1). 2 items at check time incl. Senior Research Fellow – International Security. Discovered via careers-page HTML sweep 2026-07-02."
     },
     {
       "slug": "ippr",
@@ -599,6 +598,7 @@
   "_unmapped": {
     "_note": "Slugs with no confirmed first-party role source after the 2026-07-02 roles credibility pass. Mapped/checked slugs must not appear here.",
     "slugs": [],
-    "_probe_2026_07_02_workday": "Careers-page HTML sweep found Workday embed strings for fca-ai/ofcom-ai/linklaters-ai/hogan-lovells-ai. Each verified via POST /wday/cxs/{tenant}/{board}/jobs and returns real jobs. Also found but not converted: aria-safeguarded-ai (Pinpoint), chatham-house-ai (Teamtailor), techuk (Pinpoint), cma-broader-ai/cma-dmu (Civil Service Jobs). TBI Workday probe returned total=null — HTML-only for now. Benevolentai Workable public JSON 404s — HTML-only."
+    "_probe_2026_07_02_workday": "Careers-page HTML sweep found Workday embed strings for fca-ai/ofcom-ai/linklaters-ai/hogan-lovells-ai. Each verified via POST /wday/cxs/{tenant}/{board}/jobs and returns real jobs. Also found but not converted: aria-safeguarded-ai (Pinpoint), chatham-house-ai (Teamtailor), techuk (Pinpoint), cma-broader-ai/cma-dmu (Civil Service Jobs). TBI Workday probe returned total=null — HTML-only for now. Benevolentai Workable public JSON 404s — HTML-only.",
+    "_probe_2026_07_02_pinpoint_teamtailor": "Cracked Pinpoint public JSON ({id}.pinpointhq.com/jobs.json → {data:[...]}) and Teamtailor custom-domain public JSON ({host}/jobs.json → JSON Feed 1.1 with items[]). Added: aria-safeguarded-ai (Pinpoint, 4 roles all directly relevant), techuk (Pinpoint, 4 roles), chatham-house-ai (Teamtailor, 2 items). Civil Service Jobs verified DEAD-END without browser tier: SID session-gated (all HTML search URLs return the same 12KB init shell, 0 results). DWP Find a Job is shut down. Gov roles (dsit, cma, ico, i-dot-ai, mhra, nhs) will require browser-tool tier or per-department page monitoring."
   }
 }
