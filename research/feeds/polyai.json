@@ -1,6 +1,6 @@
 {
   "slug": "polyai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "London-founded voice-agent company. Launch coverage uses verified compliance documentation and checked-empty role status.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,38 @@
       "byline": "PolyAI",
       "source": "first_party",
       "summary": "PolyAI documentation states its platform compliance posture, including GDPR-relevant controls for enterprise voice agents. It is lower-cost evidence than a policy paper, but it is first-party and directly relevant to regulated AI deployment."
+    },
+    {
+      "date": "2025-04-15",
+      "title": "Introducing Agent Studio: The only voice-first omnichannel platform for conversational AI",
+      "url": "https://poly.ai/blog/introducing-agent-studio",
+      "type": "blog",
+      "summary": "PolyAI launched Agent Studio with enterprise controls for voice AI agents, including transparency and governance-oriented deployment features.",
+      "source": "first_party",
+      "topics": [
+        "voice AI",
+        "governance",
+        "enterprise controls"
+      ]
+    },
+    {
+      "date": "2024-01-24",
+      "title": "How to implement generative AI guardrails & secure LLMs",
+      "url": "https://poly.ai/blog/why-are-enterprises-failing-to-deploy-decent-generative-ai-bots",
+      "type": "blog",
+      "summary": "PolyAI explains guardrails for generative AI bots, including data-protection compliance, human oversight, policy frameworks and continuous monitoring.",
+      "source": "first_party",
+      "topics": [
+        "guardrails",
+        "data protection",
+        "human oversight"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: PolyAI Greenhouse board polyai verified reachable with 10 jobs; status=checked_empty for policy/compliance/legal roles at fetch time.",
+  "notes": "launch_harvest 2026-06-27: PolyAI Greenhouse board polyai verified reachable with 10 jobs; status=checked_empty for policy/compliance/legal roles at fetch time.\n\n2026-07-02 urgent data-quality pass: added two first-party PolyAI governance/guardrails product publications; roles recheck remained checked-empty for policy/compliance/legal jobs. No controversy found.",
   "news": []
 }

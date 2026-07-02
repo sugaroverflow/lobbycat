@@ -1,6 +1,6 @@
 {
   "slug": "deloitte-uk-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "Deloitte UK AI/regulatory advisory. Launch coverage uses first-party regulatory-outlook material on AI and data.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,38 @@
       "byline": "Deloitte UK",
       "source": "first_party",
       "summary": "Deloitte UK’s regulatory outlook covers the EU AI Act’s staged implementation, AI/data governance and financial-services regulator expectations."
+    },
+    {
+      "date": "2026-06-01",
+      "title": "The AI Omnibus: what it means for AI strategies",
+      "url": "https://www.deloitte.com/uk/en/blogs/ecrs/the-ai-omnibus-what-is-settled-and-what-is-still-in-play.html",
+      "type": "blog",
+      "summary": "Deloitte UK analyses which EU AI Act simplifications are settled or still in play under the Digital Omnibus and what they mean for AI strategy.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "Digital Omnibus",
+        "AI strategy"
+      ]
+    },
+    {
+      "date": "2024-02-21",
+      "title": "The UK’s framework for AI regulation",
+      "url": "https://www.deloitte.com/uk/en/blogs/ecrs/the-uks-framework-for-ai-regulation.html",
+      "type": "blog",
+      "summary": "Deloitte UK summarises the UK pro-innovation AI regulatory framework, including safety, transparency, fairness, accountability and redress principles.",
+      "source": "first_party",
+      "topics": [
+        "UK AI regulation",
+        "governance",
+        "accountability"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added Deloitte UK AI regulation/governance explainers; dates verified from page metadata; no controversy logged.",
   "news": []
 }

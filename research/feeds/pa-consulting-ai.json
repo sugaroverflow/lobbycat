@@ -1,6 +1,6 @@
 {
   "slug": "pa-consulting-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "PA Consulting responsible-AI advisory. Launch coverage uses first-party responsible-AI service material.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,38 @@
       "byline": "PA Consulting",
       "source": "first_party",
       "summary": "PA Consulting describes its responsible-AI practice, including helping public-service, pharmaceutical and consumer-manufacturing organisations put responsible-AI principles into practice."
+    },
+    {
+      "date": "2026-05-01",
+      "title": "Data privacy and ethics consulting",
+      "url": "https://www.paconsulting.com/services/reimagine-ai-digital-and-data/data-privacy-and-ethics",
+      "type": "blog",
+      "summary": "PA Consulting describes privacy, ethics and bias-audit work for AI-driven workforce-management tools and other regulated uses; date reflects verified page update metadata.",
+      "source": "first_party",
+      "topics": [
+        "AI ethics",
+        "privacy",
+        "bias audit"
+      ]
+    },
+    {
+      "date": "2026-07-01",
+      "title": "Government and public sector consulting",
+      "url": "https://www.paconsulting.com/industries/government-and-public-sector",
+      "type": "blog",
+      "summary": "PA Consulting says public-sector AI delivery should align with AI governance frameworks, blueprints and responsible practices; date reflects verified page update metadata.",
+      "source": "first_party",
+      "topics": [
+        "public sector",
+        "AI governance",
+        "responsible AI"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL; lower-cost service-page evidence, retained as launch backstop.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL; lower-cost service-page evidence, retained as launch backstop.\n\n2026-07-02 urgent data-quality pass: added two first-party PA pages as service-page evidence where dated policy publications were thin; dates are verified dateModified metadata and labelled in summaries. No controversy logged.",
   "news": []
 }

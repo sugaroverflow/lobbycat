@@ -1,6 +1,6 @@
 {
   "slug": "bird-and-bird-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party EU AI Act analysis.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,38 @@
       "byline": "Bird & Bird",
       "source": "first_party",
       "summary": "Bird & Bird analyses the European Commission’s draft high-risk AI guidelines under the EU AI Act, including the threshold question of what qualifies as an AI system and how high-risk obligations are expected to operate."
+    },
+    {
+      "date": "2026-02-26",
+      "title": "European Union Artificial Intelligence (EU AI Act) Guide",
+      "url": "https://www.twobirds.com/en/insights/2026/global/european-union-artificial-intelligence-act-guide",
+      "type": "blog",
+      "summary": "Bird & Bird publishes a guide to the AI Act covering scope, high-risk systems, GPAI, transparency, sandboxes, governance and enforcement.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "governance",
+        "enforcement"
+      ]
+    },
+    {
+      "date": "2026-05-15",
+      "title": "Taking the EU AI Act to Practice: Reading the Commission’s Draft Article 50 Guidelines",
+      "url": "https://www.twobirds.com/en/insights/2026/taking-the-eu-ai-act-to-practice-reading-the-commissions-draft-article-50-guidelines",
+      "type": "blog",
+      "summary": "Bird & Bird analyses the Commission draft Article 50 transparency guidelines for AI systems under Regulation (EU) 2024/1689.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "Article 50",
+        "transparency"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Bird & Bird EU AI Act resources verified HTTP 200; controversy search checked-empty.",
   "news": []
 }

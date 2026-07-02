@@ -1,6 +1,6 @@
 {
   "slug": "improbable",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "UK metaverse/Web3 infrastructure company with current AI venture-building positioning. Launch coverage uses first-party company news and checked-empty ATS status.",
   "hiring": {
     "isHiring": null,
@@ -11,7 +11,7 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: Ashby board improbable verified reachable with 7 jobs; status=checked_empty for policy/governance/dual-use roles at fetch time.",
+  "notes": "launch_harvest 2026-06-27: Ashby board improbable verified reachable with 7 jobs; status=checked_empty for policy/governance/dual-use roles at fetch time.\n\n2026-07-02 urgent data-quality pass: added two verified first-party Improbable AI/web3 venture-builder news items. ATS rechecked: 6 jobs, no London policy/legal/governance roles. Defence-divestment/Unity historical leads left out because they were older or not necessary for launch quality.",
   "news": [
     {
       "date": "2025-10-19",
@@ -19,6 +19,20 @@
       "url": "https://www.improbable.io/news/improbable-leverages-ai-web3-venture-building",
       "source": "company_press",
       "summary": "First-party Improbable update positioning the company around AI, metaverse and Web3 venture-building going into 2025."
+    },
+    {
+      "date": "2026-02-12",
+      "title": "Improbable deepens focus on AI & web3, appoints former Revolut & Bitpanda executive as Chief Marketing Officer",
+      "url": "https://www.improbable.io/news/improbable-deepens-focus-on-ai-web3-appoints-former-revolut-bitpanda-executive-as-chief-marketing-officer",
+      "source": "company_press",
+      "summary": "Improbable says it is deepening its AI and web3 venture-builder focus, a useful signal for the company’s current policy-adjacent positioning."
+    },
+    {
+      "date": "2026-05-26",
+      "title": "Improbable invests $2M in Otomato to scale the first portfolio-aware intelligence layer for DeFi",
+      "url": "https://www.improbable.io/news/improbable-invests-2m-in-otomato-to-scale-the-first-portfolio-aware-intelligence-layer-for-defi",
+      "source": "company_press",
+      "summary": "Improbable describes shared legal, compliance, AI-development and go-to-market support for an AI/DeFi portfolio company."
     }
   ]
 }

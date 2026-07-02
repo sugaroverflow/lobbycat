@@ -1,6 +1,6 @@
 {
   "slug": "hogan-lovells-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses a named first-party EU AI Act publication; body recapture needs browser due 403.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,38 @@
       "byline": "Hogan Lovells",
       "source": "first_party",
       "summary": "Hogan Lovells explains the first EU AI Act obligations taking effect in February 2025: prohibited AI practices and AI-literacy requirements for companies."
+    },
+    {
+      "date": "2026-05-07",
+      "title": "EU legislators agree to delay for high-risk AI rules",
+      "url": "https://www.hoganlovells.com/en/publications/eu-legislators-agree-to-delay-for-highrisk-ai-rules",
+      "type": "blog",
+      "summary": "Hogan Lovells reports the Council/Parliament provisional agreement to delay high-risk AI Act obligations under the Digital Omnibus.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "Digital Omnibus",
+        "high-risk AI"
+      ]
+    },
+    {
+      "date": "2026-05-27",
+      "title": "European Commission publishes long-awaited guidelines on high-risk AI systems",
+      "url": "https://www.hoganlovells.com/en/publications/european-commission-publishes-long-awaited-guidelines-on-high-risk-ai-systems",
+      "type": "blog",
+      "summary": "Hogan Lovells analyses the Commission draft guidelines on classification of high-risk AI systems under the AI Act.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "high-risk AI",
+        "guidelines"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: first-party URL discovered on official domain; direct fetch returned HTTP 403, so status=needs_browser for full-body recapture.",
+  "notes": "launch_harvest 2026-06-27: first-party URL discovered on official domain; direct fetch returned HTTP 403, so status=needs_browser for full-body recapture.\n\n2026-07-02 urgent data-quality pass: added two first-party Hogan Lovells EU AI Act items; final URLs verified via web_fetch redirecting to hlc.com; bare fetch/curl can be user-agent sensitive, but browser-like fetch returned HTTP 200. No controversy logged.",
   "news": []
 }

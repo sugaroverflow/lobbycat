@@ -1,6 +1,6 @@
 {
   "slug": "ao-shearman-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party European AI Continent Action Plan analysis.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,38 @@
       "byline": "A&O Shearman",
       "source": "first_party",
       "summary": "A&O Shearman analyses the European Commission’s AI Continent Action Plan, including the AI Office service desk and policy measures intended to support AI development and compliance."
+    },
+    {
+      "date": "2024-10-29",
+      "title": "EU AI Act: obligations for high-risk AI systems",
+      "url": "https://www.aoshearman.com/en/insights/ao-shearman-on-tech/zooming-in-on-ai-10-eu-ai-act-what-are-the-obligations-for-high-risk-ai-systems",
+      "type": "blog",
+      "summary": "A&O Shearman explains provider and deployer obligations for high-risk AI systems under the EU AI Act ahead of the 2 August 2026 application date.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "high-risk AI",
+        "governance"
+      ]
+    },
+    {
+      "date": "2024-11-11",
+      "title": "EU AI Act: limited-risk AI compliance requirements",
+      "url": "https://www.aoshearman.com/en/insights/ao-shearman-on-tech/zooming-in-on-ai-11-eu-ai-act-what-are-the-obligations-for-the-limited-risk-ai-systems",
+      "type": "blog",
+      "summary": "A&O Shearman maps Article 50 transparency duties for chatbots, synthetic content and deepfakes under the EU AI Act.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "transparency",
+        "deepfakes"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party A&O Shearman AI Act explainers verified HTTP 200 with datePublished metadata; controversies checked-empty (no named-party dispute found in this pass).",
   "news": []
 }

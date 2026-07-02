@@ -1,6 +1,6 @@
 {
   "slug": "pinsent-masons-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses Out-Law AI-regulatory reporting from Pinsent Masons.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,52 @@
       "byline": "Pinsent Masons Out-Law",
       "source": "first_party",
       "summary": "Pinsent Masons reports on the EU AI simplification package reaching a critical legislative milestone, a live signal for AI Act implementation and compliance advice."
+    },
+    {
+      "date": "2026-05-22",
+      "title": "Guidelines support providers with ‘high-risk’ AI self-assessments",
+      "url": "https://www.pinsentmasons.com/out-law/news/guidelines-support-providers-high-risk-ai-self-assessments",
+      "type": "blog",
+      "summary": "Pinsent Masons Out-Law reports on Commission high-risk AI classification guidelines and self-assessment duties under the AI Act.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "high-risk AI",
+        "self-assessment"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
-  "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.",
+  "controversies": [
+    {
+      "type": "public_criticism",
+      "title": "Pinsent Masons self-reports to SRA after AI-hallucinated citations drew High Court admonishment",
+      "url": "https://www.lawgazette.co.uk/news/pinsents-refers-itself-to-sra-over-ai-failures/5126895.article",
+      "occurredAt": "2026-05-26",
+      "status": "ongoing",
+      "severity": "medium",
+      "companyRole": "subject_of_reporting",
+      "summary": "The Law Society Gazette reported that Pinsent Masons and solicitors were referred to the SRA after an Insolvency and Companies Court judge publicly admonished the firm over AI-hallucinated authorities used in proceedings; the firm said it self-reported and cooperated.",
+      "topics": [
+        "legal AI",
+        "hallucination",
+        "professional conduct",
+        "SRA"
+      ],
+      "rawExcerpt": "A judge has said an Insolvency and Companies Court ruling should serve as public admonishment of international firm Pinsent Masons and senior lawyers, after two botched uses of artificial intelligence.",
+      "corroboration": [
+        {
+          "outlet": "Law Society Gazette",
+          "url": "https://www.lawgazette.co.uk/news/pinsents-refers-itself-to-sra-over-ai-failures/5126895.article",
+          "paywalled": false
+        }
+      ],
+      "source": "curated",
+      "attributionChecked": true
+    }
+  ],
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added one first-party Out-Law AI Act item and one named-party AI-hallucination professional-conduct controversy, verified via Law Society Gazette HTTP 200; no unrelated controversy added.",
   "news": []
 }

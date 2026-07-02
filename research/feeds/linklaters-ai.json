@@ -1,6 +1,6 @@
 {
   "slug": "linklaters-ai",
-  "lastUpdated": "2026-06-27T23:07:28Z",
+  "lastUpdated": "2026-07-02T01:45:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses named-author AI regulation analysis from Linklaters Tech Insights.",
   "hiring": {
     "isHiring": null,
@@ -15,12 +15,38 @@
       "byline": "Ieuan Jolly, Joshua Ashley Klayman, Caitlin Potratz Metcalf, Alex Roberts, Sonia Cissé, Julian Cunningham-Day, Jennifer Calver, Elton Qemali",
       "source": "first_party",
       "summary": "Linklaters tracks AI regulatory developments across key jurisdictions in a bylined mid-year update, useful evidence of the firm’s AI-regulatory coverage and team style."
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Omnibus Agreement: How the EU AI Act changes",
+      "url": "https://techinsights.linklaters.com/post/102ms10/omnibus-agreement-how-the-eu-ai-act-changes",
+      "type": "blog",
+      "summary": "Linklaters explains how the 7 May 2026 Omnibus agreement amends and simplifies the EU AI Act.",
+      "source": "first_party",
+      "topics": [
+        "AI Act",
+        "Digital Omnibus",
+        "EU regulation"
+      ]
+    },
+    {
+      "date": "2026-05-27",
+      "title": "Spain approves draft AI governance law: what you need to know",
+      "url": "https://techinsights.linklaters.com/post/102mwzx/spain-approves-draft-ai-governance-law-what-you-need-to-know",
+      "type": "blog",
+      "summary": "Linklaters analyses Spain’s draft AI governance law and its interaction with EU AI Act compliance and sandboxing.",
+      "source": "first_party",
+      "topics": [
+        "AI governance",
+        "Spain",
+        "AI Act"
+      ]
     }
   ],
   "roles": [],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party Linklaters Tech Insights URL.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party Linklaters Tech Insights URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Linklaters Tech Insights posts verified HTTP 200; SPA pages expose title/byline reliably while exact date came from search/date metadata cross-check. No controversy logged.",
   "news": []
 }
