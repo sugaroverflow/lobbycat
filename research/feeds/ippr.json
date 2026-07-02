@@ -1,6 +1,6 @@
 {
   "slug": "ippr",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T16:10:00Z",
   "blurb": "IPPR (Institute for Public Policy Research) is a UK progressive think tank producing public-policy research, including work on AI, automation and the future of work.",
   "hiring": {
     "roleSourceStatus": "checked_empty",
@@ -11,6 +11,20 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-04-16",
+      "title": "Acceleration is not a strategy: A framework for directing AI towards public value before it's too late",
+      "url": "https://www.ippr.org/articles/acceleration-is-not-a-strategy",
+      "type": "paper",
+      "summary": "Argues that with AI politics set to change sharply in 2026, governments must both protect people from AI risks and deliberately steer the transformation toward public value rather than defaulting to acceleration. Introduces a how-to framework and near-term priority policies for European governments to intervene ambitiously in citizens' interests."
+    },
+    {
+      "date": "2026-05-29",
+      "title": "Strike while AI is hot: Rebuilding worker power for the age of AI",
+      "url": "https://www.ippr.org/articles/strike-while-ai-is-hot-worker-power",
+      "type": "paper",
+      "summary": "Argues worker power must be reanimated in the face of AI-driven labour market shocks. Contends AI's distributional effects are not predetermined and depend on workers' ability to influence AI adoption at firm level; calls for giving workers power to shape and adapt to AI's impacts as a priority for progressive renewal."
+    },
     {
       "date": "2024-03-27",
       "title": "Transformed by AI: How generative artificial intelligence could affect work in the UK – and how to manage it",
