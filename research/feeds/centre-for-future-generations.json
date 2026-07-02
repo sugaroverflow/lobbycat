@@ -1,12 +1,12 @@
 {
   "slug": "centre-for-future-generations",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T02:58:00Z",
   "blurb": "The Centre for Future Generations (CFG), a European (EU-focused) think tank on the governance of emerging technologies including advanced AI, biotech and neurotech.",
   "hiring": {
-    "roleSourceStatus": "careers_page_found",
+    "roleSourceStatus": "checked_empty",
     "sourceUrl": "https://cfg.eu/about-us/careers/",
     "lastChecked": "2026-07-02",
-    "note": "Official CFG careers page verified (seed /jobs URL 404); no current role added without role-page evidence.",
+    "note": "Official CFG careers page verified and currently advertises no open vacancies.",
     "londonPolicyRoles": 0
   },
   "publications": [
@@ -55,5 +55,5 @@
       "summary": "CFG names Thomas Lingard CEO (effective March 2025), bringing 25+ years in sustainability, innovation and policy — a leadership signal for the future-generations think tank."
     }
   ],
-  "notes": "cfg.eu is Cloudflare-gated for direct curl page-body reads (Attention Required), and /publications/ 403s to curl. Sitemap XML (cfg.eu/post-sitemap.xml) fetched fine via curl; titles/dates/summaries confirmed via web_fetch of /publications/ which rendered the publications index. Dates are CFG's own publication dates (DD.MM.YYYY on the index). No first-party press-release feed distinct from publications; news empty. No legal/regulatory action against CFG found; controversies empty."
+  "notes": "cfg.eu is Cloudflare-gated for direct curl page-body reads (Attention Required), and /publications/ 403s to curl. Sitemap XML (cfg.eu/post-sitemap.xml) fetched fine via curl; titles/dates/summaries confirmed via web_fetch of /publications/ which rendered the publications index. Dates are CFG's own publication dates (DD.MM.YYYY on the index). No first-party press-release feed distinct from publications; news empty. No legal/regulatory action against CFG found; controversies empty. role_harvest 2026-07-02: official careers page checked and currently lists no open vacancies."
 }

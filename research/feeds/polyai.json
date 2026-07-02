@@ -1,10 +1,15 @@
 {
   "slug": "polyai",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T03:08:00Z",
   "blurb": "London-founded voice-agent company. Launch coverage uses verified compliance documentation and checked-empty role status.",
   "hiring": {
-    "isHiring": null,
-    "newSincePrevious": null
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://boards-api.greenhouse.io/v1/boards/polyai/jobs?content=true",
+    "lastChecked": "2026-07-02",
+    "note": "PolyAI Greenhouse board checked live; 11 jobs returned and none matched policy/legal/governance role filters.",
+    "londonPolicyRoles": 0
   },
   "publications": [
     {

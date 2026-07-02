@@ -1,15 +1,15 @@
 {
   "slug": "bird-and-bird-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T02:35:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party EU AI Act analysis.",
   "hiring": {
-    "isHiring": null,
+    "isHiring": true,
     "newSincePrevious": null,
     "roleSourceStatus": "careers_page_found",
-    "sourceUrl": "https://www.twobirds.com/en/careers",
+    "sourceUrl": "https://fsr.cvmailuk.com/twobirds/main.cfm?srxksl=1",
     "lastChecked": "2026-07-02",
-    "note": "Official Bird & Bird careers page; no ATS endpoint found.",
-    "londonPolicyRoles": 0
+    "note": "Official Bird & Bird CVMail jobs board checked 2026-07-02; added London AI contracting/governance and legaltech/AI adoption roles.",
+    "londonPolicyRoles": 2
   },
   "publications": [
     {
@@ -48,10 +48,29 @@
       ]
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Senior Associate - Tech Transactions (including AI Contracting & Governance)",
+      "location": "London",
+      "url": "https://fsr.cvmailuk.com/twobirds/main.cfm?page=jobSpecific&jobId=77561&rcd=57867&queryString=srxksl%3D1",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "manual",
+      "seenAt": "2026-07-02"
+    },
+    {
+      "title": "Senior LegalTech & Innovation Executive (12 month FTC)",
+      "location": "London",
+      "url": "https://fsr.cvmailuk.com/twobirds/main.cfm?page=jobSpecific&jobId=78439&rcd=57867&queryString=srxksl%3D1",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "manual",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Bird & Bird EU AI Act resources verified HTTP 200; controversy search checked-empty.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party Bird & Bird EU AI Act resources verified HTTP 200; controversy search checked-empty.\n\n2026-07-02 roles follow-up: official Bird & Bird CVMail jobs board checked; added two London roles explicitly tied to AI contracting/governance and legaltech/GenAI adoption. Rejected business-acceptance roles as not AI/regulatory-policy specific.",
   "news": []
 }

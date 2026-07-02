@@ -1,10 +1,15 @@
 {
   "slug": "improbable",
-  "lastUpdated": "2026-07-02T01:45:00Z",
+  "lastUpdated": "2026-07-02T03:08:00Z",
   "blurb": "UK metaverse/Web3 infrastructure company with current AI venture-building positioning. Launch coverage uses first-party company news and checked-empty ATS status.",
   "hiring": {
-    "isHiring": null,
-    "newSincePrevious": null
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "checked_empty",
+    "sourceUrl": "https://api.ashbyhq.com/posting-api/job-board/improbable?includeCompensation=false",
+    "lastChecked": "2026-07-02",
+    "note": "Improbable Ashby board checked live; 6 jobs returned and none matched policy/legal/governance role filters.",
+    "londonPolicyRoles": 0
   },
   "publications": [],
   "roles": [],

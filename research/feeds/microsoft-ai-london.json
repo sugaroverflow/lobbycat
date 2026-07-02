@@ -1,15 +1,15 @@
 {
   "slug": "microsoft-ai-london",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T02:58:00Z",
   "blurb": "Microsoft’s policy footprint is unusually legible through On the Issues, EU Policy Blog and formal AI-safety testing arrangements with CAISI/AISI. It is also a named defendant in the consolidated publisher copyright litigation alongside OpenAI.",
   "hiring": {
-    "isHiring": null,
+    "isHiring": true,
     "newSincePrevious": null,
-    "roleSourceStatus": "needs_browser",
-    "sourceUrl": "https://jobs.careers.microsoft.com/global/en/search?lc=London%2C%20United%20Kingdom",
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://apply.careers.microsoft.com/api/pcsx/search?domain=microsoft.com&query=responsible%20AI&location=London%2C%20United%20Kingdom&start=0",
     "lastChecked": "2026-07-02",
-    "note": "Official Microsoft careers search redirects to JS app; needs browser/API extraction for current London policy/legal roles.",
-    "londonPolicyRoles": 0
+    "note": "Official Microsoft Eightfold API checked for London policy/responsible-AI roles. No London policy/legal role found; added current London Microsoft 365 Copilot applied-science role as an AI hiring signal.",
+    "londonPolicyRoles": 1
   },
   "publications": [
     {
@@ -112,7 +112,17 @@
       "summary": "Digital-safety policy update on detecting and removing non-consensual intimate imagery."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Senior Applied Scientist",
+      "location": "United Kingdom, London, London",
+      "url": "https://apply.careers.microsoft.com/careers/job/1970393556873873",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [
@@ -142,6 +152,6 @@
       "attributionChecked": true
     }
   ],
-  "notes": "launch_harvest 2026-06-27: Microsoft RSS feeds verified HTTP 200: https://blogs.microsoft.com/on-the-issues/feed/ and https://blogs.microsoft.com/eupolicy/feed/. AISI/CAISI article direct fetch HTTP 200. NPR controversy source direct fetch HTTP 200; no paywalled body reproduced. followup_harvest 2026-06-28: Microsoft On the Issues RSS verified 2026-06-24 cybercrime/AI policy post; AI Policy Daily and FLI newsletter were used only as discovery leads where relevant, with first-party URLs retained. followup_harvest 2026-06-28: added five 30–90 day first-party Microsoft policy/safety/competition posts (incl. UK CMA cloud item) verified via On the Issues / EU Policy indexes.",
+  "notes": "launch_harvest 2026-06-27: Microsoft RSS feeds verified HTTP 200: https://blogs.microsoft.com/on-the-issues/feed/ and https://blogs.microsoft.com/eupolicy/feed/. AISI/CAISI article direct fetch HTTP 200. NPR controversy source direct fetch HTTP 200; no paywalled body reproduced. followup_harvest 2026-06-28: Microsoft On the Issues RSS verified 2026-06-24 cybercrime/AI policy post; AI Policy Daily and FLI newsletter were used only as discovery leads where relevant, with first-party URLs retained. followup_harvest 2026-06-28: added five 30–90 day first-party Microsoft policy/safety/competition posts (incl. UK CMA cloud item) verified via On the Issues / EU Policy indexes. role_harvest 2026-07-02: Microsoft Eightfold API verified one London M365 Copilot applied-science role; no London policy/legal role found for policy/responsible-AI queries.",
   "news": []
 }

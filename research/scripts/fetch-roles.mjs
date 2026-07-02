@@ -2,7 +2,8 @@
 /**
  * fetch-roles.mjs — Glyphie's roles lens 🌀
  *
- * Hits each company's ATS public JSON API (greenhouse/lever/ashby), filters
+ * Hits each company's ATS public JSON API (greenhouse/lever/ashby/workday/
+ * pinpoint/teamtailor), filters
  * titles by policy keywords, flags London/UK/EMEA relevance, and writes a
  * roles report. The 6am subagent invokes this, reviews the output, and folds
  * the high-signal roles into per-company feeds + the global feed.
@@ -46,13 +47,29 @@ function urlFor(ats, id) {
       return `https://api.lever.co/v0/postings/${id}?mode=json`;
     case "ashby":
       return `https://api.ashbyhq.com/posting-api/job-board/${id}?includeCompensation=false`;
+    case "pinpoint":
+      return `https://${id}.pinpointhq.com/jobs.json`;
+    case "teamtailor":
+      return `https://${id}/jobs.json`;
+    case "workday": {
+      const [tenant, board] = String(id).split("/");
+      if (!tenant || !board) return null;
+      return `https://${tenant}.wd3.myworkdayjobs.com/wday/cxs/${tenant}/${board}/jobs`;
+    }
     default:
       return null;
   }
 }
 
+function workdayJobUrl(id, externalPath) {
+  const [tenant, board] = String(id).split("/");
+  if (!tenant || !board || !externalPath) return "";
+  return `https://${tenant}.wd3.myworkdayjobs.com/en-US/${board}${externalPath}`;
+}
+
 /** Normalise each ATS payload into {title, location, url}. */
-function normalise(ats, payload) {
+function normalise(src, payload) {
+  const { ats, id } = src;
   if (ats === "greenhouse") {
     return (payload.jobs || []).map((j) => ({
       title: j.title || "",
@@ -78,13 +95,79 @@ function normalise(ats, payload) {
       url: j.jobUrl || j.applyUrl || "",
     }));
   }
+  if (ats === "workday") {
+    return (payload.jobPostings || []).map((j) => ({
+      title: j.title || "",
+      location: j.locationsText || (j.locations || []).join(" | ") || "",
+      url: workdayJobUrl(id, j.externalPath || ""),
+    }));
+  }
+  if (ats === "pinpoint") {
+    return (payload.data || []).map((j) => {
+      const attrs = j.attributes || {};
+      const location =
+        attrs.location ||
+        attrs.location_name ||
+        j.location?.name ||
+        j.location_name ||
+        (Array.isArray(attrs.locations)
+          ? attrs.locations
+              .map((x) => (typeof x === "string" ? x : x?.name || ""))
+              .filter(Boolean)
+              .join(" | ")
+          : "");
+      return {
+        title: attrs.title || j.title || "",
+        location,
+        url: attrs.url || attrs.job_url || j.url || j.links?.self || "",
+      };
+    });
+  }
+  if (ats === "teamtailor") {
+    const jobLocation = (j) =>
+      (j._jobposting?.jobLocation || [])
+        .map((loc) => loc?.address?.addressLocality || loc?.address?.addressCountry || "")
+        .filter(Boolean)
+        .join(" | ");
+    return (payload.items || []).map((j) => ({
+      title: j.title || "",
+      location:
+        j.location ||
+        j._location ||
+        jobLocation(j) ||
+        (Array.isArray(j.tags) ? j.tags.join(" | ") : "") ||
+        "",
+      url: j.url || j.external_url || "",
+    }));
+  }
   return [];
 }
 
-async function fetchJson(url) {
-  const res = await fetch(url, {
-    headers: { "user-agent": "lobbycat-glyphie-roles/1.0 (+research, contact via repo)" },
+async function fetchJson(src) {
+  const url = urlFor(src.ats, src.id);
+  if (!url) throw new Error(`unsupported or malformed ats/id: ${src.ats}/${src.id}`);
+  const init = {
+    headers: {
+      accept: "application/json",
+      "user-agent": "lobbycat-glyphie-roles/1.0 (+research, contact via repo)",
+    },
     signal: AbortSignal.timeout(20000),
+  };
+  if (src.ats === "workday") {
+    init.method = "POST";
+    init.headers = {
+      ...init.headers,
+      "content-type": "application/json",
+    };
+    init.body = JSON.stringify({
+      appliedFacets: {},
+      limit: 100,
+      offset: 0,
+      searchText: "",
+    });
+  }
+  const res = await fetch(url, {
+    ...init,
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   return res.json();
@@ -136,10 +219,9 @@ async function main() {
   const errors = [];
 
   for (const src of sources) {
-    const url = urlFor(src.ats, src.id);
     try {
-      const payload = await fetchJson(url);
-      const jobs = normalise(src.ats, payload);
+      const payload = await fetchJson(src);
+      const jobs = normalise(src, payload);
       const kept = [];
       for (const job of jobs) {
         const m = matchKeywords(job.title, kw);

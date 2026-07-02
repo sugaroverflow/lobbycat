@@ -1,13 +1,15 @@
 {
   "slug": "bbc-responsible-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T02:58:00Z",
   "blurb": "BBC Research & Development, the BBC's technology research arm, including work on responsible AI, content provenance and trusted public-service media.",
   "hiring": {
-    "roleSourceStatus": "needs_browser",
-    "sourceUrl": "https://careers.bbc.co.uk/",
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://careers.bbc.co.uk/services/rss/job/?locale=en_GB&keywords=(AI)%20AND%20locationSearch:(London)",
     "lastChecked": "2026-07-02",
-    "note": "Official BBC careers site verified; dynamic search/browser check needed for responsible-AI/R&D roles.",
-    "londonPolicyRoles": 0
+    "note": "Official BBC SuccessFactors RSS feed checked for AI + London; added Lead Project Manager - Gen AI in Strategy and Transformation. Rejected generic production/commercial RSS matches.",
+    "londonPolicyRoles": 1
   },
   "publications": [
     {
@@ -35,10 +37,20 @@
       "summary": "BBC R&D explains media provenance techniques (watermarks, fingerprints, C2PA-hashed metadata) and Project Origin work to help audiences assess content authenticity."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "Lead Project Manager - Gen AI",
+      "location": "London, GB, W1A 1AA",
+      "url": "https://careers.bbc.co.uk/job/London-Lead-Project-Manager-Gen-AI-W1A-1AA/1361025557/",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "official_jobs_feed",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
   "news": [],
-  "notes": "BBC R&D site (bbc.co.uk/rd) is fully JS-rendered; no sitemap/RSS and curl returns no article links. Used web_search to find articles, then verified each by fetching the page. Pub dates: 2026-03 from URL slug + 'March 20, 2026' search date; 2025-10-17 and the 2023-10 piece confirmed via on-page 'Published' text/URL. No controversies where BBC R&D is a named legal party."
+  "notes": "BBC R&D site (bbc.co.uk/rd) is fully JS-rendered; no sitemap/RSS and curl returns no article links. Used web_search to find articles, then verified each by fetching the page. Pub dates: 2026-03 from URL slug + 'March 20, 2026' search date; 2025-10-17 and the 2023-10 piece confirmed via on-page 'Published' text/URL. No controversies where BBC R&D is a named legal party. role_harvest 2026-07-02: official BBC SuccessFactors RSS query for AI + London verified Lead Project Manager - Gen AI; role description ties it to the BBC Generative AI Team and responsible public-service AI delivery."
 }

@@ -1,13 +1,15 @@
 {
   "slug": "fca-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T02:48:00Z",
   "blurb": "The Financial Conduct Authority (FCA) regulates financial services firms and markets in the UK, including its work on the use of artificial intelligence in financial services.",
   "hiring": {
-    "roleSourceStatus": "needs_browser",
-    "sourceUrl": "https://www.fca.org.uk/careers",
+    "isHiring": true,
+    "newSincePrevious": null,
+    "roleSourceStatus": "ats_found",
+    "sourceUrl": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers",
     "lastChecked": "2026-07-02",
-    "note": "Official FCA careers page verified but /vacancies route changed/404; needs browser/manual search for current vacancies.",
-    "londonPolicyRoles": 0
+    "note": "Official FCA Workday job page verified; added AI Benefits & Value Technical Specialist in Data, Technology and Innovation / AI Product Development. The Workday list endpoint still rejects one-shot CXS API calls, so the direct job page is the verified source.",
+    "londonPolicyRoles": 1
   },
   "publications": [
     {
@@ -37,7 +39,17 @@
       "summary": "FCA chief executive Nikhil Rathi argues that agentic AI, tokenisation, frontier-model dependencies and cyber resilience require a more collaborative, system-wide regulatory posture for UK financial services."
     }
   ],
-  "roles": [],
+  "roles": [
+    {
+      "title": "AI Benefits & Value Technical Specialist",
+      "location": "London",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/AI-Benefits---Value-Technical-Specialist_JR0021854-1",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "manual",
+      "seenAt": "2026-07-02"
+    }
+  ],
   "filings": [],
   "leadership": [],
   "controversies": [],
@@ -57,5 +69,5 @@
       "summary": "FCA press release announcing the second cohort of participants in its AI Live Testing programme."
     }
   ],
-  "notes": "Regulator site. FS25/5 date 2025-09-09 from FCA page datePublished meta. Press release dates from page datePublished meta (2025-12-03 and 2026-04-21). followup_harvest 2026-06-28: added first-party June 2026 FCA AI blog/speech after direct fetch and datePublished verification."
+  "notes": "Regulator site. FS25/5 date 2025-09-09 from FCA page datePublished meta. Press release dates from page datePublished meta (2025-12-03 and 2026-04-21). followup_harvest 2026-06-28: added first-party June 2026 FCA AI blog/speech after direct fetch and datePublished verification. role_harvest 2026-07-02: Workday job page JSON-LD/meta verified London AI Benefits & Value Technical Specialist role in AI Product Development."
 }
