@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T07:37:00Z",
+  "lastUpdated": "2026-07-03T08:12:00Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -21,6 +21,13 @@
       "event_type": "publication",
       "summary": "Expanding Project Glasswing: Anthropic extends its cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity (capability gain, breadth, ease of weaponisation, discoverability). A multi-lab AI-governance/standard-setting signal. Corroborated by Ars Technica and The Record (1 Jul 2026).",
       "source_url": "https://www.anthropic.com/news/expanding-project-glasswing"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "cma-dmu",
+      "event_type": "press",
+      "summary": "CMA opens its first DMCC SMS conduct-requirement consultation for Apple and Google's mobile platforms (having designated both with strategic market status), including a proposed 'steering' conduct requirement; responses due 5pm on 28 July 2026. Marks the UK digital-markets regime moving from SMS designation into enforceable conduct.",
+      "source_url": "https://www.gov.uk/government/news/cma-consults-on-new-requirements-for-apple-and-googles-mobile-platforms"
     },
     {
       "date": "2026-06-27",
