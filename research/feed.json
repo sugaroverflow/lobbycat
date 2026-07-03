@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T11:39:48Z",
+  "lastUpdated": "2026-07-03T17:09:03Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -560,6 +560,13 @@
       "event_type": "press",
       "summary": "OpenAI Global Affairs disclosure on PRC-linked influence operations — part of the lab’s threat-intelligence/transparency reporting, relevant to election-integrity and foreign-influence policy.",
       "source_url": "https://openai.com/index/"
+    },
+    {
+      "date": "2026-06-11",
+      "company_slug": "mhra-ai",
+      "event_type": "press",
+      "summary": "MHRA publishes the results of an extensive public consultation on AI in healthcare, which will inform the recommendations of the National Commission into the Regulation of AI in Healthcare and future regulation. Core UK-regulator AI-policy signal: public-attitudes evidence feeding a live UK regulatory-design process. First-party gov.uk first_published_at 2026-06-11T12:04:00+01:00 (content-store verified); sits above the tracked mhra-ai ceiling (AI Airlock Phase 2, 2026-06-09) and alongside the same-day 'Regulation of AI in Healthcare' call-for-evidence outcome.",
+      "source_url": "https://www.gov.uk/government/news/mhra-landmark-report-reveals-public-views-on-ai-in-healthcare"
     },
     {
       "date": "2026-06-10",
