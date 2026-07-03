@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T08:37:00Z",
+  "lastUpdated": "2026-07-03T09:37:00Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -672,6 +672,13 @@
       "event_type": "press",
       "summary": "GOV.UK names techUK as convening UK trade associations for an AI Adoption Coalition alongside the government’s AI Adoption Summit package and sectoral AI Adoption Plans.",
       "source_url": "https://www.gov.uk/government/news/government-to-partner-with-tech-companies-trade-unions-and-industry-leaders-to-boost-ai-adoption-and-equip-workers-with-ai-skills"
+    },
+    {
+      "date": "2026-06-08",
+      "company_slug": "dsit-ai-opportunity",
+      "event_type": "publication",
+      "summary": "DSIT UK AI Hardware Plan (building on the AI Opportunities Action Plan): sets out how the UK will develop, demonstrate, deploy and scale the chips and semiconductor technologies underpinning AI across four pillars (innovation, skills, procurement, investment), to capture more value through UK-designed compute hardware.",
+      "source_url": "https://www.gov.uk/government/publications/uk-ai-hardware-plan"
     },
     {
       "date": "2026-06-04",
