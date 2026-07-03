@@ -1,6 +1,6 @@
 {
   "slug": "ao-shearman-ai",
-  "lastUpdated": "2026-07-03T07:37:00Z",
+  "lastUpdated": "2026-07-03T11:37:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party European AI Continent Action Plan analysis.",
   "hiring": {
     "isHiring": null,
@@ -12,6 +12,20 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-04-08",
+      "title": "Where are we on copyright and AI in the UK?",
+      "url": "https://www.aoshearman.com/en/insights/ao-shearman-on-tech/where-are-we-on-copyright-and-ai-in-the-uk",
+      "type": "blog",
+      "byline": "A&O Shearman",
+      "source": "first_party",
+      "summary": "A&O Shearman opinion piece taking stock of the UK copyright-and-AI debate, including the text-and-data-mining question and the government's proposed approach following the December 2024 consultation.",
+      "topics": [
+        "UK AI policy",
+        "copyright",
+        "text and data mining"
+      ]
+    },
     {
       "date": "2026-06-23",
       "title": "DSIT publishes consultation on empowering individuals through data intermediaries",
@@ -66,6 +80,6 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party A&O Shearman AI Act explainers verified HTTP 200 with datePublished metadata; controversies checked-empty (no named-party dispute found in this pass).\n\n2026-07-03 pubs-freshness backfill: the JS-gated /insights/ao-shearman-on-tech + on-data indexes were browser-rendered (standalone research/scripts/ao-pubs-probe.mjs, publications-scoped, not the roles scout) to enumerate post-2025-05-19 articles. Confirmed the 2025-05-19 ceiling was a real ~13.5mo gap. Added the freshest strongly UK-policy-on-remit item: DSIT data-intermediaries consultation, datePublished 2026-06-23T15:18:00Z verified first-party from the article page's own JSON-LD. Other fresh candidates left for future passes (UK copyright-and-AI opinion 2026-04-08; Digital Omnibus on AI trilogue 2026-06-05) to avoid a busywork multi-add.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party A&O Shearman AI Act explainers verified HTTP 200 with datePublished metadata; controversies checked-empty (no named-party dispute found in this pass).\n\n2026-07-03 pubs-freshness backfill: the JS-gated /insights/ao-shearman-on-tech + on-data indexes were browser-rendered (standalone research/scripts/ao-pubs-probe.mjs, publications-scoped, not the roles scout) to enumerate post-2025-05-19 articles. Confirmed the 2025-05-19 ceiling was a real ~13.5mo gap. Added the freshest strongly UK-policy-on-remit item: DSIT data-intermediaries consultation, datePublished 2026-06-23T15:18:00Z verified first-party from the article page's own JSON-LD. Other fresh candidates left for future passes (UK copyright-and-AI opinion 2026-04-08; Digital Omnibus on AI trilogue 2026-06-05) to avoid a busywork multi-add.\n\n2026-07-03 11:37 pubs-freshness pass: re-ran the ao-pubs-probe.mjs browser render (on-tech + on-data indexes, loadingResultsStillPresent=false, ~17 dated links). Added exactly the previously-logged strongest UK-remit candidate: 'Where are we on copyright and AI in the UK?' (OPINION), datePublished 2026-04-08T09:44:00Z verified first-party from the article's own JSON-LD (dateModified 2026-06-12). UK copyright/TDM is a core live lobbycat topic. Added exactly one per one-add discipline. Next candidate logged for a future pass: EU 'Digital Omnibus on AI: trilogue deal done' (2026-06-05, on-data, EU-not-UK so lower UK-remit priority); also US DOJ AI-pricing (2026-05-27) and CISA/ACSC agentic-AI guidance (2026-05-20) available but non-UK. External page content untrusted; only first-party JSON-LD datePublished + browser render state used.",
   "news": []
 }

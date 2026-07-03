@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T09:37:00Z",
+  "lastUpdated": "2026-07-03T11:39:48Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -1183,6 +1183,13 @@
       "event_type": "publication",
       "summary": "Meta announces its updated Advanced AI Scaling Framework and related safety/preparedness reporting, framing the work as a scaled approach to testing and governing its most advanced AI systems.",
       "source_url": "https://ai.meta.com/blog/scaling-how-we-build-test-advanced-ai/"
+    },
+    {
+      "date": "2026-04-08",
+      "company_slug": "ao-shearman-ai",
+      "event_type": "publication",
+      "summary": "A&O Shearman opinion piece taking stock of the UK copyright-and-AI debate, including the text-and-data-mining question and the government's proposed approach following the December 2024 consultation.",
+      "source_url": "https://www.aoshearman.com/en/insights/ao-shearman-on-tech/where-are-we-on-copyright-and-ai-in-the-uk"
     },
     {
       "date": "2026-04-07",
