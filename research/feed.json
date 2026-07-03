@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T17:09:03Z",
+  "lastUpdated": "2026-07-03T17:38:30Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -567,6 +567,13 @@
       "event_type": "press",
       "summary": "MHRA publishes the results of an extensive public consultation on AI in healthcare, which will inform the recommendations of the National Commission into the Regulation of AI in Healthcare and future regulation. Core UK-regulator AI-policy signal: public-attitudes evidence feeding a live UK regulatory-design process. First-party gov.uk first_published_at 2026-06-11T12:04:00+01:00 (content-store verified); sits above the tracked mhra-ai ceiling (AI Airlock Phase 2, 2026-06-09) and alongside the same-day 'Regulation of AI in Healthcare' call-for-evidence outcome.",
       "source_url": "https://www.gov.uk/government/news/mhra-landmark-report-reveals-public-views-on-ai-in-healthcare"
+    },
+    {
+      "date": "2026-06-11",
+      "company_slug": "mhra-ai",
+      "event_type": "publication",
+      "summary": "MHRA/National Commission publication: the underlying research, stakeholder-engagement and call-for-evidence findings feeding the National Commission into the Regulation of AI in Healthcare. The substantive evidence base (distinct from the same-day press announcement) that will inform the Commission's recommendations on future UK regulation of AI in healthcare. First-party gov.uk content-store first_published_at 2026-06-11T12:00:00+01:00; sits above the prior mhra-ai publications ceiling (AI Airlock Phase 2, 2026-06-09).",
+      "source_url": "https://www.gov.uk/government/publications/national-commission-into-the-regulation-of-ai-in-healthcare-research-engagement-and-call-for-evidence-findings"
     },
     {
       "date": "2026-06-10",
