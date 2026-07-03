@@ -1,6 +1,6 @@
 {
   "slug": "cma-broader-ai",
-  "lastUpdated": "2026-07-02T18:38:00Z",
+  "lastUpdated": "2026-07-03T08:37:00Z",
   "blurb": "CMA foundation-models and broader AI competition-policy work. Launch coverage uses primary GOV.UK CMA case material.",
   "hiring": {
     "isHiring": null,
@@ -12,6 +12,21 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-03-23",
+      "title": "CMA Annual Plan 2026 to 2027",
+      "url": "https://www.gov.uk/government/publications/cma-annual-plan-2026-to-2027",
+      "type": "filing",
+      "byline": "Competition and Markets Authority",
+      "source": "official_record",
+      "summary": "The CMA's 2026/27 Annual Plan is the first detailed implementation plan under its new 2026-to-2029 Strategy, setting the year's programme of work to promote competition and protect consumers with a growth-and-prosperity end goal. It is the successor to the 2025/26 plan and the vehicle where the CMA's ongoing AI/foundation-models oversight and new Digital Markets, Competition and Consumers (DMCC) Act digital-economy work now sit, aligned to the government's Strategic Steer to the CMA while asserting statutory independence.",
+      "topics": [
+        "foundation models",
+        "competition",
+        "DMCC Act",
+        "digital markets"
+      ]
+    },
     {
       "date": "2025-03-27",
       "title": "CMA Annual Plan 2025 to 2026",
@@ -67,6 +82,6 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on GOV.UK CMA case page.\n\n2026-07-02 urgent data-quality pass: added official CMA update-paper and press-note records from the same foundation-models case page; all official GOV.UK URLs verified HTTP 200.\n\n2026-07-02 18:38 freshness backfill: publications[] ceiling was 2024-04-11 for ~15mo. Confirmed first-party that the foundation-models *case page* is itself genuinely stalled at 2024-04-16 (CMA embedded ongoing AI work into general monitoring), so that ceiling was accurate, not a gap. Added the newer on-remit 'CMA Annual Plan 2025 to 2026' (the vehicle where ongoing AI/FM + DMCC digital-markets work now lives); date 2025-03-27 verified first-party from the GOV.UK page's own 'Published 27 March 2025' line. URL absent from feeds/ and feed.json before add.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on GOV.UK CMA case page.\n\n2026-07-02 urgent data-quality pass: added official CMA update-paper and press-note records from the same foundation-models case page; all official GOV.UK URLs verified HTTP 200.\n\n2026-07-02 18:38 freshness backfill: publications[] ceiling was 2024-04-11 for ~15mo. Confirmed first-party that the foundation-models *case page* is itself genuinely stalled at 2024-04-16 (CMA embedded ongoing AI work into general monitoring), so that ceiling was accurate, not a gap. Added the newer on-remit 'CMA Annual Plan 2025 to 2026' (the vehicle where ongoing AI/FM + DMCC digital-markets work now lives); date 2025-03-27 verified first-party from the GOV.UK page's own 'Published 27 March 2025' line. URL absent from feeds/ and feed.json before add.\n\n2026-07-03 08:37 freshness backfill: publications[] ceiling had advanced only to 2025-03-27 (~15mo) despite the CMA publishing an Annual Plan yearly. Added the successor 'CMA Annual Plan 2026 to 2027' — the first implementation plan under the new 2026-2029 CMA Strategy and the continuing vehicle for the CMA's AI/FM + DMCC digital-markets work (same series/rationale as the tracked 2025-26 plan, so on-remit not a scope creep). Date 2026-03-23 verified first-party from the GOV.UK page's own 'Published 23 March 2026' line; og:title confirmed. URL absent from feeds/ and feed.json before add (0 hits). ceiling 2025-03-27 -> 2026-03-23.",
   "news": []
 }

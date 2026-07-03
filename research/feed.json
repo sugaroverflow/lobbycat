@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T08:12:00Z",
+  "lastUpdated": "2026-07-03T08:37:00Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -1239,6 +1239,13 @@
       "event_type": "publication",
       "summary": "ElevenLabs describes policy-violation controls and execution modes for guardrails in voice-agent deployments.",
       "source_url": "https://elevenlabs.io/blog/guardrails"
+    },
+    {
+      "date": "2026-03-23",
+      "company_slug": "cma-broader-ai",
+      "event_type": "publication",
+      "summary": "First-party CMA corporate report: the Annual Plan 2026 to 2027, the first detailed implementation plan under the CMA's new 2026-to-2029 Strategy. Successor to the 2025/26 plan and the continuing vehicle for the CMA's AI/foundation-models oversight and Digital Markets, Competition and Consumers (DMCC) Act digital-economy work, aligned to the government's Strategic Steer while asserting statutory independence.",
+      "source_url": "https://www.gov.uk/government/publications/cma-annual-plan-2026-to-2027"
     },
     {
       "date": "2026-03-20",
