@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-02T21:08:00Z",
+  "lastUpdated": "2026-07-03T07:37:00Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -266,6 +266,13 @@
       "event_type": "publication",
       "summary": "Reports completion of Phase One of PUBLIC's work with Thames Freeport, deploying AI-enabled mobile health clinics and a Health AI Mobilisation Centre across Barking, Dagenham, Havering and Thurrock.",
       "source_url": "https://www.public.io/blog-post/phase-one-complete-a-milestone-for-thames-freeport-innovation-and-impact"
+    },
+    {
+      "date": "2026-06-23",
+      "company_slug": "ao-shearman-ai",
+      "event_type": "publication",
+      "summary": "A&O Shearman analyses DSIT's 2026 consultation proposing legislative and non-legislative options to support a trusted UK market for data intermediaries (open until 31 Aug 2026).",
+      "source_url": "https://www.aoshearman.com/en/insights/ao-shearman-on-data/department-for-science-innovation-and-technology-publishes-consultation-on-empowering-individuals"
     },
     {
       "date": "2026-06-22",

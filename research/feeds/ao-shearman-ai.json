@@ -1,6 +1,6 @@
 {
   "slug": "ao-shearman-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-03T07:37:00Z",
   "blurb": "Law-firm AI/regulatory practice. Launch coverage uses first-party European AI Continent Action Plan analysis.",
   "hiring": {
     "isHiring": null,
@@ -12,6 +12,20 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-06-23",
+      "title": "DSIT publishes consultation on empowering individuals through data intermediaries",
+      "url": "https://www.aoshearman.com/en/insights/ao-shearman-on-data/department-for-science-innovation-and-technology-publishes-consultation-on-empowering-individuals",
+      "type": "blog",
+      "byline": "A&O Shearman",
+      "source": "first_party",
+      "summary": "A&O Shearman analyses DSIT's 2026 consultation proposing legislative and non-legislative options to support a trusted UK market for data intermediaries (open until 31 Aug 2026).",
+      "topics": [
+        "UK data policy",
+        "DSIT",
+        "data intermediaries"
+      ]
+    },
     {
       "date": "2025-05-19",
       "title": "The European Commission publishes its AI Continent Action Plan",
@@ -52,6 +66,6 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party A&O Shearman AI Act explainers verified HTTP 200 with datePublished metadata; controversies checked-empty (no named-party dispute found in this pass).",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on first-party URL.\n\n2026-07-02 urgent data-quality pass: added two first-party A&O Shearman AI Act explainers verified HTTP 200 with datePublished metadata; controversies checked-empty (no named-party dispute found in this pass).\n\n2026-07-03 pubs-freshness backfill: the JS-gated /insights/ao-shearman-on-tech + on-data indexes were browser-rendered (standalone research/scripts/ao-pubs-probe.mjs, publications-scoped, not the roles scout) to enumerate post-2025-05-19 articles. Confirmed the 2025-05-19 ceiling was a real ~13.5mo gap. Added the freshest strongly UK-policy-on-remit item: DSIT data-intermediaries consultation, datePublished 2026-06-23T15:18:00Z verified first-party from the article page's own JSON-LD. Other fresh candidates left for future passes (UK copyright-and-AI opinion 2026-04-08; Digital Omnibus on AI trilogue 2026-06-05) to avoid a busywork multi-add.",
   "news": []
 }
