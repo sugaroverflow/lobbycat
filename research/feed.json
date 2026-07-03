@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T17:38:30Z",
+  "lastUpdated": "2026-07-03T19:38:38Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -28,6 +28,13 @@
       "event_type": "press",
       "summary": "CMA opens its first DMCC SMS conduct-requirement consultation for Apple and Google's mobile platforms (having designated both with strategic market status), including a proposed 'steering' conduct requirement; responses due 5pm on 28 July 2026. Marks the UK digital-markets regime moving from SMS designation into enforceable conduct.",
       "source_url": "https://www.gov.uk/government/news/cma-consults-on-new-requirements-for-apple-and-googles-mobile-platforms"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "dsit-ai-policy",
+      "event_type": "publication",
+      "summary": "DSIT-published bilateral notice: a joint UK-Germany statement on cooperation around the safety and security of advanced AI. Core AI-policy/diplomacy output from the UK AI-lead department. first_published_at 2026-06-30T20:00:04+01:00 verified via gov.uk content-store.",
+      "source_url": "https://www.gov.uk/government/publications/uk-germany-joint-statement-on-advanced-ai-safety-and-security"
     },
     {
       "date": "2026-06-27",
