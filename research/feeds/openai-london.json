@@ -1,6 +1,6 @@
 {
   "slug": "openai-london",
-  "lastUpdated": "2026-07-02T02:02:00Z",
+  "lastUpdated": "2026-07-04T17:09:00Z",
   "blurb": "OpenAI's policy arm is in standards-building mode (the Appia Foundation conformity-specs play). Separately it remains a defendant in the consolidated NYT/news-publisher copyright litigation, where a Jan 2026 discovery ruling compels production of 20M ChatGPT logs.",
   "hiring": {
     "isHiring": true,
@@ -12,6 +12,14 @@
     "note": "Ashby board checked directly 2026-07-02; many US safety/legal roles omitted, added only UK/EMEA-relevant safety/regulatory roles."
   },
   "publications": [
+    {
+      "date": "2026-06-29",
+      "title": "Mapping Europe’s AI Workforce Opportunity",
+      "url": "https://openai.com/index/mapping-ai-jobs-transition-eu",
+      "type": "paper",
+      "byline": "",
+      "summary": "New OpenAI report maps how AI could reshape jobs across the EU — highlighting which occupations may face automation, growth, or workflow changes. A policy-facing workforce-transition analysis aimed at EU labour and AI-adoption debates."
+    },
     {
       "date": "2026-06-23",
       "title": "Helping build shared standards for advanced AI",

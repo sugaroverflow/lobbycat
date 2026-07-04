@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-04T16:38:43Z",
+  "lastUpdated": "2026-07-04T17:09:00Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -42,6 +42,13 @@
       "event_type": "publication",
       "summary": "Microsoft On the Issues post by Chief Legal Officer Jon Palmer and Chief Privacy Officer Cari Benn on protecting privacy as a fundamental right while supporting transatlantic data flows. A data-policy/legal-advocacy signal: Microsoft confirms it has been granted permission to intervene in the Latombe case before the EU Court of Justice (bearing on the EU-US Data Privacy Framework and whether firms can continue transatlantic data transfers), and states it is pushing the US Congress to update the Electronic Communications Privacy Act (ECPA) to tighten secrecy-order limits. First-party datePublished 2026-06-29T04:30:07+00:00 verified on the article page (visible byline labels 'Jun 28, 2026').",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/28/protecting-privacy-as-a-fundamental-right-while-supporting-transatlantic-data-flows/"
+    },
+    {
+      "date": "2026-06-29",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "OpenAI publishes a report mapping how AI could reshape jobs across the EU (automation, growth, workflow shifts) — a policy-facing workforce-transition analysis.",
+      "source_url": "https://openai.com/index/mapping-ai-jobs-transition-eu"
     },
     {
       "date": "2026-06-27",
