@@ -1,6 +1,6 @@
 {
   "slug": "aria-safeguarded-ai",
-  "lastUpdated": "2026-07-02T02:48:00Z",
+  "lastUpdated": "2026-07-04T10:08:00Z",
   "blurb": "ARIA's Safeguarded AI programme (within Mathematics for Safe AI), building an open-source assurance toolkit so AI agents can produce formally verified, fail-safe artefacts.",
   "hiring": {
     "isHiring": true,
@@ -12,6 +12,14 @@
     "londonPolicyRoles": 4
   },
   "publications": [
+    {
+      "date": "2026-06-25",
+      "title": "HASH – making AI legible in the real world",
+      "url": "https://www.aria.org.uk/insights/hash-making-ai-legible-in-the-real-world",
+      "type": "blog",
+      "byline": null,
+      "summary": "ARIA interview with Creator team HASH (Dei Vilkinsons, Ciaran Morinan) working across the Safeguarded AI programme — applying their knowledge-graph platform to safety-critical biopharma supply chains and building the trust interfaces that make mathematically grounded AI systems usable by non-technical domain experts."
+    },
     {
       "date": "2025-07-04",
       "title": "Empowering the next wave of AI-powered science",

@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-03T19:38:38Z",
+  "lastUpdated": "2026-07-04T10:08:41Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -168,6 +168,13 @@
       "event_type": "publication",
       "summary": "Summarises the DCMS Media Green Paper and flags its open consultation (responses due 31 Aug 2026).",
       "source_url": "https://www.techuk.org/resource/dcms-published-its-long-awaited-media-green-paper.html"
+    },
+    {
+      "date": "2026-06-25",
+      "company_slug": "aria-safeguarded-ai",
+      "event_type": "publication",
+      "summary": "ARIA interview with Creator team HASH (Dei Vilkinsons, Ciaran Morinan) working across the Safeguarded AI programme — applying their knowledge-graph platform to safety-critical biopharma supply chains and building the trust interfaces that make mathematically grounded AI systems usable by non-technical domain experts.",
+      "source_url": "https://www.aria.org.uk/insights/hash-making-ai-legible-in-the-real-world"
     },
     {
       "date": "2026-06-24",
