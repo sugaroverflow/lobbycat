@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-04T10:08:41Z",
+  "lastUpdated": "2026-07-04T16:38:43Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -35,6 +35,13 @@
       "event_type": "publication",
       "summary": "DSIT-published bilateral notice: a joint UK-Germany statement on cooperation around the safety and security of advanced AI. Core AI-policy/diplomacy output from the UK AI-lead department. first_published_at 2026-06-30T20:00:04+01:00 verified via gov.uk content-store.",
       "source_url": "https://www.gov.uk/government/publications/uk-germany-joint-statement-on-advanced-ai-safety-and-security"
+    },
+    {
+      "date": "2026-06-29",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Microsoft On the Issues post by Chief Legal Officer Jon Palmer and Chief Privacy Officer Cari Benn on protecting privacy as a fundamental right while supporting transatlantic data flows. A data-policy/legal-advocacy signal: Microsoft confirms it has been granted permission to intervene in the Latombe case before the EU Court of Justice (bearing on the EU-US Data Privacy Framework and whether firms can continue transatlantic data transfers), and states it is pushing the US Congress to update the Electronic Communications Privacy Act (ECPA) to tighten secrecy-order limits. First-party datePublished 2026-06-29T04:30:07+00:00 verified on the article page (visible byline labels 'Jun 28, 2026').",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/28/protecting-privacy-as-a-fundamental-right-while-supporting-transatlantic-data-flows/"
     },
     {
       "date": "2026-06-27",
