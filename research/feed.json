@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-07-04T17:09:00Z",
+  "lastUpdated": "2026-07-04T17:38:12Z",
   "events": [
     {
       "date": "2026-07-02",
@@ -35,6 +35,13 @@
       "event_type": "publication",
       "summary": "DSIT-published bilateral notice: a joint UK-Germany statement on cooperation around the safety and security of advanced AI. Core AI-policy/diplomacy output from the UK AI-lead department. first_published_at 2026-06-30T20:00:04+01:00 verified via gov.uk content-store.",
       "source_url": "https://www.gov.uk/government/publications/uk-germany-joint-statement-on-advanced-ai-safety-and-security"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "First-party OpenAI Global Affairs publication presenting new OpenAI 'Signals' data on how ChatGPT adoption has expanded globally — users increasing usage, exploring more capabilities, and driving growth across regions and languages. On-remit as an OpenAI Global Affairs adoption-trend output feeding the AI-adoption policy narrative.",
+      "source_url": "https://openai.com/index/how-chatgpt-adoption-has-expanded"
     },
     {
       "date": "2026-06-29",
