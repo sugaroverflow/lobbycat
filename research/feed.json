@@ -1,6 +1,13 @@
 {
-  "lastUpdated": "2026-07-04T17:38:12Z",
+  "lastUpdated": "2026-07-08T20:39:03Z",
   "events": [
+    {
+      "date": "2026-07-08",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "First-party OpenAI Global Affairs publication setting out OpenAI's approach to government and national-security partnerships — principles for responsible AI use, democratic accountability, and public safety. On-remit as an OpenAI Global Affairs policy-framework output: it codifies how OpenAI positions itself toward governments (the government-digitisation / public-sector AI-policy narrative Aadi tracks).",
+      "source_url": "https://openai.com/index/government-national-security-partnerships"
+    },
     {
       "date": "2026-07-02",
       "company_slug": "bank-of-england-ai",
