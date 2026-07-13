@@ -1,15 +1,15 @@
 {
   "slug": "aria-safeguarded-ai",
-  "lastUpdated": "2026-07-04T10:08:00Z",
+  "lastUpdated": "2026-07-13T12:35:00Z",
   "blurb": "ARIA's Safeguarded AI programme (within Mathematics for Safe AI), building an open-source assurance toolkit so AI agents can produce formally verified, fail-safe artefacts.",
   "hiring": {
     "isHiring": true,
-    "newSincePrevious": null,
+    "newSincePrevious": 2,
     "roleSourceStatus": "ats_found",
     "sourceUrl": "https://aria.pinpointhq.com/",
-    "lastChecked": "2026-07-02",
-    "note": "Official ARIA Pinpoint board verified; added four London AI-programme roles tied to Safeguarded AI, multi-agent security, AI chemistry and next-generation compute architectures.",
-    "londonPolicyRoles": 4
+    "lastChecked": "2026-07-13",
+    "note": "ARIA Pinpoint board refreshed 2026-07-13. Two new London Legal Counsel roles (Senior + junior). 'AI for Chemistry (Olfactory Perception)' delisted since 2026-07-02.",
+    "londonPolicyRoles": 5
   },
   "publications": [
     {
@@ -39,40 +39,50 @@
   ],
   "roles": [
     {
+      "title": "Senior Legal Counsel",
+      "location": "London",
+      "url": "https://aria.pinpointhq.com/en/jobs/544217",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-13",
+      "note": "ARIA policy-facing legal role — direct fit for Aadi. First at their level."
+    },
+    {
+      "title": "Legal Counsel",
+      "location": "London",
+      "url": "https://aria.pinpointhq.com/en/jobs/544223",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-13"
+    },
+    {
       "title": "Science and Technology Lead - Next-Generation Compute Architectures",
       "location": "London",
       "url": "https://aria.pinpointhq.com/en/jobs/472971",
       "londonRelevant": true,
-      "isNew": true,
+      "isNew": false,
       "source": "ats",
-      "seenAt": "2026-07-02"
+      "seenAt": "2026-07-13"
     },
     {
       "title": "Science and Technology Lead - Multi-Agent Security",
       "location": "London",
       "url": "https://aria.pinpointhq.com/en/jobs/476052",
       "londonRelevant": true,
-      "isNew": true,
+      "isNew": false,
       "source": "ats",
-      "seenAt": "2026-07-02"
-    },
-    {
-      "title": "Science and Technology Lead - AI for Chemistry (Olfactory Perception)",
-      "location": "London",
-      "url": "https://aria.pinpointhq.com/en/jobs/520236",
-      "londonRelevant": true,
-      "isNew": true,
-      "source": "ats",
-      "seenAt": "2026-07-02"
+      "seenAt": "2026-07-13"
     },
     {
       "title": "Technical and Translational Lead - Safeguarded AI (Cybersecurity)",
       "location": "London",
       "url": "https://aria.pinpointhq.com/en/jobs/532406",
       "londonRelevant": true,
-      "isNew": true,
+      "isNew": false,
       "source": "ats",
-      "seenAt": "2026-07-02"
+      "seenAt": "2026-07-13"
     }
   ],
   "filings": [],
@@ -87,5 +97,5 @@
       "summary": "ARIA programme directors Nora and davidad sit down with CEO Kathleen Fisher to reflect on the Safeguarded AI programme's progress under davidad's leadership and its pivot to the next phase — a status update on the UK's flagship 'mathematics for safe AI' bet. Month-level date (February 2026) from ARIA's own page."
     }
   ],
-  "notes": "Safeguarded AI programme page (now under /opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai) confirms £59m programme, updated thesis as of May 2026; programme thesis PDFs and SAILS report are PDFs not dated HTML pages. Publications drawn from ARIA's own /insights pages with real publication dates shown on-page. No controversies where ARIA is a named legal party. role_harvest 2026-07-02: Pinpoint JSON verified four London ARIA roles directly tied to AI/security/compute programme delivery."
+  "notes": "Safeguarded AI programme page (now under /opportunity-spaces/mathematics-for-safe-ai/safeguarded-ai) confirms £59m programme, updated thesis as of May 2026; programme thesis PDFs and SAILS report are PDFs not dated HTML pages. Publications drawn from ARIA's own /insights pages with real publication dates shown on-page. No controversies where ARIA is a named legal party. role_harvest 2026-07-02: Pinpoint JSON verified four London ARIA roles directly tied to AI/security/compute programme delivery.\n\n[role_harvest 2026-07-13] Two new London Legal Counsel roles added (Senior Legal Counsel + Legal Counsel). ARIA legal team scaling from 0→2 legal counsel = policy-relevant hiring signal, direct fit for Aadi. 'AI for Chemistry (Olfactory Perception)' delisted since 2026-07-02."
 }
