@@ -1,6 +1,6 @@
 {
   "slug": "dsit-ai-opportunity",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-03T09:37:00Z",
   "blurb": "DSIT AI Opportunities Action Plan implementation. Launch coverage uses primary GOV.UK publications.",
   "hiring": {
     "isHiring": null,
@@ -12,6 +12,15 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-06-08",
+      "title": "UK AI Hardware Plan",
+      "url": "https://www.gov.uk/government/publications/uk-ai-hardware-plan",
+      "type": "filing",
+      "byline": "Department for Science, Innovation and Technology",
+      "source": "regulator",
+      "summary": "DSIT policy paper building on the AI Opportunities Action Plan: sets out how the UK will develop, demonstrate, deploy and scale the chips and semiconductor technologies underpinning AI, across four pillars (innovation, skills, procurement, investment) to capture more value through UK-designed compute hardware."
+    },
     {
       "date": "2025-01-13",
       "title": "AI Opportunities Action Plan: government response",
@@ -35,6 +44,6 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on GOV.UK government-response page; one-year-on page supplied by portal batch.",
+  "notes": "launch_harvest 2026-06-27: direct fetch HTTP 200 on GOV.UK government-response page; one-year-on page supplied by portal batch. 2026-07-03 pubs-freshness backfill: added UK AI Hardware Plan (2026-06-08), first-party gov.uk content-store first_published_at 2026-06-08T17:43+01:00, on-remit (body states it builds on the AI Opportunities Action Plan); ceiling 2026-01-29 -> 2026-06-08. Next candidate logged: Digital and Technologies Sector Plan: Year One Update (2026-06-10, broader digital-industrial, only partly AI).",
   "news": []
 }

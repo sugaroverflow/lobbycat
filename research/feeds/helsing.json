@@ -1,6 +1,6 @@
 {
   "slug": "helsing",
-  "lastUpdated": "2026-06-27T20:08:00Z",
+  "lastUpdated": "2026-07-02T12:10:00Z",
   "blurb": "Helsing is a European defence-AI company building software and increasingly hardware (autonomous aircraft, strike drones, robotics) for military applications, with a strong 'European sovereignty' framing.",
   "hiring": {
     "isHiring": true,
@@ -8,7 +8,16 @@
     "londonPolicyRoles": 1,
     "lastChecked": "2026-06-27"
   },
-  "publications": [],
+  "publications": [
+    {
+      "date": "2026-06-01",
+      "title": "Helsing unveils Area 9 and launches RX-1, its first European robotics research platform",
+      "url": "https://helsing.ai/newsroom/helsing-unveils-area-9-and-launches-rx-1-its-first-european-robotics-research-platform",
+      "type": "research_division",
+      "byline": "Helsing",
+      "summary": "Helsing established Area 9, an advanced research division focused on AI and autonomous systems, and launched RX-1 \u2014 a robotics research platform designed and manufactured entirely in Europe, positioned as a sovereign alternative to non-European platforms and to be made available to universities and research institutions across Europe. Relevant to defence-AI research infrastructure, autonomy R&D and European technological-sovereignty policy."
+    }
+  ],
   "roles": [
     {
       "title": "Legal Counsel",
@@ -64,5 +73,5 @@
       "summary": "Partnership with EURENCO to build a 'sovereign European' strike-drone capability — ties autonomous-weapons development to European strategic-autonomy / defence-sovereignty policy."
     }
   ],
-  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (helsing.ai/newsroom passed cleanly; untested by web_fetch this morning). Dates confirmed from each article's own 'Press Release DD. Mon. YYYY' header. Selected the two items with the strongest AI-policy signal (autonomous combat aircraft; sovereign European strike drones) as defence-AI / LAWS / European-sovereignty signals. Other dated newsroom items exist (OHB/Helsing space JVs 'KIRK'/'Alliance for Europe's Space Sector', RX-1 robotics platform, Stockholm office, CCO/CFO appointments) but are corporate/personnel rather than policy — left as leads, not logged, to keep signal high. Newsroom listing links wrapped images with no inline text on re-query, so dates were read from individual article headers rather than the index. ROLES (2026-06-27 ATS): Legal Counsel (London) open at the defence-AI firm. CONTROVERSY (2026-06-27 20:08 UTC): logged the HX-2 Ukraine-procurement setbacks (Bloomberg 19 Jan 2026 + Apr 2025 allegations; Helsing rebuttal). Treated Defense Express as an untrusted lead and traced its citation back to the dated Bloomberg reports + company response; status=disputed, severity=medium (alleged, no regulatory finding). LAWS/defence-procurement-assurance signal with a London nexus."
+  "notes": "Harvested 2026-06-27 via OpenClaw headless browser (helsing.ai/newsroom passed cleanly; untested by web_fetch this morning). Dates confirmed from each article's own 'Press Release DD. Mon. YYYY' header. Selected the two items with the strongest AI-policy signal (autonomous combat aircraft; sovereign European strike drones) as defence-AI / LAWS / European-sovereignty signals. Other dated newsroom items exist (OHB/Helsing space JVs 'KIRK'/'Alliance for Europe's Space Sector', RX-1 robotics platform, Stockholm office, CCO/CFO appointments) but are corporate/personnel rather than policy — left as leads, not logged, to keep signal high. PUBLICATIONS (2026-07-02 12:10 UTC): reassessed the RX-1 lead and logged it as a research_division publication event. On the fuller picture it is not a mere product launch: it is the establishment of Area 9 (advanced research division for AI/autonomous systems) plus RX-1 offered as a sovereign European robotics research platform to universities/research institutions — a research-infrastructure + European-sovereignty policy signal. First-party dateline 'Paris, 1 June 2026' (helsing.ai newsroom byline, which was Vercel-challenge-gated to web_fetch today), corroborated independently by ASDNews, Munich Startup, thedefensenews.com (PARIS June 02 2026) and Resilience Media (pub. June 1 2026). Fills previously-empty publications[] (pubs 0→1). Newsroom listing links wrapped images with no inline text on re-query, so dates were read from individual article headers rather than the index. ROLES (2026-06-27 ATS): Legal Counsel (London) open at the defence-AI firm. CONTROVERSY (2026-06-27 20:08 UTC): logged the HX-2 Ukraine-procurement setbacks (Bloomberg 19 Jan 2026 + Apr 2025 allegations; Helsing rebuttal). Treated Defense Express as an untrusted lead and traced its citation back to the dated Bloomberg reports + company response; status=disputed, severity=medium (alleged, no regulatory finding). LAWS/defence-procurement-assurance signal with a London nexus."
 }

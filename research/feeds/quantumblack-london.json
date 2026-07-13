@@ -35,7 +35,7 @@
       ]
     },
     {
-      "date": "2025",
+      "date": "2025-06-13",
       "title": "Seizing the agentic AI advantage (PDF)",
       "url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/seizing%20the%20agentic%20ai%20advantage/seizing-the-agentic-ai-advantage.pdf",
       "type": "paper",
@@ -52,6 +52,6 @@
   "filings": [],
   "leadership": [],
   "controversies": [],
-  "notes": "launch_harvest 2026-06-27: official first-party URL discovered; direct fetch returned HTTP 403, so status=needs_browser for body recapture.\n\n2026-07-02 urgent data-quality pass: McKinsey HTML pages were slow/timeouts from text fetch, so additions use first-party PDF URLs verified HTTP 200 via web_fetch. No named-party controversy logged.",
+  "notes": "launch_harvest 2026-06-27: official first-party URL discovered; direct fetch returned HTTP 403, so status=needs_browser for body recapture.\n\n2026-07-02 urgent data-quality pass: McKinsey HTML pages were slow/timeouts from text fetch, so additions use first-party PDF URLs verified HTTP 200 via web_fetch. No named-party controversy logged.\n\n2026-07-02 14:37 date-precision fix: 'Seizing the agentic AI advantage' bare-year '2025' -> '2025-06-13'. First-party corroboration: McKinsey's own citation format in two McKinsey articles reads 'Seizing the agentic AI advantage, McKinsey, June 13, 2025', and the canonical PDF filename is seizing-the-agentic-ai-advantage-june-2025.pdf. Removes a false 2025-01-01 timeline anchor (bare year parses to Jan 1 via new Date()).",
   "news": []
 }

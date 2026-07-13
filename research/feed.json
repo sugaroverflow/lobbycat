@@ -1,12 +1,68 @@
 {
-  "lastUpdated": "2026-07-02T01:48:15Z",
+  "lastUpdated": "2026-07-08T20:39:03Z",
   "events": [
+    {
+      "date": "2026-07-08",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "First-party OpenAI Global Affairs publication setting out OpenAI's approach to government and national-security partnerships — principles for responsible AI use, democratic accountability, and public safety. On-remit as an OpenAI Global Affairs policy-framework output: it codifies how OpenAI positions itself toward governments (the government-digitisation / public-sector AI-policy narrative Aadi tracks).",
+      "source_url": "https://openai.com/index/government-national-security-partnerships"
+    },
+    {
+      "date": "2026-07-02",
+      "company_slug": "bank-of-england-ai",
+      "event_type": "publication",
+      "summary": "First-party Bank of England publication setting out its strategic approach to enabling responsible innovation across AI, distributed ledger technology (DLT) and quantum computing in the financial system — framing the Bank's role as shaping (not slowing) innovation while remaining vigilant to risks across monetary stability, financial stability and safe-and-sound firms.",
+      "source_url": "https://www.bankofengland.co.uk/report/2025/the-boes-approach-to-innovation-in-ai-dlt-quantum-computing"
+    },
     {
       "date": "2026-07-01",
       "company_slug": "pa-consulting-ai",
       "event_type": "publication",
       "summary": "PA Consulting says public-sector AI delivery should align with AI governance frameworks, blueprints and responsible practices; date reflects verified page update metadata.",
       "source_url": "https://www.paconsulting.com/industries/government-and-public-sector"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "anthropic-london",
+      "event_type": "publication",
+      "summary": "Expanding Project Glasswing: Anthropic extends its cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity (capability gain, breadth, ease of weaponisation, discoverability). A multi-lab AI-governance/standard-setting signal. Corroborated by Ars Technica and The Record (1 Jul 2026).",
+      "source_url": "https://www.anthropic.com/news/expanding-project-glasswing"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "cma-dmu",
+      "event_type": "press",
+      "summary": "CMA opens its first DMCC SMS conduct-requirement consultation for Apple and Google's mobile platforms (having designated both with strategic market status), including a proposed 'steering' conduct requirement; responses due 5pm on 28 July 2026. Marks the UK digital-markets regime moving from SMS designation into enforceable conduct.",
+      "source_url": "https://www.gov.uk/government/news/cma-consults-on-new-requirements-for-apple-and-googles-mobile-platforms"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "dsit-ai-policy",
+      "event_type": "publication",
+      "summary": "DSIT-published bilateral notice: a joint UK-Germany statement on cooperation around the safety and security of advanced AI. Core AI-policy/diplomacy output from the UK AI-lead department. first_published_at 2026-06-30T20:00:04+01:00 verified via gov.uk content-store.",
+      "source_url": "https://www.gov.uk/government/publications/uk-germany-joint-statement-on-advanced-ai-safety-and-security"
+    },
+    {
+      "date": "2026-06-30",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "First-party OpenAI Global Affairs publication presenting new OpenAI 'Signals' data on how ChatGPT adoption has expanded globally — users increasing usage, exploring more capabilities, and driving growth across regions and languages. On-remit as an OpenAI Global Affairs adoption-trend output feeding the AI-adoption policy narrative.",
+      "source_url": "https://openai.com/index/how-chatgpt-adoption-has-expanded"
+    },
+    {
+      "date": "2026-06-29",
+      "company_slug": "microsoft-ai-london",
+      "event_type": "publication",
+      "summary": "Microsoft On the Issues post by Chief Legal Officer Jon Palmer and Chief Privacy Officer Cari Benn on protecting privacy as a fundamental right while supporting transatlantic data flows. A data-policy/legal-advocacy signal: Microsoft confirms it has been granted permission to intervene in the Latombe case before the EU Court of Justice (bearing on the EU-US Data Privacy Framework and whether firms can continue transatlantic data transfers), and states it is pushing the US Congress to update the Electronic Communications Privacy Act (ECPA) to tighten secrecy-order limits. First-party datePublished 2026-06-29T04:30:07+00:00 verified on the article page (visible byline labels 'Jun 28, 2026').",
+      "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/28/protecting-privacy-as-a-fundamental-right-while-supporting-transatlantic-data-flows/"
+    },
+    {
+      "date": "2026-06-29",
+      "company_slug": "openai-london",
+      "event_type": "publication",
+      "summary": "OpenAI publishes a report mapping how AI could reshape jobs across the EU (automation, growth, workflow shifts) — a policy-facing workforce-transition analysis.",
+      "source_url": "https://openai.com/index/mapping-ai-jobs-transition-eu"
     },
     {
       "date": "2026-06-27",
@@ -142,6 +198,13 @@
       "source_url": "https://www.techuk.org/resource/dcms-published-its-long-awaited-media-green-paper.html"
     },
     {
+      "date": "2026-06-25",
+      "company_slug": "aria-safeguarded-ai",
+      "event_type": "publication",
+      "summary": "ARIA interview with Creator team HASH (Dei Vilkinsons, Ciaran Morinan) working across the Safeguarded AI programme — applying their knowledge-graph platform to safety-critical biopharma supply chains and building the trust interfaces that make mathematically grounded AI systems usable by non-technical domain experts.",
+      "source_url": "https://www.aria.org.uk/insights/hash-making-ai-legible-in-the-real-world"
+    },
+    {
       "date": "2026-06-24",
       "company_slug": "elevenlabs-london",
       "event_type": "controversy",
@@ -252,6 +315,13 @@
       "event_type": "publication",
       "summary": "Reports completion of Phase One of PUBLIC's work with Thames Freeport, deploying AI-enabled mobile health clinics and a Health AI Mobilisation Centre across Barking, Dagenham, Havering and Thurrock.",
       "source_url": "https://www.public.io/blog-post/phase-one-complete-a-milestone-for-thames-freeport-innovation-and-impact"
+    },
+    {
+      "date": "2026-06-23",
+      "company_slug": "ao-shearman-ai",
+      "event_type": "publication",
+      "summary": "A&O Shearman analyses DSIT's 2026 consultation proposing legislative and non-legislative options to support a trusted UK market for data intermediaries (open until 31 Aug 2026).",
+      "source_url": "https://www.aoshearman.com/en/insights/ao-shearman-on-data/department-for-science-innovation-and-technology-publishes-consultation-on-empowering-individuals"
     },
     {
       "date": "2026-06-22",
@@ -534,6 +604,20 @@
       "source_url": "https://openai.com/index/"
     },
     {
+      "date": "2026-06-11",
+      "company_slug": "mhra-ai",
+      "event_type": "press",
+      "summary": "MHRA publishes the results of an extensive public consultation on AI in healthcare, which will inform the recommendations of the National Commission into the Regulation of AI in Healthcare and future regulation. Core UK-regulator AI-policy signal: public-attitudes evidence feeding a live UK regulatory-design process. First-party gov.uk first_published_at 2026-06-11T12:04:00+01:00 (content-store verified); sits above the tracked mhra-ai ceiling (AI Airlock Phase 2, 2026-06-09) and alongside the same-day 'Regulation of AI in Healthcare' call-for-evidence outcome.",
+      "source_url": "https://www.gov.uk/government/news/mhra-landmark-report-reveals-public-views-on-ai-in-healthcare"
+    },
+    {
+      "date": "2026-06-11",
+      "company_slug": "mhra-ai",
+      "event_type": "publication",
+      "summary": "MHRA/National Commission publication: the underlying research, stakeholder-engagement and call-for-evidence findings feeding the National Commission into the Regulation of AI in Healthcare. The substantive evidence base (distinct from the same-day press announcement) that will inform the Commission's recommendations on future UK regulation of AI in healthcare. First-party gov.uk content-store first_published_at 2026-06-11T12:00:00+01:00; sits above the prior mhra-ai publications ceiling (AI Airlock Phase 2, 2026-06-09).",
+      "source_url": "https://www.gov.uk/government/publications/national-commission-into-the-regulation-of-ai-in-healthcare-research-engagement-and-call-for-evidence-findings"
+    },
+    {
       "date": "2026-06-10",
       "company_slug": "faculty-ai",
       "event_type": "publication",
@@ -590,9 +674,16 @@
       "source_url": "https://www.techuk.org/resource/dsit-s-ai-assurance-roadmap-takes-its-next-step-techuk-to-lead-the-industry-advisory-group-of-ai-assurance-consortium.html"
     },
     {
+      "date": "2026-06-09",
+      "company_slug": "mhra-ai",
+      "event_type": "publication",
+      "summary": "MHRA report on the second phase of its AI Airlock regulatory sandbox for AI as a medical device (ran April 2025 to May 2026): sandbox methodology, seven case studies, independent-evaluation lessons, and recommendations for changes to the AIaMD regulatory framework. Not formal MHRA guidance.",
+      "source_url": "https://www.gov.uk/government/publications/ai-airlock-sandbox-phase-2-programme-report"
+    },
+    {
       "date": "2026-06-08",
       "company_slug": "aisi",
-      "event_type": "press",
+      "event_type": "publication",
       "summary": "AISI evaluation probing whether AI systems disclose that they are AI when asked — directly relevant to transparency/disclosure rules and the bot-identification debate.",
       "source_url": "https://www.aisi.gov.uk/blog/realitytest-do-ai-systems-disclose-their-identity-when-asked"
     },
@@ -639,11 +730,25 @@
       "source_url": "https://www.gov.uk/government/news/government-to-partner-with-tech-companies-trade-unions-and-industry-leaders-to-boost-ai-adoption-and-equip-workers-with-ai-skills"
     },
     {
+      "date": "2026-06-08",
+      "company_slug": "dsit-ai-opportunity",
+      "event_type": "publication",
+      "summary": "DSIT UK AI Hardware Plan (building on the AI Opportunities Action Plan): sets out how the UK will develop, demonstrate, deploy and scale the chips and semiconductor technologies underpinning AI across four pillars (innovation, skills, procurement, investment), to capture more value through UK-designed compute hardware.",
+      "source_url": "https://www.gov.uk/government/publications/uk-ai-hardware-plan"
+    },
+    {
       "date": "2026-06-04",
       "company_slug": "microsoft-ai-london",
       "event_type": "publication",
       "summary": "Eric Horvitz discusses AI biosecurity safeguards, connecting Microsoft’s safety work to the frontier-lab biosecurity-policy conversation.",
       "source_url": "https://blogs.microsoft.com/on-the-issues/2026/06/04/strengthening-biosecurity-in-the-era-of-ai/"
+    },
+    {
+      "date": "2026-06-04",
+      "company_slug": "ofcom-ai",
+      "event_type": "publication",
+      "summary": "Ofcom's updated strategic approach to AI, applying its broadly technology-neutral, outcomes-based regulatory principles to AI adoption across the sectors it regulates. Includes eight case studies (spectrum/online-safety data lake, deepfake mitigation, trust in AI chatbots, telecoms customer-experience impact, AI in broadcasting, AI in telecoms cyber-security, network management) and flags a further findings publication in H2 2026.",
+      "source_url": "https://www.ofcom.org.uk/about-ofcom/annual-reports-and-plans/ofcoms-strategic-approach-to-ai"
     },
     {
       "date": "2026-06-03",
@@ -681,6 +786,13 @@
       "source_url": "https://stability.ai/research/octopus-optimized-kv-cache-for-transformers-via-octahedral-parametrization-under-optimal-squared-error-quantization"
     },
     {
+      "date": "2026-06-02",
+      "company_slug": "alan-turing-institute",
+      "event_type": "publication",
+      "summary": "Turing (via its Centre for Emerging Technology and Security, CETaS) published an AI Disinformation Incident Repository plus related analysis of how AI information threats have affected crisis events over the last few years, offering strategic policy recommendations and operational insights to strengthen societal resilience to AI-driven crises. Underpinned by the CETaS research report 'Adding Fuel to the Fire: AI Information Threats and Crisis Events' on AI threats to democratic stability. First-party dateline 'Tuesday 02 Jun 2026' confirmed on turing.ac.uk homepage listing (blog article page itself Cloudflare-gated).",
+      "source_url": "https://www.turing.ac.uk/blog/ai-disinformation-incident-repository-how-ai-transforming-crisis-events"
+    },
+    {
       "date": "2026-06-01",
       "company_slug": "google-deepmind",
       "event_type": "press",
@@ -702,6 +814,13 @@
       "source_url": "https://www.deloitte.com/uk/en/blogs/ecrs/the-ai-omnibus-what-is-settled-and-what-is-still-in-play.html"
     },
     {
+      "date": "2026-06-01",
+      "company_slug": "helsing",
+      "event_type": "publication",
+      "summary": "Helsing established Area 9, an advanced research division focused on AI and autonomous systems, and launched RX-1 — a robotics research platform designed and manufactured entirely in Europe, positioned as a sovereign alternative to non-European platforms and to be made available to universities and research institutions across Europe. Relevant to defence-AI research infrastructure, autonomy R&D and European technological-sovereignty policy.",
+      "source_url": "https://helsing.ai/newsroom/helsing-unveils-area-9-and-launches-rx-1-its-first-european-robotics-research-platform"
+    },
+    {
       "date": "2026-05-30",
       "company_slug": "connected-by-data",
       "event_type": "publication",
@@ -714,6 +833,13 @@
       "event_type": "publication",
       "summary": "OpenAI launches Rosalind Biodefense, expanding trusted access to GPT-Rosalind for vetted developers and US government partners advancing biodefense and public health. Frontier-lab/government partnership pattern continues.",
       "source_url": "https://openai.com/research/index/release/"
+    },
+    {
+      "date": "2026-05-29",
+      "company_slug": "ippr",
+      "event_type": "publication",
+      "summary": "Argues worker power must be reanimated in the face of AI-driven labour market shocks. Contends AI's distributional effects are not predetermined and depend on workers' ability to influence AI adoption at firm level; calls for giving workers power to shape and adapt to AI's impacts as a priority for progressive renewal.",
+      "source_url": "https://www.ippr.org/articles/strike-while-ai-is-hot-worker-power"
     },
     {
       "date": "2026-05-28",
@@ -858,7 +984,7 @@
     {
       "date": "2026-05-13",
       "company_slug": "aisi",
-      "event_type": "press",
+      "event_type": "publication",
       "summary": "AISI finds the length of tasks frontier models can autonomously complete in its cyber suite has been doubling every few months, with the doubling rate accelerating — a concrete capability-trend signal feeding the cyber-risk policy debate.",
       "source_url": "https://www.aisi.gov.uk/blog/how-fast-is-autonomous-ai-cyber-capability-advancing"
     },
@@ -1080,6 +1206,13 @@
       "source_url": "https://docs.poly.ai/legal/compliance"
     },
     {
+      "date": "2026-04-16",
+      "company_slug": "ippr",
+      "event_type": "publication",
+      "summary": "Argues that with AI politics set to change sharply in 2026, governments must both protect people from AI risks and deliberately steer the transformation toward public value rather than defaulting to acceleration. Introduces a how-to framework and near-term priority policies for European governments to intervene ambitiously in citizens' interests.",
+      "source_url": "https://www.ippr.org/articles/acceleration-is-not-a-strategy"
+    },
+    {
       "date": "2026-04-14",
       "company_slug": "bain-london-ai",
       "event_type": "publication",
@@ -1106,6 +1239,13 @@
       "event_type": "publication",
       "summary": "Meta announces its updated Advanced AI Scaling Framework and related safety/preparedness reporting, framing the work as a scaled approach to testing and governing its most advanced AI systems.",
       "source_url": "https://ai.meta.com/blog/scaling-how-we-build-test-advanced-ai/"
+    },
+    {
+      "date": "2026-04-08",
+      "company_slug": "ao-shearman-ai",
+      "event_type": "publication",
+      "summary": "A&O Shearman opinion piece taking stock of the UK copyright-and-AI debate, including the text-and-data-mining question and the government's proposed approach following the December 2024 consultation.",
+      "source_url": "https://www.aoshearman.com/en/insights/ao-shearman-on-tech/where-are-we-on-copyright-and-ai-in-the-uk"
     },
     {
       "date": "2026-04-07",
@@ -1171,6 +1311,13 @@
       "source_url": "https://elevenlabs.io/blog/guardrails"
     },
     {
+      "date": "2026-03-23",
+      "company_slug": "cma-broader-ai",
+      "event_type": "publication",
+      "summary": "First-party CMA corporate report: the Annual Plan 2026 to 2027, the first detailed implementation plan under the CMA's new 2026-to-2029 Strategy. Successor to the 2025/26 plan and the continuing vehicle for the CMA's AI/foundation-models oversight and Digital Markets, Competition and Consumers (DMCC) Act digital-economy work, aligned to the government's Strategic Steer while asserting statutory independence.",
+      "source_url": "https://www.gov.uk/government/publications/cma-annual-plan-2026-to-2027"
+    },
+    {
       "date": "2026-03-20",
       "company_slug": "bbc-responsible-ai",
       "event_type": "publication",
@@ -1190,6 +1337,13 @@
       "event_type": "publication",
       "summary": "Report drawing on five years of PLP collaboration with community groups to advance shared legal approaches for social change.",
       "source_url": "https://publiclawproject.org.uk/resources/collaborative-legal-approaches-for-systemic-change-report/"
+    },
+    {
+      "date": "2026-03-17",
+      "company_slug": "ico-ai",
+      "event_type": "publication",
+      "summary": "ICO publishes its AI and biometrics strategy update (March 2026): confirms draft ADM/profiling guidance coming for consultation to feed a statutory AI and ADM code of practice, ongoing central-government engagement (incl. DWP) on responsible ADM scaling, a forthcoming ADM-in-recruitment report, and active data-protection scrutiny of 11 major foundation-model developers.",
+      "source_url": "https://ico.org.uk/about-the-ico/our-information/our-strategies-and-plans/artificial-intelligence-and-biometrics-strategy/ai-and-biometrics-strategy-update-march-2026/"
     },
     {
       "date": "2026-03-01",
@@ -1332,6 +1486,13 @@
       "source_url": "https://www.longtermresilience.org/reports/gap-consolidation-of-the-mirror-life-evidence-base/"
     },
     {
+      "date": "2026-01-16",
+      "company_slug": "govai",
+      "event_type": "publication",
+      "summary": "Outlines a vision for frontier AI auditing as rigorous third-party verification of developers' safety and security claims based on deep, secure access to non-public information (not just deployed products). Proposes four AI Assurance Levels (AALs), recommending AAL-1 as a baseline for frontier AI and AAL-2 as a near-term goal for the most advanced developers. arXiv:2601.11699.",
+      "source_url": "https://www.governance.ai/research-paper/frontier-ai-auditing-toward-rigorous-third-party-assessment-of-safety-and-security-practices-at-leading-ai-companies"
+    },
+    {
       "date": "2026-01-14",
       "company_slug": "oliver-wyman-london",
       "event_type": "publication",
@@ -1372,6 +1533,13 @@
       "event_type": "publication",
       "summary": "Bain frames responsible AI as governance, lifecycle oversight, evaluation and monitoring across AI systems, including generative and agentic AI.",
       "source_url": "https://www.bain.com/insights/what-is-responsible-ai/"
+    },
+    {
+      "date": "2025-12-15",
+      "company_slug": "dsit-ai-policy",
+      "event_type": "publication",
+      "summary": "DSIT policy paper: a progress statement on the government's work on copyright and AI, and the steps being taken to prepare a report on the use of copyright works in developing AI systems plus an economic impact assessment, as required by sections 135-137 of the Data (Use and Access) Act.",
+      "source_url": "https://www.gov.uk/government/publications/copyright-and-artificial-intelligence-progress-report"
     },
     {
       "date": "2025-12-12",
@@ -1528,6 +1696,13 @@
       "source_url": "https://www.longtermresilience.org/reports/global-risk-index-for-ai-enabled-biological-tools/"
     },
     {
+      "date": "2025-09-08",
+      "company_slug": "ico-ai",
+      "event_type": "publication",
+      "summary": "Chapter of the ICO generative AI consultation series focused on individual rights in relation to training and fine-tuning of generative AI models.",
+      "source_url": "https://ico.org.uk/about-the-ico/what-we-do/our-work-on-artificial-intelligence/generative-ai-fourth-call-for-evidence/"
+    },
+    {
       "date": "2025-09-04",
       "company_slug": "royal-society-policy",
       "event_type": "publication",
@@ -1603,6 +1778,13 @@
       "event_type": "publication",
       "summary": "Finds that more capable frontier models exhibit stronger in-context scheming, a scaling trend relevant to AI governance.",
       "source_url": "https://www.apolloresearch.ai/science/more-capable-models-are-better-at-in-context-scheming/"
+    },
+    {
+      "date": "2025-06-13",
+      "company_slug": "quantumblack-london",
+      "event_type": "publication",
+      "summary": "McKinsey/QuantumBlack argues agentic AI requires new architectures and governance mechanisms to manage autonomous workflows at enterprise scale.",
+      "source_url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/seizing%20the%20agentic%20ai%20advantage/seizing-the-agentic-ai-advantage.pdf"
     },
     {
       "date": "2025-06-10",
@@ -1703,6 +1885,13 @@
       "source_url": "https://www.england.nhs.uk/long-read/artificial-intelligence-ai-and-machine-learning/"
     },
     {
+      "date": "2025-03-27",
+      "company_slug": "cma-broader-ai",
+      "event_type": "publication",
+      "summary": "The CMA's 2025/26 Annual Plan sets its programme of work, now where its ongoing AI/foundation-models oversight lives after the initial review was embedded into general monitoring: horizon-scanning of emerging markets including foundation models, and use of new Digital Markets, Competition and Consumers (DMCC) Act powers over the digital economy. Reaffirms the CMA's published foundation-model principles as the guide for these markets.",
+      "source_url": "https://www.gov.uk/government/publications/cma-annual-plan-2025-to-2026"
+    },
+    {
       "date": "2025-03-12",
       "company_slug": "benevolentai",
       "event_type": "press",
@@ -1792,13 +1981,6 @@
       "event_type": "publication",
       "summary": "Frontier Economics argues the competitive focus in AI is shifting downstream, from building the most capable models to deployment, distribution and regulator-facing market structure questions.",
       "source_url": "https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i21218-out-of-the-clouds-the-downstream-focus-for-ai-in-2025/"
-    },
-    {
-      "date": "2025",
-      "company_slug": "quantumblack-london",
-      "event_type": "publication",
-      "summary": "McKinsey/QuantumBlack argues agentic AI requires new architectures and governance mechanisms to manage autonomous workflows at enterprise scale.",
-      "source_url": "https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/seizing%20the%20agentic%20ai%20advantage/seizing-the-agentic-ai-advantage.pdf"
     },
     {
       "date": "2024-12-16",

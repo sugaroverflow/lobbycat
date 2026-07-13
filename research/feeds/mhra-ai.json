@@ -1,6 +1,6 @@
 {
   "slug": "mhra-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-03T17:37:00Z",
   "blurb": "The Medicines and Healthcare products Regulatory Agency (MHRA) regulates medicines and medical devices in the UK, including software and artificial intelligence as a medical device.",
   "hiring": {
     "roleSourceStatus": "not_relevant_public_sector",
@@ -11,6 +11,22 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-06-11",
+      "title": "National Commission into the Regulation of AI in Healthcare: research, engagement and call for evidence findings",
+      "url": "https://www.gov.uk/government/publications/national-commission-into-the-regulation-of-ai-in-healthcare-research-engagement-and-call-for-evidence-findings",
+      "type": "other",
+      "byline": null,
+      "summary": "MHRA/National Commission publication: the underlying research, stakeholder-engagement and call-for-evidence findings feeding the National Commission into the Regulation of AI in Healthcare. The substantive evidence base (distinct from the same-day press announcement) that will inform the Commission's recommendations on future UK regulation of AI in healthcare. First-party gov.uk content-store first_published_at 2026-06-11T12:00:00+01:00; sits above the prior mhra-ai publications ceiling (AI Airlock Phase 2, 2026-06-09)."
+    },
+    {
+      "date": "2026-06-09",
+      "title": "AI Airlock Sandbox Phase 2 Programme Report",
+      "url": "https://www.gov.uk/government/publications/ai-airlock-sandbox-phase-2-programme-report",
+      "type": "other",
+      "byline": null,
+      "summary": "MHRA report on the second phase of its AI Airlock regulatory sandbox for AI as a medical device (ran April 2025 to May 2026): methodology for the sandbox, seven case studies, independent-evaluation lessons, and key technical/regulatory insights and recommendations for changes to the AIaMD regulatory and support framework. Not formal MHRA guidance."
+    },
     {
       "date": "2025-02-03",
       "title": "Software and artificial intelligence (AI) as a medical device",
@@ -25,6 +41,13 @@
   "leadership": [],
   "controversies": [],
   "news": [
+    {
+      "date": "2026-06-11",
+      "title": "MHRA landmark report reveals public views on AI in healthcare",
+      "url": "https://www.gov.uk/government/news/mhra-landmark-report-reveals-public-views-on-ai-in-healthcare",
+      "source": "company_press",
+      "summary": "MHRA publishes the results of an extensive public consultation on AI in healthcare, which will inform the recommendations of the National Commission into the Regulation of AI in Healthcare and future regulation. Core UK-regulator AI-policy signal: public-attitudes evidence feeding a live UK regulatory-design process. First-party gov.uk first_published_at 2026-06-11T12:04:00+01:00 (content-store verified); sits above the tracked mhra-ai ceiling (AI Airlock Phase 2, 2026-06-09) and alongside the same-day 'Regulation of AI in Healthcare' call-for-evidence outcome."
+    },
     {
       "date": "2025-06-24",
       "title": "UK MHRA leads safe use of AI in healthcare as first country in new global network",

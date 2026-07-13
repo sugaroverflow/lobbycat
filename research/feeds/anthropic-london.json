@@ -1,14 +1,23 @@
 {
   "slug": "anthropic-london",
-  "lastUpdated": "2026-06-27",
-  "blurb": "One significant headline-level signal this run: a US government export-control directive reportedly suspending access to Anthropic's Fable 5 and Mythos 5 models (announced Jun 12). Full text not captured — Anthropic's RSS feeds 404'd, so this is title-only pending a clean read.",
+  "lastUpdated": "2026-07-13T12:35:00Z",
+  "blurb": "Headline governance signal: 'Expanding Project Glasswing' (Jun 30) extends Anthropic's cyber-defence partnership to ~150 new orgs across 15+ countries and — with Amazon, Microsoft and Google — proposes an industry-wide consensus framework for scoring AI jailbreak severity (four criteria: capability gain, breadth, ease of weaponisation, discoverability). Follows the Jun 12 US export-control directive on Fable 5 / Mythos 5; Fable 5 returned globally Jul 1.",
   "hiring": {
     "isHiring": true,
-    "newSincePrevious": 2,
+    "newSincePrevious": 0,
     "londonPolicyRoles": 10,
-    "lastChecked": "2026-06-26"
+    "lastChecked": "2026-07-13",
+    "note": "London/EMEA roles list unchanged since 2026-07-02 (Fellows Programs + Policy Counsels + Commercial Counsels + AI Compliance Officer Dublin). Global signal since then: Anthropic posted a coordinated Safeguards Enforcement Analyst cluster (8 harm-category-specific US analysts: Age-Appropriate Design, Bio, Chem/Explosives, Child Safety, Cyber, Integrity, Rad/Nuclear, plus existing Safety Evaluations & Fraud), plus Program Manager for Responsible Scaling Policy, National Security Policy Lead Biotech, IP Counsel Copyright, and Standards Editor. This is the classic \"building muscle\" pattern — a proper Safeguards enforcement function stood up in one hiring window."
   },
   "publications": [
+    {
+      "date": "2026-06-30",
+      "title": "Expanding Project Glasswing",
+      "url": "https://www.anthropic.com/news/expanding-project-glasswing",
+      "type": "press",
+      "byline": "Anthropic",
+      "summary": "Anthropic extends its Project Glasswing cyber-defence partnership to ~150 new organisations across 15+ countries in critical-infrastructure sectors (power, water, healthcare, communications, hardware), and — with Amazon, Microsoft, Google and other Glasswing partners — proposes an industry-wide consensus framework for scoring AI jailbreak severity across four criteria (capability gain, breadth of capability gain, ease of weaponisation, discoverability), described in coverage as a 'CVSS for AI'. A multi-lab AI-governance / standard-setting signal directly on-remit. Date pinned to 2026-06-30 (announced alongside 'Fable 5 returns globally July 1'); first-party byline not cleanly datable from the JS-rendered page, corroborated by Ars Technica, The Record and Cybersecurity Dive (dated 1 Jul 2026)."
+    },
     {
       "date": "2026-06-12",
       "title": "The US government has issued an export control directive to suspend all access to Fable 5 and Mythos 5.",
@@ -176,7 +185,7 @@
   ],
   "filings": [],
   "leadership": [],
-  "notes": "[source feed broken] Seed blogRssUrl https://www.anthropic.com/news/rss.xml returns 404; https://www.anthropic.com/rss.xml also 404. Only https://www.anthropic.com/news (HTML) resolves, and readability captured a single item. Needs a working feed URL or a direct article URL. Flag to Techie for the ingestion pipeline (src/lib/rss). Until fixed, Anthropic coverage is degraded to headline-scraping.",
+  "notes": "[source feed broken] Seed blogRssUrl https://www.anthropic.com/news/rss.xml returns 404; https://www.anthropic.com/rss.xml also 404. Only https://www.anthropic.com/news (HTML) resolves, and readability captured a single item. Needs a working feed URL or a direct article URL. Flag to Techie for the ingestion pipeline (src/lib/rss). Until fixed, Anthropic coverage is degraded to headline-scraping.\n\n[role_harvest 2026-07-13] London/EMEA roles unchanged (10). Global-scope observation for the file: Anthropic posted 8-analyst Safeguards Enforcement cluster (per-harm-category — Age-Appropriate Design, Bio, Chem/Explosives, Child Safety, Cyber, Integrity, Rad/Nuclear, Safety Evaluations, Fraud) plus PM Responsible Scaling Policy, National Security Policy Lead Biotech, IP Counsel Copyright, Engineering Manager Safeguards Interventions, Standards Editor. Together = a proper Safeguards enforcement function being stood up. Team-growth signal comparable to the 3rd-EMEA-policy-counsel pattern from SOUL.md — worth surfacing in daily narrative even though the individual roles are US-based.",
   "news": [
     {
       "date": "2026-06-12",

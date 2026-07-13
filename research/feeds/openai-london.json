@@ -1,17 +1,25 @@
 {
   "slug": "openai-london",
-  "lastUpdated": "2026-07-02T02:02:00Z",
+  "lastUpdated": "2026-07-13T12:35:00Z",
   "blurb": "OpenAI's policy arm is in standards-building mode (the Appia Foundation conformity-specs play). Separately it remains a defendant in the consolidated NYT/news-publisher copyright litigation, where a Jan 2026 discovery ruling compels production of 20M ChatGPT logs.",
   "hiring": {
     "isHiring": true,
-    "newSincePrevious": null,
-    "londonPolicyRoles": 2,
-    "lastChecked": "2026-07-02",
+    "newSincePrevious": 1,
+    "londonPolicyRoles": 3,
+    "lastChecked": "2026-07-13",
     "roleSourceStatus": "ats_found",
     "sourceUrl": "https://api.ashbyhq.com/posting-api/job-board/openai?includeCompensation=false",
-    "note": "Ashby board checked directly 2026-07-02; many US safety/legal roles omitted, added only UK/EMEA-relevant safety/regulatory roles."
+    "note": "Ashby board refreshed 2026-07-13. Added EU Policy & Partnerships Manager (Brussels-remote, Global Affairs). OpenAI is scaling Global Affairs meaningfully — 5 concurrent postings across govt/policy/national-security."
   },
   "publications": [
+    {
+      "date": "2026-06-29",
+      "title": "Mapping Europe’s AI Workforce Opportunity",
+      "url": "https://openai.com/index/mapping-ai-jobs-transition-eu",
+      "type": "paper",
+      "byline": "",
+      "summary": "New OpenAI report maps how AI could reshape jobs across the EU — highlighting which occupations may face automation, growth, or workflow changes. A policy-facing workforce-transition analysis aimed at EU labour and AI-adoption debates."
+    },
     {
       "date": "2026-06-23",
       "title": "Helping build shared standards for advanced AI",
@@ -63,22 +71,32 @@
   ],
   "roles": [
     {
+      "title": "EU Policy & Partnerships Manager",
+      "location": "Brussels (Remote)",
+      "url": "https://jobs.ashbyhq.com/openai/aed9985a-21ff-437d-9e0a-f82e5e420331",
+      "londonRelevant": true,
+      "isNew": true,
+      "source": "ats",
+      "seenAt": "2026-07-13",
+      "note": "OpenAI Global Affairs EU policy hire — Brussels-remote, London-EMEA orbit. Direct on-remit policy hire, part of a 5-role Global Affairs expansion (also: EBP for Government & Global Affairs, National Security Lead State/Local, Workforce Program Manager, US State Policy & Partnerships Manager)."
+    },
+    {
       "title": "Data Scientist, Safety",
       "location": "London, UK",
       "url": "https://jobs.ashbyhq.com/openai/666119c9-ff97-4e81-9805-94d7525bd633",
       "londonRelevant": true,
-      "isNew": true,
+      "isNew": false,
       "source": "ats",
-      "seenAt": "2026-07-02"
+      "seenAt": "2026-07-13"
     },
     {
       "title": "Regulatory Operations Analyst",
       "location": "Dublin, Ireland",
       "url": "https://jobs.ashbyhq.com/openai/a03cd69e-8384-48aa-9c5e-fb50975b5164",
       "londonRelevant": true,
-      "isNew": true,
+      "isNew": false,
       "source": "ats",
-      "seenAt": "2026-07-02"
+      "seenAt": "2026-07-13"
     }
   ],
   "filings": [],
@@ -116,7 +134,7 @@
       "attributionChecked": true
     }
   ],
-  "notes": "policyPageUrl https://openai.com/news/global-affairs/ confirmed active. blogRssUrl in seed (openai.com/blog/rss.xml) is stale; working feed is https://openai.com/news/rss.xml. Controversy attribution: named-party (OpenAI is defendant), same-entity (the ChatGPT maker = seed openai-london); Reuters 401'd (paywall/JS gate) so cited NPR (named, free) rather than OpenAI's own /new-york-times/ PR page. Reuters body NOT reproduced per ToS.",
+  "notes": "policyPageUrl https://openai.com/news/global-affairs/ confirmed active. blogRssUrl in seed (openai.com/blog/rss.xml) is stale; working feed is https://openai.com/news/rss.xml. Controversy attribution: named-party (OpenAI is defendant), same-entity (the ChatGPT maker = seed openai-london); Reuters 401'd (paywall/JS gate) so cited NPR (named, free) rather than OpenAI's own /new-york-times/ PR page. Reuters body NOT reproduced per ToS.\n\n[role_harvest 2026-07-13] EU Policy & Partnerships Manager added (Brussels-remote). Part of a 5-role Global Affairs expansion posted concurrently — OpenAI building out policy-facing team meaningfully.",
   "news": [
     {
       "date": "2026-06-26",

@@ -1,0 +1,52 @@
+{
+  "_scouted": "2026-07-02T06:41:20.529Z",
+  "_note": "First automated scout health baseline (pw-scout.mjs --json). Future heartbeats diff subsequent sweeps against this to flag URL rot: a slug flipping to error, or a previously-populated careers page going empty. Sourced from role-sources.json verified map 2026-07-02.",
+  "summary": {
+    "candidates_found": 26,
+    "unknown": 6,
+    "error": 1,
+    "total": 33
+  },
+  "_review_flags": [
+    "cltr: RESOLVED -> title 'Page not found - CLTR' with 2 candidates was real URL rot; /jobs now 404s. Confirmed by curl. Corrected role-sources.json url to /work-with-us (HTTP 200, 'Career Opportunities | CLTR Think Tank Jobs'). First rot caught by the automated health baseline.",
+    "cetas: title 'Just a moment...' -> Cloudflare interstitial, page not actually rendered; classified unknown, not genuinely reachable.",
+    "oxford-internet-institute: RESOLVED -> false positives confirmed. Live curl 2026-07-02: HTTP 200, title 'OII | Vacancies', explicit 'no current vacancies / check back' text, and ZERO real role markers (no 'closing date' / 'job description' / 'apply for this role') across 198 page anchors. The scout's 23 'candidates' are generic anchors, not vacancy cards -> over-broad selector. Do NOT trust OII candidate count for ingestion; treat as empty until real vacancy markers appear.",
+    "quantumblack-london: ERR_HTTP2_PROTOCOL_ERROR (mckinsey) -> known needs_browser/HTTP2 issue, not new rot.",
+    "workday API endpoints (ofcom-ai, hogan-lovells-ai, linklaters-ai) -> expected 'unknown' for the HTML scout (JSON POST APIs, no rendered cards); not regressions."
+  ],
+  "results": [
+    {"slug": "alan-turing-institute", "url": "https://portal.careers.turing.ac.uk/vacancies/vacancy-search-results.aspx", "title": "7 Vacancies - Company Website", "health": "candidates_found", "candidates": 16, "emptyHints": []},
+    {"slug": "ada-lovelace-institute", "url": "https://www.adalovelaceinstitute.org/event/working-at-ada/", "title": "Working at Ada: about us and our current vacancies | Ada Lovelace Institute", "health": "candidates_found", "candidates": 8, "emptyHints": []},
+    {"slug": "cltr", "url": "https://www.longtermresilience.org/jobs", "title": "Page not found - CLTR", "health": "candidates_found", "candidates": 2, "emptyHints": [], "_rot": "404 at scout time; source map corrected to https://www.longtermresilience.org/work-with-us"},
+    {"slug": "tbi", "url": "https://institute.global/who-we-are/careers", "title": "Careers | Tony Blair Institute for Global Change (TBI)", "health": "candidates_found", "candidates": 2, "emptyHints": []},
+    {"slug": "demos", "url": "https://demos.co.uk/jobs/", "title": "Demos", "health": "candidates_found", "candidates": 4, "emptyHints": []},
+    {"slug": "nesta", "url": "https://www.nesta.org.uk/jobs/", "title": "Jobs | Nesta", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "royal-society-policy", "url": "https://royalsociety.occupop-careers.com/", "title": "Jobs", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "cetas", "url": "https://www.turing.ac.uk/opportunities-turing/jobs", "title": "Just a moment...", "health": "unknown", "candidates": 0, "emptyHints": []},
+    {"slug": "frontier-economics", "url": "https://www.frontier-economics.com/uk/en/careers/working-with-us/", "title": "Working With Us | Frontier Economics", "health": "candidates_found", "candidates": 7, "emptyHints": []},
+    {"slug": "ico-ai", "url": "https://ico.org.uk/about-the-ico/jobs/", "title": "Careers | ICO", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "ofcom-ai", "url": "https://ofcom.wd3.myworkdayjobs.com/wday/cxs/ofcom/Ofcom_Careers/jobs", "title": "", "health": "unknown", "candidates": 0, "emptyHints": []},
+    {"slug": "benevolentai", "url": "https://www.benevolent.com/careers/", "title": "Careers | BenevolentAI | London · New York · Cambridge", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "big-brother-watch", "url": "https://bigbrotherwatch.org.uk/vacancies/", "urlFinal": "https://bigbrotherwatch.org.uk/", "title": "Big Brother Watch: Defending Civil Liberties, Protecting Privacy", "health": "unknown", "candidates": 0, "emptyHints": []},
+    {"slug": "public-law-project", "url": "https://publiclawproject.org.uk/join-in/latest-opportunities/", "urlFinal": "https://publiclawproject.org.uk/support-us/latest-opportunities/", "title": "Latest opportunities - Public Law Project", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "oliver-wyman-london", "url": "https://www.oliverwyman.com/careers.html", "title": "Careers In Management Consulting At Oliver Wyman", "health": "candidates_found", "candidates": 5, "emptyHints": []},
+    {"slug": "hogan-lovells-ai", "url": "https://hoganlovells.wd3.myworkdayjobs.com/wday/cxs/hoganlovells/Search/jobs", "title": "", "health": "unknown", "candidates": 0, "emptyHints": []},
+    {"slug": "linklaters-ai", "url": "https://linklaters.wd3.myworkdayjobs.com/wday/cxs/linklaters/Linklaters/jobs", "title": "", "health": "unknown", "candidates": 0, "emptyHints": []},
+    {"slug": "bain-london-ai", "url": "https://www.bain.com/careers/", "title": "Careers at Bain | Bain & Company", "health": "candidates_found", "candidates": 4, "emptyHints": []},
+    {"slug": "lse-ai-policy", "url": "https://info.lse.ac.uk/lse-jobs", "title": "LSE Jobs", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "govai", "url": "https://www.governance.ai/opportunities", "title": "Open Positions | GovAI", "health": "candidates_found", "candidates": 3, "emptyHints": []},
+    {"slug": "bird-and-bird-ai", "url": "https://fsr.cvmailuk.com/twobirds/main.cfm?srxksl=1", "title": "Bird & Bird Job Board", "health": "candidates_found", "candidates": 30, "emptyHints": []},
+    {"slug": "quantumblack-london", "url": "https://www.mckinsey.com/careers/search-jobs?locations=London&query=QuantumBlack", "health": "error", "error": "page.goto: net::ERR_HTTP2_PROTOCOL_ERROR"},
+    {"slug": "bank-of-england-ai", "url": "https://www.bankofengland.co.uk/careers", "title": "Careers | Bank of England", "health": "candidates_found", "candidates": 18, "emptyHints": []},
+    {"slug": "bennett-cambridge", "url": "https://www.jobs.cam.ac.uk/job/?unit=u00601", "title": "Something went wrong - Job Opportunities - University of Cambridge", "health": "unknown", "candidates": 0, "emptyHints": []},
+    {"slug": "oxford-internet-institute", "url": "https://www.oii.ox.ac.uk/people/vacancies/", "title": "OII | Vacancies", "health": "candidates_found", "candidates": 23, "emptyHints": ["no vacancies", "check back"], "_falsePositive": "Verified 2026-07-02 curl: HTTP 200 but genuinely empty (no current vacancies). 0 role markers across 198 anchors; 23 candidates are over-broad selector noise. Treat as empty for ingestion."},
+    {"slug": "i-dot-ai", "url": "https://ai.gov.uk/opportunities/", "title": "Careers - Incubator for AI", "health": "candidates_found", "candidates": 13, "emptyHints": []},
+    {"slug": "onward", "url": "https://ukonward.com/job-opportunities/", "title": "Job opportunities | Onward", "health": "candidates_found", "candidates": 2, "emptyHints": ["no vacancies"]},
+    {"slug": "conjecture", "url": "https://www.conjecture.dev/career", "title": "Conjecture", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "slaughter-and-may-ai", "url": "https://careers.slaughterandmay.com/V2/Vacancy", "title": "Vacancies", "health": "candidates_found", "candidates": 1, "emptyHints": []},
+    {"slug": "ao-shearman-ai", "url": "https://www.aoshearman.com/en/careers/united-kingdom", "title": "Careers in London - A&O Shearman", "health": "candidates_found", "candidates": 4, "emptyHints": []},
+    {"slug": "pinsent-masons-ai", "url": "https://www.pinsentmasons.com/careers", "title": "Careers", "health": "candidates_found", "candidates": 12, "emptyHints": []},
+    {"slug": "deloitte-uk-ai", "url": "https://apply.deloitte.co.uk/UKCareers/", "title": "Job Search | Deloitte", "health": "candidates_found", "candidates": 40, "emptyHints": []},
+    {"slug": "pa-consulting-ai", "url": "https://www.paconsulting.com/jobs", "title": "PA Consulting", "health": "candidates_found", "candidates": 31, "emptyHints": []}
+  ]
+}
