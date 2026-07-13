@@ -1,6 +1,6 @@
 {
   "slug": "cma-dmu",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-03T08:12:00Z",
   "blurb": "The Competition and Markets Authority (CMA) is the UK competition regulator; its Digital Markets Unit oversees the strategic market status (SMS) regime under the Digital Markets, Competition and Consumers Act 2024.",
   "hiring": {
     "roleSourceStatus": "not_relevant_public_sector",
@@ -34,6 +34,13 @@
   "controversies": [],
   "news": [
     {
+      "date": "2026-06-30",
+      "title": "CMA consults on new requirements for Apple and Google’s mobile platforms",
+      "url": "https://www.gov.uk/government/news/cma-consults-on-new-requirements-for-apple-and-googles-mobile-platforms",
+      "source": "company_press",
+      "summary": "First substantive DMCC SMS conduct-requirement consultation for the CMA's Digital Markets Unit: having designated Apple and Google with strategic market status in mobile platforms, the CMA now consults on proposed conduct requirements (including a 'steering' conduct requirement) before it can impose them. Responses due 5pm on 28 July 2026. Marks the SMS regime moving from designation into enforceable-conduct territory."
+    },
+    {
       "date": "2025-10-22",
       "title": "CMA confirms Apple and Google have strategic market status in mobile platforms",
       "url": "https://www.gov.uk/government/news/cma-confirms-apple-and-google-have-strategic-market-status-in-mobile-platforms",
@@ -41,5 +48,5 @@
       "summary": "CMA designates both Apple and Google with strategic market status (SMS) in their respective mobile platforms under the Digital Markets, Competition and Consumers Act 2024, for a five-year period."
     }
   ],
-  "notes": "Regulator site (CMA cases index is a JS-filtered case list with no inline dated items). News date 2025-10-22 from the gov.uk page's datePublished JSON-LD. Controversies left empty: the CMA is the regulator/decision-maker here, not a named party defending an action, so this is regulatory activity rather than a controversy about the CMA itself. Publications backfill (2026-06-28): added the CMA's flagship AI Foundation Models programme outputs — Initial report (2023-09-18) and Update paper (2024-04-11). Both dates are primary gov.uk JSON-LD datePublished / govuk:first-published-at verified per-page (HTTP 200); titles from each page's og:title. These are first-party CMA policy reports (type=policy_report). The September 2023 'technical update report' exists as a follow-on but was left out pending a per-page date-verified canonical gov.uk URL (no padding from search-snippet dates)."
+  "notes": "Regulator site (CMA cases index is a JS-filtered case list with no inline dated items). News date 2025-10-22 from the gov.uk page's datePublished JSON-LD. Controversies left empty: the CMA is the regulator/decision-maker here, not a named party defending an action, so this is regulatory activity rather than a controversy about the CMA itself. Publications backfill (2026-06-28): added the CMA's flagship AI Foundation Models programme outputs — Initial report (2023-09-18) and Update paper (2024-04-11). Both dates are primary gov.uk JSON-LD datePublished / govuk:first-published-at verified per-page (HTTP 200); titles from each page's og:title. These are first-party CMA policy reports (type=policy_report). The September 2023 'technical update report' exists as a follow-on but was left out pending a per-page date-verified canonical gov.uk URL (no padding from search-snippet dates). News update (2026-07-03): added 'CMA consults on new requirements for Apple and Google's mobile platforms' (2026-06-30) — first DMCC SMS conduct-requirement consultation (responses due 28 Jul 2026), date verified first-party from the gov.uk page's first-published-at meta (2026-06-30T08:00:02+01:00), og:title confirmed. The discretely-dated AI Foundation Models *publications* programme genuinely ceilings at 2024-04-11 (the initial review concluded then; the 2024-04-29 'CMA AI strategic update' HTML is a near-duplicate companion of that same moment, not promoted — republish trap avoided); newer CMA AI/digital-markets activity now lives in the SMS case track, tracked here as news."
 }

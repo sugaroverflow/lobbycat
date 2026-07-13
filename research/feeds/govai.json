@@ -1,6 +1,6 @@
 {
   "slug": "govai",
-  "lastUpdated": "2026-07-02T02:03:00Z",
+  "lastUpdated": "2026-07-02T18:10:00Z",
   "blurb": "The Centre for the Governance of AI (GovAI), an Oxford-rooted research nonprofit producing policy research on how to govern advanced/frontier AI.",
   "hiring": {
     "isHiring": true,
@@ -12,6 +12,14 @@
     "note": "Official GovAI opportunities page checked 2026-07-02; current London AI-governance fellowships are first-party verified."
   },
   "publications": [
+    {
+      "date": "2026-01-16",
+      "title": "Frontier AI Auditing: Toward Rigorous Third-Party Assessment of Safety and Security Practices at Leading AI Companies",
+      "url": "https://www.governance.ai/research-paper/frontier-ai-auditing-toward-rigorous-third-party-assessment-of-safety-and-security-practices-at-leading-ai-companies",
+      "type": "paper",
+      "byline": "Miles Brundage, Noemi Dreksler, Aidan Homewood, Sean McGregor, Patricia Paskov, Conrad Stosz, Girish Sastry, A. Feder Cooper, George Balston, Steven Adler, Stephen Casper, Markus Anderljung et al.",
+      "summary": "Outlines a vision for frontier AI auditing as rigorous third-party verification of developers' safety and security claims based on deep, secure access to non-public information (not just deployed products). Proposes four AI Assurance Levels (AALs), recommending AAL-1 as a baseline for frontier AI and AAL-2 as a near-term goal for the most advanced developers. arXiv:2601.11699."
+    },
     {
       "date": "2025-12-22",
       "title": "Does the UAE Have an Advantage in Building Data Centers?",
@@ -52,5 +60,5 @@
   "leadership": [],
   "controversies": [],
   "news": [],
-  "notes": "Harvested from governance.ai/research index (JS/Webflow site; /sitemap.xml 404s but /research lists research-paper/ slugs). Dates taken from each paper page's own date line. Many more papers exist; took 3 most-recent-dated. No first-party press feed found; news empty. No regulatory/legal action against GovAI; controversies empty. ROLES (2026-06-27): GovAI runs seasonal Fellowships in AI governance & public policy (London; next deadline 12 July 2026) — logged from its own opportunities page. GovAI is a research centre; its substantive output is logged under publications, so news[] is intentionally empty."
+  "notes": "Harvested from governance.ai/research index (JS/Webflow site; /sitemap.xml 404s but /research lists research-paper/ slugs). Dates taken from each paper page's own date line. Many more papers exist; took most-recent-dated. FRONTIER AI AUDITING added 2026-07-02: date '2026-01-16' verified first-party from the paper page's own Date metadata field (distinct from the site-wide 'Last Published Jun 25 2026' Webflow footer), formal paper arXiv:2601.11699, theme Technical AI Governance. No first-party press feed found; news empty. No regulatory/legal action against GovAI; controversies empty. ROLES (2026-06-27): GovAI runs seasonal Fellowships in AI governance & public policy (London; next deadline 12 July 2026) — logged from its own opportunities page. GovAI is a research centre; its substantive output is logged under publications, so news[] is intentionally empty."
 }

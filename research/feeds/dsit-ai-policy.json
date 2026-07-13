@@ -1,6 +1,6 @@
 {
   "slug": "dsit-ai-policy",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-03T19:37:00Z",
   "blurb": "UK Department for Science, Innovation and Technology, the government department leading AI policy, investment and digital regulation.",
   "hiring": {
     "roleSourceStatus": "not_relevant_public_sector",
@@ -11,6 +11,22 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-06-30",
+      "title": "UK-Germany joint statement on advanced AI safety and security",
+      "url": "https://www.gov.uk/government/publications/uk-germany-joint-statement-on-advanced-ai-safety-and-security",
+      "source": "first_party",
+      "summary": "DSIT-published bilateral notice: a joint UK-Germany statement on cooperation around the safety and security of advanced AI. Core AI-policy/diplomacy output from the UK AI-lead department. first_published_at 2026-06-30T20:00:04+01:00 verified via gov.uk content-store.",
+      "type": "other"
+    },
+    {
+      "date": "2025-12-15",
+      "title": "Copyright and artificial intelligence: progress report",
+      "url": "https://www.gov.uk/government/publications/copyright-and-artificial-intelligence-progress-report",
+      "source": "first_party",
+      "summary": "DSIT policy paper: a progress statement on the government's work on copyright and AI, and the steps being taken to prepare a report on the use of copyright works in developing AI systems plus an economic impact assessment, as required by sections 135-137 of the Data (Use and Access) Act.",
+      "type": "other"
+    },
     {
       "date": "2025-02-10",
       "title": "Artificial Intelligence Playbook for the UK Government",
@@ -55,5 +71,5 @@
       "summary": "DSIT summarises AI investment and jobs announcements made during London Tech Week 2026."
     }
   ],
-  "notes": "News sourced from DSIT's official gov.uk news atom feed (news-and-communications.atom filtered to DSIT). publications[] backfilled 2026-06-28 with two first-party DSIT AI policy publications verified directly on gov.uk publication pages: AI Playbook (pub 2025-02-10) and AI Cyber Security Code of Practice (pub 2025-01-31, with NCSC). These are department-authored policy outputs, distinct from the dated press notices in news[]. No filings/controversies where DSIT is a named legal party found in this window. schema_cleanup 2026-06-28: added feed-sync-safe publication type values to DSIT policy publications."
+  "notes": "News sourced from DSIT's official gov.uk news atom feed (news-and-communications.atom filtered to DSIT). publications[] backfilled 2026-06-28 with two first-party DSIT AI policy publications verified directly on gov.uk publication pages: AI Playbook (pub 2025-02-10) and AI Cyber Security Code of Practice (pub 2025-01-31, with NCSC). These are department-authored policy outputs, distinct from the dated press notices in news[]. No filings/controversies where DSIT is a named legal party found in this window. schema_cleanup 2026-06-28: added feed-sync-safe publication type values to DSIT policy publications. 2026-07-03 19:37 heartbeat: added 'UK-Germany joint statement on advanced AI safety and security' (DSIT notice, first_published_at 2026-06-30T20:00:04+01:00 verified via gov.uk content-store, above the prior 2026-06-19 news ceiling; 0 feed dups). Core UK AI safety/security policy-diplomacy output. pubs 3->4. 2026-07-02 heartbeat: publisher-freshness backfill — publications[] was stale at 2025-02-10 for an active UK AI-policy department; added 'Copyright and artificial intelligence: progress report' (Section 137 D(UA) Act progress statement), date verified first-party on the gov.uk publication page ('Published 15 December 2025'). pubs 2->3."
 }

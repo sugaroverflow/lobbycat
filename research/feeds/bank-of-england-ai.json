@@ -1,6 +1,6 @@
 {
   "slug": "bank-of-england-ai",
-  "lastUpdated": "2026-07-02T01:58:00Z",
+  "lastUpdated": "2026-07-02T19:39:00Z",
   "blurb": "The Bank of England is the UK's central bank; this covers its research and policy work on artificial intelligence in the financial system.",
   "hiring": {
     "roleSourceStatus": "careers_page_found",
@@ -10,6 +10,14 @@
     "londonPolicyRoles": 0
   },
   "publications": [
+    {
+      "date": "2026-07-02",
+      "title": "The Bank of England's approach to innovation in artificial intelligence, distributed ledger technology, and quantum computing",
+      "url": "https://www.bankofengland.co.uk/report/2025/the-boes-approach-to-innovation-in-ai-dlt-quantum-computing",
+      "type": "other",
+      "byline": null,
+      "summary": "First-party Bank of England publication setting out its strategic approach to enabling responsible innovation across AI, distributed ledger technology (DLT) and quantum computing in the financial system \u2014 framing the Bank's role as shaping (not slowing) innovation while remaining vigilant to risks across monetary stability, financial stability and safe-and-sound firms."
+    },
     {
       "date": "2025-04-09",
       "title": "Financial Stability in Focus: Artificial intelligence in the financial system",
@@ -47,5 +55,5 @@
       "summary": "The Bank's formal response to the Treasury Select Committee's inquiry on AI in financial services; the PRA has highlighted AI adoption in its 2026 supervisory priorities and is running a macroprudential programme on AI's system-level impact. First-party BoE document."
     }
   ],
-  "notes": "Regulator/central bank research site. Both dates taken from each page's first-party 'Published on' field (09 April 2025; 21 November 2024)."
+  "notes": "Regulator/central bank research site. Dates taken from each page's first-party datePublished field. Innovation-approach report datePublished=2026-07-02 (published today; feed ceiling had been ~15mo stale at 2025-04-09 despite an active AI programme per news[]); a related 2026-06-30 dateline also appears on the page but is a secondary/linked item, not this report. Earlier: 09 April 2025 (FSiF AI); 21 November 2024 (BoE/FCA AI survey 2024)."
 }

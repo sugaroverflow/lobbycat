@@ -77,9 +77,9 @@
       "slug": "cltr",
       "roleSourceStatus": "careers_page_found",
       "sourceType": "official_careers_page",
-      "url": "https://www.longtermresilience.org/jobs",
+      "url": "https://www.longtermresilience.org/work-with-us",
       "verified": "2026-07-02",
-      "note": "Official jobs page; existing feed has a manually verified Operations Associate role."
+      "note": "URL corrected 2026-07-02: prior /jobs path now 404s (caught by first automated scout --json health baseline; scout reported 2 false-positive candidates off the 404 page). Real careers page is /work-with-us ('Career Opportunities | CLTR Think Tank Jobs', HTTP 200, verified by curl). Existing feed has a manually verified Operations Associate role."
     },
     {
       "slug": "aisi",
@@ -492,7 +492,7 @@
       "sourceType": "official_careers_page",
       "url": "https://www.oii.ox.ac.uk/people/vacancies/",
       "verified": "2026-07-02",
-      "note": "Official OII vacancies page verified but fetch surfaced cookie text; use browser/manual page read."
+      "note": "Official OII vacancies page verified but fetch surfaced cookie text; use browser/manual page read. 2026-07-02: page is HTTP 200 but genuinely EMPTY ('no current vacancies / check back'); automated scout reported 23 candidates = false positives (over-broad selector on 198 generic anchors, 0 real role markers). Treat as empty for ingestion until real vacancy cards appear."
     },
     {
       "slug": "i-dot-ai",
