@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-17T06:02:16.726Z",
-  "date": "2026-07-17",
+  "generated": "2026-07-16T06:02:01.335Z",
+  "date": "2026-07-16",
   "summary": {
     "companies": 24,
     "reachable": 20,
-    "totalPolicyRoles": 95,
+    "totalPolicyRoles": 94,
     "londonRoles": 35,
-    "newSincePrevious": 6
+    "newSincePrevious": 9
   },
   "perCompany": {
     "google-deepmind": {
@@ -17,19 +17,19 @@
     },
     "anthropic-london": {
       "ats": "greenhouse",
-      "totalJobs": 415,
-      "policyRoles": 43,
+      "totalJobs": 418,
+      "policyRoles": 44,
       "londonRoles": 20
     },
     "openai-london": {
       "ats": "ashby",
-      "totalJobs": 724,
+      "totalJobs": 710,
       "policyRoles": 18,
       "londonRoles": 1
     },
     "wayve": {
       "ats": "greenhouse",
-      "totalJobs": 111,
+      "totalJobs": 110,
       "policyRoles": 1,
       "londonRoles": 0
     },
@@ -59,20 +59,20 @@
     },
     "helsing": {
       "ats": "greenhouse",
-      "totalJobs": 126,
+      "totalJobs": 130,
       "policyRoles": 1,
       "londonRoles": 1
     },
     "elevenlabs-london": {
       "ats": "ashby",
-      "totalJobs": 199,
+      "totalJobs": 188,
       "policyRoles": 9,
       "londonRoles": 1
     },
     "xai-london": {
       "ats": "greenhouse",
-      "totalJobs": 223,
-      "policyRoles": 9,
+      "totalJobs": 216,
+      "policyRoles": 8,
       "londonRoles": 2
     },
     "polyai": {
@@ -95,8 +95,8 @@
     },
     "cohere-london": {
       "ats": "ashby",
-      "totalJobs": 138,
-      "policyRoles": 5,
+      "totalJobs": 135,
+      "policyRoles": 4,
       "londonRoles": 1
     },
     "apollo-research": {
@@ -502,10 +502,40 @@
       "isNew": true
     },
     {
-      "slug": "cohere-london",
-      "title": "Internal Audit and SOX Compliance Manager",
+      "slug": "anthropic-london",
+      "title": "Product Manager, Safeguards (Verticals)",
+      "location": "San Francisco, CA",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+      "matched": "safeguard",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "elevenlabs-london",
+      "title": "IP Counsel",
+      "location": "New York",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/10f5c0c0-43a3-4485-8e20-db677f892b6e",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "elevenlabs-london",
+      "title": "Lead Employment Counsel",
       "location": "United States",
-      "url": "https://jobs.ashbyhq.com/cohere/5518df67-10f6-43c4-ad1e-c886745a8ad2",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/3f6b41c0-660c-4817-8396-14f94c9454ba",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "elevenlabs-london",
+      "title": "Global Compliance Manager",
+      "location": "United States",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/8116274f-cd7c-436e-bb77-b9a21ec451f6",
       "matched": "compliance",
       "londonRelevant": false,
       "geoHit": null,
@@ -513,10 +543,10 @@
     },
     {
       "slug": "xai-london",
-      "title": "Corporate Counsel",
+      "title": "Paralegal - Commercial & Corporate",
       "location": "Palo Alto, CA",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5128169007",
-      "matched": "counsel",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/5170639007",
+      "matched": "legal",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true
@@ -524,8 +554,8 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, APAC",
-      "location": "Sydney, Australia",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270065008",
+      "location": "Singapore",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270072008",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -534,8 +564,8 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, APAC",
-      "location": "Singapore",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270072008",
+      "location": "Sydney, Australia",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270065008",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -683,19 +713,19 @@
     },
     {
       "slug": "anthropic-london",
-      "title": "Product Manager, Safeguards (Child Safety)",
-      "location": "San Francisco, CA",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5164820008",
-      "matched": "safeguard",
+      "title": "Policy Design Manager, Age-Appropriate Design",
+      "location": "San Francisco, CA | New York City, NY | Washington, DC",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5156326008",
+      "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
     },
     {
       "slug": "anthropic-london",
-      "title": "Product Manager, Safeguards (Verticals)",
+      "title": "Product Manager, Safeguards (Child Safety)",
       "location": "San Francisco, CA",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5164820008",
       "matched": "safeguard",
       "londonRelevant": false,
       "geoHit": null,
@@ -763,16 +793,6 @@
     },
     {
       "slug": "elevenlabs-london",
-      "title": "IP Counsel",
-      "location": "New York",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/10f5c0c0-43a3-4485-8e20-db677f892b6e",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "elevenlabs-london",
       "title": "Compliance Engineer - North America",
       "location": "New York",
       "url": "https://jobs.ashbyhq.com/elevenlabs/f80d0420-b6e6-4110-940c-293f64b9761e",
@@ -817,26 +837,6 @@
       "location": "New York",
       "url": "https://jobs.ashbyhq.com/elevenlabs/ff152bcd-af7d-408d-88a1-883e03502c4c",
       "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "elevenlabs-london",
-      "title": "Lead Employment Counsel",
-      "location": "United States",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/3f6b41c0-660c-4817-8396-14f94c9454ba",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "elevenlabs-london",
-      "title": "Global Compliance Manager",
-      "location": "United States",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/8116274f-cd7c-436e-bb77-b9a21ec451f6",
-      "matched": "compliance",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -1043,16 +1043,6 @@
     },
     {
       "slug": "xai-london",
-      "title": "Paralegal - Commercial & Corporate",
-      "location": "Palo Alto, CA",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5170639007",
-      "matched": "legal",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "xai-london",
       "title": "Product Counsel",
       "location": "Austin, TX; Los Angeles, CA; New York, NY; Palo Alto, CA",
       "url": "https://job-boards.greenhouse.io/xai/jobs/5149101007",
@@ -1124,10 +1114,40 @@
       "isNew": true
     },
     {
-      "slug": "cohere-london",
-      "title": "Internal Audit and SOX Compliance Manager",
+      "slug": "anthropic-london",
+      "title": "Product Manager, Safeguards (Verticals)",
+      "location": "San Francisco, CA",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+      "matched": "safeguard",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "elevenlabs-london",
+      "title": "IP Counsel",
+      "location": "New York",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/10f5c0c0-43a3-4485-8e20-db677f892b6e",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "elevenlabs-london",
+      "title": "Lead Employment Counsel",
       "location": "United States",
-      "url": "https://jobs.ashbyhq.com/cohere/5518df67-10f6-43c4-ad1e-c886745a8ad2",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/3f6b41c0-660c-4817-8396-14f94c9454ba",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "elevenlabs-london",
+      "title": "Global Compliance Manager",
+      "location": "United States",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/8116274f-cd7c-436e-bb77-b9a21ec451f6",
       "matched": "compliance",
       "londonRelevant": false,
       "geoHit": null,
@@ -1135,10 +1155,10 @@
     },
     {
       "slug": "xai-london",
-      "title": "Corporate Counsel",
+      "title": "Paralegal - Commercial & Corporate",
       "location": "Palo Alto, CA",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5128169007",
-      "matched": "counsel",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/5170639007",
+      "matched": "legal",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true

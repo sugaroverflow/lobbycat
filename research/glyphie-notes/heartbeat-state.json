@@ -1,0 +1,22 @@
+{
+  "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
+  "lastDailyRun": "2026-07-17T06:02:00Z",
+  "lastHeartbeat": "2026-07-17T06:41:00Z",
+  "sources": {
+    "roles-harvest": {
+      "lastChecked": "2026-07-17T06:02:00Z",
+      "lastResult": "snapshot-2026-07-17.json (95 policy roles, +1 net; 2 new / 1 dropped; 35 London, unchanged)"
+    },
+    "research/feed.json": {
+      "lastChecked": "2026-07-16T11:07:00Z",
+      "lastResult": "byte-stable; committed sha 079170ce (matches on-disk; prior note claim of 9b5566bb was wrong, re-verified against HEAD:research/feed.json); full refresh is a daily-harvest job, not heartbeat"
+    }
+  },
+  "knownIssues": {
+    "workday-400": {
+      "sources": ["ofcom-ai", "hogan-lovells-ai", "linklaters-ai", "fca-ai"],
+      "firstSeen": "2026-07-15",
+      "note": "Persistent HTTP 400 on UK Workday sources. Needs dedicated fix branch, not a heartbeat change."
+    }
+  }
+}

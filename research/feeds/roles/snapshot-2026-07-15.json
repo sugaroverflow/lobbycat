@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-17T06:02:16.726Z",
-  "date": "2026-07-17",
+  "generated": "2026-07-15T06:03:06.753Z",
+  "date": "2026-07-15",
   "summary": {
     "companies": 24,
     "reachable": 20,
-    "totalPolicyRoles": 95,
-    "londonRoles": 35,
-    "newSincePrevious": 6
+    "totalPolicyRoles": 93,
+    "londonRoles": 36,
+    "newSincePrevious": 7
   },
   "perCompany": {
     "google-deepmind": {
@@ -17,19 +17,19 @@
     },
     "anthropic-london": {
       "ats": "greenhouse",
-      "totalJobs": 415,
-      "policyRoles": 43,
+      "totalJobs": 414,
+      "policyRoles": 44,
       "londonRoles": 20
     },
     "openai-london": {
       "ats": "ashby",
-      "totalJobs": 724,
-      "policyRoles": 18,
+      "totalJobs": 713,
+      "policyRoles": 19,
       "londonRoles": 1
     },
     "wayve": {
       "ats": "greenhouse",
-      "totalJobs": 111,
+      "totalJobs": 109,
       "policyRoles": 1,
       "londonRoles": 0
     },
@@ -59,25 +59,25 @@
     },
     "helsing": {
       "ats": "greenhouse",
-      "totalJobs": 126,
+      "totalJobs": 127,
       "policyRoles": 1,
       "londonRoles": 1
     },
     "elevenlabs-london": {
       "ats": "ashby",
-      "totalJobs": 199,
-      "policyRoles": 9,
+      "totalJobs": 183,
+      "policyRoles": 6,
       "londonRoles": 1
     },
     "xai-london": {
       "ats": "greenhouse",
-      "totalJobs": 223,
-      "policyRoles": 9,
+      "totalJobs": 210,
+      "policyRoles": 8,
       "londonRoles": 2
     },
     "polyai": {
       "ats": "greenhouse",
-      "totalJobs": 13,
+      "totalJobs": 12,
       "policyRoles": 0,
       "londonRoles": 0
     },
@@ -89,14 +89,14 @@
     },
     "techuk": {
       "ats": "pinpoint",
-      "totalJobs": 5,
-      "policyRoles": 1,
-      "londonRoles": 1
+      "totalJobs": 6,
+      "policyRoles": 2,
+      "londonRoles": 2
     },
     "cohere-london": {
       "ats": "ashby",
-      "totalJobs": 138,
-      "policyRoles": 5,
+      "totalJobs": 133,
+      "policyRoles": 4,
       "londonRoles": 1
     },
     "apollo-research": {
@@ -107,7 +107,7 @@
     },
     "faculty-ai": {
       "ats": "ashby",
-      "totalJobs": 64,
+      "totalJobs": 66,
       "policyRoles": 3,
       "londonRoles": 3
     },
@@ -153,6 +153,16 @@
     },
     {
       "slug": "anthropic-london",
+      "title": "Safeguards Enforcement Analyst, Violence & Extremism",
+      "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5343907008",
+      "matched": "safeguard",
+      "londonRelevant": true,
+      "geoHit": "remote",
+      "isNew": true
+    },
+    {
+      "slug": "anthropic-london",
       "title": "AI Compliance Officer",
       "location": "Dublin, IE",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5208218008",
@@ -184,21 +194,21 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, EMEA",
-      "location": "London, UK",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142966008",
-      "matched": "counsel",
-      "londonRelevant": true,
-      "geoHit": "london",
-      "isNew": false
-    },
-    {
-      "slug": "anthropic-london",
-      "title": "Commercial Counsel, EMEA",
       "location": "Dublin, IE",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142971008",
       "matched": "counsel",
       "londonRelevant": true,
       "geoHit": "dublin",
+      "isNew": false
+    },
+    {
+      "slug": "anthropic-london",
+      "title": "Commercial Counsel, EMEA",
+      "location": "London, UK",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142966008",
+      "matched": "counsel",
+      "londonRelevant": true,
+      "geoHit": "london",
       "isNew": false
     },
     {
@@ -313,16 +323,6 @@
     },
     {
       "slug": "anthropic-london",
-      "title": "Safeguards Enforcement Analyst, Violence & Extremism",
-      "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5343907008",
-      "matched": "safeguard",
-      "londonRelevant": true,
-      "geoHit": "remote",
-      "isNew": false
-    },
-    {
-      "slug": "anthropic-london",
       "title": "Safeguards Policy Analyst, Fraud & Scams",
       "location": "Remote-Friendly (Travel-Required) | San Francisco, CA | New York City, NY",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5174857008",
@@ -393,16 +393,6 @@
     },
     {
       "slug": "faculty-ai",
-      "title": "Senior Research Scientist - AI Safety",
-      "location": "UK - London",
-      "url": "https://jobs.ashbyhq.com/faculty/fd99c104-65b4-4fca-b68e-0ab9170da31f",
-      "matched": "ai safety",
-      "londonRelevant": true,
-      "geoHit": "london",
-      "isNew": false
-    },
-    {
-      "slug": "faculty-ai",
       "title": "Principal Research Scientist - AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/6ad13f20-8a65-454f-b7c7-4d5260f306bf",
@@ -416,6 +406,16 @@
       "title": "Technical Director of AI Safety",
       "location": "UK - London",
       "url": "https://jobs.ashbyhq.com/faculty/7e726de6-6327-40cd-a00d-0e9be34e1cb4",
+      "matched": "ai safety",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": false
+    },
+    {
+      "slug": "faculty-ai",
+      "title": "Senior Research Scientist - AI Safety",
+      "location": "UK - London",
+      "url": "https://jobs.ashbyhq.com/faculty/fd99c104-65b4-4fca-b68e-0ab9170da31f",
       "matched": "ai safety",
       "londonRelevant": true,
       "geoHit": "london",
@@ -447,6 +447,16 @@
       "location": "London",
       "url": "https://jobs.ashbyhq.com/synthesia/53cbc812-2d44-42db-94d8-32a86f66e00a",
       "matched": "counsel",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": false
+    },
+    {
+      "slug": "techuk",
+      "title": "Programme Assistant for Tech and Innovation and Policy",
+      "location": "London",
+      "url": "https://techuk.pinpointhq.com/en/jobs/504591",
+      "matched": "policy",
       "londonRelevant": true,
       "geoHit": "london",
       "isNew": false
@@ -503,20 +513,20 @@
     },
     {
       "slug": "cohere-london",
-      "title": "Internal Audit and SOX Compliance Manager",
-      "location": "United States",
-      "url": "https://jobs.ashbyhq.com/cohere/5518df67-10f6-43c4-ad1e-c886745a8ad2",
-      "matched": "compliance",
+      "title": "Lead - US Government Affairs & Public Policy",
+      "location": "Washington, DC",
+      "url": "https://jobs.ashbyhq.com/cohere/bde93d36-4a41-4c8c-bd98-b4e44f9061e4",
+      "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true
     },
     {
-      "slug": "xai-london",
-      "title": "Corporate Counsel",
-      "location": "Palo Alto, CA",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5128169007",
-      "matched": "counsel",
+      "slug": "cohere-london",
+      "title": "Senior Manager, Global Public Affairs & Policy Narratives",
+      "location": "Washington, DC",
+      "url": "https://jobs.ashbyhq.com/cohere/8a2eaded-53a6-46aa-a7d0-d13f0fc45046",
+      "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true
@@ -567,6 +577,16 @@
       "location": "New York City, NY; San Francisco, CA; Seattle, WA",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5275765008",
       "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "anthropic-london",
+      "title": "Compliance Governance & Oversight Lead",
+      "location": "San Francisco, CA | New York City, NY | Washington, DC",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5207760008",
+      "matched": "governance",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -683,19 +703,19 @@
     },
     {
       "slug": "anthropic-london",
-      "title": "Product Manager, Safeguards (Child Safety)",
-      "location": "San Francisco, CA",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5164820008",
-      "matched": "safeguard",
+      "title": "Policy Design Manager, Age-Appropriate Design",
+      "location": "San Francisco, CA | New York City, NY | Washington, DC",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5156326008",
+      "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
     },
     {
       "slug": "anthropic-london",
-      "title": "Product Manager, Safeguards (Verticals)",
+      "title": "Product Manager, Safeguards (Child Safety)",
       "location": "San Francisco, CA",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5164820008",
       "matched": "safeguard",
       "londonRelevant": false,
       "geoHit": null,
@@ -733,16 +753,6 @@
     },
     {
       "slug": "cohere-london",
-      "title": "Lead - US Government Affairs & Public Policy",
-      "location": "Washington, DC",
-      "url": "https://jobs.ashbyhq.com/cohere/bde93d36-4a41-4c8c-bd98-b4e44f9061e4",
-      "matched": "policy",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "cohere-london",
       "title": "Senior Counsel, Product and Technology",
       "location": "United States",
       "url": "https://jobs.ashbyhq.com/cohere/af2d7052-176a-49f0-89d1-82cf608105e7",
@@ -752,31 +762,11 @@
       "isNew": false
     },
     {
-      "slug": "cohere-london",
-      "title": "Senior Manager, Global Public Affairs & Policy Narratives",
-      "location": "Washington, DC",
-      "url": "https://jobs.ashbyhq.com/cohere/8a2eaded-53a6-46aa-a7d0-d13f0fc45046",
-      "matched": "policy",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
       "slug": "elevenlabs-london",
-      "title": "IP Counsel",
-      "location": "New York",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/10f5c0c0-43a3-4485-8e20-db677f892b6e",
+      "title": "Commercial Counsel - APAC",
+      "location": "Australia",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/03b07a06-ad0e-4ef6-a516-7d14cc13adf3",
       "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "elevenlabs-london",
-      "title": "Compliance Engineer - North America",
-      "location": "New York",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/f80d0420-b6e6-4110-940c-293f64b9761e",
-      "matched": "compliance",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -803,10 +793,10 @@
     },
     {
       "slug": "elevenlabs-london",
-      "title": "Commercial Counsel - APAC",
-      "location": "Australia",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/03b07a06-ad0e-4ef6-a516-7d14cc13adf3",
-      "matched": "counsel",
+      "title": "Compliance Engineer - North America",
+      "location": "New York",
+      "url": "https://jobs.ashbyhq.com/elevenlabs/f80d0420-b6e6-4110-940c-293f64b9761e",
+      "matched": "compliance",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -817,26 +807,6 @@
       "location": "New York",
       "url": "https://jobs.ashbyhq.com/elevenlabs/ff152bcd-af7d-408d-88a1-883e03502c4c",
       "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "elevenlabs-london",
-      "title": "Lead Employment Counsel",
-      "location": "United States",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/3f6b41c0-660c-4817-8396-14f94c9454ba",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "elevenlabs-london",
-      "title": "Global Compliance Manager",
-      "location": "United States",
-      "url": "https://jobs.ashbyhq.com/elevenlabs/8116274f-cd7c-436e-bb77-b9a21ec451f6",
-      "matched": "compliance",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -953,6 +923,16 @@
     },
     {
       "slug": "openai-london",
+      "title": "Associate General Counsel, India",
+      "location": "Delhi, India",
+      "url": "https://jobs.ashbyhq.com/openai/d74f05e3-fdc3-43cb-ad82-3f0a800c9f49",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "openai-london",
       "title": "Model Policy",
       "location": "San Francisco",
       "url": "https://jobs.ashbyhq.com/openai/f0885aed-a422-4237-8e98-9c5311ed7ae0",
@@ -1044,7 +1024,7 @@
     {
       "slug": "xai-london",
       "title": "Paralegal - Commercial & Corporate",
-      "location": "Palo Alto, CA",
+      "location": "Austin, TX; Palo Alto, CA; Washington, D.C.",
       "url": "https://job-boards.greenhouse.io/xai/jobs/5170639007",
       "matched": "legal",
       "londonRelevant": false,
@@ -1105,6 +1085,16 @@
     },
     {
       "slug": "anthropic-london",
+      "title": "Safeguards Enforcement Analyst, Violence & Extremism",
+      "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5343907008",
+      "matched": "safeguard",
+      "londonRelevant": true,
+      "geoHit": "remote",
+      "isNew": true
+    },
+    {
+      "slug": "anthropic-london",
       "title": "IP Counsel, Copyright",
       "location": "San Francisco, CA | Seattle, WA | New York City, NY | Washington, DC",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5160459008",
@@ -1125,20 +1115,20 @@
     },
     {
       "slug": "cohere-london",
-      "title": "Internal Audit and SOX Compliance Manager",
-      "location": "United States",
-      "url": "https://jobs.ashbyhq.com/cohere/5518df67-10f6-43c4-ad1e-c886745a8ad2",
-      "matched": "compliance",
+      "title": "Lead - US Government Affairs & Public Policy",
+      "location": "Washington, DC",
+      "url": "https://jobs.ashbyhq.com/cohere/bde93d36-4a41-4c8c-bd98-b4e44f9061e4",
+      "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true
     },
     {
-      "slug": "xai-london",
-      "title": "Corporate Counsel",
-      "location": "Palo Alto, CA",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5128169007",
-      "matched": "counsel",
+      "slug": "cohere-london",
+      "title": "Senior Manager, Global Public Affairs & Policy Narratives",
+      "location": "Washington, DC",
+      "url": "https://jobs.ashbyhq.com/cohere/8a2eaded-53a6-46aa-a7d0-d13f0fc45046",
+      "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true
