@@ -1,15 +1,15 @@
 {
   "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
   "lastDailyRun": "2026-07-18T06:00:45Z",
-  "lastHeartbeat": "2026-07-18T07:08:00Z",
+  "lastHeartbeat": "2026-07-18T11:12:00Z",
   "sources": {
     "roles-harvest": {
       "lastChecked": "2026-07-18T06:00:45Z",
       "lastResult": "snapshot-2026-07-18.json (94 policy roles, -1 net; 6 new; 35 London; 4 Workday-400 errors) → PR #93 MERGED 07:08Z (Vercel red = known build-rate-limit, benign)"
     },
     "research/feed.json": {
-      "lastChecked": "2026-07-16T11:07:00Z",
-      "lastResult": "byte-stable; committed sha 079170ce (matches on-disk; prior note claim of 9b5566bb was wrong, re-verified against HEAD:research/feed.json); full refresh is a daily-harvest job, not heartbeat"
+      "lastChecked": "2026-07-18T11:12:00Z",
+      "lastResult": "byte-stable; on-disk git hash-object=6cb35152, last modified in commit c41197d (07-13 catchup); NOT touched by 07-18 daily harvest; recorded sha corrected from stale 079170ce; full refresh is a daily-harvest job, not heartbeat"
     }
   },
   "knownIssues": {
