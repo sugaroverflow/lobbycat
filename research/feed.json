@@ -1,6 +1,34 @@
 {
-  "lastUpdated": "2026-07-08T20:39:03Z",
+  "lastUpdated": "2026-07-18T20:36:45Z",
   "events": [
+    {
+      "date": "2026-07-18",
+      "company_slug": "xai-london",
+      "event_type": "role",
+      "summary": "xAI opens its first UK-specific Legal Counsel role — building UK legal footprint separate from its general Legal Counsel positions.",
+      "source_url": "https://job-boards.greenhouse.io/xai/jobs/"
+    },
+    {
+      "date": "2026-07-18",
+      "company_slug": "anthropic-london",
+      "event_type": "role",
+      "summary": "Anthropic added 5 more Safeguards Enforcement Analyst roles this week (Access Controls & Identity, Account Takeover, Ban Evasion, Fraud & Scams, Violence & Extremism) — cluster now spans 13 per-harm-category analysts. Coordinated London/EMEA-relevant hiring, textbook 'building muscle' signal.",
+      "source_url": "https://www.anthropic.com/careers"
+    },
+    {
+      "date": "2026-07-18",
+      "company_slug": "cohere-london",
+      "event_type": "role",
+      "summary": "Cohere started building an actual public affairs function — new Senior Manager for Global Public Affairs & Policy Narratives and Lead for US Government Affairs & Public Policy both posted this week.",
+      "source_url": "https://cohere.com/careers"
+    },
+    {
+      "date": "2026-07-18",
+      "company_slug": "elevenlabs-london",
+      "event_type": "role",
+      "summary": "ElevenLabs legal + compliance team scaling — three new roles posted this week (IP Counsel, Lead Employment Counsel, Global Compliance Manager).",
+      "source_url": "https://elevenlabs.io/careers"
+    },
     {
       "date": "2026-07-08",
       "company_slug": "openai-london",
