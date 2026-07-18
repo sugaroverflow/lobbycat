@@ -221,7 +221,11 @@ function ConversationRow({ session }: { session: ClarifySessionListRow }) {
               <em>fetching transcript…</em>
             </p>
           )}
-          {error && <p className="font-sans text-sm text-coral">{error}</p>}
+          {error && (
+            // v0.8.4 parity fix: match the live panel's mono error style
+            // instead of font-sans / Orbitron.
+            <p className="mono text-sm text-coral">{error}</p>
+          )}
           {detail && (
             <Transcript detail={detail} />
           )}
@@ -246,9 +250,16 @@ function Transcript({ detail }: { detail: ClarifySessionWithMessages }) {
     <div className="space-y-4">
       {detail.messages.map((m) =>
         m.role === "cat" ? (
+          // v0.8.4 parity fix (2026-07-18): the live clarify panel's cat
+          // bubble was switched to mono for readability but this profile-
+          // page transcript view still rendered cat text in font-sans /
+          // Orbitron, so re-opening a past conversation looked different
+          // and was harder to read. Drop the font-sans override so we
+          // inherit body's mono (Share Tech Mono), matching the live
+          // clarify-panel MessageBubble.
           <p
             key={m.id}
-            className="font-sans text-base text-ink leading-relaxed whitespace-pre-wrap"
+            className="text-base text-ink leading-relaxed whitespace-pre-wrap"
           >
             {m.body}
           </p>
@@ -278,7 +289,11 @@ function Transcript({ detail }: { detail: ClarifySessionWithMessages }) {
           <div className="mono text-[10px] uppercase tracking-[0.16em] text-readout mb-1">
             proposal — {detail.proposalKind}
           </div>
-          <p className="font-sans text-sm text-ink">
+          {/* v0.8.4 parity fix: proposal summary is prose-length reading
+             copy — use .serif (Inter, the plain paragraph face) instead
+             of font-sans / Orbitron. Matches how seed-note previews
+             render above. */}
+          <p className="serif text-sm text-ink leading-relaxed">
             {typeof detail.proposalData.summary === "string"
               ? detail.proposalData.summary
               : "(no summary recorded)"}
