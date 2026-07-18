@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   // file tracer to bundle the JSON into the serverless function output so
   // Vercel keeps it around at runtime.
   outputFileTracingIncludes: {
-    "/": ["./research/feed.json"],
+    "/": ["./research/feed.json", "./research/snapshots/latest.json"],
   },
 
   // v0.8.1 F6.1 — `/about` was renamed to `/profile` (it's product-wise the

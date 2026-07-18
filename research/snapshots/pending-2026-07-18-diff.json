@@ -1,0 +1,163 @@
+{
+  "date": "2026-07-18",
+  "priorDate": "2026-07-13",
+  "generatedAt": "2026-07-18T20:38:58.935163Z",
+  "summary": {
+    "added": 15,
+    "removed": 8,
+    "addedLondon": 6,
+    "todayTotal": 94,
+    "priorTotal": 87
+  },
+  "addedRoles": {
+    "xai-london": [
+      {
+        "title": "U.K. Legal Counsel",
+        "location": "London, UK",
+        "url": "https://job-boards.greenhouse.io/xai/jobs/5032210007",
+        "londonRelevant": true
+      },
+      {
+        "title": "Energy & Infrastructure Counsel",
+        "location": "Austin, TX; Memphis, TN; Palo Alto, CA; Seattle, WA",
+        "url": "https://job-boards.greenhouse.io/xai/jobs/5190139007",
+        "londonRelevant": false
+      },
+      {
+        "title": "Corporate Counsel",
+        "location": "Palo Alto, CA",
+        "url": "https://job-boards.greenhouse.io/xai/jobs/5128169007",
+        "londonRelevant": false
+      }
+    ],
+    "anthropic-london": [
+      {
+        "title": "Safeguards Enforcement Analyst, Access Controls & Identity",
+        "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5319626008",
+        "londonRelevant": true
+      },
+      {
+        "title": "Safeguards Enforcement Analyst, Account Takeover & Credential Abuse",
+        "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5319624008",
+        "londonRelevant": true
+      },
+      {
+        "title": "Safeguards Enforcement Analyst, Ban Evasion & Recidivism",
+        "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5319592008",
+        "londonRelevant": true
+      },
+      {
+        "title": "Safeguards Enforcement Analyst, Fraud & Scams",
+        "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5319554008",
+        "londonRelevant": true
+      },
+      {
+        "title": "Safeguards Enforcement Analyst, Violence & Extremism",
+        "location": "Remote-Friendly, United States; San Francisco, CA | New York City, NY | Washington, DC",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5343907008",
+        "londonRelevant": true
+      },
+      {
+        "title": "Product Manager, Safeguards (Verticals)",
+        "location": "San Francisco, CA",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5097490008",
+        "londonRelevant": false
+      }
+    ],
+    "cohere-london": [
+      {
+        "title": "Lead - US Government Affairs & Public Policy",
+        "location": "Washington, DC",
+        "url": "https://jobs.ashbyhq.com/cohere/bde93d36-4a41-4c8c-bd98-b4e44f9061e4",
+        "londonRelevant": false
+      },
+      {
+        "title": "Senior Manager, Global Public Affairs & Policy Narratives",
+        "location": "Washington, DC",
+        "url": "https://jobs.ashbyhq.com/cohere/8a2eaded-53a6-46aa-a7d0-d13f0fc45046",
+        "londonRelevant": false
+      },
+      {
+        "title": "Internal Audit and SOX Compliance Manager",
+        "location": "United States",
+        "url": "https://jobs.ashbyhq.com/cohere/5518df67-10f6-43c4-ad1e-c886745a8ad2",
+        "londonRelevant": false
+      }
+    ],
+    "elevenlabs-london": [
+      {
+        "title": "IP Counsel",
+        "location": "New York",
+        "url": "https://jobs.ashbyhq.com/elevenlabs/10f5c0c0-43a3-4485-8e20-db677f892b6e",
+        "londonRelevant": false
+      },
+      {
+        "title": "Lead Employment Counsel",
+        "location": "United States",
+        "url": "https://jobs.ashbyhq.com/elevenlabs/3f6b41c0-660c-4817-8396-14f94c9454ba",
+        "londonRelevant": false
+      },
+      {
+        "title": "Global Compliance Manager",
+        "location": "United States",
+        "url": "https://jobs.ashbyhq.com/elevenlabs/8116274f-cd7c-436e-bb77-b9a21ec451f6",
+        "londonRelevant": false
+      }
+    ]
+  },
+  "removedRoles": {
+    "techuk": [
+      {
+        "title": "Programme Assistant for Tech and Innovation and Policy",
+        "location": "London",
+        "url": "https://techuk.pinpointhq.com/en/jobs/504591"
+      }
+    ],
+    "xai-london": [
+      {
+        "title": "Legal Counsel",
+        "location": "London, UK",
+        "url": "https://job-boards.greenhouse.io/xai/jobs/5032210007"
+      },
+      {
+        "title": "Commercial Counsel",
+        "location": "Austin, TX; Los Angeles, CA; New York, NY; Palo Alto, CA",
+        "url": "https://job-boards.greenhouse.io/xai/jobs/5006345007"
+      }
+    ],
+    "anthropic-london": [
+      {
+        "title": "Program Manager, Responsible Scaling Policy",
+        "location": "San Francisco, CA | New York City, NY",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5252793008"
+      },
+      {
+        "title": "Compliance Governance & Oversight Lead",
+        "location": "San Francisco, CA | New York City, NY | Washington, DC",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5207760008"
+      },
+      {
+        "title": "Policy Design Manager, Age-Appropriate Design",
+        "location": "San Francisco, CA | New York City, NY | Washington, DC",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5156326008"
+      }
+    ],
+    "openai-london": [
+      {
+        "title": "Associate General Counsel, India",
+        "location": "Delhi, India",
+        "url": "https://jobs.ashbyhq.com/openai/d74f05e3-fdc3-43cb-ad82-3f0a800c9f49"
+      },
+      {
+        "title": "Senior Counsel, Employment (AI Enablement)",
+        "location": "San Francisco",
+        "url": "https://jobs.ashbyhq.com/openai/8b725c86-2640-4afb-9a33-53b857eae9c9"
+      }
+    ]
+  },
+  "feedEventsInWindow": []
+}
