@@ -1,11 +1,11 @@
 {
   "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
   "lastDailyRun": "2026-07-18T06:00:45Z",
-  "lastHeartbeat": "2026-07-18T06:09:00Z",
+  "lastHeartbeat": "2026-07-18T07:08:00Z",
   "sources": {
     "roles-harvest": {
       "lastChecked": "2026-07-18T06:00:45Z",
-      "lastResult": "snapshot-2026-07-18.json (94 policy roles, -1 net; 6 new; 35 London; 4 Workday-400 errors) → PR #93"
+      "lastResult": "snapshot-2026-07-18.json (94 policy roles, -1 net; 6 new; 35 London; 4 Workday-400 errors) → PR #93 MERGED 07:08Z (Vercel red = known build-rate-limit, benign)"
     },
     "research/feed.json": {
       "lastChecked": "2026-07-16T11:07:00Z",
