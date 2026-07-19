@@ -1,11 +1,11 @@
 {
   "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
   "lastDailyRun": "2026-07-19T06:00:45Z",
-  "lastHeartbeat": "2026-07-19T06:07:00Z",
+  "lastHeartbeat": "2026-07-19T08:07:00Z",
   "sources": {
     "roles-harvest": {
       "lastChecked": "2026-07-19T06:00:45Z",
-      "lastResult": "snapshot-2026-07-19.json (94 policy roles, +0 net; 4 new Anthropic roles — 2 Safeguards Enforcement Analyst, IP Counsel Copyright, PM Safeguards Rare Harms; 35 London; 4 Workday-400 errors) → PR for 07-19 daily harvest"
+      "lastResult": "snapshot-2026-07-19.json (94 policy roles, +0 net; 4 new Anthropic roles \u2014 2 Safeguards Enforcement Analyst, IP Counsel Copyright, PM Safeguards Rare Harms; 35 London; 4 Workday-400 errors) \u2192 PR for 07-19 daily harvest"
     },
     "research/feed.json": {
       "lastChecked": "2026-07-18T20:11:00Z",
