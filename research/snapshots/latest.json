@@ -1,0 +1,21 @@
+{
+  "date": "2026-07-18",
+  "priorDate": "2026-07-13",
+  "generatedAt": "2026-07-18T20:40:47.404Z",
+  "generatedBy": "openai/gpt-5.5",
+  "latencyMs": 13705,
+  "summary": "The clearest move is [Anthropic](https://job-boards.greenhouse.io/anthropic/jobs/5319626008) standing up a London Safeguards enforcement bench, not just hiring one trust-and-safety generalist: five analyst lanes split by abuse type, plus a Safeguards PM, which reads like operational enforcement capacity being carved into specialist queues. Behind that, [xAI](https://job-boards.greenhouse.io/xai/jobs/5032210007) and [ElevenLabs](https://jobs.ashbyhq.com/elevenlabs/10f5c0c0-43a3-4485-8e20-db677f892b6e) are doing the quieter legal/compliance buildout — xAI with UK, energy/infrastructure, and corporate counsel roles, ElevenLabs with IP, employment, and compliance. [Cohere](https://jobs.ashbyhq.com/cohere/bde93d36-4a41-4c8c-bd98-b4e44f9061e4) is worth watching but looks less like a London policy move than a comms-and-government-affairs tidying: US government affairs, global policy narratives, and audit/SOX are adjacent signals rather than a UK public-affairs standup. I’m not confident xAI’s counsel additions are pure growth, because two counsel roles disappeared at the same time, so this may be a reshuffle as much as a scale-up.",
+  "sourceUrls": [
+    "https://job-boards.greenhouse.io/anthropic/jobs/5319626008",
+    "https://job-boards.greenhouse.io/xai/jobs/5032210007",
+    "https://jobs.ashbyhq.com/elevenlabs/10f5c0c0-43a3-4485-8e20-db677f892b6e",
+    "https://jobs.ashbyhq.com/cohere/bde93d36-4a41-4c8c-bd98-b4e44f9061e4"
+  ],
+  "diffSummary": {
+    "added": 15,
+    "removed": 8,
+    "addedLondon": 6,
+    "todayTotal": 94,
+    "priorTotal": 87
+  }
+}

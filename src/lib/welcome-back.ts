@@ -35,12 +35,27 @@ export type WelcomeBackBullet = {
   href?: string;
 };
 
+export type WelcomeBackSnapshot = {
+  date: string;
+  priorDate: string;
+  summary: string;
+  generatedBy: string;
+  sourceUrls: string[];
+};
+
 export type WelcomeBackData = {
   available: boolean;
   windowStart: string | null;
   newEventCount: number;
   bullets: WelcomeBackBullet[];
   highlightedFrameName: string | null;
+  /**
+   * LLM-synthesised prose briefing for the most recent daily run that
+   * had a real diff. Null when no snapshot exists yet, or when the
+   * most recent snapshot is older than the diff window. See
+   * research/scripts/synthesise-daily-summary.mjs.
+   */
+  snapshot: WelcomeBackSnapshot | null;
 };
 
 const DEFAULT_WINDOW_DAYS = 14;
@@ -77,6 +92,37 @@ async function readFeed(): Promise<ReadFeedResult | null> {
   return null;
 }
 
+async function readLatestSnapshot(): Promise<WelcomeBackSnapshot | null> {
+  const candidates = [
+    path.join(process.cwd(), "research", "snapshots", "latest.json"),
+    path.join(process.cwd(), "..", "research", "snapshots", "latest.json"),
+  ];
+  for (const candidate of candidates) {
+    try {
+      const raw = await fs.readFile(candidate, "utf8");
+      const parsed = JSON.parse(raw) as Partial<WelcomeBackSnapshot>;
+      if (
+        !parsed.date ||
+        !parsed.priorDate ||
+        typeof parsed.summary !== "string" ||
+        parsed.summary.trim().length === 0
+      ) {
+        continue;
+      }
+      return {
+        date: parsed.date,
+        priorDate: parsed.priorDate,
+        summary: parsed.summary,
+        generatedBy: parsed.generatedBy ?? "unknown",
+        sourceUrls: Array.isArray(parsed.sourceUrls) ? parsed.sourceUrls : [],
+      };
+    } catch {
+      // try next candidate
+    }
+  }
+  return null;
+}
+
 export async function buildWelcomeBack({
   prevLastSeen,
   companies,
@@ -100,6 +146,7 @@ export async function buildWelcomeBack({
     newEventCount: 0,
     bullets: [],
     highlightedFrameName: null,
+    snapshot: null,
   };
 
   const feed = await readFeed();
@@ -118,6 +165,17 @@ export async function buildWelcomeBack({
     return Number.isFinite(t) && t >= startMs;
   });
 
+  // Load LLM-synthesised prose snapshot if one is available and fresh
+  // enough (its date must be within the diff window, otherwise it's a
+  // stale briefing that would confuse the user).
+  const rawSnapshot = await readLatestSnapshot();
+  const snapshotInWindow = (() => {
+    if (!rawSnapshot) return null;
+    const snapMs = Date.parse(rawSnapshot.date);
+    if (!Number.isFinite(snapMs) || snapMs < startMs) return null;
+    return rawSnapshot;
+  })();
+
   if (inWindow.length === 0) {
     // Card is still "available" — we show the empty-state line ("no new
     // updates since your last visit"). The page can still degrade to the
@@ -128,6 +186,7 @@ export async function buildWelcomeBack({
       newEventCount: 0,
       bullets: [],
       highlightedFrameName: null,
+      snapshot: snapshotInWindow,
     };
   }
 
@@ -204,5 +263,6 @@ export async function buildWelcomeBack({
     newEventCount: ranked.length,
     bullets,
     highlightedFrameName: focusFrame?.name ?? null,
+    snapshot: snapshotInWindow,
   };
 }

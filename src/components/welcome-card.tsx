@@ -180,9 +180,10 @@ function WelcomeBackDiff({
       </div>
     );
   }
-  // F2.3 — populated state. Same alert frame, with the bullet list of
-  // updates as the body. Bullet glyph stays magenta to match the frame's
-  // left edge.
+  // F2.3 — populated state. Same alert frame; if a synthesised prose
+  // snapshot is available and fresh, it sits above the bullets as an
+  // editorial briefing. Bullets stay for source-verifiability (per
+  // Fatima 2026-07-18: card shows prose + bullets, option b).
   return (
     <div
       className="mt-4 px-5 py-4"
@@ -193,6 +194,14 @@ function WelcomeBackDiff({
       <p className="mono text-[11px] uppercase tracking-[0.14em] text-readout pb-2">
         {heading}
       </p>
+      {welcomeBack.snapshot ? (
+        <p
+          className="prose-face text-sm text-card-interior-text leading-relaxed pb-3"
+          data-testid="welcome-back-snapshot"
+        >
+          {renderInlineMarkdownLinks(welcomeBack.snapshot.summary)}
+        </p>
+      ) : null}
       <ul className="prose-face text-sm space-y-1.5">
         {welcomeBack.bullets.map((b, i) => (
           <li key={i} className="flex gap-2">
@@ -219,4 +228,41 @@ function WelcomeBackDiff({
       </ul>
     </div>
   );
+}
+
+/**
+ * Tiny inline-markdown-link renderer for the LLM-synthesised snapshot
+ * prose. We only handle `[text](url)` — the synthesise-daily-summary.mjs
+ * prompt is locked to that form and never asks for bold/italic/code/etc.
+ * Keep it strict: any bracketed segment that doesn't match the anchored
+ * shape falls through as literal text so we never render half-parsed
+ * markdown.
+ */
+function renderInlineMarkdownLinks(text: string): React.ReactNode[] {
+  const pattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  const out: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      out.push(text.slice(lastIndex, match.index));
+    }
+    out.push(
+      <a
+        key={`sl-${key++}`}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline decoration-rule hover:decoration-current text-card-interior-text"
+      >
+        {match[1]}
+      </a>,
+    );
+    lastIndex = pattern.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    out.push(text.slice(lastIndex));
+  }
+  return out;
 }
