@@ -1,7 +1,7 @@
 {
   "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
   "lastDailyRun": "2026-07-21T06:07:00Z",
-  "lastHeartbeat": "2026-07-21T06:07:00Z",
+  "lastHeartbeat": "2026-07-21T08:07:00Z",
   "sources": {
     "roles-harvest": {
       "lastChecked": "2026-07-21T06:07:00Z",
