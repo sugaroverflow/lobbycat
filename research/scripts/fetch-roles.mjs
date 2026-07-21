@@ -154,17 +154,49 @@ async function fetchJson(src) {
     signal: AbortSignal.timeout(20000),
   };
   if (src.ats === "workday") {
+    // Workday's CXS API tightened validation ~2026-07-15: `limit` must be <= 20,
+    // otherwise it returns HTTP 400 (was silently capped before). Paginate by
+    // offset in pages of 20 and merge jobPostings. See workday-400 fix branch.
     init.method = "POST";
     init.headers = {
       ...init.headers,
       "content-type": "application/json",
     };
-    init.body = JSON.stringify({
-      appliedFacets: {},
-      limit: 100,
-      offset: 0,
-      searchText: "",
-    });
+    const PAGE = 20;
+    const MAX_PAGES = 25; // safety cap: up to 500 postings per source
+    let offset = 0;
+    let total = Infinity;
+    let merged = null;
+    for (let page = 0; page < MAX_PAGES && offset < total; page++) {
+      const pageInit = {
+        ...init,
+        body: JSON.stringify({
+          appliedFacets: {},
+          limit: PAGE,
+          offset,
+          searchText: "",
+        }),
+      };
+      const res = await fetch(url, pageInit);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const json = await res.json();
+      if (!merged) {
+        merged = json;
+        // Only trust `total` from the first page; some tenants report total:0
+        // on subsequent pages, which would truncate pagination early.
+        if (Number.isFinite(json.total) && json.total > 0) total = json.total;
+      } else {
+        merged.jobPostings = [
+          ...(merged.jobPostings || []),
+          ...(json.jobPostings || []),
+        ];
+      }
+      const got = (json.jobPostings || []).length;
+      // If we never got a usable total, keep going until a short/empty page.
+      if (got === 0 || got < PAGE) break;
+      offset += PAGE;
+    }
+    return merged || { jobPostings: [], total: 0 };
   }
   const res = await fetch(url, {
     ...init,
