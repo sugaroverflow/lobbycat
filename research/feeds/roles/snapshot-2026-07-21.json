@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-21T06:03:02.709Z",
+  "generated": "2026-07-21T11:08:29.191Z",
   "date": "2026-07-21",
   "summary": {
     "companies": 24,
-    "reachable": 20,
-    "totalPolicyRoles": 94,
-    "londonRoles": 35,
-    "newSincePrevious": 5
+    "reachable": 24,
+    "totalPolicyRoles": 143,
+    "londonRoles": 44,
+    "newSincePrevious": 53
   },
   "perCompany": {
     "google-deepmind": {
@@ -17,7 +17,7 @@
     },
     "anthropic-london": {
       "ats": "greenhouse",
-      "totalJobs": 412,
+      "totalJobs": 411,
       "policyRoles": 41,
       "londonRoles": 20
     },
@@ -59,7 +59,7 @@
     },
     "helsing": {
       "ats": "greenhouse",
-      "totalJobs": 122,
+      "totalJobs": 121,
       "policyRoles": 1,
       "londonRoles": 1
     },
@@ -67,6 +67,12 @@
       "ats": "ashby",
       "totalJobs": 201,
       "policyRoles": 9,
+      "londonRoles": 1
+    },
+    "ofcom-ai": {
+      "ats": "workday",
+      "totalJobs": 6,
+      "policyRoles": 3,
       "londonRoles": 1
     },
     "xai-london": {
@@ -77,7 +83,7 @@
     },
     "polyai": {
       "ats": "greenhouse",
-      "totalJobs": 14,
+      "totalJobs": 13,
       "policyRoles": 0,
       "londonRoles": 0
     },
@@ -87,6 +93,18 @@
       "policyRoles": 0,
       "londonRoles": 0
     },
+    "hogan-lovells-ai": {
+      "ats": "workday",
+      "totalJobs": 211,
+      "policyRoles": 28,
+      "londonRoles": 6
+    },
+    "linklaters-ai": {
+      "ats": "workday",
+      "totalJobs": 161,
+      "policyRoles": 11,
+      "londonRoles": 2
+    },
     "techuk": {
       "ats": "pinpoint",
       "totalJobs": 4,
@@ -95,13 +113,13 @@
     },
     "cohere-london": {
       "ats": "ashby",
-      "totalJobs": 137,
+      "totalJobs": 138,
       "policyRoles": 5,
       "londonRoles": 1
     },
     "apollo-research": {
       "ats": "lever",
-      "totalJobs": 12,
+      "totalJobs": 11,
       "policyRoles": 1,
       "londonRoles": 1
     },
@@ -116,6 +134,12 @@
       "totalJobs": 7,
       "policyRoles": 3,
       "londonRoles": 3
+    },
+    "fca-ai": {
+      "ats": "workday",
+      "totalJobs": 25,
+      "policyRoles": 7,
+      "londonRoles": 0
     },
     "chatham-house-ai": {
       "ats": "teamtailor",
@@ -149,6 +173,96 @@
       "matched": "safeguard",
       "londonRelevant": true,
       "geoHit": "remote",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "SPA - Global Regulatory, International Trade",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/SPA---Global-Regulatory--International-Trade_R269201-3",
+      "matched": "regulat",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Stagiaire Strategic Operations, Agreements and Regulation H/F (Juillet à Décembre 2027)",
+      "location": "Paris",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Paris/Stagiaire-Strategic-Operations--Agreements-and-Regulation-H-F--Juillet--Dcembre-2027-_R269254",
+      "matched": "regulat",
+      "londonRelevant": true,
+      "geoHit": "paris",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Biller",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/Legal-Biller_R269182-1",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Senior Legal Project Manager – Litigation, Arbitration & Employment",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/Senior-Legal-Project-Manager---Litigation--Arbitration---Employment_R268975-1",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Project Manager – Corporate & Finance",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/Legal-Project-Manager---Corporate---Finance_R268795-2",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Stagiaire Strategic Operations, Agreements and Regulation H/F (Juillet à Décembre 2027)",
+      "location": "Paris",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Paris/Stagiaire-Strategic-Operations--Agreements-and-Regulation-H-F--Juillet--dcembre-2026-_R258345",
+      "matched": "regulat",
+      "londonRelevant": true,
+      "geoHit": "paris",
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Paralegal/Support Lawyer (Corporate)",
+      "location": "London",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/London/Paralegal-Support-Lawyer--Corporate-_R00015462",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern (from September 2026) - Antitrust & Foreign Investment",
+      "location": "Brussels",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Brussels/Legal-Intern_R00010305",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "brussels",
+      "isNew": true
+    },
+    {
+      "slug": "ofcom-ai",
+      "title": "Senior Associate, Senior Policy Advisor",
+      "location": "London",
+      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/London/Senior-Associate--Senior-Policy-Advisor_JR2442",
+      "matched": "policy",
+      "londonRelevant": true,
+      "geoHit": "london",
       "isNew": true
     },
     {
@@ -502,10 +616,400 @@
       "isNew": true
     },
     {
-      "slug": "openai-london",
-      "title": "Head of GTM Business Operations & Strategy, Policy",
-      "location": "San Francisco",
-      "url": "https://jobs.ashbyhq.com/openai/e5c39e03-6121-47be-8bd3-f6128557b38f",
+      "slug": "fca-ai",
+      "title": "Lead Open Banking Policy Advisor",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Lead-Open-Banking-Policy-Advisor_JR0022060-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Senior Associate, Wholesale Cryptoassets Policy",
+      "location": "2 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Associate--Wholesale-Cryptoassets-Policy_JR0021975-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Market Conduct & Post Trade Policy Lead (9 Month Fixed Term Contract)",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Market-Conduct---Post-Trade-Policy-Lead_JR0021303-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Cyber Policy Lead",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Cyber-Policy-Lead_JR0021317-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Regulatory Lawyer – 12 Month Fixed Term Contract /Secondment",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Regulatory-Lawyer---12-Month-Fixed-Term-Contract--Secondment_JR0021921-1",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Senior Pension Policy/Institutional Investments Policy Advisor",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Pension-Policy-Institutional-Investments-Policy-Advisor_JR0021279-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Payment Policy Manager",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Payment-Policy-Manager_JR0021922-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Recruitment Coordinator",
+      "location": "Denver",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Denver/Associate-Recruitment-Coordinator_R268947",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Secretary",
+      "location": "Jakarta",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Jakarta/Legal-Secretary_R269309",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Werkstudent Global Regulatory (Life Sciences)",
+      "location": "Amsterdam",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Amsterdam/Werkstudent-Global-Regulatory--Life-Sciences-_R223473",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Project Manager – Corporate & Finance",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Legal-Project-Manager---Corporate---Finance_R269229-1",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Referendarin/Referendar (w/m/d) / Wissenschaftliche Mitarbeitende (w/m/d) Strategic Operations, Agreements and Regulation (SOAR) (Handels- und Vertriebsrecht sowie Regulatorik)",
+      "location": "4 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Referendarin-Referendar--w-m-d----Wissenschaftliche-Mitarbeitende--w-m-d--Strategic-Operations--Agreements-and-Regulation--SOAR---Handels--und-Vertriebsrecht-sowie-Regulatorik-_R222763",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Referendarin/Referendar (w/m/d) Produkthaftung, Produktsicherheit und Produkt-Compliance",
+      "location": "2 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Referendare--w-m-d----Wissenschaftliche-Mitarbeiter--w-m-d--Produkthaftung--Produktsicherheit-und-Produkt-Compliance_R20176",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "2 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Initiativ-Legal_R20103",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "Hamburg",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Hamburg/Initiativ-Legal_R20102",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Rechtsanwältin/Rechtsanwalt (w/m/d) Strategic Operations, Agreements and Regulation (SOAR)",
+      "location": "2 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Rechtsanwltin-Rechtsanwalt--w-m-d--Strategic-Operations--Agreements-and-Regulation--SOAR---Handels--und-Vertriebsrecht-sowie-Regulatorik-_R222303",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "Frankfurt",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Frankfurt/Initiativ-Legal_R20104",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "Dusseldorf",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Dusseldorf/Initiativ-Legal_R20101",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Projects Associate (w/m/d) Internationales Wirtschaftsstrafrecht / Compliance & Investigations",
+      "location": "5 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Berlin/Projects-Associate--w-m-d--Internationales-Wirtschaftsstrafrecht_R20123",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Business Lawyer (w/m/d) Internationales Wirtschaftsstrafrecht / Compliance & Investigations",
+      "location": "5 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Berlin/Business-Lawyer--w-m-d--Compliance-und-interne-Untersuchungen_R211112",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Rechtsanwältin/Rechtsanwalt (w/m/d) Internationales Wirtschaftsstrafrecht/Compliance & Investigations",
+      "location": "5 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Berlin/Rechtsanwltin-Rechtsanwalt--w-m-d--Internationales-Wirtschaftsstrafrecht_R21797",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Banking & Loan Finance - Intern / Paralegal / Junior Associate",
+      "location": "Shanghai",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Shanghai/Banking---Intern---Paralegal---Junior-Associate_R268937",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Senior Manager, Business Operations - Global Regulatory & IP",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Senior-Manager--Business-Operations---Global-Regulatory---IP_R268878",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "M&BD Manager - Government Relations & Public Affairs, Government Contracts & Education, and Education Sector",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Marketing---Business-Development-Manager---Government-Relations---Public-Affairs--Government-Contracts---Education--and-Education-Sector_R268881",
+      "matched": "public affairs",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Energy Regulatory, Junior Associate",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Energy-Regulatory--Junior-Associate_R268748",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Energy Regulatory, Mid-Level to Senior Associate",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Energy-Regulatory--Mid-Level-to-Senior-Associate_R268836",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Paralegal – Antitrust, Competition & Economic Regulation (ACER)",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Paralegal---ACER_R268846",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Paralegal - Litigation (LAE)",
+      "location": "Miami",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Miami/Paralegal---Litigation--LAE-_R269014",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Antitrust, Competition and Economic Regulation Group – Mid-Level Associate",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Antitrust--Competition-and-Economic-Regulation-Group---Mid-Level-Associate_R268756",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Paralegal, Energy & Infrastructure",
+      "location": "Seoul",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Seoul/Paralegal--Energy---Infrastructure_R00015668-1",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Secretary | Linklaters Lisboa",
+      "location": "Lisbon",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Lisbon/Legal-Secretary---Linklaters-Lisboa_R00013804",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Secretary | Evening Pool",
+      "location": "Madrid",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Madrid/Legal-Secretary---Evening-Pool_R00015557",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern - Litigation as from July 2027",
+      "location": "Luxembourg",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Luxembourg/Legal-Intern---Litigation-as-from-July-2027_R00015166",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Secretary",
+      "location": "Tokyo",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Tokyo/Legal-Secretary_R00014443",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Trial Paralegal",
+      "location": "New York",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/New-York/Trial-Paralegal_R00014960",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Assistant, ECM, Capital Markets",
+      "location": "3 Locations",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Hong-Kong/Legal-Assistant--ECM--Capital-Markets_R00014523",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern - Investment Funds as from January 2027",
+      "location": "Luxembourg",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Luxembourg/Legal-Intern---Investment-Funds-as-from-January-2027_R00014018",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern Luxembourg -  6-month internship",
+      "location": "2 Locations",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Luxembourg/Legal-Intern-Luxembourg----6-month-internship_R00003880",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "ofcom-ai",
+      "title": "Senior Associate, Online Safety Policy Development",
+      "location": "2 Locations",
+      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/Manchester/Senior-Associate--Online-Safety-Policy-Development_JR2447",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "ofcom-ai",
+      "title": "Associate, Online Safety Policy Development",
+      "location": "2 Locations",
+      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/Manchester/Associate--Online-Safety-Policy-Development_JR2446",
       "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
@@ -514,8 +1018,8 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, APAC",
-      "location": "Sydney, Australia",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270065008",
+      "location": "Singapore",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270072008",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -524,8 +1028,8 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, APAC",
-      "location": "Singapore",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270072008",
+      "location": "Sydney, Australia",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5270065008",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -923,6 +1427,16 @@
     },
     {
       "slug": "openai-london",
+      "title": "Head of GTM Business Operations & Strategy, Policy",
+      "location": "San Francisco",
+      "url": "https://jobs.ashbyhq.com/openai/e5c39e03-6121-47be-8bd3-f6128557b38f",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "openai-london",
       "title": "Senior Counsel, Public Sector",
       "location": "Washington, DC",
       "url": "https://jobs.ashbyhq.com/openai/b4d488e6-4633-411c-9bd8-27b9f1004330",
@@ -1094,6 +1608,96 @@
       "isNew": true
     },
     {
+      "slug": "hogan-lovells-ai",
+      "title": "SPA - Global Regulatory, International Trade",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/SPA---Global-Regulatory--International-Trade_R269201-3",
+      "matched": "regulat",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Stagiaire Strategic Operations, Agreements and Regulation H/F (Juillet à Décembre 2027)",
+      "location": "Paris",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Paris/Stagiaire-Strategic-Operations--Agreements-and-Regulation-H-F--Juillet--Dcembre-2027-_R269254",
+      "matched": "regulat",
+      "londonRelevant": true,
+      "geoHit": "paris",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Biller",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/Legal-Biller_R269182-1",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Senior Legal Project Manager – Litigation, Arbitration & Employment",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/Senior-Legal-Project-Manager---Litigation--Arbitration---Employment_R268975-1",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Project Manager – Corporate & Finance",
+      "location": "London",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/London/Legal-Project-Manager---Corporate---Finance_R268795-2",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Stagiaire Strategic Operations, Agreements and Regulation H/F (Juillet à Décembre 2027)",
+      "location": "Paris",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Paris/Stagiaire-Strategic-Operations--Agreements-and-Regulation-H-F--Juillet--dcembre-2026-_R258345",
+      "matched": "regulat",
+      "londonRelevant": true,
+      "geoHit": "paris",
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Paralegal/Support Lawyer (Corporate)",
+      "location": "London",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/London/Paralegal-Support-Lawyer--Corporate-_R00015462",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern (from September 2026) - Antitrust & Foreign Investment",
+      "location": "Brussels",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Brussels/Legal-Intern_R00010305",
+      "matched": "legal",
+      "londonRelevant": true,
+      "geoHit": "brussels",
+      "isNew": true
+    },
+    {
+      "slug": "ofcom-ai",
+      "title": "Senior Associate, Senior Policy Advisor",
+      "location": "London",
+      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/London/Senior-Associate--Senior-Policy-Advisor_JR2442",
+      "matched": "policy",
+      "londonRelevant": true,
+      "geoHit": "london",
+      "isNew": true
+    },
+    {
       "slug": "anthropic-london",
       "title": "IP Counsel, Copyright",
       "location": "San Francisco, CA | Seattle, WA | New York City, NY | Washington, DC",
@@ -1114,37 +1718,406 @@
       "isNew": true
     },
     {
-      "slug": "openai-london",
-      "title": "Head of GTM Business Operations & Strategy, Policy",
-      "location": "San Francisco",
-      "url": "https://jobs.ashbyhq.com/openai/e5c39e03-6121-47be-8bd3-f6128557b38f",
+      "slug": "fca-ai",
+      "title": "Lead Open Banking Policy Advisor",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Lead-Open-Banking-Policy-Advisor_JR0022060-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Senior Associate, Wholesale Cryptoassets Policy",
+      "location": "2 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Associate--Wholesale-Cryptoassets-Policy_JR0021975-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Market Conduct & Post Trade Policy Lead (9 Month Fixed Term Contract)",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Market-Conduct---Post-Trade-Policy-Lead_JR0021303-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Cyber Policy Lead",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Cyber-Policy-Lead_JR0021317-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Regulatory Lawyer – 12 Month Fixed Term Contract /Secondment",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Regulatory-Lawyer---12-Month-Fixed-Term-Contract--Secondment_JR0021921-1",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Senior Pension Policy/Institutional Investments Policy Advisor",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Pension-Policy-Institutional-Investments-Policy-Advisor_JR0021279-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "fca-ai",
+      "title": "Payment Policy Manager",
+      "location": "3 Locations",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Payment-Policy-Manager_JR0021922-1",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Recruitment Coordinator",
+      "location": "Denver",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Denver/Associate-Recruitment-Coordinator_R268947",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Secretary",
+      "location": "Jakarta",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Jakarta/Legal-Secretary_R269309",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Werkstudent Global Regulatory (Life Sciences)",
+      "location": "Amsterdam",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Amsterdam/Werkstudent-Global-Regulatory--Life-Sciences-_R223473",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Legal Project Manager – Corporate & Finance",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Legal-Project-Manager---Corporate---Finance_R269229-1",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Referendarin/Referendar (w/m/d) / Wissenschaftliche Mitarbeitende (w/m/d) Strategic Operations, Agreements and Regulation (SOAR) (Handels- und Vertriebsrecht sowie Regulatorik)",
+      "location": "4 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Referendarin-Referendar--w-m-d----Wissenschaftliche-Mitarbeitende--w-m-d--Strategic-Operations--Agreements-and-Regulation--SOAR---Handels--und-Vertriebsrecht-sowie-Regulatorik-_R222763",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Referendarin/Referendar (w/m/d) Produkthaftung, Produktsicherheit und Produkt-Compliance",
+      "location": "2 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Referendare--w-m-d----Wissenschaftliche-Mitarbeiter--w-m-d--Produkthaftung--Produktsicherheit-und-Produkt-Compliance_R20176",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "2 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Initiativ-Legal_R20103",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "Hamburg",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Hamburg/Initiativ-Legal_R20102",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Rechtsanwältin/Rechtsanwalt (w/m/d) Strategic Operations, Agreements and Regulation (SOAR)",
+      "location": "2 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Munich/Rechtsanwltin-Rechtsanwalt--w-m-d--Strategic-Operations--Agreements-and-Regulation--SOAR---Handels--und-Vertriebsrecht-sowie-Regulatorik-_R222303",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "Frankfurt",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Frankfurt/Initiativ-Legal_R20104",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Initiativ Legal (w/m/d)",
+      "location": "Dusseldorf",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Dusseldorf/Initiativ-Legal_R20101",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Projects Associate (w/m/d) Internationales Wirtschaftsstrafrecht / Compliance & Investigations",
+      "location": "5 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Berlin/Projects-Associate--w-m-d--Internationales-Wirtschaftsstrafrecht_R20123",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Business Lawyer (w/m/d) Internationales Wirtschaftsstrafrecht / Compliance & Investigations",
+      "location": "5 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Berlin/Business-Lawyer--w-m-d--Compliance-und-interne-Untersuchungen_R211112",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Rechtsanwältin/Rechtsanwalt (w/m/d) Internationales Wirtschaftsstrafrecht/Compliance & Investigations",
+      "location": "5 Locations",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Berlin/Rechtsanwltin-Rechtsanwalt--w-m-d--Internationales-Wirtschaftsstrafrecht_R21797",
+      "matched": "compliance",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Banking & Loan Finance - Intern / Paralegal / Junior Associate",
+      "location": "Shanghai",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Shanghai/Banking---Intern---Paralegal---Junior-Associate_R268937",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Senior Manager, Business Operations - Global Regulatory & IP",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Senior-Manager--Business-Operations---Global-Regulatory---IP_R268878",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "M&BD Manager - Government Relations & Public Affairs, Government Contracts & Education, and Education Sector",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Marketing---Business-Development-Manager---Government-Relations---Public-Affairs--Government-Contracts---Education--and-Education-Sector_R268881",
+      "matched": "public affairs",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Energy Regulatory, Junior Associate",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Energy-Regulatory--Junior-Associate_R268748",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Energy Regulatory, Mid-Level to Senior Associate",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Energy-Regulatory--Mid-Level-to-Senior-Associate_R268836",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Paralegal – Antitrust, Competition & Economic Regulation (ACER)",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Paralegal---ACER_R268846",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Paralegal - Litigation (LAE)",
+      "location": "Miami",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Miami/Paralegal---Litigation--LAE-_R269014",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Antitrust, Competition and Economic Regulation Group – Mid-Level Associate",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Antitrust--Competition-and-Economic-Regulation-Group---Mid-Level-Associate_R268756",
+      "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Paralegal, Energy & Infrastructure",
+      "location": "Seoul",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Seoul/Paralegal--Energy---Infrastructure_R00015668-1",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Secretary | Linklaters Lisboa",
+      "location": "Lisbon",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Lisbon/Legal-Secretary---Linklaters-Lisboa_R00013804",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Secretary | Evening Pool",
+      "location": "Madrid",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Madrid/Legal-Secretary---Evening-Pool_R00015557",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern - Litigation as from July 2027",
+      "location": "Luxembourg",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Luxembourg/Legal-Intern---Litigation-as-from-July-2027_R00015166",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Secretary",
+      "location": "Tokyo",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Tokyo/Legal-Secretary_R00014443",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Trial Paralegal",
+      "location": "New York",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/New-York/Trial-Paralegal_R00014960",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Assistant, ECM, Capital Markets",
+      "location": "3 Locations",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Hong-Kong/Legal-Assistant--ECM--Capital-Markets_R00014523",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern - Investment Funds as from January 2027",
+      "location": "Luxembourg",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Luxembourg/Legal-Intern---Investment-Funds-as-from-January-2027_R00014018",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "linklaters-ai",
+      "title": "Legal Intern Luxembourg -  6-month internship",
+      "location": "2 Locations",
+      "url": "https://linklaters.wd3.myworkdayjobs.com/en-US/Linklaters/job/Luxembourg/Legal-Intern-Luxembourg----6-month-internship_R00003880",
+      "matched": "legal",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "ofcom-ai",
+      "title": "Senior Associate, Online Safety Policy Development",
+      "location": "2 Locations",
+      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/Manchester/Senior-Associate--Online-Safety-Policy-Development_JR2447",
+      "matched": "policy",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": true
+    },
+    {
+      "slug": "ofcom-ai",
+      "title": "Associate, Online Safety Policy Development",
+      "location": "2 Locations",
+      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/Manchester/Associate--Online-Safety-Policy-Development_JR2446",
       "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": true
     }
   ],
-  "errors": [
-    {
-      "slug": "ofcom-ai",
-      "ats": "workday",
-      "error": "HTTP 400"
-    },
-    {
-      "slug": "hogan-lovells-ai",
-      "ats": "workday",
-      "error": "HTTP 400"
-    },
-    {
-      "slug": "linklaters-ai",
-      "ats": "workday",
-      "error": "HTTP 400"
-    },
-    {
-      "slug": "fca-ai",
-      "ats": "workday",
-      "error": "HTTP 400"
-    }
-  ],
+  "errors": [],
   "_note": "Generated by research/scripts/fetch-roles.mjs. Review before publishing — geo/keyword filters are heuristics. Fold high-signal (especially London/EMEA) roles into per-company feeds[].roles and the global feed as event_type:'role'."
 }

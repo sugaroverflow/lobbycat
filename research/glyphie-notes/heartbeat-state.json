@@ -1,29 +1,16 @@
 {
   "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
   "lastDailyRun": "2026-07-21T06:07:00Z",
-  "lastHeartbeat": "2026-07-21T10:37:00Z",
+  "lastHeartbeat": "2026-07-21T11:07:00Z",
   "sources": {
     "roles-harvest": {
-      "lastChecked": "2026-07-21T06:07:00Z",
-      "lastResult": "snapshot-2026-07-21.json (94 policy roles, -1 net vs 95; 5 new: 4 Anthropic safeguards/IP+PM roles, 1 OpenAI Head of GTM Policy Ops; 20/24 reachable; 35 London; 4 Workday-400 errors persist) -> committing daily harvest PR"
+      "lastChecked": "2026-07-21T11:07:00Z",
+      "lastResult": "POST-FIX re-harvest: 143 policy roles, 44 London/EMEA (up from 94 @06:07Z). PR #99 merged -> workday-400 fixed -> 4 dead sources recovered live: ofcom=6 hogan-lovells=211 linklaters=161 fca=25. All 24 sources now reachable. snapshot-2026-07-21.json corrected."
     },
     "research/feed.json": {
       "lastChecked": "2026-07-20T20:07:00Z",
       "lastResult": "on-disk git hash-object=1b24cf43 (unchanged since 07-18 commit 0dd292e); byte-identical -> HEARTBEAT_OK, no commit; full refresh is a daily-harvest job, not heartbeat"
     }
   },
-  "knownIssues": {
-    "workday-400": {
-      "sources": [
-        "ofcom-ai",
-        "hogan-lovells-ai",
-        "linklaters-ai",
-        "fca-ai"
-      ],
-      "firstSeen": "2026-07-15",
-      "status": "fix-in-review",
-      "fixPR": 99,
-      "note": "ROOT CAUSE: Workday CXS API now rejects limit>20 with HTTP 400 (regression ~07-15). Fix = paginate in pages of 20 (PR #99, fix/workday-400-limit-cap). Live-verified all 4 sources 200: ofcom=6 hogan-lovells=211 linklaters=161 fca=25. Remove this entry once #99 merges and next daily harvest confirms reachability."
-    }
-  }
+  "knownIssues": {}
 }
