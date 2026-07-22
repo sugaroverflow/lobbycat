@@ -1,11 +1,11 @@
 {
   "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
-  "lastDailyRun": "2026-07-21T06:07:00Z",
-  "lastHeartbeat": "2026-07-21T11:07:00Z",
+  "lastDailyRun": "2026-07-22T06:01:00Z",
+  "lastHeartbeat": "2026-07-22T06:07:00Z",
   "sources": {
     "roles-harvest": {
-      "lastChecked": "2026-07-21T11:07:00Z",
-      "lastResult": "POST-FIX re-harvest: 143 policy roles, 44 London/EMEA (up from 94 @06:07Z). PR #99 merged -> workday-400 fixed -> 4 dead sources recovered live: ofcom=6 hogan-lovells=211 linklaters=161 fca=25. All 24 sources now reachable. snapshot-2026-07-21.json corrected."
+      "lastChecked": "2026-07-22T06:01:00Z",
+      "lastResult": "Daily harvest 2026-07-22: 140 policy roles, 44 London, 0 errors, all sources reachable. Diff vs 07-21: +1 (fca Senior Banking Policy Advisor) / -4 removed; net -3 (143->140)."
     },
     "research/feed.json": {
       "lastChecked": "2026-07-20T20:07:00Z",
