@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-23T06:03:15.856Z",
+  "generated": "2026-07-23T10:38:15.317Z",
   "date": "2026-07-23",
   "summary": {
     "companies": 24,
     "reachable": 24,
-    "totalPolicyRoles": 142,
+    "totalPolicyRoles": 143,
     "londonRoles": 44,
-    "newSincePrevious": 7
+    "newSincePrevious": 5
   },
   "perCompany": {
     "google-deepmind": {
@@ -23,7 +23,7 @@
     },
     "openai-london": {
       "ats": "ashby",
-      "totalJobs": 737,
+      "totalJobs": 736,
       "policyRoles": 19,
       "londonRoles": 1
     },
@@ -53,14 +53,14 @@
     },
     "synthesia": {
       "ats": "ashby",
-      "totalJobs": 75,
+      "totalJobs": 76,
       "policyRoles": 1,
       "londonRoles": 1
     },
     "helsing": {
       "ats": "greenhouse",
-      "totalJobs": 119,
-      "policyRoles": 1,
+      "totalJobs": 121,
+      "policyRoles": 2,
       "londonRoles": 1
     },
     "elevenlabs-london": {
@@ -95,7 +95,7 @@
     },
     "hogan-lovells-ai": {
       "ats": "workday",
-      "totalJobs": 208,
+      "totalJobs": 209,
       "policyRoles": 27,
       "londonRoles": 6
     },
@@ -616,30 +616,10 @@
       "isNew": true
     },
     {
-      "slug": "openai-london",
-      "title": "Senior Counsel, Commercial (Robotics)",
-      "location": "San Francisco",
-      "url": "https://jobs.ashbyhq.com/openai/21734593-6318-4e55-a685-53c52c0bbfe9",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "xai-london",
-      "title": "Senior Employment Counsel",
-      "location": "Bastrop, Texas, United States",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5193476007",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "xai-london",
-      "title": "Senior Employment Counsel",
-      "location": "Palo Alto, California, United States",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5144826007",
+      "slug": "helsing",
+      "title": "Legal Counsel Contracts & Commercial",
+      "location": "Munich - Berlin",
+      "url": "https://helsing.ai/jobs/4934633101?gh_jid=4934633101",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
@@ -1506,6 +1486,16 @@
       "isNew": false
     },
     {
+      "slug": "openai-london",
+      "title": "Senior Counsel, Commercial (Robotics)",
+      "location": "San Francisco",
+      "url": "https://jobs.ashbyhq.com/openai/21734593-6318-4e55-a685-53c52c0bbfe9",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
       "slug": "wayve",
       "title": "Legal Counsel (Commercial)",
       "location": "Sunnyvale",
@@ -1567,6 +1557,26 @@
     },
     {
       "slug": "xai-london",
+      "title": "Senior Employment Counsel",
+      "location": "Bastrop, Texas, United States",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/5193476007",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "xai-london",
+      "title": "Senior Employment Counsel",
+      "location": "Palo Alto, California, United States",
+      "url": "https://job-boards.greenhouse.io/xai/jobs/5144826007",
+      "matched": "counsel",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "xai-london",
       "title": "Senior Legal Counsel, Safety, Content & Law Enforcement (JAPAC)",
       "location": "Singapore, SG",
       "url": "https://job-boards.greenhouse.io/xai/jobs/5189363007",
@@ -1618,30 +1628,10 @@
       "isNew": true
     },
     {
-      "slug": "openai-london",
-      "title": "Senior Counsel, Commercial (Robotics)",
-      "location": "San Francisco",
-      "url": "https://jobs.ashbyhq.com/openai/21734593-6318-4e55-a685-53c52c0bbfe9",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "xai-london",
-      "title": "Senior Employment Counsel",
-      "location": "Bastrop, Texas, United States",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5193476007",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": true
-    },
-    {
-      "slug": "xai-london",
-      "title": "Senior Employment Counsel",
-      "location": "Palo Alto, California, United States",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5144826007",
+      "slug": "helsing",
+      "title": "Legal Counsel Contracts & Commercial",
+      "location": "Munich - Berlin",
+      "url": "https://helsing.ai/jobs/4934633101?gh_jid=4934633101",
       "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
