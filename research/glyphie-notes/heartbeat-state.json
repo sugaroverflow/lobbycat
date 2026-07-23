@@ -1,11 +1,11 @@
 {
   "_note": "Per-source last-checked throttle for heartbeat cadence. Do NOT re-poll a source more than once per 4h during heartbeats. Daily harvest (06:00 UTC) is separate and always runs.",
   "lastDailyRun": "2026-07-23T06:03:15Z",
-  "lastHeartbeat": "2026-07-23T09:37:00Z",
+  "lastHeartbeat": "2026-07-23T10:37:00Z",
   "sources": {
     "roles-harvest": {
-      "lastChecked": "2026-07-23T06:03:15Z",
-      "lastResult": "Daily harvest 2026-07-23: 142 policy roles, 44 London, 0 errors, all 24 companies reachable. Diff vs 07-22: +2 (openai Senior Counsel Commercial Robotics [SF]; xai Senior Employment Counsel [TX]) / -0; net +2 (140->142). No London-relevant changes."
+      "lastChecked": "2026-07-23T10:37:00Z",
+      "lastResult": "Intraday refresh 2026-07-23 10:37: 143 policy roles (was 142 at 06:03), +1/-0 net. New: helsing Legal Counsel Contracts & Commercial (Munich/Berlin, londonRelevant=false). 0 London-relevant changes. Large git diff was reorder noise; semantic delta = +1 only."
     },
     "research/feed.json": {
       "lastChecked": "2026-07-23T05:37:00Z",
