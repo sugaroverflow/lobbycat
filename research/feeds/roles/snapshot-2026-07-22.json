@@ -1,12 +1,12 @@
 {
-  "generated": "2026-07-24T06:03:16.150Z",
-  "date": "2026-07-24",
+  "generated": "2026-07-22T06:01:17.744Z",
+  "date": "2026-07-22",
   "summary": {
     "companies": 24,
     "reachable": 24,
-    "totalPolicyRoles": 143,
-    "londonRoles": 45,
-    "newSincePrevious": 6
+    "totalPolicyRoles": 140,
+    "londonRoles": 44,
+    "newSincePrevious": 5
   },
   "perCompany": {
     "google-deepmind": {
@@ -17,19 +17,19 @@
     },
     "anthropic-london": {
       "ats": "greenhouse",
-      "totalJobs": 407,
-      "policyRoles": 40,
+      "totalJobs": 410,
+      "policyRoles": 41,
       "londonRoles": 20
     },
     "openai-london": {
       "ats": "ashby",
-      "totalJobs": 741,
-      "policyRoles": 19,
+      "totalJobs": 726,
+      "policyRoles": 18,
       "londonRoles": 1
     },
     "wayve": {
       "ats": "greenhouse",
-      "totalJobs": 118,
+      "totalJobs": 116,
       "policyRoles": 1,
       "londonRoles": 0
     },
@@ -53,55 +53,55 @@
     },
     "synthesia": {
       "ats": "ashby",
-      "totalJobs": 76,
+      "totalJobs": 75,
       "policyRoles": 1,
       "londonRoles": 1
     },
     "helsing": {
       "ats": "greenhouse",
-      "totalJobs": 121,
-      "policyRoles": 2,
+      "totalJobs": 119,
+      "policyRoles": 1,
       "londonRoles": 1
     },
     "elevenlabs-london": {
       "ats": "ashby",
-      "totalJobs": 211,
+      "totalJobs": 200,
       "policyRoles": 8,
       "londonRoles": 1
     },
     "ofcom-ai": {
       "ats": "workday",
-      "totalJobs": 8,
-      "policyRoles": 4,
+      "totalJobs": 6,
+      "policyRoles": 3,
       "londonRoles": 1
     },
     "xai-london": {
       "ats": "greenhouse",
-      "totalJobs": 220,
-      "policyRoles": 10,
+      "totalJobs": 218,
+      "policyRoles": 9,
       "londonRoles": 2
     },
     "polyai": {
       "ats": "greenhouse",
-      "totalJobs": 16,
+      "totalJobs": 14,
       "policyRoles": 0,
       "londonRoles": 0
     },
     "improbable": {
       "ats": "ashby",
-      "totalJobs": 8,
+      "totalJobs": 9,
       "policyRoles": 0,
       "londonRoles": 0
     },
     "hogan-lovells-ai": {
       "ats": "workday",
       "totalJobs": 207,
-      "policyRoles": 26,
+      "policyRoles": 27,
       "londonRoles": 6
     },
     "linklaters-ai": {
       "ats": "workday",
-      "totalJobs": 156,
+      "totalJobs": 161,
       "policyRoles": 11,
       "londonRoles": 2
     },
@@ -113,7 +113,7 @@
     },
     "cohere-london": {
       "ats": "ashby",
-      "totalJobs": 135,
+      "totalJobs": 139,
       "policyRoles": 5,
       "londonRoles": 1
     },
@@ -126,18 +126,18 @@
     "faculty-ai": {
       "ats": "ashby",
       "totalJobs": 65,
-      "policyRoles": 4,
-      "londonRoles": 4
+      "policyRoles": 3,
+      "londonRoles": 3
     },
     "aria-safeguarded-ai": {
       "ats": "pinpoint",
-      "totalJobs": 5,
+      "totalJobs": 7,
       "policyRoles": 3,
       "londonRoles": 3
     },
     "fca-ai": {
       "ats": "workday",
-      "totalJobs": 30,
+      "totalJobs": 23,
       "policyRoles": 7,
       "londonRoles": 0
     },
@@ -176,16 +176,6 @@
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
-      "title": "Senior Research Scientist - AI Safety Evaluations",
-      "location": "UK - London",
-      "url": "https://jobs.ashbyhq.com/faculty/6c0abf94-8d61-459b-b094-49307a595c60",
-      "matched": "ai safety",
-      "londonRelevant": true,
-      "geoHit": "london",
-      "isNew": true
-    },
-    {
       "slug": "anthropic-london",
       "title": "AI Compliance Officer",
       "location": "Dublin, IE",
@@ -218,21 +208,21 @@
     {
       "slug": "anthropic-london",
       "title": "Commercial Counsel, EMEA",
-      "location": "London, UK",
-      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142966008",
-      "matched": "counsel",
-      "londonRelevant": true,
-      "geoHit": "london",
-      "isNew": false
-    },
-    {
-      "slug": "anthropic-london",
-      "title": "Commercial Counsel, EMEA",
       "location": "Dublin, IE",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142971008",
       "matched": "counsel",
       "londonRelevant": true,
       "geoHit": "dublin",
+      "isNew": false
+    },
+    {
+      "slug": "anthropic-london",
+      "title": "Commercial Counsel, EMEA",
+      "location": "London, UK",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5142966008",
+      "matched": "counsel",
+      "londonRelevant": true,
+      "geoHit": "london",
       "isNew": false
     },
     {
@@ -626,10 +616,10 @@
       "isNew": true
     },
     {
-      "slug": "ofcom-ai",
-      "title": "Associate, Policy",
+      "slug": "fca-ai",
+      "title": "Senior Banking Policy Advisor",
       "location": "3 Locations",
-      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/London/Associate--Policy_JR2449",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Banking-Policy-Advisor_JR0021971-1",
       "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,
@@ -807,6 +797,16 @@
     },
     {
       "slug": "anthropic-london",
+      "title": "Standards Editor",
+      "location": "San Francisco, CA | New York City, NY",
+      "url": "https://job-boards.greenhouse.io/anthropic/jobs/5317734008",
+      "matched": "standards",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "anthropic-london",
       "title": "Technical Program Manager, Safeguards (Infrastructure & Evals)",
       "location": "San Francisco, CA | New York City, NY | Seattle, WA",
       "url": "https://job-boards.greenhouse.io/anthropic/jobs/5108695008",
@@ -927,16 +927,6 @@
     },
     {
       "slug": "fca-ai",
-      "title": "Senior Banking Policy Advisor",
-      "location": "3 Locations",
-      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Banking-Policy-Advisor_JR0021971-1",
-      "matched": "policy",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "fca-ai",
       "title": "Lead Open Banking Policy Advisor",
       "location": "3 Locations",
       "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Lead-Open-Banking-Policy-Advisor_JR0022060-1",
@@ -991,16 +981,6 @@
       "location": "3 Locations",
       "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Payment-Policy-Manager_JR0021922-1",
       "matched": "policy",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "helsing",
-      "title": "Legal Counsel Contracts & Commercial",
-      "location": "Munich - Berlin",
-      "url": "https://helsing.ai/jobs/4934633101?gh_jid=4934633101",
-      "matched": "counsel",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -1191,6 +1171,16 @@
       "location": "Washington DC",
       "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Energy-Regulatory--Mid-Level-to-Senior-Associate_R268836",
       "matched": "regulat",
+      "londonRelevant": false,
+      "geoHit": null,
+      "isNew": false
+    },
+    {
+      "slug": "hogan-lovells-ai",
+      "title": "Paralegal – Antitrust, Competition & Economic Regulation (ACER)",
+      "location": "Washington DC",
+      "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Paralegal---ACER_R268846",
+      "matched": "legal",
       "londonRelevant": false,
       "geoHit": null,
       "isNew": false
@@ -1486,16 +1476,6 @@
       "isNew": false
     },
     {
-      "slug": "openai-london",
-      "title": "Senior Counsel, Commercial (Robotics)",
-      "location": "San Francisco",
-      "url": "https://jobs.ashbyhq.com/openai/21734593-6318-4e55-a685-53c52c0bbfe9",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
       "slug": "wayve",
       "title": "Legal Counsel (Commercial)",
       "location": "Sunnyvale",
@@ -1558,17 +1538,7 @@
     {
       "slug": "xai-london",
       "title": "Senior Employment Counsel",
-      "location": "Bastrop, Texas, United States",
-      "url": "https://job-boards.greenhouse.io/xai/jobs/5193476007",
-      "matched": "counsel",
-      "londonRelevant": false,
-      "geoHit": null,
-      "isNew": false
-    },
-    {
-      "slug": "xai-london",
-      "title": "Senior Employment Counsel",
-      "location": "Palo Alto, California, United States",
+      "location": "Palo Alto, CA",
       "url": "https://job-boards.greenhouse.io/xai/jobs/5144826007",
       "matched": "counsel",
       "londonRelevant": false,
@@ -1608,16 +1578,6 @@
       "isNew": true
     },
     {
-      "slug": "faculty-ai",
-      "title": "Senior Research Scientist - AI Safety Evaluations",
-      "location": "UK - London",
-      "url": "https://jobs.ashbyhq.com/faculty/6c0abf94-8d61-459b-b094-49307a595c60",
-      "matched": "ai safety",
-      "londonRelevant": true,
-      "geoHit": "london",
-      "isNew": true
-    },
-    {
       "slug": "anthropic-london",
       "title": "IP Counsel, Copyright",
       "location": "San Francisco, CA | Seattle, WA | New York City, NY | Washington, DC",
@@ -1638,10 +1598,10 @@
       "isNew": true
     },
     {
-      "slug": "ofcom-ai",
-      "title": "Associate, Policy",
+      "slug": "fca-ai",
+      "title": "Senior Banking Policy Advisor",
       "location": "3 Locations",
-      "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/London/Associate--Policy_JR2449",
+      "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Banking-Policy-Advisor_JR0021971-1",
       "matched": "policy",
       "londonRelevant": false,
       "geoHit": null,

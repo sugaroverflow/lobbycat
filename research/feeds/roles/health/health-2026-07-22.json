@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "date": "2026-07-22",
+  "timestamp": "2026-07-22T06:00:45Z",
+  "totalPolicyRoles": 140,
+  "newSincePrevious": 5,
+  "londonRoles": 44,
+  "errors": 0,
+  "snapshot": "research/feeds/roles/snapshot-2026-07-22.json"
+}

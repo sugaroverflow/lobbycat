@@ -1,0 +1,47 @@
+{
+  "date": "2026-07-24",
+  "priorDate": "2026-07-23",
+  "generatedAt": "2026-07-24T06:03:16.269Z",
+  "summary": {
+    "added": 2,
+    "removed": 2,
+    "addedLondon": 1,
+    "todayTotal": 143,
+    "priorTotal": 143
+  },
+  "addedRoles": {
+    "faculty-ai": [
+      {
+        "title": "Senior Research Scientist - AI Safety Evaluations",
+        "location": "UK - London",
+        "url": "https://jobs.ashbyhq.com/faculty/6c0abf94-8d61-459b-b094-49307a595c60",
+        "londonRelevant": true
+      }
+    ],
+    "ofcom-ai": [
+      {
+        "title": "Associate, Policy",
+        "location": "3 Locations",
+        "url": "https://ofcom.wd3.myworkdayjobs.com/en-US/Ofcom_Careers/job/London/Associate--Policy_JR2449",
+        "londonRelevant": false
+      }
+    ]
+  },
+  "removedRoles": {
+    "anthropic-london": [
+      {
+        "title": "Standards Editor",
+        "location": "San Francisco, CA | New York City, NY",
+        "url": "https://job-boards.greenhouse.io/anthropic/jobs/5317734008"
+      }
+    ],
+    "hogan-lovells-ai": [
+      {
+        "title": "Paralegal – Antitrust, Competition & Economic Regulation (ACER)",
+        "location": "Washington DC",
+        "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Paralegal---ACER_R268846"
+      }
+    ]
+  },
+  "feedEventsInWindow": []
+}

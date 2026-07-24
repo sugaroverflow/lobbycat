@@ -1,0 +1,32 @@
+{
+  "date": "2026-07-23",
+  "priorDate": "2026-07-22",
+  "generatedAt": "2026-07-23T06:03:15.943Z",
+  "summary": {
+    "added": 2,
+    "removed": 0,
+    "addedLondon": 0,
+    "todayTotal": 142,
+    "priorTotal": 140
+  },
+  "addedRoles": {
+    "openai-london": [
+      {
+        "title": "Senior Counsel, Commercial (Robotics)",
+        "location": "San Francisco",
+        "url": "https://jobs.ashbyhq.com/openai/21734593-6318-4e55-a685-53c52c0bbfe9",
+        "londonRelevant": false
+      }
+    ],
+    "xai-london": [
+      {
+        "title": "Senior Employment Counsel",
+        "location": "Bastrop, Texas, United States",
+        "url": "https://job-boards.greenhouse.io/xai/jobs/5193476007",
+        "londonRelevant": false
+      }
+    ]
+  },
+  "removedRoles": {},
+  "feedEventsInWindow": []
+}

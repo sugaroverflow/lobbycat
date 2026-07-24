@@ -1,0 +1,53 @@
+{
+  "date": "2026-07-22",
+  "priorDate": "2026-07-21",
+  "generatedAt": "2026-07-22T06:01:17.845Z",
+  "summary": {
+    "added": 1,
+    "removed": 4,
+    "addedLondon": 0,
+    "todayTotal": 140,
+    "priorTotal": 143
+  },
+  "addedRoles": {
+    "fca-ai": [
+      {
+        "title": "Senior Banking Policy Advisor",
+        "location": "3 Locations",
+        "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Banking-Policy-Advisor_JR0021971-1",
+        "londonRelevant": false
+      }
+    ]
+  },
+  "removedRoles": {
+    "fca-ai": [
+      {
+        "title": "Senior Pension Policy/Institutional Investments Policy Advisor",
+        "location": "3 Locations",
+        "url": "https://fca.wd3.myworkdayjobs.com/en-US/FCA_Careers/job/London/Senior-Pension-Policy-Institutional-Investments-Policy-Advisor_JR0021279-1"
+      }
+    ],
+    "hogan-lovells-ai": [
+      {
+        "title": "Antitrust, Competition and Economic Regulation Group – Mid-Level Associate",
+        "location": "Washington DC",
+        "url": "https://hoganlovells.wd3.myworkdayjobs.com/en-US/Search/job/Washington-DC/Antitrust--Competition-and-Economic-Regulation-Group---Mid-Level-Associate_R268756"
+      }
+    ],
+    "elevenlabs-london": [
+      {
+        "title": "Commercial Counsel - EMEA",
+        "location": "United States",
+        "url": "https://jobs.ashbyhq.com/elevenlabs/089b58ae-013a-41e1-801f-fc1fb1728198"
+      }
+    ],
+    "xai-london": [
+      {
+        "title": "Commercial Counsel - Procurement",
+        "location": "Austin, TX",
+        "url": "https://job-boards.greenhouse.io/xai/jobs/5166506007"
+      }
+    ]
+  },
+  "feedEventsInWindow": []
+}
